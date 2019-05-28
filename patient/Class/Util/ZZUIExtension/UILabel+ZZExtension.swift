@@ -13,14 +13,14 @@ public extension UILabel {
     /// 快速创建Label
     ///
     /// - parameter text:      text
-    /// - parameter fontSize:  字体大小
+    /// - parameter font:  字体大小
     /// - parameter textColor: 字体颜色
     ///
     /// - returns: Label
-    convenience init(text: String = "", fontSize: CGFloat = 12, textColor: UIColor? = UIColor.darkGray, numOfLines: Int = 0, textAlignment: NSTextAlignment = .left) {
+    convenience init(text: String = "", font: UIFont = UIFont.systemFont(ofSize: 14), textColor: UIColor? = UIColor.darkGray, numOfLines: Int = 0, textAlignment: NSTextAlignment = .left) {
         self.init()
         
-        font = UIFont.systemFont(ofSize: fontSize)
+        self.font = font
         self.textColor = textColor
         self.text = text
         self.numberOfLines = numOfLines
