@@ -50,6 +50,12 @@
 		1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA93229CFAE300519CA4 /* BaseViewModel.swift */; };
 		1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA95229CFB2D00519CA4 /* MineViewModel.swift */; };
 		1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA99229CFD9200519CA4 /* TextActionRow.swift */; };
+		1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA9B229D17DE00519CA4 /* SettingController.swift */; };
+		1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA9D229D17FD00519CA4 /* SettingViewModel.swift */; };
+		1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */; };
+		1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */; };
+		1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */; };
+		1030AAA6229E29EC00519CA4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA5229E29EC00519CA4 /* Appearance.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +105,12 @@
 		1030AA93229CFAE300519CA4 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		1030AA95229CFB2D00519CA4 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		1030AA99229CFD9200519CA4 /* TextActionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextActionRow.swift; sourceTree = "<group>"; };
+		1030AA9B229D17DE00519CA4 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
+		1030AA9D229D17FD00519CA4 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtension.swift; sourceTree = "<group>"; };
+		1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
+		1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPwdController.swift; sourceTree = "<group>"; };
+		1030AAA5229E29EC00519CA4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				1030AA88229CD00B00519CA4 /* TextTableViewCellConfig.swift */,
+				1030AAA5229E29EC00519CA4 /* Appearance.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -333,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				1030AA95229CFB2D00519CA4 /* MineViewModel.swift */,
+				1030AA9D229D17FD00519CA4 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -341,6 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				1014D0412293A6D700294558 /* MineController.swift */,
+				1030AA9B229D17DE00519CA4 /* SettingController.swift */,
+				1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -355,6 +371,7 @@
 		1014D0432293A6D700294558 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,6 +422,7 @@
 				1030AA8D229CD1AD00519CA4 /* FontExtension.swift */,
 				1030AA8F229CD23D00519CA4 /* ColorExtension.swift */,
 				1030AA91229CDCB600519CA4 /* TableViewExtension.swift */,
+				1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -551,6 +569,7 @@
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
+				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
@@ -558,6 +577,7 @@
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
+				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
@@ -565,6 +585,8 @@
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
+				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
+				1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
 				1030AA89229CD00B00519CA4 /* TextTableViewCellConfig.swift in Sources */,
 				1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */,
@@ -582,9 +604,11 @@
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,
 				1014D0562293A6D700294558 /* UIImage+ZZExtension.swift in Sources */,
 				1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */,
+				1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
+				1030AAA6229E29EC00519CA4 /* Appearance.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,
@@ -720,7 +744,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
 				INFOPLIST_FILE = patient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -741,7 +765,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
 				INFOPLIST_FILE = patient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

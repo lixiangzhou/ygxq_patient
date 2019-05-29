@@ -16,15 +16,84 @@ class BaseController: UIViewController {
         view.backgroundColor = .white
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setNavigationStyle(.default)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "default_nav_back"), style: .plain, target: self, action: #selector(backAction))
     }
-    */
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    deinit {
+        print("DEINIT => \(self.classForCoder)")
+    }
+}
 
+// MARK: - Action
+extension BaseController {
+    @objc func backAction() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Network
+extension BaseController {
+    
+}
+
+// MARK: - Delegate Internal
+
+// MARK: -
+
+// MARK: - Delegate External
+
+// MARK: -
+
+// MARK: - Helper
+extension BaseController {
+    
+}
+
+// MARK: - Other
+extension BaseController {
+    enum NavigationStyle {
+        case `default`
+        case `systemDefault`
+        case transparency
+        case other(Images)
+        
+        struct Images {
+            var background: UIImage? = nil
+            var shadow: UIImage? = nil
+        }
+    }
+}
+
+// MARK: - Public
+extension BaseController {
+    /// 设置导航栏样式
+    func setNavigationStyle(_ style: NavigationStyle) {
+        var backgroundImage: UIImage? = nil
+        var shadowImage: UIImage? = nil
+        switch style {
+        case .systemDefault:
+            backgroundImage = nil
+            shadowImage = nil
+        case .default:
+            backgroundImage = UIImage.zz_image(withColor: UIColor(white: 1, alpha: 0.95))
+            shadowImage = nil
+        case .transparency:
+            backgroundImage = UIImage.zz_image(withColor: .clear)
+            shadowImage = UIImage()
+        case .other(let imgs):
+            backgroundImage = imgs.background
+            shadowImage = imgs.shadow
+        }
+        
+        navigationController?.navigationBar.setBackgroundImage(backgroundImage, for: .default)
+        navigationController?.navigationBar.shadowImage = shadowImage
+    }
 }

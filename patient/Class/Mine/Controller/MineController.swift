@@ -8,14 +8,24 @@
 
 import UIKit
 
+/// 我的
 class MineController: BaseController {
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "我的"
+        navigationItem.title = nil
+        tabBarItem.title = "我的"
         setUI()
+        tableView.backgroundColor = .red
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setNav()
+        setNavigationStyle(.default)
     }
 
     // MARK: - Properties
@@ -26,14 +36,39 @@ class MineController: BaseController {
 // MARK: - UI
 extension MineController {
     private func setUI() {
+        setBody()
+    }
+    
+    private func setNav() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIButton(title: "编辑", fontSize: 14, titleColor: .red, target: self, action: #selector(editAction)))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton(title: "消息", fontSize: 14, titleColor: .red, target: self, action: #selector(msgAction)))
+    }
+    
+    private func setBody() {
         view.addSubview(tableView)
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
+        let header = MineHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 150))
+        header.tapClosure = {
+            
+        }
+        tableView.tableHeaderView = header
         
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension MineController {
+    @objc private func editAction() {
+        
+    }
+    
+    @objc private func msgAction() {
+        
     }
 }
 
@@ -49,6 +84,13 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let type = viewModel.dataSource[indexPath.row]
+        switch type {
+        case .setting:
+            let vc = SettingController()
+            push(vc)
+        default:
+            break
+        }
     }
 }
