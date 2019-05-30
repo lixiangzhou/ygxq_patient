@@ -43,7 +43,7 @@ extension SettingController {
     
     private func getFooterView() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.zz_width, height: 80))
-        let btn = footerView.zz_add(subview: UIButton(title: "退出登录", fontSize: 14, target: self, action: #selector(logoutAction))) as! UIButton
+        let btn = footerView.zz_add(subview: UIButton(title: "退出登录", font: .size(14), target: self, action: #selector(logoutAction))) as! UIButton
         btn.snp.makeConstraints { (make) in
             make.top.equalTo(40)
             make.right.left.bottom.equalToSuperview()

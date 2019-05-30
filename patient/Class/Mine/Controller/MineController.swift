@@ -40,9 +40,9 @@ extension MineController {
     }
     
     private func setNav() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIButton(title: "编辑", fontSize: 14, titleColor: .red, target: self, action: #selector(editAction)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIButton(title: "编辑", font: .size(14), titleColor: .red, target: self, action: #selector(editAction)))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton(title: "消息", fontSize: 14, titleColor: .red, target: self, action: #selector(msgAction)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton(title: "消息", font: .size(14), titleColor: .red, target: self, action: #selector(msgAction)))
     }
     
     private func setBody() {

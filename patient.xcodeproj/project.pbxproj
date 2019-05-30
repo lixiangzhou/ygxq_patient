@@ -56,6 +56,14 @@
 		1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */; };
 		1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */; };
 		1030AAA6229E29EC00519CA4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA5229E29EC00519CA4 /* Appearance.swift */; };
+		1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAAD229E6AF500519CA4 /* LoginController.swift */; };
+		1030AAB0229E6B0200519CA4 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAAF229E6B0200519CA4 /* RegisterController.swift */; };
+		1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */; };
+		1030AAB4229E6B6700519CA4 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB3229E6B6700519CA4 /* RegisterViewModel.swift */; };
+		1030AAB6229E6CD400519CA4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB5229E6CD400519CA4 /* Network.swift */; };
+		1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB9229E7F0E00519CA4 /* UserApi.swift */; };
+		1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AABE229E868F00519CA4 /* InputFieldView.swift */; };
+		1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC0229E871600519CA4 /* ViewExtension.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +119,14 @@
 		1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPwdController.swift; sourceTree = "<group>"; };
 		1030AAA5229E29EC00519CA4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		1030AAAD229E6AF500519CA4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1030AAAF229E6B0200519CA4 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1030AAB3229E6B6700519CA4 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		1030AAB5229E6CD400519CA4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		1030AAB9229E7F0E00519CA4 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		1030AABE229E868F00519CA4 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		1030AAC0229E871600519CA4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +176,7 @@
 		1014D00E2293A6D700294558 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				1030AAA8229E6AC500519CA4 /* LoginRegister */,
 				1014D079229CCB0900294558 /* Common */,
 				1014D0352293A6D700294558 /* Basic */,
 				1014D0442293A6D700294558 /* Main */,
@@ -217,6 +234,7 @@
 		1014D0152293A6D700294558 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1030AABB229E864900519CA4 /* Views */,
 				1030AA8C229CD19200519CA4 /* Extension */,
 				1014D0162293A6D700294558 /* ZZNSExtension */,
 				1014D0222293A6D700294558 /* ZZUIExtension */,
@@ -269,6 +287,7 @@
 			children = (
 				1030AA88229CD00B00519CA4 /* TextTableViewCellConfig.swift */,
 				1030AAA5229E29EC00519CA4 /* Appearance.swift */,
+				1030AAB5229E6CD400519CA4 /* Network.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -276,6 +295,7 @@
 		1014D0332293A6D700294558 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1030AAB9229E7F0E00519CA4 /* UserApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -423,6 +443,7 @@
 				1030AA8F229CD23D00519CA4 /* ColorExtension.swift */,
 				1030AA91229CDCB600519CA4 /* TableViewExtension.swift */,
 				1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */,
+				1030AAC0229E871600519CA4 /* ViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -433,6 +454,57 @@
 				1030AA99229CFD9200519CA4 /* TextActionRow.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1030AAA8229E6AC500519CA4 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				1030AAAC229E6ADC00519CA4 /* Controller */,
+				1030AAAB229E6AD800519CA4 /* Model */,
+				1030AAAA229E6AD400519CA4 /* ViewModel */,
+				1030AAA9229E6ACE00519CA4 /* View */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+		1030AAA9229E6ACE00519CA4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1030AAAA229E6AD400519CA4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */,
+				1030AAB3229E6B6700519CA4 /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1030AAAB229E6AD800519CA4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1030AAAC229E6ADC00519CA4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1030AAAD229E6AF500519CA4 /* LoginController.swift */,
+				1030AAAF229E6B0200519CA4 /* RegisterController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1030AABB229E864900519CA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1030AABE229E868F00519CA4 /* InputFieldView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		23724EEF2FE00151F84E95C2 /* Pods */ = {
@@ -566,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1014D0522293A6D700294558 /* UIViewController+ZZExtension.swift in Sources */,
+				1030AAB6229E6CD400519CA4 /* Network.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
@@ -578,6 +651,7 @@
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
+				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
@@ -585,6 +659,7 @@
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
+				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
@@ -599,16 +674,21 @@
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,
 				1014D0622293A6D700294558 /* BaseController.swift in Sources */,
+				1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */,
+				1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */,
 				1014D0532293A6D700294558 /* UIView+ZZExtension.swift in Sources */,
 				1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */,
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,
 				1014D0562293A6D700294558 /* UIImage+ZZExtension.swift in Sources */,
 				1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */,
+				1030AAB0229E6B0200519CA4 /* RegisterController.swift in Sources */,
 				1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
+				1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				1030AAA6229E29EC00519CA4 /* Appearance.swift in Sources */,
+				1030AAB4229E6B6700519CA4 /* RegisterViewModel.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,

@@ -9,5 +9,8 @@
 import UIKit
 
 class LoginViewModel: BaseViewModel {
-
+    
+    func login() {
+        
+    }
 }

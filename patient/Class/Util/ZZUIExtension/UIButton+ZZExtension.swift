@@ -12,7 +12,7 @@ public extension UIButton {
     /// 快速创建按钮
     ///
     /// - parameter title:                        title
-    /// - parameter fontSize:                    字体大小
+    /// - parameter font:                         字体大小
     /// - parameter titleColor:                   字体颜色
     /// - parameter imageName:                    图片名
     /// - parameter hilightedImageName:           高亮图片名
@@ -26,7 +26,7 @@ public extension UIButton {
     ///
     /// - returns: UIButton
     convenience init(title: String? = nil,
-                     fontSize: CGFloat = 12,
+                     font: UIFont = UIFont.systemFont(ofSize: 14),
                      titleColor: UIColor = UIColor.darkText,
                      imageName: String? = nil,
                      hilightedImageName: String? = nil,
@@ -42,7 +42,7 @@ public extension UIButton {
         
         setTitle(title, for: .normal)
         
-        titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+        titleLabel?.font = font
         setTitleColor(titleColor, for: .normal)
         self.backgroundColor = backgroundColor
         

@@ -7,24 +7,37 @@
 //
 
 import UIKit
+import ReactiveSwift
+import Result
 
 class HomeController: BaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        UserApi.login(mobile: "1340000003", password: "123456").response { (_) in
+//
+//        }
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
+        
+//        let producer = SignalProducer<Int, NoError> { (observer, _) in
+//            observer.send(value: 3)
+//            observer.send(value: 5)
+//        }
+//        
+////        producer.startWithValues { print($0) }
+////
+////        producer.startWithValues { print($0) }
+//        
+//        producer.startWithSignal { (signal, _) -> Result<Int, NoError> in
+//            signal.observe { print($0, "ddd") }
+//            return Result.init(value: 3)
+//        }
+//        
+//        producer.startWithValues { print($0) }
     }
-    */
 
 }

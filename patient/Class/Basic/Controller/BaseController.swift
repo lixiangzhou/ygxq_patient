@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class BaseController: UIViewController {
 
@@ -20,7 +23,9 @@ class BaseController: UIViewController {
         super.viewWillAppear(animated)
         
         setNavigationStyle(.default)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "default_nav_back"), style: .plain, target: self, action: #selector(backAction))
+        if navigationController?.viewControllers.count ?? 0 > 1 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "default_nav_back"), style: .plain, target: self, action: #selector(backAction))
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

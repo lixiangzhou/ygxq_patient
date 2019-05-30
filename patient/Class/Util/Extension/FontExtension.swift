@@ -13,7 +13,7 @@ extension UIFont {
         return UIFont.systemFont(ofSize: size)
     }
     
-    static func boldsize(_ size: CGFloat) -> UIFont {
+    static func boldSize(_ size: CGFloat) -> UIFont {
         return UIFont.boldSystemFont(ofSize: size)
     }
 }

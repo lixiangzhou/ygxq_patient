@@ -6,4 +6,12 @@
 //  Copyright © 2019 sphr. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIView {
+    static func sepLine(color: UIColor = .c6) -> UIView {
+        let sep = UIView()
+        sep.backgroundColor = color
+        return sep
+    }
+}
