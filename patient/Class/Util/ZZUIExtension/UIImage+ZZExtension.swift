@@ -34,10 +34,10 @@ public extension UIImage {
     /// - parameter imageSize: 图片大小
     ///
     /// - returns: 生成的图片
-    static func zz_image(withColor color: UIColor, imageSize: CGFloat = 1) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: imageSize, height: imageSize), false, 0.0)
+    static func zz_image(withColor color: UIColor, imageSize: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0.0)
         color.setFill()
-        UIRectFill(CGRect(x: 0, y: 0, width: imageSize, height: imageSize))
+        UIRectFill(CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
         let result = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return result

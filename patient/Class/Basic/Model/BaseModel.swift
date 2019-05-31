@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import HandyJSON
+
+class BaseClass: HandyJSON {
+    required init() {}
+}
+
+struct BaseStruct: HandyJSON {
+}

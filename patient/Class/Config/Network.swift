@@ -9,70 +9,24 @@
 import Foundation
 import Moya
 import ReactiveSwift
+import HandyJSON
+import Result
+import SVProgressHUD
 
-let enviroment = Enviroment.develop
-
-let Provider = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin(verbose: true)])
-
-
-
-struct Network {
-    /// 接口服务器
-    static var APP_SERVE_URL: URL {
-        switch enviroment {
-        case .release:
-            return URL(string: "http://www.lightheart.com.cn/shdr-service-basic")!
-        case .test:
-            return URL(string: "http://172.21.24.251:8889/shdr-service-basic")!
-        case .develop:
-            return URL(string: "http://172.21.24.252:8889/shdr-service-basic")!
-        }
+let activityPlugin = NetworkActivityPlugin { (type: NetworkActivityChangeType, target: TargetType) in
+    switch type {
+    case .began:
         
-        //    return "http://172.21.20.247:8889/shdr-service-basic"
-        //    return "http://172.21.20.68:8889/shdr-service-basic"
-    }
-    
-    static func APP_SERVE_URL(_ host: String) -> String {
-        return "http://\(host):8889/shdr-service-basic"
-    }
-    
-    static func APP_SERVE_URL(_ last: Int) -> String {
-        return "http://172.21.20.\(last):8889/shdr-service-basic"
-    }
-    
-    /// HTML文件服务器
-    static var HTML_SERVE_URL: String {
-        switch enviroment {
-        case .release:
-            return "http://www.lightheart.com.cn/sphr-pages/sphr-doctor-h5"
-        case .test:
-            return "http://172.21.24.251/sphr-pages/sphr-doctor-h5"
-        case .develop:
-            return "http://172.21.24.252/sphr-pages/sphr-doctor-h5"
-        }
-    }
-    
-    /// 文件服务器
-    static var APP_FILE_SERVE_URL: String {
-        switch enviroment {
-        case .release:
-            return "http://www.lightheart.com.cn/shdr-file-boot/upload/file"
-        case .test:
-            return "http://172.21.24.251:5085/shdr-file-boot/upload/file"
-        case .develop:
-            return "http://172.21.24.252:5085/shdr-file-boot/upload/file"
-        }
+        break
+    case .ended:
+        break
     }
 }
 
-enum Enviroment {
-    case release
-    case develop
-    case test
-}
+let Provider = MoyaProvider<MultiTarget>(plugins: [NetworkSimpleLoggerPlugin()])
 
 extension TargetType {
-    var baseURL: URL { return Network.APP_SERVE_URL }
+    var baseURL: URL { return NetworkConfig.APP_SERVE_URL }
     
     var method: Moya.Method { return .post }
     
@@ -90,5 +44,130 @@ extension TargetType {
     
     func rac_response(_ completion: @escaping Moya.Completion) -> SignalProducer<Response, MoyaError> {
         return Provider.reactive.request(MultiTarget(self))
+    }
+
+    ///
+    func response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
+        response { (result) in
+            switch result {
+            case .success(let resp):
+                var responseModel = ResponseModel<Model>(.success(resp))
+                let json = try? JSONSerialization.jsonObject(with: resp.data, options: .allowFragments) as? [String: Any]
+                JSONDeserializer.update(object: &responseModel, from: json)
+                completion(responseModel)
+            case .failure(let error):
+                let responseModel = ResponseModel<Model>(.failure(error))
+                completion(responseModel)
+            }
+        }
+    }
+    
+    func responseModel<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (Model?) -> Void) {
+        response(type) { (resp: ResponseModel<Model>) in
+            switch resp.result {
+            case .success:
+                completion(resp.content)
+            case .failure:
+                completion(nil)
+            }
+        }
+    }
+}
+
+/// 响应模型
+struct ResponseModel<Content: HandyJSON>: HandyJSON  {
+    // MARK: - 后台返回的数据结构
+    var resultcode: Int?
+    var resultmsg: String?
+    var content: Content?
+    
+    /// 原始结果
+    var result: Result<Moya.Response, MoyaError>
+    
+    init(_ result: Result<Moya.Response, MoyaError>) {
+        self.result = result
+    }
+    
+    init() {
+        result = .failure(MoyaError.requestMapping("不要使用这个初始化方法"))
+    }
+}
+
+// MARK: - Plugins
+struct NetworkSimpleLoggerPlugin: PluginType {
+    private let loggerId = "Loger"
+    
+    private let dateFormatter = DateFormatter()
+    
+    private let requestSeparatorLine = "========================================================"
+    private let responseSeparatorLine = "########################################################"
+    private let printOverLine = "--------------------------------------------------------"
+    
+    init() {
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+    }
+    
+    public func willSend(_ request: RequestType, target: TargetType) {
+        print(requestSeparatorLine)
+        outputItems(logNetworkRequest(request.request as URLRequest?))
+        print(printOverLine)
+    }
+    
+    public func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
+        print(responseSeparatorLine)
+        if case .success(let response) = result {
+            outputItems(logNetworkResponse(response, data: response.data, target: target))
+        } else {
+            outputItems(logNetworkResponse(nil, data: nil, target: target))
+        }
+        print(printOverLine)
+    }
+    
+    private func outputItems(_ items: [String]) {
+        items.forEach { reversedPrint(", ", terminator: "\n", items: $0) }
+    }
+    
+    var date: String {
+        return dateFormatter.string(from: Date())
+    }
+    
+    func format(_ loggerId: String, date: String, identifier: String, message: String) -> String {
+        return "\(loggerId): [\(date)] \(identifier): \(message)"
+    }
+    
+    func logNetworkRequest(_ request: URLRequest?) -> [String] {
+        var output = [String]()
+        var string = ""
+        if let httpMethod = request?.httpMethod {
+            string += "\(httpMethod) "
+        }
+        string += (request?.description ?? "(invalid request)")
+        
+        if let headers = request?.allHTTPHeaderFields {
+            string += "\nRequest Headers:\n\(headers)"
+        }
+        
+        if let body = request?.httpBody, let stringOutput = String(data: body, encoding: .utf8) {
+            string += "\nRequest Body:\n\(stringOutput)"
+        }
+        
+        output += [format(loggerId, date: date, identifier: "Request", message: string)]
+        
+        
+        return output
+    }
+    
+    func logNetworkResponse(_ response: Moya.Response?, data: Data?, target: TargetType) -> [String] {
+        guard let response = response else {
+            return [format(loggerId, date: date, identifier: "Response", message: "Received empty network response for \(target).")]
+        }
+        
+        return [format(loggerId, date: date, identifier: "Response", message: "Status Code: \(response.statusCode) \n\(response.request?.httpMethod ?? "NoMethod") \(response.request?.url?.absoluteString ?? "")\n\(String(data: response.data , encoding: .utf8) ?? "")")]
+    }
+    
+    func reversedPrint(_ separator: String, terminator: String, items: Any...) {
+        for item in items {
+            print(item, separator: separator, terminator: terminator)
+        }
     }
 }
