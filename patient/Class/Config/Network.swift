@@ -49,42 +49,70 @@ extension TargetType {
 }
 
 extension TargetType {
-    func response(_ completion: @escaping Moya.Completion) {
-        Provider.request(MultiTarget(self), completion: completion)
+    // MARK: -
+    func rac_responseModel<Model: HandyJSON>(_ type: Model.Type) -> SignalProducer<Model?, NoError> {
+        return _rac_response(type).map { self.getModel(type, responseModel: $0) }
     }
     
-    func rac_response(_ completion: @escaping Moya.Completion) -> SignalProducer<Response, MoyaError> {
-        return Provider.reactive.request(MultiTarget(self))
-    }
-
-    ///
-    func _response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
-        response { (result) in
-            switch result {
-            case .success(let resp):
-                var responseModel = ResponseModel<Model>(.success(resp))
-                let json = try? JSONSerialization.jsonObject(with: resp.data, options: .allowFragments) as? [String: Any]
-                JSONDeserializer.update(object: &responseModel, from: json)
-                completion(responseModel)
-            case .failure(let error):
-                let responseModel = ResponseModel<Model>(.failure(error))
-                completion(responseModel)
+    func _rac_response<Model: HandyJSON>(_ type: Model.Type) -> SignalProducer<ResponseModel<Model>, NoError> {
+        return SignalProducer<ResponseModel<Model>, NoError> { observer, lifetime in
+            let cancellableToken = Provider.request(MultiTarget(self)) { (result) in
+                switch result {
+                case let .success(resp):
+                    observer.send(value: self.getResponseModel(type, resp))
+                    observer.sendCompleted()
+                case let .failure(error):
+                    observer.send(value: ResponseModel<Model>(.failure(error)))
+                    observer.sendCompleted()
+                }
+            }
+            
+            lifetime.observeEnded {
+                cancellableToken.cancel()
             }
         }
     }
     
+    // MARK: -
     func responseModel<Model: HandyJSON>(_ type: Model.Type, completion: ((Model?) -> Void)? = nil) {
-        _response(type) { (resp: ResponseModel<Model>) in
-            switch resp.result {
-            case .success:
-                if resp.resultcode == 200 {
-                    completion?(resp.content)
-                } else {
-                    completion?(nil)
-                }
-            case .failure:
-                completion?(nil)
+        _response(type) { completion?(self.getModel(type, responseModel: $0)) }
+    }
+    
+    func _response(_ completion: @escaping Moya.Completion) {
+        Provider.request(MultiTarget(self), completion: completion)
+    }
+
+    func _response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
+        _response { (result) in
+            switch result {
+            case .success(let resp):
+                completion(self.getResponseModel(type, resp))
+            case .failure(let error):
+                completion(ResponseModel<Model>(.failure(error)))
             }
+        }
+    }
+    
+    // MARK: - 内部辅助方法
+    /// 获取后台返回的数据结构模型
+    private func getResponseModel<Model: HandyJSON>(_ type: Model.Type, _ resp: Response) -> ResponseModel<Model> {
+        var responseModel = ResponseModel<Model>(.success(resp))
+        let json = try? JSONSerialization.jsonObject(with: resp.data, options: .allowFragments) as? [String: Any]
+        JSONDeserializer.update(object: &responseModel, from: json)
+        return responseModel
+    }
+    
+    /// 通过 后台返回的数据结构模型 获取 结果模型
+    private func getModel<Model: HandyJSON>(_ type: Model.Type, responseModel: ResponseModel<Model>) -> Model? {
+        switch responseModel.result {
+        case .success:
+            if responseModel.resultcode == 200 {
+                return responseModel.content
+            } else {
+                return nil
+            }
+        case .failure:
+            return nil
         }
     }
 }
@@ -121,8 +149,8 @@ struct NetworkSimpleLoggerPlugin: PluginType {
     
     private let dateFormatter = DateFormatter()
     
-    private let requestSeparatorLine = "========================================================"
-    private let responseSeparatorLine = "########################################################"
+    private let requestSeparatorLine = "============================== Request =============================="
+    private let responseSeparatorLine = "############################### Response #############################"
     private let printOverLine = "--------------------------------------------------------"
     
     init() {
