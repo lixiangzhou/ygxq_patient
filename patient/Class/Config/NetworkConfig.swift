@@ -8,6 +8,7 @@
 
 import Foundation
 import Moya
+
 let enviroment = Enviroment.develop
 
 struct NetworkConfig {

@@ -13,18 +13,29 @@ import HandyJSON
 import Result
 import SVProgressHUD
 
+
+let Provider = MoyaProvider<MultiTarget>(plugins: getPlugin())
+
+// MARK: -
 let activityPlugin = NetworkActivityPlugin { (type: NetworkActivityChangeType, target: TargetType) in
     switch type {
     case .began:
-        
-        break
+        AppActivityIndicatorConfig.requestCount.value += 1
     case .ended:
-        break
+        AppActivityIndicatorConfig.requestCount.value -= 1
     }
 }
 
-let Provider = MoyaProvider<MultiTarget>(plugins: [NetworkSimpleLoggerPlugin()])
+private func getPlugin() -> [PluginType] {
+    switch enviroment {
+    case .release:
+        return [activityPlugin]
+    default:
+        return [NetworkSimpleLoggerPlugin(), activityPlugin]
+    }
+}
 
+// MARK: -
 extension TargetType {
     var baseURL: URL { return NetworkConfig.APP_SERVE_URL }
     
@@ -47,7 +58,7 @@ extension TargetType {
     }
 
     ///
-    func response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
+    func _response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
         response { (result) in
             switch result {
             case .success(let resp):
@@ -62,13 +73,17 @@ extension TargetType {
         }
     }
     
-    func responseModel<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (Model?) -> Void) {
-        response(type) { (resp: ResponseModel<Model>) in
+    func responseModel<Model: HandyJSON>(_ type: Model.Type, completion: ((Model?) -> Void)? = nil) {
+        _response(type) { (resp: ResponseModel<Model>) in
             switch resp.result {
             case .success:
-                completion(resp.content)
+                if resp.resultcode == 200 {
+                    completion?(resp.content)
+                } else {
+                    completion?(nil)
+                }
             case .failure:
-                completion(nil)
+                completion?(nil)
             }
         }
     }
@@ -92,6 +107,13 @@ struct ResponseModel<Content: HandyJSON>: HandyJSON  {
         result = .failure(MoyaError.requestMapping("不要使用这个初始化方法"))
     }
 }
+
+extension String: HandyJSON { }
+extension Int: HandyJSON { }
+extension Bool: HandyJSON { }
+extension Double: HandyJSON { }
+struct None: HandyJSON { }
+
 
 // MARK: - Plugins
 struct NetworkSimpleLoggerPlugin: PluginType {
