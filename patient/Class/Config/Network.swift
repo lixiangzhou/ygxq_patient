@@ -12,7 +12,7 @@ import ReactiveSwift
 import HandyJSON
 import Result
 import SVProgressHUD
-
+import SwiftyJSON
 
 let Provider = MoyaProvider<MultiTarget>(plugins: getPlugin())
 
@@ -211,8 +211,14 @@ struct NetworkSimpleLoggerPlugin: PluginType {
         guard let response = response else {
             return [format(loggerId, date: date, identifier: "Response", message: "Received empty network response for \(target).")]
         }
+        let resultString = String(data: response.data , encoding: .utf8) ?? ""
         
-        return [format(loggerId, date: date, identifier: "Response", message: "Status Code: \(response.statusCode) \n\(response.request?.httpMethod ?? "NoMethod") \(response.request?.url?.absoluteString ?? "")\n\(String(data: response.data , encoding: .utf8) ?? "")")]
+        var result: Any = resultString
+        if let data = resultString.data(using: .utf8), let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+            result = json
+        }
+        
+        return [format(loggerId, date: date, identifier: "Response", message: "Status Code: \(response.statusCode) \n\(response.request?.httpMethod ?? "NoMethod") \(response.request?.url?.absoluteString ?? "")\n\(result)")]
     }
     
     func reversedPrint(_ separator: String, terminator: String, items: Any...) {
@@ -221,3 +227,4 @@ struct NetworkSimpleLoggerPlugin: PluginType {
         }
     }
 }
+
