@@ -41,7 +41,7 @@ extension TargetType {
     
     var method: Moya.Method { return .post }
     
-    var sampleData: Data { return "test".data(using: .utf8)! }
+    var sampleData: Data { return "sampleData".data(using: .utf8)! }
     
     var headers: [String : String]? {
         return nil
