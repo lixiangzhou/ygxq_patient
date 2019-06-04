@@ -54,7 +54,7 @@ extension TargetType {
         return _rac_response(type).map { self.getModel(type, responseModel: $0) }
     }
     
-    func _rac_response<Model: HandyJSON>(_ type: Model.Type) -> SignalProducer<ResponseModel<Model>, NoError> {
+    private func _rac_response<Model: HandyJSON>(_ type: Model.Type) -> SignalProducer<ResponseModel<Model>, NoError> {
         return SignalProducer<ResponseModel<Model>, NoError> { observer, lifetime in
             let cancellableToken = Provider.request(MultiTarget(self)) { (result) in
                 switch result {
@@ -78,11 +78,11 @@ extension TargetType {
         _response(type) { completion?(self.getModel(type, responseModel: $0)) }
     }
     
-    func _response(_ completion: @escaping Moya.Completion) {
+    private func _response(_ completion: @escaping Moya.Completion) {
         Provider.request(MultiTarget(self), completion: completion)
     }
 
-    func _response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
+    private func _response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
         _response { (result) in
             switch result {
             case .success(let resp):
