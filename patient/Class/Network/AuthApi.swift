@@ -17,6 +17,7 @@ enum AuthApi {
     }
     
     case getCode(type: CodeType, mobile: String)
+    case verifyCode(mobile: String, code: String)
 }
 
 extension AuthApi: TargetType {
@@ -24,6 +25,8 @@ extension AuthApi: TargetType {
         switch self {
         case .getCode:
             return "/auth/code/send"
+        case .verifyCode:
+            return "/auth/code/verify"
         default:
             return ""
         }
@@ -33,13 +36,18 @@ extension AuthApi: TargetType {
         var params = [String: Any]()
         switch self {
         case let .getCode(type: type, mobile: mobile):
-            let data: [String: Any] = ["mobile" : mobile,
-                                       "smsType" : type.rawValue,
-                                       "usrType" : "2",
-                                       "termType" : "IOS"]
-            let dataString = String(data: try! JSONSerialization.data(withJSONObject: data, options: .prettyPrinted), encoding: .utf8)!
+            let data: [String: Any] = ["mobile": mobile,
+                                       "smsType": type.rawValue,
+                                       "usrType": "2",
+                                       "termType": "IOS"]
+            let dataString = String(data: try! JSONSerialization.data(withJSONObject: data, options: []), encoding: .utf8)!
             params = ["data": dataString,
                       "encrpyt": false]
+        case let .verifyCode(mobile: mobile, code: code):
+            params = ["mobile" : mobile,
+                      "code" : code,
+                      "usrType" : "2",
+                      "termType" : "IOS"]
         default:
             break
         }

@@ -26,6 +26,10 @@ class BaseController: UIViewController {
         if navigationController?.viewControllers.count ?? 0 > 1 {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "default_nav_back"), style: .plain, target: self, action: #selector(backAction))
         }
+        
+        if !PatientManager.isLogin && couldShowLogin {
+            present(LoginController(), animated: true, completion: nil)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -35,6 +39,8 @@ class BaseController: UIViewController {
     deinit {
         print("DEINIT => \(self.classForCoder)")
     }
+    
+    var couldShowLogin = true
 }
 
 // MARK: - Action

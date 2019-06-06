@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 
 class LoginController: BaseController {
-
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -37,6 +37,8 @@ class LoginController: BaseController {
 // MARK: - UI
 extension LoginController {
     private func setUI() {
+        couldShowLogin = false
+        
         let loginTitleLine = view.zz_add(subview: UIView())
         loginTitleLine.backgroundColor = .lightGray
         let loginTitleLabel = view.zz_add(subview: UILabel(text: "验证码登录", font: .size(20), textColor: .black)) as! UILabel
@@ -137,11 +139,20 @@ extension LoginController {
 // MARK: - Action
 extension LoginController {
     @objc private func loginAction() {
-        print("loginAction")
+        viewModel.verifyCodeAndLogin(mobile: accountField.text!, code: codeField.text!).startWithValues { (isSuccess) in
+            if isSuccess {
+                HUD.show(toast: "登录成功")
+                DispatchQueue.main.zz_after(1) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                HUD.show(toast: "请检查您的网络")
+            }
+        }
     }
     
     @objc private func wxLoginAction() {
-        print("wxLoginAction")
+        print(PatientManager.shared.getCachedPatientInfo()?.toJSONString())
     }
 }
 
@@ -165,7 +176,9 @@ extension LoginController {
 
 // MARK: - Other
 extension LoginController {
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 // MARK: - Public

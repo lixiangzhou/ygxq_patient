@@ -71,6 +71,8 @@
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
+		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
+		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +146,8 @@
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
+		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
+		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,7 +197,7 @@
 		1014D00E2293A6D700294558 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				1030AAA8229E6AC500519CA4 /* LoginRegister */,
+				1030AAA8229E6AC500519CA4 /* Login */,
 				1014D079229CCB0900294558 /* Common */,
 				1014D0352293A6D700294558 /* Basic */,
 				1014D0442293A6D700294558 /* Main */,
@@ -251,6 +255,7 @@
 		1014D0152293A6D700294558 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF38F22A8BB5900F20E81 /* Managers */,
 				1030AABB229E864900519CA4 /* Views */,
 				1030AA8C229CD19200519CA4 /* Extension */,
 				1014D0162293A6D700294558 /* ZZNSExtension */,
@@ -479,7 +484,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1030AAA8229E6AC500519CA4 /* LoginRegister */ = {
+		1030AAA8229E6AC500519CA4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				1030AAAC229E6ADC00519CA4 /* Controller */,
@@ -487,7 +492,7 @@
 				1030AAAA229E6AD400519CA4 /* ViewModel */,
 				1030AAA9229E6ACE00519CA4 /* View */,
 			);
-			path = LoginRegister;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		1030AAA9229E6ACE00519CA4 /* View */ = {
@@ -508,6 +513,7 @@
 		1030AAAB229E6AD800519CA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +546,14 @@
 				105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */,
 			);
 			path = LogExtension;
+			sourceTree = "<group>";
+		};
+		10CAF38F22A8BB5900F20E81 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				10CAF39022A8BB9C00F20E81 /* PatientManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		23724EEF2FE00151F84E95C2 /* Pods */ = {
@@ -675,6 +689,7 @@
 				1014D0522293A6D700294558 /* UIViewController+ZZExtension.swift in Sources */,
 				1030AAB6229E6CD400519CA4 /* Network.swift in Sources */,
 				100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */,
+				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
@@ -733,6 +748,7 @@
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
+				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,
 				1030AA90229CD23D00519CA4 /* ColorExtension.swift in Sources */,
 			);

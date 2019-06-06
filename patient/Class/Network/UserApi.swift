@@ -10,15 +10,15 @@ import Foundation
 import Moya
 
 enum UserApi {
-    case login(mobile: String, password: String)
+    case loginCode(mobile: String, code: String)
     case register
 }
 
 extension UserApi: TargetType {
     var path: String {
         switch self {
-        case .login:
-            return "/user/login"
+        case .loginCode:
+            return "/auth/code/login"
         default:
             return ""
         }
@@ -27,12 +27,14 @@ extension UserApi: TargetType {
     var task: Task {
         var params = [String: Any]()
         switch self {
-        case let .login(mobile: mobile, password: password):
-            params["data"] = ["mobile" : mobile,
-                              "password" : password,
-                              "usrType" : "2",
-                              "token"   : "",
-                              "termType" : "IOS"]
+        case let .loginCode(mobile: mobile, code: code):
+            let data = ["mobile": mobile,
+                        "code": code,
+                        "usrType": "2",
+                        "termType": "IOS"]
+            let dataString = String(data: try! JSONSerialization.data(withJSONObject: data, options: []), encoding: .utf8)!
+            params = ["data": dataString,
+                      "encrpyt": false]
             params["encrpyt"] = false
         default:
             break
