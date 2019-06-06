@@ -22,7 +22,6 @@ target 'patient' do
     pod 'Moya/ReactiveSwift'
     pod 'JXPhotoBrowser'
     pod 'MJRefresh'
-    pod 'SVProgressHUD'
     pod 'SkyFloatingLabelTextField'
     pod 'JPush'
     pod 'WZLBadge'

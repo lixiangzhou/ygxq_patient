@@ -12,6 +12,7 @@ struct AppSetupConfig {
     static func config() {
         AppearanceConfig.config()
         AppActivityIndicatorConfig.config()
+        WXManager.shared.setup()
     }
 }
 

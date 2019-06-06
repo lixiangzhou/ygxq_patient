@@ -73,6 +73,9 @@
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
 		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
+		10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */; };
+		10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */; };
+		10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CD22A917ED00F20E81 /* SizeColorConfig.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +151,10 @@
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
 		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
+		10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXManager.swift; sourceTree = "<group>"; };
+		10CAF3CA22A8DF4100F20E81 /* patient-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "patient-Bridge.h"; sourceTree = "<group>"; };
+		10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIDCardPicturesController.swift; sourceTree = "<group>"; };
+		10CAF3CD22A917ED00F20E81 /* SizeColorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeColorConfig.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +320,7 @@
 				1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */,
 				100B6C3922A1311200C5262C /* HUDConfig.swift */,
 				105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */,
+				10CAF3CD22A917ED00F20E81 /* SizeColorConfig.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -330,6 +338,7 @@
 		1014D0342293A6D700294558 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF3CA22A8DF4100F20E81 /* patient-Bridge.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -522,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				1030AAAD229E6AF500519CA4 /* LoginController.swift */,
+				10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -552,6 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				10CAF39022A8BB9C00F20E81 /* PatientManager.swift */,
+				10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -704,7 +715,9 @@
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
+				10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
+				10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */,
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,
@@ -716,6 +729,7 @@
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */,
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
+				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
 				1030AA89229CD00B00519CA4 /* TextTableViewCellConfig.swift in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
@@ -882,13 +896,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
 				INFOPLIST_FILE = patient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightheart.sphr.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/patient/Class/Other/patient-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -903,13 +918,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
 				INFOPLIST_FILE = patient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lightheart.sphr.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/patient/Class/Other/patient-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

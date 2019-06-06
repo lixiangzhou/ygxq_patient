@@ -11,7 +11,6 @@ import Moya
 import ReactiveSwift
 import HandyJSON
 import Result
-import SVProgressHUD
 import SwiftyJSON
 
 let Provider = MoyaProvider<MultiTarget>(plugins: getPlugin())
@@ -79,7 +78,7 @@ extension TargetType {
     }
     
     func response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
-        _response { (result) in
+        response { (result) in
             switch result {
             case .success(let resp):
                 completion(self.getResponseModel(type, resp))
@@ -89,7 +88,7 @@ extension TargetType {
         }
     }
     
-    private func _response(_ completion: @escaping Moya.Completion) {
+    func response(_ completion: @escaping Moya.Completion) {
         Provider.request(MultiTarget(self), completion: completion)
     }
     

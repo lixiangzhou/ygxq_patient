@@ -18,6 +18,9 @@ enum AuthApi {
     
     case getCode(type: CodeType, mobile: String)
     case verifyCode(mobile: String, code: String)
+    case wxGetToken(code: String)
+    case wxGetUserinfo(token: WXOAuthToken)
+    case wxRefreshToken
 }
 
 extension AuthApi: TargetType {
@@ -27,8 +30,12 @@ extension AuthApi: TargetType {
             return "/auth/code/send"
         case .verifyCode:
             return "/auth/code/verify"
-        default:
-            return ""
+        case .wxGetToken:
+            return "/sns/oauth2/access_token"
+        case .wxGetUserinfo:
+            return "/sns/userinfo"
+        case .wxRefreshToken:
+            return "/sns/oauth2/refresh_token"
         }
     }
     
@@ -48,10 +55,37 @@ extension AuthApi: TargetType {
                       "code" : code,
                       "usrType" : "2",
                       "termType" : "IOS"]
-        default:
-            break
+        case let .wxGetToken(code: code):
+            params = ["appid": WXManager.shared.appId,
+                      "secret": WXManager.shared.secret,
+                      "code": code,
+                      "grant_type": "authorization_code"]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case let .wxGetUserinfo(token: token):
+            params = ["access_token": token.access_token, "openid": token.openid]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .wxRefreshToken:
+            params = ["appid": WXManager.shared.appId, "grant_type": "refresh_token", "refresh_token": WXManager.shared.token!.refresh_token]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }
+    
+    var baseURL: URL {
+        switch self {
+        case .wxGetUserinfo, .wxGetToken, .wxRefreshToken:
+            return URL(string: "https://api.weixin.qq.com")!
+        default:
+            return NetworkConfig.APP_SERVE_URL
+        }
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        case .wxGetToken, .wxGetUserinfo, .wxRefreshToken:
+            return .get
+        default:
+            return .post
+        }
+    }
 }
-

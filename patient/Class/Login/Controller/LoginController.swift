@@ -22,7 +22,7 @@ class LoginController: BaseController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationStyle(.transparency)
+        setNavigationStyle(.systemDefault)
     }
 
     // MARK: - Public Property
@@ -61,6 +61,7 @@ extension LoginController {
         
         let thirdLoginTitle = view.zz_add(subview: UILabel(text: "第三方登录", font: .size(12), textColor: .c6))
         let wxLoginBtn = UIButton(imageName: "", target: self, action: #selector(wxLoginAction))
+        wxLoginBtn.backgroundColor = .red
         
         view.addSubview(accountField)
         view.addSubview(codeField)
@@ -152,7 +153,12 @@ extension LoginController {
     }
     
     @objc private func wxLoginAction() {
-        print(PatientManager.shared.getCachedPatientInfo()?.toJSONString())
+        print(#function)
+        WXManager.shared.sendAuthReq(from: self)
+//        let req = SendAuthReq()
+//        req.scope = "snsapi_userinfo"
+//        req.state = "wx_oauth_authorization_state"
+//        WXApi.send(req)
     }
 }
 
@@ -168,6 +174,34 @@ extension LoginController {
 // MARK: - Delegate External
 
 // MARK: -
+extension LoginController: WXResponseDelegate {
+    func managerDidRecvAuthResponse(resp: SendAuthResp) {
+        AuthApi.wxGetToken(code: resp.code!).response { (result) in
+            switch result {
+            case let .success(resp):
+                if let json = try? String(data: resp.data, encoding: .utf8), let oauthToken = WXOAuthToken.deserialize(from: json) {
+                    WXManager.shared.save(token: oauthToken)
+                    AuthApi.wxGetUserinfo(token: oauthToken).response { (res) in
+                        switch res {
+                        case .success:
+                            if let json = try? String(data: resp.data, encoding: .utf8), let user = WXUserModel.deserialize(from: json) {
+                                WXManager.shared.save(user: user)
+                            } else {
+                                HUD.show(toast: "登录失败")
+                            }
+                        case .failure:
+                            HUD.show(toast: "登录失败")
+                        }
+                    }
+                } else {
+                    HUD.show(toast: "登录失败")
+                }
+            case .failure:
+                HUD.show(toast: "登录失败")
+            }
+        }
+    }
+}
 
 // MARK: - Helper
 extension LoginController {
@@ -178,6 +212,13 @@ extension LoginController {
 extension LoginController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+        
+        if #available(iOS 11.0, *) {
+            print(self.view.safeAreaInsets)
+        } else {
+            
+        }
+        push(GetIDCardPicturesController())
     }
 }
 

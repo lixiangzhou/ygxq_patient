@@ -12,7 +12,7 @@ class PatientManager {
     static let shared = PatientManager()
     
     private init() {
-        patientInfoModel = getCachedPatientInfo()
+        getCachedPatientInfo()
     }
     
     static var isLogin: Bool {
@@ -39,15 +39,18 @@ class PatientManager {
     func deletePatientInfo() -> Bool {
         do {
             try FileManager.default.removeItem(atPath: patientInfoPath)
+            self.patientInfoModel = nil
             return true
         } catch {
             return false
         }
     }
     
+    @discardableResult
     func getCachedPatientInfo() -> PatientInfoModel? {
         if let jsonString = try? String(contentsOfFile: patientInfoPath) {
-            return PatientInfoModel.deserialize(from: jsonString)
+            self.patientInfoModel = PatientInfoModel.deserialize(from: jsonString)
+            return self.patientInfoModel
         } else {
             return nil
         }

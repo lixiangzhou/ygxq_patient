@@ -34,6 +34,10 @@ fileprivate let zz_deviceVersion: (identifier: String, version: ZZDeviceVersion)
     case "iPhone10,1", "iPhone10,4":                    return (identifier: identifier, version: ZZDeviceVersion.iPhone_8)
     case "iPhone10,2", "iPhone10,5":                    return (identifier: identifier, version: ZZDeviceVersion.iPhone_8_Plus)
     case "iPhone10,3", "iPhone10,6":                    return (identifier: identifier, version: ZZDeviceVersion.iPhone_X)
+    case "iPhone11,8":                                  return (identifier: identifier, version: ZZDeviceVersion.iPhone_XR)
+    case "iPhone11,2":                                  return (identifier: identifier, version: ZZDeviceVersion.iPhone_XS)
+    case "iPhone11,6":                                  return (identifier: identifier, version: ZZDeviceVersion.iPhone_XS_Max)
+        
         
     /*** iPad ***/
     case "iPad1,1":                                     return (identifier: identifier, version: ZZDeviceVersion.iPad)
@@ -93,6 +97,9 @@ public enum ZZDeviceVersion: String {
     case iPhone_8 = "iPhone 8"
     case iPhone_8_Plus = "iPhone 8 Plus"
     case iPhone_X = "iPhone X"
+    case iPhone_XR = "iPhone XR"
+    case iPhone_XS = "iPhone XS"
+    case iPhone_XS_Max = "iPhone XS Max"
     
     /*** iPad ***/
     case iPad_Mini = "iPad mini"
