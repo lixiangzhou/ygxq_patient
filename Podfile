@@ -32,5 +32,6 @@ target 'patient' do
     pod 'EmptyDataSet-Swift'
     pod 'FSPagerView'
     pod 'KMPlaceholderTextView'
-
+    pod 'WechatOpenSDK'
+    
 end
