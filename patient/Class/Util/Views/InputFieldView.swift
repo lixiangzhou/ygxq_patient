@@ -443,16 +443,27 @@ extension InputFieldView {
         return fieldView
     }
     
-    static func codeFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .c6) -> (InputFieldView, UIButton) {
-        let btn = UIButton(title: "发送验证码", font: UIFont.size(14), titleColor: UIColor.c3)
+    static func codeFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .c6) -> (InputFieldView, UIButton, UILabel) {
+        let btn = UIButton(title: "获取验证码", font: UIFont.size(14), titleColor: UIColor.c3)
         
-        btn.layer.borderColor = UIColor.c6.cgColor
-        btn.layer.borderWidth = 0.5
-        btn.layer.cornerRadius = 10
-        btn.frame = CGRect(origin: .zero, size: CGSize(width: 80, height: 30))
+        let size = btn.currentTitle!.zz_size(withLimitWidth: 100, fontSize: btn.titleLabel!.font.pointSize)
+        btn.frame = CGRect(origin: .zero, size: CGSize(width: size.width, height: 30))
+        
+        let timeLabel = UILabel(text: "60秒", font: btn.titleLabel!.font, textColor: .c6, textAlignment: .right)
+        timeLabel.isHidden = true
         
         let fieldView = InputFieldView.rightClickViewFieldView(leftImage: leftImage, placeholder: placeholder, clickView: btn, leftSpacing: leftSpacing, rightSpacing: rightSpacing, bottomLineColor: bottomLineColor)
-        return (fieldView, btn)
+        
+        fieldView.rightView.addSubview(timeLabel)
+        
+        timeLabel.snp.makeConstraints { (make) in
+            make.top.bottom.right.equalToSuperview()
+        }
+        
+        btn.reactive.controlEvents(.touchUpInside).observeValues { $0.isHidden = true }
+        btn.reactive.controlEvents(.touchUpInside).observeValues { _ in timeLabel.isHidden = false }
+        
+        return (fieldView, btn, timeLabel)
     }
     
     static func rightClickViewFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, clickView: UIButton, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .c6) -> InputFieldView {

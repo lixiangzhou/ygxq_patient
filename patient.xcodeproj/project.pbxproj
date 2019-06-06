@@ -60,9 +60,7 @@
 		1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */; };
 		1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */; };
 		1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAAD229E6AF500519CA4 /* LoginController.swift */; };
-		1030AAB0229E6B0200519CA4 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAAF229E6B0200519CA4 /* RegisterController.swift */; };
 		1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */; };
-		1030AAB4229E6B6700519CA4 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB3229E6B6700519CA4 /* RegisterViewModel.swift */; };
 		1030AAB6229E6CD400519CA4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB5229E6CD400519CA4 /* Network.swift */; };
 		1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB9229E7F0E00519CA4 /* UserApi.swift */; };
 		1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AABE229E868F00519CA4 /* InputFieldView.swift */; };
@@ -72,6 +70,7 @@
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
+		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,9 +130,7 @@
 		1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPwdController.swift; sourceTree = "<group>"; };
 		1030AAAD229E6AF500519CA4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		1030AAAF229E6B0200519CA4 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		1030AAB3229E6B6700519CA4 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		1030AAB5229E6CD400519CA4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Network.swift; path = ../Config/Network.swift; sourceTree = "<group>"; };
 		1030AAB9229E7F0E00519CA4 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		1030AABE229E868F00519CA4 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
@@ -146,6 +143,7 @@
 		105DBA7622A6655800F55FE6 /* NSArray+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
+		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,6 +317,7 @@
 			children = (
 				1030AAB5229E6CD400519CA4 /* Network.swift */,
 				1030AAB9229E7F0E00519CA4 /* UserApi.swift */,
+				10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -502,7 +501,6 @@
 			isa = PBXGroup;
 			children = (
 				1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */,
-				1030AAB3229E6B6700519CA4 /* RegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -518,7 +516,6 @@
 			isa = PBXGroup;
 			children = (
 				1030AAAD229E6AF500519CA4 /* LoginController.swift */,
-				1030AAAF229E6B0200519CA4 /* RegisterController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -696,6 +693,7 @@
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,
+				10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */,
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
@@ -727,14 +725,12 @@
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,
 				1014D0562293A6D700294558 /* UIImage+ZZExtension.swift in Sources */,
 				1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */,
-				1030AAB0229E6B0200519CA4 /* RegisterController.swift in Sources */,
 				1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
 				1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
-				1030AAB4229E6B6700519CA4 /* RegisterViewModel.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,

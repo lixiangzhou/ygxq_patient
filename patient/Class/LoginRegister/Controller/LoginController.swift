@@ -28,133 +28,109 @@ class LoginController: BaseController {
     // MARK: - Public Property
     
     // MARK: - Private Property
-    private var pwdLoginBtn: UIButton!
-    private var codeLoginBtn: UIButton!
-    private var accountField = InputFieldView.commonFieldView(leftImage: nil, placeholder: "请输入您的账号", leftSpacing: 5, rightSpacing: 5)
-    private var pwdField = InputFieldView.eyeFieldView(leftImage: nil, placeholder: "请输入您的密码", leftSpacing: 5, rightSpacing: 5)
-    private var (codeField, codeBtn) = InputFieldView.codeFieldView(leftImage: nil, text: "验证码", placeholder: "请输入验证码", leftSpacing: 5, rightSpacing: 5)
+    private var accountField = InputFieldView.commonFieldView(leftImage: nil, placeholder: "请输入手机号", leftSpacing: 5, rightSpacing: 5)
+    private var (codeField, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: nil, placeholder: "请输入验证码", leftSpacing: 5, rightSpacing: 5)
     private let loginBtn = UIButton(title: "登录", font: .boldSize(16), titleColor: .black, backgroundColor: .blue, target: self, action: #selector(loginAction))
-    private var loginTypeProperty = MutableProperty(LoginType.password)
+    private var viewModel = LoginViewModel()
 }
 
 // MARK: - UI
 extension LoginController {
     private func setUI() {
-        let iconView = UIImageView(image: UIImage(named: ""))
-        iconView.backgroundColor = .red
-        view.addSubview(iconView)
-        
-        let contentView = UIView()
-        view.addSubview(contentView)
-        
-        pwdLoginBtn = UIButton(title: "密码登录", font: .size(16), titleColor: .c6)
-        pwdLoginBtn.setTitleColor(.black, for: .disabled)
-        pwdLoginBtn.tag = LoginType.password.rawValue
-        contentView.addSubview(pwdLoginBtn)
-        
-        codeLoginBtn = UIButton(title: "验证码登录", font: .size(16), titleColor: .c6)
-        codeLoginBtn.setTitleColor(.black, for: .disabled)
-        codeLoginBtn.tag = LoginType.code.rawValue
-        contentView.addSubview(codeLoginBtn)
+        let loginTitleLine = view.zz_add(subview: UIView())
+        loginTitleLine.backgroundColor = .lightGray
+        let loginTitleLabel = view.zz_add(subview: UILabel(text: "验证码登录", font: .size(20), textColor: .black)) as! UILabel
         
         accountField.inputLengthLimit = 11
         accountField.keyboardType = .numberPad
         
-        contentView.addSubview(accountField)
-        contentView.addSubview(pwdField)
-        contentView.addSubview(codeField)
+        codeBtn.setTitleColor(.c3, for: .normal)
+        codeBtn.setTitleColor(.lightGray, for: .disabled)
         
+        codeBtn.isEnabled = false
+        
+        codeField.inputLengthLimit = 6
+        codeField.keyboardType = .numberPad
+        
+        loginBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
         loginBtn.setTitleColor(.white, for: .disabled)
-        loginBtn.setTitleColor(.black, for: .normal)
-        contentView.addSubview(loginBtn)
+        loginBtn.isEnabled = false
+        loginBtn.backgroundColor = UIColor.lightGray
         
-        let forgetPwdBtn = UIButton(title: "忘记密码？", font: .boldSize(14), titleColor: .black, target: self, action: #selector(forgetPwdAction))
-        let toRegisterBtn = UIButton(title: "去注册", font: .boldSize(14), titleColor: .black, target: self, action: #selector(toRegisterAction))
-        contentView.addSubview(forgetPwdBtn)
-        contentView.addSubview(toRegisterBtn)
+        let thirdLoginTitle = view.zz_add(subview: UILabel(text: "第三方登录", font: .size(12), textColor: .c6))
+        let wxLoginBtn = UIButton(imageName: "", target: self, action: #selector(wxLoginAction))
         
-        iconView.snp.makeConstraints { (make) in
-            make.top.equalTo(150)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(80)
+        view.addSubview(accountField)
+        view.addSubview(codeField)
+        view.addSubview(loginBtn)
+        view.addSubview(wxLoginBtn)
+        
+        loginTitleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(120)
+            make.left.equalTo(20)
         }
         
-        contentView.snp.makeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(60)
-            make.left.equalTo(30)
-            make.right.equalTo(-30)
-        }
-        
-        pwdLoginBtn.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.equalTo(10)
-        }
-        
-        codeLoginBtn.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.right.equalTo(-10)
+        loginTitleLine.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(loginTitleLabel)
+            make.height.equalTo(5)
         }
         
         accountField.snp.makeConstraints { (make) in
-            make.top.equalTo(pwdLoginBtn.snp.bottom).offset(20)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(30)
-        }
-        
-        pwdField.snp.makeConstraints { (make) in
-            make.top.equalTo(accountField.snp.bottom).offset(15)
-            make.left.right.height.equalTo(accountField)
-            make.height.equalTo(accountField)
+            make.left.equalTo(20)
+            make.top.equalTo(loginTitleLabel.snp.bottom).offset(64)
+            make.right.equalTo(-20)
+            make.height.equalTo(45)
         }
         
         codeField.snp.makeConstraints { (make) in
-            make.edges.equalTo(pwdField)
+            make.top.equalTo(accountField.snp.bottom).offset(10)
+            make.left.right.equalTo(accountField)
+            make.height.equalTo(accountField)
         }
         
         loginBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(pwdField.snp.bottom).offset(20)
-            make.left.right.equalTo(pwdField)
-            make.height.equalTo(40)
+            make.top.equalTo(codeField.snp.bottom).offset(30)
+            make.left.right.equalTo(accountField)
+            make.height.equalTo(45)
         }
         
-        forgetPwdBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(loginBtn.snp.bottom).offset(15)
-            make.left.equalTo(loginBtn).offset(15)
-            make.bottom.equalToSuperview()
+        thirdLoginTitle.snp.makeConstraints { (make) in
+            make.top.equalTo(loginBtn.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
         }
         
-        toRegisterBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(forgetPwdBtn)
-            make.right.equalTo(loginBtn).offset(-15)
+        wxLoginBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(thirdLoginTitle.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(44)
         }
     }
     
     private func setBinding() {
-        loginTypeProperty <~ pwdLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
-        loginTypeProperty <~ codeLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
+        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { _ in
+            self.timeLabel.text = "60秒"
+            var count = 60
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                count -= 1
+                if count < 0 {
+                    self.timeLabel.isHidden = true
+                    self.codeBtn.isHidden = false
+                    timer.invalidate()
+                } else {
+                    self.timeLabel.text = String(format: "%2d秒", count)
+                }
+            })
+        }
         
-        pwdLoginBtn.reactive.isEnabled <~ loginTypeProperty.map { $0 != .password }
-        codeLoginBtn.reactive.isEnabled <~ loginTypeProperty.map { $0 != .code }
+        codeBtn.reactive.isEnabled <~ accountField.valueChangedSignal.map { $0.count == 11 }
         
-        pwdField.reactive.isHidden <~ loginTypeProperty.map { $0 != .password }
-        codeField.reactive.isHidden <~ loginTypeProperty.map { $0 != .code }
+        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { _ in
+            self.viewModel.getCode(self.accountField.text!)
+        }
         
-        codeField.textField.reactive.text <~ loginTypeProperty.map { $0 != .code ? nil : self.codeField.text }
-        pwdField.textField.reactive.text <~ loginTypeProperty.map { $0 != .password ? nil : self.pwdField.text }
-        
-        let btnEnabledSignal = accountField.textField.reactive.continuousTextValues.map { $0.count > 0 }
-            .and(pwdField.textField.reactive.continuousTextValues.map { $0.count > 0 }
-                .or(codeField.textField.reactive.continuousTextValues.map { $0.count > 0 }))
-            .skipRepeats()
-        loginBtn.reactive.isEnabled <~ btnEnabledSignal
-        loginBtn.reactive.backgroundColor <~ btnEnabledSignal.map { $0 ? UIColor.orange : UIColor.lightGray }
-        
-        // 触发输入框的初始状态
-        accountField.textField.sendActions(for: .editingChanged)
-        pwdField.textField.sendActions(for: .editingChanged)
-        codeField.textField.sendActions(for: .editingChanged)
-        
-        pwdLoginBtn.sendActions(for: .touchUpInside)
+        let loginEnabledSignal = accountField.valueChangedSignal.map { $0.count == 11 }.and(codeField.valueChangedSignal.map { $0.count == 6 })
+        loginBtn.reactive.isEnabled <~ loginEnabledSignal
+        loginBtn.reactive.backgroundColor <~ loginEnabledSignal.map { $0 ? UIColor.blue : UIColor.lightGray }
     }
 }
 
@@ -164,12 +140,8 @@ extension LoginController {
         print("loginAction")
     }
     
-    @objc private func forgetPwdAction() {
-        print("forgetPwdAction")
-    }
-    
-    @objc private func toRegisterAction() {
-        print("toRegisterAction")
+    @objc private func wxLoginAction() {
+        print("wxLoginAction")
     }
 }
 
@@ -188,10 +160,7 @@ extension LoginController {
 
 // MARK: - Helper
 extension LoginController {
-    enum LoginType: Int {
-        case password
-        case code
-    }
+    
 }
 
 // MARK: - Other
