@@ -76,6 +76,12 @@
 		10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */; };
 		10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */; };
 		10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CD22A917ED00F20E81 /* SizeColorConfig.swift */; };
+		10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CF22ADE83D00F20E81 /* ConstraintExtension.swift */; };
+		10CAF3D422ADFCB200F20E81 /* GetRealNameTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3D322ADFCB200F20E81 /* GetRealNameTipView.swift */; };
+		10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3D522AE00B400F20E81 /* LinkedLabel.swift */; };
+		10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3D722AE081B00F20E81 /* BaseView.swift */; };
+		10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3D922AE21F700F20E81 /* DrawablePanel.swift */; };
+		10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3DB22AE339700F20E81 /* DrawableView.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +161,12 @@
 		10CAF3CA22A8DF4100F20E81 /* patient-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "patient-Bridge.h"; sourceTree = "<group>"; };
 		10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIDCardPicturesController.swift; sourceTree = "<group>"; };
 		10CAF3CD22A917ED00F20E81 /* SizeColorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeColorConfig.swift; sourceTree = "<group>"; };
+		10CAF3CF22ADE83D00F20E81 /* ConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintExtension.swift; sourceTree = "<group>"; };
+		10CAF3D322ADFCB200F20E81 /* GetRealNameTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRealNameTipView.swift; sourceTree = "<group>"; };
+		10CAF3D522AE00B400F20E81 /* LinkedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedLabel.swift; sourceTree = "<group>"; };
+		10CAF3D722AE081B00F20E81 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		10CAF3D922AE21F700F20E81 /* DrawablePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawablePanel.swift; sourceTree = "<group>"; };
+		10CAF3DB22AE339700F20E81 /* DrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +395,7 @@
 		1014D03D2293A6D700294558 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF3D722AE081B00F20E81 /* BaseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -443,6 +456,7 @@
 		1014D0452293A6D700294558 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF3D522AE00B400F20E81 /* LinkedLabel.swift */,
 				105DBA7222A6655800F55FE6 /* LogExtension */,
 			);
 			path = Vender;
@@ -481,6 +495,7 @@
 				1030AA91229CDCB600519CA4 /* TableViewExtension.swift */,
 				1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */,
 				1030AAC0229E871600519CA4 /* ViewExtension.swift */,
+				10CAF3CF22ADE83D00F20E81 /* ConstraintExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -507,6 +522,9 @@
 		1030AAA9229E6ACE00519CA4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF3D322ADFCB200F20E81 /* GetRealNameTipView.swift */,
+				10CAF3D922AE21F700F20E81 /* DrawablePanel.swift */,
+				10CAF3DB22AE339700F20E81 /* DrawableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -709,10 +727,13 @@
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
+				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
+				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
+				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */,
@@ -729,6 +750,7 @@
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */,
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
+				10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */,
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
 				1030AA89229CD00B00519CA4 /* TextTableViewCellConfig.swift in Sources */,
@@ -740,10 +762,12 @@
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
 				1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */,
+				10CAF3D422ADFCB200F20E81 /* GetRealNameTipView.swift in Sources */,
 				1014D0482293A6D700294558 /* NSNumber+ZZExtension.swift in Sources */,
 				105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */,
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
+				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,
 				1014D0622293A6D700294558 /* BaseController.swift in Sources */,
 				1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */,

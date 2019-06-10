@@ -7,18 +7,11 @@
 //
 
 import UIKit
+import ESTabBarController_swift
 
-class BaseTabBarController: UITabBarController {
+class BaseTabBarController: ESTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if PatientManager.isLogin == false {
-            present(LoginController(), animated: true, completion: nil)
-        }
     }
 }

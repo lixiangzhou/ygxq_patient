@@ -87,7 +87,6 @@ extension BaseController {
 extension BaseController {
     /// 设置导航栏样式
     func setNavigationStyle(_ style: NavigationStyle) {
-        return
         var backgroundImage: UIImage? = nil
         var shadowImage: UIImage? = nil
         switch style {

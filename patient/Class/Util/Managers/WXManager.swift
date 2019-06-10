@@ -140,7 +140,7 @@ extension WXManager: WXResponseDelegate {
 
 extension WXManager: WXApiDelegate {
     func onResp(_ resp: BaseResp) {
-        if let response = (resp as? SendAuthResp), let code = response.code, response.state == auth_state {
+        if let response = (resp as? SendAuthResp), let _ = response.code, response.state == auth_state {
             self.authDelegate?.managerDidRecvAuthResponse(resp: response)
         }
     }

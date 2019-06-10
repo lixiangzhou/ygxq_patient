@@ -35,10 +35,12 @@ extension GetIDCardPicturesController {
         self.frontImgView = frontImgView
         self.reverseImgView = reverseImgView
         
+        let btn = UIButton(title: "签字及同意《阳光客户端服务协议》", font: .size(15), titleColor: .c6, imageName: "", selectedImageName: "", target: self, action: #selector(showPanel))
+        view.addSubview(btn)
         
         frontView.snp.makeConstraints { (make) in
-            
-            make.top.left.right.equalToSuperview()
+            make.topOffsetFrom(self)
+            make.left.right.equalToSuperview()
             make.height.equalTo(250)
         }
         
@@ -46,6 +48,11 @@ extension GetIDCardPicturesController {
             make.top.equalTo(frontView.snp.bottom)
             make.left.right.equalToSuperview()
             make.height.equalTo(frontView)
+        }
+        
+        btn.snp.makeConstraints { (make) in
+            make.top.equalTo(reverseView.snp.bottom)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -96,7 +103,11 @@ extension GetIDCardPicturesController {
 
 // MARK: - Action
 extension GetIDCardPicturesController {
-    
+    @objc private func showPanel() {
+        let tip = GetRealNameTipView()
+        
+        tip.show()
+    }
 }
 
 // MARK: - Network

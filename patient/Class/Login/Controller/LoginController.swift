@@ -22,7 +22,7 @@ class LoginController: BaseController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationStyle(.systemDefault)
+        setNavigationStyle(.transparency)
     }
 
     // MARK: - Public Property
@@ -39,8 +39,8 @@ extension LoginController {
     private func setUI() {
         couldShowLogin = false
         
-        let loginTitleLine = view.zz_add(subview: UIView())
-        loginTitleLine.backgroundColor = .lightGray
+        
+        let loginTitleLine = view.zz_add(subview: UIView.sepLine(color: .lightGray))
         let loginTitleLabel = view.zz_add(subview: UILabel(text: "验证码登录", font: .size(20), textColor: .black)) as! UILabel
         
         accountField.inputLengthLimit = 11
@@ -69,7 +69,7 @@ extension LoginController {
         view.addSubview(wxLoginBtn)
         
         loginTitleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(120)
+            make.topOffsetFrom(self, 60)
             make.left.equalTo(20)
         }
         
@@ -212,12 +212,7 @@ extension LoginController {
 extension LoginController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-        
-        if #available(iOS 11.0, *) {
-            print(self.view.safeAreaInsets)
-        } else {
-            
-        }
+
         push(GetIDCardPicturesController())
     }
 }
