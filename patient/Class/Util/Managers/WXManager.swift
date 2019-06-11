@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 protocol WXResponseDelegate {
     func managerDidRecvAuthResponse(resp: SendAuthResp)
@@ -147,7 +146,7 @@ extension WXManager: WXApiDelegate {
 }
 
 
-class WXOAuthToken: HandyJSON {
+class WXOAuthToken: ModelProtocol {
     var refresh_token = ""
     var scope = ""
     var unionid = ""
@@ -160,7 +159,7 @@ class WXOAuthToken: HandyJSON {
     required init() {}
 }
 
-struct WXUserModel: HandyJSON {
+struct WXUserModel: ModelProtocol {
     var openid = ""
     var city = ""
     var country = ""

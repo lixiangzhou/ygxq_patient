@@ -13,6 +13,7 @@ struct AppSetupConfig {
         AppearanceConfig.config()
         AppActivityIndicatorConfig.config()
         WXManager.shared.setup()
+        RCManager.shared.setup()
     }
 }
 

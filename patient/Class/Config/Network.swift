@@ -9,8 +9,8 @@
 import Foundation
 import Moya
 import ReactiveSwift
-import HandyJSON
 import Result
+import HandyJSON
 import SwiftyJSON
 
 let Provider = MoyaProvider<MultiTarget>(plugins: getPlugin())
@@ -49,11 +49,11 @@ extension TargetType {
 
 extension TargetType {
     // MARK: -
-    func rac_responseModel<Model: HandyJSON>(_ type: Model.Type) -> SignalProducer<Model?, NoError> {
+    func rac_responseModel<Model: ModelProtocol>(_ type: Model.Type) -> SignalProducer<Model?, NoError> {
         return rac_response(type).map { self.getModel(type, responseModel: $0) }
     }
     
-    func rac_response<Model: HandyJSON>(_ type: Model.Type) -> SignalProducer<ResponseModel<Model>, NoError> {
+    func rac_response<Model: ModelProtocol>(_ type: Model.Type) -> SignalProducer<ResponseModel<Model>, NoError> {
         return SignalProducer<ResponseModel<Model>, NoError> { observer, lifetime in
             let cancellableToken = Provider.request(MultiTarget(self)) { (result) in
                 switch result {
@@ -73,11 +73,11 @@ extension TargetType {
     }
     
     // MARK: -
-    func responseModel<Model: HandyJSON>(_ type: Model.Type, completion: ((Model?) -> Void)? = nil) {
+    func responseModel<Model: ModelProtocol>(_ type: Model.Type, completion: ((Model?) -> Void)? = nil) {
         response(type) { completion?(self.getModel(type, responseModel: $0)) }
     }
     
-    func response<Model: HandyJSON>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
+    func response<Model: ModelProtocol>(_ type: Model.Type, completion: @escaping (ResponseModel<Model>) -> Void) {
         response { (result) in
             switch result {
             case .success(let resp):
@@ -94,7 +94,7 @@ extension TargetType {
     
     // MARK: - 内部辅助方法
     /// 获取后台返回的数据结构模型
-    private func getResponseModel<Model: HandyJSON>(_ type: Model.Type, _ resp: Response) -> ResponseModel<Model> {
+    private func getResponseModel<Model: ModelProtocol>(_ type: Model.Type, _ resp: Response) -> ResponseModel<Model> {
         var responseModel = ResponseModel<Model>(.success(resp))
         let json = try? JSONSerialization.jsonObject(with: resp.data, options: .allowFragments) as? [String: Any]
         JSONDeserializer.update(object: &responseModel, from: json)
@@ -102,7 +102,7 @@ extension TargetType {
     }
     
     /// 通过 后台返回的数据结构模型 获取 结果模型
-    private func getModel<Model: HandyJSON>(_ type: Model.Type, responseModel: ResponseModel<Model>) -> Model? {
+    private func getModel<Model: ModelProtocol>(_ type: Model.Type, responseModel: ResponseModel<Model>) -> Model? {
         switch responseModel.result {
         case .success:
             if responseModel.resultcode == 200 {
@@ -117,7 +117,7 @@ extension TargetType {
 }
 
 /// 响应模型
-struct ResponseModel<Content: HandyJSON>: HandyJSON  {
+struct ResponseModel<Content: ModelProtocol>: ModelProtocol  {
     // MARK: - 后台返回的数据结构
     var resultcode: Int?
     var resultmsg: String?
@@ -135,11 +135,11 @@ struct ResponseModel<Content: HandyJSON>: HandyJSON  {
     }
 }
 
-extension String: HandyJSON { }
-extension Int: HandyJSON { }
-extension Bool: HandyJSON { }
-extension Double: HandyJSON { }
-struct None: HandyJSON { }
+extension String: ModelProtocol { }
+extension Int: ModelProtocol { }
+extension Bool: ModelProtocol { }
+extension Double: ModelProtocol { }
+struct None: ModelProtocol { }
 
 
 // MARK: - Plugins

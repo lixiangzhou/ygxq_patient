@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import HandyJSON
 
-enum Sex: String, HandyJSONEnum {
+enum Sex: String, EnumProtocol {
     case unknown = "U"
     case male = "M"
     case female = "F"
 }
 
-struct PatientInfoModel: HandyJSON {
+struct PatientInfoModel: ModelProtocol {
     var serDiagnosisId: Int = 0
     var birth: TimeInterval = 0
     var id: Int = 0

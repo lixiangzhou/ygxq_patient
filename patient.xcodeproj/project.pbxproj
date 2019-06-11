@@ -82,6 +82,10 @@
 		10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3D722AE081B00F20E81 /* BaseView.swift */; };
 		10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3D922AE21F700F20E81 /* DrawablePanel.swift */; };
 		10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3DB22AE339700F20E81 /* DrawableView.swift */; };
+		10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3DD22AF42DD00F20E81 /* RCManager.swift */; };
+		10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3DF22AF7CFC00F20E81 /* DoctorApi.swift */; };
+		10CAF3E322AF9C4D00F20E81 /* DoctorInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3E222AF9C4D00F20E81 /* DoctorInfoModel.swift */; };
+		10CAF3E522AFAFB600F20E81 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10CAF3E422AFAFB600F20E81 /* RongCallKit.framework */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +171,10 @@
 		10CAF3D722AE081B00F20E81 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		10CAF3D922AE21F700F20E81 /* DrawablePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawablePanel.swift; sourceTree = "<group>"; };
 		10CAF3DB22AE339700F20E81 /* DrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
+		10CAF3DD22AF42DD00F20E81 /* RCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCManager.swift; sourceTree = "<group>"; };
+		10CAF3DF22AF7CFC00F20E81 /* DoctorApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorApi.swift; sourceTree = "<group>"; };
+		10CAF3E222AF9C4D00F20E81 /* DoctorInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoModel.swift; sourceTree = "<group>"; };
+		10CAF3E422AFAFB600F20E81 /* RongCallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongCallKit.framework; path = Pods/RongCloudRTC/RongCloudRTC/RongCallKit.framework; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CAF3E522AFAFB600F20E81 /* RongCallKit.framework in Frameworks */,
 				A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +225,7 @@
 		1014D00E2293A6D700294558 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF3E122AF9C2F00F20E81 /* Models */,
 				1030AAA8229E6AC500519CA4 /* Login */,
 				1014D079229CCB0900294558 /* Common */,
 				1014D0352293A6D700294558 /* Basic */,
@@ -343,6 +353,7 @@
 				1030AAB5229E6CD400519CA4 /* Network.swift */,
 				1030AAB9229E7F0E00519CA4 /* UserApi.swift */,
 				10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */,
+				10CAF3DF22AF7CFC00F20E81 /* DoctorApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -540,7 +551,6 @@
 		1030AAAB229E6AD800519CA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -581,8 +591,18 @@
 			children = (
 				10CAF39022A8BB9C00F20E81 /* PatientManager.swift */,
 				10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */,
+				10CAF3DD22AF42DD00F20E81 /* RCManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		10CAF3E122AF9C2F00F20E81 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */,
+				10CAF3E222AF9C4D00F20E81 /* DoctorInfoModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		23724EEF2FE00151F84E95C2 /* Pods */ = {
@@ -597,6 +617,7 @@
 		63206486C1EFA5B7A6507BB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF3E422AFAFB600F20E81 /* RongCallKit.framework */,
 				E9153057767E54CA68B84852 /* Pods_patient.framework */,
 			);
 			name = Frameworks;
@@ -614,6 +635,7 @@
 				1014CF98229391DF00294558 /* Frameworks */,
 				1014CF99229391DF00294558 /* Resources */,
 				5AFBB6D0E3CBDC17B77D6B02 /* [CP] Embed Pods Frameworks */,
+				D155C1929C38D140A2905686 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -686,6 +708,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-patient/Pods-patient-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D155C1929C38D140A2905686 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-patient/Pods-patient-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-patient/Pods-patient-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-patient/Pods-patient-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FAFE8841FE0402AD408CACFB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,6 +768,7 @@
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
+				10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
 				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
@@ -752,6 +792,7 @@
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
 				10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */,
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
+				10CAF3E322AF9C4D00F20E81 /* DoctorInfoModel.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
 				1030AA89229CD00B00519CA4 /* TextTableViewCellConfig.swift in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
@@ -761,6 +802,7 @@
 				105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
+				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
 				1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */,
 				10CAF3D422ADFCB200F20E81 /* GetRealNameTipView.swift in Sources */,
 				1014D0482293A6D700294558 /* NSNumber+ZZExtension.swift in Sources */,
@@ -919,6 +961,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/RongCloudRTC/RongCloudRTC",
+				);
 				INFOPLIST_FILE = patient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -941,6 +988,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/RongCloudRTC/RongCloudRTC",
+				);
 				INFOPLIST_FILE = patient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

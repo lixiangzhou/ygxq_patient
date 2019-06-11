@@ -15,8 +15,12 @@ class PatientManager {
         getCachedPatientInfo()
     }
     
-    static var isLogin: Bool {
-        return shared.patientInfoModel != nil
+    var isLogin: Bool {
+        return patientInfoModel != nil
+    }
+    
+    var id: Int {
+        return patientInfoModel?.id ?? 0
     }
     
     private let patientInfoPath = zz_filePath(with: .documentDirectory, fileName: "patientInfo")

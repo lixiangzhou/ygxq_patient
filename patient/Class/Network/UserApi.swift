@@ -11,7 +11,8 @@ import Moya
 
 enum UserApi {
     case loginCode(mobile: String, code: String)
-    case register
+    case getRCToken(userId: String)
+    case createRCToken(userId: String)
 }
 
 extension UserApi: TargetType {
@@ -19,8 +20,10 @@ extension UserApi: TargetType {
         switch self {
         case .loginCode:
             return "/auth/code/login"
-        default:
-            return ""
+        case .getRCToken:
+            return "/user/getRCToken"
+        case .createRCToken:
+            return "/user/createRCToken"
         }
     }
     
@@ -36,8 +39,10 @@ extension UserApi: TargetType {
             params = ["data": dataString,
                       "encrpyt": false]
             params["encrpyt"] = false
-        default:
-            break
+        case let .getRCToken(userId: id):
+            params["id"] = id
+        case let .createRCToken(userId: id):
+            params["id"] = id
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

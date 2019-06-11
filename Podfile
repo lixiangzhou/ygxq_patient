@@ -32,5 +32,7 @@ target 'patient' do
     pod 'FSPagerView'
     pod 'KMPlaceholderTextView'
     pod 'WechatOpenSDK'
+    pod 'RongCloudRTC/RongCallLib', '2.9.0'
+    pod 'RongCloudRTC/RongCallKit', '2.9.0'
     
 end

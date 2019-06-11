@@ -9,6 +9,8 @@
 import Foundation
 import HandyJSON
 
-class BaseClass: HandyJSON {
-    required init() {}
+protocol ModelProtocol: HandyJSON {
+}
+
+protocol EnumProtocol: HandyJSONEnum {
 }

@@ -12,4 +12,9 @@
 #import "WXApi.h"
 #import "WechatAuthSDK.h"
 
+#import <RongIMKit/RongIMKit.h>
+#import <RongCallKit/RCCall.h>
+#import <RongIMLib/RongIMLib.h>
+
+
 #endif /* patient_Bridge_h */

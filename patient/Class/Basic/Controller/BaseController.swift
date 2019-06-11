@@ -27,7 +27,7 @@ class BaseController: UIViewController {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "default_nav_back"), style: .plain, target: self, action: #selector(backAction))
         }
         
-        if !PatientManager.isLogin && couldShowLogin {
+        if !PatientManager.shared.isLogin && couldShowLogin {
             present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
         }
     }
