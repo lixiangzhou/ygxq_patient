@@ -124,7 +124,7 @@ extension GetIDCardPicturesController {
     
     @objc private func selectPicSourceAction(_ tap: UITapGestureRecognizer) {
         currentImageType = ImageType(rawValue: tap.view!.tag)!
-        UIAlertController.showCameraPhotoSheet(from: self)
+        UIAlertController.showCameraPhotoSheet(from: self, delegate: self)
     }
 }
 

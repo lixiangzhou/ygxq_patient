@@ -24,16 +24,16 @@ extension UIViewController {
 extension UIImagePickerController {
     /// 打开相册和相机（有相册和相机权限验证） 
     /// controller UIImagePickerControllerDelegate & UINavigationControllerDelegate
-    static func showPicker(sourceType: UIImagePickerController.SourceType, from controller: UIViewController, allowsEditing: Bool = true) {
+    static func showPicker<Delegate>(sourceType: UIImagePickerController.SourceType, from controller: UIViewController, delegate: Delegate, allowsEditing: Bool = true) where Delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
         if sourceType == .camera {  // 相机
             let auth = AVCaptureDevice.authorizationStatus(for: .video)
             switch auth {
             case .notDetermined, .restricted:
                 attemptAccessVideo {
-                    showCamera(sourceType: sourceType, from: controller, allowsEditing: allowsEditing)
+                    showCamera(sourceType: sourceType, delegate: delegate, from: controller, allowsEditing: allowsEditing)
                 }
             case .authorized:
-                showCamera(sourceType: sourceType, from: controller)
+                showCamera(sourceType: sourceType, delegate: delegate, from: controller, allowsEditing: allowsEditing)
             case .denied:
                 deniedProcess(for: .camera, from: controller)
             @unknown default:
@@ -44,10 +44,10 @@ extension UIImagePickerController {
             switch auth {
             case .notDetermined, .restricted:
                 attemptAccessPhoto {
-                    showCamera(sourceType: sourceType, from: controller, allowsEditing: allowsEditing)
+                    showCamera(sourceType: sourceType, delegate: delegate, from: controller, allowsEditing: allowsEditing)
                 }
             case .authorized:
-                showCamera(sourceType: sourceType, from: controller)
+                showCamera(sourceType: sourceType, delegate: delegate, from: controller, allowsEditing: allowsEditing)
             case .denied:
                 deniedProcess(for: .camera, from: controller)
             @unknown default:
@@ -69,9 +69,9 @@ extension UIImagePickerController {
         }), UIAlertAction(title: "取消", style: .cancel, handler: nil)], completion: nil)
     }
     
-    private static func showCamera(sourceType: UIImagePickerController.SourceType, from controller: UIViewController, allowsEditing: Bool = true) {
+    private static func showCamera<Delegate>(sourceType: UIImagePickerController.SourceType, delegate: Delegate, from controller: UIViewController, allowsEditing: Bool = true) where Delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
         let picker = UIImagePickerController()
-        picker.delegate = controller as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        picker.delegate = delegate
         picker.sourceType = sourceType
         picker.allowsEditing = allowsEditing
         controller.present(picker, animated: true, completion: nil)
@@ -114,13 +114,13 @@ extension UIImagePickerController {
 
 extension UIAlertController {
     /// 显示 sheet：拍照/从相册选择/取消 controller: UIImagePickerControllerDelegate & UINavigationControllerDelegate
-    static func showCameraPhotoSheet(from controller: UIViewController, completion:((UIImagePickerController.SourceType) -> Void)? = nil) {
+    static func showCameraPhotoSheet<Delegate>(from controller: UIViewController, delegate: Delegate, completion:((UIImagePickerController.SourceType) -> Void)? = nil) where Delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
         let action1 = UIAlertAction(title: "拍照", style: .default) { (_) in
-            UIImagePickerController.showPicker(sourceType: .camera, from: controller)
+            UIImagePickerController.showPicker(sourceType: .camera, from: controller, delegate: delegate)
             completion?(.camera)
         }
         let action2 = UIAlertAction(title: "从相册选择", style: .default) { (_) in
-            UIImagePickerController.showPicker(sourceType: .photoLibrary, from: controller)
+            UIImagePickerController.showPicker(sourceType: .photoLibrary, from: controller, delegate: delegate)
             completion?(.photoLibrary)
         }
         let action3 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
