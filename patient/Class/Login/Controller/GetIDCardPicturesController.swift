@@ -17,25 +17,30 @@ class GetIDCardPicturesController: BaseController {
 
         title = "上传身份证"
         setUI()
+        setBinding()
     }
 
     // MARK: - Public Property
     
     // MARK: - Private Property
     private var frontImgView: UIImageView!
-    private var reverseImgView: UIImageView!
+    private var backImgView: UIImageView!
+    private var currentImageType: ImageType = .front
 }
 
 // MARK: - UI
 extension GetIDCardPicturesController {
     private func setUI() {
         let (frontView, frontImgView) = getView(text: "请上传您的身份证正面照片")
-        let (reverseView, reverseImgView) = getView(text: "请上传您的身份证反面照片")
+        let (backView, backImgView) = getView(text: "请上传您的身份证反面照片")
+        
+        frontImgView.tag = ImageType.front.rawValue
+        backImgView.tag = ImageType.back.rawValue
         
         self.frontImgView = frontImgView
-        self.reverseImgView = reverseImgView
+        self.backImgView = backImgView
         
-        let btn = UIButton(title: "签字及同意《阳光客户端服务协议》", font: .size(15), titleColor: .c6, imageName: "", selectedImageName: "", target: self, action: #selector(showPanel))
+        let btn = UIButton(title: "签字及同意《阳光客户端服务协议》", font: .size(15), titleColor: .c6, imageName: "", selectedImageName: "", target: self, action: #selector(showPanelAction))
         view.addSubview(btn)
         
         frontView.snp.makeConstraints { (make) in
@@ -44,16 +49,20 @@ extension GetIDCardPicturesController {
             make.height.equalTo(250)
         }
         
-        reverseView.snp.makeConstraints { (make) in
+        backView.snp.makeConstraints { (make) in
             make.top.equalTo(frontView.snp.bottom)
             make.left.right.equalToSuperview()
             make.height.equalTo(frontView)
         }
         
         btn.snp.makeConstraints { (make) in
-            make.top.equalTo(reverseView.snp.bottom)
+            make.top.equalTo(backView.snp.bottom)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    private func setBinding() {
+        
     }
     
     private func getView(text: String) -> (UIView, UIImageView) {
@@ -97,16 +106,25 @@ extension GetIDCardPicturesController {
             make.right.bottom.equalTo(-5)
         }
         
+        picBgView.isUserInteractionEnabled = true
+        picView.isUserInteractionEnabled = true
+        picView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectPicSourceAction)))
+        
         return (panelView, picView)
     }
 }
 
 // MARK: - Action
 extension GetIDCardPicturesController {
-    @objc private func showPanel() {
+    @objc private func showPanelAction() {
         let tip = GetRealNameTipView()
         
         tip.show()
+    }
+    
+    @objc private func selectPicSourceAction(_ tap: UITapGestureRecognizer) {
+        currentImageType = ImageType(rawValue: tap.view!.tag)!
+        UIAlertController.showCameraPhotoSheet(from: self)
     }
 }
 
@@ -118,6 +136,22 @@ extension GetIDCardPicturesController {
 // MARK: - Delegate Internal
 
 // MARK: -
+extension GetIDCardPicturesController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        if currentImageType == .front {
+            frontImgView.image = image
+        } else {
+            backImgView.image = image
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
 
 // MARK: - Delegate External
 
@@ -130,7 +164,10 @@ extension GetIDCardPicturesController {
 
 // MARK: - Other
 extension GetIDCardPicturesController {
-    
+    enum ImageType: Int {
+        case front = 1
+        case back
+    }
 }
 
 // MARK: - Public

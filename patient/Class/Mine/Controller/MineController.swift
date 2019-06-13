@@ -18,14 +18,13 @@ class MineController: BaseController {
         navigationItem.title = nil
         tabBarItem.title = "我的"
         setUI()
-        tableView.backgroundColor = .red
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setNav()
-        setNavigationStyle(.default)
+        setNavigationStyle(.transparency)
     }
 
     // MARK: - Properties

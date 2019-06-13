@@ -19,6 +19,7 @@ public extension UIAlertController {
     /// - parameter completion:     弹窗消失执行的操作
     ///
     /// - returns: 弹窗对象 UIAlertController
+    @discardableResult
     static func zz_show(fromController: UIViewController,
                         style: UIAlertController.Style = .alert,
                         title: String? = nil, message: String? = nil,
