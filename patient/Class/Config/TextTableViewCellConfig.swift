@@ -9,6 +9,13 @@
 import UIKit
 
 struct TextTableViewCellConfig {
+    /// 背景透明样式
+    var effectStyle: EffectStyle = .none
+    
+    /// 背景色在 effectStyle == .none 才有效
+    var cellBackgroundColor: UIColor = .white
+    var contentViewBackgroundColor: UIColor = .white
+    
     /// 左边的View
     var leftView: UIView?
     /// 左边的View大小，如果为nil，则是leftView的系统自动设置的大小
@@ -36,7 +43,8 @@ struct TextTableViewCellConfig {
     var bottomLineRightPadding: CGFloat
     var bottomLineHeight: CGFloat
     
-    init(leftView: UIView? = nil,
+    init(effectStyle: EffectStyle = .none,
+         leftView: UIView? = nil,
          leftViewSize: CGSize? = nil,
          leftPaddingLeft: CGFloat = 15,
          leftPaddingRight: CGFloat = 15,
@@ -50,6 +58,11 @@ struct TextTableViewCellConfig {
          bottomLineLeftPadding: CGFloat = 0,
          bottomLineRightPadding: CGFloat = 0,
          bottomLineHeight: CGFloat = 0.5) {
+        self.effectStyle = effectStyle
+        
+        self.cellBackgroundColor = cellBackgroundColor
+        self.contentViewBackgroundColor = contentViewBackgroundColor
+        
         self.leftView = leftView
         self.leftViewSize = leftViewSize
         self.leftPaddingLeft = leftPaddingLeft
@@ -72,7 +85,10 @@ struct TextTableViewCellConfig {
 
 extension TextTableViewCellConfig: Equatable {
     static func == (lhs: TextTableViewCellConfig, rhs: TextTableViewCellConfig) -> Bool {
-        return lhs.font.pointSize == rhs.font.pointSize &&
+        return lhs.effectStyle == rhs.effectStyle &&
+            lhs.cellBackgroundColor.rgbValue == rhs.cellBackgroundColor &&
+            lhs.contentViewBackgroundColor.rgbValue == rhs.contentViewBackgroundColor &&
+            lhs.font.pointSize == rhs.font.pointSize &&
             lhs.rightView?.classForCoder == rhs.leftView?.classForCoder &&
             lhs.leftViewSize == lhs.leftViewSize &&
             lhs.leftPaddingLeft == lhs.leftPaddingLeft &&
@@ -81,5 +97,20 @@ extension TextTableViewCellConfig: Equatable {
             lhs.rightViewSize == rhs.rightViewSize &&
             lhs.rightPadding == rhs.rightPadding &&
             lhs.rightView?.classForCoder == rhs.rightView?.classForCoder
+    }
+}
+
+extension TextTableViewCellConfig {
+    enum EffectStyle {
+        case extraLight
+        case light
+        case dark
+        case none
+        
+        @available(iOS 10.0, *)
+        case regular
+        
+        @available(iOS 10.0, *)
+        case prominent
     }
 }

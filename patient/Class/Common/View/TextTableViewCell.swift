@@ -34,6 +34,21 @@ class TextTableViewCell: UITableViewCell, IDCell {
             guard let config = config else {
                 return
             }
+            /// Effect
+            switch config.effectStyle {
+            case .none:
+                backgroundColor = config.cellBackgroundColor
+                contentView.backgroundColor = config.contentViewBackgroundColor
+                effectView.removeFromSuperview()
+            default:
+                backgroundColor = .clear
+                contentView.backgroundColor = .clear
+                contentView.insertSubview(effectView, at: 0)
+                effectView.snp.makeConstraints { (make) in
+                    make.edges.equalToSuperview()
+                }
+            }
+            
             
             // LeftView
             if let lv = config.leftView {
@@ -130,6 +145,8 @@ class TextTableViewCell: UITableViewCell, IDCell {
     let titleLabel = UILabel()
     let rightView = UIView()
     let bottomLine = UIView()
+    
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
 }
 
 // MARK: - UI
