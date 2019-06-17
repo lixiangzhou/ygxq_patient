@@ -9,12 +9,19 @@
 import UIKit
 
 struct TextTableViewCellConfig {
+    /// 左边的View
+    var leftView: UIView?
+    /// 左边的View大小，如果为nil，则是leftView的系统自动设置的大小
+    var leftViewSize: CGSize?
+    /// 左边的View距离左边的距离
+    var leftPaddingLeft: CGFloat
+    /// 左边的View文本的距离
+    var leftPaddingRight: CGFloat
+    
     /// 文本字体
     var font: UIFont
     /// 文本字体颜色
     var textColor: UIColor
-    /// 文本距离左边的距离
-    var leftPadding: CGFloat
     
     /// 右边的View
     var rightView: UIView?
@@ -29,20 +36,27 @@ struct TextTableViewCellConfig {
     var bottomLineRightPadding: CGFloat
     var bottomLineHeight: CGFloat
     
-    init(font: UIFont = UIFont.size(15),
-        textColor: UIColor = UIColor.c3,
-        leftPadding: CGFloat = 15,
-        rightView: UIView = UIImageView(image: UIImage(named: "common_arrow_right")),
-        rightViewSize: CGSize? = nil,
-        rightPadding: CGFloat = 15,
-        hasBottomLine: Bool = true,
-        bottomLineColor: UIColor = UIColor.c3,
-        bottomLineLeftPadding: CGFloat = 0,
-        bottomLineRightPadding: CGFloat = 0,
-        bottomLineHeight: CGFloat = 0.5) {
+    init(leftView: UIView? = nil,
+         leftViewSize: CGSize? = nil,
+         leftPaddingLeft: CGFloat = 15,
+         leftPaddingRight: CGFloat = 15,
+         font: UIFont = UIFont.size(15),
+         textColor: UIColor = UIColor.c3,
+         rightView: UIView? = UIImageView(image: UIImage(named: "common_arrow_right")),
+         rightViewSize: CGSize? = nil,
+         rightPadding: CGFloat = 15,
+         hasBottomLine: Bool = true,
+         bottomLineColor: UIColor = UIColor.c3,
+         bottomLineLeftPadding: CGFloat = 0,
+         bottomLineRightPadding: CGFloat = 0,
+         bottomLineHeight: CGFloat = 0.5) {
+        self.leftView = leftView
+        self.leftViewSize = leftViewSize
+        self.leftPaddingLeft = leftPaddingLeft
+        self.leftPaddingRight = leftPaddingRight
+        
         self.font = font
         self.textColor = textColor
-        self.leftPadding = leftPadding
         
         self.rightView = rightView
         self.rightViewSize = rightViewSize
@@ -59,8 +73,11 @@ struct TextTableViewCellConfig {
 extension TextTableViewCellConfig: Equatable {
     static func == (lhs: TextTableViewCellConfig, rhs: TextTableViewCellConfig) -> Bool {
         return lhs.font.pointSize == rhs.font.pointSize &&
+            lhs.rightView?.classForCoder == rhs.leftView?.classForCoder &&
+            lhs.leftViewSize == lhs.leftViewSize &&
+            lhs.leftPaddingLeft == lhs.leftPaddingLeft &&
+            lhs.leftPaddingRight == lhs.leftPaddingRight &&
             lhs.textColor.rgbaValue == rhs.textColor.rgbaValue &&
-            lhs.leftPadding == rhs.leftPadding &&
             lhs.rightViewSize == rhs.rightViewSize &&
             lhs.rightPadding == rhs.rightPadding &&
             lhs.rightView?.classForCoder == rhs.rightView?.classForCoder

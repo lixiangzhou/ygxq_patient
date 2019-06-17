@@ -24,7 +24,7 @@ class MineHeaderView: UIView {
 
     // MARK: - Public Property
     let iconView = UIImageView()
-    let nameLabel = UILabel(text: " ", font: .size(15), textColor: .c3)
+    let nameLabel = UILabel(text: "登录 / 注册", font: .boldSize(18), textColor: .white)
     
     var tapClosure: (() -> Void)?
     // MARK: - Private Property
@@ -37,6 +37,8 @@ extension MineHeaderView {
         addSubview(iconView)
         addSubview(nameLabel)
         
+        iconView.zz_setCorner(radius: 40, masksToBounds: true)
+        iconView.zz_setBorder(color: .white, width: 3)
         iconView.isUserInteractionEnabled = true
         nameLabel.isUserInteractionEnabled = true
         
@@ -45,12 +47,13 @@ extension MineHeaderView {
         
         nameLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(-10)
+            make.bottom.equalTo(-20)
         }
         
         iconView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(nameLabel.snp.top).offset(-5)
+            make.bottom.equalTo(nameLabel.snp.top).offset(-10)
+            make.width.height.equalTo(80)
         }
     }
 }

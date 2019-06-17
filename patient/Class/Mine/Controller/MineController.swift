@@ -23,7 +23,6 @@ class MineController: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNav()
         setNavigationStyle(.transparency)
     }
 
@@ -35,20 +34,11 @@ class MineController: BaseController {
 // MARK: - UI
 extension MineController {
     private func setUI() {
-        setBody()
-    }
-    
-    private func setNav() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIButton(title: "编辑", font: .size(14), titleColor: .red, target: self, action: #selector(editAction)))
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton(title: "消息", font: .size(14), titleColor: .red, target: self, action: #selector(msgAction)))
-    }
-    
-    private func setBody() {
         view.addSubview(tableView)
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
+        tableView.backgroundColor = .orange
         let header = MineHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 150))
         header.tapClosure = {
             
@@ -62,29 +52,49 @@ extension MineController {
 }
 
 extension MineController {
-    @objc private func editAction() {
-        
-    }
-    
-    @objc private func msgAction() {
-        
-    }
+
 }
 
 extension MineController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.dataSource[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(cell: TextTableViewCell.self, for: indexPath)
-        cell.titleLabel.text = viewModel.dataSource[indexPath.row].rawValue
+        let model = viewModel.dataSource[indexPath.section][indexPath.row]
+        
+        cell.config = model.config
+        cell.leftIconView?.image = UIImage(named: model.img)
+        cell.titleLabel.text = model.type.rawValue
+        cell.leftIconView?.backgroundColor = .red
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let type = viewModel.dataSource[indexPath.row]
-        switch type {
+        let model = viewModel.dataSource[indexPath.section][indexPath.row]
+        switch model.type {
         case .setting:
             let vc = SettingController()
             push(vc)

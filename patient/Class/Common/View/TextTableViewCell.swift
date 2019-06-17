@@ -35,12 +35,50 @@ class TextTableViewCell: UITableViewCell, IDCell {
                 return
             }
             
+            // LeftView
+            if let lv = config.leftView {
+                leftView.isHidden = false
+                leftView.zz_removeAllSubviews()
+                
+                leftView.addSubview(lv)
+                
+                leftView.snp.remakeConstraints { (make) in
+                    make.centerY.equalToSuperview()
+                    make.left.equalTo(config.leftPaddingLeft)
+                    make.right.equalTo(titleLabel.snp.left).offset(-config.leftPaddingRight)
+                }
+                
+                if let size = config.leftViewSize {
+                    lv.snp.makeConstraints { (make) in
+                        make.size.equalTo(size)
+                        make.edges.equalToSuperview()
+                    }
+                } else {
+                    lv.sizeToFit()
+                    lv.snp.makeConstraints { (make) in
+                        make.size.equalTo(lv.zz_size)
+                        make.edges.equalToSuperview()
+                    }
+                }
+                
+            } else {
+                leftView.isHidden = true
+                leftView.zz_removeAllSubviews()
+                
+                leftView.snp.remakeConstraints { (make) in
+                    make.centerY.equalToSuperview()
+                    make.left.equalTo(config.leftPaddingLeft)
+                    make.width.equalTo(0)
+                    make.right.equalTo(titleLabel.snp.left).offset(0)
+                }
+            }
+            
+            
             // Title
             titleLabel.font = config.font
             titleLabel.textColor = config.textColor
             titleLabel.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalTo(config.leftPadding)
             }
             
             // RightView
@@ -88,6 +126,7 @@ class TextTableViewCell: UITableViewCell, IDCell {
     
     
     // MARK: - Private Property
+    let leftView = UIView()
     let titleLabel = UILabel()
     let rightView = UIView()
     let bottomLine = UIView()
@@ -96,10 +135,18 @@ class TextTableViewCell: UITableViewCell, IDCell {
 // MARK: - UI
 extension TextTableViewCell {
     fileprivate func setUI() {
+        contentView.addSubview(leftView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(rightView)
         contentView.addSubview(bottomLine)
         
         config = TextTableViewCellConfig()
+    }
+}
+
+
+extension TextTableViewCell {
+    var leftIconView: UIImageView? {
+        return config?.leftView as? UIImageView
     }
 }

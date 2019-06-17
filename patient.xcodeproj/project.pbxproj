@@ -66,6 +66,7 @@
 		1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AABE229E868F00519CA4 /* InputFieldView.swift */; };
 		1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC0229E871600519CA4 /* ViewExtension.swift */; };
 		1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */; };
+		104E3A6222B741B800A84DB2 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A6122B741B800A84DB2 /* MineCell.swift */; };
 		105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */; };
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
@@ -151,6 +152,7 @@
 		1030AABE229E868F00519CA4 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		1030AAC0229E871600519CA4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		104E3A6122B741B800A84DB2 /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicatorConfig.swift; sourceTree = "<group>"; };
 		105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
 		105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */,
+				104E3A6122B741B800A84DB2 /* MineCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
+				104E3A6222B741B800A84DB2 /* MineCell.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
