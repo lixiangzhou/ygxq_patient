@@ -42,22 +42,19 @@ extension GetRealNameTipView {
         contentView.addSubview(tipTitleLabel)
         
         let msgLabel = LinkedLabel(text: "您好，注册阳光客户端需要您签字同意我们的《阳光客户端服务协议》，点击可查看详情。", font: .size(15), textColor: .c6)
-        msgLabel.addLinks([(string: "《阳光客户端服务协议》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue], action: { _ in
+        msgLabel.addLinks([(string: "《阳光客户端服务协议》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { _ in
             print("haha")
         })])
         contentView.addSubview(msgLabel)
         
-        let panelLabel = UILabel(text: "请输入您的真实姓名", font: .size(20), textColor: .c9, textAlignment: .center)
+        let panelLabel = UILabel(text: "请输入您的真实姓名", font: .size(20), textAlignment: .center)
         panelLabel.zz_setCorner(radius: 5, masksToBounds: true)
-        panelLabel.backgroundColor = UIColor(white: 0, alpha: 0.1)
         panelLabel.isUserInteractionEnabled = true
-//        panelLabel.isEnabled = true
         panelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showDrawPanel)))
         contentView.addSubview(panelLabel)
         
-        let cancelBtn = UIButton(title: "取消", font: .size(20), titleColor: .c9, target: self, action: #selector(hide))
-        let confirmBtn = UIButton(title: "确定", font: .size(20), titleColor: .white, target: self, action: #selector(confirmAction))
-        confirmBtn.backgroundColor = .blue
+        let cancelBtn = UIButton(title: "取消", font: .size(18), titleColor: .c9, backgroundColor: .cf5f5f5, target: self, action: #selector(hide))
+        let confirmBtn = UIButton(title: "确定", font: .size(18), titleColor: .white, backgroundColor: .c407cec, target: self, action: #selector(confirmAction))
         
         contentView.addSubview(cancelBtn)
         contentView.addSubview(confirmBtn)

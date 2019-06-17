@@ -38,7 +38,7 @@ extension MineController {
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
-        tableView.backgroundColor = .orange
+        tableView.backgroundColor = .clear
         let header = MineHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 150))
         header.tapClosure = {
             

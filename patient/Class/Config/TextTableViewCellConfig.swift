@@ -49,14 +49,14 @@ struct TextTableViewCellConfig {
          leftView: UIView? = nil,
          leftViewSize: CGSize? = nil,
          leftPaddingLeft: CGFloat = 15,
-         leftPaddingRight: CGFloat = 15,
-         font: UIFont = UIFont.size(15),
+         leftPaddingRight: CGFloat = 10,
+         font: UIFont = UIFont.size(17),
          textColor: UIColor = UIColor.c3,
          rightView: UIView? = UIImageView(image: UIImage(named: "common_arrow_right")),
          rightViewSize: CGSize? = nil,
          rightPadding: CGFloat = 15,
          hasBottomLine: Bool = true,
-         bottomLineColor: UIColor = UIColor.c3,
+         bottomLineColor: UIColor = UIColor.cdcdcdc,
          bottomLineLeftPadding: CGFloat = 0,
          bottomLineRightPadding: CGFloat = 0,
          bottomLineHeight: CGFloat = 0.5) {
@@ -99,6 +99,13 @@ extension TextTableViewCellConfig: Equatable {
             lhs.rightViewSize == rhs.rightViewSize &&
             lhs.rightPadding == rhs.rightPadding &&
             lhs.rightView?.classForCoder == rhs.rightView?.classForCoder
+    }
+}
+
+extension TextTableViewCellConfig {
+    mutating func hasBottomLine(_ prop: Bool) -> TextTableViewCellConfig {
+        self.hasBottomLine = prop
+        return self
     }
 }
 

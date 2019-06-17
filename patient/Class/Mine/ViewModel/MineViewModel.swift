@@ -33,7 +33,12 @@ class MineViewModel: BaseViewModel {
     override init() {
         super.init()
         
-        dataSource.append([RowModel(type: .myDoc, img: ""), RowModel(type: .order, img: "")])
-        dataSource.append([RowModel(type: .setting, img: "")])
+        dataSource.append([RowModel(type: .myDoc, img: ""),
+                           RowModel(type: .order, img: "", config: lastCellConfig())])
+        dataSource.append([RowModel(type: .setting, img: "", config: lastCellConfig())])
+    }
+    
+    private func lastCellConfig() -> TextTableViewCellConfig {
+        return TextTableViewCellConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 20, height: 20), hasBottomLine: false)
     }
 }

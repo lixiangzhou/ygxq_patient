@@ -34,7 +34,7 @@ extension SettingController {
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
-        tableView.backgroundColor = .orange
+        tableView.backgroundColor = .clear
         tableView.tableFooterView = getFooterView()
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -43,7 +43,7 @@ extension SettingController {
     
     private func getFooterView() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.zz_width, height: 54))
-        let btn = footerView.zz_add(subview: UIButton(title: "退出登录", font: .size(14), backgroundColor: .white, target: self, action: #selector(logoutAction))) as! UIButton
+        let btn = footerView.zz_add(subview: UIButton(title: "退出登录", font: .size(17), backgroundColor: .white, target: self, action: #selector(logoutAction))) as! UIButton
         btn.snp.makeConstraints { (make) in
             make.top.equalTo(10)
             make.right.left.bottom.equalToSuperview()

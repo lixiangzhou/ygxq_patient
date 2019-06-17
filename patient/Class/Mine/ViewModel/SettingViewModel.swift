@@ -27,14 +27,15 @@ class SettingViewModel: BaseViewModel {
     override init() {
         super.init()
         
-        let versionLabel = UILabel(text: "\(UIApplication.shared.zz_appVersion)", font: .size(13), textColor: .blue)
+        
+        let versionLabel = UILabel(text: "\(UIApplication.shared.zz_appVersion)", font: .size(14), textColor: .c6)
         versionLabel.sizeToFit()
         
         dataSource += [
             RowModel(type: .addressMgr, config: TextTableViewCellConfig()),
             RowModel(type: .changeMobile, config: TextTableViewCellConfig()),
             RowModel(type: .feedback, config: TextTableViewCellConfig()),
-            RowModel(type: .version, config: TextTableViewCellConfig(rightView: versionLabel)),
+            RowModel(type: .version, config: TextTableViewCellConfig(rightView: versionLabel, hasBottomLine: false)),
         ]
     }
 

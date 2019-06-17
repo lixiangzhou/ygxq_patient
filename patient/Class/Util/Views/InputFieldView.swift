@@ -411,7 +411,7 @@ extension InputFieldView {
 
 // MARK: - Public
 extension InputFieldView {
-    static func eyeFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .c6) -> InputFieldView {
+    static func eyeFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .cdcdcdc) -> InputFieldView {
         let fieldView = InputFieldView.commonFieldView(leftImage: leftImage, text: text, placeholder: placeholder, leftSpacing: leftSpacing, rightSpacing: rightSpacing, bottomLineColor: bottomLineColor)
         
         fieldView.hasRightView = true
@@ -426,7 +426,7 @@ extension InputFieldView {
         return fieldView
     }
     
-    static func commonFieldView(leftImage: UIImage?, text: String? = nil, font: UIFont = .size(15), placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .c6) -> InputFieldView {
+    static func commonFieldView(leftImage: UIImage?, text: String? = nil, font: UIFont = .size(15), placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .cdcdcdc) -> InputFieldView {
         let fieldView = InputFieldView()
         fieldView.backgroundColor = .white
         fieldView.leftImage = leftImage
@@ -443,8 +443,8 @@ extension InputFieldView {
         return fieldView
     }
     
-    static func codeFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .c6) -> (InputFieldView, UIButton, UILabel) {
-        let btn = UIButton(title: "获取验证码", font: UIFont.size(14), titleColor: UIColor.c3)
+    static func codeFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .cdcdcdc) -> (InputFieldView, UIButton, UILabel) {
+        let btn = UIButton(title: "获取验证码", font: UIFont.size(14), titleColor: UIColor.c407cec)
         
         let size = btn.currentTitle!.zz_size(withLimitWidth: 100, fontSize: btn.titleLabel!.font.pointSize)
         btn.frame = CGRect(origin: .zero, size: CGSize(width: size.width, height: 30))
@@ -466,7 +466,7 @@ extension InputFieldView {
         return (fieldView, btn, timeLabel)
     }
     
-    static func rightClickViewFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, clickView: UIButton, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .c6) -> InputFieldView {
+    static func rightClickViewFieldView(leftImage: UIImage?, text: String? = nil, placeholder: String?, clickView: UIButton, leftSpacing: CGFloat = 0, rightSpacing: CGFloat = 0, bottomLineColor: UIColor = .cdcdcdc) -> InputFieldView {
         let fieldView = InputFieldView.commonFieldView(leftImage: leftImage, text: text, placeholder: placeholder, leftSpacing: leftSpacing, rightSpacing: rightSpacing, bottomLineColor: bottomLineColor)
         
         fieldView.hasRightView = true

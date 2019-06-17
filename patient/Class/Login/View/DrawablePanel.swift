@@ -27,7 +27,7 @@ class DrawablePanel: BaseShowView {
     var lineWidth: CGFloat = 3
     var placeholder = ""
     var placeholderColor = UIColor.c6
-    var placeholderFont = UIFont.size(20)
+    var placeholderFont = UIFont.size(19)
     // MARK: - Private Property
     private var lines = [DrawableLine]()
     private var currentLine = DrawableLine()

@@ -23,10 +23,10 @@ class HomeController: BaseController {
     }
 
     func test() {
-//        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
+        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
         
 //        print(PatientManager.shared.patientInfoModel)
 //        RCManager.shared.connect()
-        push(GetIDCardPicturesController())
+//        push(GetIDCardPicturesController())
     }
 }

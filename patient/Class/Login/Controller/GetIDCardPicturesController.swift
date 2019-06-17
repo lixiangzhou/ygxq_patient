@@ -31,6 +31,7 @@ class GetIDCardPicturesController: BaseController {
 // MARK: - UI
 extension GetIDCardPicturesController {
     private func setUI() {
+        view.backgroundColor = .white
         let (frontView, frontImgView) = getView(text: "请上传您的身份证正面照片")
         let (backView, backImgView) = getView(text: "请上传您的身份证反面照片")
         
@@ -40,7 +41,7 @@ extension GetIDCardPicturesController {
         self.frontImgView = frontImgView
         self.backImgView = backImgView
         
-        let btn = UIButton(title: "签字及同意《阳光客户端服务协议》", font: .size(15), titleColor: .c6, imageName: "", selectedImageName: "", target: self, action: #selector(showPanelAction))
+        let btn = UIButton(title: "签字及同意《阳光客户端服务协议》", font: .size(15), titleColor: .c3, imageName: "", selectedImageName: "", target: self, action: #selector(showPanelAction))
         view.addSubview(btn)
         
         frontView.snp.makeConstraints { (make) in
@@ -70,8 +71,8 @@ extension GetIDCardPicturesController {
         view.addSubview(panelView)
         
         let topView = panelView.zz_add(subview: UIView())
-        topView.backgroundColor = .c9
-        let label = topView.zz_add(subview: UILabel(text: text, font: .size(15), textColor: .c3))
+        topView.backgroundColor = .cf0efef
+        let label = topView.zz_add(subview: UILabel(text: text, font: .size(15), textColor: .c6))
         
         let picPanelView = panelView.zz_add(subview: UIView())
         let picBgView = picPanelView.zz_add(subview: UIImageView(image: UIImage(named: "")))
@@ -86,7 +87,7 @@ extension GetIDCardPicturesController {
         }
         
         label.snp.makeConstraints { (make) in
-            make.left.equalTo(14)
+            make.left.equalTo(15)
             make.top.bottom.equalToSuperview()
         }
         

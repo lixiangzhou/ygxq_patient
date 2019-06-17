@@ -35,15 +35,14 @@ extension DrawableView {
     private func setUI() {
         addSubview(panel)
         
-        let resetBtn = UIButton(title: "重签", font: .size(20), titleColor: .blue, target: self, action: #selector(resetAction))
+        let resetBtn = UIButton(title: "重签", font: .size(18), titleColor: .c407cec, target: self, action: #selector(resetAction))
         addSubview(resetBtn)
         
         let bottomView = zz_add(subview: UIView())
         bottomView.backgroundColor = .white
         
-        let cancelBtn = UIButton(title: "取消", font: .size(20), titleColor: .c9, target: self, action: #selector(cancelAction))
-        let confirmBtn = UIButton(title: "确定", font: .size(20), titleColor: .white, target: self, action: #selector(confirmAction))
-        confirmBtn.backgroundColor = .blue
+        let cancelBtn = UIButton(title: "取消", font: .size(18), titleColor: .c9, backgroundColor: .cf5f5f5, target: self, action: #selector(cancelAction))
+        let confirmBtn = UIButton(title: "确定", font: .size(18), titleColor: .white, backgroundColor: .c407cec, target: self, action: #selector(confirmAction))
         
         bottomView.addSubview(cancelBtn)
         bottomView.addSubview(confirmBtn)
@@ -53,8 +52,8 @@ extension DrawableView {
         }
         
         resetBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(-20)
-            make.bottom.equalTo(panel).offset(-20)
+            make.right.equalTo(-16)
+            make.bottom.equalTo(panel).offset(-18)
         }
         
         bottomView.snp.makeConstraints { (make) in
