@@ -58,7 +58,6 @@
 		1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA9D229D17FD00519CA4 /* SettingViewModel.swift */; };
 		1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */; };
 		1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */; };
-		1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */; };
 		1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAAD229E6AF500519CA4 /* LoginController.swift */; };
 		1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */; };
 		1030AAB6229E6CD400519CA4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB5229E6CD400519CA4 /* Network.swift */; };
@@ -144,7 +143,6 @@
 		1030AA9D229D17FD00519CA4 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtension.swift; sourceTree = "<group>"; };
 		1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
-		1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPwdController.swift; sourceTree = "<group>"; };
 		1030AAAD229E6AF500519CA4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1030AAB5229E6CD400519CA4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Network.swift; path = ../Config/Network.swift; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 			children = (
 				1014D0412293A6D700294558 /* MineController.swift */,
 				1030AA9B229D17DE00519CA4 /* SettingController.swift */,
-				1030AAA3229E23DD00519CA4 /* ModifyPwdController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -792,7 +789,6 @@
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
-				1030AAA4229E23DD00519CA4 /* ModifyPwdController.swift in Sources */,
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
 				10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */,
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,

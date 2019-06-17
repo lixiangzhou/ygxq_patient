@@ -11,42 +11,32 @@ import UIKit
 class SettingViewModel: BaseViewModel {
     
     enum RowType: String {
-        case modifyPwd = "修改密码"
-        case messageNotify = "消息提醒"
         case addressMgr = "地址管理"
-        case `protocol` = "阳光客户端服务协议"
+        case changeMobile = "更换手机号"
+        case feedback = "意见反馈"
         case version = "当前版本"
     }
     
-    struct RowData {
+    struct RowModel {
         let type: RowType
         let config: TextTableViewCellConfig
     }
     
-    var dataSource = [RowData]()
-    
-    private let switchView = UISwitch()
+    var dataSource = [RowModel]()
     
     override init() {
         super.init()
         
-        
-        switchView.addTarget(self, action: #selector(msgSwitchChangeAction), for: .valueChanged)
-        
-        let versionLabel = UILabel(text: "V\(UIApplication.shared.zz_appVersion)", font: .size(13), textColor: .blue)
+        let versionLabel = UILabel(text: "\(UIApplication.shared.zz_appVersion)", font: .size(13), textColor: .blue)
         versionLabel.sizeToFit()
         
         dataSource += [
-            RowData(type: .modifyPwd, config: TextTableViewCellConfig()),
-            RowData(type: .messageNotify, config: TextTableViewCellConfig(rightView: switchView)),
-            RowData(type: .addressMgr, config: TextTableViewCellConfig()),
-            RowData(type: .protocol, config: TextTableViewCellConfig()),
-            RowData(type: .version, config: TextTableViewCellConfig(rightView: versionLabel)),
+            RowModel(type: .addressMgr, config: TextTableViewCellConfig()),
+            RowModel(type: .changeMobile, config: TextTableViewCellConfig()),
+            RowModel(type: .feedback, config: TextTableViewCellConfig()),
+            RowModel(type: .version, config: TextTableViewCellConfig(rightView: versionLabel)),
         ]
     }
-    
-    @objc private func msgSwitchChangeAction(_ sw: UISwitch) {
-    
-    }
+
 }
 

@@ -34,18 +34,18 @@ extension SettingController {
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
+        tableView.backgroundColor = .orange
         tableView.tableFooterView = getFooterView()
-        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
     
     private func getFooterView() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.zz_width, height: 80))
-        let btn = footerView.zz_add(subview: UIButton(title: "退出登录", font: .size(14), target: self, action: #selector(logoutAction))) as! UIButton
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.zz_width, height: 54))
+        let btn = footerView.zz_add(subview: UIButton(title: "退出登录", font: .size(14), backgroundColor: .white, target: self, action: #selector(logoutAction))) as! UIButton
         btn.snp.makeConstraints { (make) in
-            make.top.equalTo(40)
+            make.top.equalTo(10)
             make.right.left.bottom.equalToSuperview()
         }
         return footerView
@@ -74,20 +74,14 @@ extension SettingController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(cell: TextTableViewCell.self, for: indexPath)
-        let data = viewModel.dataSource[indexPath.row]
-        cell.titleLabel.text = data.type.rawValue
-        cell.config = data.config
+        let model = viewModel.dataSource[indexPath.row]
+        cell.config = model.config
+        cell.titleLabel.text = model.type.rawValue
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = viewModel.dataSource[indexPath.row]
-        switch data.type {
-        case .modifyPwd:
-            let vc = ModifyPwdController()
-            push(vc)
-        default:
-            break
-        }
+        
     }
 }
