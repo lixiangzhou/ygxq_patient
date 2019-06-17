@@ -43,6 +43,22 @@ class TextTableViewCell: UITableViewCell, IDCell {
             default:
                 backgroundColor = .clear
                 contentView.backgroundColor = .clear
+                
+                switch config.effectStyle {
+                case .extraLight:
+                    effectView.effect = UIBlurEffect(style: .extraLight)
+                case .light:
+                    effectView.effect = UIBlurEffect(style: .light)
+                case .dark:
+                    effectView.effect = UIBlurEffect(style: .dark)
+                case .regular:
+                    effectView.effect = UIBlurEffect(style: .regular)
+                case .prominent:
+                    effectView.effect = UIBlurEffect(style: .prominent)
+                default:
+                    break
+                }
+                
                 contentView.insertSubview(effectView, at: 0)
                 effectView.snp.makeConstraints { (make) in
                     make.edges.equalToSuperview()

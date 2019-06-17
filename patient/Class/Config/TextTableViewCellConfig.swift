@@ -13,8 +13,8 @@ struct TextTableViewCellConfig {
     var effectStyle: EffectStyle = .none
     
     /// 背景色在 effectStyle == .none 才有效
-    var cellBackgroundColor: UIColor = .white
-    var contentViewBackgroundColor: UIColor = .white
+    var cellBackgroundColor: UIColor
+    var contentViewBackgroundColor: UIColor
     
     /// 左边的View
     var leftView: UIView?
@@ -44,6 +44,8 @@ struct TextTableViewCellConfig {
     var bottomLineHeight: CGFloat
     
     init(effectStyle: EffectStyle = .none,
+         cellBackgroundColor: UIColor = .white,
+         contentViewBackgroundColor: UIColor = .white,
          leftView: UIView? = nil,
          leftViewSize: CGSize? = nil,
          leftPaddingLeft: CGFloat = 15,
@@ -86,8 +88,8 @@ struct TextTableViewCellConfig {
 extension TextTableViewCellConfig: Equatable {
     static func == (lhs: TextTableViewCellConfig, rhs: TextTableViewCellConfig) -> Bool {
         return lhs.effectStyle == rhs.effectStyle &&
-            lhs.cellBackgroundColor.rgbValue == rhs.cellBackgroundColor &&
-            lhs.contentViewBackgroundColor.rgbValue == rhs.contentViewBackgroundColor &&
+            lhs.cellBackgroundColor.rgbValue == rhs.cellBackgroundColor.rgbValue &&
+            lhs.contentViewBackgroundColor.rgbValue == rhs.contentViewBackgroundColor.rgbValue &&
             lhs.font.pointSize == rhs.font.pointSize &&
             lhs.rightView?.classForCoder == rhs.leftView?.classForCoder &&
             lhs.leftViewSize == lhs.leftViewSize &&
