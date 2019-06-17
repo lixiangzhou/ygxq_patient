@@ -6,14 +6,19 @@
 //  Copyright © 2019 sphr. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct AppearanceConfig {
     static func config() {
         setNavAppearance()
+        setTabAppearance()
     }
     
     static func setNavAppearance() {
-        //        UINavigationBar.appearance().titleTextAttributes =
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSize(18), NSAttributedString.Key.foregroundColor: UIColor.c3]
+    }
+    
+    static func setTabAppearance() {
+        UITabBar.appearance().tintColor = .c407cec
     }
 }
