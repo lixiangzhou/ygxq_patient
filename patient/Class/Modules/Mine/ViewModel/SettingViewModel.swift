@@ -38,6 +38,7 @@ class SettingViewModel: BaseViewModel {
             RowModel(type: .version, config: TextTableViewCellConfig(rightView: versionLabel, hasBottomLine: false)),
         ]
     }
-
 }
+
+
 

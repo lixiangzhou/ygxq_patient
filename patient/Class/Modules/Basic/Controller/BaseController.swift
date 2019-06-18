@@ -16,6 +16,8 @@ class BaseController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUI()
+        setBinding()
         view.backgroundColor = .white
     }
     
@@ -41,6 +43,17 @@ class BaseController: UIViewController {
     }
     
     var couldShowLogin = true
+}
+
+// MARK: - UI
+extension BaseController {
+    @objc func setUI() {
+        
+    }
+    
+    @objc func setBinding() {
+        
+    }
 }
 
 // MARK: - Action
@@ -94,7 +107,7 @@ extension BaseController {
             backgroundImage = nil
             shadowImage = nil
         case .default:
-            backgroundImage = UIImage.zz_image(withColor: UIColor(white: 1, alpha: 0.95))
+            backgroundImage = UIImage.zz_image(withColor: UIColor.c407cec.withAlphaComponent(0.95))
             shadowImage = nil
         case .transparency:
             backgroundImage = UIImage.zz_image(withColor: .clear)

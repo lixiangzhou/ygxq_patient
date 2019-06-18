@@ -16,8 +16,6 @@ class GetIDCardPicturesController: BaseController {
         super.viewDidLoad()
 
         title = "上传身份证"
-        setUI()
-        setBinding()
     }
 
     // MARK: - Public Property
@@ -30,7 +28,7 @@ class GetIDCardPicturesController: BaseController {
 
 // MARK: - UI
 extension GetIDCardPicturesController {
-    private func setUI() {
+    override func setUI() {
         view.backgroundColor = .white
         let (frontView, frontImgView) = getView(text: "请上传您的身份证正面照片")
         let (backView, backImgView) = getView(text: "请上传您的身份证反面照片")
@@ -60,10 +58,6 @@ extension GetIDCardPicturesController {
             make.top.equalTo(backView.snp.bottom)
             make.centerX.equalToSuperview()
         }
-    }
-    
-    private func setBinding() {
-        
     }
     
     private func getView(text: String) -> (UIView, UIImageView) {

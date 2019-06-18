@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import Result
 
 class MineViewModel: BaseViewModel {
     
@@ -21,7 +23,7 @@ class MineViewModel: BaseViewModel {
         let img: String
         let config: TextTableViewCellConfig
 
-        init(type: RowType, img: String, config: TextTableViewCellConfig = TextTableViewCellConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 20, height: 20), leftPaddingRight: 10, hasBottomLine: true)) {
+        init(type: RowType, img: String, config: TextTableViewCellConfig) {
             self.type = type
             self.img = img
             self.config = config
@@ -33,12 +35,14 @@ class MineViewModel: BaseViewModel {
     override init() {
         super.init()
         
-        dataSource.append([RowModel(type: .myDoc, img: ""),
+        dataSource.append([RowModel(type: .myDoc, img: "", config: commonCellConfig()),
                            RowModel(type: .order, img: "", config: lastCellConfig())])
         dataSource.append([RowModel(type: .setting, img: "", config: lastCellConfig())])
     }
-    
-    private func lastCellConfig() -> TextTableViewCellConfig {
-        return TextTableViewCellConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 20, height: 20), hasBottomLine: false)
+}
+
+extension MineViewModel {
+    func getInfo() {
+        PatientManager.shared.getPatientInfo()
     }
 }

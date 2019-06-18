@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 /// 我的
 class MineController: BaseController {
@@ -17,7 +18,6 @@ class MineController: BaseController {
 
         navigationItem.title = nil
         tabBarItem.title = "我的"
-        setUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,24 +29,37 @@ class MineController: BaseController {
     // MARK: - Properties
     private let tableView = UITableView()
     private let viewModel = MineViewModel()
+    private let headerView = MineHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 150))
 }
 
 // MARK: - UI
 extension MineController {
-    private func setUI() {
+    override func setUI() {
         view.addSubview(tableView)
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
         tableView.backgroundColor = .cf0efef
-        let header = MineHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 150))
-        header.tapClosure = {
+        
+        headerView.tapClosure = {
             
         }
-        tableView.tableHeaderView = header
+        tableView.tableHeaderView = headerView
         
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+    }
+    
+    override func setBinding() {
+        patientInfoProperty.producer.startWithValues { [weak self](pinfo) in
+            if let pinfo = pinfo {
+                self?.headerView.iconView.kf.setImage(with: URL(string: pinfo.imgUrl), placeholder: UIImage(named: ""))
+                self?.headerView.nameLabel.text = pinfo.realName
+            } else {
+                self?.headerView.iconView.image = UIImage(named: "")
+                self?.headerView.nameLabel.text = "登录 / 注册"
+            }
         }
     }
 }
@@ -95,6 +108,9 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSource[indexPath.section][indexPath.row]
         switch model.type {
+        case .myDoc:
+            let vc = ProfileController()
+            push(vc)
         case .setting:
             let vc = SettingController()
             push(vc)

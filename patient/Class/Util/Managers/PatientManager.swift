@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import ReactiveSwift
+import Result
+
+/// 患者信息 信号量
+let patientInfoProperty = MutableProperty<PatientInfoModel?>(nil)
+/// 登录状态 信号量
+let (loginSignal, loginObserver) = Signal<Bool, NoError>.pipe()
 
 class PatientManager {
     static let shared = PatientManager()
     
     private init() {
-        getCachedPatientInfo()
+        patientInfoModel = getCachedPatientInfo()
+        
+        patientInfoProperty.value = patientInfoModel
+        
+        loginObserver.send(value: patientInfoModel != nil)
     }
     
     var isLogin: Bool {
@@ -24,7 +35,11 @@ class PatientManager {
     }
     
     private let patientInfoPath = zz_filePath(with: .documentDirectory, fileName: "patientInfo")
-    private(set) var patientInfoModel: PatientInfoModel?
+    private(set) var patientInfoModel: PatientInfoModel? {
+        didSet {
+            patientInfoProperty.value = patientInfoModel
+        }
+    }
     
     func save(patient: PatientInfoModel) {
         if let jsonString = patient.toJSONString() {
@@ -43,7 +58,7 @@ class PatientManager {
     func deletePatientInfo() -> Bool {
         do {
             try FileManager.default.removeItem(atPath: patientInfoPath)
-            self.patientInfoModel = nil
+            patientInfoModel = nil
             return true
         } catch {
             return false
@@ -53,11 +68,22 @@ class PatientManager {
     @discardableResult
     func getCachedPatientInfo() -> PatientInfoModel? {
         if let jsonString = try? String(contentsOfFile: patientInfoPath) {
-            self.patientInfoModel = PatientInfoModel.deserialize(from: jsonString)
-            return self.patientInfoModel
+            patientInfoModel = PatientInfoModel.deserialize(from: jsonString)
+            return patientInfoModel
         } else {
             return nil
         }
     }
-    
+}
+
+extension PatientManager {
+    func getPatientInfo() {
+        if isLogin {
+            UserApi.patientInfo(pid: id).rac_responseModel(PatientInfoModel.self).startWithValues { (pInfo) in
+                if let pInfo = pInfo {                
+                    patientInfoProperty.value = pInfo
+                }
+            }
+        }
+    }
 }

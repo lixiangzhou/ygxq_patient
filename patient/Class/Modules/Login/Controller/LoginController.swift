@@ -15,9 +15,7 @@ class LoginController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setUI()
-        setBinding()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +34,7 @@ class LoginController: BaseController {
 
 // MARK: - UI
 extension LoginController {
-    private func setUI() {
+    override func setUI() {
         couldShowLogin = false
         
         
@@ -108,7 +106,7 @@ extension LoginController {
         }
     }
     
-    private func setBinding() {
+    override func setBinding() {
         codeBtn.reactive.controlEvents(.touchUpInside).observeValues { _ in
             self.timeLabel.text = "60秒"
             var count = 60

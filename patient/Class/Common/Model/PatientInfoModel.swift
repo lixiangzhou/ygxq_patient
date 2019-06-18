@@ -8,13 +8,25 @@
 
 import UIKit
 
-enum Sex: String, EnumProtocol {
+enum Sex: String, EnumProtocol, CustomStringConvertible {
     case unknown = "U"
     case male = "M"
     case female = "F"
+    
+    var description: String {
+        switch self {
+        case .unknown:
+            return "未知"
+        case .male:
+            return "男"
+        case .female:
+            return "女"
+        }
+    }
 }
 
 struct PatientInfoModel: ModelProtocol {
+    // /auth/code/login 获取
     var serDiagnosisId: Int = 0
     var birth: TimeInterval = 0
     var id: Int = 0
@@ -57,4 +69,24 @@ struct PatientInfoModel: ModelProtocol {
     var contactWay: String = ""
     var isPushPrt: String = ""
     var imei: String = ""
+    
+    // /user/patient/information 接口新增
+    var auid: Int = 0
+    var nickName: String = ""
+    var maritalMsg: String = ""
+    var professionMsg: String = ""
+    var fromWhere: String = ""
+    var diseaseName: String = ""
+    var projectName: String = ""
+    var oldCtrSiteAssignmentId: Int = 0
+    var sdistrictId: Int = 0
+    var sdistrictName: String = ""
+    var fdistrictId: Int = 0
+    var fdistrictName: String = ""
+    var issueName: String = ""
+    var centresName: String = ""
+    var rcId: Int = 0
+    var serverId: Int = 0
+    var diseaseMsg: String = ""
+    var relativesM: String = ""
 }

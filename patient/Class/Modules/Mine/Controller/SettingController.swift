@@ -17,7 +17,6 @@ class SettingController: BaseController {
         super.viewDidLoad()
 
         title = "设置"
-        setUI()
     }
     
     // MARK: - Public Property
@@ -29,7 +28,7 @@ class SettingController: BaseController {
 
 // MARK: - UI
 extension SettingController {
-    private func setUI() {
+    override func setUI() {
         view.addSubview(tableView)
         
         tableView.register(cell: TextTableViewCell.self)
@@ -39,6 +38,10 @@ extension SettingController {
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    override func setBinding() {
+        
     }
     
     private func getFooterView() -> UIView {

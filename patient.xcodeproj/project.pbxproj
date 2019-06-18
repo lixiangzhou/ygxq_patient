@@ -67,6 +67,10 @@
 		1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */; };
 		104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7122B7A6F600A84DB2 /* NextGrowingInternalTextView.swift */; };
 		104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7222B7A6F600A84DB2 /* NextGrowingTextView.swift */; };
+		104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7D22B8A99400A84DB2 /* ProfileController.swift */; };
+		104E3A8222B8A9E200A84DB2 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A8122B8A9E200A84DB2 /* ProfileViewModel.swift */; };
+		104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A8422B8AA4200A84DB2 /* ProfileHeaderView.swift */; };
+		104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A8622B8D61700A84DB2 /* BasicExtension.swift */; };
 		105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */; };
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
@@ -153,6 +157,10 @@
 		1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		104E3A7122B7A6F600A84DB2 /* NextGrowingInternalTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextGrowingInternalTextView.swift; sourceTree = "<group>"; };
 		104E3A7222B7A6F600A84DB2 /* NextGrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextGrowingTextView.swift; sourceTree = "<group>"; };
+		104E3A7D22B8A99400A84DB2 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		104E3A8122B8A9E200A84DB2 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		104E3A8422B8AA4200A84DB2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		104E3A8622B8D61700A84DB2 /* BasicExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExtension.swift; sourceTree = "<group>"; };
 		105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicatorConfig.swift; sourceTree = "<group>"; };
 		105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
 		105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
@@ -504,6 +512,7 @@
 				1030AA9F229D1E5D00519CA4 /* ControllerExtension.swift */,
 				1030AAC0229E871600519CA4 /* ViewExtension.swift */,
 				10CAF3CF22ADE83D00F20E81 /* ConstraintExtension.swift */,
+				104E3A8622B8D61700A84DB2 /* BasicExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -589,8 +598,43 @@
 				1030AAA8229E6AC500519CA4 /* Login */,
 				1014D00F2293A6D700294558 /* Home */,
 				1014D03E2293A6D700294558 /* Mine */,
+				104E3A7C22B8940E00A84DB2 /* Profile */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		104E3A7C22B8940E00A84DB2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				104E3A8322B8AA1C00A84DB2 /* View */,
+				104E3A8022B8A9B800A84DB2 /* ViewModel */,
+				104E3A7F22B8A99B00A84DB2 /* Controller */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		104E3A7F22B8A99B00A84DB2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				104E3A7D22B8A99400A84DB2 /* ProfileController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		104E3A8022B8A9B800A84DB2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				104E3A8122B8A9E200A84DB2 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		104E3A8322B8AA1C00A84DB2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				104E3A8422B8AA4200A84DB2 /* ProfileHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		105DBA7222A6655800F55FE6 /* LogExtension */ = {
@@ -772,12 +816,14 @@
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
+				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
 				104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
+				104E3A8222B8A9E200A84DB2 /* ProfileViewModel.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */,
@@ -785,6 +831,7 @@
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
 				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
+				104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */,
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
@@ -798,6 +845,7 @@
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
+				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,

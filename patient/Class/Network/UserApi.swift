@@ -13,6 +13,7 @@ enum UserApi {
     case loginCode(mobile: String, code: String)
     case getRCToken(userId: String)
     case createRCToken(userId: String)
+    case patientInfo(pid: Int)
 }
 
 extension UserApi: TargetType {
@@ -24,6 +25,8 @@ extension UserApi: TargetType {
             return "/user/getRCToken"
         case .createRCToken:
             return "/user/createRCToken"
+        case .patientInfo:
+            return "/user/patient/information"
         }
     }
     
@@ -42,6 +45,8 @@ extension UserApi: TargetType {
         case let .getRCToken(userId: id):
             params["id"] = id
         case let .createRCToken(userId: id):
+            params["id"] = id
+        case let .patientInfo(pid: id):
             params["id"] = id
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

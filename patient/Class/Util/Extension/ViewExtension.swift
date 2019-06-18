@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-    static func sepLine(color: UIColor = .c6) -> UIView {
+    static func sepLine(color: UIColor = .cdcdcdc) -> UIView {
         let sep = UIView()
         sep.backgroundColor = color
         return sep

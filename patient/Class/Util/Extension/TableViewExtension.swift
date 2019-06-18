@@ -9,7 +9,7 @@
 import UIKit
 
 extension UITableView {
-    func set(dataSource: UITableViewDataSource? = nil, delegate: UITableViewDelegate? = nil, separatorStyle: UITableViewCell.SeparatorStyle = .none, rowHeight: CGFloat = 44) {
+    func set(dataSource: UITableViewDataSource? = nil, delegate: UITableViewDelegate? = nil, separatorStyle: UITableViewCell.SeparatorStyle = .none, rowHeight: CGFloat = 50) {
         self.dataSource = dataSource
         self.delegate = delegate
         self.separatorStyle = separatorStyle

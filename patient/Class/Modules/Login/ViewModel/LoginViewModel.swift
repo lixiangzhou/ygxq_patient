@@ -33,8 +33,10 @@ class LoginViewModel: BaseViewModel {
         return UserApi.loginCode(mobile: mobile, code: code).rac_responseModel(PatientInfoModel.self).map { (patientModel) -> Bool in
             if let patientModel = patientModel {
                 PatientManager.shared.save(patient: patientModel)
+                loginObserver.send(value: true)
                 return true
             } else {
+                loginObserver.send(value: false)
                 return false
             }
         }
@@ -49,8 +51,6 @@ class LoginViewModel: BaseViewModel {
             }
         }
     }
-    
-    
     
     func verifyCode(mobile: String, code: String) -> SignalProducer<Bool, NoError> {
         return AuthApi.verifyCode(mobile: mobile, code: code).rac_responseModel(String.self).map { $0 != nil }
