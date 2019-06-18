@@ -15,6 +15,7 @@ struct AppearanceConfig {
     }
     
     static func setNavAppearance() {
+        UINavigationBar.appearance().tintColor = .cf
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSize(18), NSAttributedString.Key.foregroundColor: UIColor.cf]
     }
     
