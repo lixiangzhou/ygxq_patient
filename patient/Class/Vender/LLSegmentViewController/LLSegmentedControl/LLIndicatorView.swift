@@ -9,7 +9,7 @@
 import UIKit
 
 //指示器宽度变化样式
-public enum LLIndicatorViewWidthChangeStyle {
+enum LLIndicatorViewWidthChangeStyle {
     /*跟Item等宽样式*/
     case equalToItemWidth(margin:CGFloat)
     /*爱奇艺宽带变化样式*/
@@ -19,7 +19,7 @@ public enum LLIndicatorViewWidthChangeStyle {
 }
 
 //指示器中心位置
-public enum LLIndicatorViewCenterYGradientStyle {
+enum LLIndicatorViewCenterYGradientStyle {
     /*在正中心*/
     case center
     /*在顶部，跟顶部间距为margin*/
@@ -30,7 +30,7 @@ public enum LLIndicatorViewCenterYGradientStyle {
 
 
 //指示器形状样式:这里只是给定了几种常见的样式
-public enum LLIndicatorViewShapeStyle{
+enum LLIndicatorViewShapeStyle{
     /*自定义类型,不做任何处理，由外部定义这个view的宽高*/
     case custom
     /*三角形*/
@@ -46,28 +46,28 @@ public enum LLIndicatorViewShapeStyle{
 }
 
 
-@objc public protocol LLIndicatorViewDelegate : NSObjectProtocol {
+@objc protocol LLIndicatorViewDelegate : NSObjectProtocol {
     @objc optional func indicatorView(indicatorView: LLIndicatorView, percent:CGFloat)
 }
 
 
-open class LLIndicatorView: UIView {
-    public var contentView = UIView()
-    public weak var delegate:LLIndicatorViewDelegate?
+class LLIndicatorView: UIView {
+    var contentView = UIView()
+    weak var delegate:LLIndicatorViewDelegate?
     private var qqShape:CAShapeLayer?
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(contentView)
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
     }
     
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     //上下变化位置
-    public var centerYGradientStyle = LLIndicatorViewCenterYGradientStyle.bottom(margin: 0) {
+    var centerYGradientStyle = LLIndicatorViewCenterYGradientStyle.bottom(margin: 0) {
         didSet{
             if let selfSuperView = self.superview {
                 var selfCenter = self.center
@@ -85,7 +85,7 @@ open class LLIndicatorView: UIView {
     }
     
     //宽度变化样式
-    public var widthChangeStyle = LLIndicatorViewWidthChangeStyle.stationary(baseWidth: 10) {
+    var widthChangeStyle = LLIndicatorViewWidthChangeStyle.stationary(baseWidth: 10) {
         didSet{
             var targetWidth = self.bounds.width
             switch widthChangeStyle {
@@ -103,7 +103,7 @@ open class LLIndicatorView: UIView {
     }
     
     //形状变化样式
-    public var shapeStyle = LLIndicatorViewShapeStyle.custom {
+    var shapeStyle = LLIndicatorViewShapeStyle.custom {
         didSet{
             self.layer.contents = nil
             switch shapeStyle {

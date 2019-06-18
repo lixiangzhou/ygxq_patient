@@ -8,22 +8,22 @@
 
 import UIKit
 
-public class LLSegmentItemTabbarViewStyle:LLSegmentItemBadgeViewStyle {
-    public var titleImgeGap:CGFloat = 2
-    public var titleBottomGap:CGFloat = 3
+class LLSegmentItemTabbarViewStyle:LLSegmentItemBadgeViewStyle {
+    var titleImgeGap:CGFloat = 2
+    var titleBottomGap:CGFloat = 3
     
-    public var selectedColor = UIColor.init(red: 50/255.0, green: 50/255.0, blue:  50/255.0, alpha: 1)
-    public var unSelectedColor = UIColor.init(red: 136/255.0, green: 136/255.0, blue: 136/255.0, alpha: 1)
-    public var titleFontSize:CGFloat = 12
+    var selectedColor = UIColor.init(red: 50/255.0, green: 50/255.0, blue:  50/255.0, alpha: 1)
+    var unSelectedColor = UIColor.init(red: 136/255.0, green: 136/255.0, blue: 136/255.0, alpha: 1)
+    var titleFontSize:CGFloat = 12
 }
 
 
-open class LLSegmentItemTabbarView: LLSegmentItemBadgeView {
+class LLSegmentItemTabbarView: LLSegmentItemBadgeView {
     let titleLabel = UILabel()
     let imageView = UIImageView()
     let tabbarItemButton = UIButton()
     private var tabbarViewStyle = LLSegmentItemTabbarViewStyle()
-    required public init(frame: CGRect) {
+    required init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(titleLabel)
         addSubview(imageView)
@@ -33,12 +33,12 @@ open class LLSegmentItemTabbarView: LLSegmentItemBadgeView {
         self.bringSubviewToFront(badgeValueLabel)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
-    override open func percentChange(percent: CGFloat) {
+    override func percentChange(percent: CGFloat) {
         super.percentChange(percent: percent)
         titleLabel.textColor = interpolationColorFrom(fromColor:tabbarViewStyle.unSelectedColor, toColor:tabbarViewStyle.selectedColor, percent: percent)
         if percent == 1 {
@@ -48,16 +48,16 @@ open class LLSegmentItemTabbarView: LLSegmentItemBadgeView {
         }
     }
     
-    override open func itemWidth() -> CGFloat {
+    override func itemWidth() -> CGFloat {
         return tabbarViewStyle.itemWidth
     }
     
-    override open func titleChange(title: String) {
+    override func titleChange(title: String) {
         super.titleChange(title: title)
         titleLabel.text = title
     }
     
-    override open func setSegmentItemViewStyle(itemViewStyle: LLSegmentItemViewStyle) {
+    override func setSegmentItemViewStyle(itemViewStyle: LLSegmentItemViewStyle) {
         super.setSegmentItemViewStyle(itemViewStyle: itemViewStyle)
         if let itemViewStyle = itemViewStyle as? LLSegmentItemTabbarViewStyle {
             self.tabbarViewStyle = itemViewStyle
@@ -68,7 +68,7 @@ open class LLSegmentItemTabbarView: LLSegmentItemBadgeView {
         }
     }
     
-    open override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         titleLabel.sizeToFit()
         let titleLabelHeight = titleLabel.bounds.height

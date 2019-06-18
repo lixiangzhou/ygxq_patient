@@ -9,23 +9,23 @@
 import UIKit
 
 
-public class LLSegmentItemTitleViewStyle:LLSegmentItemBadgeViewStyle {
-    public var selectedColor = UIColor.init(red: 50/255.0, green: 50/255.0, blue:  50/255.0, alpha: 1)
-    public var unSelectedColor = UIColor.init(red: 136/255.0, green: 136/255.0, blue: 136/255.0, alpha: 1)
-    public var selectedTitleScale:CGFloat = 1.2
-    public var titleFontSize:CGFloat = 12
-    public var extraTitleSpace:CGFloat = 10
-    public var titleLabelMaskEnabled = false
-    public var titleLabelMaskColor = UIColor.red
-    public var titleLabelCenterOffsetY:CGFloat = 0
+class LLSegmentItemTitleViewStyle:LLSegmentItemBadgeViewStyle {
+    var selectedColor = UIColor.init(red: 50/255.0, green: 50/255.0, blue:  50/255.0, alpha: 1)
+    var unSelectedColor = UIColor.init(red: 136/255.0, green: 136/255.0, blue: 136/255.0, alpha: 1)
+    var selectedTitleScale:CGFloat = 1.2
+    var titleFontSize:CGFloat = 12
+    var extraTitleSpace:CGFloat = 10
+    var titleLabelMaskEnabled = false
+    var titleLabelMaskColor = UIColor.red
+    var titleLabelCenterOffsetY:CGFloat = 0
 }
 
-open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
-    public let titleLabel = UILabel()
+class LLSegmentItemTitleView: LLSegmentItemBadgeView {
+    let titleLabel = UILabel()
     internal let maskTitleLabel = UILabel()
     private let maskTitleLabelMask = CAShapeLayer()
     private var itemTitleViewStyle = LLSegmentItemTitleViewStyle()
-    required public init(frame: CGRect) {
+    required init(frame: CGRect) {
         super.init(frame: frame)
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: itemTitleViewStyle.titleFontSize)
@@ -42,11 +42,11 @@ open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
         self.bringSubviewToFront(badgeValueLabel)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override open func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         titleLabel.sizeToFit()
         titleLabel.center = CGPoint.init(x: bounds.width/2, y: bounds.height/2 + itemTitleViewStyle.titleLabelCenterOffsetY)
@@ -57,19 +57,19 @@ open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
         layoutBadgeLabel()
     }
     
-    override open func titleChange(title: String) {
+    override func titleChange(title: String) {
         super.titleChange(title: title)
         titleLabel.text = title
         maskTitleLabel.text = title
     }
     
-    override open func percentChange(percent: CGFloat) {
+    override func percentChange(percent: CGFloat) {
         super.percentChange(percent: percent)
         titleLabelCalculation()
         titleLabelMaskCalculation()
     }
     
-    override open func itemWidth() -> CGFloat {
+    override func itemWidth() -> CGFloat {
         if itemTitleViewStyle.itemWidth == LLSegmentAutomaticDimension {
             var titleLableWidth = self.title.LLGetStrSize(font: itemTitleViewStyle.titleFontSize, w: 1000, h: 1000).width
             titleLableWidth = titleLableWidth + 2*itemTitleViewStyle.extraTitleSpace
@@ -79,7 +79,7 @@ open class LLSegmentItemTitleView: LLSegmentItemBadgeView {
         }
     }
     
-    override open func setSegmentItemViewStyle(itemViewStyle: LLSegmentItemViewStyle) {
+    override func setSegmentItemViewStyle(itemViewStyle: LLSegmentItemViewStyle) {
         super.setSegmentItemViewStyle(itemViewStyle: itemViewStyle)
         if let itemViewStyle = itemViewStyle as? LLSegmentItemTitleViewStyle {
             self.itemTitleViewStyle = itemViewStyle

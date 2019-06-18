@@ -9,7 +9,7 @@
 import UIKit
 
 //选中的变化位置
-public enum LLSegmentItemViewSelectedStyle {
+enum LLSegmentItemViewSelectedStyle {
     /*从中间*/
     case mid
     /*从一开始0...1*/
@@ -19,38 +19,38 @@ public enum LLSegmentItemViewSelectedStyle {
 }
 
 //自动计算返回宽度
-public let LLSegmentAutomaticDimension:CGFloat = -1
-open class LLSegmentItemViewStyle:NSObject {
+let LLSegmentAutomaticDimension:CGFloat = -1
+class LLSegmentItemViewStyle:NSObject {
     /*itemView的宽度*/
-    public var itemWidth:CGFloat = LLSegmentAutomaticDimension
+    var itemWidth:CGFloat = LLSegmentAutomaticDimension
     /*过渡变化*/
-    public var selectedStyle = LLSegmentItemViewSelectedStyle.gradient
+    var selectedStyle = LLSegmentItemViewSelectedStyle.gradient
 }
 
 
-open class LLSegmentBaseItemView: UIView {
-    open var associateViewCtl:UIViewController?
+class LLSegmentBaseItemView: UIView {
+    var associateViewCtl:UIViewController?
 
-    public var contentOffsetOnRight = false
-    public var index = 0
-    public var isSelected = false
-    public var percent:CGFloat = 0
-    public var title:String = ""
+    var contentOffsetOnRight = false
+    var index = 0
+    var isSelected = false
+    var percent:CGFloat = 0
+    var title:String = ""
     internal weak var indicatorView:LLIndicatorView!
     private var itemViewStyle = LLSegmentItemViewStyle()
-    public override required init(frame: CGRect) {
+    override required init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func bindAssociateViewCtl(ctl:UIViewController){
+    func bindAssociateViewCtl(ctl:UIViewController){
         associateViewCtl = ctl
     }
     
-    public func percentConvert()->CGFloat{
+    func percentConvert()->CGFloat{
         switch itemViewStyle.selectedStyle {
         case .gradient:
             return percent
@@ -69,7 +69,7 @@ open class LLSegmentBaseItemView: UIView {
         }
     }
 
-    open func percentChange(percent:CGFloat){
+    func percentChange(percent:CGFloat){
         if percent == 1 {
             self.isSelected = true
         }else if percent == 0 {
@@ -79,7 +79,7 @@ open class LLSegmentBaseItemView: UIView {
     }
 
     //override for subClass
-    open func titleChange(title:String){ self.title = title }
-    open func itemWidth() ->CGFloat { return 0 }
-    open func setSegmentItemViewStyle(itemViewStyle:LLSegmentItemViewStyle) { self.itemViewStyle=itemViewStyle }
+    func titleChange(title:String){ self.title = title }
+    func itemWidth() ->CGFloat { return 0 }
+    func setSegmentItemViewStyle(itemViewStyle:LLSegmentItemViewStyle) { self.itemViewStyle=itemViewStyle }
 }

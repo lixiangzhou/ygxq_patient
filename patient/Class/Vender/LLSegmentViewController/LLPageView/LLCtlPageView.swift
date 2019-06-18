@@ -8,15 +8,15 @@
 
 import UIKit
 
-public protocol LLCtlPageViewDataSource:NSObjectProtocol {
+protocol LLCtlPageViewDataSource:NSObjectProtocol {
     func numberOfItems(in pageView:LLCtlPageView) -> Int
     func pageView(_ pageView: LLCtlPageView, viewForItemAt index: NSInteger) -> UIView
 }
 
 
-open class LLCtlPageView: UIScrollView {
+class LLCtlPageView: UIScrollView {
     //预加载范围，当前view前面几个，后面几个
-    public var preLoadRange = 0...0
+    var preLoadRange = 0...0
     
     private var itemCount = 0
     internal weak var dataSoure:LLCtlPageViewDataSource!{
@@ -29,7 +29,7 @@ open class LLCtlPageView: UIScrollView {
         super.init(frame: frame)
         initSubViews()
     }
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -84,7 +84,7 @@ extension LLCtlPageView{
 }
 
 extension LLCtlPageView:UIGestureRecognizerDelegate{
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if !gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) || !otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()){
             return false
         }
@@ -116,7 +116,7 @@ extension LLCtlPageView:UIGestureRecognizerDelegate{
 }
 
 extension LLCtlPageView:UIScrollViewDelegate{
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         reloadCurrentShowView()
     }
 }

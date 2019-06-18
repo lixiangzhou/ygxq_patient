@@ -9,12 +9,12 @@
 import UIKit
 
 
-public func interpolationFrom(from:CGFloat,to:CGFloat,percent:CGFloat) -> CGFloat{
+func interpolationFrom(from:CGFloat,to:CGFloat,percent:CGFloat) -> CGFloat{
     let ratio = max(0, min(1, percent))
     return from + (to - from)*ratio
 }
 
-public func interpolationColorFrom(fromColor:UIColor,toColor:UIColor,percent:CGFloat) ->UIColor {
+func interpolationColorFrom(fromColor:UIColor,toColor:UIColor,percent:CGFloat) ->UIColor {
     var fromR:CGFloat = 0
     var fromG:CGFloat = 0
     var fromB:CGFloat = 0
@@ -90,7 +90,7 @@ extension String {
 
 
 //导航栏+状态栏的高度
-public func mTopHeight(mNavBarHeight:CGFloat = 44)->CGFloat {
+func mTopHeight(mNavBarHeight:CGFloat = 44)->CGFloat {
     let mScreenWidth = UIScreen.main.bounds.width
     let mScreenHeight = UIScreen.main.bounds.height
     let IPHONEX = (mScreenHeight == 812 && mScreenWidth == 375) || (mScreenHeight == 375 && mScreenWidth == 812)

@@ -9,7 +9,7 @@
 import UIKit
 
 
-@objc public protocol LLSegmentedControlDelegate : NSObjectProtocol {
+@objc protocol LLSegmentedControlDelegate : NSObjectProtocol {
     /********回调信息*****/
     @objc optional func segMegmentCtlView(segMegmentCtlView: LLSegmentedControl, itemView: LLSegmentBaseItemView,itemSpacing atIndex:NSInteger) -> CGFloat
     @objc optional func segMegmentCtlView(segMegmentCtlView: LLSegmentedControl,totalPercent:CGFloat)
@@ -25,33 +25,33 @@ import UIKit
 }
 
 
-public struct LLSegmentedControlStyle{
-    public var itemSpacing:CGFloat = 0
-    public var segmentItemViewClass:LLSegmentBaseItemView.Type = LLSegmentItemTitleView.self
-    public var itemViewStyle:LLSegmentItemViewStyle = LLSegmentItemViewStyle()
-    public var defaultSelectedIndex:NSInteger = 0
-    public var contentInset = UIEdgeInsets.zero
-    public init(){}
+struct LLSegmentedControlStyle{
+    var itemSpacing:CGFloat = 0
+    var segmentItemViewClass:LLSegmentBaseItemView.Type = LLSegmentItemTitleView.self
+    var itemViewStyle:LLSegmentItemViewStyle = LLSegmentItemViewStyle()
+    var defaultSelectedIndex:NSInteger = 0
+    var contentInset = UIEdgeInsets.zero
+    init(){}
 }
 
-open class LLSegmentedControl: UIView {
+class LLSegmentedControl: UIView {
     //----------------------separatorLine-----------------------// 设置完成后调用reloadSeparator方法，刷新分割线样式
-    public var separatorLineShowEnabled = false
-    public var separatorLineColor = UIColor.lightGray
-    public var separatorLineWidth = 1/UIScreen.main.scale
-    public var separatorTopBottomMargin:(top:CGFloat,bottom:CGFloat) = (0,0)
+    var separatorLineShowEnabled = false
+    var separatorLineColor = UIColor.lightGray
+    var separatorLineWidth = 1/UIScreen.main.scale
+    var separatorTopBottomMargin:(top:CGFloat,bottom:CGFloat) = (0,0)
     private var separatorViews = [UIView]()
     
     //----------------------public设置属性-----------------------//
-    public var clickAnimation = true
-    public weak var delegate:LLSegmentedControlDelegate?
-    public private (set) var indicatorView = LLIndicatorView(frame:CGRect.init(x: 0, y: 0, width: 10, height: 3))
-    public private (set) var currentSelectedItemView:LLSegmentBaseItemView!
-    public private (set) var leftItemView:LLSegmentBaseItemView!
-    public private (set) var rightItemView:LLSegmentBaseItemView!
-    public private (set) var itemViews = [LLSegmentBaseItemView]()
-    public var ctlViewStyle = LLSegmentedControlStyle()
-    public var bottomSeparatorStyle:(height:CGFloat,color:UIColor) = (1,UIColor.clear){
+    var clickAnimation = true
+    weak var delegate:LLSegmentedControlDelegate?
+    private (set) var indicatorView = LLIndicatorView(frame:CGRect.init(x: 0, y: 0, width: 10, height: 3))
+    private (set) var currentSelectedItemView:LLSegmentBaseItemView!
+    private (set) var leftItemView:LLSegmentBaseItemView!
+    private (set) var rightItemView:LLSegmentBaseItemView!
+    private (set) var itemViews = [LLSegmentBaseItemView]()
+    var ctlViewStyle = LLSegmentedControlStyle()
+    var bottomSeparatorStyle:(height:CGFloat,color:UIColor) = (1,UIColor.clear){
         didSet{
             var bottomSeparatorLineViewFrame = bottomSeparatorLineView.frame
             bottomSeparatorLineViewFrame.size.height = bottomSeparatorStyle.height
@@ -69,7 +69,7 @@ open class LLSegmentedControl: UIView {
     private let segMegmentScrollerView = UIScrollView(frame: CGRect.zero)
     private let bottomSeparatorLineView = UIView()
     private var itemAndSeparatorViews = [(itemView:LLSegmentBaseItemView,separatorView:UIView)]()
-    public weak var associateScrollerView:UIScrollView? {
+    weak var associateScrollerView:UIScrollView? {
         didSet{
             associateScrollerView?.addObserver(self, forKeyPath: associateScrollerViewObserverKeyPath, options: [.new,.old], context: nil)
         }
@@ -80,7 +80,7 @@ open class LLSegmentedControl: UIView {
         initSubviews()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -88,7 +88,7 @@ open class LLSegmentedControl: UIView {
         associateScrollerView?.removeObserver(self, forKeyPath: associateScrollerViewObserverKeyPath)
     }
     
-    public func reloadData(ctlViewStyle:LLSegmentedControlStyle? = nil) {
+    func reloadData(ctlViewStyle:LLSegmentedControlStyle? = nil) {
         if let ctlViewStyle = ctlViewStyle {
             self.ctlViewStyle = ctlViewStyle
         }
@@ -102,7 +102,7 @@ open class LLSegmentedControl: UIView {
 
 //MARK:- ************************************** API调用接口 **************************************
 extension LLSegmentedControl{
-    public func reloadSeparator() {
+    func reloadSeparator() {
         for separator in separatorViews {
             reloadOneSeparatorView(separatorView: separator)
         }
@@ -121,7 +121,7 @@ extension LLSegmentedControl{
 
 
 extension LLSegmentedControl{
-    public func reLayoutItemViews() {
+    func reLayoutItemViews() {
         var lastItemView:LLSegmentBaseItemView? = nil
         for (offset: index,element: (itemView: segmentCtlItemView,separatorView: separatorView)) in itemAndSeparatorViews.enumerated() {
             //size
@@ -251,7 +251,7 @@ extension LLSegmentedControl{
 
 //MARK:- **************************************** ContentView滚动处理 ************************************
 extension LLSegmentedControl{
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard titles != nil && titles.count > 0 else {
             return
         }

@@ -8,13 +8,13 @@
 
 import UIKit
 
-public protocol LLSegmentItemTitleImageViewProtocol{
+protocol LLSegmentItemTitleImageViewProtocol{
     var model : LLTitleImageModel! {get set}
     func refreshWhenPercentChange(titleLabel:UILabel,imageView:UIImageView,percent:CGFloat)
 }
 
 
-public enum LLTitleImageButtonStyle {
+enum LLTitleImageButtonStyle {
     case titleEmty
     case titleOnly
     case titleTop(margin:CGFloat)
@@ -23,13 +23,13 @@ public enum LLTitleImageButtonStyle {
     case titleRight(margin:CGFloat)
 }
 
-open class LLTitleImageModel{
-    public var title = ""
-    public var imgeStr = ""
-    public var selecteImageStr = ""
-    public var style = LLTitleImageButtonStyle.titleTop(margin: 0)
-    public var imgViewSize = CGSize.init(width: 20, height: 20)
-    public init(title:String,imgeStr:String,style:LLTitleImageButtonStyle) {
+class LLTitleImageModel{
+    var title = ""
+    var imgeStr = ""
+    var selecteImageStr = ""
+    var style = LLTitleImageButtonStyle.titleTop(margin: 0)
+    var imgViewSize = CGSize.init(width: 20, height: 20)
+    init(title:String,imgeStr:String,style:LLTitleImageButtonStyle) {
         self.title = title
         self.imgeStr = imgeStr
         self.style = style
@@ -37,12 +37,12 @@ open class LLTitleImageModel{
 }
 
 
-open class LLSegmentItemTitleImageView: LLSegmentItemBadgeView {
+class LLSegmentItemTitleImageView: LLSegmentItemBadgeView {
     let titleLabel = UILabel()
     let imageView = UIImageView()
     var titleImageModel:LLTitleImageModel?
     let titleLabelFontSize:CGFloat = 13
-    required public init(frame: CGRect) {
+    required init(frame: CGRect) {
         super.init(frame: frame)
         titleLabel.font = UIFont.systemFont(ofSize: titleLabelFontSize)
         titleLabel.textAlignment = .center
@@ -51,11 +51,11 @@ open class LLSegmentItemTitleImageView: LLSegmentItemBadgeView {
         badgeValueLabel.isHidden = true
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func bindAssociateViewCtl(ctl: UIViewController) {
+    override func bindAssociateViewCtl(ctl: UIViewController) {
         super.bindAssociateViewCtl(ctl: ctl)
         if let ctl = associateViewCtl as? LLSegmentItemTitleImageViewProtocol{
             self.titleImageModel = ctl.model
@@ -65,7 +65,7 @@ open class LLSegmentItemTitleImageView: LLSegmentItemBadgeView {
         }
     }
     
-    override open func itemWidth() -> CGFloat {
+    override func itemWidth() -> CGFloat {
         if let titleImageModel = titleImageModel{
             let layoutInfo = getLayoutInfo(model: titleImageModel)
             return layoutInfo.contentSize.width + 2*10
@@ -73,7 +73,7 @@ open class LLSegmentItemTitleImageView: LLSegmentItemBadgeView {
         return 0
     }
     
-    override open func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         if let titleImageModel = titleImageModel{
             titleLabel.text = titleImageModel.title
@@ -84,7 +84,7 @@ open class LLSegmentItemTitleImageView: LLSegmentItemBadgeView {
         }
     }
     
-    override open func percentChange(percent: CGFloat) {
+    override func percentChange(percent: CGFloat) {
         super.percentChange(percent: percent)
         if let ctl = associateViewCtl as? LLSegmentItemTitleImageViewProtocol{
             ctl.refreshWhenPercentChange(titleLabel:titleLabel, imageView: imageView, percent: percent)

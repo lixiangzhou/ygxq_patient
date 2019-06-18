@@ -9,7 +9,7 @@
 import UIKit
 
 //下拉刷新控件的位置
-public enum LLDragRefreshType {
+enum LLDragRefreshType {
     //整体下拉
     case container
     //列表下拉
@@ -17,7 +17,7 @@ public enum LLDragRefreshType {
 }
 
 //分段控件的位置
-public enum LLSegmentedCtontrolPositionType {
+enum LLSegmentedCtontrolPositionType {
     //在导航条上面的
     case nav(size:CGSize)
     //在顶部
@@ -30,24 +30,24 @@ public enum LLSegmentedCtontrolPositionType {
 }
 
 //控件布局位置信息
-public class LLSubViewsLayoutInfo:NSObject{
-    public var minimumHeight:CGFloat = 64
-    public var segmentControlPositionType:LLSegmentedCtontrolPositionType = .top(size: CGSize.init(width: UIScreen.main.bounds.width, height: 50), offset: 0)
-    public var refreshType = LLDragRefreshType.container
-    public var headView:UIView?
+class LLSubViewsLayoutInfo:NSObject{
+    var minimumHeight:CGFloat = 64
+    var segmentControlPositionType:LLSegmentedCtontrolPositionType = .top(size: CGSize.init(width: UIScreen.main.bounds.width, height: 50), offset: 0)
+    var refreshType = LLDragRefreshType.container
+    var headView:UIView?
 }
 
 
-open class LLSegmentViewController: UIViewController {
-    public let layoutInfo = LLSubViewsLayoutInfo()
-    public let segmentCtlView = LLSegmentedControl(frame: CGRect.zero, titles: [String]())
-    public let pageView:LLCtlPageView = LLCtlPageView(frame: CGRect.zero, ctls: [UIViewController]())
-    public let containerScrView = LLContainerScrollView()
-    public private (set) var ctls = [UIViewController]()
+class LLSegmentViewController: BaseController {
+    let layoutInfo = LLSubViewsLayoutInfo()
+    let segmentCtlView = LLSegmentedControl(frame: CGRect.zero, titles: [String]())
+    let pageView:LLCtlPageView = LLCtlPageView(frame: CGRect.zero, ctls: [UIViewController]())
+    let containerScrView = LLContainerScrollView()
+    private (set) var ctls = [UIViewController]()
 
     private let cellIdentifier = "cellIdentifier"
     private let layout = UICollectionViewFlowLayout()
-    open override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         initSubviews()
@@ -61,7 +61,7 @@ open class LLSegmentViewController: UIViewController {
 }
 
 extension LLSegmentViewController{
-    public func closeAutomaticallyAdjusts() {
+    func closeAutomaticallyAdjusts() {
         if #available(iOS 11.0, *) {
             self.containerScrView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -69,7 +69,7 @@ extension LLSegmentViewController{
         }
     }
     
-    public func relayoutSubViews() {
+    func relayoutSubViews() {
         let screenW = UIScreen.main.bounds.width
         let screenH = UIScreen.main.bounds.height
         
@@ -120,12 +120,12 @@ extension LLSegmentViewController{
     }
     
     //对于一些特殊的需要自己指定位置信息
-    public func relayoutSegmentControlAndPageViewFrame(segmentControlFrame:CGRect,pageViewFrame:CGRect) {
+    func relayoutSegmentControlAndPageViewFrame(segmentControlFrame:CGRect,pageViewFrame:CGRect) {
         segmentCtlView.frame = segmentControlFrame
         pageView.frame = pageViewFrame
     }
     
-    public func reloadViewControllers(ctls:[UIViewController]) {
+    func reloadViewControllers(ctls:[UIViewController]) {
         self.ctls = ctls
         
         var titles = [String]()
@@ -142,7 +142,7 @@ extension LLSegmentViewController{
         pageView.reloadData()
     }
     
-    public func insertOneViewController(ctl:UIViewController,index:NSInteger){
+    func insertOneViewController(ctl:UIViewController,index:NSInteger){
         if !self.children.contains(ctl) {
             addChild(ctl)
             let itemIndex = max(0, min(index, ctls.count))
@@ -158,7 +158,7 @@ extension LLSegmentViewController{
         }
     }
     
-    public func selected(at Index:NSInteger,animation:Bool)  {
+    func selected(at Index:NSInteger,animation:Bool)  {
         guard (ctls.count < Index && Index > 0) else {
             return
         }
@@ -167,13 +167,13 @@ extension LLSegmentViewController{
 }
 
 extension LLSegmentViewController :LLContainerScrollViewDagDelegate{
-    public func scrollView(scrollView: LLContainerScrollView, dragTop offsetY: CGFloat) {
+    func scrollView(scrollView: LLContainerScrollView, dragTop offsetY: CGFloat) {
     }
     
-    public func scrollView(scrollView: LLContainerScrollView, dragToMinimumHeight progress: CGFloat) {
+    func scrollView(scrollView: LLContainerScrollView, dragToMinimumHeight progress: CGFloat) {
     }
 
-    public func scrollView(scrollView: LLContainerScrollView, shouldScrollWithSubView subView: UIScrollView) -> Bool {
+    func scrollView(scrollView: LLContainerScrollView, shouldScrollWithSubView subView: UIScrollView) -> Bool {
         if subView == pageView {
             return false
         }
@@ -182,11 +182,11 @@ extension LLSegmentViewController :LLContainerScrollViewDagDelegate{
 }
 
 extension LLSegmentViewController :LLCtlPageViewDataSource{
-    public func numberOfItems(in pageView: LLCtlPageView) -> Int {
+    func numberOfItems(in pageView: LLCtlPageView) -> Int {
         return ctls.count
     }
     
-    public func pageView(_ pageView: LLCtlPageView, viewForItemAt index: NSInteger) -> UIView {
+    func pageView(_ pageView: LLCtlPageView, viewForItemAt index: NSInteger) -> UIView {
         return ctls[index].view
     }
 }

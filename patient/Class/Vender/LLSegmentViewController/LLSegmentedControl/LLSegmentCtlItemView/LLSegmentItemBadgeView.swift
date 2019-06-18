@@ -8,21 +8,21 @@
 
 import UIKit
 
-public class LLSegmentItemBadgeViewStyle:LLSegmentItemViewStyle {
+class LLSegmentItemBadgeViewStyle:LLSegmentItemViewStyle {
     /*数字或红点Label.center偏离图片右上角*/
-    public var badgeValueLabelOffset = CGPoint.init(x: 5, y: 5)
-    public var badgeValueLabelColor = UIColor.red
-    public var badgeValueLabelTextColor = UIColor.white
-    public var badgeValueMaxNum = 99
+    var badgeValueLabelOffset = CGPoint.init(x: 5, y: 5)
+    var badgeValueLabelColor = UIColor.red
+    var badgeValueLabelTextColor = UIColor.white
+    var badgeValueMaxNum = 99
 }
 
-public let LLSegmentRedBadgeValue = "redBadgeValue"
-open class LLSegmentItemBadgeView: LLSegmentBaseItemView {
-    public let badgeValueLabel = UILabel()
+let LLSegmentRedBadgeValue = "redBadgeValue"
+class LLSegmentItemBadgeView: LLSegmentBaseItemView {
+    let badgeValueLabel = UILabel()
     private let badgeValueObserverKeyPath = "badgeValue"
     internal var badgeValueLabelLocationView:UIView?
     private var badgeItemViewStyle = LLSegmentItemBadgeViewStyle()
-    required public init(frame: CGRect) {
+    required init(frame: CGRect) {
         super.init(frame: frame)
         
         badgeValueLabel.backgroundColor = UIColor.red
@@ -34,11 +34,11 @@ open class LLSegmentItemBadgeView: LLSegmentBaseItemView {
         addSubview(badgeValueLabel)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func bindAssociateViewCtl(ctl: UIViewController) {
+    override func bindAssociateViewCtl(ctl: UIViewController) {
         super.bindAssociateViewCtl(ctl: ctl)
         associateViewCtl?.tabBarItem.addObserver(self, forKeyPath: badgeValueObserverKeyPath, options: [.new], context: nil)
     }
@@ -48,7 +48,7 @@ open class LLSegmentItemBadgeView: LLSegmentBaseItemView {
         associateViewCtl?.tabBarItem.removeObserver(self, forKeyPath: badgeValueObserverKeyPath)
     }
     
-    open override func setSegmentItemViewStyle(itemViewStyle: LLSegmentItemViewStyle) {
+    override func setSegmentItemViewStyle(itemViewStyle: LLSegmentItemViewStyle) {
         super.setSegmentItemViewStyle(itemViewStyle: itemViewStyle)
         if let itemViewStyle = itemViewStyle as? LLSegmentItemBadgeViewStyle {
             badgeItemViewStyle = itemViewStyle
@@ -91,7 +91,7 @@ open class LLSegmentItemBadgeView: LLSegmentBaseItemView {
         badgeValueLabel.clipsToBounds = true
     }
     
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if  keyPath ==  badgeValueObserverKeyPath{
             setNeedsLayout()
             layoutIfNeeded()
