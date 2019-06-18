@@ -15,6 +15,7 @@ class OrderListController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUI()
     }
 
     // MARK: - Public Property

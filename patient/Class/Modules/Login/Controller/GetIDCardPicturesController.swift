@@ -16,6 +16,7 @@ class GetIDCardPicturesController: BaseController {
         super.viewDidLoad()
 
         title = "上传身份证"
+        setUI()
     }
 
     // MARK: - Public Property

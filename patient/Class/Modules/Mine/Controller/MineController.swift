@@ -18,6 +18,9 @@ class MineController: BaseController {
 
         navigationItem.title = nil
         tabBarItem.title = "我的"
+        
+        setUI()
+        setBinding()
     }
     
     override func viewWillAppear(_ animated: Bool) {

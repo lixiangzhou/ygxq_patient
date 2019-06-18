@@ -16,6 +16,8 @@ class LoginController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
+        setBinding()
     }
     
     override func viewWillAppear(_ animated: Bool) {

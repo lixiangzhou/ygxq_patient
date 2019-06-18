@@ -16,6 +16,8 @@ class ProfileController: BaseController {
         super.viewDidLoad()
 
         title = "我的档案"
+        setUI()
+        setBinding()
     }
 
     // MARK: - Public Property
