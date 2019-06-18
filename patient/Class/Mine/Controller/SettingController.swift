@@ -34,7 +34,7 @@ extension SettingController {
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .cf0efef
         tableView.tableFooterView = getFooterView()
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()

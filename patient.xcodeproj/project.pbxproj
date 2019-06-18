@@ -65,6 +65,8 @@
 		1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AABE229E868F00519CA4 /* InputFieldView.swift */; };
 		1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC0229E871600519CA4 /* ViewExtension.swift */; };
 		1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */; };
+		104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7122B7A6F600A84DB2 /* NextGrowingInternalTextView.swift */; };
+		104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7222B7A6F600A84DB2 /* NextGrowingTextView.swift */; };
 		105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */; };
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
@@ -149,6 +151,8 @@
 		1030AABE229E868F00519CA4 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		1030AAC0229E871600519CA4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		104E3A7122B7A6F600A84DB2 /* NextGrowingInternalTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextGrowingInternalTextView.swift; sourceTree = "<group>"; };
+		104E3A7222B7A6F600A84DB2 /* NextGrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextGrowingTextView.swift; sourceTree = "<group>"; };
 		105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicatorConfig.swift; sourceTree = "<group>"; };
 		105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
 		105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
@@ -464,6 +468,7 @@
 		1014D0452293A6D700294558 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				104E3A6B22B79F7A00A84DB2 /* NextGrowingTextView */,
 				10CAF3D522AE00B400F20E81 /* LinkedLabel.swift */,
 				105DBA7222A6655800F55FE6 /* LogExtension */,
 			);
@@ -568,6 +573,15 @@
 				100B6C3F22A145BD00C5262C /* ZZHud.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		104E3A6B22B79F7A00A84DB2 /* NextGrowingTextView */ = {
+			isa = PBXGroup;
+			children = (
+				104E3A7122B7A6F600A84DB2 /* NextGrowingInternalTextView.swift */,
+				104E3A7222B7A6F600A84DB2 /* NextGrowingTextView.swift */,
+			);
+			path = NextGrowingTextView;
 			sourceTree = "<group>";
 		};
 		105DBA7222A6655800F55FE6 /* LogExtension */ = {
@@ -761,6 +775,7 @@
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
+				104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
@@ -824,6 +839,7 @@
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
+				104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */,
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,
 				1030AA90229CD23D00519CA4 /* ColorExtension.swift in Sources */,

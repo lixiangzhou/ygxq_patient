@@ -15,6 +15,13 @@ class HomeController: BaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let txtView = NextGrowingTextView(frame: CGRect(x: 20, y: 100, width: 300, height: 30))
+        txtView.minNumberOfLines = 1
+        txtView.maxNumberOfLines = 2
+        view.addSubview(txtView)
+        
+        txtView.backgroundColor = .orange
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
