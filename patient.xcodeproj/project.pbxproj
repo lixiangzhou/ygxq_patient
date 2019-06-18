@@ -227,13 +227,8 @@
 		1014D00E2293A6D700294558 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				10CAF3E122AF9C2F00F20E81 /* Models */,
-				1030AAA8229E6AC500519CA4 /* Login */,
+				104E3A7B22B892E800A84DB2 /* Modules */,
 				1014D079229CCB0900294558 /* Common */,
-				1014D0352293A6D700294558 /* Basic */,
-				1014D0442293A6D700294558 /* Main */,
-				1014D00F2293A6D700294558 /* Home */,
-				1014D03E2293A6D700294558 /* Mine */,
 				1014D0152293A6D700294558 /* Util */,
 				1014D0322293A6D700294558 /* Config */,
 				1014D0332293A6D700294558 /* Network */,
@@ -516,6 +511,8 @@
 		1030AA98229CFD8100519CA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */,
+				10CAF3E222AF9C4D00F20E81 /* DoctorInfoModel.swift */,
 				1030AA99229CFD9200519CA4 /* TextActionRow.swift */,
 			);
 			path = Model;
@@ -584,6 +581,18 @@
 			path = NextGrowingTextView;
 			sourceTree = "<group>";
 		};
+		104E3A7B22B892E800A84DB2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1014D0352293A6D700294558 /* Basic */,
+				1014D0442293A6D700294558 /* Main */,
+				1030AAA8229E6AC500519CA4 /* Login */,
+				1014D00F2293A6D700294558 /* Home */,
+				1014D03E2293A6D700294558 /* Mine */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		105DBA7222A6655800F55FE6 /* LogExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,15 +614,6 @@
 				10CAF3DD22AF42DD00F20E81 /* RCManager.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		10CAF3E122AF9C2F00F20E81 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */,
-				10CAF3E222AF9C4D00F20E81 /* DoctorInfoModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		23724EEF2FE00151F84E95C2 /* Pods */ = {
