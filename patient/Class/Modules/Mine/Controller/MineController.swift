@@ -114,8 +114,9 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
         case .setting:
             let vc = SettingController()
             push(vc)
-        default:
-            break
+        case .order:
+            let vc = OrderController()
+            push(vc)
         }
     }
 }
