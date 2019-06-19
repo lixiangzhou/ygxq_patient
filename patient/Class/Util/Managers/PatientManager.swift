@@ -13,6 +13,7 @@ import HandyJSON
 
 /// 患者信息 信号量
 let patientInfoProperty = MutableProperty<PatientInfoModel?>(nil)
+
 /// 登录状态 信号量
 let (_loginSignal, loginObserver) = Signal<Bool, NoError>.pipe()
 let loginSignal = _loginSignal.skipRepeats()
@@ -21,11 +22,8 @@ class PatientManager {
     static let shared = PatientManager()
     
     private init() {
-        
         patientInfoProperty.signal.observeValues { self.patientInfoModel = $0 }
-        
         patientInfoProperty.value = getCachedPatientInfo()
-        
         loginObserver.send(value: patientInfoModel != nil)
     }
     
@@ -38,7 +36,7 @@ class PatientManager {
     }
     
     private let patientInfoPath = zz_filePath(with: .documentDirectory, fileName: "patientInfo")
-    private(set) var patientInfoModel: PatientInfoModel? {
+    private (set) var patientInfoModel: PatientInfoModel? {
         didSet {
             if let pInfoModel = patientInfoModel {
                 save(patient: pInfoModel)
@@ -52,12 +50,12 @@ class PatientManager {
         if let jsonString = patient.toJSONString() {
             do {
                 try jsonString.write(toFile: patientInfoPath, atomically: true, encoding: .utf8)
-                patientInfoProperty.value = patient
+                print("保存 PatientInfoModel 成功")
             } catch {
-                patientInfoProperty.value = nil
+                print("保存 PatientInfoModel 失败")
             }
         } else {
-            patientInfoProperty.value = nil
+            print("保存 PatientInfoModel 失败")
         }
     }
     
@@ -65,9 +63,10 @@ class PatientManager {
     func deletePatientInfo() -> Bool {
         do {
             try FileManager.default.removeItem(atPath: patientInfoPath)
-            patientInfoProperty.value = nil
+            print("删除用户成功")
             return true
         } catch {
+            print("删除用户失败")
             return false
         }
     }
