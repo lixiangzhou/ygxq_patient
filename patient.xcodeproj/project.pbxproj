@@ -84,6 +84,7 @@
 		104E3AA722B8E5E700A84DB2 /* LLContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A9C22B8E5E600A84DB2 /* LLContainerScrollView.swift */; };
 		104E3AA822B8E5E700A84DB2 /* LLCtlPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A9D22B8E5E600A84DB2 /* LLCtlPageView.swift */; };
 		104E3AA922B8E5E700A84DB2 /* LLToolFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A9E22B8E5E600A84DB2 /* LLToolFunc.swift */; };
+		104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3AAB22B8F31C00A84DB2 /* OrderListCell.swift */; };
 		105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */; };
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
@@ -187,6 +188,7 @@
 		104E3A9C22B8E5E600A84DB2 /* LLContainerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLContainerScrollView.swift; sourceTree = "<group>"; };
 		104E3A9D22B8E5E600A84DB2 /* LLCtlPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLCtlPageView.swift; sourceTree = "<group>"; };
 		104E3A9E22B8E5E600A84DB2 /* LLToolFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLToolFunc.swift; sourceTree = "<group>"; };
+		104E3AAB22B8F31C00A84DB2 /* OrderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListCell.swift; sourceTree = "<group>"; };
 		105DBA7022A1731D00F55FE6 /* AppActivityIndicatorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActivityIndicatorConfig.swift; sourceTree = "<group>"; };
 		105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
 		105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HYBUnicodeReadable.m"; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 		104E3A8922B8E10500A84DB2 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				104E3AAA22B8F2B700A84DB2 /* View */,
 				104E3A8B22B8E11500A84DB2 /* ViewModel */,
 				104E3A8A22B8E11000A84DB2 /* Controller */,
 			);
@@ -730,6 +733,14 @@
 				104E3A9D22B8E5E600A84DB2 /* LLCtlPageView.swift */,
 			);
 			path = LLPageView;
+			sourceTree = "<group>";
+		};
+		104E3AAA22B8F2B700A84DB2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				104E3AAB22B8F31C00A84DB2 /* OrderListCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		105DBA7222A6655800F55FE6 /* LogExtension */ = {
@@ -942,6 +953,7 @@
 				104E3AA122B8E5E700A84DB2 /* LLSegmentItemTabbarView.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
+				104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */,
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,

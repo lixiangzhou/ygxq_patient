@@ -12,47 +12,45 @@ import Result
 
 class LoginViewModel: BaseViewModel {
     
-    func verifyCodeAndLogin(mobile: String, code: String) -> SignalProducer<Bool, NoError> {
-        return SignalProducer<Bool, NoError> { observer, _ in
-            self.verifyCode(mobile: mobile, code: code).startWithValues { (validateSuccess) in
-                if validateSuccess {
-                    self.login(mobile: mobile, code: code).startWithValues { (isSuccess) in
-                        observer.send(value: isSuccess)
+    func verifyCodeAndLogin(mobile: String, code: String) -> SignalProducer<BoolString, NoError> {
+        return SignalProducer<BoolString, NoError> { observer, _ in
+            self.verifyCode(mobile: mobile, code: code).startWithValues { (resp) in
+                if resp.isSuccess {
+                    self.login(mobile: mobile, code: code).startWithValues { (resp) in
+                        observer.send(value: BoolString(resp))
                         observer.sendCompleted()
                     }
+                    
                 } else {
-                    observer.send(value: false)
-                    observer.sendCompleted()
-                    HUD.show(toast: "验证码错误")
+                    observer.send(value: BoolString(resp))
+                    
                 }
             }
         }
     }
     
-    func login(mobile: String, code: String) -> SignalProducer<Bool, NoError> {
-        return UserApi.loginCode(mobile: mobile, code: code).rac_responseModel(PatientInfoModel.self).map { (patientModel) -> Bool in
-            if let patientModel = patientModel {
+    func login(mobile: String, code: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
+        return UserApi.loginCode(mobile: mobile, code: code).rac_response(PatientInfoModel.self).on { (resp) in
+            if let patientModel = resp.content {
                 PatientManager.shared.save(patient: patientModel)
                 loginObserver.send(value: true)
-                return true
             } else {
                 loginObserver.send(value: false)
-                return false
             }
         }
     }
     
     func getCode(_ mobile: String) {
-        AuthApi.getCode(type: .forLogin, mobile: mobile).rac_responseModel(String.self).startWithValues { (none) in
-            if none != nil {
+        AuthApi.getCode(type: .forLogin, mobile: mobile).rac_response(None.self).startWithValues { (resp) in
+            if resp.resultcode == 200 {
                 HUD.show(toast: "验证码已发送成功，请注意查收！")
             } else {
-                HUD.show(toast: "验证码发送失败！")
+                HUD.show(toast: resp.resultmsg ?? "验证码发送失败！")
             }
         }
     }
     
-    func verifyCode(mobile: String, code: String) -> SignalProducer<Bool, NoError> {
-        return AuthApi.verifyCode(mobile: mobile, code: code).rac_responseModel(String.self).map { $0 != nil }
+    func verifyCode(mobile: String, code: String) -> SignalProducer<ResponseModel<None>, NoError> {
+        return AuthApi.verifyCode(mobile: mobile, code: code).rac_response(None.self)
     }
 }

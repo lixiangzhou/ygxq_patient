@@ -21,6 +21,7 @@ class MineController: BaseController {
         
         setUI()
         setBinding()
+        viewModel.getInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {

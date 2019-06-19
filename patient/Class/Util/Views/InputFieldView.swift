@@ -336,38 +336,42 @@ extension InputFieldView: UITextFieldDelegate {
         
         var text = textField.text ?? ""
         if range.length > 0 && string.isEmpty { // 删除
-            if range.length == 1 {  // 删除一位
-                let toDeleteCharacter = text[text.index(text.startIndex, offsetBy: range.location)]
-                // 最后一位是空格则多删除一位
-                if range.location == text.count - 1 {
-                    if toDeleteCharacter == emptyCharacter {
+            if bankNoMode {
+                if range.length == 1 {  // 删除一位
+                    let toDeleteCharacter = text[text.index(text.startIndex, offsetBy: range.location)]
+                    // 最后一位是空格则多删除一位
+                    if range.location == text.count - 1 {
+                        if toDeleteCharacter == emptyCharacter {
+                            textField.deleteBackward()
+                        }
+                        return true
+                    } else {
+                        var offset = range.location
+                        if toDeleteCharacter == emptyCharacter {
+                            textField.deleteBackward()
+                            offset -= 1
+                        }
                         textField.deleteBackward()
+                        textField.text = formatToBankString(textField.text!)
+                        resetPositin(offset: offset)
+                        return false
                     }
-                    return true
-                } else {
-                    var offset = range.location
-                    if toDeleteCharacter == emptyCharacter {
-                        textField.deleteBackward()
-                        offset -= 1
-                    }
+                } else if range.length > 1 {
                     textField.deleteBackward()
                     textField.text = formatToBankString(textField.text!)
-                    resetPositin(offset: offset)
+                    
+                    var offset = range.location
+                    if range.location == 4 || range.location == 9 || range.location == 14 || range.location == 19 || range.location == 24 {
+                        offset += 1
+                    }
+                    
+                    if NSMaxRange(range) != text.count {    // 光标不是在最后
+                        resetPositin(offset: offset)
+                    }
                     return false
+                } else {
+                    return true
                 }
-            } else if range.length > 1 {
-                textField.deleteBackward()
-                textField.text = formatToBankString(textField.text!)
-                
-                var offset = range.location
-                if range.location == 4 || range.location == 9 || range.location == 14 || range.location == 19 || range.location == 24 {
-                    offset += 1
-                }
-                
-                if NSMaxRange(range) != text.count {    // 光标不是在最后
-                    resetPositin(offset: offset)
-                }
-                return false
             } else {
                 return true
             }

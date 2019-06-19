@@ -39,7 +39,6 @@ extension LoginController {
     override func setUI() {
         couldShowLogin = false
         
-        
         let loginTitleLine = view.zz_add(subview: UIView.sepLine(color: .c407cec))
         let loginTitleLabel = view.zz_add(subview: UILabel(text: "验证码登录", font: .boldSize(19), textColor: .c3)) as! UILabel
         
@@ -139,14 +138,14 @@ extension LoginController {
 // MARK: - Action
 extension LoginController {
     @objc private func loginAction() {
-        viewModel.verifyCodeAndLogin(mobile: accountField.text!, code: codeField.text!).startWithValues { (isSuccess) in
-            if isSuccess {
+        viewModel.verifyCodeAndLogin(mobile: accountField.text!, code: codeField.text!).startWithValues { (result) in
+            if result.isSuccess {
                 HUD.show(toast: "登录成功")
                 DispatchQueue.main.zz_after(1) {
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
-                HUD.show(toast: "请检查您的网络")
+                HUD.show(toast: result.toast ?? "请检查您的网络")
             }
         }
     }
@@ -212,7 +211,9 @@ extension LoginController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
 
-        push(GetIDCardPicturesController())
+        let vc = GetIDCardPicturesController()
+        vc.couldShowLogin = false
+        push(vc)
     }
 }
 

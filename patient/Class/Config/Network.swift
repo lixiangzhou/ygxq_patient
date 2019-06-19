@@ -135,12 +135,28 @@ struct ResponseModel<Content: ModelProtocol>: ModelProtocol  {
     }
 }
 
+extension ResponseModel {
+    var isSuccess: Bool {
+        return resultcode == 200
+    }
+}
+
 extension String: ModelProtocol { }
 extension Int: ModelProtocol { }
 extension Bool: ModelProtocol { }
 extension Double: ModelProtocol { }
 struct None: ModelProtocol { }
 
+struct BoolString {
+    let isSuccess: Bool
+    let toast: String?
+}
+extension BoolString {
+    init<Content: ModelProtocol>(_ resp: ResponseModel<Content>) {
+        self.isSuccess = resp.isSuccess
+        self.toast = resp.resultmsg
+    }
+}
 
 // MARK: - Plugins
 struct NetworkSimpleLoggerPlugin: PluginType {

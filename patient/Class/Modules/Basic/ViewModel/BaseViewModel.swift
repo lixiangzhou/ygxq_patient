@@ -17,4 +17,8 @@ class BaseViewModel {
     func commonCellConfig() -> TextTableViewCellConfig {
         return TextTableViewCellConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 20, height: 20), leftPaddingRight: 10, hasBottomLine: true)
     }
+    
+    deinit {
+        print("DEINIT => \(self)")
+    }
 }
