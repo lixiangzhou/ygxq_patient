@@ -27,17 +27,23 @@ class OrderListCell: UITableViewCell, IDCell {
     
     // MARK: -
     /// 订单号
-    let orderNoLabel = UILabel(font: .size(15), textColor: .c9)
+    let orderNoLabel = UILabel(font: .size(15), textColor: .c6)
     /// 订单创建时间
-    let orderCreateTimeLabel = UILabel(font: .size(15), textColor: .c9)
+    let orderCreateTimeLabel = UILabel(font: .size(15), textColor: .c6)
+    /// 订单状态：
+    let orderStateDescLabel = UILabel(font: .size(15), textColor: .c6)
     /// 订单状态
-    let orderStateLabel = UILabel(font: .size(15), textColor: .c9)
+    let orderStateLabel = UILabel(font: .size(15), textColor: .c6)
     /// 订单取消剩余时间
-    let orderCancelTimeLabel = UILabel(font: .size(15), textColor: .c9)
+    let orderCancelTimeLabel = UILabel(font: .size(15), textColor: .c6)
     /// 订单类型
     let orderTypeLabel = UILabel(font: .size(17), textColor: .c3)
     /// 订单价格
     let orderPriceLabel = UILabel(font: .size(16), textColor: .cf25555)
+    
+    let toPayView = OrderToPayOpView()
+    let payedView = OrderPayedOpView()
+    let refundView = OrderRefundOpView()
 }
 
 // MARK: - UI
@@ -46,7 +52,7 @@ extension OrderListCell {
         backgroundColor = .white
         
         let orderNoView = contentView.zz_add(subview: UIView())
-        let orderNoDescLabel = orderNoView.zz_add(subview: UILabel(text: "订单编号：", font: .size(15), textColor: .c9))
+        let orderNoDescLabel = orderNoView.zz_add(subview: UILabel(text: "订单编号:", font: .size(15), textColor: .c6))
         orderNoView.addSubview(orderNoLabel)
         orderNoView.addSubview(orderCreateTimeLabel)
         
@@ -55,12 +61,14 @@ extension OrderListCell {
         orderTypeView.addSubview(orderPriceLabel)
         
         let orderStateView = contentView.zz_add(subview: UIView())
-        let orderStateDescLabel = orderStateView.zz_add(subview: UILabel(text: "订单状态：", font: .size(15), textColor: .c9))
+        orderStateView.addSubview(orderStateDescLabel)
         orderStateView.addSubview(orderStateLabel)
         orderStateView.addSubview(orderCancelTimeLabel)
         
         let orderOpView = contentView.zz_add(subview: UIView())
-        
+        orderOpView.addSubview(toPayView)
+        orderOpView.addSubview(payedView)
+        orderOpView.addSubview(refundView)
         
         let bottomSepView = contentView.zz_add(subview: UIView.sepLine(color: .cf0efef))
         
@@ -135,6 +143,18 @@ extension OrderListCell {
             make.height.equalTo(50)
         }
         
+        toPayView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        payedView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        refundView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
         bottomSepView.snp.makeConstraints { (make) in
             make.top.equalTo(orderOpView.snp.bottom)
             make.height.equalTo(10)
@@ -173,6 +193,128 @@ extension OrderListCell {
 
 // MARK: - Helper
 extension OrderListCell {
+    
+    
+    class OrderToPayOpView: UIView {
+        // MARK: - LifeCycle
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            
+            cancelBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            cancelBtn.zz_setBorder(color: .cdcdcdc, width: 1)
+            
+            payBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            payBtn.zz_setBorder(color: .c407cec, width: 1)
+            
+            addSubview(cancelBtn)
+            addSubview(payBtn)
+            
+            cancelBtn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.size.equalTo(CGSize(width: 90, height: 30))
+            }
+            
+            payBtn.snp.makeConstraints { (make) in
+                make.size.centerY.equalTo(cancelBtn)
+                make.left.equalTo(cancelBtn.snp.right).offset(10)
+                make.right.equalTo(-15)
+            }
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        let cancelBtn = UIButton(title: "取消订单", font: .size(16), titleColor: .c9)
+        let payBtn = UIButton(title: "去支付", font: .size(16), titleColor: .c407cec)
+    }
+    
+    class OrderPayedOpView: UIView {
+        // MARK: - LifeCycle
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            
+            deleteBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            deleteBtn.zz_setBorder(color: .cdcdcdc, width: 1)
+            
+            refundBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            refundBtn.zz_setBorder(color: .c407cec, width: 1)
+            
+            detailBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            detailBtn.zz_setBorder(color: .c407cec, width: 1)
+            
+            addSubview(deleteBtn)
+            addSubview(refundBtn)
+            addSubview(detailBtn)
+            
+            deleteBtn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.size.equalTo(CGSize(width: 90, height: 30))
+            }
+            
+            refundBtn.snp.makeConstraints { (make) in
+                make.size.centerY.equalTo(deleteBtn)
+                make.left.equalTo(deleteBtn.snp.right).offset(10)
+                make.right.equalTo(detailBtn).offset(-100)
+            }
+            
+            detailBtn.snp.makeConstraints { (make) in
+                make.size.centerY.equalTo(deleteBtn)
+                make.right.equalTo(-15)
+            }
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        func setShowDetail(_ show: Bool) {
+            detailBtn.isHidden = !show
+            refundBtn.snp.updateConstraints { (make) in
+                make.right.equalTo(detailBtn).offset(show ? -100 : 0)
+            }
+        }
+        
+        let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
+        let refundBtn = UIButton(title: "退款", font: .size(16), titleColor: .c407cec)
+        let detailBtn = UIButton(title: "订单详情", font: .size(16), titleColor: .c407cec)
+    }
+    
+    
+    class OrderRefundOpView: UIView {
+        // MARK: - LifeCycle
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            
+            deleteBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            deleteBtn.zz_setBorder(color: .cdcdcdc, width: 1)
+            
+            refundBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            refundBtn.zz_setBorder(color: .c407cec, width: 1)
+            
+            addSubview(deleteBtn)
+            addSubview(refundBtn)
+            
+            deleteBtn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.size.equalTo(CGSize(width: 90, height: 30))
+            }
+            
+            refundBtn.snp.makeConstraints { (make) in
+                make.size.centerY.equalTo(deleteBtn)
+                make.left.equalTo(deleteBtn.snp.right).offset(10)
+                make.right.equalTo(-15)
+            }
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
+        let refundBtn = UIButton(title: "退款详情", font: .size(16), titleColor: .c407cec)
+    }
+    
     
 }
 

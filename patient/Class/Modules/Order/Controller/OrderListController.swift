@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class OrderListController: BaseController {
 
@@ -16,12 +17,17 @@ class OrderListController: BaseController {
         super.viewDidLoad()
 
         setUI()
+        setBinding()
+        viewModel.state = state
+        viewModel.getOrderList()
     }
 
     // MARK: - Public Property
+    var state: OrderState = .toPay
     
     // MARK: - Private Property
     private let tableView = UITableView()
+    private let viewModel = OrderListViewModel()
 }
 
 // MARK: - UI
@@ -36,11 +42,42 @@ extension OrderListController {
             make.edges.equalToSuperview()
         }
     }
+    override func setBinding() {
+        tableView.reactive.reloadData <~ viewModel.reloadSignal
+    }
 }
 
 // MARK: - Action
 extension OrderListController {
+    /// 取消订单
+    func cancelOrderAction(_ cell: OrderListCell, _ model: OrderModel) {
+        
+    }
     
+    /// 去支付
+    func payOrderAction(_ cell: OrderListCell, _ model: OrderModel) {
+        
+    }
+    
+    /// 删除订单
+    func deleteOrderAction(_ cell: OrderListCell, _ model: OrderModel) {
+        
+    }
+    
+    /// 退款
+    func refundOrderAction(_ cell: OrderListCell, _ model: OrderModel) {
+        
+    }
+    
+    /// 订单详情
+    func orderDetailAction(_ cell: OrderListCell, _ model: OrderModel) {
+        
+    }
+    
+    /// 退款详情
+    func refundDetailAction(_ cell: OrderListCell, _ model: OrderModel) {
+        
+    }
 }
 
 // MARK: - Network
@@ -54,19 +91,12 @@ extension OrderListController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension OrderListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.dataSourceProperty.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(cell: OrderListCell.self, for: indexPath)
-        
-        cell.orderNoLabel.text = "463817497901"
-        cell.orderCreateTimeLabel.text = "2018-1-2 08:32"
-        cell.orderTypeLabel.text = "视频咨询"
-        cell.orderPriceLabel.text = "¥200.00"
-        cell.orderStateLabel.text = "已支付"
-        cell.orderCancelTimeLabel.text = "12:30后自动取消订单"
-        
+        config(cell: cell, with: viewModel.dataSourceProperty.value[indexPath.row])
         return cell
     }
 }
@@ -78,7 +108,50 @@ extension OrderListController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - Helper
 extension OrderListController {
-    
+    func config(cell: OrderListCell, with model: OrderModel) {
+        cell.orderNoLabel.text = model.id.description
+        cell.orderCreateTimeLabel.text = Date(timeIntervalSince1970: model.orderTime / 1000).zz_string(withDateFormat: "yyyy-MM-dd HH:mm") //"2018-1-2 08:32"
+        
+        cell.orderTypeLabel.text = model.productName
+        cell.orderPriceLabel.text = "¥\(model.payAmount)"
+        
+        cell.orderStateDescLabel.text = state != .refund ? "订单状态：" : "退款状态："
+        cell.orderStateLabel.text = viewModel.getStateString(model: model)
+        cell.orderCancelTimeLabel.text = "TODO"
+        
+        cell.payedView.isHidden = state != .payed
+        cell.toPayView.isHidden = state != .toPay
+        cell.refundView.isHidden = state != .refund
+        
+        cell.toPayView.cancelBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.cancelOrderAction(cell, model)
+        }
+        
+        cell.toPayView.payBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.payOrderAction(cell, model)
+        }
+        
+        cell.payedView.deleteBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.deleteOrderAction(cell, model)
+        }
+        
+        cell.payedView.refundBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.refundOrderAction(cell, model)
+        }
+        
+        cell.payedView.detailBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.orderDetailAction(cell, model)
+        }
+        
+        cell.refundView.refundBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.refundDetailAction(cell, model)
+        }
+        
+        cell.refundView.deleteBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.deleteOrderAction(cell, model)
+        }
+        
+    }
 }
 
 // MARK: - Other

@@ -89,6 +89,9 @@
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
+		108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F422BA41C100B2EBE9 /* OrderApi.swift */; };
+		108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */; };
+		108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F922BA450A00B2EBE9 /* OrderModel.swift */; };
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
 		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
@@ -196,6 +199,9 @@
 		105DBA7622A6655800F55FE6 /* NSArray+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
+		108C07F422BA41C100B2EBE9 /* OrderApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
+		108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
+		108C07F922BA450A00B2EBE9 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
 		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
@@ -387,6 +393,7 @@
 				1030AAB9229E7F0E00519CA4 /* UserApi.swift */,
 				10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */,
 				10CAF3DF22AF7CFC00F20E81 /* DoctorApi.swift */,
+				108C07F422BA41C100B2EBE9 /* OrderApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -670,6 +677,7 @@
 		104E3A8922B8E10500A84DB2 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				108C07F822BA44BB00B2EBE9 /* Model */,
 				104E3AAA22B8F2B700A84DB2 /* View */,
 				104E3A8B22B8E11500A84DB2 /* ViewModel */,
 				104E3A8A22B8E11000A84DB2 /* Controller */,
@@ -689,6 +697,7 @@
 		104E3A8B22B8E11500A84DB2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -754,6 +763,14 @@
 				105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */,
 			);
 			path = LogExtension;
+			sourceTree = "<group>";
+		};
+		108C07F822BA44BB00B2EBE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				108C07F922BA450A00B2EBE9 /* OrderModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		10CAF38F22A8BB5900F20E81 /* Managers */ = {
@@ -926,6 +943,7 @@
 				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
+				108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
 				104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
@@ -978,6 +996,7 @@
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
 				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
+				108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */,
 				1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */,
 				10CAF3D422ADFCB200F20E81 /* GetRealNameTipView.swift in Sources */,
 				1014D0482293A6D700294558 /* NSNumber+ZZExtension.swift in Sources */,
@@ -1002,6 +1021,7 @@
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
 				1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */,
+				108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,

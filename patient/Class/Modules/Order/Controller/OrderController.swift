@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum OrderState {
+    case toPay
+    case payed
+    case refund
+}
+
 class OrderController: LLSegmentViewController {
 
     // MARK: - Life Cycle
@@ -47,12 +53,15 @@ extension OrderController {
     func loadCtls() {
         let toPayVC = OrderListController()
         toPayVC.title = "待支付"
+        toPayVC.state = .toPay
         
         let payedVC = OrderListController()
         payedVC.title = "已支付"
+        payedVC.state = .payed
         
         let refundVC = OrderListController()
         refundVC.title = "退款"
+        refundVC.state = .refund
         
         reloadViewControllers(ctls:[toPayVC, payedVC, refundVC])
     }
@@ -103,6 +112,11 @@ extension OrderController {
 // MARK: - Delegate External
 
 // MARK: -
+extension OrderController {
+    override func scrollView(scrollView: LLContainerScrollView, shouldScrollWithSubView subView: UIScrollView) -> Bool {
+        return false
+    }
+}
 
 // MARK: - Helper
 extension OrderController {
