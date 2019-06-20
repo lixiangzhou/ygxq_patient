@@ -14,6 +14,20 @@ extension UIView {
         sep.backgroundColor = color
         return sep
     }
+    
+    @discardableResult
+    func addBottomLine(color: UIColor = .cdcdcdc, left: CGFloat = 0, right: CGFloat = 0, height: CGFloat = 0.5) -> UIView {
+        let line = UIView()
+        line.backgroundColor = color
+        addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.left.equalTo(left)
+            make.right.equalTo(right)
+            make.height.equalTo(height)
+            make.bottom.equalToSuperview()
+        }
+        return line
+    }
 }
 
 class BaseShowView: BaseView {}

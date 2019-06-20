@@ -13,7 +13,17 @@ extension ConstraintMaker {
         if #available(iOS 11.0, *) {
             top.equalTo(controller.view.safeAreaLayoutGuide).offset(offset)
         } else {
-            top.equalTo(offset)
+            top.equalTo(controller.topLayoutGuide.snp.bottom).offset(offset)
         }
     }
+    
+    func bottomOffsetFrom (_ controller: UIViewController, _ offset: CGFloat = 0) {
+        if #available(iOS 11.0, *) {
+            bottom.equalTo(controller.view.safeAreaLayoutGuide).offset(offset)
+        } else {
+            bottom.equalTo(controller.bottomLayoutGuide.snp.top).offset(offset)
+        }
+    }
+    
+    
 }

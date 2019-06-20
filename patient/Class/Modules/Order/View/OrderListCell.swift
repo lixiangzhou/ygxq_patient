@@ -72,9 +72,9 @@ extension OrderListCell {
         
         let bottomSepView = contentView.zz_add(subview: UIView.sepLine(color: .cf0efef))
         
-        addLineTo(orderNoView)
-        addLineTo(orderTypeView)
-        addLineTo(orderStateView)
+        orderNoView.addBottomLine(left: 15, right: 15)
+        orderTypeView.addBottomLine(left: 15, right: 15)
+        orderStateView.addBottomLine(left: 15, right: 15)
         
         // ----------------------------
         orderNoView.snp.makeConstraints { (make) in
@@ -159,16 +159,6 @@ extension OrderListCell {
             make.top.equalTo(orderOpView.snp.bottom)
             make.height.equalTo(10)
             make.bottom.left.right.equalToSuperview()
-        }
-    }
-    
-    private func addLineTo(_ view: UIView) {
-        let line = view.zz_add(subview: UIView.sepLine())
-        line.snp.makeConstraints { (make) in
-            make.left.equalTo(15)
-            make.right.equalTo(-15)
-            make.height.equalTo(0.5)
-            make.bottom.equalToSuperview()
         }
     }
 }
@@ -296,6 +286,4 @@ extension OrderListCell {
         let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
         let refundBtn = UIButton(title: "退款详情", font: .size(16), titleColor: .c407cec)
     }
-    
-    
 }

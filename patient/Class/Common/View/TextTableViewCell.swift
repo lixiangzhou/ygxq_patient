@@ -25,6 +25,7 @@ class TextTableViewCell: UITableViewCell, IDCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Props
     var config: TextTableViewCellConfig? {
         didSet {
             if config == oldValue {
@@ -65,7 +66,6 @@ class TextTableViewCell: UITableViewCell, IDCell {
                 }
             }
             
-            
             // LeftView
             if let lv = config.leftView {
                 leftView.isHidden = false
@@ -103,7 +103,6 @@ class TextTableViewCell: UITableViewCell, IDCell {
                     make.right.equalTo(titleLabel.snp.left).offset(0)
                 }
             }
-            
             
             // Title
             titleLabel.font = config.font
@@ -152,16 +151,13 @@ class TextTableViewCell: UITableViewCell, IDCell {
         }
     }
     
-    // MARK: - Public Property
+    // MARK: -
     static let cellHeight: CGFloat = 44
     
-    
-    // MARK: - Private Property
     let leftView = UIView()
     let titleLabel = UILabel()
     let rightView = UIView()
     let bottomLine = UIView()
-    
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
 }
 
@@ -181,5 +177,107 @@ extension TextTableViewCell {
 extension TextTableViewCell {
     var leftIconView: UIImageView? {
         return config?.leftView as? UIImageView
+    }
+}
+
+struct TextTableViewCellConfig {
+    /// 背景透明样式
+    var effectStyle: EffectStyle = .none
+    
+    /// 背景色在 effectStyle == .none 才有效
+    var cellBackgroundColor: UIColor
+    var contentViewBackgroundColor: UIColor
+    
+    /// 左边的View
+    var leftView: UIView?
+    /// 左边的View大小，如果为nil，则是leftView的系统自动设置的大小
+    var leftViewSize: CGSize?
+    /// 左边的View距离左边的距离
+    var leftPaddingLeft: CGFloat
+    /// 左边的View文本的距离
+    var leftPaddingRight: CGFloat
+    
+    /// 文本字体
+    var font: UIFont
+    /// 文本字体颜色
+    var textColor: UIColor
+    
+    /// 右边的View
+    var rightView: UIView?
+    /// 右边的View大小，如果为nil，则是rightView的系统自动设置的大小
+    var rightViewSize: CGSize?
+    /// 右边的View距离右边的距离
+    var rightPadding: CGFloat
+    
+    var hasBottomLine = true
+    var bottomLineColor: UIColor?
+    var bottomLineLeftPadding: CGFloat
+    var bottomLineRightPadding: CGFloat
+    var bottomLineHeight: CGFloat
+    
+    init(effectStyle: EffectStyle = .none,
+         cellBackgroundColor: UIColor = .white,
+         contentViewBackgroundColor: UIColor = .white,
+         leftView: UIView? = nil,
+         leftViewSize: CGSize? = nil,
+         leftPaddingLeft: CGFloat = 15,
+         leftPaddingRight: CGFloat = 10,
+         font: UIFont = UIFont.size(17),
+         textColor: UIColor = UIColor.c3,
+         rightView: UIView? = UIImageView(image: UIImage(named: "common_arrow_right")),
+         rightViewSize: CGSize? = nil,
+         rightPadding: CGFloat = 15,
+         hasBottomLine: Bool = true,
+         bottomLineColor: UIColor = UIColor.cdcdcdc,
+         bottomLineLeftPadding: CGFloat = 0,
+         bottomLineRightPadding: CGFloat = 0,
+         bottomLineHeight: CGFloat = 0.5) {
+        self.effectStyle = effectStyle
+        
+        self.cellBackgroundColor = cellBackgroundColor
+        self.contentViewBackgroundColor = contentViewBackgroundColor
+        
+        self.leftView = leftView
+        self.leftViewSize = leftViewSize
+        self.leftPaddingLeft = leftPaddingLeft
+        self.leftPaddingRight = leftPaddingRight
+        
+        self.font = font
+        self.textColor = textColor
+        
+        self.rightView = rightView
+        self.rightViewSize = rightViewSize
+        self.rightPadding = rightPadding
+        
+        self.hasBottomLine = hasBottomLine
+        self.bottomLineLeftPadding = bottomLineLeftPadding
+        self.bottomLineColor = bottomLineColor
+        self.bottomLineRightPadding = bottomLineRightPadding
+        self.bottomLineHeight = bottomLineHeight
+    }
+}
+
+extension TextTableViewCellConfig: Equatable {
+}
+
+extension TextTableViewCellConfig {
+    mutating func hasBottomLine(_ prop: Bool) -> TextTableViewCellConfig {
+        self.hasBottomLine = prop
+        return self
+    }
+}
+
+extension TextTableViewCellConfig {
+    enum EffectStyle {
+        case extraLight
+        case light
+        case dark
+        case none
+        
+        @available(iOS 10.0, *)
+        case regular
+        
+        @available(iOS 10.0, *)
+        case prominent
     }
 }
