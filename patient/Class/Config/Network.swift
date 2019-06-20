@@ -149,13 +149,13 @@ extension Array: ModelProtocol { }
 struct None: ModelProtocol { }
 
 struct BoolString {
-    let isSuccess: Bool
-    let toast: String?
+    var isSuccess: Bool
+    var toast: String = ""
 }
 extension BoolString {
     init<Content: ModelProtocol>(_ resp: ResponseModel<Content>) {
         self.isSuccess = resp.isSuccess
-        self.toast = resp.resultmsg
+        self.toast = resp.resultmsg ?? ""
     }
 }
 

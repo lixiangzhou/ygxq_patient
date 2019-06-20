@@ -34,11 +34,11 @@ class RCManager: NSObject {
     }
     
     private var isLogin: Bool {
-        return PatientManager.shared.isLogin && PatientManager.shared.id > 0
+        return PatientManager.shared.isLogin && patientId > 0
     }
     
     private var userId: String {
-        return PatientManager.shared.id.description
+        return patientId.description
     }
     
     private let rcModelsPath = zz_filePath(with: .documentDirectory, fileName: "rcModels")

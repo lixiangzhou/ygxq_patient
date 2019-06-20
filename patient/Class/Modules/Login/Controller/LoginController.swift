@@ -145,7 +145,7 @@ extension LoginController {
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
-                HUD.show(toast: result.toast ?? "请检查您的网络")
+                HUD.show(result)
             }
         }
     }

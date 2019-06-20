@@ -41,6 +41,15 @@ class OrderListCell: UITableViewCell, IDCell {
     /// 订单价格
     let orderPriceLabel = UILabel(font: .size(16), textColor: .cf25555)
     
+    var cancelOrderClosure: (() -> Void)?
+    var payOrderClosure: (() -> Void)?
+    
+    var deleteOrderClosure: (() -> Void)?
+    var refundOrderClosure: (() -> Void)?
+    var orderDetailClosure: (() -> Void)?
+    
+    var refundDetailClosure: (() -> Void)?
+    
     let toPayView = OrderToPayOpView()
     let payedView = OrderPayedOpView()
     let refundView = OrderRefundOpView()
@@ -69,6 +78,15 @@ extension OrderListCell {
         orderOpView.addSubview(toPayView)
         orderOpView.addSubview(payedView)
         orderOpView.addSubview(refundView)
+        
+        toPayView.cancelBtn.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+        toPayView.payBtn.addTarget(self, action: #selector(payAction), for: .touchUpInside)
+        
+        payedView.deleteBtn.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
+        payedView.refundBtn.addTarget(self, action: #selector(refundAction), for: .touchUpInside)
+        payedView.detailBtn.addTarget(self, action: #selector(detailAction), for: .touchUpInside)
+        
+        refundView.detailBtn.addTarget(self, action: #selector(refundDetailAction), for: .touchUpInside)
         
         let bottomSepView = contentView.zz_add(subview: UIView.sepLine(color: .cf0efef))
         
@@ -163,10 +181,35 @@ extension OrderListCell {
     }
 }
 
+// MARK: - Action
+extension OrderListCell {
+    @objc private func cancelAction() {
+        cancelOrderClosure?()
+    }
+    
+    @objc private func payAction() {
+        payOrderClosure?()
+    }
+    
+    @objc private func deleteAction() {
+        deleteOrderClosure?()
+    }
+    
+    @objc private func refundAction() {
+        refundOrderClosure?()
+    }
+    
+    @objc private func detailAction() {
+        orderDetailClosure?()
+    }
+    
+    @objc private func refundDetailAction() {
+        refundDetailClosure?()
+    }
+}
+
 // MARK: - Helper
 extension OrderListCell {
-    
-    
     class OrderToPayOpView: UIView {
         // MARK: - LifeCycle
         override init(frame: CGRect) {
@@ -261,18 +304,18 @@ extension OrderListCell {
             deleteBtn.zz_setCorner(radius: 15, masksToBounds: true)
             deleteBtn.zz_setBorder(color: .cdcdcdc, width: 1)
             
-            refundBtn.zz_setCorner(radius: 15, masksToBounds: true)
-            refundBtn.zz_setBorder(color: .c407cec, width: 1)
+            detailBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            detailBtn.zz_setBorder(color: .c407cec, width: 1)
             
             addSubview(deleteBtn)
-            addSubview(refundBtn)
+            addSubview(detailBtn)
             
             deleteBtn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.size.equalTo(CGSize(width: 90, height: 30))
             }
             
-            refundBtn.snp.makeConstraints { (make) in
+            detailBtn.snp.makeConstraints { (make) in
                 make.size.centerY.equalTo(deleteBtn)
                 make.left.equalTo(deleteBtn.snp.right).offset(10)
                 make.right.equalTo(-15)
@@ -284,6 +327,6 @@ extension OrderListCell {
         }
         
         let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
-        let refundBtn = UIButton(title: "退款详情", font: .size(16), titleColor: .c407cec)
+        let detailBtn = UIButton(title: "退款详情", font: .size(16), titleColor: .c407cec)
     }
 }

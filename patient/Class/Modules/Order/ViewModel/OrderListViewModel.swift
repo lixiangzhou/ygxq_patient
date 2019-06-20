@@ -36,7 +36,7 @@ class OrderListViewModel: BaseViewModel {
         getOrderList(state).startWithValues { [weak self] (orders) in
             guard let self = self else { return }
             if let orders = orders, !orders.isEmpty {
-                self.dataSourceProperty.value = self.dataSourceProperty.value + orders
+                self.dataSourceProperty.value = orders
                 self.reloadObserver.send(value: ())
             }
         }
@@ -45,11 +45,15 @@ class OrderListViewModel: BaseViewModel {
     func getOrderList(_ state: OrderState) -> SignalProducer<[OrderModel]?, NoError> {
         switch state {
         case .toPay:
-            return OrderApi.toPayOrderList(pageNum: 1, pageSize: 1000, pid: PatientManager.shared.id).rac_responseModel([OrderModel].self)
+            return OrderApi.toPayOrderList(pageNum: 1, pageSize: 1000, pid: patientId).rac_responseModel([OrderModel].self)
         case .payed:
-            return OrderApi.payedOrderList(pageNum: 1, pageSize: 1000, pid: PatientManager.shared.id).rac_responseModel([OrderModel].self)
+            return OrderApi.payedOrderList(pageNum: 1, pageSize: 1000, pid: patientId).rac_responseModel([OrderModel].self)
         case .refund:
-            return OrderApi.refundOrderList(pageNum: 1, pageSize: 1000, pid: PatientManager.shared.id).rac_responseModel([OrderModel].self)
+            return OrderApi.refundOrderList(pageNum: 1, pageSize: 1000, pid: patientId).rac_responseModel([OrderModel].self)
         }
+    }
+    
+    func refundIsApply(orderId: Int) -> SignalProducer<BoolString, NoError> {
+        return OrderApi.refundIsApply(orderId: orderId).rac_response(None.self).map { BoolString($0) }
     }
 }

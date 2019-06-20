@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Result
+import ReactiveSwift
 
 class ApplyForRefundViewModel: BaseViewModel {
     override init() {
         super.init()
+    }
+    
+    func refundApply(_ order: OrderModel, reason: String) -> SignalProducer<BoolString, NoError> {
+        return OrderApi.refundApply(pid: patientId, orderId: order.id, reason: reason).rac_response(String.self).map { BoolString($0) }
     }
     
     func getMoneyString(_ money: Double) -> NSAttributedString {

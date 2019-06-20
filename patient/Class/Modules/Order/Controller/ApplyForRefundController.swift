@@ -25,6 +25,7 @@ class ApplyForRefundController: BaseController {
 
     // MARK: - Public Property
     var orderModel: OrderModel!
+    var submitCompleteClosure: ((OrderModel) -> Void)?
     
     // MARK: - Private Property
     private let viewModel = ApplyForRefundViewModel()
@@ -137,7 +138,14 @@ extension ApplyForRefundController {
 // MARK: - Action
 extension ApplyForRefundController {
     @objc private func submitAction() {
-        
+        viewModel.refundApply(orderModel, reason: txtView.text).startWithValues { [weak self] result in
+            guard let self = self else { return }
+            HUD.show(result)
+            if result.isSuccess {
+                self.submitCompleteClosure?(self.orderModel)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }
 

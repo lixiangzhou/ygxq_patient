@@ -18,6 +18,10 @@ let patientInfoProperty = MutableProperty<PatientInfoModel?>(nil)
 let (_loginSignal, loginObserver) = Signal<Bool, NoError>.pipe()
 let loginSignal = _loginSignal.skipRepeats()
 
+var patientId: Int {
+    return patientInfoProperty.value?.id ?? 0
+}
+
 class PatientManager {
     static let shared = PatientManager()
     

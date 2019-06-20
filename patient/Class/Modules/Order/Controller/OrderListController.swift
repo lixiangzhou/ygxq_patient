@@ -66,9 +66,18 @@ extension OrderListController {
     
     /// 退款
     func refundOrderAction(_ cell: OrderListCell, _ model: OrderModel) {
-        let vc = ApplyForRefundController()
-        vc.orderModel = model
-        push(vc)
+        viewModel.refundIsApply(orderId: model.id).startWithValues { [weak self] (result) in
+            if result.isSuccess {
+                let vc = ApplyForRefundController()
+                vc.orderModel = model
+                vc.submitCompleteClosure = { order in
+                    self?.viewModel.getOrderList()
+                }
+                self?.push(vc)
+            } else {
+                HUD.showError(result)
+            }
+        }
     }
     
     /// 订单详情
@@ -125,33 +134,57 @@ extension OrderListController {
         cell.toPayView.isHidden = state != .toPay
         cell.refundView.isHidden = state != .refund
         
-        cell.toPayView.cancelBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+        cell.cancelOrderClosure = { [weak self] in
             self?.cancelOrderAction(cell, model)
         }
         
-        cell.toPayView.payBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+        cell.payOrderClosure = { [weak self] in
             self?.payOrderAction(cell, model)
         }
         
-        cell.payedView.deleteBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+        cell.deleteOrderClosure = { [weak self] in
             self?.deleteOrderAction(cell, model)
         }
         
-        cell.payedView.refundBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+        cell.refundOrderClosure = { [weak self] in
             self?.refundOrderAction(cell, model)
         }
         
-        cell.payedView.detailBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+        cell.orderDetailClosure = { [weak self] in
             self?.orderDetailAction(cell, model)
         }
         
-        cell.refundView.refundBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+        cell.refundDetailClosure = { [weak self] in
             self?.refundDetailAction(cell, model)
         }
         
-        cell.refundView.deleteBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
-            self?.deleteOrderAction(cell, model)
-        }
+//        cell.toPayView.cancelBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+//            self?.cancelOrderAction(cell, model)
+//        }
+//
+//        cell.toPayView.payBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+//            self?.payOrderAction(cell, model)
+//        }
+//
+//        cell.payedView.deleteBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+//            self?.deleteOrderAction(cell, model)
+//        }
+//
+//        cell.payedView.refundBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+//            self?.refundOrderAction(cell, model)
+//        }
+//
+//        cell.payedView.detailBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+//            self?.orderDetailAction(cell, model)
+//        }
+//
+//        cell.refundView.refundBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+//            self?.refundDetailAction(cell, model)
+//        }
+//
+//        cell.refundView.deleteBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+//            self?.deleteOrderAction(cell, model)
+//        }
         
     }
 }

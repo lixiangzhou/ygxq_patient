@@ -32,7 +32,7 @@ class LoginViewModel: BaseViewModel {
     func login(mobile: String, code: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
         return UserApi.loginCode(mobile: mobile, code: code).rac_response(PatientInfoModel.self).on { (resp) in
             if let patientModel = resp.content {
-                PatientManager.shared.save(patient: patientModel)
+                patientInfoProperty.value = patientModel
                 loginObserver.send(value: true)
             } else {
                 loginObserver.send(value: false)

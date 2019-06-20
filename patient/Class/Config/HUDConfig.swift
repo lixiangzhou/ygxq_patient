@@ -42,4 +42,24 @@ struct HUD {
     static func hideLoding(forView: UIView) {
         ZZHud.hideLoading(for: forView)
     }
+    
+    static func showError(_ result: BoolString, in view: UIView = UIApplication.shared.keyWindow!) {
+        if !result.isSuccess && !result.toast.isEmpty {
+            show(toast: result.toast, in: view)
+        }
+    }
+    
+    static func showSuccess(_ result: BoolString, in view: UIView = UIApplication.shared.keyWindow!) {
+        if result.isSuccess && !result.toast.isEmpty {
+            show(toast: result.toast, in: view)
+        }
+    }
+    
+    static func show(_ result: BoolString, in view: UIView = UIApplication.shared.keyWindow!) {
+        if result.isSuccess {
+            showSuccess(result)
+        } else {
+            showError(result)
+        }
+    }
 }
