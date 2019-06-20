@@ -17,3 +17,34 @@ extension TimeInterval {
         return Date(timeIntervalSince1970: self)
     }
 }
+
+extension Collection where Iterator.Element: ModelProtocol {
+    
+    func tojson() -> [[String: Any]?] {
+        return self.map{ $0.toJSON() }
+    }
+    
+    func tojsonString(prettyPrint: Bool = false) -> String? {
+        
+        let anyArray = self.toJSON()
+        if JSONSerialization.isValidJSONObject(anyArray) {
+            do {
+                let jsonData: Data
+                if prettyPrint {
+                    jsonData = try JSONSerialization.data(withJSONObject: anyArray, options: [.prettyPrinted])
+                } else {
+                    jsonData = try JSONSerialization.data(withJSONObject: anyArray, options: [])
+                }
+                return String(data: jsonData, encoding: .utf8)
+            } catch let error {
+                
+            }
+        } else {
+            
+        }
+        return nil
+    }
+}
+
+
+

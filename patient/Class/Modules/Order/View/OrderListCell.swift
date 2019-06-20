@@ -173,24 +173,6 @@ extension OrderListCell {
     }
 }
 
-// MARK: - Action
-extension OrderListCell {
-    
-}
-
-// MARK: - Network
-extension OrderListCell {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
 // MARK: - Helper
 extension OrderListCell {
     
@@ -317,14 +299,3 @@ extension OrderListCell {
     
     
 }
-
-// MARK: - Other
-extension OrderListCell {
-    
-}
-
-// MARK: - Public
-extension OrderListCell {
-    
-}
-

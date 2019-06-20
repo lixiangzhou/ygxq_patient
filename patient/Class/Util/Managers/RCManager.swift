@@ -200,13 +200,13 @@ extension RCManager {
         if let rcModelsString = try? String(contentsOfFile: rcModelsPath), let rcModels = [RCModel].deserialize(from: rcModelsString) as? [RCModel] {
             return rcModels
         } else {
-            try! rcModels.toJSON().toJSONString()?.write(toFile: rcModelsPath, atomically: true, encoding: .utf8)
+            try! rcModels.tojson().toJSONString()?.write(toFile: rcModelsPath, atomically: true, encoding: .utf8)
             return rcModels
         }
     }
     
     private func saveAll() {
-        try? rcModels.toJSON().toJSONString()?.write(toFile: rcModelsPath, atomically: true, encoding: .utf8)
+        try? rcModels.tojson().toJSONString()?.write(toFile: rcModelsPath, atomically: true, encoding: .utf8)
     }
 }
 

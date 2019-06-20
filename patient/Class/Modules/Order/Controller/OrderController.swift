@@ -105,31 +105,10 @@ extension OrderController {
     
 }
 
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
 // MARK: -
 extension OrderController {
+    /// 解决在iPhone X上滑动联动的BUG，子View 不随着滑动
     override func scrollView(scrollView: LLContainerScrollView, shouldScrollWithSubView subView: UIScrollView) -> Bool {
         return false
     }
 }
-
-// MARK: - Helper
-extension OrderController {
-    
-}
-
-// MARK: - Other
-extension OrderController {
-    
-}
-
-// MARK: - Public
-extension OrderController {
-    
-}
-
