@@ -12,7 +12,6 @@ import Result
 
 class CheckListViewModel: BaseViewModel {
     
-    
     let dataSourceProperty = MutableProperty<[GroupModel<CheckRecordModel>]>([GroupModel<CheckRecordModel>]())
     
     func getData(){

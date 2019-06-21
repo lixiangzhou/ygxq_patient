@@ -33,7 +33,7 @@ extension HistoryProfileDataController {
         let checkListVC = CheckListController()
         checkListVC.title = "检查记录"
         
-        let questionListVC = QuestionListController()
+        let questionListVC = ExamListController()
         questionListVC.title = "问卷记录"
         
         reloadViewControllers(ctls:[caseListVC, checkListVC, questionListVC])

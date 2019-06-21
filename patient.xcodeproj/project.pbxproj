@@ -98,7 +98,6 @@
 		108C080A22BCD36000B2EBE9 /* HistoryProfileDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080922BCD36000B2EBE9 /* HistoryProfileDataController.swift */; };
 		108C080C22BCD81500B2EBE9 /* CaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080B22BCD81500B2EBE9 /* CaseListController.swift */; };
 		108C080E22BCD82000B2EBE9 /* CheckListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080D22BCD82000B2EBE9 /* CheckListController.swift */; };
-		108C081022BCD82D00B2EBE9 /* QuestionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080F22BCD82D00B2EBE9 /* QuestionListController.swift */; };
 		108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081122BCDA5700B2EBE9 /* CaseListCell.swift */; };
 		108C081422BCDF3300B2EBE9 /* CaseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081322BCDF3300B2EBE9 /* CaseListViewModel.swift */; };
 		108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081622BCE23A00B2EBE9 /* CaseRecordModel.swift */; };
@@ -106,10 +105,13 @@
 		108C081B22BCE9EE00B2EBE9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081A22BCE9EE00B2EBE9 /* Network.swift */; };
 		108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081C22BCEAF800B2EBE9 /* ExamApi.swift */; };
 		108C081F22BCFAA800B2EBE9 /* CheckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081E22BCFAA800B2EBE9 /* CheckListViewModel.swift */; };
-		108C082122BCFABA00B2EBE9 /* QuestionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C082022BCFABA00B2EBE9 /* QuestionListViewModel.swift */; };
 		108C082322BCFBCF00B2EBE9 /* CheckRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C082222BCFBCF00B2EBE9 /* CheckRecordModel.swift */; };
 		108C082522BCFCCC00B2EBE9 /* CheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C082422BCFCCC00B2EBE9 /* CheckListCell.swift */; };
 		108C082722BD075A00B2EBE9 /* GroupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C082622BD075A00B2EBE9 /* GroupModels.swift */; };
+		108C082B22BD14A700B2EBE9 /* ExamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C082A22BD14A700B2EBE9 /* ExamModel.swift */; };
+		108C082D22BD152900B2EBE9 /* ExamListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C082C22BD152900B2EBE9 /* ExamListViewModel.swift */; };
+		108C082F22BD155600B2EBE9 /* ExamListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C082E22BD155600B2EBE9 /* ExamListCell.swift */; };
+		108C083122BD158D00B2EBE9 /* ExamListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C083022BD158D00B2EBE9 /* ExamListController.swift */; };
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
 		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
@@ -226,7 +228,6 @@
 		108C080922BCD36000B2EBE9 /* HistoryProfileDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryProfileDataController.swift; sourceTree = "<group>"; };
 		108C080B22BCD81500B2EBE9 /* CaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListController.swift; sourceTree = "<group>"; };
 		108C080D22BCD82000B2EBE9 /* CheckListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListController.swift; sourceTree = "<group>"; };
-		108C080F22BCD82D00B2EBE9 /* QuestionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListController.swift; sourceTree = "<group>"; };
 		108C081122BCDA5700B2EBE9 /* CaseListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListCell.swift; sourceTree = "<group>"; };
 		108C081322BCDF3300B2EBE9 /* CaseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListViewModel.swift; sourceTree = "<group>"; };
 		108C081622BCE23A00B2EBE9 /* CaseRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseRecordModel.swift; sourceTree = "<group>"; };
@@ -234,10 +235,13 @@
 		108C081A22BCE9EE00B2EBE9 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		108C081C22BCEAF800B2EBE9 /* ExamApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamApi.swift; sourceTree = "<group>"; };
 		108C081E22BCFAA800B2EBE9 /* CheckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewModel.swift; sourceTree = "<group>"; };
-		108C082022BCFABA00B2EBE9 /* QuestionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListViewModel.swift; sourceTree = "<group>"; };
 		108C082222BCFBCF00B2EBE9 /* CheckRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckRecordModel.swift; sourceTree = "<group>"; };
 		108C082422BCFCCC00B2EBE9 /* CheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCell.swift; sourceTree = "<group>"; };
 		108C082622BD075A00B2EBE9 /* GroupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GroupModels.swift; path = patient/Class/Modules/Profile/View/GroupModels.swift; sourceTree = SOURCE_ROOT; };
+		108C082A22BD14A700B2EBE9 /* ExamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamModel.swift; sourceTree = "<group>"; };
+		108C082C22BD152900B2EBE9 /* ExamListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListViewModel.swift; sourceTree = "<group>"; };
+		108C082E22BD155600B2EBE9 /* ExamListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListCell.swift; sourceTree = "<group>"; };
+		108C083022BD158D00B2EBE9 /* ExamListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListController.swift; sourceTree = "<group>"; };
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
 		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
@@ -698,7 +702,7 @@
 				108C080922BCD36000B2EBE9 /* HistoryProfileDataController.swift */,
 				108C080B22BCD81500B2EBE9 /* CaseListController.swift */,
 				108C080D22BCD82000B2EBE9 /* CheckListController.swift */,
-				108C080F22BCD82D00B2EBE9 /* QuestionListController.swift */,
+				108C083022BD158D00B2EBE9 /* ExamListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -709,7 +713,7 @@
 				104E3A8122B8A9E200A84DB2 /* ProfileViewModel.swift */,
 				108C081322BCDF3300B2EBE9 /* CaseListViewModel.swift */,
 				108C081E22BCFAA800B2EBE9 /* CheckListViewModel.swift */,
-				108C082022BCFABA00B2EBE9 /* QuestionListViewModel.swift */,
+				108C082C22BD152900B2EBE9 /* ExamListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -720,6 +724,7 @@
 				104E3A8422B8AA4200A84DB2 /* ProfileHeaderView.swift */,
 				108C081122BCDA5700B2EBE9 /* CaseListCell.swift */,
 				108C082422BCFCCC00B2EBE9 /* CheckListCell.swift */,
+				108C082E22BD155600B2EBE9 /* ExamListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -830,6 +835,7 @@
 			children = (
 				108C081622BCE23A00B2EBE9 /* CaseRecordModel.swift */,
 				108C082222BCFBCF00B2EBE9 /* CheckRecordModel.swift */,
+				108C082A22BD14A700B2EBE9 /* ExamModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1010,7 +1016,6 @@
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
 				104E3A8222B8A9E200A84DB2 /* ProfileViewModel.swift in Sources */,
-				108C081022BCD82D00B2EBE9 /* QuestionListController.swift in Sources */,
 				108C080422BB635D00B2EBE9 /* ApplyForRefundViewModel.swift in Sources */,
 				108C080222BB611B00B2EBE9 /* TextLeftRightCell.swift in Sources */,
 				108C081F22BCFAA800B2EBE9 /* CheckListViewModel.swift in Sources */,
@@ -1026,11 +1031,11 @@
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
 				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
-				108C082122BCFABA00B2EBE9 /* QuestionListViewModel.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
 				10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */,
+				108C082F22BD155600B2EBE9 /* ExamListCell.swift in Sources */,
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,
@@ -1056,6 +1061,7 @@
 				108C082322BCFBCF00B2EBE9 /* CheckRecordModel.swift in Sources */,
 				104E3AA222B8E5E700A84DB2 /* LLSegmentItemTitleView.swift in Sources */,
 				104E3A9F22B8E5E700A84DB2 /* LLSegmentItemTitleImageView.swift in Sources */,
+				108C082B22BD14A700B2EBE9 /* ExamModel.swift in Sources */,
 				104E3AA022B8E5E700A84DB2 /* LLSegmentItemBadgeView.swift in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
 				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
@@ -1085,7 +1091,9 @@
 				1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */,
 				108C082722BD075A00B2EBE9 /* GroupModels.swift in Sources */,
 				108C081422BCDF3300B2EBE9 /* CaseListViewModel.swift in Sources */,
+				108C082D22BD152900B2EBE9 /* ExamListViewModel.swift in Sources */,
 				108C080C22BCD81500B2EBE9 /* CaseListController.swift in Sources */,
+				108C083122BD158D00B2EBE9 /* ExamListController.swift in Sources */,
 				105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */,
 				1014D0532293A6D700294558 /* UIView+ZZExtension.swift in Sources */,
 				1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */,
