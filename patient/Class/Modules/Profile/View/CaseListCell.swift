@@ -36,7 +36,7 @@ class CaseListCell: UITableViewCell, IDCell {
 extension CaseListCell {
     private func setUI() {
         let topView = contentView.zz_add(subview: UIView())
-        topView.addBottomLine(left: 15, right: -15)
+        topView.addBottomLine(left: 15, right: 15)
         
         topView.addSubview(createTimeLabel)
         

@@ -32,7 +32,7 @@ class CaseListController: BaseController {
 // MARK: - UI
 extension CaseListController {
     override func setUI() {
-        tableView.set(dataSource: self, delegate: self, rowHeight: 210)
+        tableView.set(dataSource: self, delegate: self)
         tableView.register(cell: CaseListCell.self)
         tableView.backgroundColor = .cf0efef
         tableView.rowHeight = UITableView.automaticDimension

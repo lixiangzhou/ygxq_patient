@@ -22,7 +22,7 @@ extension UIView {
         addSubview(line)
         line.snp.makeConstraints { (make) in
             make.left.equalTo(left)
-            make.right.equalTo(right)
+            make.right.equalTo(-right)
             make.height.equalTo(height)
             make.bottom.equalToSuperview()
         }
