@@ -20,7 +20,6 @@ class LoginViewModel: BaseViewModel {
                         observer.send(value: BoolString(resp))
                         observer.sendCompleted()
                     }
-                    
                 } else {
                     observer.send(value: BoolString(resp))
                     

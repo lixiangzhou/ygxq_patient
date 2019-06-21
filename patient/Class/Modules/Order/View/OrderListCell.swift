@@ -25,6 +25,10 @@ class OrderListCell: UITableViewCell, IDCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("OrderListCell deinit")
+    }
+    
     // MARK: -
     /// 订单号
     let orderNoLabel = UILabel(font: .size(15), textColor: .c6)

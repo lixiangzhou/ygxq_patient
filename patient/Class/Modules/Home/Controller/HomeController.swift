@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import ReactiveSwift
-import Result
-import Alamofire
 
 class HomeController: BaseController {
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     }
 

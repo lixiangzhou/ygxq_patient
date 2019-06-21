@@ -108,10 +108,11 @@ extension LoginController {
     }
     
     override func setBinding() {
-        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { _ in
+        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] _ in
             self.timeLabel.text = "60秒"
             var count = 60
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
+                guard let self = self else { timer.invalidate(); return }
                 count -= 1
                 if count < 0 {
                     self.timeLabel.isHidden = true
@@ -125,7 +126,7 @@ extension LoginController {
         
         codeBtn.reactive.isEnabled <~ accountField.valueChangedSignal.map { $0.count == 11 }
         
-        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { _ in
+        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] _ in
             self.viewModel.getCode(self.accountField.text!)
         }
         
@@ -138,7 +139,7 @@ extension LoginController {
 // MARK: - Action
 extension LoginController {
     @objc private func loginAction() {
-        viewModel.verifyCodeAndLogin(mobile: accountField.text!, code: codeField.text!).startWithValues { (result) in
+        viewModel.verifyCodeAndLogin(mobile: accountField.text!, code: codeField.text!).startWithValues { [unowned self] (result) in
             if result.isSuccess {
                 HUD.show(toast: "登录成功")
                 DispatchQueue.main.zz_after(1) {
@@ -211,9 +212,10 @@ extension LoginController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
 
-        let vc = GetIDCardPicturesController()
-        vc.couldShowLogin = false
-        push(vc)
+        dismiss(animated: true, completion: nil)
+//        let vc = GetIDCardPicturesController()
+//        vc.couldShowLogin = false
+//        push(vc)
     }
 }
 
