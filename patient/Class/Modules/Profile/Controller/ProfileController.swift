@@ -81,6 +81,17 @@ extension ProfileController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSource[indexPath.row]
+        switch model.type {
+        case .historyData:
+            let vc = HistoryProfileDataController()
+            push(vc)
+        case .drugRecord:
+            break
+        }
+    }
 }
 
 // MARK: - Delegate External

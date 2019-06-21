@@ -59,7 +59,6 @@
 		1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */; };
 		1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAAD229E6AF500519CA4 /* LoginController.swift */; };
 		1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */; };
-		1030AAB6229E6CD400519CA4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB5229E6CD400519CA4 /* Network.swift */; };
 		1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAB9229E7F0E00519CA4 /* UserApi.swift */; };
 		1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AABE229E868F00519CA4 /* InputFieldView.swift */; };
 		1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC0229E871600519CA4 /* ViewExtension.swift */; };
@@ -95,6 +94,17 @@
 		108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07FF22BB5D1100B2EBE9 /* ApplyForRefundController.swift */; };
 		108C080222BB611B00B2EBE9 /* TextLeftRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080122BB611B00B2EBE9 /* TextLeftRightCell.swift */; };
 		108C080422BB635D00B2EBE9 /* ApplyForRefundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080322BB635D00B2EBE9 /* ApplyForRefundViewModel.swift */; };
+		108C080622BCCF6C00B2EBE9 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080522BCCF6B00B2EBE9 /* LoginManager.swift */; };
+		108C080A22BCD36000B2EBE9 /* HistoryProfileDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080922BCD36000B2EBE9 /* HistoryProfileDataController.swift */; };
+		108C080C22BCD81500B2EBE9 /* CaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080B22BCD81500B2EBE9 /* CaseListController.swift */; };
+		108C080E22BCD82000B2EBE9 /* CheckListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080D22BCD82000B2EBE9 /* CheckListController.swift */; };
+		108C081022BCD82D00B2EBE9 /* QuestionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C080F22BCD82D00B2EBE9 /* QuestionListController.swift */; };
+		108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081122BCDA5700B2EBE9 /* CaseListCell.swift */; };
+		108C081422BCDF3300B2EBE9 /* CaseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081322BCDF3300B2EBE9 /* CaseListViewModel.swift */; };
+		108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081622BCE23A00B2EBE9 /* CaseRecordModel.swift */; };
+		108C081922BCE99400B2EBE9 /* HLRApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081822BCE99400B2EBE9 /* HLRApi.swift */; };
+		108C081B22BCE9EE00B2EBE9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081A22BCE9EE00B2EBE9 /* Network.swift */; };
+		108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C081C22BCEAF800B2EBE9 /* ExamApi.swift */; };
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
 		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
@@ -169,7 +179,6 @@
 		1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		1030AAAD229E6AF500519CA4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		1030AAB5229E6CD400519CA4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Network.swift; path = ../Config/Network.swift; sourceTree = "<group>"; };
 		1030AAB9229E7F0E00519CA4 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		1030AABE229E868F00519CA4 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		1030AAC0229E871600519CA4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -208,6 +217,17 @@
 		108C07FF22BB5D1100B2EBE9 /* ApplyForRefundController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyForRefundController.swift; sourceTree = "<group>"; };
 		108C080122BB611B00B2EBE9 /* TextLeftRightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftRightCell.swift; sourceTree = "<group>"; };
 		108C080322BB635D00B2EBE9 /* ApplyForRefundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyForRefundViewModel.swift; sourceTree = "<group>"; };
+		108C080522BCCF6B00B2EBE9 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		108C080922BCD36000B2EBE9 /* HistoryProfileDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryProfileDataController.swift; sourceTree = "<group>"; };
+		108C080B22BCD81500B2EBE9 /* CaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListController.swift; sourceTree = "<group>"; };
+		108C080D22BCD82000B2EBE9 /* CheckListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListController.swift; sourceTree = "<group>"; };
+		108C080F22BCD82D00B2EBE9 /* QuestionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListController.swift; sourceTree = "<group>"; };
+		108C081122BCDA5700B2EBE9 /* CaseListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListCell.swift; sourceTree = "<group>"; };
+		108C081322BCDF3300B2EBE9 /* CaseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListViewModel.swift; sourceTree = "<group>"; };
+		108C081622BCE23A00B2EBE9 /* CaseRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseRecordModel.swift; sourceTree = "<group>"; };
+		108C081822BCE99400B2EBE9 /* HLRApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLRApi.swift; sourceTree = "<group>"; };
+		108C081A22BCE9EE00B2EBE9 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		108C081C22BCEAF800B2EBE9 /* ExamApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamApi.swift; sourceTree = "<group>"; };
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
 		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
@@ -394,11 +414,13 @@
 		1014D0332293A6D700294558 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1030AAB5229E6CD400519CA4 /* Network.swift */,
+				108C081A22BCE9EE00B2EBE9 /* Network.swift */,
 				1030AAB9229E7F0E00519CA4 /* UserApi.swift */,
 				10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */,
 				10CAF3DF22AF7CFC00F20E81 /* DoctorApi.swift */,
 				108C07F422BA41C100B2EBE9 /* OrderApi.swift */,
+				108C081822BCE99400B2EBE9 /* HLRApi.swift */,
+				108C081C22BCEAF800B2EBE9 /* ExamApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -650,6 +672,7 @@
 		104E3A7C22B8940E00A84DB2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				108C081522BCE06B00B2EBE9 /* Model */,
 				104E3A8322B8AA1C00A84DB2 /* View */,
 				104E3A8022B8A9B800A84DB2 /* ViewModel */,
 				104E3A7F22B8A99B00A84DB2 /* Controller */,
@@ -661,6 +684,10 @@
 			isa = PBXGroup;
 			children = (
 				104E3A7D22B8A99400A84DB2 /* ProfileController.swift */,
+				108C080922BCD36000B2EBE9 /* HistoryProfileDataController.swift */,
+				108C080B22BCD81500B2EBE9 /* CaseListController.swift */,
+				108C080D22BCD82000B2EBE9 /* CheckListController.swift */,
+				108C080F22BCD82D00B2EBE9 /* QuestionListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -669,6 +696,7 @@
 			isa = PBXGroup;
 			children = (
 				104E3A8122B8A9E200A84DB2 /* ProfileViewModel.swift */,
+				108C081322BCDF3300B2EBE9 /* CaseListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -677,6 +705,7 @@
 			isa = PBXGroup;
 			children = (
 				104E3A8422B8AA4200A84DB2 /* ProfileHeaderView.swift */,
+				108C081122BCDA5700B2EBE9 /* CaseListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -782,12 +811,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		108C081522BCE06B00B2EBE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				108C081622BCE23A00B2EBE9 /* CaseRecordModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		10CAF38F22A8BB5900F20E81 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				10CAF39022A8BB9C00F20E81 /* PatientManager.swift */,
 				10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */,
 				10CAF3DD22AF42DD00F20E81 /* RCManager.swift */,
+				108C080522BCCF6B00B2EBE9 /* LoginManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -942,7 +980,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1014D0522293A6D700294558 /* UIViewController+ZZExtension.swift in Sources */,
-				1030AAB6229E6CD400519CA4 /* Network.swift in Sources */,
 				100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */,
 				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
@@ -958,6 +995,7 @@
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
 				104E3A8222B8A9E200A84DB2 /* ProfileViewModel.swift in Sources */,
+				108C081022BCD82D00B2EBE9 /* QuestionListController.swift in Sources */,
 				108C080422BB635D00B2EBE9 /* ApplyForRefundViewModel.swift in Sources */,
 				108C080222BB611B00B2EBE9 /* TextLeftRightCell.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
@@ -965,10 +1003,12 @@
 				10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
+				108C080E22BCD82000B2EBE9 /* CheckListController.swift in Sources */,
 				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
 				104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */,
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
+				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */,
@@ -981,12 +1021,15 @@
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
 				104E3AA122B8E5E700A84DB2 /* LLSegmentItemTabbarView.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
+				108C081922BCE99400B2EBE9 /* HLRApi.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
 				104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */,
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
+				108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
+				108C080A22BCD36000B2EBE9 /* HistoryProfileDataController.swift in Sources */,
 				10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */,
 				104E3AA922B8E5E700A84DB2 /* LLToolFunc.swift in Sources */,
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
@@ -997,6 +1040,7 @@
 				104E3A9F22B8E5E700A84DB2 /* LLSegmentItemTitleImageView.swift in Sources */,
 				104E3AA022B8E5E700A84DB2 /* LLSegmentItemBadgeView.swift in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
+				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
 				1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */,
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
@@ -1010,6 +1054,7 @@
 				1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */,
 				10CAF3D422ADFCB200F20E81 /* GetRealNameTipView.swift in Sources */,
 				1014D0482293A6D700294558 /* NSNumber+ZZExtension.swift in Sources */,
+				108C081B22BCE9EE00B2EBE9 /* Network.swift in Sources */,
 				105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */,
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
@@ -1020,10 +1065,13 @@
 				1014D0622293A6D700294558 /* BaseController.swift in Sources */,
 				1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */,
 				1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */,
+				108C081422BCDF3300B2EBE9 /* CaseListViewModel.swift in Sources */,
+				108C080C22BCD81500B2EBE9 /* CaseListController.swift in Sources */,
 				105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */,
 				1014D0532293A6D700294558 /* UIView+ZZExtension.swift in Sources */,
 				1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */,
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,
+				108C080622BCCF6C00B2EBE9 /* LoginManager.swift in Sources */,
 				1014D0562293A6D700294558 /* UIImage+ZZExtension.swift in Sources */,
 				1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */,
 				1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */,

@@ -33,8 +33,6 @@ class LoginViewModel: BaseViewModel {
             if let patientModel = resp.content {
                 patientInfoProperty.value = patientModel
                 loginObserver.send(value: true)
-            } else {
-                loginObserver.send(value: false)
             }
         }
     }

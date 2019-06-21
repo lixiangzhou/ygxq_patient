@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct OrderModel: ModelProtocol {
+struct OrderModel: ModelProtocol, Equatable {
     var refundAmount: Double = 0
     var refundReason: String = ""
     var linkId: Int = 0

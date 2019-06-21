@@ -14,10 +14,6 @@ import HandyJSON
 /// 患者信息 信号量
 let patientInfoProperty = MutableProperty<PatientInfoModel?>(nil)
 
-/// 登录状态 信号量
-let (_loginSignal, loginObserver) = Signal<Bool, NoError>.pipe()
-let loginSignal = _loginSignal.skipRepeats()
-
 var patientId: Int {
     return patientInfoProperty.value?.id ?? 0
 }
@@ -28,7 +24,6 @@ class PatientManager {
     private init() {
         patientInfoProperty.signal.observeValues { self.patientInfoModel = $0 }
         patientInfoProperty.value = getCachedPatientInfo()
-        loginObserver.send(value: patientInfoModel != nil)
     }
     
     var isLogin: Bool {

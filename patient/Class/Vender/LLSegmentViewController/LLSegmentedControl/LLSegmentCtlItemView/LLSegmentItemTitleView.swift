@@ -28,7 +28,7 @@ class LLSegmentItemTitleView: LLSegmentItemBadgeView {
     required init(frame: CGRect) {
         super.init(frame: frame)
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.boldSystemFont(ofSize: itemTitleViewStyle.titleFontSize)
+        titleLabel.font = UIFont.systemFont(ofSize: itemTitleViewStyle.titleFontSize)
         addSubview(titleLabel)
         
         maskTitleLabel.textAlignment = .center
@@ -95,7 +95,7 @@ extension LLSegmentItemTitleView{
         let percentConvert = self.percentConvert()
         titleLabel.textColor = interpolationColorFrom(fromColor:itemTitleViewStyle.unSelectedColor, toColor:itemTitleViewStyle.selectedColor, percent: percentConvert)
         let scale = 1 + (itemTitleViewStyle.selectedTitleScale - 1)*percentConvert
-        let font = UIFont.boldSystemFont(ofSize: itemTitleViewStyle.titleFontSize * scale)
+        let font = UIFont.systemFont(ofSize: itemTitleViewStyle.titleFontSize * scale)
         titleLabel.font = font
         titleLabel.sizeToFit()
         titleLabel.center = CGPoint.init(x: bounds.width/2, y: bounds.height/2 + itemTitleViewStyle.titleLabelCenterOffsetY)

@@ -27,7 +27,6 @@ class SettingViewModel: BaseViewModel {
     override init() {
         super.init()
         
-        
         let versionLabel = UILabel(text: "\(UIApplication.shared.zz_appVersion)", font: .size(14), textColor: .c6)
         versionLabel.sizeToFit()
         
@@ -37,6 +36,10 @@ class SettingViewModel: BaseViewModel {
             RowModel(type: .feedback, config: TextTableViewCellConfig()),
             RowModel(type: .version, config: TextTableViewCellConfig(rightView: versionLabel, hasBottomLine: false)),
         ]
+    }
+    
+    func logout() {
+        patientInfoProperty.value = nil
     }
 }
 

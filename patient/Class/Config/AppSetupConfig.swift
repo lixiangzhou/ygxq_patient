@@ -14,6 +14,7 @@ struct AppSetupConfig {
         AppActivityIndicatorConfig.config()
         WXManager.shared.setup()
         RCManager.shared.setup()
+        LoginManager.shared.setup()
     }
 }
 

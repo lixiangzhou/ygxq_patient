@@ -10,18 +10,14 @@ import UIKit
 
 class HomeController: BaseController {
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print(PatientManager.shared.patientInfoModel)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        test()
-    }
-
-    func test() {
-        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
+        
     }
 }

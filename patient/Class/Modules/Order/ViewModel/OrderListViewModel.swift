@@ -15,7 +15,6 @@ class OrderListViewModel: BaseViewModel {
     var state: OrderState = .payed
     
     let dataSourceProperty = MutableProperty<[OrderModel]>([OrderModel]())
-    let (reloadSignal, reloadObserver) = Signal<(), NoError>.pipe()
     
     override init() {
         super.init()
@@ -37,7 +36,6 @@ class OrderListViewModel: BaseViewModel {
             guard let self = self else { return }
             if let orders = orders, !orders.isEmpty {
                 self.dataSourceProperty.value = orders
-                self.reloadObserver.send(value: ())
             }
         }
     }

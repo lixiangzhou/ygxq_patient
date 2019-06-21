@@ -14,7 +14,7 @@ extension TimeInterval {
     }
     
     var date: Date {
-        return Date(timeIntervalSince1970: self)
+        return Date(timeIntervalSince1970: self / 1000)
     }
 }
 
