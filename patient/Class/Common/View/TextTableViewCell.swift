@@ -258,6 +258,26 @@ struct TextTableViewCellConfig {
 }
 
 extension TextTableViewCellConfig: Equatable {
+    
+    static func == (lhs: TextTableViewCellConfig, rhs: TextTableViewCellConfig) -> Bool {
+        return lhs.effectStyle == rhs.effectStyle &&
+            lhs.cellBackgroundColor.rgbaValue == rhs.cellBackgroundColor.rgbaValue &&
+            lhs.contentViewBackgroundColor.rgbaValue == rhs.contentViewBackgroundColor.rgbaValue &&
+            lhs.leftView == rhs.leftView &&
+            lhs.leftViewSize == rhs.leftViewSize &&
+            lhs.leftPaddingLeft == rhs.leftPaddingLeft &&
+            lhs.leftPaddingRight == rhs.leftPaddingRight &&
+            lhs.font.pointSize == rhs.font.pointSize &&
+            lhs.textColor.rgbaValue == rhs.textColor.rgbaValue &&
+            lhs.rightView == rhs.rightView &&
+            lhs.rightViewSize == rhs.rightViewSize &&
+            lhs.rightPadding == rhs.rightPadding &&
+            lhs.hasBottomLine == rhs.hasBottomLine &&
+            lhs.bottomLineColor?.rgbaValue == rhs.bottomLineColor?.rgbaValue &&
+            lhs.bottomLineLeftPadding == rhs.bottomLineLeftPadding &&
+            lhs.bottomLineRightPadding == rhs.bottomLineRightPadding &&
+            lhs.bottomLineHeight == rhs.bottomLineHeight
+    }
 }
 
 extension TextTableViewCellConfig {

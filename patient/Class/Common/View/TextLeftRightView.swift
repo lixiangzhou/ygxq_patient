@@ -135,4 +135,17 @@ struct TextLeftRightViewConfig {
 }
 
 extension TextLeftRightViewConfig: Equatable {
+    static func == (lhs: TextLeftRightViewConfig, rhs: TextLeftRightViewConfig) -> Bool {
+        return lhs.leftPadding == rhs.leftPadding &&
+            lhs.rightPadding == rhs.rightPadding &&
+            lhs.leftFont.pointSize == rhs.leftFont.pointSize &&
+            lhs.leftTextColor.rgbaValue == rhs.leftTextColor.rgbaValue &&
+            lhs.rightFont.pointSize == rhs.rightFont.pointSize &&
+            lhs.rightTextColor.rgbaValue == rhs.rightTextColor.rgbaValue &&
+            lhs.hasBottomLine == rhs.hasBottomLine &&
+            lhs.bottomLineColor?.rgbaValue == rhs.bottomLineColor?.rgbaValue &&
+            lhs.bottomLineLeftPadding == rhs.bottomLineLeftPadding &&
+            lhs.bottomLineRightPadding == rhs.bottomLineRightPadding &&
+            lhs.bottomLineHeight == rhs.bottomLineHeight
+    }
 }
