@@ -44,7 +44,7 @@ extension CaseListController {
     }
     
     override func setBinding() {
-        tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.skipRepeats { $0 == $1 }.map { _ in () }
+        tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.skipRepeats().map(value: ())
     }
 }
 
