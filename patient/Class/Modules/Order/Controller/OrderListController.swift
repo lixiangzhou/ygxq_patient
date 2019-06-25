@@ -51,7 +51,7 @@ extension OrderListController {
 extension OrderListController {
     /// 取消订单
     func cancelOrderAction(_ cell: OrderListCell?, _ model: OrderModel) {
-        
+        viewModel.cancelOrder(order: model)
     }
     
     /// 去支付
@@ -61,7 +61,7 @@ extension OrderListController {
     
     /// 删除订单
     func deleteOrderAction(_ cell: OrderListCell?, _ model: OrderModel) {
-        
+        viewModel.deleteOrder(order: model)
     }
     
     /// 退款

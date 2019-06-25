@@ -15,6 +15,8 @@ enum OrderApi: TargetType {
     case refundOrderList(pageNum: Int, pageSize: Int, pid: Int)
     case refundIsApply(orderId: Int)
     case refundApply(pid: Int, orderId: Int, reason: String)
+    case deleteOrder(orderId: Int)
+    case cancelOrder(orderId: Int)
 }
 
 extension OrderApi {
@@ -30,6 +32,8 @@ extension OrderApi {
             return "/order/refund/isApply"
         case .refundApply:
             return "/order/refundApply"
+        case .deleteOrder, .cancelOrder:
+            return "/order/updatePayOrder"
         }
     }
     
@@ -54,6 +58,12 @@ extension OrderApi {
             params["operator"] = pid
             params["orderId"] = orderId
             params["operateReason"] = reason
+        case let .deleteOrder(orderId: orderId):
+            params["id"] = orderId
+            params["isDelete"] = "Y"
+        case let .cancelOrder(orderId: orderId):
+            params["id"] = orderId
+            params["status"] = "PAY_ORD_S_CLO"
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

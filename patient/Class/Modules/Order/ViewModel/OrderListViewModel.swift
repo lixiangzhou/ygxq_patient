@@ -54,4 +54,24 @@ class OrderListViewModel: BaseViewModel {
     func refundIsApply(orderId: Int) -> SignalProducer<BoolString, NoError> {
         return OrderApi.refundIsApply(orderId: orderId).rac_response(None.self).map { BoolString($0) }
     }
+    
+    func deleteOrder(order: OrderModel) {
+        OrderApi.deleteOrder(orderId: order.id).rac_response(String.self).map { BoolString($0) }.startWithValues { [unowned self] (result) in
+            HUD.show(result)
+            if result.isSuccess {
+                var orders = self.dataSourceProperty.value
+                orders.removeAll(where: { $0.id == order.id })
+                self.dataSourceProperty.value = orders
+            }
+        }
+    }
+    
+    func cancelOrder(order: OrderModel) {
+        OrderApi.cancelOrder(orderId: order.id).rac_response(String.self).map { BoolString($0) }.startWithValues { [unowned self] (result) in
+            HUD.show(result)
+            if result.isSuccess {
+                self.getOrderList()
+            }
+        }
+    }
 }
