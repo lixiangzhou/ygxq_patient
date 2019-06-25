@@ -16,7 +16,6 @@ class ExamListCell: UITableViewCell, IDCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
-        separatorInset = .zero
         
         setUI()
     }

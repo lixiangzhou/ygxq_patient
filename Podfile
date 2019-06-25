@@ -26,7 +26,6 @@ target 'patient' do
     pod 'JPush'
     pod 'WZLBadge'
     pod 'SwiftDate'
-    pod 'FDFullscreenPopGesture'
     pod 'KMPlaceholderTextView'
     pod 'EmptyDataSet-Swift'
     pod 'FSPagerView'
