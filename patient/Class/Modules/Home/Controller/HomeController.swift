@@ -15,6 +15,8 @@ class HomeController: BaseController {
         super.viewDidLoad()
         
         print(PatientManager.shared.patientInfoModel)
+        
+        
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

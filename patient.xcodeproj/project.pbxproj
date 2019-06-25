@@ -87,6 +87,7 @@
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
+		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
 		108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F422BA41C100B2EBE9 /* OrderApi.swift */; };
 		108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */; };
 		108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F922BA450A00B2EBE9 /* OrderModel.swift */; };
@@ -217,6 +218,7 @@
 		105DBA7622A6655800F55FE6 /* NSArray+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
+		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
 		108C07F422BA41C100B2EBE9 /* OrderApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
 		108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		108C07F922BA450A00B2EBE9 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -847,6 +849,7 @@
 				10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */,
 				10CAF3DD22AF42DD00F20E81 /* RCManager.swift */,
 				108C080522BCCF6B00B2EBE9 /* LoginManager.swift */,
+				1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */,
+				1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */,
 				104E3AA822B8E5E700A84DB2 /* LLCtlPageView.swift in Sources */,
 				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,
