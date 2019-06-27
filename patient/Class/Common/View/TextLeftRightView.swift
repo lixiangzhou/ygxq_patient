@@ -18,9 +18,9 @@ class TextLeftRightView: UIView {
         setUI()
     }
     
-    convenience init(_ config: TextLeftRightViewConfig = TextLeftRightViewConfig()) {
+    convenience init(_ aConfig: TextLeftRightViewConfig = TextLeftRightViewConfig()) {
         self.init()
-        self.config = config
+        self.config = aConfig
     }
     
     required init?(coder aDecoder: NSCoder) {

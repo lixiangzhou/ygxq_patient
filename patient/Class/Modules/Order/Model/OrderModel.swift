@@ -19,13 +19,13 @@ struct OrderModel: ModelProtocol, Equatable {
 //    var isProtocol: Bool = false
     var payAmount: Double = 0.0
     var duid: Int = 0
-//    var refundApply:
+    var refundApply: String = ""
 //    var serDrugUesds:
 //    var patientRelatives:
     var id: Int = 0
 //    var `protocol`:
 //    var serviceMessages:
-//    var refundTime:
+    var refundTime: TimeInterval = 0
 //    var serProductId:
     var productName: String = ""
     var orderTime: TimeInterval = 0

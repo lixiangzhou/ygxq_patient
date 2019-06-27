@@ -76,7 +76,7 @@ extension ApplyForRefundController {
         refundAmountLabel = refundAmountView.rightLabel
         
         scrollView.snp.makeConstraints { (make) in
-            make.top.right.left.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { (make) in

@@ -88,6 +88,8 @@
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
+		1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */; };
+		1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */; };
 		108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F422BA41C100B2EBE9 /* OrderApi.swift */; };
 		108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */; };
 		108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F922BA450A00B2EBE9 /* OrderModel.swift */; };
@@ -219,6 +221,8 @@
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
+		1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailController.swift; sourceTree = "<group>"; };
+		1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailViewModel.swift; sourceTree = "<group>"; };
 		108C07F422BA41C100B2EBE9 /* OrderApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
 		108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		108C07F922BA450A00B2EBE9 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -748,6 +752,7 @@
 				104E3A8C22B8E13000A84DB2 /* OrderListController.swift */,
 				104E3A8E22B8E2A700A84DB2 /* OrderController.swift */,
 				108C07FF22BB5D1100B2EBE9 /* ApplyForRefundController.swift */,
+				1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -757,6 +762,7 @@
 			children = (
 				108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */,
 				108C080322BB635D00B2EBE9 /* ApplyForRefundViewModel.swift */,
+				1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1008,6 +1014,7 @@
 				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
 				104E3AA722B8E5E700A84DB2 /* LLContainerScrollView.swift in Sources */,
+				1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
 				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
@@ -1115,6 +1122,7 @@
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
+				1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */,
 				108C082522BCFCCC00B2EBE9 /* CheckListCell.swift in Sources */,
 				104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */,
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,

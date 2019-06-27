@@ -87,7 +87,9 @@ extension OrderListController {
     
     /// 退款详情
     func refundDetailAction(_ cell: OrderListCell?, _ model: OrderModel) {
-        
+        let vc = RefundDetailController()
+        vc.orderModel = model
+        push(vc)
     }
 }
 
