@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderListCell: UITableViewCell, IDCell {
+class OrderListCell: UITableViewCell, IDView {
 
     // MARK: - Life Cycle
     
@@ -90,6 +90,7 @@ extension OrderListCell {
         payedView.detailBtn.addTarget(self, action: #selector(detailAction), for: .touchUpInside)
         
         refundView.detailBtn.addTarget(self, action: #selector(refundDetailAction), for: .touchUpInside)
+        refundView.deleteBtn.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
         
         let bottomSepView = contentView.zz_add(subview: UIView.sepLine(color: .cf0efef))
         

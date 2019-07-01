@@ -49,6 +49,7 @@ extension UserApi: TargetType {
         case let .patientInfo(pid: id):
             params["id"] = id
         }
+        
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }
 }

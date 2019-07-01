@@ -34,4 +34,5 @@ class ProfileViewModel: BaseViewModel {
         dataSource.append(RowModel(type: .historyData, img: "", config: commonCellConfig()))
         dataSource.append(RowModel(type: .drugRecord, img: "", config: lastCellConfig()))
     }
+    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class TextLeftRightCell: UITableViewCell, IDCell {
+class TextLeftRightCell: UITableViewCell, IDView {
     // MARK: - Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

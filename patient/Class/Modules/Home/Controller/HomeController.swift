@@ -20,6 +20,7 @@ class HomeController: BaseController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        let vc = UploadResourceController()
+        push(vc)
     }
 }

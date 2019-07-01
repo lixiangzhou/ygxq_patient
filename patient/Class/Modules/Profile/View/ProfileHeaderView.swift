@@ -21,15 +21,20 @@ class ProfileHeaderView: BaseView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit {
+        print("ProfileHeaderView deinit")
+    }
 
     // MARK: - Public Property
-    let nameLabel = UILabel(text: " ", font: .size(19), textColor: .c3)
-    let mobileLabel = UILabel(text: " ", font: .size(14), textColor: .c6)
-    let sexLabel = UILabel(text: " ", font: .size(15), textColor: .c6, textAlignment: .center)
-    let ageLabel = UILabel(text: " ", font: .size(15), textColor: .c6, textAlignment: .center)
-    let diseaseLabel = UILabel(text: " ", font: .size(15), textColor: .c6, textAlignment: .center)
-    // MARK: - Private Property
+    var nameLabel: UILabel!
+    var mobileLabel: UILabel!
+    var sexLabel: UILabel!
+    var ageLabel: UILabel!
+    var diseaseLabel: UILabel!
     
+    var uploadClosure: (() -> Void)?
+    // MARK: - Private Property
 }
 
 // MARK: - UI
@@ -37,113 +42,87 @@ extension ProfileHeaderView {
     private func setUI() {
         backgroundColor = .clear
         
-        let topView = UIView()
-        topView.backgroundColor = .cf
-        addSubview(topView)
+        let (nameView, nameLabel) = getRowView("姓名")
+        let (mobileView, mobileLabel) = getRowView("手机号")
+        let (sexView, sexLabel) = getRowView("性别")
+        let (ageView, ageLabel) = getRowView("年龄")
+        let (diseaseView, diseaseLabel) = getRowView("疾病")
         
-        topView.addSubview(nameLabel)
-        topView.addSubview(mobileLabel)
-        topView.addSubview(sexLabel)
-        topView.addSubview(ageLabel)
-        topView.addSubview(diseaseLabel)
+        self.nameLabel = nameLabel
+        self.mobileLabel = mobileLabel
+        self.sexLabel = sexLabel
+        self.ageLabel = ageLabel
+        self.diseaseLabel = diseaseLabel
         
-        let sexDescLabel = topView.zz_add(subview: UILabel(text: "性别", font: .size(14), textColor: .c9, textAlignment: .center))
-        let ageDescLabel = topView.zz_add(subview: UILabel(text: "年龄", font: .size(14), textColor: .c9, textAlignment: .center))
-        let diseaseDescLabel = topView.zz_add(subview: UILabel(text: "疾病", font: .size(14), textColor: .c9, textAlignment: .center))
+        let bottomView = zz_add(subview: UIView())
+        let uploadBtn = bottomView.zz_add(subview: UIButton(title: "上传资料", font: .size(15), titleColor: .c6, backgroundColor: .cf, target: self, action: #selector(uploadAction)))
         
-        let line1 = topView.zz_add(subview: UIView.sepLine())
-        let line2 = topView.zz_add(subview: UIView.sepLine())
-        
-        let uploadBtn = zz_add(subview: UIButton(title: "上传资料", font: .size(15), titleColor: .c6, backgroundColor: .cf, target: self, action: #selector(uploadAction)))
-        
-        topView.snp.makeConstraints { (make) in
+        nameView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
         }
         
-        nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(25)
-            make.centerX.equalToSuperview()
+        mobileView.snp.makeConstraints { (make) in
+            make.top.equalTo(nameView.snp.bottom)
+            make.left.right.equalTo(nameView)
         }
         
-        mobileLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
+        sexView.snp.makeConstraints { (make) in
+            make.top.equalTo(mobileView.snp.bottom)
+            make.left.right.equalTo(nameView)
         }
         
-        let padding: CGFloat = 20
-        let width = (UIScreen.zz_width - padding * 2) / 3
-        
-        sexLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(ageLabel)
-            make.left.equalTo(padding)
-            make.width.equalTo(width)
+        ageView.snp.makeConstraints { (make) in
+            make.top.equalTo(sexView.snp.bottom)
+            make.left.right.equalTo(nameView)
         }
         
-        sexDescLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(ageDescLabel)
-            make.left.width.equalTo(sexLabel)
+        diseaseView.snp.makeConstraints { (make) in
+            make.top.equalTo(ageView.snp.bottom)
+            make.left.right.equalTo(nameView)
         }
         
-        ageLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(mobileLabel.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(width)
-        }
-        
-        ageDescLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(ageLabel.snp.bottom).offset(10)
-            make.left.width.equalTo(ageLabel)
-            make.bottom.equalTo(-20)
-        }
-        
-        diseaseLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(ageLabel)
-            make.right.equalTo(-padding)
-            make.width.equalTo(width)
-        }
-        
-        diseaseDescLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(ageDescLabel)
-            make.left.width.equalTo(diseaseLabel)
-        }
-        
-        line1.snp.makeConstraints { (make) in
-            make.centerY.equalTo(ageLabel.snp.bottom).offset(5)
-            make.centerX.equalTo(ageLabel.snp.left)
-            make.size.equalTo(CGSize(width: 1, height: 20))
-        }
-        
-        line2.snp.makeConstraints { (make) in
-            make.centerY.size.equalTo(line1)
-            make.centerX.equalTo(ageLabel.snp.right)
+        bottomView.snp.makeConstraints { (make) in
+            make.top.equalTo(diseaseView.snp.bottom)
+            make.left.right.equalToSuperview()
         }
         
         uploadBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(topView.snp.bottom).offset(12)
-            make.height.equalTo(50)
+            make.top.equalTo(10)
             make.left.right.equalToSuperview()
+            make.height.equalTo(50)
+            make.bottom.equalTo(-10)
         }
+    }
+    
+    private func getRowView(_ title: String) -> (UIView, UILabel) {
+        let view = UIView()
+        view.backgroundColor = .cf
+        addSubview(view)
+        
+        let titleLabel = view.zz_add(subview: UILabel(text: title, font: .size(16), textColor: .c6)) as! UILabel
+        let txtLabel = view.zz_add(subview: UILabel(font: .size(16), textColor: .c6, textAlignment: .right)) as! UILabel
+        view.addBottomLine()
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(15)
+            make.width.equalTo(100)
+            make.centerY.equalToSuperview()
+        }
+        
+        txtLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(titleLabel.snp.right)
+            make.top.equalTo(10)
+            make.right.equalTo(-15)
+            make.bottom.equalTo(-10)
+        }
+        
+        return (view, txtLabel)
     }
 }
 
 // MARK: - Action
 extension ProfileHeaderView {
     @objc private func uploadAction() {
-        
+        uploadClosure?()
     }
-}
-
-// MARK: - Helper
-extension ProfileHeaderView {
-    
-}
-
-// MARK: - Other
-extension ProfileHeaderView {
-    
-}
-
-// MARK: - Public
-extension ProfileHeaderView {
-    
 }

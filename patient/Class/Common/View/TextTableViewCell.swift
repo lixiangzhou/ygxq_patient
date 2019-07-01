@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class TextTableViewCell: UITableViewCell, IDCell {
+class TextTableViewCell: UITableViewCell, IDView {
     // MARK: - Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

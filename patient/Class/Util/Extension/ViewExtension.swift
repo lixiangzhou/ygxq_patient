@@ -52,3 +52,20 @@ extension BaseShowView {
         }
     }
 }
+
+protocol LayoutHeightProtocol {
+    func layoutHeight()
+}
+
+extension UIView: LayoutHeightProtocol {
+    func layoutHeight() {
+        layoutIfNeeded()
+        var height: CGFloat = 0
+        for view in subviews {
+            if view.zz_maxY > height {
+                height = view.zz_maxY
+            }
+        }
+        zz_height = height
+    }
+}

@@ -18,13 +18,14 @@ class ProfileController: BaseController {
         title = "我的档案"
         setUI()
         setBinding()
+        PatientManager.shared.getPatientInfo()
     }
 
     // MARK: - Public Property
     
     // MARK: - Private Property
     private let tableView = UITableView()
-    private let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 234))
+    private let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 245))
     private let viewModel = ProfileViewModel()
 }
 
@@ -37,6 +38,10 @@ extension ProfileController {
         tableView.tableHeaderView = headerView
         view.addSubview(tableView)
         
+        headerView.uploadClosure = { [unowned self] in
+            self.uploadAction()
+        }
+        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -46,16 +51,23 @@ extension ProfileController {
         patientInfoProperty.producer.skipNil().startWithValues { [weak self] (pinfo) in
             self?.headerView.nameLabel.text = pinfo.realName
             self?.headerView.mobileLabel.text = pinfo.mobile
-            self?.headerView.ageLabel.text = (Date().zz_year - pinfo.birth.date.zz_year).description
+            self?.headerView.ageLabel.text = pinfo.age.description
             self?.headerView.sexLabel.text = pinfo.sex.description
             self?.headerView.diseaseLabel.text = pinfo.diseaseName
+            
+            self?.headerView.layoutHeight()
+            self?.tableView.tableHeaderView = self?.headerView
         }
     }
 }
 
 // MARK: - Action
 extension ProfileController {
-    
+    private func uploadAction() {
+        let vc = UploadResourceController()
+        vc.title = "上传资料"
+        push(vc)
+    }
 }
 
 // MARK: - Network

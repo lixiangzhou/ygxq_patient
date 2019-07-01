@@ -14,8 +14,6 @@ class ExamListViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[GroupModel<ExamModel>]>([GroupModel<ExamModel>]())
     
     func getData(){
-        
-        
         ExamApi.examList(pid: patientId).rac_responseModel([ExamModel].self).startWithValues { [unowned self] (exams) in
             if let exams = exams, !exams.isEmpty {
                 var datas = [String: [ExamModel]]()
