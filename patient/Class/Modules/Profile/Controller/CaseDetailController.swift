@@ -16,7 +16,7 @@ class CaseDetailController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "病例详情"
+        title = "病历详情"
         setUI()
         setBinding()
         viewModel.getData(id)
@@ -35,6 +35,7 @@ extension CaseDetailController {
     override func setUI() {
         tableView.set(dataSource: self, delegate: self)
         tableView.register(cell: TextLeftGrowTextRightCell.self)
+        tableView.register(cell: CaseDetailOpCell.self)
         tableView.backgroundColor = .cf0efef
         tableView.rowHeight = UITableView.automaticDimension
         view.addSubview(tableView)
@@ -69,14 +70,22 @@ extension CaseDetailController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(cell: TextLeftGrowTextRightCell.self, for: indexPath)
         let record = viewModel.dataSourceProperty.value[indexPath.row]
-        
-        cell.config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, rightTopPadding: 15, rightBottomPadding: 15, rightFont: .boldSize(16))
-        cell.leftLabel.text = record.title
-        cell.rightLabel.text = record.subTitle
-        
-        return cell
+
+        if record.title != "冠状动脉造影狭窄" {
+            let cell = tableView.dequeue(cell: TextLeftGrowTextRightCell.self, for: indexPath)
+            
+            cell.config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, rightTopPadding: 15, rightBottomPadding: 15, rightFont: .boldSize(16))
+            cell.leftLabel.text = record.title
+            cell.rightLabel.text = record.subTitle
+            
+            return cell
+        } else {
+            let cell = tableView.dequeue(cell: CaseDetailOpCell.self, for: indexPath)
+            cell.titleLabel.text = record.title
+            cell.opView.items = record.items
+            return cell
+        }
     }
 }
 

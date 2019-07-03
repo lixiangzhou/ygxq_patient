@@ -42,17 +42,17 @@ extension ProfileHeaderView {
     private func setUI() {
         backgroundColor = .clear
         
-        let (nameView, nameLabel) = getRowView("姓名")
-        let (mobileView, mobileLabel) = getRowView("手机号")
-        let (sexView, sexLabel) = getRowView("性别")
-        let (ageView, ageLabel) = getRowView("年龄")
-        let (diseaseView, diseaseLabel) = getRowView("疾病")
+        let nameView = getRowView("姓名")
+        let mobileView = getRowView("手机号")
+        let sexView = getRowView("性别")
+        let ageView = getRowView("年龄")
+        let diseaseView = getRowView("疾病")
         
-        self.nameLabel = nameLabel
-        self.mobileLabel = mobileLabel
-        self.sexLabel = sexLabel
-        self.ageLabel = ageLabel
-        self.diseaseLabel = diseaseLabel
+        self.nameLabel = nameView.rightLabel
+        self.mobileLabel = mobileView.rightLabel
+        self.sexLabel = sexView.rightLabel
+        self.ageLabel = ageView.rightLabel
+        self.diseaseLabel = diseaseView.rightLabel
         
         let bottomView = zz_add(subview: UIView())
         let uploadBtn = bottomView.zz_add(subview: UIButton(title: "上传资料", font: .size(15), titleColor: .c6, backgroundColor: .cf, target: self, action: #selector(uploadAction)))
@@ -94,29 +94,13 @@ extension ProfileHeaderView {
         }
     }
     
-    private func getRowView(_ title: String) -> (UIView, UILabel) {
-        let view = UIView()
+    private func getRowView(_ title: String) -> TextLeftGrowTextRightView {
+        let view = TextLeftGrowTextRightView()
         view.backgroundColor = .cf
+        view.leftLabel.text = title
+        view.config = TextLeftGrowTextRightViewConfig()
         addSubview(view)
-        
-        let titleLabel = view.zz_add(subview: UILabel(text: title, font: .size(16), textColor: .c6)) as! UILabel
-        let txtLabel = view.zz_add(subview: UILabel(font: .size(16), textColor: .c6, textAlignment: .right)) as! UILabel
-        view.addBottomLine()
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(15)
-            make.width.equalTo(100)
-            make.centerY.equalToSuperview()
-        }
-        
-        txtLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(titleLabel.snp.right)
-            make.top.equalTo(10)
-            make.right.equalTo(-15)
-            make.bottom.equalTo(-10)
-        }
-        
-        return (view, txtLabel)
+        return view
     }
 }
 

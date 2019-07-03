@@ -56,7 +56,7 @@ class TextLeftGrowTextRightView: BaseView {
                     make.centerY.equalToSuperview()
                 case .bottom:
                     make.top.greaterThanOrEqualTo(config.leftTopPadding)
-                    make.bottom.equalTo(config.leftBottomPadding)
+                    make.bottom.equalTo(-config.leftBottomPadding)
                 }
             }
             
@@ -85,6 +85,7 @@ class TextLeftGrowTextRightView: BaseView {
 // MARK: - UI
 extension TextLeftGrowTextRightView {
     private func setUI() {
+        rightLabel.numberOfLines = 0
         addSubview(leftLabel)
         addSubview(rightLabel)
         addSubview(bottomLine)
@@ -141,7 +142,7 @@ struct TextLeftGrowTextRightViewConfig {
          rightBottomPadding: CGFloat = 10,
          rightFont: UIFont = UIFont.size(16),
          rightTextColor: UIColor = .c3,
-         rightAlignment: NSTextAlignment = .left,
+         rightAlignment: NSTextAlignment = .right,
          leftToRightMargin: CGFloat = 20,
          hasBottomLine: Bool = true,
          bottomLineColor: UIColor = UIColor.cdcdcdc,

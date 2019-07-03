@@ -28,7 +28,7 @@ extension HistoryProfileDataController {
     
     override func loadCtls() {
         let caseListVC = CaseListController()
-        caseListVC.title = "病例记录"
+        caseListVC.title = "病历记录"
         
         let checkListVC = CheckListController()
         checkListVC.title = "检查记录"

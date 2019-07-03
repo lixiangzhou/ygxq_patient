@@ -60,7 +60,8 @@ class CaseDetailViewModel: BaseViewModel {
                 }
                 
                 if caseRecord.preDiagnosis.count > 0 {
-                    array.append(Record(title: "初步诊断", subTitle: caseRecord.preDiagnosis))
+//                    array.append(Record(title: "初步诊断", subTitle: caseRecord.preDiagnosis))
+                    array.append(Record(title: "初步诊断", subTitle: "dsjafldajfkldas;fjl;dsafjsdlk;fjl;asfjsadkl;fjsalfjakl;fjasl;jfklsa"))
                 }
                 
                 for op in caseRecord.ops {
@@ -79,8 +80,7 @@ class CaseDetailViewModel: BaseViewModel {
                 }
                 
                 if caseRecord.outTime > 0 {
-                    
-                    array.append(Record(title: "出院日期", subTitle: caseRecord.outTime.toTime(format: "yyyy-MM-dd)")))
+                    array.append(Record(title: "出院日期", subTitle: caseRecord.outTime.toTime(format: "yyyy-MM-dd")))
                 }
                 
                 if caseRecord.dischargeInstructions.count > 0 {

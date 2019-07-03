@@ -43,6 +43,8 @@
 		100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */; };
 		100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */; };
 		100AEE5622CC7DB800094AE2 /* TextLeftGrowTextRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */; };
+		100AEE5822CC82B800094AE2 /* OPInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5722CC82B800094AE2 /* OPInfoView.swift */; };
+		100AEE5A22CC84C800094AE2 /* CaseDetailOpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */; };
 		100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3922A1311200C5262C /* HUDConfig.swift */; };
 		100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3B22A1335600C5262C /* AppSetupConfig.swift */; };
 		100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3D22A1341100C5262C /* AppearanceConfig.swift */; };
@@ -209,6 +211,8 @@
 		100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailViewModel.swift; sourceTree = "<group>"; };
 		100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftGrowTextRightCell.swift; sourceTree = "<group>"; };
 		100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftGrowTextRightView.swift; sourceTree = "<group>"; };
+		100AEE5722CC82B800094AE2 /* OPInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPInfoView.swift; sourceTree = "<group>"; };
+		100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailOpCell.swift; sourceTree = "<group>"; };
 		100B6C3922A1311200C5262C /* HUDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDConfig.swift; sourceTree = "<group>"; };
 		100B6C3B22A1335600C5262C /* AppSetupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupConfig.swift; sourceTree = "<group>"; };
 		100B6C3D22A1341100C5262C /* AppearanceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfig.swift; sourceTree = "<group>"; };
@@ -909,6 +913,8 @@
 				108C082E22BD155600B2EBE9 /* ExamListCell.swift */,
 				100AEDCD22C99E5D00094AE2 /* UploadResourceCell.swift */,
 				100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */,
+				100AEE5722CC82B800094AE2 /* OPInfoView.swift */,
+				100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1222,6 +1228,7 @@
 				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
 				104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */,
+				100AEE5822CC82B800094AE2 /* OPInfoView.swift in Sources */,
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
 				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
@@ -1283,6 +1290,7 @@
 				1014CF9F229391DF00294558 /* AppDelegate.swift in Sources */,
 				104E3AA522B8E5E700A84DB2 /* LLIndicatorView.swift in Sources */,
 				105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
+				100AEE5A22CC84C800094AE2 /* CaseDetailOpCell.swift in Sources */,
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
 				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
