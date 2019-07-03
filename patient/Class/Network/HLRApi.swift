@@ -12,6 +12,7 @@ import Moya
 enum HLRApi: TargetType {
     case caseRecordList(pid: Int, type: Int)
     case checkList(pid: Int, type: Int)
+    case caseRecord(id: Int)
 }
 
 extension HLRApi {
@@ -21,6 +22,8 @@ extension HLRApi {
             return "/hlrMore/listCaseRecordList"
         case .checkList:
             return "/hlrMore/listChecklist"
+        case .caseRecord:
+            return "/hlrMore/getCaseRecord"
         }
     }
     
@@ -33,6 +36,8 @@ extension HLRApi {
         case let .checkList(pid: pid, type: type):
             params["puid"] = pid
             params["type"] = type
+        case let .caseRecord(id: pid):
+            params["id"] = pid
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

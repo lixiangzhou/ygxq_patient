@@ -71,5 +71,12 @@ extension CaseListController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        let vc = CaseDetailController()
+        vc.id = model.id
+        push(vc)
+    }
 }
 

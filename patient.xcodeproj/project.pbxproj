@@ -39,6 +39,10 @@
 		100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */; };
 		100AEE4C22CB6B6E00094AE2 /* AddressEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */; };
 		100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */; };
+		100AEE5022CC589D00094AE2 /* CaseDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4F22CC589D00094AE2 /* CaseDetailController.swift */; };
+		100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */; };
+		100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */; };
+		100AEE5622CC7DB800094AE2 /* TextLeftGrowTextRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */; };
 		100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3922A1311200C5262C /* HUDConfig.swift */; };
 		100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3B22A1335600C5262C /* AppSetupConfig.swift */; };
 		100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3D22A1341100C5262C /* AppearanceConfig.swift */; };
@@ -201,6 +205,10 @@
 		100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDistrictViewModel.swift; sourceTree = "<group>"; };
 		100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditController.swift; sourceTree = "<group>"; };
 		100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewModel.swift; sourceTree = "<group>"; };
+		100AEE4F22CC589D00094AE2 /* CaseDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailController.swift; sourceTree = "<group>"; };
+		100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailViewModel.swift; sourceTree = "<group>"; };
+		100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftGrowTextRightCell.swift; sourceTree = "<group>"; };
+		100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftGrowTextRightView.swift; sourceTree = "<group>"; };
 		100B6C3922A1311200C5262C /* HUDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDConfig.swift; sourceTree = "<group>"; };
 		100B6C3B22A1335600C5262C /* AppSetupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupConfig.swift; sourceTree = "<group>"; };
 		100B6C3D22A1341100C5262C /* AppearanceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfig.swift; sourceTree = "<group>"; };
@@ -746,6 +754,8 @@
 				1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */,
 				108C07FD22BB583D00B2EBE9 /* TextLeftRightView.swift */,
 				108C080122BB611B00B2EBE9 /* TextLeftRightCell.swift */,
+				100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */,
+				100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -872,6 +882,7 @@
 				108C080D22BCD82000B2EBE9 /* CheckListController.swift */,
 				108C083022BD158D00B2EBE9 /* ExamListController.swift */,
 				1099E71A22C4663700C37A9E /* UploadResourceController.swift */,
+				100AEE4F22CC589D00094AE2 /* CaseDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -884,6 +895,7 @@
 				108C081E22BCFAA800B2EBE9 /* CheckListViewModel.swift */,
 				108C082C22BD152900B2EBE9 /* ExamListViewModel.swift */,
 				1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */,
+				100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1240,6 +1252,7 @@
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				100AEE4422CAEBE700094AE2 /* AddressModel.swift in Sources */,
 				100AEE3122C9F64000094AE2 /* HEPickerOptions.swift in Sources */,
+				100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */,
 				100AEE2D22C9F64000094AE2 /* HEPhotoBrowserViewController.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				100AEE2322C9F64000094AE2 /* HEPhotoBrowserAnimator.swift in Sources */,
@@ -1295,6 +1308,7 @@
 				1030AAAE229E6AF500519CA4 /* LoginController.swift in Sources */,
 				1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */,
 				108C082722BD075A00B2EBE9 /* GroupModels.swift in Sources */,
+				100AEE5622CC7DB800094AE2 /* TextLeftGrowTextRightView.swift in Sources */,
 				108C081422BCDF3300B2EBE9 /* CaseListViewModel.swift in Sources */,
 				108C082D22BD152900B2EBE9 /* ExamListViewModel.swift in Sources */,
 				108C080C22BCD81500B2EBE9 /* CaseListController.swift in Sources */,
@@ -1313,6 +1327,7 @@
 				100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
+				100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
 				1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */,
 				108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */,
@@ -1325,6 +1340,7 @@
 				104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */,
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,
 				108C07FE22BB583D00B2EBE9 /* TextLeftRightView.swift in Sources */,
+				100AEE5022CC589D00094AE2 /* CaseDetailController.swift in Sources */,
 				104E3AA322B8E5E700A84DB2 /* LLSegmentBaseItemView.swift in Sources */,
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,
 				100AEE3022C9F64000094AE2 /* HEPhotoAsset.swift in Sources */,
