@@ -16,21 +16,21 @@ extension UITableView {
         self.rowHeight = rowHeight
     }
     
-    func register<T: UITableViewCell>(cell: T.Type) where T: IDView {
+    func register<T: UITableViewCell>(cell: T.Type) {
         register(cell, forCellReuseIdentifier: T.identifier)
     }
     
-    func dequeue<T: UITableViewCell>(cell: T.Type, for indexPath: IndexPath) -> T where T: IDView  {
+    func dequeue<T: UITableViewCell>(cell: T.Type, for indexPath: IndexPath) -> T {
         return dequeueReusableCell(withIdentifier: T.identifier, for: indexPath) as! T
     }
 }
 
 extension UICollectionView {
-    func register<T: UICollectionViewCell>(cell: T.Type) where T: IDView {
+    func register<T: UICollectionViewCell>(cell: T.Type) {
         register(cell, forCellWithReuseIdentifier: T.identifier)
     }
     
-    func dequeue<T: UICollectionViewCell>(cell: T.Type, for indexPath: IndexPath) -> T where T: IDView  {
+    func dequeue<T: UICollectionViewCell>(cell: T.Type, for indexPath: IndexPath) -> T {
         return dequeueReusableCell(withReuseIdentifier: T.identifier, for: indexPath) as! T
     }
 }
@@ -41,4 +41,7 @@ protocol IDView {
 extension IDView {
     static var identifier: String { return "\(self)" }
 }
+
+extension UITableViewCell: IDView {}
+extension UICollectionViewCell: IDView {}
 

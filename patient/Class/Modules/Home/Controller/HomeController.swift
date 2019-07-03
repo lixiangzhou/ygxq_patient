@@ -20,7 +20,8 @@ class HomeController: BaseController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let vc = UploadResourceController()
-        push(vc)
+//        let vc = AddressListController()
+//        push(vc)
+        SelectDistrictView().show()
     }
 }

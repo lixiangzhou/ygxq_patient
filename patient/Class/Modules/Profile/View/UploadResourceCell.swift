@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UploadResourceCell: UITableViewCell, IDView {
+class UploadResourceCell: UITableViewCell {
     
     // MARK: - Life Cycle
     

@@ -84,5 +84,12 @@ extension SettingController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = viewModel.dataSource[indexPath.row]
         
+        switch data.type {
+        case .addressMgr:
+            let vc = AddressListController()
+            push(vc)
+        default:
+            break
+        }
     }
 }

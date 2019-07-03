@@ -33,7 +33,7 @@ extension UIView {
 class BaseShowView: BaseView {}
 
 extension BaseShowView {
-    func show() {
+    @objc func show() {
         frame = UIScreen.main.bounds
         UIApplication.shared.keyWindow?.addSubview(self)
         

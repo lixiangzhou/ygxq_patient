@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckListCell: UITableViewCell, IDView {
+class CheckListCell: UITableViewCell {
     
     // MARK: - Life Cycle
     

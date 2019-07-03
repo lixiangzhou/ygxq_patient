@@ -30,6 +30,15 @@
 		100AEE3122C9F64000094AE2 /* HEPickerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE1D22C9F64000094AE2 /* HEPickerOptions.swift */; };
 		100AEE3222C9F64000094AE2 /* HEAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE1E22C9F64000094AE2 /* HEAlbum.swift */; };
 		100AEE3422C9FF5300094AE2 /* UploadApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE3322C9FF5300094AE2 /* UploadApi.swift */; };
+		100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE3922CA115C00094AE2 /* AddressListCell.swift */; };
+		100AEE3C22CA117200094AE2 /* AddressListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE3B22CA117200094AE2 /* AddressListController.swift */; };
+		100AEE3E22CA120D00094AE2 /* AddressListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE3D22CA120D00094AE2 /* AddressListViewModel.swift */; };
+		100AEE4222CAEA7900094AE2 /* AddressApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4122CAEA7900094AE2 /* AddressApi.swift */; };
+		100AEE4422CAEBE700094AE2 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4322CAEBE700094AE2 /* AddressModel.swift */; };
+		100AEE4622CB306800094AE2 /* SelectDistrictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4522CB306800094AE2 /* SelectDistrictView.swift */; };
+		100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */; };
+		100AEE4C22CB6B6E00094AE2 /* AddressEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */; };
+		100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */; };
 		100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3922A1311200C5262C /* HUDConfig.swift */; };
 		100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3B22A1335600C5262C /* AppSetupConfig.swift */; };
 		100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3D22A1341100C5262C /* AppearanceConfig.swift */; };
@@ -183,6 +192,15 @@
 		100AEE1D22C9F64000094AE2 /* HEPickerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HEPickerOptions.swift; sourceTree = "<group>"; };
 		100AEE1E22C9F64000094AE2 /* HEAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HEAlbum.swift; sourceTree = "<group>"; };
 		100AEE3322C9FF5300094AE2 /* UploadApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadApi.swift; sourceTree = "<group>"; };
+		100AEE3922CA115C00094AE2 /* AddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListCell.swift; sourceTree = "<group>"; };
+		100AEE3B22CA117200094AE2 /* AddressListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListController.swift; sourceTree = "<group>"; };
+		100AEE3D22CA120D00094AE2 /* AddressListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewModel.swift; sourceTree = "<group>"; };
+		100AEE4122CAEA7900094AE2 /* AddressApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressApi.swift; sourceTree = "<group>"; };
+		100AEE4322CAEBE700094AE2 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		100AEE4522CB306800094AE2 /* SelectDistrictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDistrictView.swift; sourceTree = "<group>"; };
+		100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDistrictViewModel.swift; sourceTree = "<group>"; };
+		100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditController.swift; sourceTree = "<group>"; };
+		100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewModel.swift; sourceTree = "<group>"; };
 		100B6C3922A1311200C5262C /* HUDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDConfig.swift; sourceTree = "<group>"; };
 		100B6C3B22A1335600C5262C /* AppSetupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupConfig.swift; sourceTree = "<group>"; };
 		100B6C3D22A1341100C5262C /* AppearanceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfig.swift; sourceTree = "<group>"; };
@@ -575,6 +593,7 @@
 				108C081822BCE99400B2EBE9 /* HLRApi.swift */,
 				108C081C22BCEAF800B2EBE9 /* ExamApi.swift */,
 				100AEE3322C9FF5300094AE2 /* UploadApi.swift */,
+				100AEE4122CAEA7900094AE2 /* AddressApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -648,6 +667,9 @@
 			children = (
 				1030AA95229CFB2D00519CA4 /* MineViewModel.swift */,
 				1030AA9D229D17FD00519CA4 /* SettingViewModel.swift */,
+				100AEE3D22CA120D00094AE2 /* AddressListViewModel.swift */,
+				100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */,
+				100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -657,6 +679,8 @@
 			children = (
 				1014D0412293A6D700294558 /* MineController.swift */,
 				1030AA9B229D17DE00519CA4 /* SettingController.swift */,
+				100AEE3B22CA117200094AE2 /* AddressListController.swift */,
+				100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -664,6 +688,7 @@
 		1014D0422293A6D700294558 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				100AEE4322CAEBE700094AE2 /* AddressModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -672,6 +697,8 @@
 			isa = PBXGroup;
 			children = (
 				1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */,
+				100AEE3922CA115C00094AE2 /* AddressListCell.swift */,
+				100AEE4522CB306800094AE2 /* SelectDistrictView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1157,6 +1184,7 @@
 				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
 				104E3AA722B8E5E700A84DB2 /* LLContainerScrollView.swift in Sources */,
+				100AEE4622CB306800094AE2 /* SelectDistrictView.swift in Sources */,
 				1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
@@ -1186,6 +1214,7 @@
 				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				100AEE2022C9F64000094AE2 /* UIViewExtension+HE.swift in Sources */,
+				100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */,
 				100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */,
 				100AEE2C22C9F64000094AE2 /* HEPhotoPickerCell.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
@@ -1203,11 +1232,13 @@
 				104E3AA122B8E5E700A84DB2 /* LLSegmentItemTabbarView.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				108C081922BCE99400B2EBE9 /* HLRApi.swift in Sources */,
+				100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
 				104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */,
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
 				108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
+				100AEE4422CAEBE700094AE2 /* AddressModel.swift in Sources */,
 				100AEE3122C9F64000094AE2 /* HEPickerOptions.swift in Sources */,
 				100AEE2D22C9F64000094AE2 /* HEPhotoBrowserViewController.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
@@ -1220,6 +1251,7 @@
 				10CAF3E322AF9C4D00F20E81 /* DoctorInfoModel.swift in Sources */,
 				104E3A8D22B8E13000A84DB2 /* OrderListController.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
+				100AEE4222CAEA7900094AE2 /* AddressApi.swift in Sources */,
 				108C082322BCFBCF00B2EBE9 /* CheckRecordModel.swift in Sources */,
 				104E3AA222B8E5E700A84DB2 /* LLSegmentItemTitleView.swift in Sources */,
 				100AEE2E22C9F64000094AE2 /* HEPhoneBrowserBottomCell.swift in Sources */,
@@ -1255,6 +1287,7 @@
 				100AEDCE22C99E5D00094AE2 /* UploadResourceCell.swift in Sources */,
 				100AEE3222C9F64000094AE2 /* HEAlbum.swift in Sources */,
 				1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */,
+				100AEE3E22CA120D00094AE2 /* AddressListViewModel.swift in Sources */,
 				104E3AA822B8E5E700A84DB2 /* LLCtlPageView.swift in Sources */,
 				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,
@@ -1269,6 +1302,7 @@
 				105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */,
 				1014D0532293A6D700294558 /* UIView+ZZExtension.swift in Sources */,
 				1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */,
+				100AEE4C22CB6B6E00094AE2 /* AddressEditController.swift in Sources */,
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,
 				108C080622BCCF6C00B2EBE9 /* LoginManager.swift in Sources */,
 				1014D0562293A6D700294558 /* UIImage+ZZExtension.swift in Sources */,
@@ -1276,11 +1310,13 @@
 				1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */,
 				100AEE2922C9F64000094AE2 /* HEAlbumTitleView.swift in Sources */,
 				104E3AA622B8E5E700A84DB2 /* LLSegmentViewController.swift in Sources */,
+				100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
 				1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */,
 				108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */,
+				100AEE3C22CA117200094AE2 /* AddressListController.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
