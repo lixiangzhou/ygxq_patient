@@ -98,10 +98,9 @@ extension ProfileController: UITableViewDataSource, UITableViewDelegate {
         let model = viewModel.dataSource[indexPath.row]
         switch model.type {
         case .historyData:
-            let vc = HistoryProfileDataController()
-            push(vc)
+            push(HistoryProfileDataController())
         case .drugRecord:
-            break
+            push(DrugUsedController())
         }
     }
 }

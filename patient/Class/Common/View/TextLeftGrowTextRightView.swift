@@ -64,7 +64,11 @@ class TextLeftGrowTextRightView: BaseView {
                 make.right.equalTo(-config.rightPadding)
                 make.top.equalTo(config.rightTopPadding)
                 make.bottom.equalTo(bottomLine).offset(-config.rightBottomPadding)
-                make.left.greaterThanOrEqualTo(leftLabel.snp.right).offset(config.leftToRightMargin)
+                if config.rightAlignment == .right {
+                    make.left.greaterThanOrEqualTo(leftLabel.snp.right).offset(config.leftToRightMargin)
+                } else {
+                    make.left.equalTo(leftLabel.snp.right).offset(config.leftToRightMargin)
+                }
             }
             
             bottomLine.isHidden = !config.hasBottomLine

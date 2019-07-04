@@ -146,6 +146,7 @@ extension Int: ModelProtocol { }
 extension Bool: ModelProtocol { }
 extension Double: ModelProtocol { }
 extension Array: ModelProtocol { }
+extension Dictionary: ModelProtocol { }
 struct None: ModelProtocol { }
 
 struct BoolString {

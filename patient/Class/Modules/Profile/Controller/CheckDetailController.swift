@@ -87,6 +87,7 @@ extension CheckDetailController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
 // MARK: - Delegate External
 
 // MARK: -

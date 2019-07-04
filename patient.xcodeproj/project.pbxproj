@@ -49,6 +49,11 @@
 		100AEE6222CC9CBD00094AE2 /* FourColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6122CC9CBD00094AE2 /* FourColumnView.swift */; };
 		100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */; };
 		100AEE6822CCB14500094AE2 /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6722CCB14500094AE2 /* WebController.swift */; };
+		100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6922CD8D9C00094AE2 /* DrugModel.swift */; };
+		100AEE6C22CD8DE800094AE2 /* DrugSunApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6B22CD8DE800094AE2 /* DrugSunApi.swift */; };
+		100AEE6E22CD967300094AE2 /* DrugUsedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6D22CD967300094AE2 /* DrugUsedController.swift */; };
+		100AEE7022CD969100094AE2 /* DrugUsedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6F22CD969100094AE2 /* DrugUsedViewModel.swift */; };
+		100AEE7222CD9D5700094AE2 /* DrugUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE7122CD9D5700094AE2 /* DrugUsedCell.swift */; };
 		100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3922A1311200C5262C /* HUDConfig.swift */; };
 		100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3B22A1335600C5262C /* AppSetupConfig.swift */; };
 		100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3D22A1341100C5262C /* AppearanceConfig.swift */; };
@@ -221,6 +226,11 @@
 		100AEE6122CC9CBD00094AE2 /* FourColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourColumnView.swift; sourceTree = "<group>"; };
 		100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDetailCheckItemsCell.swift; sourceTree = "<group>"; };
 		100AEE6722CCB14500094AE2 /* WebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
+		100AEE6922CD8D9C00094AE2 /* DrugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugModel.swift; sourceTree = "<group>"; };
+		100AEE6B22CD8DE800094AE2 /* DrugSunApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugSunApi.swift; sourceTree = "<group>"; };
+		100AEE6D22CD967300094AE2 /* DrugUsedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugUsedController.swift; sourceTree = "<group>"; };
+		100AEE6F22CD969100094AE2 /* DrugUsedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugUsedViewModel.swift; sourceTree = "<group>"; };
+		100AEE7122CD9D5700094AE2 /* DrugUsedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugUsedCell.swift; sourceTree = "<group>"; };
 		100B6C3922A1311200C5262C /* HUDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDConfig.swift; sourceTree = "<group>"; };
 		100B6C3B22A1335600C5262C /* AppSetupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupConfig.swift; sourceTree = "<group>"; };
 		100B6C3D22A1341100C5262C /* AppearanceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfig.swift; sourceTree = "<group>"; };
@@ -614,6 +624,7 @@
 				108C081C22BCEAF800B2EBE9 /* ExamApi.swift */,
 				100AEE3322C9FF5300094AE2 /* UploadApi.swift */,
 				100AEE4122CAEA7900094AE2 /* AddressApi.swift */,
+				100AEE6B22CD8DE800094AE2 /* DrugSunApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -898,6 +909,7 @@
 				1099E71A22C4663700C37A9E /* UploadResourceController.swift */,
 				100AEE4F22CC589D00094AE2 /* CaseDetailController.swift */,
 				100AEE5B22CC8FA400094AE2 /* CheckDetailController.swift */,
+				100AEE6D22CD967300094AE2 /* DrugUsedController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -912,6 +924,7 @@
 				1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */,
 				100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */,
 				100AEE5D22CC8FC100094AE2 /* CheckDetailViewModel.swift */,
+				100AEE6F22CD969100094AE2 /* DrugUsedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -927,6 +940,7 @@
 				100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */,
 				100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */,
 				100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */,
+				100AEE7122CD9D5700094AE2 /* DrugUsedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1040,6 +1054,7 @@
 				108C081622BCE23A00B2EBE9 /* CaseRecordModel.swift */,
 				108C082222BCFBCF00B2EBE9 /* CheckRecordModel.swift */,
 				108C082A22BD14A700B2EBE9 /* ExamModel.swift */,
+				100AEE6922CD8D9C00094AE2 /* DrugModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1234,6 +1249,7 @@
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */,
+				100AEE6E22CD967300094AE2 /* DrugUsedController.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
 				108C080E22BCD82000B2EBE9 /* CheckListController.swift in Sources */,
@@ -1265,6 +1281,7 @@
 				108C081922BCE99400B2EBE9 /* HLRApi.swift in Sources */,
 				100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
+				100AEE7222CD9D5700094AE2 /* DrugUsedCell.swift in Sources */,
 				104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */,
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
 				108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */,
@@ -1297,6 +1314,7 @@
 				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
 				1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */,
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
+				100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */,
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
 				100AEE2622C9F64000094AE2 /* HETool.swift in Sources */,
@@ -1311,6 +1329,7 @@
 				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
 				108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */,
 				1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */,
+				100AEE6C22CD8DE800094AE2 /* DrugSunApi.swift in Sources */,
 				100AEE2422C9F64000094AE2 /* HEBaseViewController.swift in Sources */,
 				10CAF3D422ADFCB200F20E81 /* GetRealNameTipView.swift in Sources */,
 				1014D0482293A6D700294558 /* NSNumber+ZZExtension.swift in Sources */,
@@ -1357,6 +1376,7 @@
 				100AEE3C22CA117200094AE2 /* AddressListController.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
+				100AEE7022CD969100094AE2 /* DrugUsedViewModel.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */,
 				100AEE5C22CC8FA400094AE2 /* CheckDetailController.swift in Sources */,
