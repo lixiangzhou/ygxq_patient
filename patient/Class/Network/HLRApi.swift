@@ -13,6 +13,7 @@ enum HLRApi: TargetType {
     case caseRecordList(pid: Int, type: Int)
     case checkList(pid: Int, type: Int)
     case caseRecord(id: Int)
+    case checkRecord(id: Int)
 }
 
 extension HLRApi {
@@ -24,6 +25,8 @@ extension HLRApi {
             return "/hlrMore/listChecklist"
         case .caseRecord:
             return "/hlrMore/getCaseRecord"
+        case .checkRecord:
+            return "/hlrMore/getChecklist"
         }
     }
     
@@ -36,8 +39,10 @@ extension HLRApi {
         case let .checkList(pid: pid, type: type):
             params["puid"] = pid
             params["type"] = type
-        case let .caseRecord(id: pid):
-            params["id"] = pid
+        case let .caseRecord(id: id):
+            params["id"] = id
+        case let .checkRecord(id: id):
+            params["id"] = id
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

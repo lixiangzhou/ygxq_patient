@@ -72,6 +72,11 @@ extension ExamListController: UITableViewDataSource, UITableViewDelegate {
 
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = WebController()
+        push(vc)
+    }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()

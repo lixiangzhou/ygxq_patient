@@ -22,11 +22,28 @@ struct CheckRecordModel: ModelProtocol, Equatable {
     var results: [Item] = []
     var imgs: [ImageModel] = []
     
-    struct Item: ModelProtocol, Equatable {
+    struct Item: ModelProtocol, Equatable, FourColumnViewModelProtocol {
         var rid = 0
         var inspectName = ""
         var inspectResult = ""
         var unit = ""
         var normalRange = ""
+        
+        var c1String: String {
+            return inspectName
+        }
+        
+        var c2String: String {
+            return inspectResult
+        }
+        
+        var c3String: String {
+            return normalRange
+        }
+        
+        var c4String: String {
+            return unit
+        }
+        
     }
 }

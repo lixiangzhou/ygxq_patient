@@ -43,8 +43,12 @@
 		100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */; };
 		100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */; };
 		100AEE5622CC7DB800094AE2 /* TextLeftGrowTextRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */; };
-		100AEE5822CC82B800094AE2 /* OPInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5722CC82B800094AE2 /* OPInfoView.swift */; };
 		100AEE5A22CC84C800094AE2 /* CaseDetailOpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */; };
+		100AEE5C22CC8FA400094AE2 /* CheckDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5B22CC8FA400094AE2 /* CheckDetailController.swift */; };
+		100AEE5E22CC8FC100094AE2 /* CheckDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE5D22CC8FC100094AE2 /* CheckDetailViewModel.swift */; };
+		100AEE6222CC9CBD00094AE2 /* FourColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6122CC9CBD00094AE2 /* FourColumnView.swift */; };
+		100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */; };
+		100AEE6822CCB14500094AE2 /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE6722CCB14500094AE2 /* WebController.swift */; };
 		100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3922A1311200C5262C /* HUDConfig.swift */; };
 		100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3B22A1335600C5262C /* AppSetupConfig.swift */; };
 		100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B6C3D22A1341100C5262C /* AppearanceConfig.swift */; };
@@ -211,8 +215,12 @@
 		100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailViewModel.swift; sourceTree = "<group>"; };
 		100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftGrowTextRightCell.swift; sourceTree = "<group>"; };
 		100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftGrowTextRightView.swift; sourceTree = "<group>"; };
-		100AEE5722CC82B800094AE2 /* OPInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPInfoView.swift; sourceTree = "<group>"; };
 		100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailOpCell.swift; sourceTree = "<group>"; };
+		100AEE5B22CC8FA400094AE2 /* CheckDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDetailController.swift; sourceTree = "<group>"; };
+		100AEE5D22CC8FC100094AE2 /* CheckDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDetailViewModel.swift; sourceTree = "<group>"; };
+		100AEE6122CC9CBD00094AE2 /* FourColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourColumnView.swift; sourceTree = "<group>"; };
+		100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDetailCheckItemsCell.swift; sourceTree = "<group>"; };
+		100AEE6722CCB14500094AE2 /* WebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
 		100B6C3922A1311200C5262C /* HUDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDConfig.swift; sourceTree = "<group>"; };
 		100B6C3B22A1335600C5262C /* AppSetupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupConfig.swift; sourceTree = "<group>"; };
 		100B6C3D22A1341100C5262C /* AppearanceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfig.swift; sourceTree = "<group>"; };
@@ -643,6 +651,7 @@
 				1014D0382293A6D700294558 /* BaseTabBarController.swift */,
 				1014D0392293A6D700294558 /* BaseController.swift */,
 				1014D03A2293A6D700294558 /* BaseNavigationController.swift */,
+				100AEE6722CCB14500094AE2 /* WebController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -760,6 +769,7 @@
 				108C080122BB611B00B2EBE9 /* TextLeftRightCell.swift */,
 				100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */,
 				100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */,
+				100AEE6122CC9CBD00094AE2 /* FourColumnView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -887,6 +897,7 @@
 				108C083022BD158D00B2EBE9 /* ExamListController.swift */,
 				1099E71A22C4663700C37A9E /* UploadResourceController.swift */,
 				100AEE4F22CC589D00094AE2 /* CaseDetailController.swift */,
+				100AEE5B22CC8FA400094AE2 /* CheckDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -900,6 +911,7 @@
 				108C082C22BD152900B2EBE9 /* ExamListViewModel.swift */,
 				1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */,
 				100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */,
+				100AEE5D22CC8FC100094AE2 /* CheckDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -913,8 +925,8 @@
 				108C082E22BD155600B2EBE9 /* ExamListCell.swift */,
 				100AEDCD22C99E5D00094AE2 /* UploadResourceCell.swift */,
 				100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */,
-				100AEE5722CC82B800094AE2 /* OPInfoView.swift */,
 				100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */,
+				100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1228,7 +1240,6 @@
 				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
 				104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */,
-				100AEE5822CC82B800094AE2 /* OPInfoView.swift in Sources */,
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
 				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
@@ -1238,6 +1249,7 @@
 				100AEE2C22C9F64000094AE2 /* HEPhotoPickerCell.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */,
+				100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
 				100AEE2122C9F64000094AE2 /* UIColorExtension+HE.swift in Sources */,
 				10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */,
@@ -1267,9 +1279,11 @@
 				108C080A22BCD36000B2EBE9 /* HistoryProfileDataController.swift in Sources */,
 				10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */,
 				104E3AA922B8E5E700A84DB2 /* LLToolFunc.swift in Sources */,
+				100AEE6222CC9CBD00094AE2 /* FourColumnView.swift in Sources */,
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
 				10CAF3E322AF9C4D00F20E81 /* DoctorInfoModel.swift in Sources */,
 				104E3A8D22B8E13000A84DB2 /* OrderListController.swift in Sources */,
+				100AEE6822CCB14500094AE2 /* WebController.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
 				100AEE4222CAEA7900094AE2 /* AddressApi.swift in Sources */,
 				108C082322BCFBCF00B2EBE9 /* CheckRecordModel.swift in Sources */,
@@ -1291,6 +1305,7 @@
 				104E3AA522B8E5E700A84DB2 /* LLIndicatorView.swift in Sources */,
 				105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
 				100AEE5A22CC84C800094AE2 /* CaseDetailOpCell.swift in Sources */,
+				100AEE5E22CC8FC100094AE2 /* CheckDetailViewModel.swift in Sources */,
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
 				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
@@ -1344,6 +1359,7 @@
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */,
+				100AEE5C22CC8FA400094AE2 /* CheckDetailController.swift in Sources */,
 				108C082522BCFCCC00B2EBE9 /* CheckListCell.swift in Sources */,
 				104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */,
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,

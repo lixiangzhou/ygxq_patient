@@ -73,6 +73,13 @@ extension CheckListController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.section].list[indexPath.row]
+        let vc = CheckDetailController()
+        vc.id = model.id
+        push(vc)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .cf

@@ -40,7 +40,7 @@ struct CaseRecordModel: ModelProtocol, Equatable {
         var opas: [OPAS] = []
     }
     
-    struct OPAS: ModelProtocol, Equatable {
+    struct OPAS: ModelProtocol, Equatable, FourColumnViewModelProtocol {
         var opId: Int = 0
         var stenosisDegree: String = ""
         var id: Int = 0
@@ -48,7 +48,22 @@ struct CaseRecordModel: ModelProtocol, Equatable {
         var collateralBranch: String = ""
         var lesionsNature: String = ""
         var createTime: TimeInterval = 0
+   
+        var c1String: String {
+            return part
+        }
         
+        var c2String: String {
+            return lesionsNature
+        }
+        
+        var c3String: String {
+            return stenosisDegree
+        }
+        
+        var c4String: String {
+            return collateralBranch
+        }
     }
 }
 

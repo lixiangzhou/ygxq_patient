@@ -12,6 +12,7 @@ class CaseDetailOpCell: UITableViewCell {
     // MARK: - LifeCycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         selectionStyle = .none
         
         setupUI()
@@ -22,10 +23,10 @@ class CaseDetailOpCell: UITableViewCell {
     }
     
     // MARK: - Public Properties
+    let titleLabel = UILabel(font: .size(16), textColor: .c3)
+    let opView = FourColumnView()
     
     // MARK: - Private Properties
-    let titleLabel = UILabel(font: .size(16), textColor: .c3)
-    let opView = OPInfoView()
 }
 
 // MARK: - UI
@@ -34,6 +35,8 @@ extension CaseDetailOpCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(opView)
         contentView.addBottomLine()
+        
+        opView.config = FourColumnViewConfig(c1: 0.25, c2: 0.25, c3: 0.25, c4: 0.25, c1Title: "部位", c2Title: "病变性质", c3Title: "狭窄程度", c4Title: "侧支")
         
         opView.zz_setBorder(color: .cdcdcdc, width: 0.5)
         opView.zz_setCorner(radius: 5, masksToBounds: true)
