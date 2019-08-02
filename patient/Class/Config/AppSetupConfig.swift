@@ -15,6 +15,7 @@ struct AppSetupConfig {
         WXManager.shared.setup()
         RCManager.shared.setup()
         LoginManager.shared.setup()
+        
     }
 }
 

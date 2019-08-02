@@ -61,7 +61,7 @@ extension MineHeaderView {
 // MARK: - Action
 extension MineHeaderView {
     @objc private func tapAction() {
-        
+        tapClosure?()
     }
 }
 

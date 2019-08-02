@@ -30,7 +30,11 @@ target 'patient' do
     pod 'EmptyDataSet-Swift'
     pod 'FSPagerView'
     pod 'WechatOpenSDK'
-    pod 'RongCloudRTC/RongCallLib', '2.9.0'
-    pod 'RongCloudRTC/RongCallKit', '2.9.0'
+    pod 'RongCloudRTC/RongCallLib'
+    pod 'RongCloudRTC/RongCallKit'
+    
+    pod 'AgoraRtcEngine_iOS'
+    pod 'AgoraRtm_iOS'
+    
     pod 'Bugly'
 end

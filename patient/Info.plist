@@ -38,14 +38,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-    <!-- 相册 -->
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>阳光客户端在上传照片时想要使用您的相册，允许吗？</string>
-    <!-- 相机 -->
 	<key>NSCameraUsageDescription</key>
 	<string>阳光客户端在音视频通话，修改个人信息和医生认证功能中需要上传图片，想使用您的相机，允许吗？</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>阳光客户端在音视频通话中需要使用您的麦克风，允许吗？</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>阳光客户端在上传照片时想要使用您的相册，允许吗？</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

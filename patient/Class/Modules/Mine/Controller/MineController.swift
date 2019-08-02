@@ -45,9 +45,11 @@ extension MineController {
         tableView.set(dataSource: self, delegate: self)
         tableView.backgroundColor = .cf0efef
         
-        headerView.tapClosure = {
+        headerView.tapClosure = { [unowned self] in
             
+            self.present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
         }
+        
         tableView.tableHeaderView = headerView
         
         tableView.snp.makeConstraints { (make) in

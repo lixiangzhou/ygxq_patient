@@ -29,7 +29,8 @@ class RCManager: NSObject {
         case .test:
             return "uwd1c0sxuqql1"
         case .develop:
-            return "x18ywvqfxcclc"
+//            return "x18ywvqfxcclc"
+            return "k51hidwqk4anb" // 3.0 引擎  对应的secret(服务端使用)：9AVKP0469gk23N
         }
     }
     
@@ -42,7 +43,7 @@ class RCManager: NSObject {
     }
     
     private let rcModelsPath = zz_filePath(with: .documentDirectory, fileName: "rcModels")
-    private var rcModels: [RCModel]!
+    private var rcModels = [RCModel]()
 }
 
 // MARK: - 连接
@@ -69,10 +70,10 @@ extension RCManager {
                         if errorCode == .CONN_TOKEN_INCORRECT {
                             self.reConnect(completion)
                         }
-                    }, tokenIncorrect: {
+                    }) {
                         print("==>RC连接 失败: tokenIncorrect")
                         self.reConnect(completion)
-                    })
+                    }
                 } else {
                     print("==>RC连接 获取Token失败")
                     self.reConnect(completion)
@@ -107,6 +108,9 @@ extension RCManager {
                         print("==>重新连接RC 失败: tokenIncorrect")
                         completion?(false)
                     })
+                } else {
+                    print("==>重新获取Token 失败")
+                    completion?(false)
                 }
             }
         } else {
@@ -172,19 +176,17 @@ extension RCManager {
     }
     
     private func removeCachedRCModel(_ rcModel: RCModel) {
-        rcModels.removeAll { (model) -> Bool in
-            return model.rcId == rcModel.rcId
-        }
+        removeCachedRCModel(rcId: rcModel.rcId)
+    }
+    
+    private func removeCachedRCModel(userId: String) {
+        removeCachedRCModel(rcId: "RC_\(userId)")
     }
     
     private func removeCachedRCModel(rcId: String) {
         rcModels.removeAll { (rcModel) -> Bool in
             return rcModel.rcId == rcId
         }
-    }
-    
-    private func removeCachedRCModel(userId: String) {
-        removeCachedRCModel(rcId: "RC_\(userId)")
     }
     
     /// 保存 TokenModel
