@@ -57,9 +57,11 @@ class HomeController: BaseController {
         
 //        RCManager.shared.connect()
         
-        PatientApi.queryPatientsByBindingDoctor(duid: 28146).rac_responseModel([PatientInfoModel].self).startWithValues { (patients) in
-//            print(patients)
-        }
+//        PatientApi.queryPatientsByBindingDoctor(duid: 28146).rac_responseModel([PatientInfoModel].self).startWithValues { (patients) in
+////            print(patients)
+//        }
+        
+        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
     }
 }
 

@@ -76,7 +76,9 @@ extension BaseController {
 
 // MARK: - Helper
 extension BaseController {
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 // MARK: - Other

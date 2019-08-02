@@ -8,6 +8,12 @@
 
 import UIKit
 import ReactiveSwift
+import Result
+
+enum LoginType: Int {
+    case password
+    case code
+}
 
 class LoginController: BaseController {
     
@@ -24,91 +30,166 @@ class LoginController: BaseController {
         super.viewWillAppear(animated)
         setNavigationStyle(.transparency)
     }
-
+    
     // MARK: - Public Property
     
     // MARK: - Private Property
-    private var accountField = InputFieldView.commonFieldView(leftImage: nil, placeholder: "请输入手机号", leftSpacing: 5, rightSpacing: 5)
-    private var (codeField, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: nil, placeholder: "请输入验证码", leftSpacing: 5, rightSpacing: 5)
-    private let loginBtn = UIButton(title: "登录", font: .boldSize(16), titleColor: .white, backgroundColor: .blue, target: self, action: #selector(loginAction))
-    private var viewModel = LoginViewModel()
+    private var pwdLoginBtn: UIButton!
+    private var codeLoginBtn: UIButton!
+    private var mobileField = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的账号", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var pwdField = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "请输入您的密码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var (codeField, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private let loginBtn = UIButton(title: "登录", font: .boldSize(18), titleColor: .cf, target: self, action: #selector(loginAction))
+    private var loginTypeProperty = MutableProperty(LoginType.password)
+    private let viewModel = LoginViewModel()
 }
 
 // MARK: - UI
 extension LoginController {
     override func setUI() {
-        couldShowLogin = false
+        let iconView = UIImageView(image: UIImage(named: "login_logo"))
+        view.addSubview(iconView)
         
-        let loginTitleLine = view.zz_add(subview: UIView.sepLine(color: .c407cec))
-        let loginTitleLabel = view.zz_add(subview: UILabel(text: "验证码登录", font: .boldSize(19), textColor: .c3)) as! UILabel
+        let contentView = UIView()
+        view.addSubview(contentView)
         
-        accountField.inputLengthLimit = 11
-        accountField.keyboardType = .numberPad
+        pwdLoginBtn = UIButton(title: "密码登录", font: .boldSize(16), titleColor: .c9)
+        pwdLoginBtn.setTitleColor(.c3, for: .disabled)
+        pwdLoginBtn.tag = LoginType.password.rawValue
+        contentView.addSubview(pwdLoginBtn)
+        
+        codeLoginBtn = UIButton(title: "验证码登录", font: .boldSize(16), titleColor: .c9)
+        codeLoginBtn.setTitleColor(.c3, for: .disabled)
+        codeLoginBtn.tag = LoginType.code.rawValue
+        contentView.addSubview(codeLoginBtn)
+        
+        mobileField.inputLengthLimit = 11
+        mobileField.keyboardType = .numberPad
+        mobileField.zz_setCorner(radius: 22.5, masksToBounds: true)
+        mobileField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
+        mobileField.leftViewSize = CGSize(width: 25, height: 20)
+//        mobileField.layer.shadowOffset = CGSize(width: 6, height: 6)
+//        mobileField.layer.shadowOpacity = 0.15
+//        mobileField.layer.shadowColor = UIColor.c205cca.cgColor
+//        mobileField.layer.shadowRadius = 22.5
+        
+        
+        pwdField.inputLengthLimit = 20
+        pwdField.zz_setCorner(radius: 22.5, masksToBounds: true)
+        pwdField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
+        pwdField.leftViewSize = CGSize(width: 25, height: 20)
+        pwdField.isSecureTextEntry = false
         
         codeBtn.setTitleColor(.c407cec, for: .normal)
         codeBtn.setTitleColor(.c9, for: .disabled)
-        
         codeBtn.isEnabled = false
         
         codeField.inputLengthLimit = 6
         codeField.keyboardType = .numberPad
+        codeField.zz_setCorner(radius: 22.5, masksToBounds: true)
+        codeField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
+        codeField.leftViewSize = CGSize(width: 25, height: 20)
+        
+        contentView.addSubview(mobileField)
+        contentView.addSubview(pwdField)
+        contentView.addSubview(codeField)
         
         loginBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
         loginBtn.isEnabled = false
         loginBtn.backgroundColor = UIColor.cdcdcdc
+        contentView.addSubview(loginBtn)
         
-        let thirdLoginTitle = view.zz_add(subview: UILabel(text: "第三方登录", font: .size(14), textColor: .c6))
-        let wxLoginBtn = UIButton(imageName: "", target: self, action: #selector(wxLoginAction))
-        wxLoginBtn.backgroundColor = .red
+        let forgetPwdBtn = UIButton(title: "忘记密码？", font: .size(14), titleColor: .c9, target: self, action: #selector(forgetPwdAction))
+        let toRegisterBtn = UIButton(title: "去注册", font: .size(14), titleColor: .c9, target: self, action: #selector(toRegisterAction))
+        contentView.addSubview(forgetPwdBtn)
+        contentView.addSubview(toRegisterBtn)
         
-        view.addSubview(accountField)
-        view.addSubview(codeField)
-        view.addSubview(loginBtn)
-        view.addSubview(wxLoginBtn)
+        let bottomBgView = UIImageView(image: UIImage(named: ""))
         
-        loginTitleLabel.snp.makeConstraints { (make) in
-            make.topOffsetFrom(self, 60)
+        iconView.snp.makeConstraints { (make) in
+            make.top.equalTo(100)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(72)
+        }
+        
+        contentView.snp.makeConstraints { (make) in
+            make.top.equalTo(iconView.snp.bottom).offset(40)
+            make.left.equalTo(30)
+            make.right.equalTo(-30)
+        }
+        
+        pwdLoginBtn.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
             make.left.equalTo(20)
         }
         
-        loginTitleLine.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(loginTitleLabel)
-            make.height.equalTo(5)
-        }
-        
-        accountField.snp.makeConstraints { (make) in
-            make.left.equalTo(20)
-            make.top.equalTo(loginTitleLabel.snp.bottom).offset(64)
+        codeLoginBtn.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
             make.right.equalTo(-20)
+        }
+        
+        mobileField.snp.makeConstraints { (make) in
+            make.top.equalTo(pwdLoginBtn.snp.bottom).offset(20)
+            make.left.right.equalToSuperview()
             make.height.equalTo(45)
+        }
+        
+        pwdField.snp.makeConstraints { (make) in
+            make.top.equalTo(mobileField.snp.bottom).offset(20)
+            make.left.right.height.equalTo(mobileField)
+            make.height.equalTo(mobileField)
         }
         
         codeField.snp.makeConstraints { (make) in
-            make.top.equalTo(accountField.snp.bottom).offset(10)
-            make.left.right.equalTo(accountField)
-            make.height.equalTo(accountField)
+            make.edges.equalTo(pwdField)
         }
         
         loginBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(codeField.snp.bottom).offset(30)
-            make.left.right.equalTo(accountField)
-            make.height.equalTo(45)
+            make.top.equalTo(pwdField.snp.bottom).offset(25)
+            make.left.right.equalTo(pwdField)
+            make.height.equalTo(50)
         }
         
-        thirdLoginTitle.snp.makeConstraints { (make) in
+        forgetPwdBtn.snp.makeConstraints { (make) in
             make.top.equalTo(loginBtn.snp.bottom).offset(15)
-            make.centerX.equalToSuperview()
+            make.left.equalTo(loginBtn).offset(15)
+            make.bottom.equalToSuperview()
         }
         
-        wxLoginBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(thirdLoginTitle.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
-            make.height.width.equalTo(44)
+        toRegisterBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(forgetPwdBtn)
+            make.right.equalTo(loginBtn).offset(-15)
         }
     }
     
     override func setBinding() {
+        loginTypeProperty <~ pwdLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
+        loginTypeProperty <~ codeLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
+        
+        mobileField.reactive.makeBindingTarget { (view, text) in
+            view.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.c9])
+        } <~ loginTypeProperty.map { $0 == .password ? "请输入您的账号" : "请输入手机号码" }
+        
+        pwdLoginBtn.reactive.isEnabled <~ loginTypeProperty.map { $0 != .password }
+        codeLoginBtn.reactive.isEnabled <~ loginTypeProperty.map { $0 != .code }
+        
+        pwdField.reactive.isHidden <~ loginTypeProperty.map { $0 != .password }
+        codeField.reactive.isHidden <~ loginTypeProperty.map { $0 != .code }
+        
+        let mobileEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(mobileField.textField.reactive.continuousTextValues.map { $0.count == 11 })
+        let passwardEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(pwdField.textField.reactive.continuousTextValues.map { $0.count >= 6 })
+        let codeEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(codeField.textField.reactive.continuousTextValues.map { $0.count == 6 })
+        
+        let pwdLoginEnabledSignal = mobileEnabledSignal.and(passwardEnabledSignal)
+        let codeLoginEnabledSignal = mobileEnabledSignal.and(codeEnabledSignal)
+        
+        let loginEnabledSignal = pwdLoginEnabledSignal.or(codeLoginEnabledSignal)
+        
+        loginBtn.reactive.isEnabled <~ loginEnabledSignal
+        loginBtn.reactive.backgroundColor <~ loginEnabledSignal.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+        
         codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] _ in
+            self.viewModel.getCode(self.mobileField.text!)
             self.timeLabel.text = "60秒"
             var count = 60
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
@@ -123,41 +204,24 @@ extension LoginController {
                 }
             })
         }
-        
-        codeBtn.reactive.isEnabled <~ accountField.valueChangedSignal.map { $0.count == 11 }
-        
-        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] _ in
-            self.viewModel.getCode(self.accountField.text!)
-        }
-        
-        let loginEnabledSignal = accountField.valueChangedSignal.map { $0.count == 11 }.and(codeField.valueChangedSignal.map { $0.count == 6 })
-        loginBtn.reactive.isEnabled <~ loginEnabledSignal
-        loginBtn.reactive.backgroundColor <~ loginEnabledSignal.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+
+        codeBtn.reactive.isEnabled <~ mobileField.valueChangedSignal.map { $0.count == 11 }
+
     }
 }
 
 // MARK: - Action
 extension LoginController {
     @objc private func loginAction() {
-        viewModel.verifyCodeAndLogin(mobile: accountField.text!, code: codeField.text!).startWithValues { [unowned self] (result) in
-            if result.isSuccess {
-                HUD.show(toast: "登录成功")
-                DispatchQueue.main.zz_after(1) {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            } else {
-                HUD.show(result)
-            }
-        }
+        print("loginAction")
     }
     
-    @objc private func wxLoginAction() {
-        print(#function)
-        WXManager.shared.sendAuthReq(from: self)
-//        let req = SendAuthReq()
-//        req.scope = "snsapi_userinfo"
-//        req.state = "wx_oauth_authorization_state"
-//        WXApi.send(req)
+    @objc private func forgetPwdAction() {
+        print("forgetPwdAction")
+    }
+    
+    @objc private func toRegisterAction() {
+        print("toRegisterAction")
     }
 }
 
@@ -173,50 +237,14 @@ extension LoginController {
 // MARK: - Delegate External
 
 // MARK: -
-extension LoginController: WXResponseDelegate {
-    func managerDidRecvAuthResponse(resp: SendAuthResp) {
-        AuthApi.wxGetToken(code: resp.code!).response { (result) in
-            switch result {
-            case let .success(resp):
-                if let json = try? String(data: resp.data, encoding: .utf8), let oauthToken = WXOAuthToken.deserialize(from: json) {
-                    WXManager.shared.save(token: oauthToken)
-                    AuthApi.wxGetUserinfo(token: oauthToken).response { (res) in
-                        switch res {
-                        case .success:
-                            if let json = try? String(data: resp.data, encoding: .utf8), let user = WXUserModel.deserialize(from: json) {
-                                WXManager.shared.save(user: user)
-                            } else {
-                                HUD.show(toast: "登录失败")
-                            }
-                        case .failure:
-                            HUD.show(toast: "登录失败")
-                        }
-                    }
-                } else {
-                    HUD.show(toast: "登录失败")
-                }
-            case .failure:
-                HUD.show(toast: "登录失败")
-            }
-        }
-    }
-}
 
 // MARK: - Helper
 extension LoginController {
-    
 }
 
 // MARK: - Other
 extension LoginController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-
-        dismiss(animated: true, completion: nil)
-//        let vc = GetIDCardPicturesController()
-//        vc.couldShowLogin = false
-//        push(vc)
-    }
+    
 }
 
 // MARK: - Public

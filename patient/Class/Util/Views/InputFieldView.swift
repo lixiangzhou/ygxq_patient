@@ -420,8 +420,8 @@ extension InputFieldView {
         
         fieldView.hasRightView = true
         fieldView.rightView.isUserInteractionEnabled = true
-        fieldView.rightImage = UIImage(named: "input_eye_closed")
-        fieldView.rightSelectedImage = UIImage(named: "input_eye_open")
+        fieldView.rightImage = UIImage(named: "pwd_eye_open")
+        fieldView.rightSelectedImage = UIImage(named: "pwd_eye_close")
         fieldView.right2InputViewPadding = 5
         fieldView.isSecureTextEntry = true
         

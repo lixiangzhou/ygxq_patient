@@ -69,6 +69,11 @@ extension UIColor {
         return UIColor(stringHexValue: "#f5f5f5")!
     }
     
+    ///
+    static var c205cca: UIColor {
+        return UIColor(stringHexValue: "#205cca")!
+    }
+    
     // MARK: - 文字颜色
     /// 用于标题、重要文本
     static var c3: UIColor {
