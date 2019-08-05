@@ -21,9 +21,9 @@ class MineViewModel: BaseViewModel {
     struct RowModel {
         let type: RowType
         let img: String
-        let config: TextTableViewCellConfig
+        let config: LeftRightConfigViewConfig
 
-        init(type: RowType, img: String, config: TextTableViewCellConfig) {
+        init(type: RowType, img: String, config: LeftRightConfigViewConfig) {
             self.type = type
             self.img = img
             self.config = config

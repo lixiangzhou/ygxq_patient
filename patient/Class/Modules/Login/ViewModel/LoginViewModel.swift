@@ -16,19 +16,35 @@ class LoginViewModel: BaseViewModel {
         return SignalProducer<BoolString, NoError> { observer, _ in
             self.verifyCode(mobile: mobile, code: code).startWithValues { (resp) in
                 if resp.isSuccess {
-                    self.login(mobile: mobile, code: code).startWithValues { (resp) in
+                    self.loginCode(mobile: mobile, code: code).startWithValues { (resp) in
                         observer.send(value: BoolString(resp))
                         observer.sendCompleted()
                     }
                 } else {
                     observer.send(value: BoolString(resp))
-                    
+                    observer.sendCompleted()
                 }
             }
         }
     }
     
-    func login(mobile: String, code: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
+    func verifyCodeAndRegister(mobile: String, code: String, password: String, inviter: String) -> SignalProducer<BoolString, NoError> {
+        return SignalProducer<BoolString, NoError> { observer, _ in
+            self.verifyCode(mobile: mobile, code: code).startWithValues { (resp) in
+                if resp.isSuccess {
+                    self.register(mobile: mobile, password: password, inviter: inviter).startWithValues({ (resp) in
+                        observer.send(value: BoolString(resp))
+                        observer.sendCompleted()
+                    })
+                } else {
+                    observer.send(value: BoolString(resp))
+                    observer.sendCompleted()
+                }
+            }
+        }
+    }
+    
+    func loginCode(mobile: String, code: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
         return UserApi.loginCode(mobile: mobile, code: code).rac_response(PatientInfoModel.self).on { (resp) in
             if let patientModel = resp.content {
                 patientInfoProperty.value = patientModel
@@ -37,8 +53,27 @@ class LoginViewModel: BaseViewModel {
         }
     }
     
-    func getCode(_ mobile: String) {
-        AuthApi.getCode(type: .forLogin, mobile: mobile).rac_response(None.self).startWithValues { (resp) in
+    func loginPwd(mobile: String, password: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
+        return UserApi.loginPwd(mobile: mobile, password: password).rac_response(PatientInfoModel.self).on { (resp) in
+            if let patientModel = resp.content {
+                patientInfoProperty.value = patientModel
+                loginObserver.send(value: true)
+            }
+        }
+    }
+    
+    func register(mobile: String, password: String, inviter: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
+        return UserApi.register(mobile: mobile, password: password, invister: inviter).rac_response(PatientInfoModel.self).on { (resp) in
+            if let patientModel = resp.content {
+                patientInfoProperty.value = patientModel
+                loginObserver.send(value: true)
+            }
+        }
+    }
+    
+    
+    func getCode(_ type: AuthApi.CodeType, mobile: String) {
+        AuthApi.getCode(type: type, mobile: mobile).rac_response(None.self).startWithValues { (resp) in
             if resp.resultcode == 200 {
                 HUD.show(toast: "验证码已发送成功，请注意查收！")
             } else {
@@ -47,7 +82,7 @@ class LoginViewModel: BaseViewModel {
         }
     }
     
-    func verifyCode(mobile: String, code: String) -> SignalProducer<ResponseModel<None>, NoError> {
-        return AuthApi.verifyCode(mobile: mobile, code: code).rac_response(None.self)
+    func verifyCode(mobile: String, code: String) -> SignalProducer<ResponseModel<String>, NoError> {
+        return AuthApi.verifyCode(mobile: mobile, code: code).rac_response(String.self)
     }
 }

@@ -77,7 +77,7 @@ extension SettingController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeue(cell: TextTableViewCell.self, for: indexPath)
         let model = viewModel.dataSource[indexPath.row]
         cell.config = model.config
-        cell.titleLabel.text = model.type.rawValue
+        cell.leftLabel.text = model.type.rawValue
         return cell
     }
     

@@ -459,6 +459,7 @@ extension InputFieldView {
         let fieldView = InputFieldView.rightClickViewFieldView(leftImage: leftImage, placeholder: placeholder, clickView: btn, leftSpacing: leftSpacing, rightSpacing: rightSpacing, bottomLineColor: bottomLineColor)
         
         fieldView.rightView.addSubview(timeLabel)
+        fieldView.right2InputViewPadding = 0
         
         timeLabel.snp.makeConstraints { (make) in
             make.top.bottom.right.equalToSuperview()

@@ -41,6 +41,7 @@ class LoginController: BaseController {
     private var (codeField, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private let loginBtn = UIButton(title: "登录", font: .boldSize(18), titleColor: .cf, target: self, action: #selector(loginAction))
     private var loginTypeProperty = MutableProperty(LoginType.password)
+    
     private let viewModel = LoginViewModel()
 }
 
@@ -104,7 +105,8 @@ extension LoginController {
         contentView.addSubview(forgetPwdBtn)
         contentView.addSubview(toRegisterBtn)
         
-        let bottomBgView = UIImageView(image: UIImage(named: ""))
+        let bottomBgView = UIImageView(image: UIImage(named: "login_bottom"))
+        view.addSubview(bottomBgView)
         
         iconView.snp.makeConstraints { (make) in
             make.top.equalTo(100)
@@ -160,6 +162,11 @@ extension LoginController {
             make.top.equalTo(forgetPwdBtn)
             make.right.equalTo(loginBtn).offset(-15)
         }
+        
+        bottomBgView.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalToSuperview()
+            make.top.equalTo(loginBtn.snp.bottom).offset(50)
+        }
     }
     
     override func setBinding() {
@@ -188,8 +195,9 @@ extension LoginController {
         loginBtn.reactive.isEnabled <~ loginEnabledSignal
         loginBtn.reactive.backgroundColor <~ loginEnabledSignal.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
         
-        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [unowned self] _ in
-            self.viewModel.getCode(self.mobileField.text!)
+        codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModel.getCode(.forLogin, mobile: self.mobileField.text!)
             self.timeLabel.text = "60秒"
             var count = 60
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
@@ -213,7 +221,24 @@ extension LoginController {
 // MARK: - Action
 extension LoginController {
     @objc private func loginAction() {
-        print("loginAction")
+        switch loginTypeProperty.value {
+        case .password:
+            viewModel.loginPwd(mobile: mobileField.text!, password: pwdField.text!).map { BoolString($0) }.startWithValues { (result) in
+                if result.isSuccess {
+                    
+                } else {
+                    HUD.show(result)
+                }
+            }
+        case .code:
+            viewModel.verifyCodeAndLogin(mobile: mobileField.text!, code: codeField.text!).startWithValues { (result) in
+                if result.isSuccess {
+                    
+                } else {
+                    HUD.show(result)
+                }
+            }
+        }
     }
     
     @objc private func forgetPwdAction() {
@@ -221,7 +246,7 @@ extension LoginController {
     }
     
     @objc private func toRegisterAction() {
-        print("toRegisterAction")
+        push(RegisterController())
     }
 }
 

@@ -164,6 +164,11 @@
 		108C083122BD158D00B2EBE9 /* ExamListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C083022BD158D00B2EBE9 /* ExamListController.swift */; };
 		1099E71B22C4663700C37A9E /* UploadResourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099E71A22C4663700C37A9E /* UploadResourceController.swift */; };
 		1099E71D22C4A5BB00C37A9E /* UploadResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */; };
+		10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA46B222F431D600A4E244 /* RegisterController.swift */; };
+		10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472722F8073200A4E244 /* PersonInfoEditController.swift */; };
+		10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */; };
+		10CA472C22F815C600A4E244 /* LeftRightConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472B22F815C600A4E244 /* LeftRightConfigView.swift */; };
+		10CA472E22F81DC900A4E244 /* PersonInfoEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472D22F81DC900A4E244 /* PersonInfoEditViewModel.swift */; };
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
 		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
@@ -346,6 +351,11 @@
 		108C083022BD158D00B2EBE9 /* ExamListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListController.swift; sourceTree = "<group>"; };
 		1099E71A22C4663700C37A9E /* UploadResourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceController.swift; sourceTree = "<group>"; };
 		1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceViewModel.swift; sourceTree = "<group>"; };
+		10CA46B222F431D600A4E244 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		10CA472722F8073200A4E244 /* PersonInfoEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoEditController.swift; sourceTree = "<group>"; };
+		10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftRightFieldView.swift; sourceTree = "<group>"; };
+		10CA472B22F815C600A4E244 /* LeftRightConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftRightConfigView.swift; sourceTree = "<group>"; };
+		10CA472D22F81DC900A4E244 /* PersonInfoEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoEditViewModel.swift; sourceTree = "<group>"; };
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
 		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
@@ -776,11 +786,13 @@
 			isa = PBXGroup;
 			children = (
 				1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */,
+				10CA472B22F815C600A4E244 /* LeftRightConfigView.swift */,
 				108C07FD22BB583D00B2EBE9 /* TextLeftRightView.swift */,
 				108C080122BB611B00B2EBE9 /* TextLeftRightCell.swift */,
 				100AEE5322CC702200094AE2 /* TextLeftGrowTextRightCell.swift */,
 				100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */,
 				100AEE6122CC9CBD00094AE2 /* FourColumnView.swift */,
+				10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -834,6 +846,7 @@
 			isa = PBXGroup;
 			children = (
 				1030AAB1229E6B5A00519CA4 /* LoginViewModel.swift */,
+				10CA472D22F81DC900A4E244 /* PersonInfoEditViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -850,7 +863,9 @@
 			isa = PBXGroup;
 			children = (
 				1030AAAD229E6AF500519CA4 /* LoginController.swift */,
+				10CA46B222F431D600A4E244 /* RegisterController.swift */,
 				10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */,
+				10CA472722F8073200A4E244 /* PersonInfoEditController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1234,6 +1249,7 @@
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
 				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
+				10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */,
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */,
@@ -1252,6 +1268,7 @@
 				100AEE6E22CD967300094AE2 /* DrugUsedController.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
+				10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */,
 				108C080E22BCD82000B2EBE9 /* CheckListController.swift in Sources */,
 				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
@@ -1275,6 +1292,7 @@
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,
 				10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */,
+				10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */,
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
 				104E3AA122B8E5E700A84DB2 /* LLSegmentItemTabbarView.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
@@ -1286,6 +1304,7 @@
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
 				108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
+				10CA472E22F81DC900A4E244 /* PersonInfoEditViewModel.swift in Sources */,
 				100AEE4422CAEBE700094AE2 /* AddressModel.swift in Sources */,
 				100AEE3122C9F64000094AE2 /* HEPickerOptions.swift in Sources */,
 				100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */,
@@ -1328,6 +1347,7 @@
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
 				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
 				108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */,
+				10CA472C22F815C600A4E244 /* LeftRightConfigView.swift in Sources */,
 				1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */,
 				100AEE6C22CD8DE800094AE2 /* DrugSunApi.swift in Sources */,
 				100AEE2422C9F64000094AE2 /* HEBaseViewController.swift in Sources */,

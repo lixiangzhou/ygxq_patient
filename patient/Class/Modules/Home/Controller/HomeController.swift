@@ -61,7 +61,8 @@ class HomeController: BaseController {
 ////            print(patients)
 //        }
         
-        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
+//        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
+        push(PersonInfoEditController())
     }
 }
 

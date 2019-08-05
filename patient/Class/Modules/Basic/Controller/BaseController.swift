@@ -23,9 +23,7 @@ class BaseController: UIViewController {
         super.viewWillAppear(animated)
         
         setNavigationStyle(.default)
-        if navigationController?.viewControllers.count ?? 0 > 1 {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "default_nav_back"), style: .plain, target: self, action: #selector(backAction))
-        }
+        setBackImage("default_nav_back")
         
         if !PatientManager.shared.isLogin && couldShowLogin {
             present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
@@ -119,5 +117,11 @@ extension BaseController {
         
         navigationController?.navigationBar.setBackgroundImage(backgroundImage, for: .default)
         navigationController?.navigationBar.shadowImage = shadowImage
+    }
+    
+    func setBackImage(_ imgName: String) {
+        if navigationController?.viewControllers.count ?? 0 > 1 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIButton(imageName: imgName, target: self, action: #selector(backAction)))
+        }
     }
 }

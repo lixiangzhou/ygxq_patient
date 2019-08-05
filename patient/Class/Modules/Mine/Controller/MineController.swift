@@ -89,7 +89,7 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
         
         cell.config = model.config
         cell.leftIconView?.image = UIImage(named: model.img)
-        cell.titleLabel.text = model.type.rawValue
+        cell.leftLabel.text = model.type.rawValue
         cell.leftIconView?.backgroundColor = .red
         
         return cell

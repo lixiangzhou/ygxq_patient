@@ -19,7 +19,7 @@ class SettingViewModel: BaseViewModel {
     
     struct RowModel {
         let type: RowType
-        let config: TextTableViewCellConfig
+        let config: LeftRightConfigViewConfig
     }
     
     var dataSource = [RowModel]()
@@ -31,10 +31,10 @@ class SettingViewModel: BaseViewModel {
         versionLabel.sizeToFit()
         
         dataSource += [
-            RowModel(type: .addressMgr, config: TextTableViewCellConfig()),
-            RowModel(type: .changeMobile, config: TextTableViewCellConfig()),
-            RowModel(type: .feedback, config: TextTableViewCellConfig()),
-            RowModel(type: .version, config: TextTableViewCellConfig(rightView: versionLabel, hasBottomLine: false)),
+            RowModel(type: .addressMgr, config: LeftRightConfigViewConfig()),
+            RowModel(type: .changeMobile, config: LeftRightConfigViewConfig()),
+            RowModel(type: .feedback, config: LeftRightConfigViewConfig()),
+            RowModel(type: .version, config: LeftRightConfigViewConfig(rightView: versionLabel, hasBottomLine: false)),
         ]
     }
     
