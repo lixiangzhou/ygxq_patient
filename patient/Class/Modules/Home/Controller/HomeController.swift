@@ -63,6 +63,8 @@ class HomeController: BaseController {
         
 //        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
         push(PersonInfoEditController())
+        
+//        DatePicker.show()
     }
 }
 

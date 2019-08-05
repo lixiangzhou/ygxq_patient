@@ -169,6 +169,8 @@
 		10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */; };
 		10CA472C22F815C600A4E244 /* LeftRightConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472B22F815C600A4E244 /* LeftRightConfigView.swift */; };
 		10CA472E22F81DC900A4E244 /* PersonInfoEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472D22F81DC900A4E244 /* PersonInfoEditViewModel.swift */; };
+		10CA473022F826C000A4E244 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472F22F826C000A4E244 /* DatePicker.swift */; };
+		10CA473222F8326F00A4E244 /* CommonPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA473122F8326F00A4E244 /* CommonPicker.swift */; };
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
 		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
@@ -356,6 +358,8 @@
 		10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftRightFieldView.swift; sourceTree = "<group>"; };
 		10CA472B22F815C600A4E244 /* LeftRightConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftRightConfigView.swift; sourceTree = "<group>"; };
 		10CA472D22F81DC900A4E244 /* PersonInfoEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoEditViewModel.swift; sourceTree = "<group>"; };
+		10CA472F22F826C000A4E244 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		10CA473122F8326F00A4E244 /* CommonPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPicker.swift; sourceTree = "<group>"; };
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
 		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
@@ -793,6 +797,8 @@
 				100AEE5522CC7DB800094AE2 /* TextLeftGrowTextRightView.swift */,
 				100AEE6122CC9CBD00094AE2 /* FourColumnView.swift */,
 				10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */,
+				10CA472F22F826C000A4E244 /* DatePicker.swift */,
+				10CA473122F8326F00A4E244 /* CommonPicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1266,6 +1272,7 @@
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */,
 				100AEE6E22CD967300094AE2 /* DrugUsedController.swift in Sources */,
+				10CA473022F826C000A4E244 /* DatePicker.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
 				10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */,
@@ -1288,6 +1295,7 @@
 				10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */,
 				100AEE2822C9F64000094AE2 /* HEAlbumListView.swift in Sources */,
 				108C082F22BD155600B2EBE9 /* ExamListCell.swift in Sources */,
+				10CA473222F8326F00A4E244 /* CommonPicker.swift in Sources */,
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,

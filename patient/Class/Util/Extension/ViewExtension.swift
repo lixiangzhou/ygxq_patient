@@ -38,17 +38,22 @@ extension BaseShowView {
         UIApplication.shared.keyWindow?.addSubview(self)
         
         alpha = 0
-        UIView.animate(withDuration: 0.25) {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        UIView.animate(withDuration: 0.25, animations: {
             self.alpha = 1
+        }) { (_) in
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
     
     @objc func hide() {
         alpha = 1
+        UIApplication.shared.beginIgnoringInteractionEvents()
         UIView.animate(withDuration: 0.25, animations: {
             self.alpha = 0
         }) { (_) in
             self.removeFromSuperview()
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
 }

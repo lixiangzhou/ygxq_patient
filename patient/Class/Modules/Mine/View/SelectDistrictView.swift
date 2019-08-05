@@ -260,6 +260,12 @@ extension SelectDistrictView {
         super.show()
         viewModel.getProvinces()
     }
+    
+    static func show() -> SelectDistrictView {
+        let view = SelectDistrictView()
+        view.show()
+        return view
+    }
 }
 
 private class DistrictCell: UITableViewCell {

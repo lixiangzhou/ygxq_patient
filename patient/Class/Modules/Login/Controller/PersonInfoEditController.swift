@@ -32,6 +32,9 @@ class PersonInfoEditController: BaseController {
     private let addressView = LeftRightConfigView()
     private let diseaseView = LeftRightConfigView()
     
+    private let selectDistrictView = SelectDistrictView()
+    
+    private let arrowOpt = "请选择"
     
     private let viewModel = PersonInfoEditViewModel()
 }
@@ -58,19 +61,19 @@ extension PersonInfoEditController {
         nameView.config = viewModel.inputConfig
         
         birthView.leftLabel.text = "出生日期"
-        birthView.rightLabel.text = "请选择"
+        birthView.rightLabel.text = arrowOpt
         birthView.config = viewModel.arrowConfig
         
         sexView.leftLabel.text = "性别"
-        sexView.rightLabel.text = "请选择"
+        sexView.rightLabel.text = arrowOpt
         sexView.config = viewModel.arrowConfig
         
         heightView.leftLabel.text = "身高"
-        heightView.rightLabel.text = "请选择"
+        heightView.rightLabel.text = arrowOpt
         heightView.config = viewModel.arrowConfig
         
         weightView.leftLabel.text = "体重"
-        weightView.rightLabel.text = "请选择"
+        weightView.rightLabel.text = arrowOpt
         weightView.config = viewModel.arrowConfig
         
         nationView.leftLabel.text = "民族"
@@ -79,13 +82,25 @@ extension PersonInfoEditController {
         nationView.config = viewModel.inputConfig
         
         addressView.leftLabel.text = "地址"
-        addressView.rightLabel.text = "请选择"
+        addressView.rightLabel.text = arrowOpt
         addressView.config = viewModel.arrowConfig
         
         diseaseView.leftLabel.text = "疾病"
-        diseaseView.rightLabel.text = "请选择"
+        diseaseView.rightLabel.text = arrowOpt
         diseaseView.config = viewModel.arrowConfig
         diseaseView.bottomLine.isHidden = true
+        
+        birthView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthAction)))
+        sexView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sexAction)))
+        heightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(heightAction)))
+        weightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(weightAction)))
+        
+        addressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addressAction)))
+        diseaseView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(diseaseAction)))
+        
+        selectDistrictView.completion = { [weak self] model in
+            self?.addressView.rightLabel.text = model.fullName
+        }
         
         contentView.addSubview(nameView)
         contentView.addSubview(birthView)
@@ -179,6 +194,80 @@ extension PersonInfoEditController {
         
     }
     
+    @objc private func birthAction() {
+        view.endEditing(true)
+        
+        let picker = DatePicker.show()
+        picker.finishClosure = { [weak self] _, date in
+            self?.birthView.rightLabel.text = date.zz_string(withDateFormat: "yyyy-MM-dd")
+        }
+    }
+    
+    @objc private func sexAction() {
+        view.endEditing(true)
+        
+        let picker = CommonPicker.show()
+        picker.dataSource = viewModel.sexDataSource
+        picker.selectOne(selectSex)
+        picker.finishClosure = { [weak self] picker in
+            guard let self = self else { return }
+            let row = picker.commmonPicker.selectedRow(inComponent: 0)
+            switch self.viewModel.sexDataSource {
+            case let .one(ds):
+                self.sexView.rightLabel.text = ds[row]
+            default:
+                break
+            }
+        }
+    }
+    
+    @objc private func heightAction() {
+        view.endEditing(true)
+        
+        let picker = CommonPicker.show()
+        picker.dataSource = viewModel.heightDataSource
+        picker.selectOne(selectHeight)
+        picker.finishClosure = { [weak self] picker in
+            guard let self = self else { return }
+            let row = picker.commmonPicker.selectedRow(inComponent: 0)
+            switch self.viewModel.heightDataSource {
+            case let .two(ds):
+                self.heightView.rightLabel.text = ds[row].title + "cm"
+            default:
+                break
+            }
+        }
+    }
+    
+    @objc private func weightAction() {
+        view.endEditing(true)
+        
+        let picker = CommonPicker.show()
+        picker.dataSource = viewModel.weightDataSource
+        picker.selectOne(selectWeight)
+        picker.finishClosure = { [weak self] picker in
+            guard let self = self else { return }
+            let row = picker.commmonPicker.selectedRow(inComponent: 0)
+            switch self.viewModel.weightDataSource {
+            case let .two(ds):
+                self.weightView.rightLabel.text = ds[row].title + "kg"
+            default:
+                break
+            }
+        }
+    }
+    
+    @objc private func addressAction() {
+        view.endEditing(true)
+        
+        selectDistrictView.show()
+    }
+    
+    @objc private func diseaseAction() {
+        view.endEditing(true)
+        
+    }
+    
     @objc private func finishAction() {
         
     }
@@ -199,7 +288,45 @@ extension PersonInfoEditController {
 
 // MARK: - Helper
 extension PersonInfoEditController {
+    var selectBirth: String? {
+        if birthView.rightLabel.text == arrowOpt {
+            return nil
+        } else {
+            return birthView.rightLabel.text
+        }
+    }
     
+    var selectSex: String? {
+        if sexView.rightLabel.text == arrowOpt {
+            return nil
+        } else {
+            return sexView.rightLabel.text
+        }
+    }
+    
+    var selectHeight: String? {
+        if heightView.rightLabel.text == arrowOpt {
+            return nil
+        } else {
+            return heightView.rightLabel.text?.replacingOccurrences(of: "cm", with: "")
+        }
+    }
+    
+    var selectWeight: String? {
+        if weightView.rightLabel.text == arrowOpt {
+            return nil
+        } else {
+            return weightView.rightLabel.text?.replacingOccurrences(of: "kg", with: "")
+        }
+    }
+    
+    var selectDisease: String? {
+        if diseaseView.rightLabel.text == arrowOpt {
+            return nil
+        } else {
+            return diseaseView.rightLabel.text
+        }
+    }
 }
 
 // MARK: - Other
