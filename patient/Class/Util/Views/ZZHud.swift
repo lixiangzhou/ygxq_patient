@@ -27,9 +27,13 @@ public extension ZZHud {
               backgroundColor: UIColor,
               cornerRadius: CGFloat,
               showDuration: TimeInterval,
+              hudAlpha: CGFloat = 1,
+              contentInset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10),
+              position: ZZHudPosition = .center,
+              offsetY: CGFloat = 0,
               toView: UIView) {
         let msgLabel = hudLabel(message: message, font: font, color: color)
-        show(toast: msgLabel, toView: toView, hudCornerRadius: cornerRadius, hudBackgroundColor: backgroundColor, showDuration: showDuration)
+        show(toast: msgLabel, toView: toView, hudCornerRadius: cornerRadius, hudBackgroundColor: backgroundColor, hudAlpha: hudAlpha, contentInset: contentInset, position: position, offsetY: offsetY, showDuration: showDuration)
     }
     
     /// 显示文本信息
@@ -43,13 +47,17 @@ public extension ZZHud {
     ///   - showDuration: 显示时间
     ///   - toView: 文本信息要显示到的View
     static func show(message: String,
-              font: UIFont = UIFont.systemFont(ofSize: 14),
-              color: UIColor = UIColor.white,
-              backgroundColor: UIColor,
-              cornerRadius: CGFloat,
-              showDuration: TimeInterval,
-              toView: UIView) {
-        ZZHud.shared.show(message: message, backgroundColor: backgroundColor, cornerRadius: cornerRadius, showDuration: showDuration, toView: toView)
+                     font: UIFont = UIFont.systemFont(ofSize: 14),
+                     color: UIColor = UIColor.white,
+                     backgroundColor: UIColor,
+                     cornerRadius: CGFloat,
+                     showDuration: TimeInterval,
+                     hudAlpha: CGFloat = 1,
+                     contentInset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10),
+                     position: ZZHudPosition = .center,
+                     offsetY: CGFloat = 0,
+                     toView: UIView) {
+        ZZHud.shared.show(message: message, font: font, color: color, backgroundColor: backgroundColor, cornerRadius: cornerRadius, showDuration: showDuration, hudAlpha: hudAlpha, contentInset: contentInset, position: position, offsetY: offsetY, toView: toView)
     }
     
     
@@ -400,7 +408,7 @@ public extension ZZHud {
     ///   - showDuration:  toast视图显示时长
     ///   - showAnimation: toast视图显示动画
     ///   - hideAnimation: toast视图隐藏动画
-    fileprivate func toast(hud: UIView,
+    private func toast(hud: UIView,
                            showDuration: TimeInterval,
                            showAnimation: CAAnimation,
                            hideAnimation: CAAnimation) {
@@ -420,7 +428,7 @@ public extension ZZHud {
     /// - Parameters:
     ///   - hud: loading视图
     ///   - showAnimation: toast视图显示动画
-    fileprivate func showLoading(hud: UIView,
+    private func showLoading(hud: UIView,
                                   showAnimation: CAAnimation) {
         hud.layer.add(showAnimation, forKey: nil)
     }
@@ -432,7 +440,7 @@ public extension ZZHud {
     ///   - toView: hud将添加到的视图
     ///   - position: hud在toView的位置
     ///   - offsetY: hud在toView位置的偏移量
-    fileprivate func add(hud: UIView,
+    private func add(hud: UIView,
                          toView: UIView,
                          position: ZZHudPosition,
                          offsetY: CGFloat) {
@@ -463,7 +471,7 @@ public extension ZZHud {
     /// - Parameter alpha: 包装好的hud的alpha
     /// - Parameter contentInset: 要包装的hud的contentInset
     /// - Returns: 包装好的hud
-    fileprivate func wrap(_ hud: UIView,
+    private func wrap(_ hud: UIView,
                           cornerRadius: CGFloat,
                           backgroundColor: UIColor,
                           alpha: CGFloat,
@@ -491,7 +499,7 @@ public extension ZZHud {
     ///   - font: 文本字体
     ///   - color: 文本颜色
     /// - Returns: 创建好的Label
-    fileprivate func hudLabel(message: String,
+    private func hudLabel(message: String,
                               font: UIFont,
                               color: UIColor) -> UILabel {
         let hudLabel = UILabel()
@@ -510,7 +518,7 @@ public extension ZZHud {
     ///   - size: 图片大小
     ///   - cornerRadius: 图片圆角
     /// - Returns: 创建好的ImageView
-    fileprivate func hudImageView(icon: UIImage,
+    private func hudImageView(icon: UIImage,
                                   size: CGSize,
                                   cornerRadius: CGFloat) -> UIImageView {
         let hudImageView = UIImageView()

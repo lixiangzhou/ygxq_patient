@@ -11,11 +11,12 @@ import UIKit
 struct HUD {
     static func show(toast: String, in view: UIView = UIApplication.shared.keyWindow!) {
         ZZHud.show(message: toast,
-                   font: UIFont.systemFont(ofSize: 12),
+                   font: UIFont.systemFont(ofSize: 14),
                    color: UIColor.white,
                    backgroundColor: UIColor(white: 0.2, alpha: 0.8),
                    cornerRadius: 5,
                    showDuration: 1,
+                   contentInset: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15),
                    toView: view)
     }
     

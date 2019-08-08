@@ -28,7 +28,7 @@ class LoginController: BaseController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationStyle(.transparency)
+        setNavigationStyle(.whiteBg)
     }
     
     // MARK: - Public Property
@@ -36,9 +36,9 @@ class LoginController: BaseController {
     // MARK: - Private Property
     private var pwdLoginBtn: UIButton!
     private var codeLoginBtn: UIButton!
-    private var mobileField = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的账号", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
-    private var pwdField = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "请输入您的密码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
-    private var (codeField, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var mobileView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的账号", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var pwdView = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "请输入您的密码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var (codeView, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private let loginBtn = UIButton(title: "登录", font: .boldSize(18), titleColor: .cf, target: self, action: #selector(loginAction))
     private var loginTypeProperty = MutableProperty(LoginType.password)
     
@@ -48,6 +48,8 @@ class LoginController: BaseController {
 // MARK: - UI
 extension LoginController {
     override func setUI() {
+        couldShowLogin = false
+        
         let iconView = UIImageView(image: UIImage(named: "login_logo"))
         view.addSubview(iconView)
         
@@ -64,36 +66,28 @@ extension LoginController {
         codeLoginBtn.tag = LoginType.code.rawValue
         contentView.addSubview(codeLoginBtn)
         
-        mobileField.inputLengthLimit = 11
-        mobileField.keyboardType = .numberPad
-        mobileField.zz_setCorner(radius: 22.5, masksToBounds: true)
-        mobileField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
-        mobileField.leftViewSize = CGSize(width: 25, height: 20)
-//        mobileField.layer.shadowOffset = CGSize(width: 6, height: 6)
-//        mobileField.layer.shadowOpacity = 0.15
-//        mobileField.layer.shadowColor = UIColor.c205cca.cgColor
-//        mobileField.layer.shadowRadius = 22.5
+        mobileView.inputLengthLimit = 11
+        mobileView.keyboardType = .numberPad
+        mobileView.leftViewSize = CGSize(width: 25, height: 20)
+        mobileView.addBg("login_field_bg")
         
-        
-        pwdField.inputLengthLimit = 20
-        pwdField.zz_setCorner(radius: 22.5, masksToBounds: true)
-        pwdField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
-        pwdField.leftViewSize = CGSize(width: 25, height: 20)
-        pwdField.isSecureTextEntry = false
+        pwdView.inputLengthLimit = 20
+        pwdView.leftViewSize = CGSize(width: 25, height: 20)
+        pwdView.isSecureTextEntry = false
+        pwdView.addBg("login_field_bg")
         
         codeBtn.setTitleColor(.c407cec, for: .normal)
         codeBtn.setTitleColor(.c9, for: .disabled)
         codeBtn.isEnabled = false
         
-        codeField.inputLengthLimit = 6
-        codeField.keyboardType = .numberPad
-        codeField.zz_setCorner(radius: 22.5, masksToBounds: true)
-        codeField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
-        codeField.leftViewSize = CGSize(width: 25, height: 20)
+        codeView.inputLengthLimit = 6
+        codeView.keyboardType = .numberPad
+        codeView.leftViewSize = CGSize(width: 25, height: 20)
+        codeView.addBg("login_field_bg")
         
-        contentView.addSubview(mobileField)
-        contentView.addSubview(pwdField)
-        contentView.addSubview(codeField)
+        contentView.addSubview(mobileView)
+        contentView.addSubview(pwdView)
+        contentView.addSubview(codeView)
         
         loginBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
         loginBtn.isEnabled = false
@@ -105,11 +99,10 @@ extension LoginController {
         contentView.addSubview(forgetPwdBtn)
         contentView.addSubview(toRegisterBtn)
         
-        let bottomBgView = UIImageView(image: UIImage(named: "login_bottom"))
-        view.addSubview(bottomBgView)
+        addLoginBottomView()
         
         iconView.snp.makeConstraints { (make) in
-            make.top.equalTo(100)
+            make.top.equalTo(40)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(72)
         }
@@ -130,25 +123,25 @@ extension LoginController {
             make.right.equalTo(-20)
         }
         
-        mobileField.snp.makeConstraints { (make) in
+        mobileView.snp.makeConstraints { (make) in
             make.top.equalTo(pwdLoginBtn.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
             make.height.equalTo(45)
         }
         
-        pwdField.snp.makeConstraints { (make) in
-            make.top.equalTo(mobileField.snp.bottom).offset(20)
-            make.left.right.height.equalTo(mobileField)
-            make.height.equalTo(mobileField)
+        pwdView.snp.makeConstraints { (make) in
+            make.top.equalTo(mobileView.snp.bottom).offset(20)
+            make.left.right.height.equalTo(mobileView)
+            make.height.equalTo(mobileView)
         }
         
-        codeField.snp.makeConstraints { (make) in
-            make.edges.equalTo(pwdField)
+        codeView.snp.makeConstraints { (make) in
+            make.edges.equalTo(pwdView)
         }
         
         loginBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(pwdField.snp.bottom).offset(25)
-            make.left.right.equalTo(pwdField)
+            make.top.equalTo(pwdView.snp.bottom).offset(25)
+            make.left.right.equalTo(pwdView)
             make.height.equalTo(50)
         }
         
@@ -162,30 +155,25 @@ extension LoginController {
             make.top.equalTo(forgetPwdBtn)
             make.right.equalTo(loginBtn).offset(-15)
         }
-        
-        bottomBgView.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalToSuperview()
-            make.top.equalTo(loginBtn.snp.bottom).offset(50)
-        }
     }
     
     override func setBinding() {
         loginTypeProperty <~ pwdLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
         loginTypeProperty <~ codeLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
         
-        mobileField.reactive.makeBindingTarget { (view, text) in
+        mobileView.reactive.makeBindingTarget { (view, text) in
             view.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.c9])
         } <~ loginTypeProperty.map { $0 == .password ? "请输入您的账号" : "请输入手机号码" }
         
         pwdLoginBtn.reactive.isEnabled <~ loginTypeProperty.map { $0 != .password }
         codeLoginBtn.reactive.isEnabled <~ loginTypeProperty.map { $0 != .code }
         
-        pwdField.reactive.isHidden <~ loginTypeProperty.map { $0 != .password }
-        codeField.reactive.isHidden <~ loginTypeProperty.map { $0 != .code }
+        pwdView.reactive.isHidden <~ loginTypeProperty.map { $0 != .password }
+        codeView.reactive.isHidden <~ loginTypeProperty.map { $0 != .code }
         
-        let mobileEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(mobileField.textField.reactive.continuousTextValues.map { $0.count == 11 })
-        let passwardEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(pwdField.textField.reactive.continuousTextValues.map { $0.count >= 6 })
-        let codeEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(codeField.textField.reactive.continuousTextValues.map { $0.count == 6 })
+        let mobileEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(mobileView.textField.reactive.continuousTextValues.map { $0.count == 11 })
+        let passwardEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(pwdView.textField.reactive.continuousTextValues.map { $0.count >= 6 })
+        let codeEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(codeView.textField.reactive.continuousTextValues.map { $0.count == 6 })
         
         let pwdLoginEnabledSignal = mobileEnabledSignal.and(passwardEnabledSignal)
         let codeLoginEnabledSignal = mobileEnabledSignal.and(codeEnabledSignal)
@@ -197,7 +185,7 @@ extension LoginController {
         
         codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.getCode(.forLogin, mobile: self.mobileField.text!)
+            self.viewModel.getCode(.forLogin, mobile: self.mobileView.text!)
             self.timeLabel.text = "60秒"
             var count = 60
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
@@ -213,7 +201,7 @@ extension LoginController {
             })
         }
 
-        codeBtn.reactive.isEnabled <~ mobileField.valueChangedSignal.map { $0.count == 11 }
+        codeBtn.reactive.isEnabled <~ mobileView.valueChangedSignal.map { $0.count == 11 }
 
     }
 }
@@ -223,17 +211,17 @@ extension LoginController {
     @objc private func loginAction() {
         switch loginTypeProperty.value {
         case .password:
-            viewModel.loginPwd(mobile: mobileField.text!, password: pwdField.text!).map { BoolString($0) }.startWithValues { (result) in
+            viewModel.loginPwd(mobile: mobileView.text!, password: pwdView.text!).map { BoolString($0) }.startWithValues { [weak self] (result) in
                 if result.isSuccess {
-                    
+                    self?.dismiss(animated: true, completion: nil)
                 } else {
                     HUD.show(result)
                 }
             }
         case .code:
-            viewModel.verifyCodeAndLogin(mobile: mobileField.text!, code: codeField.text!).startWithValues { (result) in
+            viewModel.verifyCodeAndLogin(mobile: mobileView.text!, code: codeView.text!).startWithValues { [weak self] (result) in
                 if result.isSuccess {
-                    
+                    self?.dismiss(animated: true, completion: nil)
                 } else {
                     HUD.show(result)
                 }
@@ -242,7 +230,9 @@ extension LoginController {
     }
     
     @objc private func forgetPwdAction() {
-        print("forgetPwdAction")
+        let vc = ForgetPwdMobileController()
+        vc.couldShowLogin = false
+        push(vc)
     }
     
     @objc private func toRegisterAction() {
@@ -250,30 +240,16 @@ extension LoginController {
     }
 }
 
-// MARK: - Network
-extension LoginController {
+extension BaseController {
+    
+    func addLoginBottomView() {
+        let bottomBgView = UIImageView(image: UIImage(named: "login_bottom"))
+        view.insertSubview(bottomBgView, at: 0)
+        
+        bottomBgView.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(200)
+        }
+    }
     
 }
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension LoginController {
-}
-
-// MARK: - Other
-extension LoginController {
-    
-}
-
-// MARK: - Public
-extension LoginController {
-    
-}
-

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class PersonInfoEditController: BaseController {
 
@@ -18,6 +19,7 @@ class PersonInfoEditController: BaseController {
         title = "个人信息"
         setUI()
         setBinding()
+        viewModel.getDisease()
     }
 
     // MARK: - Public Property
@@ -32,10 +34,11 @@ class PersonInfoEditController: BaseController {
     private let addressView = LeftRightConfigView()
     private let diseaseView = LeftRightConfigView()
     
+    let finishBtn = UIButton(title: "完成", font: .boldSize(18), titleColor: .cf, backgroundColor: UIColor.cdcdcdc, target: self, action: #selector(finishAction))
+    
     private let selectDistrictView = SelectDistrictView()
-    
     private let arrowOpt = "请选择"
-    
+
     private let viewModel = PersonInfoEditViewModel()
 }
 
@@ -43,51 +46,52 @@ class PersonInfoEditController: BaseController {
 extension PersonInfoEditController {
     override func setUI() {
         view.backgroundColor = .cf0efef
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "跳过", style: .plain, target: self, action: #selector(skipAction))
         
         let tipLabel = UILabel(text: "请您完善信息，方便为您提供更好的服务", font: .size(13), textColor: .c9)
         view.addSubview(tipLabel)
         
         let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .onDrag
         view.addSubview(scrollView)
         
         let contentView = UIView()
         contentView.backgroundColor = .cf
         scrollView.addSubview(contentView)
         
-        nameView.leftLabel.text = "真实姓名"
+        nameView.config = viewModel.inputConfig
+        nameView.leftLabel.attributedText = viewModel.nameAttributeString
         nameView.rightField.placeholder = "请输入真实姓名"
         nameView.rightField.textAlignment = .right
-        nameView.config = viewModel.inputConfig
         
+        birthView.config = viewModel.arrowConfig
         birthView.leftLabel.text = "出生日期"
         birthView.rightLabel.text = arrowOpt
-        birthView.config = viewModel.arrowConfig
         
+        sexView.config = viewModel.arrowConfig
         sexView.leftLabel.text = "性别"
         sexView.rightLabel.text = arrowOpt
-        sexView.config = viewModel.arrowConfig
         
+        heightView.config = viewModel.arrowConfig
         heightView.leftLabel.text = "身高"
         heightView.rightLabel.text = arrowOpt
-        heightView.config = viewModel.arrowConfig
         
+        weightView.config = viewModel.arrowConfig
         weightView.leftLabel.text = "体重"
         weightView.rightLabel.text = arrowOpt
-        weightView.config = viewModel.arrowConfig
         
+        nationView.config = viewModel.inputConfig
         nationView.leftLabel.text = "民族"
         nationView.rightField.placeholder = "请输入民族"
         nationView.rightField.textAlignment = .right
-        nationView.config = viewModel.inputConfig
         
+        addressView.config = viewModel .arrowConfig
         addressView.leftLabel.text = "地址"
         addressView.rightLabel.text = arrowOpt
-        addressView.config = viewModel.arrowConfig
         
+        diseaseView.config = viewModel.arrowConfig
         diseaseView.leftLabel.text = "疾病"
         diseaseView.rightLabel.text = arrowOpt
-        diseaseView.config = viewModel.arrowConfig
         diseaseView.bottomLine.isHidden = true
         
         birthView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthAction)))
@@ -111,9 +115,10 @@ extension PersonInfoEditController {
         contentView.addSubview(addressView)
         contentView.addSubview(diseaseView)
         
-        let finishBtn = UIButton(title: "完成", font: .boldSize(18), titleColor: .cf, backgroundColor: UIColor.cdcdcdc, target: self, action: #selector(finishAction))
         finishBtn.isEnabled = false
         view.addSubview(finishBtn)
+        
+        addLoginBottomView()
         
         tipLabel.snp.makeConstraints { (make) in
             make.topOffsetFrom(self)
@@ -184,20 +189,23 @@ extension PersonInfoEditController {
     }
     
     override func setBinding() {
+        let nameEnabledSignal = nameView.rightField.reactive.continuousTextValues.map { $0.count >= 2 }
         
+        let finishEnabledSignal = nameEnabledSignal
+        
+        finishBtn.reactive.isEnabled <~ finishEnabledSignal
+        finishBtn.reactive.backgroundColor <~ finishEnabledSignal.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
     }
 }
 
 // MARK: - Action
 extension PersonInfoEditController {
-    @objc private func skipAction() {
-        
-    }
     
     @objc private func birthAction() {
         view.endEditing(true)
         
         let picker = DatePicker.show()
+        picker.datePicker.setDate(selectBirth?.zz_date(withDateFormat: "yyyy-MM-dd") ?? Date(), animated: false)
         picker.finishClosure = { [weak self] _, date in
             self?.birthView.rightLabel.text = date.zz_string(withDateFormat: "yyyy-MM-dd")
         }
@@ -266,31 +274,53 @@ extension PersonInfoEditController {
     @objc private func diseaseAction() {
         view.endEditing(true)
         
+        let picker = CommonPicker.show()
+        picker.dataSource = viewModel.diseasesDataSource
+        picker.selectOne(selectDisease)
+        picker.finishClosure = { [weak self] picker in
+            guard let self = self else { return }
+            let row = picker.commmonPicker.selectedRow(inComponent: 0)
+            switch self.viewModel.diseasesDataSource {
+            case let .one(ds):
+                self.diseaseView.rightLabel.text = ds[row]
+            default:
+                break
+            }
+        }
     }
-    
+
     @objc private func finishAction() {
+        var params = [String: Any]()
+        params["realName"] = nameView.rightField.text ?? ""
+        params["birth"] = selectBirth?.zz_date(withDateFormat: "yyyy-MM-dd")?.timeIntervalSince1970 ?? 0
+        params["sex"] = Sex.string(selectSex).rawValue
+        params["height"] = Int(selectHeight ?? "0")
+        params["weight"] = Int(selectWeight ?? "0")
+        params["race"] = nationView.rightField.text ?? ""
+        params["address"] = addressView.rightLabel.text ?? ""
+        params["diseaseCode"] = viewModel.selectDiseaseCodeFrom(selectDisease) ?? "0"
+        params["id"] = PatientManager.shared.id
+        params["fromWhere"] = 1
         
+        viewModel.saveInfo(params).startWithValues { [weak self] (result) in
+            if result.isSuccess {
+                HUD.show(toast: "注册成功")
+                DispatchQueue.main.zz_after(2) {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                HUD.show(result)
+            }
+        }
     }
 }
-
-// MARK: - Network
-extension PersonInfoEditController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
 
 // MARK: - Helper
 extension PersonInfoEditController {
+    
     var selectBirth: String? {
         if birthView.rightLabel.text == arrowOpt {
-            return nil
+            return Date().zz_date(byAdding: .year, value: -30)?.zz_string(withDateFormat: "yyyy-MM-dd")
         } else {
             return birthView.rightLabel.text
         }
@@ -306,7 +336,7 @@ extension PersonInfoEditController {
     
     var selectHeight: String? {
         if heightView.rightLabel.text == arrowOpt {
-            return nil
+            return "120"
         } else {
             return heightView.rightLabel.text?.replacingOccurrences(of: "cm", with: "")
         }
@@ -314,9 +344,17 @@ extension PersonInfoEditController {
     
     var selectWeight: String? {
         if weightView.rightLabel.text == arrowOpt {
-            return nil
+            return "60"
         } else {
             return weightView.rightLabel.text?.replacingOccurrences(of: "kg", with: "")
+        }
+    }
+    
+    var selectAddress: String? {
+        if addressView.rightLabel.text == arrowOpt {
+            return nil
+        } else {
+            return addressView.rightLabel.text
         }
     }
     
@@ -328,14 +366,3 @@ extension PersonInfoEditController {
         }
     }
 }
-
-// MARK: - Other
-extension PersonInfoEditController {
-    
-}
-
-// MARK: - Public
-extension PersonInfoEditController {
-    
-}
-

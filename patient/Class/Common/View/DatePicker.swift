@@ -38,6 +38,8 @@ extension DatePicker {
         bgView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         addSubview(bgView)
         
+        bgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hide)))
+        
         let toolBar = UIView()
         toolBar.backgroundColor = .cf0efef
         addSubview(toolBar)

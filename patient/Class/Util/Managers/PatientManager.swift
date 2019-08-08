@@ -27,7 +27,7 @@ class PatientManager {
     }
     
     var isLogin: Bool {
-        return patientInfoModel?.id != 0
+        return id != 0
     }
     
     var id: Int {

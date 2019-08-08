@@ -10,14 +10,9 @@ import UIKit
 
 class CommonPicker: BaseView {
     
-    struct Group {
-        var title: String
-        var array: [String]
-    }
-    
     enum DataSouce {
         case one([String])
-        case two([Group])
+        case two([GroupModel<String>])
     }
     
     // MARK: - Life Cycle
@@ -139,7 +134,7 @@ extension CommonPicker: UIPickerViewDataSource, UIPickerViewDelegate {
                 return ds.count
             } else {
                 let row0 = pickerView.selectedRow(inComponent: 0)
-                return ds[row0].array.count
+                return ds[row0].list.count
             }
         }
     }
@@ -155,7 +150,7 @@ extension CommonPicker: UIPickerViewDataSource, UIPickerViewDelegate {
                 return ds[row].title
             } else {
                 let row0 = pickerView.selectedRow(inComponent: 0)
-                return ds[row0].array[row]
+                return ds[row0].list[row]
             }
         }
     }

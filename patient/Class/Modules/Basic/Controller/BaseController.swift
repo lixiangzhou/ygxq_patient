@@ -85,6 +85,7 @@ extension BaseController {
         case `default`
         case `systemDefault`
         case transparency
+        case whiteBg
         case other(Images)
         
         struct Images {
@@ -109,6 +110,9 @@ extension BaseController {
             shadowImage = nil
         case .transparency:
             backgroundImage = UIImage.zz_image(withColor: .clear)
+            shadowImage = UIImage()
+        case .whiteBg:
+            backgroundImage = UIImage.zz_image(withColor: .cf)
             shadowImage = UIImage()
         case .other(let imgs):
             backgroundImage = imgs.background

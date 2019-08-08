@@ -24,17 +24,17 @@ class RegisterController: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationStyle(.transparency)
+        setNavigationStyle(.whiteBg)
         setBackImage("login_back")
     }
 
     // MARK: - Public Property
     
     // MARK: - Private Property
-    private var mobileField = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的账号", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
-    private var (codeField, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
-    private var pwdField = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "请输入您的密码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
-    private var inviteCodeField = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_invite"), placeholder: "请输入邀请码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var mobileView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的账号", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var (codeView, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var pwdView = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "请输入您的密码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var inviteCodeView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_invite"), placeholder: "请输入邀请码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private let nextBtn = UIButton(title: "下一步", font: .boldSize(18), titleColor: .cf, target: self, action: #selector(nextAction))
     
     private let aggreeBtn = UIButton(imageName: "login_agree_unsel", selectedImageName: "login_agree_sel", target: self, action: #selector(agreeAction))
@@ -54,58 +54,65 @@ extension RegisterController {
         let titleLabel = UILabel(text: "注册", font: .boldSize(17), textColor: .c3)
         view.addSubview(titleLabel)
         
-        mobileField.inputLengthLimit = 11
-        mobileField.keyboardType = .numberPad
-        mobileField.zz_setCorner(radius: 22.5, masksToBounds: true)
-        mobileField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
-        mobileField.leftViewSize = CGSize(width: 25, height: 20)
+        mobileView.inputLengthLimit = 11
+        mobileView.keyboardType = .numberPad
+        mobileView.leftViewSize = CGSize(width: 25, height: 20)
+        mobileView.addBg("login_field_bg")
         
         codeBtn.setTitleColor(.c407cec, for: .normal)
         codeBtn.setTitleColor(.c9, for: .disabled)
         codeBtn.isEnabled = false
         
-        codeField.inputLengthLimit = 6
-        codeField.keyboardType = .numberPad
-        codeField.zz_setCorner(radius: 22.5, masksToBounds: true)
-        codeField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
-        codeField.leftViewSize = CGSize(width: 25, height: 20)
+        codeView.inputLengthLimit = 6
+        codeView.keyboardType = .numberPad
+        codeView.leftViewSize = CGSize(width: 25, height: 20)
+        codeView.addBg("login_field_bg")
         
-        pwdField.inputLengthLimit = 20
-        pwdField.zz_setCorner(radius: 22.5, masksToBounds: true)
-        pwdField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
-        pwdField.leftViewSize = CGSize(width: 25, height: 20)
-        pwdField.isSecureTextEntry = false
+        pwdView.inputLengthLimit = 20
+        pwdView.leftViewSize = CGSize(width: 25, height: 20)
+        pwdView.isSecureTextEntry = false
+        pwdView.addBg("login_field_bg")
         
-        inviteCodeField.inputLengthLimit = 6
-        inviteCodeField.keyboardType = .numberPad
-        inviteCodeField.zz_setCorner(radius: 22.5, masksToBounds: true)
-        inviteCodeField.zz_setBorder(color: UIColor.c205cca, width: 0.5)
-        inviteCodeField.leftViewSize = CGSize(width: 25, height: 20)
+        inviteCodeView.inputLengthLimit = 6
+        inviteCodeView.keyboardType = .numberPad
+        inviteCodeView.leftViewSize = CGSize(width: 25, height: 20)
         let inviteTipLabel = UILabel(text: "选填", font: .size(14), textColor: .c9)
         inviteTipLabel.frame = CGRect(x: 0, y: 0, width: 30, height: 15)
-        inviteCodeField.rightView.addSubview(inviteTipLabel)
-        inviteCodeField.rightViewSize = CGSize(width: 30, height: 15)
+        inviteCodeView.rightView.addSubview(inviteTipLabel)
+        inviteCodeView.rightViewSize = CGSize(width: 30, height: 15)
+        inviteCodeView.addBg("login_field_bg")
         
         nextBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
         nextBtn.isEnabled = false
         nextBtn.backgroundColor = UIColor.cdcdcdc
         
         aggreeBtn.isSelected = true
-        protocolLabel.addLinks([(string: "《阳光客户端服务协议》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { _ in
-            print("haha")
+        protocolLabel.addLinks([(string: "《阳光客户端服务协议》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { [weak self] _ in
+            guard let self = self, NetworkConfig.serviceURL != nil else { return }
+            let vc = WebController()
+            vc.titleString = "阳光客户端服务协议"
+            vc.url = NetworkConfig.serviceURL
+            
+            let btn = UIButton(title: "下载", font: .size(14), titleColor: .cf)
+            btn.reactive.controlEvents(.touchUpInside).observeValues { _ in
+                UIApplication.shared.open(NetworkConfig.serviceURL!, options: [:], completionHandler: nil)
+            }
+            vc.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+            self.push(vc)
         })])
         
-        
-        view.addSubview(mobileField)
-        view.addSubview(codeField)
-        view.addSubview(pwdField)
-        view.addSubview(inviteCodeField)
+        view.addSubview(mobileView)
+        view.addSubview(codeView)
+        view.addSubview(pwdView)
+        view.addSubview(inviteCodeView)
         view.addSubview(nextBtn)
         view.addSubview(aggreeBtn)
         view.addSubview(protocolLabel)
         
+        addLoginBottomView()
+        
         iconView.snp.makeConstraints { (make) in
-            make.top.equalTo(75)
+            make.top.equalTo(10)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(72)
         }
@@ -115,31 +122,31 @@ extension RegisterController {
             make.centerX.equalToSuperview()
         }
         
-        mobileField.snp.makeConstraints { (make) in
+        mobileView.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.left.equalTo(30)
             make.right.equalTo(-30)
             make.height.equalTo(45)
         }
         
-        codeField.snp.makeConstraints { (make) in
-            make.top.equalTo(mobileField.snp.bottom).offset(20)
-            make.left.right.height.equalTo(mobileField)
+        codeView.snp.makeConstraints { (make) in
+            make.top.equalTo(mobileView.snp.bottom).offset(20)
+            make.left.right.height.equalTo(mobileView)
         }
         
-        pwdField.snp.makeConstraints { (make) in
-            make.top.equalTo(codeField.snp.bottom).offset(20)
-            make.left.right.height.equalTo(mobileField)
+        pwdView.snp.makeConstraints { (make) in
+            make.top.equalTo(codeView.snp.bottom).offset(20)
+            make.left.right.height.equalTo(mobileView)
         }
         
-        inviteCodeField.snp.makeConstraints { (make) in
-            make.top.equalTo(pwdField.snp.bottom).offset(20)
-            make.left.right.height.equalTo(mobileField)
+        inviteCodeView.snp.makeConstraints { (make) in
+            make.top.equalTo(pwdView.snp.bottom).offset(20)
+            make.left.right.height.equalTo(mobileView)
         }
         
         nextBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(inviteCodeField.snp.bottom).offset(25)
-            make.left.right.equalTo(mobileField)
+            make.top.equalTo(inviteCodeView.snp.bottom).offset(25)
+            make.left.right.equalTo(mobileView)
             make.height.equalTo(50)
         }
         
@@ -156,10 +163,9 @@ extension RegisterController {
     }
     
     override func setBinding() {
-        
-        let mobileEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(mobileField.textField.reactive.continuousTextValues.map { $0.count == 11 })
-        let codeEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(codeField.textField.reactive.continuousTextValues.map { $0.count == 6 })
-        let passwordEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(pwdField.textField.reactive.continuousTextValues.map { $0.count >= 6 })
+        let mobileEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(mobileView.textField.reactive.continuousTextValues.map { $0.count == 11 })
+        let codeEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(codeView.textField.reactive.continuousTextValues.map { $0.count == 6 })
+        let passwordEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(pwdView.textField.reactive.continuousTextValues.map { $0.count >= 6 })
         let aggreeEnabledSignal = SignalProducer<Bool, NoError>(value: true).concat(aggreeBtn.reactive.controlEvents(.touchUpInside).map { $0.isSelected })
         
         let nextEnabledSignal = mobileEnabledSignal.and(codeEnabledSignal).and(passwordEnabledSignal).and(aggreeEnabledSignal)
@@ -169,7 +175,7 @@ extension RegisterController {
         
         codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.getCode(.forRegister, mobile: self.mobileField.text!)
+            self.viewModel.getCode(.forRegister, mobile: self.mobileView.text!)
             self.timeLabel.text = "60秒"
             var count = 60
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
@@ -185,18 +191,21 @@ extension RegisterController {
             })
         }
         
-        codeBtn.reactive.isEnabled <~ mobileField.valueChangedSignal.map { $0.count == 11 }
+        codeBtn.reactive.isEnabled <~ mobileView.valueChangedSignal.map { $0.count == 11 }
     }
 }
 
 // MARK: - Action
 extension RegisterController {
     @objc private func nextAction() {
-        viewModel.verifyCodeAndRegister(mobile: mobileField.text!, code: codeField.text!, password: pwdField.text!, inviter: inviteCodeField.text ?? "").startWithValues { (result) in
+        viewModel.verifyCodeAndRegister(mobile: mobileView.text!, code: codeView.text!, password: pwdView.text!, inviter: inviteCodeView.text ?? "").startWithValues { [weak self] (result) in
+            HUD.show(result)
             if result.isSuccess {
-                
-            } else {
-                HUD.show(result)
+                DispatchQueue.main.zz_after(1.5) {                
+                    let vc = PersonInfoEditController()
+                    vc.couldShowLogin = false
+                    self?.push(vc)
+                }
             }
         }
     }
@@ -205,32 +214,3 @@ extension RegisterController {
         aggreeBtn.isSelected = !aggreeBtn.isSelected
     }
 }
-
-// MARK: - Network
-extension RegisterController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension RegisterController {
-    
-}
-
-// MARK: - Other
-extension RegisterController {
-    
-}
-
-// MARK: - Public
-extension RegisterController {
-    
-}
-

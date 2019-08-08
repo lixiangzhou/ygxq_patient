@@ -21,9 +21,18 @@ class WebController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        couldShowLogin = false
         setUI()
         registerHandlers()
         loadPage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if titleString != nil {
+            title = titleString
+        }
     }
 
     // MARK: - Public Property
@@ -44,7 +53,7 @@ class WebController: BaseController {
 // MARK: - UI
 extension WebController {
     override func setUI() {
-        view.addSubview(webView)
+        webView.scrollView.backgroundColor = .cf0efef
         
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -72,7 +81,7 @@ extension WebController: WKUIDelegate {
         alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { (action) in
             completionHandler()
         }))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
@@ -83,7 +92,7 @@ extension WebController: WKUIDelegate {
         alert.addAction(UIAlertAction(title: "取消", style: .default, handler: { (action) in
             completionHandler(false)
         }))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -189,6 +198,13 @@ extension WebController {
     
     func call(handlerName: String) {
         bridge.call(handlerName: handlerName)
+    }
+    
+    static func pushFrom(_ vc: UIViewController,title: String? = nil, url: URL?) {
+        let vc = WebController()
+        vc.titleString = title
+        vc.url = url
+        vc.push(vc)
     }
 }
 

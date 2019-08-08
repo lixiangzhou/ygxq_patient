@@ -56,7 +56,7 @@ extension SettingController {
 extension SettingController {
     @objc private func logoutAction() {
         viewModel.logout()
-        loginObserver.send(value: false)
+        
     }
 }
 

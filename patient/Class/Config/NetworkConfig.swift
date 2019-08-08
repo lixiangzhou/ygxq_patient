@@ -59,6 +59,8 @@ struct NetworkConfig {
             return "http://172.21.24.252:5085/shdr-file-boot/upload/file"
         }
     }
+    
+    static let serviceURL = URL(string: "http://www.lightheart.com.cn/pdf/start.pdf")
 }
 
 enum Enviroment {

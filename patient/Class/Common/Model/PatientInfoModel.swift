@@ -23,6 +23,16 @@ enum Sex: String, EnumProtocol, CustomStringConvertible {
             return "女"
         }
     }
+    
+    static func string(_ string: String?) -> Sex {
+        if string == "男" {
+            return .male
+        } else if string == "女" {
+            return .female
+        } else {
+            return .unknown
+        }
+    }
 }
 
 struct PatientInfoModel: ModelProtocol {

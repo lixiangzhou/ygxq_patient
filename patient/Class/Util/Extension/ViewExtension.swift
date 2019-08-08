@@ -30,6 +30,22 @@ extension UIView {
     }
 }
 
+extension InputFieldView {
+    func addBg(_ imgName: String) {
+        let bg = UIImageView(image: UIImage(named: imgName))
+        bg.contentMode = .scaleToFill
+        backgroundColor = .clear
+        
+        insertSubview(bg, at: 0)
+        bg.snp.makeConstraints { (make) in
+            make.top.equalTo(-3)
+            make.left.equalTo(-5)
+            make.right.equalTo(5)
+            make.bottom.equalTo(6.5)
+        }
+    }
+}
+
 class BaseShowView: BaseView {}
 
 extension BaseShowView {
@@ -57,6 +73,8 @@ extension BaseShowView {
         }
     }
 }
+
+
 
 protocol LayoutHeightProtocol {
     func layoutHeight()

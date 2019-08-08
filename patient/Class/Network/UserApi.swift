@@ -16,6 +16,8 @@ enum UserApi {
     case createRCToken(userId: String)
     case patientInfo(pid: Int)
     case register(mobile: String, password: String, invister: String)
+    case updateInfo(params: [String: Any])
+    case forgetPwd(mobile: String, password: String)
 }
 
 extension UserApi: TargetType {
@@ -33,6 +35,10 @@ extension UserApi: TargetType {
             return "/user/reg"
         case .loginPwd:
             return "/user/login"
+        case .updateInfo:
+            return "/user/update/information"
+        case .forgetPwd:
+            return "/user/forgetpwd"
         }
     }
     
@@ -64,6 +70,18 @@ extension UserApi: TargetType {
             params = ["data": dataString,
                       "encrpyt": false]
         case let .loginPwd(mobile: mobile, password: password):
+            let data = ["mobile": mobile,
+                        "password": password,
+                        "usrType": "2",
+                        "termType": "IOS"]
+            let dataString = String(data: try! JSONSerialization.data(withJSONObject: data, options: []), encoding: .utf8)!
+            params = ["data": dataString,
+                      "encrpyt": false]
+        case let .updateInfo(params: param):
+            for (k, v) in param {
+                params[k] = v
+            }
+        case let .forgetPwd(mobile: mobile, password: password):
             let data = ["mobile": mobile,
                         "password": password,
                         "usrType": "2",

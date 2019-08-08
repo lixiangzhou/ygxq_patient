@@ -10,17 +10,13 @@ import Foundation
 import ReactiveSwift
 import Result
 
-/// 登录状态 信号量
-let (_loginSignal, loginObserver) = Signal<Bool, NoError>.pipe()
-let loginSignal = _loginSignal.skipRepeats()
-
 class LoginManager {
     static let shared = LoginManager()
     private init() { }
     
     func setup() {
-        loginSignal.observeValues { isLogin in
-            if !isLogin {
+        patientInfoProperty.skipRepeats { return $0?.id == $1?.id }.signal.observeValues { (p) in
+            if p == nil {
                 guard let rootVC = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController,
                     let nav = rootVC.selectedViewController as? BaseNavigationController else { return }
                 rootVC.present(BaseNavigationController(rootViewController: LoginController()), animated: true) {

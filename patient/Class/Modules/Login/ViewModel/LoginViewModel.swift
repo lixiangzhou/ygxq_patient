@@ -44,11 +44,26 @@ class LoginViewModel: BaseViewModel {
         }
     }
     
+    func verifyCodeAndForgetPwd(mobile: String, code: String, password: String) -> SignalProducer<BoolString, NoError> {
+        return SignalProducer<BoolString, NoError> { observer, _ in
+            self.verifyCode(mobile: mobile, code: code).startWithValues { (resp) in
+                if resp.isSuccess {
+                    self.forgetPwd(mobile: mobile, password: password).startWithValues({ (resp) in
+                        observer.send(value: resp)
+                        observer.sendCompleted()
+                    })
+                } else {
+                    observer.send(value: BoolString(resp))
+                    observer.sendCompleted()
+                }
+            }
+        }
+    }
+    
     func loginCode(mobile: String, code: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
         return UserApi.loginCode(mobile: mobile, code: code).rac_response(PatientInfoModel.self).on { (resp) in
             if let patientModel = resp.content {
                 patientInfoProperty.value = patientModel
-                loginObserver.send(value: true)
             }
         }
     }
@@ -57,7 +72,6 @@ class LoginViewModel: BaseViewModel {
         return UserApi.loginPwd(mobile: mobile, password: password).rac_response(PatientInfoModel.self).on { (resp) in
             if let patientModel = resp.content {
                 patientInfoProperty.value = patientModel
-                loginObserver.send(value: true)
             }
         }
     }
@@ -66,9 +80,12 @@ class LoginViewModel: BaseViewModel {
         return UserApi.register(mobile: mobile, password: password, invister: inviter).rac_response(PatientInfoModel.self).on { (resp) in
             if let patientModel = resp.content {
                 patientInfoProperty.value = patientModel
-                loginObserver.send(value: true)
             }
         }
+    }
+    
+    func forgetPwd(mobile: String, password: String) -> SignalProducer<BoolString, NoError> {
+        return UserApi.forgetPwd(mobile: mobile, password: password).rac_response(String.self).map { BoolString($0) }
     }
     
     
