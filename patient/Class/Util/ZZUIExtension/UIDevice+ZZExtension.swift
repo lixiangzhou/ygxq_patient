@@ -218,4 +218,8 @@ public extension UIDevice {
         
         return space
     }
+    
+    var zz_isIPhoneX_Series: Bool {
+        return zz_version == .iPhone_X || zz_version == .iPhone_XR || zz_version == .iPhone_XS || zz_version == .iPhone_XS_Max
+    }
 }

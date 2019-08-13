@@ -258,3 +258,4 @@ struct RCModel: ModelProtocol {
     var rcToken = ""
     var rcId = ""
 }
+

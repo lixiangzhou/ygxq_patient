@@ -21,24 +21,28 @@ class MineController: BaseController {
         
         setUI()
         setBinding()
-        viewModel.getInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setNavigationStyle(.transparency)
+        
+        viewModel.getInfo()
     }
 
     // MARK: - Properties
     private let tableView = UITableView()
     private let viewModel = MineViewModel()
-    private let headerView = MineHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 150))
+    private let headerView = MineHeaderView()
 }
 
 // MARK: - UI
 extension MineController {
     override func setUI() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "mine_nav_edit", target: self, action: #selector(editAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "mine_nav_notice", target: self, action: #selector(noticeAction))
+        
         view.addSubview(tableView)
         
         tableView.register(cell: TextTableViewCell.self)
@@ -46,34 +50,44 @@ extension MineController {
         tableView.backgroundColor = .cf0efef
         
         headerView.tapClosure = { [unowned self] in
-            
-            self.present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
+            self.editAction()
         }
         
         tableView.tableHeaderView = headerView
         
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(-UIScreen.zz_navHeight)
+            make.bottom.left.right.equalToSuperview()
         }
     }
     
     override func setBinding() {
         patientInfoProperty.producer.startWithValues { [weak self](pinfo) in
             if let pinfo = pinfo {
-                self?.headerView.iconView.kf.setImage(with: URL(string: pinfo.imgUrl), placeholder: UIImage(named: ""))
+                self?.headerView.iconView.kf.setImage(with: URL(string: pinfo.imgUrl), placeholder: UIImage(named: "mine_avator_default"))
                 self?.headerView.nameLabel.text = pinfo.realName
             } else {
-                self?.headerView.iconView.image = UIImage(named: "")
-                self?.headerView.nameLabel.text = "登录 / 注册"
+                self?.headerView.iconView.image = UIImage(named: "mine_avator_default")
+                self?.headerView.nameLabel.text = nil
             }
         }
     }
 }
 
+// MARK: - Action
 extension MineController {
-
+    @objc private func editAction() {
+        let vc = PersonInfoEditController()
+        vc.hasIcon = true
+        push(vc)
+    }
+    
+    @objc private func noticeAction() {
+        
+    }
 }
 
+// MARK: -
 extension MineController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.dataSource.count
@@ -90,7 +104,6 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
         cell.config = model.config
         cell.leftIconView?.image = UIImage(named: model.img)
         cell.leftLabel.text = model.type.rawValue
-        cell.leftIconView?.backgroundColor = .red
         
         return cell
     }
@@ -114,14 +127,20 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSource[indexPath.section][indexPath.row]
         switch model.type {
-        case .myDoc:
-            let vc = ProfileController()
+        case .consult:
+            let vc = ConsultController()
             push(vc)
-        case .setting:
-            let vc = SettingController()
+        case .sunnyDrug:
+            let vc = SunnyDrugOrderController()
             push(vc)
         case .order:
             let vc = OrderController()
+            push(vc)
+        case .longService:
+            let vc = LongServiceController()
+            push(vc)
+        case .setting:
+            let vc = SettingController()
             push(vc)
         }
     }

@@ -57,7 +57,7 @@ extension RegisterController {
         mobileView.inputLengthLimit = 11
         mobileView.keyboardType = .numberPad
         mobileView.leftViewSize = CGSize(width: 25, height: 20)
-        mobileView.addBg("login_field_bg")
+        mobileView.addShadowView("login_field_bg")
         
         codeBtn.setTitleColor(.c407cec, for: .normal)
         codeBtn.setTitleColor(.c9, for: .disabled)
@@ -66,12 +66,12 @@ extension RegisterController {
         codeView.inputLengthLimit = 6
         codeView.keyboardType = .numberPad
         codeView.leftViewSize = CGSize(width: 25, height: 20)
-        codeView.addBg("login_field_bg")
+        codeView.addShadowView("login_field_bg")
         
         pwdView.inputLengthLimit = 20
         pwdView.leftViewSize = CGSize(width: 25, height: 20)
         pwdView.isSecureTextEntry = false
-        pwdView.addBg("login_field_bg")
+        pwdView.addShadowView("login_field_bg")
         
         inviteCodeView.inputLengthLimit = 6
         inviteCodeView.keyboardType = .numberPad
@@ -80,7 +80,7 @@ extension RegisterController {
         inviteTipLabel.frame = CGRect(x: 0, y: 0, width: 30, height: 15)
         inviteCodeView.rightView.addSubview(inviteTipLabel)
         inviteCodeView.rightViewSize = CGSize(width: 30, height: 15)
-        inviteCodeView.addBg("login_field_bg")
+        inviteCodeView.addShadowView("login_field_bg")
         
         nextBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
         nextBtn.isEnabled = false

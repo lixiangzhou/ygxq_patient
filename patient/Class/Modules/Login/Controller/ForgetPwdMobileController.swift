@@ -52,7 +52,7 @@ extension ForgetPwdMobileController {
         mobileView.textField.leftViewMode = .always
         mobileView.keyboardType = .numberPad
         view.addSubview(mobileView)
-        mobileView.addBg("login_field_bg")
+        mobileView.addShadowView("login_field_bg")
         
         nextBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
         nextBtn.isEnabled = false

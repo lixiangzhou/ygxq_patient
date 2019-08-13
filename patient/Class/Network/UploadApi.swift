@@ -31,9 +31,9 @@ extension UploadApi {
         case .release:
             return URL(string: "http://www.lightheart.com.cn/shdr-file-boot")!
         case .test:
-            return URL(string: "http://172.21.24.251:8889/shdr-file-boot")!
+            return URL(string: "http://172.21.24.251:5085/shdr-file-boot")!
         case .develop:
-            return URL(string: "http://172.21.24.252:8889/shdr-file-boot")!
+            return URL(string: "http://172.21.24.252:5085/shdr-file-boot")!
         }
     }
     
@@ -42,7 +42,7 @@ extension UploadApi {
         case let .upload(datas: datas):
             var formDatas = [MultipartFormData]()
             for file in datas {
-                formDatas.append(MultipartFormData(provider: .data(file.data), name: file.name))
+                formDatas.append(MultipartFormData(provider: .data(file.data), name: "file", fileName: file.name, mimeType: "image/jpeg"))
             }
             
             return .uploadMultipart(formDatas)

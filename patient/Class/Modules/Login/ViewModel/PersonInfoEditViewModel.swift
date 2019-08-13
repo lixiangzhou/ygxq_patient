@@ -19,6 +19,7 @@ class PersonInfoEditViewModel: BaseViewModel {
     var diseasesDataSource = CommonPicker.DataSouce.one([])
     
     let nameAttributeString: NSAttributedString
+    var imgUrl = ""
     
     override init() {
         var heightDS = [GroupModel<String>]()

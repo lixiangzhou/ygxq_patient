@@ -13,7 +13,7 @@ class MineHeaderView: UIView {
     // MARK: - Life Cycle
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 175 + UIScreen.zz_statusBar_additionHeight))
         
         setUI()
     }
@@ -23,8 +23,9 @@ class MineHeaderView: UIView {
     }
 
     // MARK: - Public Property
-    let iconView = UIImageView()
-    let nameLabel = UILabel(text: "登录 / 注册", font: .boldSize(18), textColor: .white)
+    let bgImageView = UIImageView(image: UIImage(named: "mine_top_bg"))
+    let iconView = UIImageView(image: UIImage(named: "mine_avator_default"))
+    let nameLabel = UILabel(text: "", font: .boldSize(17), textColor: .white)
     
     var tapClosure: (() -> Void)?
     // MARK: - Private Property
@@ -34,26 +35,31 @@ class MineHeaderView: UIView {
 // MARK: - UI
 extension MineHeaderView {
     private func setUI() {
+        addSubview(bgImageView)
         addSubview(iconView)
         addSubview(nameLabel)
         
         iconView.zz_setCorner(radius: 40, masksToBounds: true)
-        iconView.zz_setBorder(color: .white, width: 3)
+//        iconView.zz_setBorder(color: .white, width: 3)
         iconView.isUserInteractionEnabled = true
         nameLabel.isUserInteractionEnabled = true
         
         iconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
         nameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
         
-        nameLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(-20)
+        bgImageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
         
         iconView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(nameLabel.snp.top).offset(-10)
+            make.top.equalTo(UIScreen.zz_statusBar_additionHeight + 50)
             make.width.height.equalTo(80)
+        }
+        
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(iconView.snp.bottom).offset(13)
+            make.centerX.equalToSuperview()
         }
     }
 }

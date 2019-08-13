@@ -130,7 +130,7 @@ extension OrderListController {
         
         cell.orderStateDescLabel.text = state != .refund ? "订单状态：" : "退款状态："
         cell.orderStateLabel.text = viewModel.getStateString(model: model)
-        cell.orderCancelTimeLabel.text = "TODO"
+        cell.orderCancelTimeLabel.text = ""
         
         cell.payedView.isHidden = state != .payed
         cell.toPayView.isHidden = state != .toPay

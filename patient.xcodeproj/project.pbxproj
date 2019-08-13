@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1008F6FB230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6FA230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift */; };
 		100AEDCE22C99E5D00094AE2 /* UploadResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEDCD22C99E5D00094AE2 /* UploadResourceCell.swift */; };
 		100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */; };
 		100AEE1F22C9F64000094AE2 /* NSObjectExtension+HE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE0522C9F64000094AE2 /* NSObjectExtension+HE.swift */; };
@@ -166,6 +167,9 @@
 		108C083122BD158D00B2EBE9 /* ExamListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C083022BD158D00B2EBE9 /* ExamListController.swift */; };
 		1099E71B22C4663700C37A9E /* UploadResourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099E71A22C4663700C37A9E /* UploadResourceController.swift */; };
 		1099E71D22C4A5BB00C37A9E /* UploadResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */; };
+		109B74B223028A250034346D /* SunnyDrugOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B123028A250034346D /* SunnyDrugOrderController.swift */; };
+		109B74B523028A9A0034346D /* ConsultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B423028A9A0034346D /* ConsultController.swift */; };
+		109B74B723028AB70034346D /* LongServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B623028AB70034346D /* LongServiceController.swift */; };
 		10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA46B222F431D600A4E244 /* RegisterController.swift */; };
 		10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472722F8073200A4E244 /* PersonInfoEditController.swift */; };
 		10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */; };
@@ -195,6 +199,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1008F6FA230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+ZZExtension.swift"; sourceTree = "<group>"; };
 		100AEDCD22C99E5D00094AE2 /* UploadResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceCell.swift; sourceTree = "<group>"; };
 		100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceHeaderTipView.swift; sourceTree = "<group>"; };
 		100AEE0522C9F64000094AE2 /* NSObjectExtension+HE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectExtension+HE.swift"; sourceTree = "<group>"; };
@@ -359,6 +364,9 @@
 		108C083022BD158D00B2EBE9 /* ExamListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListController.swift; sourceTree = "<group>"; };
 		1099E71A22C4663700C37A9E /* UploadResourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceController.swift; sourceTree = "<group>"; };
 		1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceViewModel.swift; sourceTree = "<group>"; };
+		109B74B123028A250034346D /* SunnyDrugOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugOrderController.swift; sourceTree = "<group>"; };
+		109B74B423028A9A0034346D /* ConsultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultController.swift; sourceTree = "<group>"; };
+		109B74B623028AB70034346D /* LongServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceController.swift; sourceTree = "<group>"; };
 		10CA46B222F431D600A4E244 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		10CA472722F8073200A4E244 /* PersonInfoEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoEditController.swift; sourceTree = "<group>"; };
 		10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftRightFieldView.swift; sourceTree = "<group>"; };
@@ -617,6 +625,7 @@
 				1014D02F2293A6D700294558 /* UISceen+ZZExtension.swift */,
 				1014D0302293A6D700294558 /* UIButton+ZZExtension.swift */,
 				1014D0312293A6D700294558 /* UIAlertController+ZZExtension.swift */,
+				1008F6FA230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift */,
 			);
 			path = ZZUIExtension;
 			sourceTree = "<group>";
@@ -736,6 +745,8 @@
 				1030AA9B229D17DE00519CA4 /* SettingController.swift */,
 				100AEE3B22CA117200094AE2 /* AddressListController.swift */,
 				100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */,
+				109B74B423028A9A0034346D /* ConsultController.swift */,
+				109B74B623028AB70034346D /* LongServiceController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -909,6 +920,8 @@
 		104E3A7B22B892E800A84DB2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				109B74AF230289D00034346D /* VideoConsult */,
+				109B74AE230289BA0034346D /* SunnyDrug */,
 				1014D0352293A6D700294558 /* Basic */,
 				1014D0442293A6D700294558 /* Main */,
 				1030AAA8229E6AC500519CA4 /* Login */,
@@ -1090,6 +1103,37 @@
 				100AEE6922CD8D9C00094AE2 /* DrugModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		109B74AE230289BA0034346D /* SunnyDrug */ = {
+			isa = PBXGroup;
+			children = (
+				109B74B0230289E20034346D /* Controller */,
+			);
+			path = SunnyDrug;
+			sourceTree = "<group>";
+		};
+		109B74AF230289D00034346D /* VideoConsult */ = {
+			isa = PBXGroup;
+			children = (
+				109B74B323028A620034346D /* Controller */,
+			);
+			path = VideoConsult;
+			sourceTree = "<group>";
+		};
+		109B74B0230289E20034346D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				109B74B123028A250034346D /* SunnyDrugOrderController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		109B74B323028A620034346D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		10CAF38F22A8BB5900F20E81 /* Managers */ = {
@@ -1359,6 +1403,7 @@
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
 				100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */,
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
+				109B74B523028A9A0034346D /* ConsultController.swift in Sources */,
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
 				100AEE2622C9F64000094AE2 /* HETool.swift in Sources */,
 				100AEE2A22C9F64000094AE2 /* HEPhotoPickerViewController.swift in Sources */,
@@ -1401,9 +1446,11 @@
 				108C083122BD158D00B2EBE9 /* ExamListController.swift in Sources */,
 				105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */,
 				1014D0532293A6D700294558 /* UIView+ZZExtension.swift in Sources */,
+				109B74B723028AB70034346D /* LongServiceController.swift in Sources */,
 				1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */,
 				100AEE4C22CB6B6E00094AE2 /* AddressEditController.swift in Sources */,
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,
+				1008F6FB230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift in Sources */,
 				108C080622BCCF6C00B2EBE9 /* LoginManager.swift in Sources */,
 				1014D0562293A6D700294558 /* UIImage+ZZExtension.swift in Sources */,
 				1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */,
@@ -1424,6 +1471,7 @@
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */,
 				100AEE5C22CC8FA400094AE2 /* CheckDetailController.swift in Sources */,
+				109B74B223028A250034346D /* SunnyDrugOrderController.swift in Sources */,
 				108C082522BCFCCC00B2EBE9 /* CheckListCell.swift in Sources */,
 				104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */,
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,

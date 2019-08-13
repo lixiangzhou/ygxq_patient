@@ -31,7 +31,7 @@ extension UIView {
 }
 
 extension InputFieldView {
-    func addBg(_ imgName: String) {
+    func addShadowView(_ imgName: String) {
         let bg = UIImageView(image: UIImage(named: imgName))
         bg.contentMode = .scaleToFill
         backgroundColor = .clear

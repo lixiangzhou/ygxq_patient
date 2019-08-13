@@ -45,12 +45,12 @@ extension ForgetPwdController {
         codeView.inputLengthLimit = 6
         codeView.keyboardType = .numberPad
         codeView.leftViewSize = CGSize(width: 25, height: 20)
-        codeView.addBg("login_field_bg")
+        codeView.addShadowView("login_field_bg")
         
         pwdView.inputLengthLimit = 20
         pwdView.leftViewSize = CGSize(width: 25, height: 20)
         pwdView.isSecureTextEntry = false
-        pwdView.addBg("login_field_bg")
+        pwdView.addShadowView("login_field_bg")
         
         confirmBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
         confirmBtn.isEnabled = false

@@ -13,7 +13,10 @@ import Result
 class MineViewModel: BaseViewModel {
     
     enum RowType: String {
-        case myDoc = "我的档案"
+//        case myDoc = "我的档案"
+        case consult = "我的咨询"
+        case sunnyDrug = "我的续药"
+        case longService = "长期服务"
         case order = "我的订单"
         case setting = "设置"
     }
@@ -35,9 +38,11 @@ class MineViewModel: BaseViewModel {
     override init() {
         super.init()
         
-        dataSource.append([RowModel(type: .myDoc, img: "", config: commonCellConfig()),
-                           RowModel(type: .order, img: "", config: lastCellConfig())])
-        dataSource.append([RowModel(type: .setting, img: "", config: lastCellConfig())])
+        dataSource.append([RowModel(type: .consult, img: "mine_consult", config: commonCellConfig()),
+                           RowModel(type: .sunnyDrug, img: "mine_sunnydrug", config: commonCellConfig()),
+                           RowModel(type: .order, img: "mine_order", config: commonCellConfig()),
+                           RowModel(type: .longService, img: "mine_longservice", config: lastCellConfig())])
+        dataSource.append([RowModel(type: .setting, img: "mine_setting", config: lastCellConfig())])
     }
 }
 
