@@ -9,7 +9,7 @@
 import Foundation
 
 extension TimeInterval {
-    func toTime(format: String) -> String {
+    func toTime(format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         return date.zz_string(withDateFormat: format)
     }
     

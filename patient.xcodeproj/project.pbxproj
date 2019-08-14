@@ -171,6 +171,11 @@
 		109B74B523028A9A0034346D /* ConsultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B423028A9A0034346D /* ConsultController.swift */; };
 		109B74B723028AB70034346D /* LongServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B623028AB70034346D /* LongServiceController.swift */; };
 		109B74B9230401D80034346D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B8230401D80034346D /* StringExtension.swift */; };
+		109B74BB230404AF0034346D /* ConsultListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74BA230404AF0034346D /* ConsultListController.swift */; };
+		109B74BD230408830034346D /* ConsultListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74BC230408830034346D /* ConsultListCell.swift */; };
+		109B74BF23040CA70034346D /* ConsultListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74BE23040CA70034346D /* ConsultListViewModel.swift */; };
+		109B74C123040D1A0034346D /* ConsultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74C023040D1A0034346D /* ConsultModel.swift */; };
+		109B74C323040DB40034346D /* ConsultApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74C223040DB40034346D /* ConsultApi.swift */; };
 		10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA46B222F431D600A4E244 /* RegisterController.swift */; };
 		10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472722F8073200A4E244 /* PersonInfoEditController.swift */; };
 		10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */; };
@@ -369,6 +374,11 @@
 		109B74B423028A9A0034346D /* ConsultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultController.swift; sourceTree = "<group>"; };
 		109B74B623028AB70034346D /* LongServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceController.swift; sourceTree = "<group>"; };
 		109B74B8230401D80034346D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		109B74BA230404AF0034346D /* ConsultListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultListController.swift; sourceTree = "<group>"; };
+		109B74BC230408830034346D /* ConsultListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultListCell.swift; sourceTree = "<group>"; };
+		109B74BE23040CA70034346D /* ConsultListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultListViewModel.swift; sourceTree = "<group>"; };
+		109B74C023040D1A0034346D /* ConsultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultModel.swift; sourceTree = "<group>"; };
+		109B74C223040DB40034346D /* ConsultApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultApi.swift; sourceTree = "<group>"; };
 		10CA46B222F431D600A4E244 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		10CA472722F8073200A4E244 /* PersonInfoEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoEditController.swift; sourceTree = "<group>"; };
 		10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftRightFieldView.swift; sourceTree = "<group>"; };
@@ -659,6 +669,7 @@
 				100AEE4122CAEA7900094AE2 /* AddressApi.swift */,
 				100AEE6B22CD8DE800094AE2 /* DrugSunApi.swift */,
 				10CA473322F9152000A4E244 /* DiseaseApi.swift */,
+				109B74C223040DB40034346D /* ConsultApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -736,6 +747,7 @@
 				100AEE3D22CA120D00094AE2 /* AddressListViewModel.swift */,
 				100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */,
 				100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */,
+				109B74BE23040CA70034346D /* ConsultListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -748,6 +760,7 @@
 				100AEE3B22CA117200094AE2 /* AddressListController.swift */,
 				100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */,
 				109B74B423028A9A0034346D /* ConsultController.swift */,
+				109B74BA230404AF0034346D /* ConsultListController.swift */,
 				109B74B623028AB70034346D /* LongServiceController.swift */,
 			);
 			path = Controller;
@@ -757,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				100AEE4322CAEBE700094AE2 /* AddressModel.swift */,
+				109B74C023040D1A0034346D /* ConsultModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -767,6 +781,7 @@
 				1030AAA1229D4B8E00519CA4 /* MineHeaderView.swift */,
 				100AEE3922CA115C00094AE2 /* AddressListCell.swift */,
 				100AEE4522CB306800094AE2 /* SelectDistrictView.swift */,
+				109B74BC230408830034346D /* ConsultListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1307,6 +1322,7 @@
 				100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */,
 				100AEE1F22C9F64000094AE2 /* NSObjectExtension+HE.swift in Sources */,
 				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
+				109B74BF23040CA70034346D /* ConsultListViewModel.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
 				104E3AA722B8E5E700A84DB2 /* LLContainerScrollView.swift in Sources */,
 				100AEE4622CB306800094AE2 /* SelectDistrictView.swift in Sources */,
@@ -1322,6 +1338,7 @@
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
 				104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
+				109B74C323040DB40034346D /* ConsultApi.swift in Sources */,
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
 				104E3A8222B8A9E200A84DB2 /* ProfileViewModel.swift in Sources */,
 				100AEE2F22C9F64000094AE2 /* HEPhotoBrowserCell.swift in Sources */,
@@ -1346,6 +1363,7 @@
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				100AEE2022C9F64000094AE2 /* UIViewExtension+HE.swift in Sources */,
 				100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */,
+				109B74BD230408830034346D /* ConsultListCell.swift in Sources */,
 				100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */,
 				100AEE2C22C9F64000094AE2 /* HEPhotoPickerCell.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
@@ -1386,6 +1404,7 @@
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
 				108C080A22BCD36000B2EBE9 /* HistoryProfileDataController.swift in Sources */,
 				10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */,
+				109B74BB230404AF0034346D /* ConsultListController.swift in Sources */,
 				104E3AA922B8E5E700A84DB2 /* LLToolFunc.swift in Sources */,
 				100AEE6222CC9CBD00094AE2 /* FourColumnView.swift in Sources */,
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
@@ -1436,6 +1455,7 @@
 				100AEE3222C9F64000094AE2 /* HEAlbum.swift in Sources */,
 				1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */,
 				100AEE3E22CA120D00094AE2 /* AddressListViewModel.swift in Sources */,
+				109B74C123040D1A0034346D /* ConsultModel.swift in Sources */,
 				104E3AA822B8E5E700A84DB2 /* LLCtlPageView.swift in Sources */,
 				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,

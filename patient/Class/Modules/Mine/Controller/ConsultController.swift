@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConsultController: BaseController {
+class ConsultController: LLSegmentViewController {
 
     // MARK: - Life Cycle
     
@@ -28,40 +28,27 @@ class ConsultController: BaseController {
 // MARK: - UI
 extension ConsultController {
     override func setUI() {
+        loadSegmentedConfig()
+    }
+    
+    override func loadCtls() {
+        let ingVC = ConsultListController()
+        ingVC.title = "咨询进行中"
+        ingVC.state = .ing
         
+        let edVC = ConsultListController()
+        edVC.title = "咨询已完毕"
+        edVC.state = .finished
+        
+        reloadViewControllers(ctls:[ingVC, edVC])
     }
 }
 
-// MARK: - Action
-extension ConsultController {
-    
-}
-
-// MARK: - Network
-extension ConsultController {
-    
-}
-
-// MARK: - Delegate Internal
 
 // MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
 extension ConsultController {
-    
+    /// 解决在iPhone X上滑动联动的BUG，子View 不随着滑动
+    override func scrollView(scrollView: LLContainerScrollView, shouldScrollWithSubView subView: UIScrollView) -> Bool {
+        return false
+    }
 }
-
-// MARK: - Other
-extension ConsultController {
-    
-}
-
-// MARK: - Public
-extension ConsultController {
-    
-}
-

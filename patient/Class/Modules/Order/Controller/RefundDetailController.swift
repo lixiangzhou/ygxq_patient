@@ -274,37 +274,3 @@ extension RefundDetailController {
         updateView()
     }
 }
-
-// MARK: - Action
-extension RefundDetailController {
-    
-}
-
-// MARK: - Network
-extension RefundDetailController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension RefundDetailController {
-    
-}
-
-// MARK: - Other
-extension RefundDetailController {
-    
-}
-
-// MARK: - Public
-extension RefundDetailController {
-    
-}
-

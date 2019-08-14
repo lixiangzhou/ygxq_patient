@@ -19,7 +19,7 @@ class OrderListController: BaseController {
         setUI()
         setBinding()
         viewModel.state = state
-        viewModel.getOrderList()
+        viewModel.getData()
     }
 
     // MARK: - Public Property
@@ -72,7 +72,7 @@ extension OrderListController {
                 let vc = ApplyForRefundController()
                 vc.orderModel = model
                 vc.submitCompleteClosure = { order in
-                    self.viewModel.getOrderList()
+                    self.viewModel.getData()
                 }
                 self.push(vc)
             }
@@ -90,11 +90,6 @@ extension OrderListController {
         vc.orderModel = model
         push(vc)
     }
-}
-
-// MARK: - Network
-extension OrderListController {
-    
 }
 
 // MARK: - Delegate Internal

@@ -45,7 +45,7 @@ class OrderListViewModel: BaseViewModel {
         }
     }
     
-    func getOrderList() {
+    func getData() {
         getOrderList(state).startWithValues { [weak self] (orders) in
             guard let self = self else { return }
             if let orders = orders, !orders.isEmpty {
@@ -84,7 +84,7 @@ class OrderListViewModel: BaseViewModel {
         OrderApi.cancelOrder(orderId: order.id).rac_response(String.self).map { BoolString($0) }.startWithValues { [unowned self] (result) in
             HUD.show(result)
             if result.isSuccess {
-                self.getOrderList()
+                self.getData()
             }
         }
     }

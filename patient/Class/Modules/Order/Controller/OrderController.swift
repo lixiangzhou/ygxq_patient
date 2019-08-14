@@ -64,11 +64,6 @@ extension OrderController {
     }
 }
 
-// MARK: - Network
-extension OrderController {
-    
-}
-
 // MARK: -
 extension OrderController {
     /// 解决在iPhone X上滑动联动的BUG，子View 不随着滑动
