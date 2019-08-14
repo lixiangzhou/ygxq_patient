@@ -15,7 +15,8 @@ class HomeController: BaseController {
         super.viewDidLoad()
         
 //        print(PatientManager.shared.patientInfoModel)
-        
+        print(TimeInterval(100000).toTime(format: "mm:ss"))
+        print((Date().timeIntervalSince1970 * 1000).toTime(format: "yyyy-MM-dd HH:mm:ss"))
     }
     
     override func viewWillAppear(_ animated: Bool) {

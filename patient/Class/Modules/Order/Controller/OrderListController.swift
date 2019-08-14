@@ -67,6 +67,7 @@ extension OrderListController {
     /// 退款
     func refundOrderAction(_ cell: OrderListCell?, _ model: OrderModel) {
         viewModel.refundIsApply(orderId: model.id).startWithValues { [unowned self] (result) in
+            HUD.showError(result)
             if result.isSuccess {
                 let vc = ApplyForRefundController()
                 vc.orderModel = model
@@ -74,8 +75,6 @@ extension OrderListController {
                     self.viewModel.getOrderList()
                 }
                 self.push(vc)
-            } else {
-                HUD.showError(result)
             }
         }
     }
@@ -122,8 +121,50 @@ extension OrderListController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - Helper
 extension OrderListController {
     func config(cell: OrderListCell, with model: OrderModel) {
+        configCellInfo(cell, model: model)
+        configCellTimer(cell, model: model)
+        addCellActions(cell, model: model)
+    }
+    
+    private func configCellTimer(_ cell: OrderListCell, model: OrderModel) {
+        switch state {
+        case .payed:
+            cell.payedView.hideRefund = model.serCode == "UTOPIA13"
+        case .toPay:
+            cell.toPayView.onlyShowDelete = model.status == "PAY_ORD_S_CLO"
+           
+            viewModel.removeTimer(cell.hash)
+            
+            if viewModel.showTimer(model: model) {
+                cell.orderCancelTimeLabel.text = self.viewModel.timerString(model: model)
+                let timer = Timer(timeInterval: 1, repeats: true) { [weak cell, weak self] (timer) in
+                    guard let cell = cell, let self = self else { timer.invalidate(); return }
+                    if self.viewModel.showTimer(model: model) {
+                        cell.orderCancelTimeLabel.text = self.viewModel.timerString(model: model)
+                    } else {
+                        cell.orderCancelTimeLabel.text = nil
+                        self.viewModel.removeTimer(cell.hash)
+                        var m = model
+                        m.status = "PAY_ORD_S_CLO"
+                        self.viewModel.updateModel(model: m)
+                    }
+                }
+                RunLoop.current.add(timer, forMode: .common)
+                viewModel.saveTimer(cell.hash, timer: timer)
+            } else {
+                cell.orderCancelTimeLabel.text = nil
+            }
+            
+            
+        case .refund:
+            break
+        }
+
+    }
+    
+    private func configCellInfo(_ cell: OrderListCell, model: OrderModel) {
         cell.orderNoLabel.text = model.id.description
-        cell.orderCreateTimeLabel.text = Date(timeIntervalSince1970: model.orderTime / 1000).zz_string(withDateFormat: "yyyy-MM-dd HH:mm") //"2018-1-2 08:32"
+        cell.orderCreateTimeLabel.text = Date(timeIntervalSince1970: model.orderTime / 1000).zz_string(withDateFormat: "yyyy-MM-dd HH:mm")
         
         cell.orderTypeLabel.text = model.productName
         cell.orderPriceLabel.text = "¥\(model.payAmount)"
@@ -135,7 +176,9 @@ extension OrderListController {
         cell.payedView.isHidden = state != .payed
         cell.toPayView.isHidden = state != .toPay
         cell.refundView.isHidden = state != .refund
-        
+    }
+    
+    private func addCellActions(_ cell: OrderListCell, model: OrderModel) {
         cell.cancelOrderClosure = { [weak self, weak cell] in
             self?.cancelOrderAction(cell, model)
         }
@@ -161,14 +204,3 @@ extension OrderListController {
         }
     }
 }
-
-// MARK: - Other
-extension OrderListController {
-    
-}
-
-// MARK: - Public
-extension OrderListController {
-    
-}
-

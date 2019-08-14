@@ -116,7 +116,7 @@ extension ApplyForRefundController {
             make.top.equalTo(scrollView.snp.bottom)
             make.left.right.equalToSuperview()
             make.height.equalTo(50)
-            make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
+            make.bottomOffsetFrom(self)
         }
         
         view.layoutIfNeeded()

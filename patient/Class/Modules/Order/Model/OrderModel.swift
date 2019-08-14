@@ -29,4 +29,5 @@ struct OrderModel: ModelProtocol, Equatable {
 //    var serProductId:
     var productName: String = ""
     var orderTime: TimeInterval = 0
+    var serCode: String = ""
 }

@@ -23,9 +23,9 @@ extension OrderApi {
     var path: String {
         switch self {
         case .toPayOrderList:
-            return "/order/orderList"
-        case .payedOrderList:
             return "/order/stayPayment"
+        case .payedOrderList:
+            return "/order/orderList"
         case .refundOrderList:
             return "/order/refundOrder"
         case .refundIsApply:

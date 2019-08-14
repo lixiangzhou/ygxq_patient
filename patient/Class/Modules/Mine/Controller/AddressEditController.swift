@@ -155,18 +155,12 @@ extension AddressEditController {
     }
     
     override func setBinding() {
-        districtField.reactive.text <~ viewModel.selectAreaModel.map { $0?.fullName }
+        districtField.reactive.text <~ viewModel.selectAreaModel.map { $0?.fullName.replacingOccurrences(of: "-", with: "") }
         
         let nameEnabledSignal = nameField.reactive.continuousTextValues.map { !$0.isEmpty }
         let mobileEnabledSignal = mobileField.reactive.continuousTextValues.map { $0.count == 11 }
         let areaEnabledSignal = viewModel.selectAreaModel.map { $0 != nil }.signal
         let addressEnabledSignal = addressTxtView.textView.reactive.continuousTextValues.map { !$0.isEmpty }
-        
-        
-        nameEnabledSignal.observeValues { print("name signal \($0)") }
-        mobileEnabledSignal.observeValues { print("mobile signal \($0)") }
-        areaEnabledSignal.observeValues { print("area signal \($0)") }
-        addressEnabledSignal.observeValues { print("address signal \($0)") }
         
         var nameEnabledProducer: SignalProducer<Bool, NoError>!
         var mobileEnabledProducer: SignalProducer<Bool, NoError>!
@@ -185,11 +179,6 @@ extension AddressEditController {
             addressEnabledProducer = SignalProducer<Bool, NoError>(value: true).concat(addressEnabledSignal)
         }
         let producer = nameEnabledProducer.and(mobileEnabledProducer).and(areaEnabledProducer).and(addressEnabledProducer)
-        
-        nameEnabledProducer.startWithValues { print("name producer \($0)") }
-        mobileEnabledProducer.startWithValues { print("mobile producer \($0)") }
-        areaEnabledProducer.startWithValues { print("area producer \($0)") }
-        addressEnabledProducer.startWithValues { print("address producer \($0)") }
         
         saveBtn.reactive.isUserInteractionEnabled <~ producer
         saveBtn.reactive.backgroundColor <~ producer.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }

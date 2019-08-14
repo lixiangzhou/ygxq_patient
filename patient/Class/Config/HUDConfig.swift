@@ -18,6 +18,11 @@ struct HUD {
                    showDuration: 1,
                    contentInset: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15),
                    toView: view)
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        DispatchQueue.main.zz_after(1) {
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
     }
     
     static func showLoding(toView: UIView = UIApplication.shared.keyWindow!) {

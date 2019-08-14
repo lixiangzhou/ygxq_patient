@@ -70,7 +70,7 @@ extension AddressListController: UITableViewDataSource, UITableViewDelegate {
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         
         cell.nameLabel.text = model.consignee
-        cell.mobileLabel.text = model.mobile
+        cell.mobileLabel.text = model.mobile.mobileSecrectString
         cell.addressLabel.text = model.district + model.address
         cell.defaultView.isHidden = !model.isDefault
         

@@ -130,7 +130,7 @@ extension PersonInfoEditController {
         diseaseView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(diseaseAction)))
         
         selectDistrictView.completion = { [weak self] model in
-            self?.addressView.rightLabel.text = model.fullName.replacingOccurrences(of: "-", with: " ")
+            self?.addressView.rightLabel.text = model.fullName.replacingOccurrences(of: "-", with: "")
         }
         
         contentView.addSubview(nameView)

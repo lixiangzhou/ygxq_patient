@@ -16,6 +16,11 @@ class OrderListViewModel: BaseViewModel {
     
     let dataSourceProperty = MutableProperty<[OrderModel]>([OrderModel]())
     
+    var timers = [Int: Timer]()
+    
+    /// 18 分钟（ms）
+    private let timeLimit = TimeInterval(18 * 60 * 1000)
+    
     override init() {
         super.init()
     }
@@ -25,9 +30,18 @@ class OrderListViewModel: BaseViewModel {
         case .payed:
             return "已支付"
         case .toPay:
-            return "待支付"
+            switch model.status {
+            case "PAY_ORD_S_NEW": return "待支付"
+            case "PAY_ORD_S_CLO": return "已取消"
+            default: return ""
+            }
         case .refund:
-            return ""
+            switch model.status {
+            case "PAY_ORD_S_REF_IN": return "退款中"
+            case "PAY_ORD_S_REF_SUC": return "退款成功"
+            case "PAY_ORD_S_REF_FAL": return "退款失败"
+            default: return ""
+            }
         }
     }
     
@@ -73,5 +87,31 @@ class OrderListViewModel: BaseViewModel {
                 self.getOrderList()
             }
         }
+    }
+    
+    func showTimer(model: OrderModel) -> Bool {
+        return (Date().timeIntervalSince1970 * 1000 - model.orderTime) < timeLimit
+    }
+    
+    func removeTimer(_ key: Int) {
+        let timer = timers[key]
+        timer?.invalidate()
+        timers[key] = nil
+    }
+    
+    func saveTimer(_ key: Int, timer: Timer) {
+        timers[key] = timer
+    }
+    
+    func timerString(model: OrderModel) -> String {
+        return (timeLimit - (Date().timeIntervalSince1970 * 1000 - model.orderTime)).toTime(format: "mm:ss") + "后自动取消订单"
+    }
+    
+    func updateModel(model: OrderModel) {
+        var models = dataSourceProperty.value
+        guard let idx = models.firstIndex(where: { $0.id == model.id }) else { return }
+        
+        models.replaceSubrange(idx...idx, with: [model])
+        dataSourceProperty.value = models
     }
 }

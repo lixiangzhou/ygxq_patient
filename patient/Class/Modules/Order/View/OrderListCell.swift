@@ -64,7 +64,7 @@ extension OrderListCell {
         backgroundColor = .white
         
         let orderNoView = contentView.zz_add(subview: UIView())
-        let orderNoDescLabel = orderNoView.zz_add(subview: UILabel(text: "订单编号:", font: .size(15), textColor: .c6))
+        let orderNoDescLabel = orderNoView.zz_add(subview: UILabel(text: "订单编号：", font: .size(15), textColor: .c6))
         orderNoView.addSubview(orderNoLabel)
         orderNoView.addSubview(orderCreateTimeLabel)
         
@@ -84,10 +84,10 @@ extension OrderListCell {
         
         toPayView.cancelBtn.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
         toPayView.payBtn.addTarget(self, action: #selector(payAction), for: .touchUpInside)
+        toPayView.deleteBtn.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
         
         payedView.deleteBtn.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
         payedView.refundBtn.addTarget(self, action: #selector(refundAction), for: .touchUpInside)
-        payedView.detailBtn.addTarget(self, action: #selector(detailAction), for: .touchUpInside)
         
         refundView.detailBtn.addTarget(self, action: #selector(refundDetailAction), for: .touchUpInside)
         refundView.deleteBtn.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
@@ -219,24 +219,40 @@ extension OrderListCell {
         override init(frame: CGRect) {
             super.init(frame: frame)
             
+            deleteBtn.zz_setCorner(radius: 15, masksToBounds: true)
+            deleteBtn.zz_setBorder(color: .cdcdcdc, width: 1)
+            
             cancelBtn.zz_setCorner(radius: 15, masksToBounds: true)
             cancelBtn.zz_setBorder(color: .cdcdcdc, width: 1)
             
             payBtn.zz_setCorner(radius: 15, masksToBounds: true)
             payBtn.zz_setBorder(color: .c407cec, width: 1)
             
-            addSubview(cancelBtn)
-            addSubview(payBtn)
+            addSubview(deleteBtn)
+            addSubview(payedView)
+            payedView.addSubview(cancelBtn)
+            payedView.addSubview(payBtn)
+            
+            deleteBtn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.size.equalTo(CGSize(width: 90, height: 30))
+                make.right.equalTo(payedView.snp.left).offset(-10)
+            }
+            
+            payedView.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.right.equalTo(-15)
+            }
             
             cancelBtn.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
+                make.top.left.bottom.equalToSuperview()
                 make.size.equalTo(CGSize(width: 90, height: 30))
             }
             
             payBtn.snp.makeConstraints { (make) in
-                make.size.centerY.equalTo(cancelBtn)
+                make.size.equalTo(cancelBtn)
+                make.top.bottom.right.equalToSuperview()
                 make.left.equalTo(cancelBtn.snp.right).offset(10)
-                make.right.equalTo(-15)
             }
         }
         
@@ -244,8 +260,29 @@ extension OrderListCell {
             fatalError("init(coder:) has not been implemented")
         }
         
+        var onlyShowDelete = false {
+            didSet {
+                if oldValue != onlyShowDelete {
+                    payedView.isHidden = onlyShowDelete
+                    
+                    deleteBtn.snp.remakeConstraints { (make) in
+                        make.centerY.equalToSuperview()
+                        make.size.equalTo(CGSize(width: 90, height: 30))
+                        if onlyShowDelete {
+                            make.right.equalTo(payedView.snp.right)
+                        } else {
+                            make.right.equalTo(payedView.snp.left).offset(-10)
+                        }
+                    }
+                }
+            }
+        }
+        
+        let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
         let cancelBtn = UIButton(title: "取消订单", font: .size(16), titleColor: .c9)
         let payBtn = UIButton(title: "去支付", font: .size(16), titleColor: .c407cec)
+        
+        private let payedView = UIView()
     }
     
     class OrderPayedOpView: UIView {
@@ -259,12 +296,8 @@ extension OrderListCell {
             refundBtn.zz_setCorner(radius: 15, masksToBounds: true)
             refundBtn.zz_setBorder(color: .c407cec, width: 1)
             
-            detailBtn.zz_setCorner(radius: 15, masksToBounds: true)
-            detailBtn.zz_setBorder(color: .c407cec, width: 1)
-            
             addSubview(deleteBtn)
             addSubview(refundBtn)
-            addSubview(detailBtn)
             
             deleteBtn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
@@ -272,13 +305,9 @@ extension OrderListCell {
             }
             
             refundBtn.snp.makeConstraints { (make) in
-                make.size.centerY.equalTo(deleteBtn)
+                make.centerY.equalToSuperview()
+                make.size.equalTo(CGSize(width: 90, height: 30))
                 make.left.equalTo(deleteBtn.snp.right).offset(10)
-                make.right.equalTo(detailBtn).offset(-100)
-            }
-            
-            detailBtn.snp.makeConstraints { (make) in
-                make.size.centerY.equalTo(deleteBtn)
                 make.right.equalTo(-15)
             }
         }
@@ -287,16 +316,21 @@ extension OrderListCell {
             fatalError("init(coder:) has not been implemented")
         }
         
-        func setShowDetail(_ show: Bool) {
-            detailBtn.isHidden = !show
-            refundBtn.snp.updateConstraints { (make) in
-                make.right.equalTo(detailBtn).offset(show ? -100 : 0)
+        var hideRefund: Bool = false {
+            didSet {
+                if oldValue != hideRefund {
+                    let offset = hideRefund ? 0 : 10
+                    let size = hideRefund ? CGSize.zero : CGSize(width: 90, height: 30)
+                    refundBtn.snp.updateConstraints { (make) in
+                        make.size.equalTo(size)
+                        make.left.equalTo(deleteBtn.snp.right).offset(offset)
+                    }
+                }
             }
         }
         
         let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
         let refundBtn = UIButton(title: "退款", font: .size(16), titleColor: .c407cec)
-        let detailBtn = UIButton(title: "订单详情", font: .size(16), titleColor: .c407cec)
     }
     
     
@@ -331,6 +365,6 @@ extension OrderListCell {
         }
         
         let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
-        let detailBtn = UIButton(title: "退款详情", font: .size(16), titleColor: .c407cec)
+        let detailBtn = UIButton(title: "查看详情", font: .size(16), titleColor: .c407cec)
     }
 }

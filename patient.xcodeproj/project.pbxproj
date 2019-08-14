@@ -170,6 +170,7 @@
 		109B74B223028A250034346D /* SunnyDrugOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B123028A250034346D /* SunnyDrugOrderController.swift */; };
 		109B74B523028A9A0034346D /* ConsultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B423028A9A0034346D /* ConsultController.swift */; };
 		109B74B723028AB70034346D /* LongServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B623028AB70034346D /* LongServiceController.swift */; };
+		109B74B9230401D80034346D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B8230401D80034346D /* StringExtension.swift */; };
 		10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA46B222F431D600A4E244 /* RegisterController.swift */; };
 		10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472722F8073200A4E244 /* PersonInfoEditController.swift */; };
 		10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */; };
@@ -367,6 +368,7 @@
 		109B74B123028A250034346D /* SunnyDrugOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugOrderController.swift; sourceTree = "<group>"; };
 		109B74B423028A9A0034346D /* ConsultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultController.swift; sourceTree = "<group>"; };
 		109B74B623028AB70034346D /* LongServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceController.swift; sourceTree = "<group>"; };
+		109B74B8230401D80034346D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		10CA46B222F431D600A4E244 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		10CA472722F8073200A4E244 /* PersonInfoEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoEditController.swift; sourceTree = "<group>"; };
 		10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftRightFieldView.swift; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 				1030AAC0229E871600519CA4 /* ViewExtension.swift */,
 				10CAF3CF22ADE83D00F20E81 /* ConstraintExtension.swift */,
 				104E3A8622B8D61700A84DB2 /* BasicExtension.swift */,
+				109B74B8230401D80034346D /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1376,6 +1379,7 @@
 				100AEE3122C9F64000094AE2 /* HEPickerOptions.swift in Sources */,
 				100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */,
 				100AEE2D22C9F64000094AE2 /* HEPhotoBrowserViewController.swift in Sources */,
+				109B74B9230401D80034346D /* StringExtension.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */,
 				100AEE2322C9F64000094AE2 /* HEPhotoBrowserAnimator.swift in Sources */,

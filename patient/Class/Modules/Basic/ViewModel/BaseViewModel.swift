@@ -11,11 +11,11 @@ import UIKit
 class BaseViewModel {
     
     func lastCellConfig() -> LeftRightConfigViewConfig {
-        return LeftRightConfigViewConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 20, height: 20), hasBottomLine: false)
+        return LeftRightConfigViewConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 18, height: 18), hasBottomLine: false)
     }
     
     func commonCellConfig() -> LeftRightConfigViewConfig {
-        return LeftRightConfigViewConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 20, height: 20), leftPaddingRight: 10, hasBottomLine: true)
+        return LeftRightConfigViewConfig(leftView: UIImageView(), leftViewSize: CGSize(width: 18, height: 18), leftPaddingRight: 10, hasBottomLine: true)
     }
     
     deinit {
