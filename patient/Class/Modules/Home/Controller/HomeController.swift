@@ -30,5 +30,6 @@ class HomeController: BaseController {
         
 //        UIApplication.shared.open(URL(string: "telprompt://13300000008")!, options: [:], completionHandler: nil)
 //        UIApplication.shared.openURL(URL(string: "tel:13300000008")!)
+        print(SettingController.className)
     }
 }

@@ -17,7 +17,6 @@ class ForgetPwdController: BaseController {
         super.viewDidLoad()
 
         title = "忘记密码"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.c3]
         setUI()
         setBinding()
     }
@@ -25,14 +24,17 @@ class ForgetPwdController: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationStyle(.whiteBg)
-        setBackImage("login_back")
+        if fromLogin {
+            setNavigationStyle(.whiteBg)
+            setBackImage("login_back")
+        }
     }
 
     // MARK: - Public Property
     var mobile: String!
+    var fromLogin = true
     // MARK: - Private Property
-    private var (codeView, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var (codeView, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_msg"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private var pwdView = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "密码长度6-20位", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     
     private let confirmBtn = UIButton(title: "确定", font: .boldSize(18), titleColor: .cf, target: self, action: #selector(confirmAction))
@@ -42,6 +44,13 @@ class ForgetPwdController: BaseController {
 // MARK: - UI
 extension ForgetPwdController {
     override func setUI() {
+        if fromLogin {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.c3]
+        }
+        
+        let tipLabel = UILabel(text: "验证码已发送到您的手机号\(mobile.mobileSecrectString)", font: .size(14), textColor: .c3)
+        view.addSubview(tipLabel)
+        
         codeView.inputLengthLimit = 6
         codeView.keyboardType = .numberPad
         codeView.leftViewSize = CGSize(width: 25, height: 20)
@@ -62,8 +71,17 @@ extension ForgetPwdController {
 
         addLoginBottomView()
         
+        tipLabel.snp.makeConstraints { (make) in
+            if fromLogin {
+                make.top.equalTo(40)
+            } else {
+                make.topOffsetFrom(self, 40)
+            }
+            make.centerX.equalToSuperview()
+        }
+        
         codeView.snp.makeConstraints { (make) in
-            make.top.equalTo(40)
+            make.top.equalTo(tipLabel.snp.bottom).offset(25)
             make.left.equalTo(30)
             make.right.equalTo(-30)
             make.height.equalTo(45)
@@ -116,10 +134,15 @@ extension ForgetPwdController {
     @objc private func confirmAction() {
         viewModel.verifyCodeAndForgetPwd(mobile: mobile, code: codeView.text!, password: pwdView.text!).startWithValues { [weak self] (result) in
             HUD.show(result)
-            if result.isSuccess {
-                DispatchQueue.main.zz_after(1) {
-                    self?.navigationController?.popToRootViewController(animated: true)
+            guard let self = self else { return }
+            if self.fromLogin {
+                if result.isSuccess {
+                    DispatchQueue.main.zz_after(1) {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
                 }
+            } else {
+                self.popToViewController(SettingController.className)
             }
         }
     }

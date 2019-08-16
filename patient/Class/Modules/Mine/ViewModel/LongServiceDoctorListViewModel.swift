@@ -1,5 +1,5 @@
 //
-//  LongServiceViewModel.swift
+//  LongServiceDoctorListViewModel.swift
 //  patient
 //
 //  Created by lixiangzhou on 2019/8/16.
@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveSwift
 
-class LongServiceViewModel: BaseViewModel {
+class LongServiceDoctorListViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[DoctorInfoModel]>([DoctorInfoModel]())
     
     func getData() {

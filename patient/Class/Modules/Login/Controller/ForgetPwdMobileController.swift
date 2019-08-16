@@ -17,7 +17,6 @@ class ForgetPwdMobileController: BaseController {
         super.viewDidLoad()
 
         title = "忘记密码"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.c3]
         setUI()
         setBinding()
     }
@@ -39,6 +38,8 @@ class ForgetPwdMobileController: BaseController {
 // MARK: - UI
 extension ForgetPwdMobileController {
     override func setUI() {
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.c3]
+        
         let tipLabel = UILabel(text: "请输入您的手机号", font: .boldSize(16), textColor: .c3)
         view.addSubview(tipLabel)
         

@@ -137,9 +137,12 @@
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
 		10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */; };
-		10676BF023065946004A6419 /* LongServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BEF23065946004A6419 /* LongServiceViewModel.swift */; };
 		10676BF223065A42004A6419 /* LongServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF123065A42004A6419 /* LongServiceApi.swift */; };
 		10676BF423065BBA004A6419 /* LongServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF323065BBA004A6419 /* LongServiceCell.swift */; };
+		10676BF623068EEC004A6419 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF523068EEC004A6419 /* AlertView.swift */; };
+		10676BF823069BD9004A6419 /* LongServiceDoctorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF723069BD9004A6419 /* LongServiceDoctorListViewModel.swift */; };
+		10676BFA23069BF3004A6419 /* LongServiceDoctorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF923069BF3004A6419 /* LongServiceDoctorListController.swift */; };
+		10676BFC23069C0B004A6419 /* LongServiceDoctorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */; };
 		106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */; };
 		106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269822FACD6C007D9A27 /* ForgetPwdController.swift */; };
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
@@ -174,7 +177,6 @@
 		1099E71D22C4A5BB00C37A9E /* UploadResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */; };
 		109B74B223028A250034346D /* SunnyDrugOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B123028A250034346D /* SunnyDrugOrderController.swift */; };
 		109B74B523028A9A0034346D /* ConsultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B423028A9A0034346D /* ConsultController.swift */; };
-		109B74B723028AB70034346D /* LongServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B623028AB70034346D /* LongServiceController.swift */; };
 		109B74B9230401D80034346D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74B8230401D80034346D /* StringExtension.swift */; };
 		109B74BB230404AF0034346D /* ConsultListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74BA230404AF0034346D /* ConsultListController.swift */; };
 		109B74BD230408830034346D /* ConsultListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B74BC230408830034346D /* ConsultListCell.swift */; };
@@ -352,9 +354,12 @@
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPhotoBrowserExtension.swift; sourceTree = "<group>"; };
-		10676BEF23065946004A6419 /* LongServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceViewModel.swift; sourceTree = "<group>"; };
 		10676BF123065A42004A6419 /* LongServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceApi.swift; sourceTree = "<group>"; };
 		10676BF323065BBA004A6419 /* LongServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceCell.swift; sourceTree = "<group>"; };
+		10676BF523068EEC004A6419 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		10676BF723069BD9004A6419 /* LongServiceDoctorListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListViewModel.swift; sourceTree = "<group>"; };
+		10676BF923069BF3004A6419 /* LongServiceDoctorListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListController.swift; sourceTree = "<group>"; };
+		10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListCell.swift; sourceTree = "<group>"; };
 		106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdMobileController.swift; sourceTree = "<group>"; };
 		106D269822FACD6C007D9A27 /* ForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdController.swift; sourceTree = "<group>"; };
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
@@ -389,7 +394,6 @@
 		1099E71C22C4A5BB00C37A9E /* UploadResourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceViewModel.swift; sourceTree = "<group>"; };
 		109B74B123028A250034346D /* SunnyDrugOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugOrderController.swift; sourceTree = "<group>"; };
 		109B74B423028A9A0034346D /* ConsultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultController.swift; sourceTree = "<group>"; };
-		109B74B623028AB70034346D /* LongServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceController.swift; sourceTree = "<group>"; };
 		109B74B8230401D80034346D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		109B74BA230404AF0034346D /* ConsultListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultListController.swift; sourceTree = "<group>"; };
 		109B74BC230408830034346D /* ConsultListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultListCell.swift; sourceTree = "<group>"; };
@@ -773,7 +777,7 @@
 				100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */,
 				100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */,
 				109B74BE23040CA70034346D /* ConsultListViewModel.swift */,
-				10676BEF23065946004A6419 /* LongServiceViewModel.swift */,
+				10676BF723069BD9004A6419 /* LongServiceDoctorListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -787,7 +791,7 @@
 				100AEE4B22CB6B6E00094AE2 /* AddressEditController.swift */,
 				109B74B423028A9A0034346D /* ConsultController.swift */,
 				109B74BA230404AF0034346D /* ConsultListController.swift */,
-				109B74B623028AB70034346D /* LongServiceController.swift */,
+				10676BF923069BF3004A6419 /* LongServiceDoctorListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -809,6 +813,7 @@
 				100AEE4522CB306800094AE2 /* SelectDistrictView.swift */,
 				109B74BC230408830034346D /* ConsultListCell.swift */,
 				10676BF323065BBA004A6419 /* LongServiceCell.swift */,
+				10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -950,6 +955,7 @@
 			children = (
 				1030AABE229E868F00519CA4 /* InputFieldView.swift */,
 				100B6C3F22A145BD00C5262C /* ZZHud.swift */,
+				10676BF523068EEC004A6419 /* AlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1490,8 +1496,9 @@
 				10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */,
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
 				100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */,
+				10676BFA23069BF3004A6419 /* LongServiceDoctorListController.swift in Sources */,
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
-				10676BF023065946004A6419 /* LongServiceViewModel.swift in Sources */,
+				10676BFC23069C0B004A6419 /* LongServiceDoctorListCell.swift in Sources */,
 				109B74B523028A9A0034346D /* ConsultController.swift in Sources */,
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
 				10676BF423065BBA004A6419 /* LongServiceCell.swift in Sources */,
@@ -1500,6 +1507,7 @@
 				1014CF9F229391DF00294558 /* AppDelegate.swift in Sources */,
 				104E3AA522B8E5E700A84DB2 /* LLIndicatorView.swift in Sources */,
 				105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
+				10676BF823069BD9004A6419 /* LongServiceDoctorListViewModel.swift in Sources */,
 				100AEE5A22CC84C800094AE2 /* CaseDetailOpCell.swift in Sources */,
 				100AEE5E22CC8FC100094AE2 /* CheckDetailViewModel.swift in Sources */,
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
@@ -1519,6 +1527,7 @@
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */,
+				10676BF623068EEC004A6419 /* AlertView.swift in Sources */,
 				100AEDCE22C99E5D00094AE2 /* UploadResourceCell.swift in Sources */,
 				100AEE3222C9F64000094AE2 /* HEAlbum.swift in Sources */,
 				1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */,
@@ -1538,7 +1547,6 @@
 				108C083122BD158D00B2EBE9 /* ExamListController.swift in Sources */,
 				105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */,
 				1014D0532293A6D700294558 /* UIView+ZZExtension.swift in Sources */,
-				109B74B723028AB70034346D /* LongServiceController.swift in Sources */,
 				1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */,
 				100AEE4C22CB6B6E00094AE2 /* AddressEditController.swift in Sources */,
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,

@@ -129,3 +129,19 @@ extension BaseController {
         }
     }
 }
+
+extension BaseController {
+    func toServicePrototol() {
+        guard let serviceURL = NetworkConfig.serviceURL else { return }
+        let vc = WebController()
+        vc.titleString = "阳光客户端服务协议"
+        vc.url = serviceURL
+        
+        let btn = UIButton(title: "下载", font: .size(itemFontSize), titleColor: .cf)
+        btn.reactive.controlEvents(.touchUpInside).observeValues { _ in
+            UIApplication.shared.open(serviceURL, options: [:], completionHandler: nil)
+        }
+        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        self.push(vc)
+    }
+}

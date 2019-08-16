@@ -1,39 +1,39 @@
 //
-//  LongServiceController.swift
+//  LongServiceDoctorListController.swift
 //  patient
 //
-//  Created by lixiangzhou on 2019/8/13.
+//  Created by lixiangzhou on 2019/8/16.
 //Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
 import ReactiveSwift
 
-class LongServiceController: BaseController {
-
+class LongServiceDoctorListController: BaseController {
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "长期服务"
         setUI()
         setBinding()
         viewModel.getData()
     }
-
+    
     // MARK: - Public Property
     
     // MARK: - Private Property
     private let tableView = UITableView()
-    private let viewModel = LongServiceViewModel()
+    private let viewModel = LongServiceDoctorListViewModel()
 }
 
 // MARK: - UI
-extension LongServiceController {
+extension LongServiceDoctorListController {
     override func setUI() {
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
-        tableView.register(cell: LongServiceCell.self)
+        tableView.register(cell: LongServiceDoctorListCell.self)
         tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
         
@@ -54,7 +54,7 @@ extension LongServiceController {
 // MARK: - Delegate Internal
 
 // MARK: -
-extension LongServiceController: UITableViewDataSource, UITableViewDelegate {
+extension LongServiceDoctorListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.dataSourceProperty.value.count
     }
@@ -67,27 +67,7 @@ extension LongServiceController: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = model.realName.isEmpty ? " " : model.realName
         cell.professionLabel.text = model.titleName
         cell.hospitalLabel.text = model.hospitalName
-
+        
         return cell
     }
 }
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension LongServiceController {
-    
-}
-
-// MARK: - Other
-extension LongServiceController {
-    
-}
-
-// MARK: - Public
-extension LongServiceController {
-    
-}
-

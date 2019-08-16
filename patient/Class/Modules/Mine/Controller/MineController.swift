@@ -137,7 +137,7 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
             let vc = OrderController()
             push(vc)
         case .longService:
-            let vc = LongServiceController()
+            let vc = LongServiceDoctorListController()
             push(vc)
         case .setting:
             let vc = SettingController()

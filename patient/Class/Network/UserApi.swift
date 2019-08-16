@@ -18,6 +18,7 @@ enum UserApi {
     case register(mobile: String, password: String, invister: String)
     case updateInfo(params: [String: Any])
     case forgetPwd(mobile: String, password: String)
+    case msgPushSwitch(uid: Int, push: Bool)
 }
 
 extension UserApi: TargetType {
@@ -39,6 +40,8 @@ extension UserApi: TargetType {
             return "/user/update/information"
         case .forgetPwd:
             return "/user/forgetpwd"
+        case .msgPushSwitch:
+            return "/user/pushmsg/updaIsPushPersonalMsg"
         }
     }
     
@@ -89,6 +92,9 @@ extension UserApi: TargetType {
             let dataString = String(data: try! JSONSerialization.data(withJSONObject: data, options: []), encoding: .utf8)!
             params = ["data": dataString,
                       "encrpyt": false]
+        case let .msgPushSwitch(uid: uid, push: push):
+            params["uid"] = uid
+            params["push"] = push
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

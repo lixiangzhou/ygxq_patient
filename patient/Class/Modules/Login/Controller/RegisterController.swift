@@ -32,7 +32,7 @@ class RegisterController: BaseController {
     
     // MARK: - Private Property
     private var mobileView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的账号", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
-    private var (codeView, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_pwd"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var (codeView, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_msg"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private var pwdView = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "请输入您的密码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private var inviteCodeView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_invite"), placeholder: "请输入邀请码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private let nextBtn = UIButton(title: "下一步", font: .boldSize(18), titleColor: .cf, target: self, action: #selector(nextAction))
@@ -88,17 +88,7 @@ extension RegisterController {
         
         aggreeBtn.isSelected = true
         protocolLabel.addLinks([(string: "《阳光客户端服务协议》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { [weak self] _ in
-            guard let self = self, NetworkConfig.serviceURL != nil else { return }
-            let vc = WebController()
-            vc.titleString = "阳光客户端服务协议"
-            vc.url = NetworkConfig.serviceURL
-            
-            let btn = UIButton(title: "下载", font: .size(itemFontSize), titleColor: .cf)
-            btn.reactive.controlEvents(.touchUpInside).observeValues { _ in
-                UIApplication.shared.open(NetworkConfig.serviceURL!, options: [:], completionHandler: nil)
-            }
-            vc.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
-            self.push(vc)
+            self?.toServicePrototol()
         })])
         
         view.addSubview(mobileView)

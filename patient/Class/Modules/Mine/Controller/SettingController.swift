@@ -85,9 +85,16 @@ extension SettingController: UITableViewDataSource, UITableViewDelegate {
         let data = viewModel.dataSource[indexPath.row]
         
         switch data.type {
+        case .changePwd:
+            let vc = ForgetPwdController()
+            vc.fromLogin = false
+            vc.mobile = PatientManager.shared.patientInfoModel!.mobile
+            push(vc)
         case .addressMgr:
             let vc = AddressListController()
             push(vc)
+        case .serviceProtocol:
+            toServicePrototol()
         default:
             break
         }
