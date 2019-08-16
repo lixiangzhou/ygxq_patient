@@ -198,6 +198,8 @@ public struct ZZHud {
         anim.duration = 0.25
         anim.fromValue = 0
         anim.toValue = 1
+        anim.isRemovedOnCompletion = false
+        anim.fillMode = CAMediaTimingFillMode.forwards
         return anim
     }()
     
@@ -207,6 +209,8 @@ public struct ZZHud {
         anim.duration = 0.25
         anim.fromValue = 1
         anim.toValue = 0
+        anim.isRemovedOnCompletion = false
+        anim.fillMode = CAMediaTimingFillMode.forwards
         return anim
     }()
     

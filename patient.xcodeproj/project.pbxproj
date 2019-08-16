@@ -111,6 +111,7 @@
 		1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AABE229E868F00519CA4 /* InputFieldView.swift */; };
 		1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC0229E871600519CA4 /* ViewExtension.swift */; };
 		1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */; };
+		10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10375FDC2304F92400B92403 /* VideoConsultResultController.swift */; };
 		104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7122B7A6F600A84DB2 /* NextGrowingInternalTextView.swift */; };
 		104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7222B7A6F600A84DB2 /* NextGrowingTextView.swift */; };
 		104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A7D22B8A99400A84DB2 /* ProfileController.swift */; };
@@ -135,6 +136,7 @@
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
+		10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */; };
 		106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */; };
 		106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269822FACD6C007D9A27 /* ForgetPwdController.swift */; };
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
@@ -201,6 +203,13 @@
 		10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3DF22AF7CFC00F20E81 /* DoctorApi.swift */; };
 		10CAF3E322AF9C4D00F20E81 /* DoctorInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3E222AF9C4D00F20E81 /* DoctorInfoModel.swift */; };
 		10CAF3E522AFAFB600F20E81 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10CAF3E422AFAFB600F20E81 /* RongCallKit.framework */; };
+		10E1DF2C2304FAA6007AD76A /* VideoConsultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF2B2304FAA6007AD76A /* VideoConsultModel.swift */; };
+		10E1DF2E2304FAC0007AD76A /* VideoConsultResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF2D2304FAC0007AD76A /* VideoConsultResultViewModel.swift */; };
+		10E1DF302304FB00007AD76A /* VideoConsultDocInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF2F2304FB00007AD76A /* VideoConsultDocInfoCell.swift */; };
+		10E1DF322304FB26007AD76A /* VideoConsultPatientInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF312304FB26007AD76A /* VideoConsultPatientInfoCell.swift */; };
+		10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */; };
+		10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */; };
+		10E1DF38230500AC007AD76A /* VideoConsultDiseaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -311,6 +320,7 @@
 		1030AABE229E868F00519CA4 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		1030AAC0229E871600519CA4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		10375FDC2304F92400B92403 /* VideoConsultResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultController.swift; sourceTree = "<group>"; };
 		104E3A7122B7A6F600A84DB2 /* NextGrowingInternalTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextGrowingInternalTextView.swift; sourceTree = "<group>"; };
 		104E3A7222B7A6F600A84DB2 /* NextGrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextGrowingTextView.swift; sourceTree = "<group>"; };
 		104E3A7D22B8A99400A84DB2 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -338,6 +348,7 @@
 		105DBA7622A6655800F55FE6 /* NSArray+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
+		10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPhotoBrowserExtension.swift; sourceTree = "<group>"; };
 		106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdMobileController.swift; sourceTree = "<group>"; };
 		106D269822FACD6C007D9A27 /* ForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdController.swift; sourceTree = "<group>"; };
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
@@ -405,6 +416,13 @@
 		10CAF3DF22AF7CFC00F20E81 /* DoctorApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorApi.swift; sourceTree = "<group>"; };
 		10CAF3E222AF9C4D00F20E81 /* DoctorInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorInfoModel.swift; sourceTree = "<group>"; };
 		10CAF3E422AFAFB600F20E81 /* RongCallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongCallKit.framework; path = Pods/RongCloudRTC/RongCloudRTC/RongCallKit.framework; sourceTree = "<group>"; };
+		10E1DF2B2304FAA6007AD76A /* VideoConsultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultModel.swift; sourceTree = "<group>"; };
+		10E1DF2D2304FAC0007AD76A /* VideoConsultResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultViewModel.swift; sourceTree = "<group>"; };
+		10E1DF2F2304FB00007AD76A /* VideoConsultDocInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultDocInfoCell.swift; sourceTree = "<group>"; };
+		10E1DF312304FB26007AD76A /* VideoConsultPatientInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultPatientInfoCell.swift; sourceTree = "<group>"; };
+		10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultPicCell.swift; sourceTree = "<group>"; };
+		10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultTimeCell.swift; sourceTree = "<group>"; };
+		10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultDiseaseCell.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -851,6 +869,7 @@
 				10CAF3CF22ADE83D00F20E81 /* ConstraintExtension.swift */,
 				104E3A8622B8D61700A84DB2 /* BasicExtension.swift */,
 				109B74B8230401D80034346D /* StringExtension.swift */,
+				10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -924,6 +943,18 @@
 				100B6C3F22A145BD00C5262C /* ZZHud.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		10375FDE2304FA5C00B92403 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				10E1DF2F2304FB00007AD76A /* VideoConsultDocInfoCell.swift */,
+				10E1DF312304FB26007AD76A /* VideoConsultPatientInfoCell.swift */,
+				10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */,
+				10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */,
+				10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		104E3A6B22B79F7A00A84DB2 /* NextGrowingTextView */ = {
@@ -1134,6 +1165,9 @@
 		109B74AF230289D00034346D /* VideoConsult */ = {
 			isa = PBXGroup;
 			children = (
+				10E1DF2A2304FA85007AD76A /* Model */,
+				10E1DF292304FA80007AD76A /* ViewModel */,
+				10375FDE2304FA5C00B92403 /* View */,
 				109B74B323028A620034346D /* Controller */,
 			);
 			path = VideoConsult;
@@ -1150,6 +1184,7 @@
 		109B74B323028A620034346D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				10375FDC2304F92400B92403 /* VideoConsultResultController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1164,6 +1199,22 @@
 				1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		10E1DF292304FA80007AD76A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				10E1DF2D2304FAC0007AD76A /* VideoConsultResultViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		10E1DF2A2304FA85007AD76A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10E1DF2B2304FAA6007AD76A /* VideoConsultModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		23724EEF2FE00151F84E95C2 /* Pods */ = {
@@ -1332,6 +1383,7 @@
 				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
 				10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */,
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
+				10E1DF2E2304FAC0007AD76A /* VideoConsultResultViewModel.swift in Sources */,
 				10CA473622F9163100A4E244 /* DiseaseModel.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */,
@@ -1355,6 +1407,7 @@
 				10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */,
 				108C080E22BCD82000B2EBE9 /* CheckListController.swift in Sources */,
 				10CAF3D822AE081B00F20E81 /* BaseView.swift in Sources */,
+				10E1DF322304FB26007AD76A /* VideoConsultPatientInfoCell.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
 				104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */,
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
@@ -1362,6 +1415,7 @@
 				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				100AEE2022C9F64000094AE2 /* UIViewExtension+HE.swift in Sources */,
+				10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */,
 				100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */,
 				109B74BD230408830034346D /* ConsultListCell.swift in Sources */,
 				100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */,
@@ -1383,6 +1437,7 @@
 				10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */,
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
 				104E3AA122B8E5E700A84DB2 /* LLSegmentItemTabbarView.swift in Sources */,
+				10E1DF2C2304FAA6007AD76A /* VideoConsultModel.swift in Sources */,
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				108C081922BCE99400B2EBE9 /* HLRApi.swift in Sources */,
 				100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */,
@@ -1423,6 +1478,7 @@
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
 				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
 				1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */,
+				10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */,
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
 				100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */,
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
@@ -1448,6 +1504,7 @@
 				100AEE2722C9F64000094AE2 /* HEAlbumListCell.swift in Sources */,
 				108C081B22BCE9EE00B2EBE9 /* Network.swift in Sources */,
 				105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */,
+				10E1DF302304FB00007AD76A /* VideoConsultDocInfoCell.swift in Sources */,
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */,
@@ -1482,6 +1539,7 @@
 				100AEE2922C9F64000094AE2 /* HEAlbumTitleView.swift in Sources */,
 				104E3AA622B8E5E700A84DB2 /* LLSegmentViewController.swift in Sources */,
 				100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */,
+				10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */,
@@ -1500,8 +1558,10 @@
 				104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */,
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,
 				108C07FE22BB583D00B2EBE9 /* TextLeftRightView.swift in Sources */,
+				10E1DF38230500AC007AD76A /* VideoConsultDiseaseCell.swift in Sources */,
 				100AEE5022CC589D00094AE2 /* CaseDetailController.swift in Sources */,
 				104E3AA322B8E5E700A84DB2 /* LLSegmentBaseItemView.swift in Sources */,
+				10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */,
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,
 				100AEE3022C9F64000094AE2 /* HEPhotoAsset.swift in Sources */,
 				1099E71D22C4A5BB00C37A9E /* UploadResourceViewModel.swift in Sources */,

@@ -70,4 +70,5 @@ struct CaseRecordModel: ModelProtocol, Equatable {
 struct ImageModel: ModelProtocol, Equatable {
     var id = 0
     var url = ""
+    var mediaUrl = ""
 }

@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum DoctorApi: TargetType {
-    case doctorInfo(duid: String)
+    case doctorInfo(duid: Int)
 }
 
 extension DoctorApi {

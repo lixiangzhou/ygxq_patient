@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveSwift
+import EmptyDataSet_Swift
 
 class OrderListController: BaseController {
 
@@ -37,6 +38,10 @@ extension OrderListController {
         tableView.register(cell: OrderListCell.self)
         tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
+        
+        tableView.emptyDataSetView { (emptyView) in
+            emptyView.titleLabelString(NSMutableAttributedString(string:"暂无数据"))
+        }
         
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()

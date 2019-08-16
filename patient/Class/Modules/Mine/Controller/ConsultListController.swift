@@ -37,10 +37,15 @@ extension ConsultListController {
         tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
         
+        tableView.emptyDataSetView { (emptyView) in
+            emptyView.titleLabelString(NSMutableAttributedString(string:"暂无数据"))
+        }
+        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
+    
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.skipRepeats().map(value: ())
     }
@@ -62,8 +67,11 @@ extension ConsultListController: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = model.serName
         cell.timeLabel.text = model.createTime.toTime()
         cell.descLabel.text = model.consultContent
-        cell.lookClosure = {
-            
+        cell.lookClosure = { [weak self] in
+            let vc = VideoConsultResultController()
+            vc.viewModel.did = model.duid
+            vc.viewModel.vid = model.linkId
+            self?.push(vc)
         }
         return cell
     }

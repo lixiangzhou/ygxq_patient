@@ -83,7 +83,7 @@ extension LLCtlPageView{
     }
 }
 
-extension LLCtlPageView:UIGestureRecognizerDelegate{
+extension LLCtlPageView {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if !gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) || !otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()){
             return false

@@ -10,7 +10,7 @@ import Foundation
 
 class RCManager: NSObject {
     static let shared = RCManager()
-    
+    static let SECONDS = 30 * 60
     private override init() {
         super.init()
         rcModels = getCachedRCModels()
@@ -215,7 +215,7 @@ extension RCManager {
 // MARK: - RCIMUserInfoDataSource
 extension RCManager: RCIMUserInfoDataSource {
     func getUserInfo(withUserId userId: String!, completion: ((RCUserInfo?) -> Void)!) {
-        DoctorApi.doctorInfo(duid: userId.replacingOccurrences(of: "RC_", with: "")).responseModel(DoctorInfoModel.self) { (model) in
+        DoctorApi.doctorInfo(duid: Int(userId.replacingOccurrences(of: "RC_", with: "")) ?? 0).responseModel(DoctorInfoModel.self) { (model) in
             let user = RCUserInfo()
             user.userId = userId
             user.name = model?.realName

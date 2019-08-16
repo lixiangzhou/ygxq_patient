@@ -25,7 +25,10 @@ class HomeController: BaseController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        RCManager.shared.connect()
+//        RCManager.shared.connect()
 //        present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
+        
+//        UIApplication.shared.open(URL(string: "telprompt://13300000008")!, options: [:], completionHandler: nil)
+//        UIApplication.shared.openURL(URL(string: "tel:13300000008")!)
     }
 }

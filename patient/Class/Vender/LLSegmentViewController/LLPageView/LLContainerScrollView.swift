@@ -216,7 +216,7 @@ extension LLContainerScrollView : UIScrollViewDelegate {
     
 }
 
-extension LLContainerScrollView : UIGestureRecognizerDelegate {
+extension LLContainerScrollView {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if otherGestureRecognizer.view == self {
             return false
