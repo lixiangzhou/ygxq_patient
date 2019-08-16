@@ -92,7 +92,7 @@ extension OrderListController {
     /// 退款详情
     func refundDetailAction(_ cell: OrderListCell?, _ model: OrderModel) {
         let vc = RefundDetailController()
-        vc.orderModel = model
+        vc.viewModel.orderModel = model
         push(vc)
     }
 }
@@ -131,7 +131,9 @@ extension OrderListController {
         case .payed:
             cell.payedView.hideRefund = model.serCode == "UTOPIA13"
         case .toPay:
-            cell.toPayView.onlyShowDelete = model.status == "PAY_ORD_S_CLO"
+            let closed = model.status == "PAY_ORD_S_CLO"
+            cell.toPayView.payedView.isHidden = closed
+            cell.toPayView.deleteBtn.isHidden = !closed
            
             viewModel.removeTimer(cell.hash)
             

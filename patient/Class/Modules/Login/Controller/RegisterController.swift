@@ -93,7 +93,7 @@ extension RegisterController {
             vc.titleString = "阳光客户端服务协议"
             vc.url = NetworkConfig.serviceURL
             
-            let btn = UIButton(title: "下载", font: .size(14), titleColor: .cf)
+            let btn = UIButton(title: "下载", font: .size(itemFontSize), titleColor: .cf)
             btn.reactive.controlEvents(.touchUpInside).observeValues { _ in
                 UIApplication.shared.open(NetworkConfig.serviceURL!, options: [:], completionHandler: nil)
             }

@@ -42,7 +42,7 @@ class PersonInfoEditController: BaseController {
     private let addressView = LeftRightConfigView()
     private let diseaseView = LeftRightConfigView()
     
-    let finishBtn = UIButton(title: "完成", font: .boldSize(15), titleColor: .cdcdcdc)
+    let finishBtn = UIButton(title: "完成", font: .size(itemFontSize), titleColor: .cdcdcdc)
     
     private let selectDistrictView = SelectDistrictView()
     private let arrowOpt = "请选择"

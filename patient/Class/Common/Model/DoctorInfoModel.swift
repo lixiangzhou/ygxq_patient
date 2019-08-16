@@ -59,4 +59,15 @@ struct DoctorInfoModel: ModelProtocol {
     var idCardNo: String = ""
     var isPersonalPush: String = ""
     var consultTel: Bool = false
+    
+    // serlong/getPrivateDoctorList 
+    var videoPrice: Double = 0
+    var bindingStatus: String = ""
+    var phonePrice: Double = 0.0
+    var reportPrice: Double = 0.0
+    var countPers: Int = 0
+    var serManages: String = ""
+    var price: Double = 0.0
+    var evaluate: Double = 0.0
+    var duid: Int = 0
 }

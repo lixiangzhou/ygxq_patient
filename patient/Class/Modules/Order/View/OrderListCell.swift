@@ -236,7 +236,7 @@ extension OrderListCell {
             deleteBtn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.size.equalTo(CGSize(width: 90, height: 30))
-                make.right.equalTo(payedView.snp.left).offset(-10)
+                make.right.equalTo(-15)
             }
             
             payedView.snp.makeConstraints { (make) in
@@ -260,29 +260,11 @@ extension OrderListCell {
             fatalError("init(coder:) has not been implemented")
         }
         
-        var onlyShowDelete = false {
-            didSet {
-                if oldValue != onlyShowDelete {
-                    payedView.isHidden = onlyShowDelete
-                    
-                    deleteBtn.snp.remakeConstraints { (make) in
-                        make.centerY.equalToSuperview()
-                        make.size.equalTo(CGSize(width: 90, height: 30))
-                        if onlyShowDelete {
-                            make.right.equalTo(payedView.snp.right)
-                        } else {
-                            make.right.equalTo(payedView.snp.left).offset(-10)
-                        }
-                    }
-                }
-            }
-        }
-        
         let deleteBtn = UIButton(title: "删除订单", font: .size(16), titleColor: .c9)
         let cancelBtn = UIButton(title: "取消订单", font: .size(16), titleColor: .c9)
         let payBtn = UIButton(title: "去支付", font: .size(16), titleColor: .c407cec)
         
-        private let payedView = UIView()
+        let payedView = UIView()
     }
     
     class OrderPayedOpView: UIView {

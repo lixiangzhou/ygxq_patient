@@ -24,4 +24,17 @@ class RefundDetailViewModel: BaseViewModel {
         attr.append(NSAttributedString(string: ".\(pointString)", attributes: smallFont))
         return attr
     }
+    
+    func getStatus() -> String {
+        switch orderModel.status {
+        case "PAY_ORD_S_REF_IN":
+            return "退款中"
+        case "PAY_ORD_S_REF_SUC":
+            return "退款成功"
+        case "PAY_ORD_S_REF_FAL":
+            return "退款失败"
+        default:
+            return ""
+        }
+    }
 }

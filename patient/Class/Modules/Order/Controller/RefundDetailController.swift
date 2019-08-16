@@ -17,12 +17,10 @@ class RefundDetailController: BaseController {
 
         title = "退款详情"
         setUI()
-        viewModel.orderModel = orderModel
         setData()
     }
 
     // MARK: - Public Property
-    var orderModel: OrderModel?
     
     // MARK: - Private Property
     private let stateLabel = UILabel(font: .boldSize(17), textColor: .cf)
@@ -40,7 +38,7 @@ class RefundDetailController: BaseController {
     private let refundAmountView = TextLeftRightView()
     private var refundInfoView: UIView!
     
-    private let viewModel = RefundDetailViewModel()
+    let viewModel = RefundDetailViewModel()
 }
 
 // MARK: - UI
@@ -254,17 +252,15 @@ extension RefundDetailController {
     }
     
     private func setData() {
-        guard let model = orderModel else { return }
+        stateLabel.text = viewModel.getStatus()
+        timeLabel.text = viewModel.orderModel.refundTime.toTime(format: "yyyy-MM-dd HH:mm")
+        refundAmountLabel.attributedText = viewModel.getMoneyString(viewModel.orderModel.refundAmount)
+        refundReasonLabel.text = viewModel.orderModel.refundReason
+        orderNoLabel.text = viewModel.orderModel.id.description
+        nameLabel.text = viewModel.orderModel.productName
         
-        stateLabel.text = "状态"
-        timeLabel.text = model.refundTime.toTime(format: "yyyy-MM-dd HH:mm")
-        refundAmountLabel.attributedText = viewModel.getMoneyString(model.refundAmount)
-        refundReasonLabel.text = model.refundReason
-        orderNoLabel.text = model.id.description
-        nameLabel.text = model.productName
-        
-        refundFailReasonView.isHidden = model.refundApply.isEmpty
-        if !model.refundApply.isEmpty {
+        refundFailReasonView.isHidden = viewModel.orderModel.refundApply.isEmpty
+        if !viewModel.orderModel.refundApply.isEmpty {
             refundAmountView.snp.remakeConstraints { (make) in
                 make.top.equalTo(refundFailReasonView.snp.bottom)
                 make.left.right.equalToSuperview()

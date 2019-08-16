@@ -8,9 +8,10 @@
 
 import Foundation
 
+let itemFontSize: CGFloat = 16
 extension UIBarButtonItem {
     convenience init(title: String? = nil,
-                     font: UIFont = UIFont.systemFont(ofSize: 14),
+                     font: UIFont = UIFont.systemFont(ofSize: itemFontSize),
                      titleColor: UIColor = UIColor.darkText,
                      imageName: String? = nil,
                      hilightedImageName: String? = nil,

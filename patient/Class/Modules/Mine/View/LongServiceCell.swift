@@ -1,14 +1,14 @@
 //
-//  VideoConsultDocInfoCell.swift
+//  LongServiceCell.swift
 //  patient
 //
-//  Created by lixiangzhou on 2019/8/15.
+//  Created by lixiangzhou on 2019/8/16.
 //Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
 
-class VideoConsultDocInfoCell: UITableViewCell {
+class LongServiceCell: UITableViewCell {
     
     // MARK: - Life Cycle
     
@@ -34,20 +34,22 @@ class VideoConsultDocInfoCell: UITableViewCell {
 }
 
 // MARK: - UI
-extension VideoConsultDocInfoCell {
+extension LongServiceCell {
     private func setUI() {
-        iconView.zz_setCorner(radius: 25, masksToBounds: true)
+        iconView.zz_setCorner(radius: 30, masksToBounds: true)
         
         contentView.addSubview(iconView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(professionLabel)
         contentView.addSubview(hospitalLabel)
         
+        let arrowView = contentView.zz_add(subview: UIImageView(image: UIImage(named: "common_right_arrow")))
+        
         iconView.snp.makeConstraints { (make) in
             make.left.equalTo(15)
             make.top.equalTo(10)
             make.bottom.equalTo(-10)
-            make.width.height.equalTo(50)
+            make.width.height.equalTo(60)
         }
         
         nameLabel.snp.makeConstraints { (make) in
@@ -64,6 +66,11 @@ extension VideoConsultDocInfoCell {
         hospitalLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(-15)
             make.left.equalTo(nameLabel)
+        }
+        
+        arrowView.snp.makeConstraints { (make) in
+            make.right.equalTo(-15)
+            make.centerY.equalToSuperview()
         }
     }
 }

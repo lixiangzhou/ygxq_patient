@@ -137,6 +137,9 @@
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
 		10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */; };
+		10676BF023065946004A6419 /* LongServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BEF23065946004A6419 /* LongServiceViewModel.swift */; };
+		10676BF223065A42004A6419 /* LongServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF123065A42004A6419 /* LongServiceApi.swift */; };
+		10676BF423065BBA004A6419 /* LongServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF323065BBA004A6419 /* LongServiceCell.swift */; };
 		106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */; };
 		106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269822FACD6C007D9A27 /* ForgetPwdController.swift */; };
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
@@ -349,6 +352,9 @@
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPhotoBrowserExtension.swift; sourceTree = "<group>"; };
+		10676BEF23065946004A6419 /* LongServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceViewModel.swift; sourceTree = "<group>"; };
+		10676BF123065A42004A6419 /* LongServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceApi.swift; sourceTree = "<group>"; };
+		10676BF323065BBA004A6419 /* LongServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceCell.swift; sourceTree = "<group>"; };
 		106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdMobileController.swift; sourceTree = "<group>"; };
 		106D269822FACD6C007D9A27 /* ForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdController.swift; sourceTree = "<group>"; };
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
@@ -688,6 +694,7 @@
 				100AEE6B22CD8DE800094AE2 /* DrugSunApi.swift */,
 				10CA473322F9152000A4E244 /* DiseaseApi.swift */,
 				109B74C223040DB40034346D /* ConsultApi.swift */,
+				10676BF123065A42004A6419 /* LongServiceApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -766,6 +773,7 @@
 				100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */,
 				100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */,
 				109B74BE23040CA70034346D /* ConsultListViewModel.swift */,
+				10676BEF23065946004A6419 /* LongServiceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -800,6 +808,7 @@
 				100AEE3922CA115C00094AE2 /* AddressListCell.swift */,
 				100AEE4522CB306800094AE2 /* SelectDistrictView.swift */,
 				109B74BC230408830034346D /* ConsultListCell.swift */,
+				10676BF323065BBA004A6419 /* LongServiceCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1482,8 +1491,10 @@
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
 				100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */,
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
+				10676BF023065946004A6419 /* LongServiceViewModel.swift in Sources */,
 				109B74B523028A9A0034346D /* ConsultController.swift in Sources */,
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
+				10676BF423065BBA004A6419 /* LongServiceCell.swift in Sources */,
 				100AEE2622C9F64000094AE2 /* HETool.swift in Sources */,
 				100AEE2A22C9F64000094AE2 /* HEPhotoPickerViewController.swift in Sources */,
 				1014CF9F229391DF00294558 /* AppDelegate.swift in Sources */,
@@ -1548,6 +1559,7 @@
 				108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */,
 				100AEE3C22CA117200094AE2 /* AddressListController.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
+				10676BF223065A42004A6419 /* LongServiceApi.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				100AEE7022CD969100094AE2 /* DrugUsedViewModel.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,

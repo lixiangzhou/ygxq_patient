@@ -80,7 +80,6 @@ extension ConsultListCell {
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.bottom.equalTo(-10)
-            
         }
         
         bottomView.snp.makeConstraints { (make) in
