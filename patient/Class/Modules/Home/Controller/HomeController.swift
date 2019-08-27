@@ -80,7 +80,7 @@ extension HomeController {
         rightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeAction)))
         
         leftView.snp.makeConstraints { (make) in
-            make.top.equalTo(40)
+            make.top.equalTo(25 + UIScreen.zz_statusBar_additionHeight)
             make.left.equalTo(10)
             make.width.equalTo(50)
             make.height.equalTo(50)
@@ -121,7 +121,7 @@ extension HomeController {
 // MARK: - Action
 extension HomeController {
     @objc private func scanAction() {
-        let vc = ScanController()
+        let vc = QRCodeScanController()
         push(vc)
     }
 

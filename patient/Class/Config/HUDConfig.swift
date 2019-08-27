@@ -45,7 +45,7 @@ struct HUD {
                    animation: nil)
     }
     
-    static func hideLoding(forView: UIView) {
+    static func hideLoding(forView: UIView = UIApplication.shared.keyWindow!) {
         ZZHud.hideLoading(for: forView)
     }
     

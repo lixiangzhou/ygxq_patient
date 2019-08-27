@@ -34,10 +34,11 @@ extension CommonApi {
         case let .unreadMsgCount(uid: uid):
             params["uid"] = uid
         case let .pushMsgs(uid: uid):
-            params["clientType"] = uid
+            params["clientType"] = "PT"
             params["pageNum"] = 1
             params["pageSize"] = 1000
             params["uid"] = uid
+            params["type"] = "CMN_MSG_T_05"
         case let .setAllReaded(uid: uid):
             params["toUid"] = uid
         case let .setReaded(uid: uid):

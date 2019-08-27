@@ -258,7 +258,8 @@
 		10FF88A42314F13F008148BC /* HomeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88A32314F13F008148BC /* HomeApi.swift */; };
 		10FF88A62314F29D008148BC /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88A52314F29D008148BC /* TaskModel.swift */; };
 		10FF88AA2314F2FD008148BC /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88A92314F2FD008148BC /* BannerModel.swift */; };
-		10FF88AE23150467008148BC /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88AD23150467008148BC /* ScanController.swift */; };
+		10FF88B023151065008148BC /* QRCodeScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88AF23151065008148BC /* QRCodeScanController.swift */; };
+		10FF88B42315234E008148BC /* PatientApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88B32315234E008148BC /* PatientApi.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -520,7 +521,8 @@
 		10FF88A32314F13F008148BC /* HomeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApi.swift; sourceTree = "<group>"; };
 		10FF88A52314F29D008148BC /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		10FF88A92314F2FD008148BC /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
-		10FF88AD23150467008148BC /* ScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
+		10FF88AF23151065008148BC /* QRCodeScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanController.swift; sourceTree = "<group>"; };
+		10FF88B32315234E008148BC /* PatientApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientApi.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -688,7 +690,7 @@
 			isa = PBXGroup;
 			children = (
 				1014D0122293A6D700294558 /* HomeController.swift */,
-				10FF88AD23150467008148BC /* ScanController.swift */,
+				10FF88AF23151065008148BC /* QRCodeScanController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -797,6 +799,7 @@
 				10676BF123065A42004A6419 /* LongServiceApi.swift */,
 				10A2754B230BBD1D00B568B3 /* CommonApi.swift */,
 				10FF88A32314F13F008148BC /* HomeApi.swift */,
+				10FF88B32315234E008148BC /* PatientApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1673,9 +1676,9 @@
 				100AEE1F22C9F64000094AE2 /* NSObjectExtension+HE.swift in Sources */,
 				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
 				109B74BF23040CA70034346D /* ConsultListViewModel.swift in Sources */,
+				10FF88B42315234E008148BC /* PatientApi.swift in Sources */,
 				1059E459230CED9D005F5326 /* SunnyDrugOrderCell.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
-				10FF88AE23150467008148BC /* ScanController.swift in Sources */,
 				104E3AA722B8E5E700A84DB2 /* LLContainerScrollView.swift in Sources */,
 				100AEE4622CB306800094AE2 /* SelectDistrictView.swift in Sources */,
 				104FFB0E2314C9B900E51033 /* FSPagerViewCell.swift in Sources */,
@@ -1800,6 +1803,7 @@
 				1099E71B22C4663700C37A9E /* UploadResourceController.swift in Sources */,
 				104FFB102314C9B900E51033 /* FSPageViewLayout.swift in Sources */,
 				104E3AA022B8E5E700A84DB2 /* LLSegmentItemBadgeView.swift in Sources */,
+				10FF88B023151065008148BC /* QRCodeScanController.swift in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
 				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
 				1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */,
