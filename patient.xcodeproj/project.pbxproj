@@ -139,6 +139,9 @@
 		104FFB102314C9B900E51033 /* FSPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB092314C9B900E51033 /* FSPageViewLayout.swift */; };
 		104FFB112314C9B900E51033 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB0A2314C9B900E51033 /* FSPageControl.swift */; };
 		104FFB122314C9B900E51033 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB0B2314C9B900E51033 /* FSPagerCollectionView.swift */; };
+		104FFB142314CA6E00E51033 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB132314CA6E00E51033 /* HomeHeaderView.swift */; };
+		104FFB162314CB5C00E51033 /* HomeHeaderActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB152314CB5C00E51033 /* HomeHeaderActionView.swift */; };
+		104FFB182314CB6D00E51033 /* HomeHeaderCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB172314CB6D00E51033 /* HomeHeaderCaseView.swift */; };
 		105039F52306A285000E90F0 /* LongServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105039F42306A285000E90F0 /* LongServicesController.swift */; };
 		105039F72306A298000E90F0 /* LongServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105039F62306A298000E90F0 /* LongServiceController.swift */; };
 		105039F92306A304000E90F0 /* LongServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105039F82306A304000E90F0 /* LongServiceViewModel.swift */; };
@@ -248,6 +251,14 @@
 		10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */; };
 		10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */; };
 		10E1DF38230500AC007AD76A /* VideoConsultDiseaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */; };
+		10FF889A2314D640008148BC /* ImageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88992314D640008148BC /* ImageTitleView.swift */; };
+		10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889D2314D80A008148BC /* HomeViewModel.swift */; };
+		10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */; };
+		10FF88A22314D9BB008148BC /* ZZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88A12314D9BB008148BC /* ZZButton.swift */; };
+		10FF88A42314F13F008148BC /* HomeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88A32314F13F008148BC /* HomeApi.swift */; };
+		10FF88A62314F29D008148BC /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88A52314F29D008148BC /* TaskModel.swift */; };
+		10FF88AA2314F2FD008148BC /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88A92314F2FD008148BC /* BannerModel.swift */; };
+		10FF88AE23150467008148BC /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88AD23150467008148BC /* ScanController.swift */; };
 		A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9153057767E54CA68B84852 /* Pods_patient.framework */; };
 /* End PBXBuildFile section */
 
@@ -386,6 +397,9 @@
 		104FFB092314C9B900E51033 /* FSPageViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewLayout.swift; sourceTree = "<group>"; };
 		104FFB0A2314C9B900E51033 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
 		104FFB0B2314C9B900E51033 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
+		104FFB132314CA6E00E51033 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		104FFB152314CB5C00E51033 /* HomeHeaderActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderActionView.swift; sourceTree = "<group>"; };
+		104FFB172314CB6D00E51033 /* HomeHeaderCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCaseView.swift; sourceTree = "<group>"; };
 		105039F42306A285000E90F0 /* LongServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServicesController.swift; sourceTree = "<group>"; };
 		105039F62306A298000E90F0 /* LongServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceController.swift; sourceTree = "<group>"; };
 		105039F82306A304000E90F0 /* LongServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceViewModel.swift; sourceTree = "<group>"; };
@@ -499,6 +513,14 @@
 		10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultPicCell.swift; sourceTree = "<group>"; };
 		10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultTimeCell.swift; sourceTree = "<group>"; };
 		10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultDiseaseCell.swift; sourceTree = "<group>"; };
+		10FF88992314D640008148BC /* ImageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTitleView.swift; sourceTree = "<group>"; };
+		10FF889D2314D80A008148BC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTaskView.swift; sourceTree = "<group>"; };
+		10FF88A12314D9BB008148BC /* ZZButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZButton.swift; sourceTree = "<group>"; };
+		10FF88A32314F13F008148BC /* HomeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApi.swift; sourceTree = "<group>"; };
+		10FF88A52314F29D008148BC /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		10FF88A92314F2FD008148BC /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		10FF88AD23150467008148BC /* ScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
 		2D6B776BE61F86B4D7A20216 /* Pods-patient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.release.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.release.xcconfig"; sourceTree = "<group>"; };
 		D5D2203C6979B39CBBEBF50F /* Pods-patient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patient.debug.xcconfig"; path = "Target Support Files/Pods-patient/Pods-patient.debug.xcconfig"; sourceTree = "<group>"; };
 		E9153057767E54CA68B84852 /* Pods_patient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_patient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,6 +679,7 @@
 		1014D0102293A6D700294558 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				10FF889D2314D80A008148BC /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -665,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				1014D0122293A6D700294558 /* HomeController.swift */,
+				10FF88AD23150467008148BC /* ScanController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -672,6 +696,8 @@
 		1014D0132293A6D700294558 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10FF88A52314F29D008148BC /* TaskModel.swift */,
+				10FF88A92314F2FD008148BC /* BannerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -679,6 +705,10 @@
 		1014D0142293A6D700294558 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				104FFB132314CA6E00E51033 /* HomeHeaderView.swift */,
+				104FFB152314CB5C00E51033 /* HomeHeaderActionView.swift */,
+				104FFB172314CB6D00E51033 /* HomeHeaderCaseView.swift */,
+				10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -766,6 +796,7 @@
 				109B74C223040DB40034346D /* ConsultApi.swift */,
 				10676BF123065A42004A6419 /* LongServiceApi.swift */,
 				10A2754B230BBD1D00B568B3 /* CommonApi.swift */,
+				10FF88A32314F13F008148BC /* HomeApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -925,6 +956,7 @@
 				10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */,
 				10CA472F22F826C000A4E244 /* DatePicker.swift */,
 				10CA473122F8326F00A4E244 /* CommonPicker.swift */,
+				10FF88992314D640008148BC /* ImageTitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1011,6 +1043,7 @@
 		1030AABB229E864900519CA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				10FF88A12314D9BB008148BC /* ZZButton.swift */,
 				1030AABE229E868F00519CA4 /* InputFieldView.swift */,
 				100B6C3F22A145BD00C5262C /* ZZHud.swift */,
 				10676BF523068EEC004A6419 /* AlertView.swift */,
@@ -1642,10 +1675,12 @@
 				109B74BF23040CA70034346D /* ConsultListViewModel.swift in Sources */,
 				1059E459230CED9D005F5326 /* SunnyDrugOrderCell.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,
+				10FF88AE23150467008148BC /* ScanController.swift in Sources */,
 				104E3AA722B8E5E700A84DB2 /* LLContainerScrollView.swift in Sources */,
 				100AEE4622CB306800094AE2 /* SelectDistrictView.swift in Sources */,
 				104FFB0E2314C9B900E51033 /* FSPagerViewCell.swift in Sources */,
 				1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */,
+				10FF88A62314F29D008148BC /* TaskModel.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
 				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
@@ -1671,10 +1706,12 @@
 				108C081F22BCFAA800B2EBE9 /* CheckListViewModel.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
+				10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */,
 				10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */,
 				100AEE6E22CD967300094AE2 /* DrugUsedController.swift in Sources */,
 				10CA473022F826C000A4E244 /* DatePicker.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
+				10FF88AA2314F2FD008148BC /* BannerModel.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
 				10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */,
 				108C080E22BCD82000B2EBE9 /* CheckListController.swift in Sources */,
@@ -1688,6 +1725,7 @@
 				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
 				100AEE2022C9F64000094AE2 /* UIViewExtension+HE.swift in Sources */,
+				10FF88A42314F13F008148BC /* HomeApi.swift in Sources */,
 				1059E465230D1669005F5326 /* SunnyDrugOrderDrugsCell.swift in Sources */,
 				10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */,
 				100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */,
@@ -1730,6 +1768,7 @@
 				100AEE4422CAEBE700094AE2 /* AddressModel.swift in Sources */,
 				100AEE3122C9F64000094AE2 /* HEPickerOptions.swift in Sources */,
 				100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */,
+				10FF88A22314D9BB008148BC /* ZZButton.swift in Sources */,
 				100AEE2D22C9F64000094AE2 /* HEPhotoBrowserViewController.swift in Sources */,
 				109B74B9230401D80034346D /* StringExtension.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
@@ -1744,6 +1783,7 @@
 				109B74BB230404AF0034346D /* ConsultListController.swift in Sources */,
 				104E3AA922B8E5E700A84DB2 /* LLToolFunc.swift in Sources */,
 				100AEE6222CC9CBD00094AE2 /* FourColumnView.swift in Sources */,
+				104FFB142314CA6E00E51033 /* HomeHeaderView.swift in Sources */,
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
 				10CAF3E322AF9C4D00F20E81 /* DoctorInfoModel.swift in Sources */,
 				104E3A8D22B8E13000A84DB2 /* OrderListController.swift in Sources */,
@@ -1767,6 +1807,7 @@
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
 				100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */,
 				10676BFA23069BF3004A6419 /* LongServiceDoctorListController.swift in Sources */,
+				10FF889A2314D640008148BC /* ImageTitleView.swift in Sources */,
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
 				10676BFC23069C0B004A6419 /* LongServiceDoctorListCell.swift in Sources */,
 				109B74B523028A9A0034346D /* ConsultController.swift in Sources */,
@@ -1782,6 +1823,7 @@
 				100AEE5E22CC8FC100094AE2 /* CheckDetailViewModel.swift in Sources */,
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
+				104FFB162314CB5C00E51033 /* HomeHeaderActionView.swift in Sources */,
 				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
 				10503A0A23079539000E90F0 /* LongServiceOutlineCell.swift in Sources */,
 				108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */,
@@ -1808,6 +1850,7 @@
 				100AEE3E22CA120D00094AE2 /* AddressListViewModel.swift in Sources */,
 				109B74C123040D1A0034346D /* ConsultModel.swift in Sources */,
 				104E3AA822B8E5E700A84DB2 /* LLCtlPageView.swift in Sources */,
+				10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */,
 				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
 				104FFB0C2314C9B900E51033 /* FSPagerView.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,
@@ -1852,6 +1895,7 @@
 				100AEE7022CD969100094AE2 /* DrugUsedViewModel.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */,
+				104FFB182314CB6D00E51033 /* HomeHeaderCaseView.swift in Sources */,
 				100AEE5C22CC8FA400094AE2 /* CheckDetailController.swift in Sources */,
 				109B74B223028A250034346D /* SunnyDrugOrderController.swift in Sources */,
 				108C082522BCFCCC00B2EBE9 /* CheckListCell.swift in Sources */,

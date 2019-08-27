@@ -13,6 +13,7 @@ enum ConsultApi: TargetType {
     case consultList(isFinished: Bool, puid: Int)
     case getVideoConsult(id: Int)
     case remindDoctor(id: Int)
+    case pushMsg(uid: Int)
 }
 
 extension ConsultApi {
@@ -24,6 +25,8 @@ extension ConsultApi {
             return "/serConsultVideo/get"
         case .remindDoctor:
             return "/serConsultVideo/remindDoctorFaceTime"
+        case .pushMsg:
+            return "/common/getCmnPushMsg/page"
         }
     }
     
@@ -39,6 +42,12 @@ extension ConsultApi {
             params["id"] = id
         case let .remindDoctor(id: id):
             params["id"] = id
+        case let .pushMsg(uid: uid):
+            params["clientType"] = "PT"
+            params["pageNum"] = 1
+            params["pageSize"] = 1
+            params["type"] = "CMN_MSG_T"
+            params["uid"] = uid
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

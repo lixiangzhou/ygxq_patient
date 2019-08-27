@@ -28,10 +28,19 @@ class BaseController: UIViewController {
         if !PatientManager.shared.isLogin && couldShowLogin {
             present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)
         }
+        
+        if hideNavigation {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if hideNavigation {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
     
     deinit {
@@ -39,6 +48,7 @@ class BaseController: UIViewController {
     }
     
     var couldShowLogin = true
+    var hideNavigation = false
 }
 
 // MARK: - UI

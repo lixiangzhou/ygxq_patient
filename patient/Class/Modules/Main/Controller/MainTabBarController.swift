@@ -17,8 +17,8 @@ class MainTabBarController: BaseTabBarController {
     }
     
     private func addChildControllers() {
-        add(MineController(), title: "我的")
         add(HomeController(), title: "首页")
+        add(MineController(), title: "我的")
     }
 
     private func add(_ controller: BaseController, title: String) {
