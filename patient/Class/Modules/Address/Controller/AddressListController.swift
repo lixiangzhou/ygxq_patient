@@ -32,12 +32,16 @@ class AddressListController: BaseController {
 // MARK: - UI
 extension AddressListController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "新增地址", titleColor: .cf, target: self, action: #selector(addAddressAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "新增地址", target: self, action: #selector(addAddressAction))
         
         tableView.backgroundColor = .cf0efef
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: AddressListCell.self)
         view.addSubview(tableView)
+        
+        tableView.emptyDataSetView { (emptyView) in
+            emptyView.titleLabelString(NSMutableAttributedString(string:"暂无数据"))
+        }
         
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -81,6 +85,7 @@ extension AddressListController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
+
 // MARK: - Delegate External
 
 // MARK: -

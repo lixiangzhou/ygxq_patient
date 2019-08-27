@@ -27,7 +27,7 @@ extension UploadApi {
     }
     
     var baseURL: URL {
-        switch enviroment {
+        switch context {
         case .release:
             return URL(string: "http://www.lightheart.com.cn/shdr-file-boot")!
         case .test:

@@ -23,7 +23,7 @@ class BaseController: UIViewController {
         super.viewWillAppear(animated)
         
         setNavigationStyle(.default)
-        setBackImage("default_nav_back")
+        setBackImage("common_nav_back")
         
         if !PatientManager.shared.isLogin && couldShowLogin {
             present(BaseNavigationController(rootViewController: LoginController()), animated: true, completion: nil)

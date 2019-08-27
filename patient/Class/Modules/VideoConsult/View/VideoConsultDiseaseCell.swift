@@ -25,7 +25,7 @@ class VideoConsultDiseaseCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let diseaseLabel = UILabel(text: "", font: .size(15), textColor: .c3)
+    let diseaseLabel = UILabel(font: .size(15), textColor: .c3)
     // MARK: - Private Property
     
 }
@@ -36,8 +36,7 @@ extension VideoConsultDiseaseCell {
         let topSepView = contentView.zz_add(subview: UIView())
         topSepView.backgroundColor = .cf0efef
         
-        let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        let titleView = TextLeftRightView(TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3))
         titleView.leftLabel.text = "病情描述"
         contentView.addSubview(titleView)
         
@@ -61,24 +60,4 @@ extension VideoConsultDiseaseCell {
             make.bottom.equalTo(-12)
         }
     }
-}
-
-// MARK: - Action
-extension VideoConsultDiseaseCell {
-    
-}
-
-// MARK: - Helper
-extension VideoConsultDiseaseCell {
-    
-}
-
-// MARK: - Other
-extension VideoConsultDiseaseCell {
-    
-}
-
-// MARK: - Public
-extension VideoConsultDiseaseCell {
-    
 }

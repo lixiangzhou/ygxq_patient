@@ -26,9 +26,9 @@ class VideoConsultDocInfoCell: UITableViewCell {
     
     // MARK: - Public Property
     let iconView = UIImageView(image: UIImage(named: "doctor_avator"))
-    let nameLabel = UILabel(text: "", font: .size(18), textColor: .c3)
-    let professionLabel = UILabel(text: "", font: .size(15), textColor: .c9)
-    let hospitalLabel = UILabel(text: "", font: .size(15), textColor: .c6)
+    let nameLabel = UILabel(font: .size(17), textColor: .c3, numOfLines: 1)
+    let professionLabel = UILabel(font: .size(15), textColor: .c9)
+    let hospitalLabel = UILabel(font: .size(15), textColor: .c6)
     // MARK: - Private Property
     
 }
@@ -57,8 +57,9 @@ extension VideoConsultDocInfoCell {
         
         professionLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(nameLabel)
+            make.left.equalTo(nameLabel.snp.right).offset(15)
             make.right.lessThanOrEqualTo(-15)
-            make.left.equalTo(nameLabel.snp.right).offset(20)
+            make.width.equalTo(0)
         }
         
         hospitalLabel.snp.makeConstraints { (make) in

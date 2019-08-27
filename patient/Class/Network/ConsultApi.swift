@@ -12,6 +12,7 @@ import Moya
 enum ConsultApi: TargetType {
     case consultList(isFinished: Bool, puid: Int)
     case getVideoConsult(id: Int)
+    case remindDoctor(id: Int)
 }
 
 extension ConsultApi {
@@ -21,6 +22,8 @@ extension ConsultApi {
             return "/myconsult/getConsultList"
         case .getVideoConsult:
             return "/serConsultVideo/get"
+        case .remindDoctor:
+            return "/serConsultVideo/remindDoctorFaceTime"
         }
     }
     
@@ -33,6 +36,8 @@ extension ConsultApi {
             params["pageSize"] = 1000
             params["puid"] = puid
         case let .getVideoConsult(id: id):
+            params["id"] = id
+        case let .remindDoctor(id: id):
             params["id"] = id
         }
         

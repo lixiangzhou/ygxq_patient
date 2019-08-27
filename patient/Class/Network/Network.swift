@@ -26,7 +26,7 @@ let activityPlugin = NetworkActivityPlugin { (type: NetworkActivityChangeType, t
 }
 
 private func getPlugin() -> [PluginType] {
-    switch enviroment {
+    switch context {
     case .release:
         return [activityPlugin]
     default:

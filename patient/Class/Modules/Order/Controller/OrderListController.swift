@@ -19,16 +19,13 @@ class OrderListController: BaseController {
 
         setUI()
         setBinding()
-        viewModel.state = state
         viewModel.getData()
     }
 
     // MARK: - Public Property
-    var state: OrderState = .toPay
-    
+    let viewModel = OrderListViewModel()
     // MARK: - Private Property
     private let tableView = UITableView()
-    private let viewModel = OrderListViewModel()
 }
 
 // MARK: - UI
@@ -127,7 +124,7 @@ extension OrderListController {
     }
     
     private func configCellTimer(_ cell: OrderListCell, model: OrderModel) {
-        switch state {
+        switch viewModel.state {
         case .payed:
             cell.payedView.hideRefund = model.serCode == "UTOPIA13"
         case .toPay:
@@ -171,13 +168,13 @@ extension OrderListController {
         cell.orderTypeLabel.text = model.productName
         cell.orderPriceLabel.text = "¥\(model.payAmount)"
         
-        cell.orderStateDescLabel.text = state != .refund ? "订单状态：" : "退款状态："
+        cell.orderStateDescLabel.text = viewModel.state != .refund ? "订单状态：" : "退款状态："
         cell.orderStateLabel.text = viewModel.getStateString(model: model)
         cell.orderCancelTimeLabel.text = ""
         
-        cell.payedView.isHidden = state != .payed
-        cell.toPayView.isHidden = state != .toPay
-        cell.refundView.isHidden = state != .refund
+        cell.payedView.isHidden = viewModel.state != .payed
+        cell.toPayView.isHidden = viewModel.state != .toPay
+        cell.refundView.isHidden = viewModel.state != .refund
     }
     
     private func addCellActions(_ cell: OrderListCell, model: OrderModel) {

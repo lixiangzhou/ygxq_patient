@@ -9,12 +9,12 @@
 import Foundation
 import Moya
 
-let enviroment = Enviroment.develop
+let context = Context.develop
 
 struct NetworkConfig {
     /// 接口服务器
     static var APP_SERVE_URL: URL {
-        switch enviroment {
+        switch context {
         case .release:
             return URL(string: "http://www.lightheart.com.cn/shdr-service-basic")!
         case .test:
@@ -38,7 +38,7 @@ struct NetworkConfig {
     
     /// HTML文件服务器
     static var HTML_SERVE_URL: String {
-        switch enviroment {
+        switch context {
         case .release:
             return "http://www.lightheart.com.cn/sphr-pages/sphr-doctor-h5"
         case .test:
@@ -50,7 +50,7 @@ struct NetworkConfig {
     
     /// 文件服务器
     static var APP_FILE_SERVE_URL: String {
-        switch enviroment {
+        switch context {
         case .release:
             return "http://www.lightheart.com.cn/shdr-file-boot/upload/file"
         case .test:
@@ -63,7 +63,7 @@ struct NetworkConfig {
     static let serviceURL = URL(string: "http://www.lightheart.com.cn/pdf/start.pdf")
 }
 
-enum Enviroment {
+enum Context {
     case release
     case develop
     case test

@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveSwift
-import Result
 
 class VideoConsultResultViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[Model]>([Model.docinfo(model: DoctorInfoModel())])
@@ -62,6 +61,15 @@ class VideoConsultResultViewModel: BaseViewModel {
             self.dataSourceProperty.value = models
             
             self.showBottomProperty.value = model.serConsultVideo.clientConsultStatus == "SER_CST_S_ING" && model.serConsultVideo.appointTime != 0 && model.leftSeconds > 0
+        }
+    }
+    
+    func remindDoctor() {
+        ConsultApi.remindDoctor(id: vid).rac_response(String.self).map { BoolString($0) }.startWithValues { (result) in
+            HUD.showError(result)
+            if result.isSuccess {
+                HUD.show(toast: "医生已收到您的提醒，请耐心等待", duration: 2)
+            }
         }
     }
 }

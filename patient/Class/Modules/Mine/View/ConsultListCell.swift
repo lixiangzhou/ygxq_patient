@@ -25,9 +25,9 @@ class ConsultListCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let nameLabel = UILabel(text: "", font: .size(15), textColor: .c6)
-    let timeLabel = UILabel(text: "", font: .size(13), textColor: .c6)
-    let descLabel = UILabel(text: "", font: .size(14), textColor: .c3)
+    let nameLabel = UILabel(font: .size(15), textColor: .c6)
+    let timeLabel = UILabel(font: .size(13), textColor: .c6)
+    let descLabel = UILabel(font: .size(14), textColor: .c3)
     let lookBtn = UIButton(title: "查看", font: .size(13), titleColor: .cffa84c)
     
     var lookClosure: (() -> Void)?

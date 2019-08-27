@@ -24,11 +24,11 @@ class VideoConsultResultController: BaseController {
     }
 
     // MARK: - Public Property
+    let viewModel = VideoConsultResultViewModel()
     
     // MARK: - Private Property
     private let tableView = UITableView()
-    let viewModel = VideoConsultResultViewModel()
-    let bottomView = UIView()
+    private let bottomView = UIView()
 }
 
 // MARK: - UI
@@ -84,17 +84,12 @@ extension VideoConsultResultController {
 // MARK: - Action
 extension VideoConsultResultController {
     @objc private func tipAction() {
-        HUD.show(toast: "医生已收到您的提醒，请耐心等待", duration: 2)
+        viewModel.remindDoctor()
     }
     
     @objc private func serviceAction() {
         UIApplication.shared.open(URL(string: "tel://4006251120")!, options: [:], completionHandler: nil)
     }
-}
-
-// MARK: - Network
-extension VideoConsultResultController {
-    
 }
 
 // MARK: - Delegate Internal
@@ -112,25 +107,32 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
         switch model {
         case let .docinfo(model: docModel):
             let cell = tableView.dequeue(cell: VideoConsultDocInfoCell.self, for: indexPath)
+            
             cell.iconView.kf.setImage(with: URL(string: docModel.imgUrl), placeholder: UIImage(named: "doctor_avator"))
             cell.nameLabel.text = docModel.realName.isEmpty ? " " : docModel.realName
             cell.professionLabel.text = docModel.titleName
             cell.hospitalLabel.text = docModel.hospitalName
+            cell.professionLabel.snpUpdateWidth()
+            
             return cell
         case let .patient(model: serModel):
             let cell = tableView.dequeue(cell: VideoConsultPatientInfoCell.self, for: indexPath)
+            
             cell.nameView.rightLabel.text = serModel.realName
             cell.mobileView.rightLabel.text = serModel.mobile.mobileSecrectString
             cell.idView.rightLabel.text = serModel.idCardNo.idSecrectString
+            
             return cell
         case let .disease(disease: disease):
             let cell = tableView.dequeue(cell: VideoConsultDiseaseCell.self, for: indexPath)
             cell.diseaseLabel.text = disease
             return cell
+            
         case let .picture(pics: pics):
             let cell = tableView.dequeue(cell: VideoConsultPicCell.self, for: indexPath)
             cell.dataSource = pics
             return cell
+            
         case let .time(model: videoModel):
             let cell = tableView.dequeue(cell: VideoConsultTimeCell.self, for: indexPath)
             cell.setData(videoModel)
@@ -138,24 +140,3 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
         }
     }
 }
-
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension VideoConsultResultController {
-    
-}
-
-// MARK: - Other
-extension VideoConsultResultController {
-    
-}
-
-// MARK: - Public
-extension VideoConsultResultController {
-    
-}
-

@@ -18,15 +18,13 @@ class ConsultListController: BaseController {
 
         setUI()
         setBinding()
-        viewModel.state = state
         viewModel.getData()
     }
 
     // MARK: - Public Property
-    var state = ConsultState.ing
     // MARK: - Private Property
     private let tableView = UITableView()
-    private let viewModel = ConsultListViewModel()
+    let viewModel = ConsultListViewModel()
 }
 
 // MARK: - UI
@@ -77,19 +75,3 @@ extension ConsultListController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension OrderListController {
-    func config(cell: ConsultListCell, with model: ConsultModel) {
-        cell.nameLabel.text = model.serName
-        cell.timeLabel.text = model.createTime.toTime()
-        cell.descLabel.text = model.consultContent
-        cell.lookClosure = {
-            
-        }
-    }
-}

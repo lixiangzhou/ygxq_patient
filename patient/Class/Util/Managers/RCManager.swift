@@ -23,7 +23,7 @@ class RCManager: NSObject {
     
     // MARK: - Property
     private var key: String {
-        switch enviroment {
+        switch context {
         case .release:
             return "8w7jv4qb83aey"
         case .test:

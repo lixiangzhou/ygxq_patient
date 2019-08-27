@@ -34,11 +34,11 @@ extension ConsultController {
     override func loadCtls() {
         let ingVC = ConsultListController()
         ingVC.title = "咨询进行中"
-        ingVC.state = .ing
+        ingVC.viewModel.state = .ing
         
         let edVC = ConsultListController()
         edVC.title = "咨询已完毕"
-        edVC.state = .finished
+        edVC.viewModel.state = .finished
         
         reloadViewControllers(ctls:[ingVC, edVC])
     }

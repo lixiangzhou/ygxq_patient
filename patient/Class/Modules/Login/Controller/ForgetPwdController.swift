@@ -46,6 +46,8 @@ extension ForgetPwdController {
     override func setUI() {
         if fromLogin {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.c3]
+        } else {
+            view.backgroundColor = .cf0efef
         }
         
         let tipLabel = UILabel(text: "验证码已发送到您的手机号\(mobile.mobileSecrectString)", font: .size(14), textColor: .c3)
@@ -69,7 +71,9 @@ extension ForgetPwdController {
         view.addSubview(pwdView)
         view.addSubview(confirmBtn)
 
-        addLoginBottomView()
+        if fromLogin {        
+            addLoginBottomView()
+        }
         
         tipLabel.snp.makeConstraints { (make) in
             if fromLogin {

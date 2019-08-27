@@ -25,7 +25,7 @@ class MineHeaderView: UIView {
     // MARK: - Public Property
     let bgImageView = UIImageView(image: UIImage(named: "mine_top_bg"))
     let iconView = UIImageView(image: UIImage(named: "mine_avator_default"))
-    let nameLabel = UILabel(text: "", font: .boldSize(17), textColor: .white)
+    let nameLabel = UILabel(font: .boldSize(17), textColor: .white)
     
     var tapClosure: (() -> Void)?
     // MARK: - Private Property

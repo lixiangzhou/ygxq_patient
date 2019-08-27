@@ -34,6 +34,8 @@ class MineViewModel: BaseViewModel {
     }
     
     var dataSource = [[RowModel]]()
+    var unReadMsgCountProperty = MutableProperty<Int>(0)
+    
     
     override init() {
         super.init()
@@ -49,5 +51,11 @@ class MineViewModel: BaseViewModel {
 extension MineViewModel {
     func getInfo() {
         PatientManager.shared.getPatientInfo()
+    }
+    
+    func getUnReadMsgCount() {
+        CommonApi.unreadMsgCount(uid: patientId).rac_responseModel(Int.self).skipNil().startWithValues { [weak self] (value) in
+            self?.unReadMsgCountProperty.value = value
+        }
     }
 }

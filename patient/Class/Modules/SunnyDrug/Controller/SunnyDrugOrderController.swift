@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SunnyDrugOrderController: BaseController {
+class SunnyDrugOrderController: LLSegmentViewController {
 
     // MARK: - Life Cycle
     
@@ -26,42 +26,34 @@ class SunnyDrugOrderController: BaseController {
 }
 
 // MARK: - UI
+// MARK: - UI
 extension SunnyDrugOrderController {
     override func setUI() {
+        loadSegmentedConfig()
+    }
+    
+    override func loadCtls() {
+        let ingVC = SunnyDrugOrderListController()
+        ingVC.title = "购药中"
+        ingVC.viewModel.state = .ing
         
+        let successVC = SunnyDrugOrderListController()
+        successVC.title = "购药成功"
+        successVC.viewModel.state = .success
+        
+        let failedVC = SunnyDrugOrderListController()
+        failedVC.title = "购药失败"
+        failedVC.viewModel.state = .failed
+        
+        reloadViewControllers(ctls:[ingVC, successVC, failedVC])
     }
 }
 
-// MARK: - Action
-extension SunnyDrugOrderController {
-    
-}
-
-// MARK: - Network
-extension SunnyDrugOrderController {
-    
-}
-
-// MARK: - Delegate Internal
 
 // MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
 extension SunnyDrugOrderController {
-    
+    /// 解决在iPhone X上滑动联动的BUG，子View 不随着滑动
+    override func scrollView(scrollView: LLContainerScrollView, shouldScrollWithSubView subView: UIScrollView) -> Bool {
+        return false
+    }
 }
-
-// MARK: - Other
-extension SunnyDrugOrderController {
-    
-}
-
-// MARK: - Public
-extension SunnyDrugOrderController {
-    
-}
-

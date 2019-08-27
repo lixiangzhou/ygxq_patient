@@ -1,15 +1,12 @@
 PODS:
-  - AgoraRtcEngine_iOS (2.8.0)
-  - AgoraRtm_iOS (0.9.3)
   - Alamofire (4.8.2)
   - Bugly (2.5.0)
   - EmptyDataSet-Swift (4.2.0)
   - ESTabBarController-swift (2.7)
-  - FSPagerView (0.8.2)
   - HandyJSON (5.0.0)
-  - IQKeyboardManagerSwift (6.4.0)
+  - IQKeyboardManagerSwift (6.4.1)
   - JCore (2.1.1)
-  - JPush (3.2.1):
+  - JPush (3.2.2):
     - JCore (< 3.0.0, >= 2.0.0)
   - JXPhotoBrowser (2.2.3):
     - JXPhotoBrowser/Kingfisher (= 2.2.3)
@@ -17,10 +14,8 @@ PODS:
   - JXPhotoBrowser/Kingfisher (2.2.3):
     - JXPhotoBrowser/Core
     - Kingfisher
-  - KeychainAccess (3.2.0)
-  - Kingfisher (5.7.0)
+  - Kingfisher (5.7.1)
   - KMPlaceholderTextView (1.4.0)
-  - MJRefresh (3.2.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -34,49 +29,38 @@ PODS:
   - ReactiveSwift (5.0.1):
     - Result (~> 4.1)
   - Result (4.1.0)
-  - RongCloudIM/IMKit (2.9.19):
+  - RongCloudIM/IMKit (2.9.22):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (2.9.19)
-  - RongCloudRTC/RongCallKit (2.9.19):
-    - RongCloudIM/IMKit (~> 2.9.19)
-    - RongCloudIM/IMLib (~> 2.9.19)
+  - RongCloudIM/IMLib (2.9.22)
+  - RongCloudRTC/RongCallKit (2.9.21):
+    - RongCloudIM/IMKit (~> 2.9.21)
+    - RongCloudIM/IMLib (~> 2.9.21)
     - RongCloudRTC/RongCallLib
-  - RongCloudRTC/RongCallLib (2.9.19):
-    - RongCloudIM/IMLib (~> 2.9.19)
-  - SkyFloatingLabelTextField (3.7.0)
-  - SnapKit (5.0.0)
-  - SwiftDate (6.0.3)
-  - SwiftyBeaver (1.7.0)
+  - RongCloudRTC/RongCallLib (2.9.21):
+    - RongCloudIM/IMLib (~> 2.9.21)
+  - SnapKit (5.0.1)
   - SwiftyJSON (5.0.0)
   - WechatOpenSDK (1.8.4)
   - WKWebViewJavascriptBridge (1.2.0)
   - WZLBadge (1.2.6)
 
 DEPENDENCIES:
-  - AgoraRtcEngine_iOS
-  - AgoraRtm_iOS
   - Alamofire
   - Bugly
   - EmptyDataSet-Swift
   - ESTabBarController-swift
-  - FSPagerView
   - HandyJSON
   - IQKeyboardManagerSwift
   - JPush
   - JXPhotoBrowser
-  - KeychainAccess
   - Kingfisher
   - KMPlaceholderTextView
-  - MJRefresh
   - Moya
   - Moya/ReactiveSwift
   - ReactiveCocoa
   - RongCloudRTC/RongCallKit
   - RongCloudRTC/RongCallLib
-  - SkyFloatingLabelTextField
   - SnapKit
-  - SwiftDate
-  - SwiftyBeaver
   - SwiftyJSON
   - WechatOpenSDK
   - WKWebViewJavascriptBridge
@@ -84,69 +68,53 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AgoraRtcEngine_iOS
-    - AgoraRtm_iOS
     - Alamofire
     - Bugly
     - EmptyDataSet-Swift
     - ESTabBarController-swift
-    - FSPagerView
     - HandyJSON
     - IQKeyboardManagerSwift
     - JCore
     - JPush
     - JXPhotoBrowser
-    - KeychainAccess
     - Kingfisher
     - KMPlaceholderTextView
-    - MJRefresh
     - Moya
     - ReactiveCocoa
     - ReactiveSwift
     - Result
     - RongCloudIM
     - RongCloudRTC
-    - SkyFloatingLabelTextField
     - SnapKit
-    - SwiftDate
-    - SwiftyBeaver
     - SwiftyJSON
     - WechatOpenSDK
     - WKWebViewJavascriptBridge
     - WZLBadge
 
 SPEC CHECKSUMS:
-  AgoraRtcEngine_iOS: 85810ba2f492646ab0eb20fbd8ca016b4b69002d
-  AgoraRtm_iOS: b9aadea9dc12f9965dc3e4d4f75a790431bdcee9
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   EmptyDataSet-Swift: 1fa0b35f530a35f852ecb2b53564728b0c300aaf
   ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
-  FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
-  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
+  IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
   JCore: 4072327557f0b83cc22dd4041f2f839740c0077b
-  JPush: a1ff8b8ec53fa3419b414946e4db4efa313baeae
+  JPush: 0e9088c85c73275629facc311fe5992dfac36eeb
   JXPhotoBrowser: 44657e0dc05a710c6ea86a8b4686badd760760f7
-  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
-  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
-  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   ReactiveCocoa: 29709cf0cc7502ddd04a51220e10ee0336d8bec8
   ReactiveSwift: cac20a5bbe560c5806bd29c0fccf90d03b996ac1
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RongCloudIM: 5f78e8952d48b504723546d4183c89bb20dd61b2
-  RongCloudRTC: 2d0ab6b01989316bdf699cac351ae6d2a0e5a8b4
-  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
-  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
-  SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
-  SwiftyBeaver: 4cc0080d2e23f980652e28978db11a5c9da39165
+  RongCloudIM: c1a917d3f109122fe8fdd96f2784d81847a0fa94
+  RongCloudRTC: 03f65e15a2c17ee30c611c1ef923d3f0a68f7443
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
   WKWebViewJavascriptBridge: 43c5948c08c29b8777530d512d02eb921ca0881f
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
 
-PODFILE CHECKSUM: c94a77fd16fb81ea57386e3d95b617544196b650
+PODFILE CHECKSUM: 02b9f1c5a2e178134fc6ac8c5589e02bea0c2b5e
 
-COCOAPODS: 1.7.0.beta.3
+COCOAPODS: 1.7.4

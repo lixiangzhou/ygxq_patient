@@ -30,6 +30,16 @@ extension UIView {
     }
 }
 
+extension UIView {
+    /// 更新 sizeToFit 之后的宽度，之前的约束必须先设置了宽度约束
+    func snpUpdateWidth() {
+        sizeToFit()
+        snp.updateConstraints { (make) in
+            make.width.equalTo(zz_width)
+        }
+    }
+}
+
 extension InputFieldView {
     func addShadowView(_ imgName: String) {
         let bg = UIImageView(image: UIImage(named: imgName))

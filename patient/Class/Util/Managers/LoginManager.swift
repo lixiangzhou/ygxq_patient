@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import Result
 
 class LoginManager {
     static let shared = LoginManager()

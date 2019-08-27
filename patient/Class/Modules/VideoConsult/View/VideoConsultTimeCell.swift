@@ -28,7 +28,7 @@ class VideoConsultTimeCell: UITableViewCell {
     let statusView = UIImageView(image: UIImage(named: "consult_status_ing"))
     
     let appointTimeLabel = UILabel(text: "等待医生确认", font: .size(15), textColor: .c6)
-    let talkTimeLabel = UILabel(text: "", font: .size(15), textColor: .c6)
+    let talkTimeLabel = UILabel(font: .size(15), textColor: .c6)
     let statusEndLabel = UILabel(text: "已通话", font: .size(15), textColor: .c9)
     let noTalkLabel = UILabel(text: "未通话", font: .size(15), textColor: .c407cec)
     
@@ -42,8 +42,7 @@ extension VideoConsultTimeCell {
         let topSepView = contentView.zz_add(subview: UIView())
         topSepView.backgroundColor = .cf0efef
         
-        let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        let titleView = TextLeftRightView(TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3))
         titleView.leftLabel.text = "视频通话时间"
         contentView.addSubview(titleView)
         

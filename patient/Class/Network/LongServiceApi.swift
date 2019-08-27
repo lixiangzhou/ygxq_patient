@@ -11,6 +11,8 @@ import Moya
 
 enum LongServiceApi: TargetType {
     case privateDocList(pid: Int)
+    case queryServices(did: Int)
+    case serviceInfo(did: Int, pid: Int, indate: Int)
 }
 
 extension LongServiceApi {
@@ -18,6 +20,10 @@ extension LongServiceApi {
         switch self {
         case .privateDocList:
             return "/serlong/getPrivateDoctorList"
+        case .queryServices:
+            return "/serlong/querySerLongs"
+        case .serviceInfo:
+            return "/serlong/querySerLongsDetailInfo"
         }
     }
     
@@ -27,6 +33,12 @@ extension LongServiceApi {
         case let .privateDocList(pid: pid):
             params["pageNum"] = 1
             params["pageSize"] = 1000
+            params["puid"] = pid
+        case let .queryServices(did: did):
+            params["duid"] = did
+        case let .serviceInfo(did: did, pid: pid, indate: indate):
+            params["duid"] = did
+            params["indate"] = indate
             params["puid"] = pid
         }
         

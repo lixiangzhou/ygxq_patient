@@ -11,6 +11,8 @@ import Moya
 
 enum DrugSunApi: TargetType {
     case usedDrugs(pid: Int)
+    case orders(pid: Int, state: SunnyDrugOrderState)
+    case orderInfo(id: Int)
 }
 
 extension DrugSunApi {
@@ -18,6 +20,10 @@ extension DrugSunApi {
         switch self {
         case .usedDrugs:
             return "/serDrugSunnyBuys/querySerDrugUesd"
+        case .orders:
+            return "/serDrugSunnyBuys/listByPuid"
+        case .orderInfo:
+            return "/serDrugSunnyBuys/getOrderInfo"
         default:
             break
         }
@@ -28,6 +34,11 @@ extension DrugSunApi {
         switch self {
         case let .usedDrugs(pid: pid):
             params["puid"] = pid
+        case let .orders(pid: pid, state: state):
+            params["puid"] = pid
+            params["serStatus"] = state.rawValue
+        case let .orderInfo(id: id):
+            params["id"] = id
         default:
             break
         }

@@ -38,8 +38,7 @@ extension VideoConsultPatientInfoCell {
         let topSepView = contentView.zz_add(subview: UIView())
         topSepView.backgroundColor = .cf0efef
         
-        let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        let titleView = TextLeftRightView(TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3))
         titleView.leftLabel.text = "个人基本信息"
         contentView.addSubview(titleView)
         
@@ -82,24 +81,4 @@ extension VideoConsultPatientInfoCell {
             make.bottom.equalToSuperview()
         }
     }
-}
-
-// MARK: - Action
-extension VideoConsultPatientInfoCell {
-    
-}
-
-// MARK: - Helper
-extension VideoConsultPatientInfoCell {
-    
-}
-
-// MARK: - Other
-extension VideoConsultPatientInfoCell {
-    
-}
-
-// MARK: - Public
-extension VideoConsultPatientInfoCell {
-    
 }

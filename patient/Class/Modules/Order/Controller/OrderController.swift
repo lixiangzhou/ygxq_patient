@@ -43,15 +43,15 @@ extension OrderController {
     override func loadCtls() {
         let toPayVC = OrderListController()
         toPayVC.title = "待支付"
-        toPayVC.state = .toPay
+        toPayVC.viewModel.state = .toPay
         
         let payedVC = OrderListController()
         payedVC.title = "已支付"
-        payedVC.state = .payed
+        payedVC.viewModel.state = .payed
         
         let refundVC = OrderListController()
         refundVC.title = "退款"
-        refundVC.state = .refund
+        refundVC.viewModel.state = .refund
         
         reloadViewControllers(ctls:[toPayVC, payedVC, refundVC])
     }

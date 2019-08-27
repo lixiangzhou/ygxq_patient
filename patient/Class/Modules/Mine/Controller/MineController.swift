@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import WZLBadge
 
 /// 我的
 class MineController: BaseController {
@@ -29,19 +30,23 @@ class MineController: BaseController {
         setNavigationStyle(.transparency)
         
         viewModel.getInfo()
+        viewModel.getUnReadMsgCount()
     }
 
     // MARK: - Properties
     private let tableView = UITableView()
     private let viewModel = MineViewModel()
     private let headerView = MineHeaderView()
+    var noticeBtn: UIButton!
 }
 
 // MARK: - UI
 extension MineController {
     override func setUI() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "mine_nav_edit", target: self, action: #selector(editAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "mine_nav_notice", target: self, action: #selector(noticeAction))
+        
+        noticeBtn = UIButton(imageName: "mine_nav_notice", target: self, action: #selector(noticeAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: noticeBtn)
         
         view.addSubview(tableView)
         
@@ -71,6 +76,15 @@ extension MineController {
                 self?.headerView.nameLabel.text = nil
             }
         }
+        
+        viewModel.unReadMsgCountProperty.signal.skipRepeats().observeValues { [weak self] (value) in
+            if value > 0 {
+                self?.noticeBtn?.showBadge(with: .redDot, value: value, animationType: .none)
+                self?.noticeBtn?.badgeCenterOffset = CGPoint(x: -5, y: 5)
+            } else {
+                self?.noticeBtn?.clearBadge()
+            }
+        }
     }
 }
 
@@ -83,7 +97,7 @@ extension MineController {
     }
     
     @objc private func noticeAction() {
-        
+        push(SystemMsgController())
     }
 }
 
