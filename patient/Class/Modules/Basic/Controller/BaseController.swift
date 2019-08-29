@@ -144,7 +144,7 @@ extension BaseController {
     func toServicePrototol() {
         guard let serviceURL = NetworkConfig.serviceURL else { return }
         let vc = WebController()
-        vc.titleString = "阳光客户端服务协议"
+        vc.titleString = appService
         vc.url = serviceURL
         
         let btn = UIButton(title: "下载", font: .size(itemFontSize), titleColor: .cf)

@@ -40,7 +40,7 @@ extension GetIDCardPicturesController {
         self.frontImgView = frontImgView
         self.backImgView = backImgView
         
-        let btn = UIButton(title: "签字及同意《阳光客户端服务协议》", font: .size(15), titleColor: .c3, imageName: "", selectedImageName: "", target: self, action: #selector(showPanelAction))
+        let btn = UIButton(title: "签字及同意《\(appService)》", font: .size(15), titleColor: .c3, imageName: "", selectedImageName: "", target: self, action: #selector(showPanelAction))
         view.addSubview(btn)
         
         frontView.snp.makeConstraints { (make) in

@@ -132,7 +132,8 @@ extension HomeController {
     private func setActions() {
         // 复诊购药
         headerView.actionsView.item1Closure = { [weak self] in
-            print("复诊购药")
+            let vc = BindedDoctorsController()
+            self?.push(vc)
         }
         
         // 随访计划

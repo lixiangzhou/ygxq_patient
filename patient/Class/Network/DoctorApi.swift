@@ -12,6 +12,7 @@ import Moya
 enum DoctorApi: TargetType {
     case doctorInfo(duid: Int)
     case assist(duid: Int)
+    case serList(duid: Int, puid: Int)
 }
 
 extension DoctorApi {
@@ -21,6 +22,8 @@ extension DoctorApi {
             return "/doctor/info"
         case .assist:
             return "/doctor/queryAssistantByDuid"
+        case .serList:
+            return "/doctor/doctorSerManageList"
         }
     }
     
@@ -31,6 +34,9 @@ extension DoctorApi {
             params["duid"] = did
         case let .assist(duid: did):
             params["duid"] = did
+        case let .serList(duid: did, puid: pid):
+            params["id"] = did
+            params["puid"] = did
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

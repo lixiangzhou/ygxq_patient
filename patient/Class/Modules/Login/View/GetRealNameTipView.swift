@@ -41,8 +41,8 @@ extension GetRealNameTipView {
         let tipTitleLabel = UILabel(text: "温馨提示", font: .boldSize(17), textColor: .c3)
         contentView.addSubview(tipTitleLabel)
         
-        let msgLabel = LinkedLabel(text: "您好，注册阳光客户端需要您签字同意我们的《阳光客户端服务协议》，点击可查看详情。", font: .size(15), textColor: .c6)
-        msgLabel.addLinks([(string: "《阳光客户端服务协议》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { _ in
+        let msgLabel = LinkedLabel(text: "您好，注册阳光客户端需要您签字同意我们的《\(appService)》，点击可查看详情。", font: .size(15), textColor: .c6)
+        msgLabel.addLinks([(string: "《\(appService)》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { _ in
             print("haha")
         })])
         contentView.addSubview(msgLabel)

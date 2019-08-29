@@ -15,8 +15,7 @@ protocol WXResponseDelegate {
 class WXManager: NSObject {
     static let shared = WXManager()
     
-    private override init() {
-    }
+    private override init() { }
     
     let appId = "wx786e96c3326738ee"
     let secret = "50205e09e7edda0b9c01a208cb677608"
@@ -26,7 +25,62 @@ class WXManager: NSObject {
     // MARK: - User
     private let userPath = zz_filePath(with: .documentDirectory, fileName: "wxUser")
     private(set) var user: WXUserModel?
+    // MARK: - Token
+    private let tokenPath = zz_filePath(with: .documentDirectory, fileName: "wxToken")
+    private(set) var token: WXOAuthToken?
+}
+
+extension WXManager {
+    // MARK: -
+    func setup() {
+        WXApi.registerApp(appId)
+    }
+}
+
+extension WXManager: WXResponseDelegate {
+    func managerDidRecvAuthResponse(resp: SendAuthResp) {
+        print(#function, resp)
+    }
+}
+
+extension WXManager: WXApiDelegate {
+    func onResp(_ resp: BaseResp) {
+        if let response = (resp as? SendAuthResp), let _ = response.code, response.state == auth_state {
+            self.authDelegate?.managerDidRecvAuthResponse(resp: response)
+        }
+    }
+}
+
+// MARK: - WXLogin
+extension WXManager {
+    //
+    func sendAuthReq(from controller: WXResponseDelegate? = nil) {
+        let req = SendAuthReq()
+        req.scope = "snsapi_userinfo"
+        req.state = auth_state
+        WXApi.send(req)
+        
+        authDelegate = controller ?? self
+    }
     
+    func refresnToken() {
+        if getCachedToken() != nil {
+            AuthApi.wxRefreshToken.response { (result) in
+                switch result {
+                case let .success(resp):
+                    if let json = String(data: resp.data, encoding: .utf8), let oauthToken = WXOAuthToken.deserialize(from: json) {
+                        self.save(token: oauthToken)
+                    } else {
+                        HUD.show(toast: "登录失败")
+                    }
+                case .failure:
+                    HUD.show(toast: "登录失败")
+                }
+            }
+        }
+    }
+    
+    // MARK: - User
     func save(user: WXUserModel) {
         if let jsonString = user.toJSONString() {
             do {
@@ -59,11 +113,6 @@ class WXManager: NSObject {
             return nil
         }
     }
-    
-    
-    // MARK: - Token
-    private let tokenPath = zz_filePath(with: .documentDirectory, fileName: "wxToken")
-    private(set) var token: WXOAuthToken?
     
     func save(token: WXOAuthToken) {
         if let jsonString = token.toJSONString() {
@@ -98,53 +147,7 @@ class WXManager: NSObject {
             return nil
         }
     }
-    
-    // MARK: -
-    func setup() {
-        WXApi.registerApp(appId)
-    }
-    
-    func sendAuthReq(from controller: WXResponseDelegate? = nil) {
-        let req = SendAuthReq()
-        req.scope = "snsapi_userinfo"
-        req.state = auth_state
-        WXApi.send(req)
-        
-        authDelegate = controller ?? self
-    }
-    
-    func refresnToken() {
-        if getCachedToken() != nil {
-            AuthApi.wxRefreshToken.response { (result) in
-                switch result {
-                case let .success(resp):
-                    if let json = try? String(data: resp.data, encoding: .utf8), let oauthToken = WXOAuthToken.deserialize(from: json) {
-                        self.save(token: oauthToken)
-                    } else {
-                        HUD.show(toast: "登录失败")
-                    }
-                case .failure:
-                    HUD.show(toast: "登录失败")
-                }
-            }
-        }
-    }
 }
-
-extension WXManager: WXResponseDelegate {
-    func managerDidRecvAuthResponse(resp: SendAuthResp) {
-        print(#function, resp)
-    }
-}
-
-extension WXManager: WXApiDelegate {
-    func onResp(_ resp: BaseResp) {
-        if let response = (resp as? SendAuthResp), let _ = response.code, response.state == auth_state {
-            self.authDelegate?.managerDidRecvAuthResponse(resp: response)
-        }
-    }
-}
-
 
 class WXOAuthToken: ModelProtocol {
     var refresh_token = ""

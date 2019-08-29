@@ -70,4 +70,25 @@ struct DoctorInfoModel: ModelProtocol {
     var price: Double = 0.0
     var evaluate: Double = 0.0
     var duid: Int = 0
+    
+    //
+    var doctorSers: [DoctorSerModel] = [DoctorSerModel]()
+}
+
+struct DoctorSerModel: ModelProtocol {
+    var serPrice: Double = 0.0
+    var id: Int = 0
+    var serType: String = ""
+    var openTime: TimeInterval = 0
+    var closeTime: TimeInterval = 0
+    var isSer: Bool = false
+    var duid: Int = 0
+    var serName: String = ""
+    var createTime: TimeInterval = 0
+    var indate: Int = 0
+    var serSummary: String = ""
+    
+    
+    // MARK: - Help
+    var selected: Bool = false
 }

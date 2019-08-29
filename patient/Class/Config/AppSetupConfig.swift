@@ -8,6 +8,8 @@
 
 import Foundation
 
+let appService = "阳光客户端服务协议"
+
 struct AppSetupConfig {
     static func config() {
         AppearanceConfig.config()
@@ -15,7 +17,6 @@ struct AppSetupConfig {
         WXManager.shared.setup()
         RCManager.shared.setup()
         LoginManager.shared.setup()
-        
     }
 }
 

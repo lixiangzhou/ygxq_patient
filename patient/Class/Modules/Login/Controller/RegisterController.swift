@@ -38,7 +38,7 @@ class RegisterController: BaseController {
     private let nextBtn = UIButton(title: "下一步", font: .boldSize(18), titleColor: .cf, target: self, action: #selector(nextAction))
     
     private let aggreeBtn = UIButton(imageName: "login_agree_unsel", selectedImageName: "login_agree_sel", target: self, action: #selector(agreeAction))
-    private let protocolLabel = LinkedLabel(text: "同意并接受《阳光客户端服务协议》", font: .size(13), textColor: .c6)
+    private let protocolLabel = LinkedLabel(text: "同意并接受《\(appService)》", font: .size(13), textColor: .c6)
     
     private let viewModel = LoginViewModel()
 }
@@ -87,7 +87,7 @@ extension RegisterController {
         nextBtn.backgroundColor = UIColor.cdcdcdc
         
         aggreeBtn.isSelected = true
-        protocolLabel.addLinks([(string: "《阳光客户端服务协议》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { [weak self] _ in
+        protocolLabel.addLinks([(string: "《\(appService)》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { [weak self] _ in
             self?.toServicePrototol()
         })])
         

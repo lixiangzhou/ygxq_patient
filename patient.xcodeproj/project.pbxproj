@@ -132,6 +132,14 @@
 		104E3AA822B8E5E700A84DB2 /* LLCtlPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A9D22B8E5E600A84DB2 /* LLCtlPageView.swift */; };
 		104E3AA922B8E5E700A84DB2 /* LLToolFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3A9E22B8E5E600A84DB2 /* LLToolFunc.swift */; };
 		104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E3AAB22B8F31C00A84DB2 /* OrderListCell.swift */; };
+		104FC4C823162ABF00ECB82B /* DoctorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4C723162ABF00ECB82B /* DoctorDetailController.swift */; };
+		104FC4CA23162ADE00ECB82B /* DoctorDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4C923162ADE00ECB82B /* DoctorDetailViewModel.swift */; };
+		104FC4CC231651AB00ECB82B /* DoctorDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4CB231651AB00ECB82B /* DoctorDetailInfoCell.swift */; };
+		104FC4CE231651C400ECB82B /* DoctorDetailActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4CD231651C400ECB82B /* DoctorDetailActionsCell.swift */; };
+		104FC4D0231651D000ECB82B /* DoctorDetailMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4CF231651D000ECB82B /* DoctorDetailMsgCell.swift */; };
+		104FC4D62316757800ECB82B /* PayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4D52316757800ECB82B /* PayController.swift */; };
+		104FC4D82316758F00ECB82B /* PayBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4D72316758F00ECB82B /* PayBottomView.swift */; };
+		104FC4DA2316816100ECB82B /* PayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FC4D92316816100ECB82B /* PayViewModel.swift */; };
 		104FFB0C2314C9B900E51033 /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB052314C9B900E51033 /* FSPagerView.swift */; };
 		104FFB0D2314C9B900E51033 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB062314C9B900E51033 /* FSPageViewTransformer.swift */; };
 		104FFB0E2314C9B900E51033 /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FFB072314C9B900E51033 /* FSPagerViewCell.swift */; };
@@ -176,6 +184,11 @@
 		10676BFC23069C0B004A6419 /* LongServiceDoctorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */; };
 		106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */; };
 		106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269822FACD6C007D9A27 /* ForgetPwdController.swift */; };
+		106DE8C223168413001DF4DE /* PayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C123168413001DF4DE /* PayListCell.swift */; };
+		106DE8C423168427001DF4DE /* PayMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C323168427001DF4DE /* PayMethodCell.swift */; };
+		106DE8C623168433001DF4DE /* PayTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C523168433001DF4DE /* PayTipCell.swift */; };
+		106DE8C823176BFC001DF4DE /* WXPayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C723176BFC001DF4DE /* WXPayManager.swift */; };
+		106DE8CA23176FA9001DF4DE /* WXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C923176FA9001DF4DE /* WXManager.swift */; };
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
 		1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */; };
 		1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */; };
@@ -219,6 +232,9 @@
 		10A27557230BC11500B568B3 /* SystemMsgViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A27556230BC11500B568B3 /* SystemMsgViewModel.swift */; };
 		10A27559230BC17500B568B3 /* MsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A27558230BC17500B568B3 /* MsgModel.swift */; };
 		10A2755B230BC34300B568B3 /* SystemMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2755A230BC34300B568B3 /* SystemMsgCell.swift */; };
+		10C78890231534AA00B65462 /* BindedDoctorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7888F231534AA00B65462 /* BindedDoctorsController.swift */; };
+		10C788922315352700B65462 /* BindedDoctorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C788912315352700B65462 /* BindedDoctorsViewModel.swift */; };
+		10C78894231535A900B65462 /* BindedDoctorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C78893231535A900B65462 /* BindedDoctorsCell.swift */; };
 		10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA46B222F431D600A4E244 /* RegisterController.swift */; };
 		10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472722F8073200A4E244 /* PersonInfoEditController.swift */; };
 		10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */; };
@@ -231,7 +247,6 @@
 		10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */; };
 		10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */; };
 		10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF39022A8BB9C00F20E81 /* PatientManager.swift */; };
-		10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */; };
 		10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */; };
 		10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CD22A917ED00F20E81 /* SizeColorConfig.swift */; };
 		10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CAF3CF22ADE83D00F20E81 /* ConstraintExtension.swift */; };
@@ -391,6 +406,14 @@
 		104E3A9D22B8E5E600A84DB2 /* LLCtlPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLCtlPageView.swift; sourceTree = "<group>"; };
 		104E3A9E22B8E5E600A84DB2 /* LLToolFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLToolFunc.swift; sourceTree = "<group>"; };
 		104E3AAB22B8F31C00A84DB2 /* OrderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListCell.swift; sourceTree = "<group>"; };
+		104FC4C723162ABF00ECB82B /* DoctorDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailController.swift; sourceTree = "<group>"; };
+		104FC4C923162ADE00ECB82B /* DoctorDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailViewModel.swift; sourceTree = "<group>"; };
+		104FC4CB231651AB00ECB82B /* DoctorDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailInfoCell.swift; sourceTree = "<group>"; };
+		104FC4CD231651C400ECB82B /* DoctorDetailActionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailActionsCell.swift; sourceTree = "<group>"; };
+		104FC4CF231651D000ECB82B /* DoctorDetailMsgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailMsgCell.swift; sourceTree = "<group>"; };
+		104FC4D52316757800ECB82B /* PayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayController.swift; sourceTree = "<group>"; };
+		104FC4D72316758F00ECB82B /* PayBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayBottomView.swift; sourceTree = "<group>"; };
+		104FC4D92316816100ECB82B /* PayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewModel.swift; sourceTree = "<group>"; };
 		104FFB052314C9B900E51033 /* FSPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerView.swift; sourceTree = "<group>"; };
 		104FFB062314C9B900E51033 /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
 		104FFB072314C9B900E51033 /* FSPagerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewCell.swift; sourceTree = "<group>"; };
@@ -438,6 +461,11 @@
 		10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListCell.swift; sourceTree = "<group>"; };
 		106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdMobileController.swift; sourceTree = "<group>"; };
 		106D269822FACD6C007D9A27 /* ForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdController.swift; sourceTree = "<group>"; };
+		106DE8C123168413001DF4DE /* PayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayListCell.swift; sourceTree = "<group>"; };
+		106DE8C323168427001DF4DE /* PayMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayMethodCell.swift; sourceTree = "<group>"; };
+		106DE8C523168433001DF4DE /* PayTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTipCell.swift; sourceTree = "<group>"; };
+		106DE8C723176BFC001DF4DE /* WXPayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPayManager.swift; sourceTree = "<group>"; };
+		106DE8C923176FA9001DF4DE /* WXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXManager.swift; sourceTree = "<group>"; };
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
 		1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailController.swift; sourceTree = "<group>"; };
 		1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailViewModel.swift; sourceTree = "<group>"; };
@@ -481,6 +509,9 @@
 		10A27556230BC11500B568B3 /* SystemMsgViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMsgViewModel.swift; sourceTree = "<group>"; };
 		10A27558230BC17500B568B3 /* MsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgModel.swift; sourceTree = "<group>"; };
 		10A2755A230BC34300B568B3 /* SystemMsgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMsgCell.swift; sourceTree = "<group>"; };
+		10C7888F231534AA00B65462 /* BindedDoctorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindedDoctorsController.swift; sourceTree = "<group>"; };
+		10C788912315352700B65462 /* BindedDoctorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindedDoctorsViewModel.swift; sourceTree = "<group>"; };
+		10C78893231535A900B65462 /* BindedDoctorsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindedDoctorsCell.swift; sourceTree = "<group>"; };
 		10CA46B222F431D600A4E244 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		10CA472722F8073200A4E244 /* PersonInfoEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoEditController.swift; sourceTree = "<group>"; };
 		10CA472922F8096D00A4E244 /* TextLeftRightFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLeftRightFieldView.swift; sourceTree = "<group>"; };
@@ -493,7 +524,6 @@
 		10CAF38B22A7CC8B00F20E81 /* AuthApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApi.swift; sourceTree = "<group>"; };
 		10CAF38D22A8B5DF00F20E81 /* PatientInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInfoModel.swift; sourceTree = "<group>"; };
 		10CAF39022A8BB9C00F20E81 /* PatientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientManager.swift; sourceTree = "<group>"; };
-		10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXManager.swift; sourceTree = "<group>"; };
 		10CAF3CA22A8DF4100F20E81 /* patient-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "patient-Bridge.h"; sourceTree = "<group>"; };
 		10CAF3CB22A90BC400F20E81 /* GetIDCardPicturesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIDCardPicturesController.swift; sourceTree = "<group>"; };
 		10CAF3CD22A917ED00F20E81 /* SizeColorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeColorConfig.swift; sourceTree = "<group>"; };
@@ -682,6 +712,7 @@
 			isa = PBXGroup;
 			children = (
 				10FF889D2314D80A008148BC /* HomeViewModel.swift */,
+				10C788912315352700B65462 /* BindedDoctorsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -691,6 +722,7 @@
 			children = (
 				1014D0122293A6D700294558 /* HomeController.swift */,
 				10FF88AF23151065008148BC /* QRCodeScanController.swift */,
+				10C7888F231534AA00B65462 /* BindedDoctorsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -711,6 +743,7 @@
 				104FFB152314CB5C00E51033 /* HomeHeaderActionView.swift */,
 				104FFB172314CB6D00E51033 /* HomeHeaderCaseView.swift */,
 				10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */,
+				10C78893231535A900B65462 /* BindedDoctorsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1078,6 +1111,8 @@
 		104E3A7B22B892E800A84DB2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				104FC4D12316755800ECB82B /* Pay */,
+				104FC4C323162A7A00ECB82B /* Doctor */,
 				10A2754D230BBE9700B568B3 /* Message */,
 				105039EF23069E7A000E90F0 /* Address */,
 				10676BFD23069DE6004A6419 /* LongService */,
@@ -1232,6 +1267,79 @@
 				104E3AAB22B8F31C00A84DB2 /* OrderListCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		104FC4C323162A7A00ECB82B /* Doctor */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4C623162AA200ECB82B /* ViewModel */,
+				104FC4C523162A9E00ECB82B /* View */,
+				104FC4C423162A9800ECB82B /* Controller */,
+			);
+			path = Doctor;
+			sourceTree = "<group>";
+		};
+		104FC4C423162A9800ECB82B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4C723162ABF00ECB82B /* DoctorDetailController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		104FC4C523162A9E00ECB82B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4CB231651AB00ECB82B /* DoctorDetailInfoCell.swift */,
+				104FC4CD231651C400ECB82B /* DoctorDetailActionsCell.swift */,
+				104FC4CF231651D000ECB82B /* DoctorDetailMsgCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		104FC4C623162AA200ECB82B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4C923162ADE00ECB82B /* DoctorDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		104FC4D12316755800ECB82B /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4D42316756600ECB82B /* ViewModel */,
+				104FC4D32316756300ECB82B /* View */,
+				104FC4D22316755D00ECB82B /* Controller */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
+		104FC4D22316755D00ECB82B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4D52316757800ECB82B /* PayController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		104FC4D32316756300ECB82B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4D72316758F00ECB82B /* PayBottomView.swift */,
+				106DE8C123168413001DF4DE /* PayListCell.swift */,
+				106DE8C323168427001DF4DE /* PayMethodCell.swift */,
+				106DE8C523168433001DF4DE /* PayTipCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		104FC4D42316756600ECB82B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				104FC4D92316816100ECB82B /* PayViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		104FFB042314C9B900E51033 /* FSPagerView */ = {
@@ -1494,11 +1602,12 @@
 			isa = PBXGroup;
 			children = (
 				10CAF39022A8BB9C00F20E81 /* PatientManager.swift */,
-				10CAF3AD22A8DDDC00F20E81 /* WXManager.swift */,
+				106DE8C923176FA9001DF4DE /* WXManager.swift */,
 				10CAF3DD22AF42DD00F20E81 /* RCManager.swift */,
 				108C080522BCCF6B00B2EBE9 /* LoginManager.swift */,
 				1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */,
 				1059E470230D3416005F5326 /* AuthorizationManager.swift */,
+				106DE8C723176BFC001DF4DE /* WXPayManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1696,6 +1805,7 @@
 				10A2755B230BC34300B568B3 /* SystemMsgCell.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */,
+				104FC4D0231651D000ECB82B /* DoctorDetailMsgCell.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
 				104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
@@ -1707,6 +1817,7 @@
 				108C080422BB635D00B2EBE9 /* ApplyForRefundViewModel.swift in Sources */,
 				108C080222BB611B00B2EBE9 /* TextLeftRightCell.swift in Sources */,
 				108C081F22BCFAA800B2EBE9 /* CheckListViewModel.swift in Sources */,
+				104FC4C823162ABF00ECB82B /* DoctorDetailController.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */,
@@ -1724,6 +1835,7 @@
 				104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */,
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
 				104FFB112314C9B900E51033 /* FSPageControl.swift in Sources */,
+				10C78894231535A900B65462 /* BindedDoctorsCell.swift in Sources */,
 				10CA473422F9152000A4E244 /* DiseaseApi.swift in Sources */,
 				108C081D22BCEAF800B2EBE9 /* ExamApi.swift in Sources */,
 				1030AA9C229D17DF00519CA4 /* SettingController.swift in Sources */,
@@ -1736,7 +1848,6 @@
 				100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */,
 				100AEE2C22C9F64000094AE2 /* HEPhotoPickerCell.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
-				10CAF3AE22A8DDDC00F20E81 /* WXManager.swift in Sources */,
 				10A27559230BC17500B568B3 /* MsgModel.swift in Sources */,
 				100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
@@ -1749,8 +1860,10 @@
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,
+				106DE8C623168433001DF4DE /* PayTipCell.swift in Sources */,
 				10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */,
 				1059E45D230CF2CC005F5326 /* SunnyDrugOrderDetailViewModel.swift in Sources */,
+				106DE8CA23176FA9001DF4DE /* WXManager.swift in Sources */,
 				104FFB0D2314C9B900E51033 /* FSPageViewTransformer.swift in Sources */,
 				10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */,
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,
@@ -1762,6 +1875,7 @@
 				108C081922BCE99400B2EBE9 /* HLRApi.swift in Sources */,
 				100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
+				106DE8C423168427001DF4DE /* PayMethodCell.swift in Sources */,
 				100AEE7222CD9D5700094AE2 /* DrugUsedCell.swift in Sources */,
 				104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */,
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
@@ -1777,6 +1891,7 @@
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */,
 				1059E455230CEAC3005F5326 /* SunnyDrugOrderListViewModel.swift in Sources */,
+				104FC4CC231651AB00ECB82B /* DoctorDetailInfoCell.swift in Sources */,
 				1059E45B230CF2AC005F5326 /* SunnyDrugOrderDetailController.swift in Sources */,
 				10503A06230794D7000E90F0 /* LongServiceDocInfoCell.swift in Sources */,
 				100AEE2322C9F64000094AE2 /* HEPhotoBrowserAnimator.swift in Sources */,
@@ -1798,9 +1913,11 @@
 				100AEE2E22C9F64000094AE2 /* HEPhoneBrowserBottomCell.swift in Sources */,
 				10A27555230BBEDC00B568B3 /* SystemMsgController.swift in Sources */,
 				104E3A9F22B8E5E700A84DB2 /* LLSegmentItemTitleImageView.swift in Sources */,
+				10C78890231534AA00B65462 /* BindedDoctorsController.swift in Sources */,
 				108C082B22BD14A700B2EBE9 /* ExamModel.swift in Sources */,
 				1059E45F230D1437005F5326 /* DoctorAssistModel.swift in Sources */,
 				1099E71B22C4663700C37A9E /* UploadResourceController.swift in Sources */,
+				104FC4CE231651C400ECB82B /* DoctorDetailActionsCell.swift in Sources */,
 				104FFB102314C9B900E51033 /* FSPageViewLayout.swift in Sources */,
 				104E3AA022B8E5E700A84DB2 /* LLSegmentItemBadgeView.swift in Sources */,
 				10FF88B023151065008148BC /* QRCodeScanController.swift in Sources */,
@@ -1809,6 +1926,7 @@
 				1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */,
 				10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */,
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
+				10C788922315352700B65462 /* BindedDoctorsViewModel.swift in Sources */,
 				100AEE6A22CD8D9C00094AE2 /* DrugModel.swift in Sources */,
 				10676BFA23069BF3004A6419 /* LongServiceDoctorListController.swift in Sources */,
 				10FF889A2314D640008148BC /* ImageTitleView.swift in Sources */,
@@ -1818,6 +1936,8 @@
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
 				100AEE2622C9F64000094AE2 /* HETool.swift in Sources */,
 				100AEE2A22C9F64000094AE2 /* HEPhotoPickerViewController.swift in Sources */,
+				106DE8C223168413001DF4DE /* PayListCell.swift in Sources */,
+				104FC4CA23162ADE00ECB82B /* DoctorDetailViewModel.swift in Sources */,
 				1014CF9F229391DF00294558 /* AppDelegate.swift in Sources */,
 				104E3AA522B8E5E700A84DB2 /* LLIndicatorView.swift in Sources */,
 				105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
@@ -1837,12 +1957,14 @@
 				100AEE6C22CD8DE800094AE2 /* DrugSunApi.swift in Sources */,
 				100AEE2422C9F64000094AE2 /* HEBaseViewController.swift in Sources */,
 				10CAF3D422ADFCB200F20E81 /* GetRealNameTipView.swift in Sources */,
+				104FC4D82316758F00ECB82B /* PayBottomView.swift in Sources */,
 				1059E463230D1642005F5326 /* SunnyDrugOrderPatientInfoCell.swift in Sources */,
 				1014D0482293A6D700294558 /* NSNumber+ZZExtension.swift in Sources */,
 				100AEE2722C9F64000094AE2 /* HEAlbumListCell.swift in Sources */,
 				108C081B22BCE9EE00B2EBE9 /* Network.swift in Sources */,
 				105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */,
 				10E1DF302304FB00007AD76A /* VideoConsultDocInfoCell.swift in Sources */,
+				106DE8C823176BFC001DF4DE /* WXPayManager.swift in Sources */,
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				1059E46F230D1EDA005F5326 /* SunnyDrugOrderAssistWxInfoCell.swift in Sources */,
@@ -1868,6 +1990,7 @@
 				108C082D22BD152900B2EBE9 /* ExamListViewModel.swift in Sources */,
 				108C080C22BCD81500B2EBE9 /* CaseListController.swift in Sources */,
 				108C083122BD158D00B2EBE9 /* ExamListController.swift in Sources */,
+				104FC4DA2316816100ECB82B /* PayViewModel.swift in Sources */,
 				1059E467230D1677005F5326 /* SunnyDrugOrderExpressCell.swift in Sources */,
 				105DBA7122A1731D00F55FE6 /* AppActivityIndicatorConfig.swift in Sources */,
 				10503A042306B20B000E90F0 /* ThreeColumnView.swift in Sources */,
@@ -1886,6 +2009,7 @@
 				10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
+				104FC4D62316757800ECB82B /* PayController.swift in Sources */,
 				100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
 				1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */,

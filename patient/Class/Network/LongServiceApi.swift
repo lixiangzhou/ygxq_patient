@@ -13,6 +13,7 @@ enum LongServiceApi: TargetType {
     case privateDocList(pid: Int)
     case queryServices(did: Int)
     case serviceInfo(did: Int, pid: Int, indate: Int)
+    case buyPersonalService(duid: Int, puid: Int, serLongId: String,  price: Double, productName: String)
 }
 
 extension LongServiceApi {
@@ -24,6 +25,8 @@ extension LongServiceApi {
             return "/serlong/querySerLongs"
         case .serviceInfo:
             return "/serlong/querySerLongsDetailInfo"
+        case .buyPersonalService:
+            return "/serlong/buyPersonalService"
         }
     }
     
@@ -40,6 +43,12 @@ extension LongServiceApi {
             params["duid"] = did
             params["indate"] = indate
             params["puid"] = pid
+        case let .buyPersonalService(duid: did, puid: pid, serLongId: serLongId, price: price, productName: productName):
+            params["duid"] = did
+            params["price"] = price
+            params["puid"] = pid
+            params["serLongId"] = serLongId
+            params["productName"] = productName
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
