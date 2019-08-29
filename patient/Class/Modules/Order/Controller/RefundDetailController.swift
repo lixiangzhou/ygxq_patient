@@ -44,7 +44,6 @@ class RefundDetailController: BaseController {
 // MARK: - UI
 extension RefundDetailController {
     override func setUI() {
-        view.backgroundColor = .cf0efef
         scrollView.backgroundColor = .cf0efef
         view.addSubview(scrollView)
         

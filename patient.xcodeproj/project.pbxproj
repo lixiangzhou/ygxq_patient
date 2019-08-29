@@ -187,8 +187,9 @@
 		106DE8C223168413001DF4DE /* PayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C123168413001DF4DE /* PayListCell.swift */; };
 		106DE8C423168427001DF4DE /* PayMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C323168427001DF4DE /* PayMethodCell.swift */; };
 		106DE8C623168433001DF4DE /* PayTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C523168433001DF4DE /* PayTipCell.swift */; };
-		106DE8C823176BFC001DF4DE /* WXPayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C723176BFC001DF4DE /* WXPayManager.swift */; };
 		106DE8CA23176FA9001DF4DE /* WXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C923176FA9001DF4DE /* WXManager.swift */; };
+		106DE8CC231771B8001DF4DE /* PayApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8CB231771B8001DF4DE /* PayApi.swift */; };
+		106DE8CE2317A2B8001DF4DE /* PayResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8CD2317A2B8001DF4DE /* PayResultController.swift */; };
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
 		1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */; };
 		1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */; };
@@ -464,8 +465,9 @@
 		106DE8C123168413001DF4DE /* PayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayListCell.swift; sourceTree = "<group>"; };
 		106DE8C323168427001DF4DE /* PayMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayMethodCell.swift; sourceTree = "<group>"; };
 		106DE8C523168433001DF4DE /* PayTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTipCell.swift; sourceTree = "<group>"; };
-		106DE8C723176BFC001DF4DE /* WXPayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPayManager.swift; sourceTree = "<group>"; };
 		106DE8C923176FA9001DF4DE /* WXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXManager.swift; sourceTree = "<group>"; };
+		106DE8CB231771B8001DF4DE /* PayApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayApi.swift; sourceTree = "<group>"; };
+		106DE8CD2317A2B8001DF4DE /* PayResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayResultController.swift; sourceTree = "<group>"; };
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
 		1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailController.swift; sourceTree = "<group>"; };
 		1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailViewModel.swift; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 				10A2754B230BBD1D00B568B3 /* CommonApi.swift */,
 				10FF88A32314F13F008148BC /* HomeApi.swift */,
 				10FF88B32315234E008148BC /* PatientApi.swift */,
+				106DE8CB231771B8001DF4DE /* PayApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1319,6 +1322,7 @@
 			isa = PBXGroup;
 			children = (
 				104FC4D52316757800ECB82B /* PayController.swift */,
+				106DE8CD2317A2B8001DF4DE /* PayResultController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1607,7 +1611,6 @@
 				108C080522BCCF6B00B2EBE9 /* LoginManager.swift */,
 				1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */,
 				1059E470230D3416005F5326 /* AuthorizationManager.swift */,
-				106DE8C723176BFC001DF4DE /* WXPayManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1964,7 +1967,6 @@
 				108C081B22BCE9EE00B2EBE9 /* Network.swift in Sources */,
 				105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */,
 				10E1DF302304FB00007AD76A /* VideoConsultDocInfoCell.swift in Sources */,
-				106DE8C823176BFC001DF4DE /* WXPayManager.swift in Sources */,
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				1059E46F230D1EDA005F5326 /* SunnyDrugOrderAssistWxInfoCell.swift in Sources */,
@@ -2007,6 +2009,7 @@
 				104E3AA622B8E5E700A84DB2 /* LLSegmentViewController.swift in Sources */,
 				100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */,
 				10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */,
+				106DE8CC231771B8001DF4DE /* PayApi.swift in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				104FC4D62316757800ECB82B /* PayController.swift in Sources */,
@@ -2021,6 +2024,7 @@
 				1059E471230D3416005F5326 /* AuthorizationManager.swift in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				100AEE7022CD969100094AE2 /* DrugUsedViewModel.swift in Sources */,
+				106DE8CE2317A2B8001DF4DE /* PayResultController.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */,
 				104FFB182314CB6D00E51033 /* HomeHeaderCaseView.swift in Sources */,

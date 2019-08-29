@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 protocol WXResponseDelegate {
     func managerDidRecvAuthResponse(resp: SendAuthResp)
+    func managerDidRecvPayResponse(resp: PayResp)
 }
 
 class WXManager: NSObject {
@@ -20,7 +22,10 @@ class WXManager: NSObject {
     let appId = "wx786e96c3326738ee"
     let secret = "50205e09e7edda0b9c01a208cb677608"
     private let auth_state = "wx_oauth_authorization_state"
-    private var authDelegate: WXResponseDelegate?
+    private var respDelegate: WXResponseDelegate?
+    
+    let payRespProperty = MutableProperty<PayResp?>(nil)
+    let authRespProperty = MutableProperty<SendAuthResp?>(nil)
     
     // MARK: - User
     private let userPath = zz_filePath(with: .documentDirectory, fileName: "wxUser")
@@ -41,13 +46,25 @@ extension WXManager: WXResponseDelegate {
     func managerDidRecvAuthResponse(resp: SendAuthResp) {
         print(#function, resp)
     }
+    
+    func managerDidRecvPayResponse(resp: PayResp) {
+        print(#function, resp)
+    }
 }
 
 extension WXManager: WXApiDelegate {
     func onResp(_ resp: BaseResp) {
-        if let response = (resp as? SendAuthResp), let _ = response.code, response.state == auth_state {
-            self.authDelegate?.managerDidRecvAuthResponse(resp: response)
+        if let response = resp as? SendAuthResp, let _ = response.code, response.state == auth_state {
+            respDelegate?.managerDidRecvAuthResponse(resp: response)
+            authRespProperty.value = response
+        } else if let response = resp as? PayResp {
+            respDelegate?.managerDidRecvPayResponse(resp: response)
+            payRespProperty.value = response
         }
+    }
+    
+    func handOpenUrl(_ url: URL) -> Bool {
+        return WXApi.handleOpen(url, delegate: self)
     }
 }
 
@@ -60,7 +77,7 @@ extension WXManager {
         req.state = auth_state
         WXApi.send(req)
         
-        authDelegate = controller ?? self
+        respDelegate = controller ?? self
     }
     
     func refresnToken() {
@@ -149,6 +166,22 @@ extension WXManager {
     }
 }
 
+extension WXManager {
+    func sendPayRequest(_ model: WXPayInfoModel, delegate: WXResponseDelegate? = nil) {
+        let req = PayReq()
+        req.partnerId = model.partnerid
+        req.prepayId = model.prepay_id
+        req.nonceStr = model.nonce_strs
+        req.timeStamp = UInt32(model.timeStamp) ?? 0
+        req.sign = model.signStr
+        req.package = "Sign=WXPay"
+        
+        WXApi.send(req)
+        
+        respDelegate = delegate ?? self
+    }
+}
+
 class WXOAuthToken: ModelProtocol {
     var refresh_token = ""
     var scope = ""
@@ -172,4 +205,14 @@ struct WXUserModel: ModelProtocol {
     var unionid = ""
     var sex = 0
     var province = ""
+}
+
+struct WXPayInfoModel: ModelProtocol {
+    var partnerid: String = ""
+    var mweb_url: String = ""
+    var nonce_strs: String = ""
+    var timeStamp: String = ""
+    var appId: String = ""
+    var prepay_id: String = ""
+    var signStr: String = ""
 }

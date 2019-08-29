@@ -23,14 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
-        return WXApi.handleOpen(url, delegate: WXManager.shared)
+        return WXManager.shared.handOpenUrl(url)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return WXApi.handleOpen(url, delegate: WXManager.shared)
+        return WXManager.shared.handOpenUrl(url)
     }
-
-
-
 }
 

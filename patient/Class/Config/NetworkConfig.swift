@@ -27,6 +27,18 @@ struct NetworkConfig {
         //    return "http://172.21.20.247:8889/shdr-service-basic"
         //    return "http://172.21.20.68:8889/shdr-service-basic"
     }
+
+    static var APP_PAY_URL: URL {
+        switch context {
+        case .release:
+            return URL(string: "http://www.lightheart.com.cn/shdr-pay")!
+        case .test:
+            return URL(string: "http://172.21.24.251:8889/shdr-pay")!
+        case .develop:
+            return URL(string: "http://172.21.24.252:5082/shdr-pay")!
+        }
+    }
+
     
     static func APP_SERVE_URL(_ host: String) -> String {
         return "http://\(host):8889/shdr-service-basic"

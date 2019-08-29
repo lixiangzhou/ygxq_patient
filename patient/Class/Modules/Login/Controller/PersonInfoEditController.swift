@@ -53,8 +53,6 @@ class PersonInfoEditController: BaseController {
 // MARK: - UI
 extension PersonInfoEditController {
     override func setUI() {
-        view.backgroundColor = .cf0efef
-        
         finishBtn.addTarget(self, action: #selector(finishAction), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: finishBtn)
         

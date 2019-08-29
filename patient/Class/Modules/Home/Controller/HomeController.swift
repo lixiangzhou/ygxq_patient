@@ -127,6 +127,8 @@ extension HomeController {
 
     @objc private func noticeAction() {
         print(#function)
+        let vc = PayResultController()
+        push(vc)
     }
     
     private func setActions() {

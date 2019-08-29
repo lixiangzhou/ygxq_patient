@@ -36,8 +36,6 @@ class QRCodeScanController: BaseController {
 // MARK: - UI
 extension QRCodeScanController {
     override func setUI() {
-        view.backgroundColor = .cf0efef
-        
         let paddingX: CGFloat = 80
         let wh = view.bounds.width - paddingX * 2
         

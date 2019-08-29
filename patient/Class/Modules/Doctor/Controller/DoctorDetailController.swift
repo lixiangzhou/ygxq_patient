@@ -33,7 +33,6 @@ class DoctorDetailController: BaseController {
 // MARK: - UI
 extension DoctorDetailController {
     override func setUI() {
-        view.backgroundColor = .cf0efef
         tableView.backgroundColor = .cf0efef
         
         tableView.set(dataSource: self, delegate: nil, rowHeight: UITableView.automaticDimension)
@@ -47,6 +46,7 @@ extension DoctorDetailController {
                 if let orderId = orderId {
                     let vc = PayController()
                     vc.viewModel.orderId = orderId
+                    vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.className ?? "DoctorDetailController", type: .longSer)
                     self?.push(vc)
                 }
             })

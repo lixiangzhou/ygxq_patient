@@ -16,6 +16,10 @@ class PayViewModel: BaseViewModel {
     
     let orderProperty = MutableProperty<OrderModel>(OrderModel())
     
+    let payInfoProperty = MutableProperty<WXPayInfoModel?>(nil)
+    
+    var resultAction: ResultAction?
+    
     func getData() {
         OrderApi.detail(orderId: orderId).rac_response(OrderModel.self).startWithValues { [weak self] (resp) in
             guard let self = self else { return }
@@ -29,9 +33,28 @@ class PayViewModel: BaseViewModel {
             }
         }
     }
+    
+    func getPayInfo() {
+        PayApi.wxPayInfo(tradeNo: orderId.description).rac_response(WXPayInfoModel.self).startWithValues { [weak self] (resp) in
+            let result = BoolString(resp)
+            HUD.showError(result)
+            if result.isSuccess {
+                self?.payInfoProperty.value = resp.content
+            }
+        }
+    }
 }
 
 extension PayViewModel {
+    struct ResultAction {
+        var backClassName: String
+        var type: ResultType
+        
+        enum ResultType {
+            case longSer
+        }
+    }
+    
     enum Model {
         case list(name: String, price: String)
         case method

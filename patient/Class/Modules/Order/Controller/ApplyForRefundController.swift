@@ -40,7 +40,6 @@ class ApplyForRefundController: BaseController {
 // MARK: - UI
 extension ApplyForRefundController {
     override func setUI() {
-        view.backgroundColor = .cf0efef
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .cf0efef
         let contentView = UIView()

@@ -24,9 +24,17 @@ class OrderController: LLSegmentViewController {
         title = "我的订单"
         setUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let idx = selectIndex {
+            selected(at: idx, animation: true)
+        }
+    }
 
     // MARK: - Public Property
-    
+    var selectIndex: Int?
     // MARK: - Private Property
     
 }

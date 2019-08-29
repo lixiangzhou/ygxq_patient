@@ -32,7 +32,6 @@ class PayController: BaseController {
 // MARK: - UI
 extension PayController {
     override func setUI() {
-        view.backgroundColor = .cf0efef
         tableView.backgroundColor = .cf0efef
         
         tableView.set(dataSource: self, delegate: nil, rowHeight: UITableView.automaticDimension)
@@ -42,8 +41,7 @@ extension PayController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
-            let vc = PayController()
-            self?.push(vc)
+            self?.viewModel.getPayInfo()
         }
         view.addSubview(bottomView)
         
@@ -66,18 +64,34 @@ extension PayController {
         viewModel.orderProperty.signal.observeValues { [weak self] (model) in
             self?.bottomView.priceLabel.text = "￥\(model.payAmount)"
         }
+        
+        viewModel.payInfoProperty.signal.skipNil().observeValues { (model) in
+            WXManager.shared.sendPayRequest(model)
+        }
+        
+        WXManager.shared.payRespProperty.signal.skipNil().observeValues { [weak self] (resp) in
+            switch resp.errCode {
+            case 0:
+                if let type = self?.viewModel.resultAction?.type {
+//                    switch type {
+//                    case .longSer:
+//                        let vc = PayResultController()
+//                        vc.resultAction = self?.viewModel.resultAction
+//                        self?.push(vc)
+//                    }
+                }
+            case -1:
+                if !resp.errStr.isEmpty {
+                    HUD.show(toast: resp.errStr)
+                } else {
+                    HUD.show(toast: "支付出错")
+                }
+            case -2:
+                HUD.show(toast: "支付取消")
+            default: break
+            }
+        }
     }
-
-}
-
-// MARK: - Action
-extension PayController {
-    
-}
-
-// MARK: - Network
-extension PayController {
-    
 }
 
 // MARK: - Delegate Internal

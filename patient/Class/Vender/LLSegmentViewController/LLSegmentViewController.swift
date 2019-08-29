@@ -159,7 +159,7 @@ extension LLSegmentViewController{
     }
     
     func selected(at Index:NSInteger,animation:Bool)  {
-        guard (ctls.count < Index && Index > 0) else {
+        guard (ctls.count > Index && Index > 0) else {
             return
         }
         segmentCtlView.selected(at: Index, animation: animation)
