@@ -25,7 +25,7 @@ class ProfileController: BaseController {
     
     // MARK: - Private Property
     private let tableView = UITableView()
-    private let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 245))
+    private let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 175))
     private let viewModel = ProfileViewModel()
 }
 
@@ -50,12 +50,13 @@ extension ProfileController {
     override func setBinding() {
         patientInfoProperty.producer.skipNil().startWithValues { [weak self] (pinfo) in
             self?.headerView.nameLabel.text = pinfo.realName
-            self?.headerView.mobileLabel.text = pinfo.mobile
+            self?.headerView.mobileLabel.text = pinfo.mobile.mobileSecrectString
             self?.headerView.ageLabel.text = pinfo.age.description
             self?.headerView.sexLabel.text = pinfo.sex.description
             self?.headerView.diseaseLabel.text = pinfo.diseaseName
             
             self?.headerView.layoutHeight()
+            self?.headerView.zz_height += 5
             self?.tableView.tableHeaderView = self?.headerView
         }
     }

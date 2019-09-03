@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewModel: BaseViewModel {
     enum RowType: String {
-        case historyData = "历史数据"
+        case historyData = "就诊记录"
         case drugRecord = "用药记录"
     }
     

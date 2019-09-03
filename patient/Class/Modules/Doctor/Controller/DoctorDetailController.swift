@@ -39,6 +39,7 @@ extension DoctorDetailController {
         tableView.register(cell: DoctorDetailInfoCell.self)
         tableView.register(cell: DoctorDetailActionsCell.self)
         tableView.register(cell: DoctorDetailMsgCell.self)
+        tableView.estimatedRowHeight = 250
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in

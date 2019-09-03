@@ -74,7 +74,7 @@ extension PersonInfoEditController {
                 make.height.equalTo(50)
             }
         } else {
-            view.backgroundColor = .cf
+            scrollView.backgroundColor = .cf
             
             let tipLabel = UILabel(text: "请您完善信息，方便为您提供更好的服务", font: .size(13), textColor: .c9)
             view.addSubview(tipLabel)
@@ -145,7 +145,6 @@ extension PersonInfoEditController {
         addLoginBottomView()
         
         scrollView.snp.makeConstraints { (make) in
-//            make.top.equalTo(hasIcon ? 0 : 44)
             make.topOffsetFrom(self, hasIcon ? 0 : 44)
             make.right.left.bottom.equalToSuperview()
         }

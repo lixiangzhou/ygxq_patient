@@ -178,7 +178,7 @@ extension VideoConsultBuyController {
         viewModel.orderIdProperty.signal.filter { $0 > 0 }.observeValues { [weak self] (orderId) in
             let vc = PayController()
             vc.viewModel.orderId = orderId
-            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.className ?? "DoctorDetailController", type: .singleVideoConsult)
+            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: "DoctorDetailController", type: .singleVideoConsult)
             self?.push(vc)
         }
         

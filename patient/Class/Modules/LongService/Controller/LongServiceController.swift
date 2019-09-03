@@ -80,7 +80,11 @@ extension LongServiceController {
 
 extension LongServiceController {
     @objc private func buyAction() {
-        
+        if let model = viewModel.doctorProperty.value {
+            let vc = DoctorDetailController()
+            vc.viewModel.did = model.id
+            push(vc)
+        }
     }
 }
 

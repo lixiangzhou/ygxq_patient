@@ -17,6 +17,7 @@ class LongServiceViewModel: BaseViewModel {
     var index = 0
     
     let dataSourceProperty = MutableProperty<[Model]>([Model]())
+    let doctorProperty = MutableProperty<DoctorInfoModel?>(nil)
     
     /// 获取套餐
     func getServices() {
@@ -32,9 +33,11 @@ class LongServiceViewModel: BaseViewModel {
     
     /// 获取服务详情
     func getServiceInfo() {
-        ServiceApi.serviceInfo(did: did, pid: patientId, indate: indate).rac_responseModel([LongServiceModel].self).skipNil().skip { $0.isEmpty }.startWithValues { [weak self] (result) in
-            self?.dataSourceProperty.value = [Model.docinfo(model: DoctorInfoModel()), Model.list(model: result)]
-            self?.getServices()
+        ServiceApi.serviceInfo(did: did, pid: patientId, indate: indate).rac_responseModel([LongServiceModel].self).startWithValues { [weak self] (result) in
+            if let models = result, !models.isEmpty {
+                self?.dataSourceProperty.value = [Model.docinfo(model: DoctorInfoModel()), Model.list(model: models)]
+                self?.getServices()
+            }
             self?.getDocData()
         }
     }
@@ -43,9 +46,13 @@ class LongServiceViewModel: BaseViewModel {
         DoctorApi.doctorInfo(duid: did).rac_responseModel(DoctorInfoModel.self).skipNil().startWithValues { [weak self] (docModel) in
             guard let self = self else { return }
             var models = self.dataSourceProperty.value
-            models.removeFirst()
-            models.insert(Model.docinfo(model: docModel), at: 0)
-            self.dataSourceProperty.value = models
+            if models.isEmpty {
+                self.doctorProperty.value = docModel
+            } else {            
+                models.removeFirst()
+                models.insert(Model.docinfo(model: docModel), at: 0)
+                self.dataSourceProperty.value = models
+            }
         }
     }
 }

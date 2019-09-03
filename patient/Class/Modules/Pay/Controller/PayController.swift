@@ -84,11 +84,17 @@ extension PayController {
             case 0:
                 if let type = self?.viewModel.resultAction?.type {
                     switch type {
-                    case .longSer, .singleVideoConsult:
+                    case .singleVideoConsult, .longSer:
                         let vc = PayResultController()
                         vc.resultAction = self?.viewModel.resultAction
                         self?.push(vc)
                     case .singleSunnyDrug:
+                        let vc = PayResult2Controller()
+                        vc.resultAction = self?.viewModel.resultAction
+                        vc.viewModel.duid = self?.viewModel.orderProperty.value?.duid ?? 0
+                        self?.push(vc)
+                    default:
+                        self?.pop()
                         break
                     }
                 }

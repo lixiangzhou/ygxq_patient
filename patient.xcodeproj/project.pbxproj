@@ -191,6 +191,8 @@
 		10676BFC23069C0B004A6419 /* LongServiceDoctorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */; };
 		106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */; };
 		106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269822FACD6C007D9A27 /* ForgetPwdController.swift */; };
+		106D3753231E5A090079D899 /* PayResult2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D3752231E5A090079D899 /* PayResult2Controller.swift */; };
+		106D3755231E64A60079D899 /* PayResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D3754231E64A60079D899 /* PayResultViewModel.swift */; };
 		106DE8C223168413001DF4DE /* PayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C123168413001DF4DE /* PayListCell.swift */; };
 		106DE8C423168427001DF4DE /* PayMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C323168427001DF4DE /* PayMethodCell.swift */; };
 		106DE8C623168433001DF4DE /* PayTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8C523168433001DF4DE /* PayTipCell.swift */; };
@@ -481,6 +483,8 @@
 		10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListCell.swift; sourceTree = "<group>"; };
 		106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdMobileController.swift; sourceTree = "<group>"; };
 		106D269822FACD6C007D9A27 /* ForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdController.swift; sourceTree = "<group>"; };
+		106D3752231E5A090079D899 /* PayResult2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayResult2Controller.swift; sourceTree = "<group>"; };
+		106D3754231E64A60079D899 /* PayResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayResultViewModel.swift; sourceTree = "<group>"; };
 		106DE8C123168413001DF4DE /* PayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayListCell.swift; sourceTree = "<group>"; };
 		106DE8C323168427001DF4DE /* PayMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayMethodCell.swift; sourceTree = "<group>"; };
 		106DE8C523168433001DF4DE /* PayTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTipCell.swift; sourceTree = "<group>"; };
@@ -1351,6 +1355,7 @@
 			children = (
 				104FC4D52316757800ECB82B /* PayController.swift */,
 				106DE8CD2317A2B8001DF4DE /* PayResultController.swift */,
+				106D3752231E5A090079D899 /* PayResult2Controller.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1370,6 +1375,7 @@
 			isa = PBXGroup;
 			children = (
 				104FC4D92316816100ECB82B /* PayViewModel.swift */,
+				106D3754231E64A60079D899 /* PayResultViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1840,6 +1846,7 @@
 				1059E450230CE948005F5326 /* SunnyDrugOrderListController.swift in Sources */,
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,
 				105039F52306A285000E90F0 /* LongServicesController.swift in Sources */,
+				106D3755231E64A60079D899 /* PayResultViewModel.swift in Sources */,
 				10E1DF2E2304FAC0007AD76A /* VideoConsultResultViewModel.swift in Sources */,
 				10CA473622F9163100A4E244 /* DiseaseModel.swift in Sources */,
 				10A2755B230BC34300B568B3 /* SystemMsgCell.swift in Sources */,
@@ -1888,6 +1895,7 @@
 				1059E465230D1669005F5326 /* SunnyDrugOrderDrugsCell.swift in Sources */,
 				10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */,
 				100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */,
+				106D3753231E5A090079D899 /* PayResult2Controller.swift in Sources */,
 				109B74BD230408830034346D /* ConsultListCell.swift in Sources */,
 				100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */,
 				100AEE2C22C9F64000094AE2 /* HEPhotoPickerCell.swift in Sources */,

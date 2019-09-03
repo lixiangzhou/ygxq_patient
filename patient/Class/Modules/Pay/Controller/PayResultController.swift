@@ -35,7 +35,7 @@ extension PayResultController {
         let titleLabel = contentView.zz_add(subview: UILabel(text: "支付成功", font: .boldSize(18), textColor: .c3))
         let descLabel = contentView.zz_add(subview: UILabel(text: "感谢您使用阳光客户端，我们在五分钟内给你反馈", font: .size(14), textColor: .c6))
         let lookOrderBtn = contentView.zz_add(subview: UIButton(title: "查看订单", font: .size(16), titleColor: .c407cec, target: self, action: #selector(lookOrderAction)))
-        lookOrderBtn.zz_setBorder(color: .c407cec, width: 0.5)
+        lookOrderBtn.zz_setBorder(color: .c407cec, width: 1)
         lookOrderBtn.zz_setCorner(radius: 15, masksToBounds: true)
         
         contentView.snp.makeConstraints { (make) in
@@ -84,32 +84,3 @@ extension PayResultController {
         }
     }
 }
-
-// MARK: - Network
-extension PayResultController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension PayResultController {
-    
-}
-
-// MARK: - Other
-extension PayResultController {
-    
-}
-
-// MARK: - Public
-extension PayResultController {
-    
-}
-

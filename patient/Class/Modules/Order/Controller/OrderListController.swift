@@ -58,7 +58,21 @@ extension OrderListController {
     
     /// 去支付
     func payOrderAction(_ cell: OrderListCell?, _ model: OrderModel) {
-        
+        let vc = PayController()
+        vc.viewModel.orderId = model.id
+        var type: PayViewModel.ResultAction.ResultType?
+        switch model.productName {
+        case "阳光续药":
+            type = .singleSunnyDrug
+        case "视频咨询":
+            type = .singleVideoConsult
+        default:
+            break
+        }
+        if let type = type {
+            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: className, type: type)
+        }
+        push(vc)
     }
     
     /// 删除订单

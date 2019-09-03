@@ -102,7 +102,7 @@ extension SunnyDrugBuyController {
         viewModel.orderIdProperty.signal.filter { $0 > 0 }.observeValues { [weak self] (orderId) in
             let vc = PayController()
             vc.viewModel.orderId = orderId
-            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.className ?? "DoctorDetailController", type: .singleSunnyDrug)
+            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: "DoctorDetailController", type: .singleSunnyDrug)
             self?.push(vc)
         }
         
@@ -162,41 +162,11 @@ extension SunnyDrugBuyController {
     }
     
     @objc private func buyAction() {
-//        /{
-//            "address": "北京-北京市-东城区3213213321",
-//            "duid": 28108,
-//            "idCardImg": "http://172.21.24.252/files/20190902/584daa02542a4538a6e7d6757eadd1d8.png",
-//            "mobile": "12323123123",
-//            "puid": 28139,
-//            "realName": "123",
-//            "remark": "",
-//            "serConsultVideoId": 0
-//        }
-        
-//        {
-//            "address": "北京北京市东城区222111",
-//            "duid": 28146,
-//            "fromWhere": 1,
-//            "idCardImg": "http://172.21.24.252/files/20190902/c7d35f9505a142158b0293dc7f64a2ff.png",
-        //            "mobile": "13411111111",
-        //            "puid": 28145,
-//            "keyObject": "阳光续药",
-        //            "productItmId": 12251,
-//            "orderId": 96885,
-//            "price": 0.01,
-//            "productName": "阳光续药",
-//            "realName": "Qqqqqqqq",
-//            "serCode": "UTOPIA16",
-//            "workType": "TSK_WORK_T_20"
-//        }
-        
-        
         guard let model = viewModel.addressModelProperty.value else { return }
         
         var params: [String: Any] = [
             "address": model.district + model.address,
             "duid": viewModel.did,
-//            "fromWhere": 1,
             "mobile": model.mobile,
             "puid": patientId,
             "realName": model.consignee,
@@ -218,16 +188,6 @@ extension SunnyDrugBuyController {
         viewModel.buySunnyDrug(params: params)
     }
 }
-
-// MARK: - Network
-extension SunnyDrugBuyController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
 // MARK: - Delegate External
 
 // MARK: -
@@ -257,14 +217,3 @@ extension SunnyDrugBuyController {
         scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_height, UIScreen.zz_safeFrameUnderNavigation.height) + 10)
     }
 }
-
-// MARK: - Other
-extension SunnyDrugBuyController {
-    
-}
-
-// MARK: - Public
-extension SunnyDrugBuyController {
-    
-}
-

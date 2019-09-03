@@ -159,20 +159,20 @@ extension HomeController {
         
         // 上传
         headerView.caseView.uploadClosure = { [weak self] in
-            print("上传")
-            let vc = PersonInfoEditController()
+            let vc = UploadResourceController()
             self?.push(vc)
         }
         
         // 查看
         headerView.caseView.lookClosure = { [weak self] in
-//            let vc = ProfileController()
-//            self?.push(vc)
+            let vc = ProfileController()
+            self?.push(vc)
         }
         
         // 更多
         headerView.taskView.moreClosure = { [weak self] in
-            print("更多")
+            let vc = PayResult2Controller()
+            self?.push(vc)
         }
         
         // 按钮

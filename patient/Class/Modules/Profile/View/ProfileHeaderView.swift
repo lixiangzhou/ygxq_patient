@@ -54,9 +54,6 @@ extension ProfileHeaderView {
         self.ageLabel = ageView.rightLabel
         self.diseaseLabel = diseaseView.rightLabel
         
-        let bottomView = zz_add(subview: UIView())
-        let uploadBtn = bottomView.zz_add(subview: UIButton(title: "上传资料", font: .size(15), titleColor: .c6, backgroundColor: .cf, target: self, action: #selector(uploadAction)))
-        
         nameView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
         }
@@ -81,17 +78,6 @@ extension ProfileHeaderView {
             make.left.right.equalTo(nameView)
         }
         
-        bottomView.snp.makeConstraints { (make) in
-            make.top.equalTo(diseaseView.snp.bottom)
-            make.left.right.equalToSuperview()
-        }
-        
-        uploadBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(10)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(50)
-            make.bottom.equalTo(-10)
-        }
     }
     
     private func getRowView(_ title: String) -> TextLeftGrowTextRightView {
