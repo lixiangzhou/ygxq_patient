@@ -16,6 +16,7 @@ enum AddressApi: TargetType {
     case delete(id: Int)
     case provinces
     case areasByFid(id: Int)
+    case payDeaultAddress(pid: Int)
 }
 
 extension AddressApi {
@@ -33,6 +34,8 @@ extension AddressApi {
             return "/common/getProviceList"
         case .areasByFid:
             return "/common/getareaListByFid"
+        case .payDeaultAddress:
+            return "/payAddressManage/queryDefault"
         default:
             break
         }
@@ -67,6 +70,8 @@ extension AddressApi {
             break
         case let .areasByFid(id: id):
             params["id"] = id
+        case let .payDeaultAddress(pid: pid):
+            params["puid"] = pid
         default:
             break
         }

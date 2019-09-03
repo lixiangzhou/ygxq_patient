@@ -33,6 +33,9 @@ class DrawableView: BaseShowView {
 // MARK: - UI
 extension DrawableView {
     private func setUI() {
+        let bgView = zz_add(subview: UIView())
+        bgView.backgroundColor = .cf
+        
         addSubview(panel)
         
         let resetBtn = UIButton(title: "重签", font: .size(18), titleColor: .c407cec, target: self, action: #selector(resetAction))
@@ -47,18 +50,30 @@ extension DrawableView {
         bottomView.addSubview(cancelBtn)
         bottomView.addSubview(confirmBtn)
         
+        bgView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
         panel.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                make.top.left.right.equalTo(safeAreaLayoutGuide)
+            } else {
+                make.top.left.right.equalToSuperview()
+            }
         }
         
         resetBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(-16)
+            make.right.equalTo(UIScreen.zz_iPhoneX ? -35 : -16)
             make.bottom.equalTo(panel).offset(-18)
         }
         
         bottomView.snp.makeConstraints { (make) in
             make.top.equalTo(panel.snp.bottom)
-            make.bottom.left.right.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                make.bottom.left.right.equalTo(safeAreaLayoutGuide)
+            } else {
+                make.bottom.left.right.equalToSuperview()
+            }
             make.height.equalTo(45)
         }
         
@@ -70,6 +85,15 @@ extension DrawableView {
             make.top.right.bottom.equalToSuperview()
             make.left.equalTo(cancelBtn.snp.right)
             make.width.equalTo(cancelBtn)
+        }
+    }
+    
+    override func safeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+            print(#function, safeAreaInsets)
+        } else {
+            
         }
     }
 }

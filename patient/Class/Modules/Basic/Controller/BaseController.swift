@@ -135,7 +135,9 @@ extension BaseController {
     
     func setBackImage(_ imgName: String) {
         if navigationController?.viewControllers.count ?? 0 > 1 {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIButton(imageName: imgName, target: self, action: #selector(backAction)))
+            // 空 title 是为了增加可点击范围
+            let btn = UIButton(title: "    ", imageName: imgName, target: self, action: #selector(backAction))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
         }
     }
 }

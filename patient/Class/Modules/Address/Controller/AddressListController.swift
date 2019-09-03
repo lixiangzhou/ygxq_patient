@@ -23,6 +23,8 @@ class AddressListController: BaseController {
     }
 
     // MARK: - Public Property
+    /// 是否选择地址
+    var didSelectAddressClosure: ((AddressModel?) -> Void)?
     
     // MARK: - Private Property
     private let tableView = UITableView()
@@ -58,6 +60,11 @@ extension AddressListController {
     @objc private func addAddressAction() {
         toUpdateAddress(.add, model: nil)
     }
+    
+    override func backAction() {
+        super.backAction()
+        didSelectAddressClosure?(viewModel.getAddressModel())
+    }
 }
 
 // MARK: - Delegate Internal
@@ -83,6 +90,12 @@ extension AddressListController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        didSelectAddressClosure?(model)
+        pop()
     }
 }
 

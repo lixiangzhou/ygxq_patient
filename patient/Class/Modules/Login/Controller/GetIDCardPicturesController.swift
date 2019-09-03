@@ -113,7 +113,7 @@ extension GetIDCardPicturesController {
 // MARK: - Action
 extension GetIDCardPicturesController {
     @objc private func showPanelAction() {
-        let tip = GetRealNameTipView()
+        let tip = SignNameTipView()
         
         tip.show()
     }

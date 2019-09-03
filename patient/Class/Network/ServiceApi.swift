@@ -1,5 +1,5 @@
 //
-//  LongServiceApi.swift
+//  ServiceApi.swift
 //  patient
 //
 //  Created by lixiangzhou on 2019/8/16.
@@ -9,14 +9,18 @@
 import Foundation
 import Moya
 
-enum LongServiceApi: TargetType {
+enum ServiceApi: TargetType {
     case privateDocList(pid: Int)
     case queryServices(did: Int)
     case serviceInfo(did: Int, pid: Int, indate: Int)
     case buyPersonalService(duid: Int, puid: Int, serLongId: String,  price: Double, productName: String)
+    case buyVideoConsult(params: [String: Any])
+    case isMyPrivateDoctor(did: Int, pid: Int, type: String)
+    case createWorkOrder(params: [String: Any])
+    case buySunnyDrug(params: [String: Any])
 }
 
-extension LongServiceApi {
+extension ServiceApi {
     var path: String {
         switch self {
         case .privateDocList:
@@ -27,6 +31,14 @@ extension LongServiceApi {
             return "/serlong/querySerLongsDetailInfo"
         case .buyPersonalService:
             return "/serlong/buyPersonalService"
+        case .buyVideoConsult:
+            return "/serConsultVideo/add"
+        case .isMyPrivateDoctor:
+            return "/serlong/isMyPrivateDoctor"
+        case .createWorkOrder:
+            return "/serlong/createWorkOrder"
+        case .buySunnyDrug:
+            return "/serDrugSunnyBuys/add"
         }
     }
     
@@ -49,6 +61,22 @@ extension LongServiceApi {
             params["puid"] = pid
             params["serLongId"] = serLongId
             params["productName"] = productName
+        case let .buyVideoConsult(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
+        case let .isMyPrivateDoctor(did: did, pid: pid, type: type):
+            params["duid"] = did
+            params["type"] = type
+            params["puid"] = pid
+        case let .createWorkOrder(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
+        case let .buySunnyDrug(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

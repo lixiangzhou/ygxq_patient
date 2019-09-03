@@ -26,6 +26,7 @@ target 'patient' do
     pod 'WechatOpenSDK'
     pod 'RongCloudRTC/RongCallLib'
     pod 'RongCloudRTC/RongCallKit'
+    pod 'TZImagePickerController'
     
     pod 'Bugly'
 end

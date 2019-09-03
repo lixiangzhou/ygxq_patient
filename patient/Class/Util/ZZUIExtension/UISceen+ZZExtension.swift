@@ -71,4 +71,9 @@ public extension UIScreen {
     static var zz_frameUnderNavigation: CGRect {
         return CGRect(x: 0, y: 0, width: zz_width, height: zz_height - zz_navHeight)
     }
+    
+    /// 导航栏下面视图的安全frame
+    static var zz_safeFrameUnderNavigation: CGRect {
+        return CGRect(x: 0, y: 0, width: zz_width, height: zz_height - zz_navHeight - zz_tabBar_additionHeight)
+    }
 }

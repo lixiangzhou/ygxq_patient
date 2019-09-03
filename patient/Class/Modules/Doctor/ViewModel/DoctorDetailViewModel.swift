@@ -44,7 +44,7 @@ class DoctorDetailViewModel: BaseViewModel {
     
     func getOrder(_ completion: @escaping (Int?) -> Void) {
         if let model = getSelectedLongSer() {
-            LongServiceApi.buyPersonalService(duid: did, puid: patientId, serLongId: model.id.description, price: model.serPrice, productName: model.serName).rac_responseModel([String: Any].self).skipNil().startWithValues { (result) in
+            ServiceApi.buyPersonalService(duid: did, puid: patientId, serLongId: model.serType, price: model.serPrice, productName: model.serName).rac_responseModel([String: Any].self).skipNil().startWithValues { (result) in
                 if let orderId = result["orderId"] as? Int {
                     completion(orderId)
                 } else {
@@ -216,17 +216,44 @@ class DoctorDetailViewModel: BaseViewModel {
     
     func selectLongSer(index: Int) {
         var values = [DoctorSerModel]()
-        
+
+        var msgs = ""
         for (idx, model) in longSersDataSource.enumerated() {
             let selected = idx == index
             var model = model
             model.selected = selected
-            if selected {            
-                priceProperty.value = "¥" + getLongSerTitle(model)
+            if selected {
+                priceProperty.value = "￥" + getLongSerTitle(model)
+                msgs = model.serSummary
             }
             values.append(model)
         }
-        longSersDataSource = values
+        
+        var datas = dataSourceProperty.value
+        
+        let idx1 = datas.firstIndex { (model) -> Bool in
+            switch model {
+            case .sersAction: return true
+            default: return false
+            }
+        }
+
+        if let idx1 = idx1 {
+            datas.replaceSubrange(idx1...idx1, with: [.sersAction(title: "长期服务", sers: values)])
+        }
+
+        let idx2 = datas.firstIndex { (model) -> Bool in
+            switch model {
+            case let .serMsg(title: title, txt: _): return title == "服务内容"
+            default: return false
+            }
+        }
+
+        if let idx2 = idx2 {
+            datas.replaceSubrange(idx2...idx2, with: [.serMsg(title: "服务内容", txt: msgs)])
+        }
+        
+        dataSourceProperty.value = datas
     }
     
     func getSelectedLongSer() -> DoctorSerModel? {

@@ -71,16 +71,61 @@ extension BaseShowView {
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
+
+    @objc func showHorizontal() {
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        UIApplication.shared.keyWindow?.addSubview(self)
+        
+        snp.remakeConstraints({ (maker) in
+            maker.width.equalTo(UIScreen.main.bounds.height)
+            maker.height.equalTo(UIScreen.main.bounds.width)
+            maker.center.equalTo(UIApplication.shared.keyWindow!)
+        })
+
+        let orientation = UIDevice.current.orientation
+        alpha = 0
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        UIView.animate(withDuration: 0.25, animations: {
+            self.alpha = 1
+            self.transform = CGAffineTransform(rotationAngle: .pi * 0.5)
+            self.layoutIfNeeded()
+        }) { (_) in
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+        UIApplication.shared.statusBarOrientation = UIInterfaceOrientation(rawValue: orientation.rawValue)!
+    }
+
     
     @objc func hide() {
         alpha = 1
         UIApplication.shared.beginIgnoringInteractionEvents()
         UIView.animate(withDuration: 0.25, animations: {
             self.alpha = 0
+            self.transform = CGAffineTransform.identity
         }) { (_) in
             self.removeFromSuperview()
             UIApplication.shared.endIgnoringInteractionEvents()
         }
+    }
+    
+    
+    @objc func orientationChanged() {
+        let orientation = UIDevice.current.orientation
+        guard orientation == .landscapeLeft || orientation == .landscapeRight else { return }
+        
+        self.transform = .identity
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        UIView.animate(withDuration: 0.25, animations: {
+            self.alpha = 1
+            self.transform = CGAffineTransform(rotationAngle: .pi * 0.5 * (orientation == .landscapeLeft ? 1 : -1))
+            self.layoutIfNeeded()
+        }) { (_) in
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+        UIApplication.shared.statusBarOrientation = UIInterfaceOrientation(rawValue: orientation.rawValue)!
     }
 }
 
@@ -97,6 +142,7 @@ extension UIView: LayoutHeightProtocol {
         for view in subviews {
             if view.zz_maxY > height {
                 height = view.zz_maxY
+                print(view, height)
             }
         }
         zz_height = height

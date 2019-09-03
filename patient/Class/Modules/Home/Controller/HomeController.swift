@@ -141,16 +141,33 @@ extension HomeController {
         // 随访计划
         headerView.actionsView.item2Closure = { [weak self] in
             print("随访计划")
+
+            let signNameView = SignNameTipView()
+            signNameView.msgLabel.text = "您好，购买服务需要您签字同意我们的《\(appService)》，点击可查看详情。"
+            signNameView.msgLabel.addLinks([(string: "《\(appService)》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { [weak signNameView] _ in
+                self?.toServicePrototol()
+                signNameView?.hide()
+            })])
+            signNameView.confirmClosure = { img in
+                print("confirm")
+            }
+            signNameView.cancelClosure = {
+                print("cancel")
+            }
+            signNameView.show()
         }
         
         // 上传
         headerView.caseView.uploadClosure = { [weak self] in
             print("上传")
+            let vc = PersonInfoEditController()
+            self?.push(vc)
         }
         
         // 查看
         headerView.caseView.lookClosure = { [weak self] in
-            print("查看")
+//            let vc = ProfileController()
+//            self?.push(vc)
         }
         
         // 更多

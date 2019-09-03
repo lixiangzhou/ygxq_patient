@@ -38,6 +38,8 @@ class ForgetPwdMobileController: BaseController {
 // MARK: - UI
 extension ForgetPwdMobileController {
     override func setUI() {
+        view.backgroundColor = .cf
+        
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.c3]
         
         let tipLabel = UILabel(text: "请输入您的手机号", font: .boldSize(16), textColor: .c3)

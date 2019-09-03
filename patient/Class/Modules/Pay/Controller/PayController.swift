@@ -41,11 +41,15 @@ extension PayController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
-            self?.viewModel.getPayInfo()
+            if let model = self?.viewModel.orderProperty.value, model.isProtocol == false {
+                self?.signName(model)
+            } else {
+                self?.viewModel.getPayInfo()
+            }
         }
         view.addSubview(bottomView)
         
-        tableView.contentInset.bottom = UIScreen.zz_tabBar_additionHeight + self.bottomView.zz_height
+        tableView.contentInset.bottom = self.bottomView.zz_height
         
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -61,8 +65,14 @@ extension PayController {
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
                 
-        viewModel.orderProperty.signal.observeValues { [weak self] (model) in
+        viewModel.orderProperty.signal.skipNil().observeValues { [weak self] (model) in
             self?.bottomView.priceLabel.text = "￥\(model.payAmount)"
+        }
+        
+        viewModel.orderProperty.signal.skipNil().skipRepeats { $0.isProtocol == $1.isProtocol }.observeValues { [weak self] (model) in
+            if model.isProtocol == false {
+                self?.signName(model)
+            }
         }
         
         viewModel.payInfoProperty.signal.skipNil().observeValues { (model) in
@@ -73,12 +83,14 @@ extension PayController {
             switch resp.errCode {
             case 0:
                 if let type = self?.viewModel.resultAction?.type {
-//                    switch type {
-//                    case .longSer:
-//                        let vc = PayResultController()
-//                        vc.resultAction = self?.viewModel.resultAction
-//                        self?.push(vc)
-//                    }
+                    switch type {
+                    case .longSer, .singleVideoConsult:
+                        let vc = PayResultController()
+                        vc.resultAction = self?.viewModel.resultAction
+                        self?.push(vc)
+                    case .singleSunnyDrug:
+                        break
+                    }
                 }
             case -1:
                 if !resp.errStr.isEmpty {
@@ -114,7 +126,29 @@ extension PayController: UITableViewDataSource {
         case .method:
             return tableView.dequeue(cell: PayMethodCell.self, for: indexPath)
         case .tip:
-            return tableView.dequeue(cell: PayTipCell.self, for: indexPath)
+            let cell = tableView.dequeue(cell: PayTipCell.self, for: indexPath)
+            cell.serviceClosure = { [weak self] in
+                self?.toServicePrototol()
+            }
+            return cell
         }
+    }
+}
+
+extension PayController {
+    private func signName(_ model: OrderModel) {
+        let signNameView = SignNameTipView()
+        signNameView.msgLabel.text = "您好，购买服务需要您签字同意我们的《\(appService)》，点击可查看详情。"
+        signNameView.msgLabel.addLinks([(string: "《\(appService)》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { [weak self] _ in
+            self?.toServicePrototol()
+            signNameView.hide()
+        })])
+        signNameView.confirmClosure = { [weak self] img in
+            if let img = img {
+                self?.viewModel.addProtocol(img)
+            }
+        }
+        
+        signNameView.show()
     }
 }

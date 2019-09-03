@@ -16,7 +16,7 @@ struct OrderModel: ModelProtocol, Equatable {
     var isUsed: String = ""
 //    var surplusNum:
     var orderType: String = ""
-//    var isProtocol: Bool = false
+    var isProtocol: Bool = false
     var payAmount: Double = 0.0
     var duid: Int = 0
     var refundApply: String = ""
@@ -28,6 +28,11 @@ struct OrderModel: ModelProtocol, Equatable {
     var refundTime: TimeInterval = 0
 //    var serProductId:
     var productName: String = ""
+    var product_name: String = ""
     var orderTime: TimeInterval = 0
     var serCode: String = ""
+    var ser_code: String = ""
+    var productItemId: Int = 0
+    
+    var orderId: Int = 0
 }

@@ -65,6 +65,8 @@ open class NextGrowingTextView: UIScrollView {
       _maxNumberOfLines = newValue
     }
   }
+    
+    var inputLimit: Int?
 
   @available(*, deprecated, message: "Use isAutomaticScrollToBottomEnabled")
   open var disableAutomaticScrollToBottom: Bool {
@@ -140,6 +142,7 @@ open class NextGrowingTextView: UIScrollView {
     super.init(coder: aDecoder)
 
     _textView.frame = bounds
+    _textView.delegate = self
     _previousFrame = frame
     setup()
   }
@@ -260,4 +263,22 @@ open class NextGrowingTextView: UIScrollView {
 
     return height
   }
+}
+
+extension NextGrowingTextView: UITextViewDelegate {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text.isEmpty {
+            return true
+        } else {
+            if let limit = inputLimit {
+                if (text + textView.text).count > limit {
+                    return false
+                } else {
+                    return true
+                }
+            } else {
+                return true
+            }
+        }
+    }
 }

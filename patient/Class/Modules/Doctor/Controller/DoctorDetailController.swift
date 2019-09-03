@@ -70,12 +70,11 @@ extension DoctorDetailController {
         viewModel.showBottomProperty.producer.startWithValues { [weak self] (show) in
             guard let self = self else { return }
             self.bottomView.isHidden = !show
-            self.tableView.contentInset.bottom = show ? UIScreen.zz_tabBar_additionHeight + self.bottomView.zz_height : 0
+            self.tableView.contentInset.bottom = show ? self.bottomView.zz_height : 0
         }
         
         viewModel.priceProperty.signal.observeValues { [weak self] (price) in
             self?.bottomView.priceLabel.text = price
-            print(price)
         }
     }
 }
@@ -104,7 +103,7 @@ extension DoctorDetailController: UITableViewDataSource {
             cell.serView.tag = SersViewType.ser.rawValue
             viewModel.sersDataSource = sers
             let (layout, height) = viewModel.getSerLayout(sers)
-            cell.serView.setCollectionViewLayout(layout, animated: true)
+            cell.serView.setCollectionViewLayout(layout, animated: false)
             cell.serView.snp.updateConstraints { (make) in
                 make.height.equalTo(height)
             }
@@ -118,7 +117,7 @@ extension DoctorDetailController: UITableViewDataSource {
             cell.serView.tag = SersViewType.longSer.rawValue
             viewModel.longSersDataSource = sers
             let (layout, height) = viewModel.getLongSerLayout(sers)
-            cell.serView.setCollectionViewLayout(layout, animated: true)
+            cell.serView.setCollectionViewLayout(layout, animated: false)
             cell.serView.snp.updateConstraints { (make) in
                 make.height.equalTo(height)
             }
@@ -169,10 +168,21 @@ extension DoctorDetailController: UICollectionViewDataSource, UICollectionViewDe
         switch SersViewType(rawValue: collectionView.tag)! {
         case .ser:
             let model = viewModel.sersDataSource[indexPath.row]
-            print(model)
+            switch model.serType {
+            case "UTOPIA15":
+                let vc = VideoConsultBuyController()
+                vc.viewModel.did = model.duid
+                vc.viewModel.serType = model.serType
+                push(vc)
+            case "UTOPIA16":
+                let vc = SunnyDrugBuyController()
+                vc.viewModel.did = model.duid
+                vc.viewModel.serType = model.serType
+                push(vc)
+            default: break
+            }
         case .longSer:
             viewModel.selectLongSer(index: indexPath.item)
-            collectionView.reloadData()
         }
     }
 }

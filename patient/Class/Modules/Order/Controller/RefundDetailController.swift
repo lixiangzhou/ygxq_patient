@@ -111,7 +111,7 @@ extension RefundDetailController {
             make.height.equalTo(refundInfoView.zz_maxY)
         }
         
-        scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: refundInfoView.zz_maxY)
+        scrollView.contentSize = CGSize(width: UIScreen.zz_safeFrameUnderNavigation.height, height: refundInfoView.zz_maxY)
     }
     
     private func getStateView() -> UIView {

@@ -99,6 +99,7 @@ struct PatientInfoModel: ModelProtocol {
     var serverId: Int = 0
     var diseaseMsg: String = ""
     var relativesM: String = ""
+    var idCardNo: String = ""
 }
 
 extension PatientInfoModel {

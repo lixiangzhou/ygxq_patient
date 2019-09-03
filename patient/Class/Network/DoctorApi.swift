@@ -36,7 +36,7 @@ extension DoctorApi {
             params["duid"] = did
         case let .serList(duid: did, puid: pid):
             params["id"] = did
-            params["puid"] = did
+            params["puid"] = pid
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

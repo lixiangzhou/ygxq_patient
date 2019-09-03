@@ -23,7 +23,9 @@ class PayBottomView: BaseView {
     }
 
     // MARK: - Public Property
+    let descLabel = UILabel(text: "合计金额：", font: .size(15), textColor: .c3)
     let priceLabel = UILabel(text: "", font: .size(15), textColor: .cf25555)
+    let payBtn = UIButton(title: "去支付", font: .boldSize(16), titleColor: .cf, backgroundColor: .cf25555)
     var payClosure: (() -> Void)?
     // MARK: - Private Property
     
@@ -34,10 +36,11 @@ extension PayBottomView {
     private func setUI() {
         backgroundColor = .cf
         
-        let descLabel = zz_add(subview: UILabel(text: "合计金额：", font: .size(15), textColor: .c3))
-        addSubview(priceLabel)
+        payBtn.addTarget(self, action: #selector(payAction), for: .touchUpInside)
         
-        let payBtn = zz_add(subview: UIButton(title: "去支付", font: .boldSize(16), titleColor: .cf, backgroundColor: .cf25555, target: self, action: #selector(payAction)))
+        addSubview(descLabel)
+        addSubview(priceLabel)
+        addSubview(payBtn)
         
         let topLine = zz_add(subview: UIView())
         topLine.backgroundColor = .cdcdcdc

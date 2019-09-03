@@ -124,7 +124,7 @@ extension ApplyForRefundController {
             make.height.equalTo(txtView.zz_maxY)
         }
         
-        scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: txtView.zz_maxY)
+        scrollView.contentSize = CGSize(width: UIScreen.zz_safeFrameUnderNavigation.height, height: txtView.zz_maxY)
     }
     
     override func setBinding() {

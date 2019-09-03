@@ -48,6 +48,7 @@ class LoginController: BaseController {
 // MARK: - UI
 extension LoginController {
     override func setUI() {
+        view.backgroundColor = .cf
         couldShowLogin = false
         
         let iconView = UIImageView(image: UIImage(named: "login_logo"))

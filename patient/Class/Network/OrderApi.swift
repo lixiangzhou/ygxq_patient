@@ -18,6 +18,7 @@ enum OrderApi: TargetType {
     case deleteOrder(orderId: Int)
     case cancelOrder(orderId: Int)
     case detail(orderId: Int)
+    case addProtocol(imgUrl: String, pid: Int)
 }
 
 extension OrderApi {
@@ -37,6 +38,8 @@ extension OrderApi {
             return "/order/updatePayOrder"
         case .detail:
             return "/order/details"
+        case .addProtocol:
+            return "/order/addPayProtocol"
         }
     }
     
@@ -69,6 +72,9 @@ extension OrderApi {
             params["status"] = "PAY_ORD_S_CLO"
         case let .detail(orderId: orderId):
             params["orderId"] = orderId
+        case let .addProtocol(imgUrl: imgUrl, pid: pid):
+            params["protocolImg"] = imgUrl
+            params["puid"] = pid
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

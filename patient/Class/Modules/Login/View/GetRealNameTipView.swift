@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GetRealNameTipView: BaseShowView {
+class SignNameView: BaseShowView {
     
     // MARK: - Life Cycle
     
@@ -24,12 +24,13 @@ class GetRealNameTipView: BaseShowView {
 
     // MARK: - Public Property
     var confirmClosure: ((UIImage?) -> Void)?
+    
     // MARK: - Private Property
     private var nameImage: UIImage?
 }
 
 // MARK: - UI
-extension GetRealNameTipView {
+extension SignNameView {
     private func setUI() {
         backgroundColor = UIColor(white: 0, alpha: 0.5)
         
@@ -97,7 +98,7 @@ extension GetRealNameTipView {
 }
 
 // MARK: - Action
-extension GetRealNameTipView {
+extension SignNameView {
     @objc private func confirmAction() {
         hide()
         confirmClosure?(self.nameImage)

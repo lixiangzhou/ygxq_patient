@@ -75,7 +75,7 @@ extension VideoConsultResultController {
         viewModel.showBottomProperty.producer.startWithValues { [weak self] (show) in
             guard let self = self else { return }
             self.bottomView.isHidden = !show
-            self.tableView.contentInset.bottom = show ? UIScreen.zz_tabBar_additionHeight + 50 : 0
+            self.tableView.contentInset.bottom = show ? 50 : 0
         }
     }
 }

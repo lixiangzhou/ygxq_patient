@@ -20,7 +20,7 @@ class LongServiceViewModel: BaseViewModel {
     
     /// 获取套餐
     func getServices() {
-        LongServiceApi.queryServices(did: did).rac_responseModel([LongServiceModel].self).skipNil().startWithValues { [weak self] (result) in
+        ServiceApi.queryServices(did: did).rac_responseModel([LongServiceModel].self).skipNil().startWithValues { [weak self] (result) in
             guard let self = self else { return }
             guard result.count >= self.index + 1 else { return }
             let outline = result[self.index]
@@ -32,7 +32,7 @@ class LongServiceViewModel: BaseViewModel {
     
     /// 获取服务详情
     func getServiceInfo() {
-        LongServiceApi.serviceInfo(did: did, pid: patientId, indate: indate).rac_responseModel([LongServiceModel].self).skipNil().skip { $0.isEmpty }.startWithValues { [weak self] (result) in
+        ServiceApi.serviceInfo(did: did, pid: patientId, indate: indate).rac_responseModel([LongServiceModel].self).skipNil().skip { $0.isEmpty }.startWithValues { [weak self] (result) in
             self?.dataSourceProperty.value = [Model.docinfo(model: DoctorInfoModel()), Model.list(model: result)]
             self?.getServices()
             self?.getDocData()

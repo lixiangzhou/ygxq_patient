@@ -14,7 +14,7 @@ class PayViewModel: BaseViewModel {
     
     let dataSourceProperty = MutableProperty<[Model]>([.list(name: "  ", price: "  "), .method, .tip])
     
-    let orderProperty = MutableProperty<OrderModel>(OrderModel())
+    let orderProperty = MutableProperty<OrderModel?>(nil)
     
     let payInfoProperty = MutableProperty<WXPayInfoModel?>(nil)
     
@@ -43,6 +43,26 @@ class PayViewModel: BaseViewModel {
             }
         }
     }
+    
+    func addProtocol(_ img: UIImage) {
+        HUD.showLoding()
+        UploadApi.upload(datas: [FileData(data: img.zz_resetToSize(200, maxWidth: 800, maxHeight: 800), name: "sign.jpg")]).rac_response([String].self).startWithValues { [weak self] (resp) in
+            HUD.showError(BoolString(resp))
+            if resp.isSuccess, let url = resp.content?.first {
+                OrderApi.addProtocol(imgUrl: url, pid: patientId).rac_response(String.self).startWithValues { resp in
+                    HUD.hideLoding()
+                    HUD.showError(BoolString(resp))
+                    if resp.isSuccess {
+                        var value = self?.orderProperty.value
+                        value?.isProtocol = true
+                        self?.orderProperty.value = value
+                    }
+                }
+            } else {
+                HUD.hideLoding()
+            }
+        }
+    }
 }
 
 extension PayViewModel {
@@ -52,6 +72,8 @@ extension PayViewModel {
         
         enum ResultType {
             case longSer
+            case singleVideoConsult
+            case singleSunnyDrug
         }
     }
     

@@ -39,7 +39,7 @@ extension PayMethodCell {
         let wxPayView = LeftRightConfigView()
         wxPayView.backgroundColor = .cf
         wxPayView.config = LeftRightConfigViewConfig(leftView: UIImageView(image: UIImage(named: "pay_wx")), leftViewSize: CGSize(width: 35, height: 35), leftPaddingLeft: 15, leftPaddingRight: 10, leftFont: .size(15), leftTextColor: .c3, rightView: UIButton(backgroundImageName: "pay_sel", hilightedBackgroundImageName: "pay_sel"), rightViewSize: CGSize(width: 20, height: 20), rightPadding: 15, hasBottomLine: false)
-        wxPayView.leftLabel.text = "支付宝支付"
+        wxPayView.leftLabel.text = "微信支付"
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(wxPayView)

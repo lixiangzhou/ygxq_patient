@@ -59,6 +59,7 @@ extension AddressEditController {
         
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .cf0efef
+        scrollView.alwaysBounceVertical = true
         view.addSubview(scrollView)
         
         let contentView = UIView()
@@ -141,7 +142,7 @@ extension AddressEditController {
             make.height.equalTo(contentView.zz_height)
         }
         
-        scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_maxY, UIScreen.zz_height))
+        scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_maxY, UIScreen.zz_safeFrameUnderNavigation.height))
     }
     
     private func setData() {

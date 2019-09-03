@@ -163,11 +163,15 @@ extension UIImage {
         
         finallImageData = newImage.jpegData(compressionQuality: 1.0)!
         
+        if finallImageData.count / 1024 <= maxSize {
+            return finallImageData
+        }
+        
         // 保存压缩系数
         let compressionQualityArr = NSMutableArray()
-        let avg = CGFloat(1.0/250)
+        let avg = CGFloat(1.0/50)
         var value = avg
-        var i = 250
+        var i = 50
         
         repeat {
             i -= 1
@@ -181,8 +185,13 @@ extension UIImage {
          */
         // 思路：使用二分法搜索
         finallImageData = zz_halfFuntion(arr: compressionQualityArr.copy() as! [CGFloat], image: newImage, sourceData: finallImageData, maxSize: maxSize)
+        
+        if finallImageData.count <= maxSize * 1024 {
+            return finallImageData
+        }
+
         // 如果还是未能压缩到指定大小，则进行降分辨率
-        while finallImageData.count == 0 {
+        while finallImageData.count >= maxSize * 1024 {
             // 每次降100分辨率
             let reduceWidth = 100.0
             let reduceHeight = 100.0 / sourceImageAspectRatio
@@ -213,12 +222,12 @@ extension UIImage {
     func zz_halfFuntion(arr: [CGFloat], image: UIImage, sourceData finallImageData: Data, maxSize: Int) -> Data {
         var tempFinallImageData = finallImageData
         
-        var tempData = Data()
+//        var tempData = Data()
         var start = 0
         var end = arr.count - 1
         var index = 0
         
-        var difference = Int.max
+//        var difference = Int.max
         while start <= end {
             index = start + (end - start)/2
             
@@ -231,19 +240,21 @@ extension UIImage {
             
             if sizeOriginKB > maxSize {
                 start = index + 1
-            } else if sizeOriginKB < maxSize {
-                if maxSize - sizeOriginKB < difference {
-                    difference = maxSize - sizeOriginKB
-                    tempData = tempFinallImageData
-                }
-                if index <= 0 {
-                    break
-                }
-                end = index - 1
-            } else {
+            }
+//            else if sizeOriginKB < maxSize {
+//                if maxSize - sizeOriginKB < difference {
+//                    difference = maxSize - sizeOriginKB
+//                    tempData = tempFinallImageData
+//                }
+//                if index <= 0 {
+//                    break
+//                }
+//                end = index - 1
+//            }
+            else {
                 break
             }
         }
-        return tempData
+        return tempFinallImageData
     }
 }
