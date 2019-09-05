@@ -189,8 +189,6 @@ extension SelectDistrictView {
         viewModel.contentSizeProperty <~ viewModel.selectDistrictProperty.signal.map(value: CGSize(width: UIScreen.zz_width * 3, height: 0))
         
         scrollView.reactive.makeBindingTarget { $0.contentSize = $1 } <~ viewModel.contentSizeProperty
-        
-        viewModel.contentSizeProperty.producer.startWithValues{ print("Size ==> ", $0) }
     }
 }
 

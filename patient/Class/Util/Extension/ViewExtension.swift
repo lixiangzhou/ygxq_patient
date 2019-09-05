@@ -142,7 +142,6 @@ extension UIView: LayoutHeightProtocol {
         for view in subviews {
             if view.zz_maxY > height {
                 height = view.zz_maxY
-                print(view, height)
             }
         }
         zz_height = height

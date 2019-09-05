@@ -28,7 +28,6 @@ class VideoConsultBuyPicturesView: BaseView {
     
     let pictureSelectView = PictureSelectView()
     
-    
     let heightProperty = MutableProperty<CGFloat>(0)
 }
 
@@ -41,7 +40,7 @@ extension VideoConsultBuyPicturesView {
         titleView.leftLabel.text = "上传图片资料"
         addSubview(titleView)
         
-        let config = PictureSelectView.Config(width: UIScreen.zz_width - 30, rowItemCount: 4, xSpacing: 10, ySpacing: 10, picAction: .onlyPicShow)
+        let config = PictureSelectView.Config.defaultConfig()
         pictureSelectView.config = config
         addSubview(pictureSelectView)
         
@@ -61,14 +60,14 @@ extension VideoConsultBuyPicturesView {
     
     private func setBinding() {
         pictureSelectView.viewModel.dataSourceProperty.signal.map { [weak self] (values) -> CGFloat in
-            guard let self = self, let config = self.pictureSelectView.config else { return 0}
+            guard let self = self, let config = self.pictureSelectView.config else { return 0 }
             let row = ceil(CGFloat(values.count) / CGFloat(config.rowItemCount))
             return config.itemSize.height * row + (row - 1) * config.ySpacing
             }.skipRepeats().observeValues { [weak self] (height) in
-                self?.heightProperty.value = height + 45 + 30
                 self?.pictureSelectView.snp.updateConstraints { (make) in
                     make.height.equalTo(height)
                 }
+                self?.heightProperty.value = height + 45 + 30
         }
     }
 }

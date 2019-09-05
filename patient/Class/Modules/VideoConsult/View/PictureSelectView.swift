@@ -74,7 +74,6 @@ extension PictureSelectView {
 // MARK: - Action
 extension PictureSelectView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(#function)
         return viewModel.dataSourceProperty.value.count
     }
     
@@ -114,8 +113,6 @@ extension PictureSelectView: UICollectionViewDataSource {
                 picShow()
             }
         }
-        
-        print(#function)
         
         return cell
     }
@@ -204,6 +201,10 @@ extension PictureSelectView {
         var itemSize: CGSize {
             let itemWH = (width - CGFloat(rowItemCount - 1) * xSpacing) / CGFloat(rowItemCount)
             return CGSize(width: itemWH, height: itemWH)
+        }
+        
+        static func defaultConfig() -> Config {
+            return PictureSelectView.Config(width: UIScreen.zz_width - 30, rowItemCount: 4, xSpacing: 5, ySpacing: 5, picAction: .onlyPicShow)
         }
     }
 }

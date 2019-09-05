@@ -8,73 +8,45 @@
 
 import UIKit
 import ReactiveSwift
-import Result
 
 class UploadResourceViewModel: BaseViewModel {
+    var selectedModelsProperty = MutableProperty<NSMutableArray>(NSMutableArray())
+    var selectedImagesProperty = MutableProperty<[UIImage]>([UIImage]())
+    var uploadStatusProperty = MutableProperty<Bool>(false)
     
-    struct ImageItem: Equatable {
-        var url: String?
-        var image: UIImage?
-    }
-    
-    let dataSourceProperty = MutableProperty([ImageItem(url: nil, image: UIImage())])
-
-    func getHeaderSize(_ string: String) -> CGSize {
-        let height = string.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: 16).height
-        return CGSize(width: UIScreen.zz_width, height: height + 20)
-    }
-    
-    var rowHeight: CGFloat {
-        let count: CGFloat = 4
-        return (UIScreen.zz_width - 30 - (count - 1) * 10) / count + 15
-    }
-    
-    var rowCount: Int {
-        return Int(ceil(Double(dataSourceProperty.value.count) / 4))
-    }
-    
-    func itemsInRow(_ row: Int) -> [ImageItem] {
-        let count = 4
-        let startIdx = row * count
-        
-        let lastIdx = min((row + 1) * count, dataSourceProperty.value.count)
-        let range = startIdx..<lastIdx
-        return Array(dataSourceProperty.value[range])
-    }
-    
-    func addItem(_ item: ImageItem) {
-        addItems([item])
-    }
-    
-    func addItems(_ items: [ImageItem]) {
-        dataSourceProperty.value = dataSourceProperty.value + items
-    }
-    
-    func addImages(_ images: [UIImage]) {
-        var items = [ImageItem]()
-        for img in images {
-            items.append(ImageItem(url: nil, image: img))
-        }
-        addItems(items)
-    }
-    
-    func delItem(_ item: ImageItem) {
-        var items = dataSourceProperty.value
-        items.removeAll { item == $0 }
-        dataSourceProperty.value = items
+    func removeAt(index: Int) {
+        var value = selectedImagesProperty.value
+        value.remove(at: index)
+        selectedImagesProperty.value = value
+        selectedModelsProperty.value.removeObject(at: index)
     }
 }
 
 extension UploadResourceViewModel {
-    func uploadImages() -> SignalProducer<[String]?, NoError> {
-        var files = [FileData]()
-        for (idx, item) in dataSourceProperty.value[1...].enumerated() {
-            if let imgData = item.image?.pngData() {
-                let name = Date().zz_string(withDateFormat: "yyyy_MM_dd_HH_mm_ss") + "\(idx)"
-                files.append(FileData(data: imgData, name: name))
-            }
+    func uploadImages() {
+        HUD.showLoding()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        var datas = [FileData]()
+        for (idx, img) in selectedImagesProperty.value.enumerated() {
+            datas.append(FileData(data: img.jpegData(compressionQuality: 1)!, name: "img\(idx).jpg"))
         }
         
-        return UploadApi.upload(datas: files).rac_responseModel([String].self)
+        UploadApi.upload(datas: datas).rac_response([String].self).startWithValues { (resp) in
+            HUD.showError(BoolString(resp))
+            if resp.isSuccess, let urls = resp.content, !urls.isEmpty {
+                
+                HLRApi.addRecord(pid: patientId, id: 0, urls: urls).rac_response(None.self).startWithValues { [weak self] (resp) in
+                    HUD.hideLoding()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    HUD.show(BoolString(resp))
+                    self?.uploadStatusProperty.value = resp.isSuccess
+                }
+                
+            } else {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                HUD.hideLoding()
+            }
+        }
     }
 }

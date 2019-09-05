@@ -56,7 +56,7 @@ extension ProfileController {
             self?.headerView.diseaseLabel.text = pinfo.diseaseName
             
             self?.headerView.layoutHeight()
-            self?.headerView.zz_height += 5
+            self?.headerView.zz_height += 10
             self?.tableView.tableHeaderView = self?.headerView
         }
     }

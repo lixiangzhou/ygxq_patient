@@ -55,10 +55,10 @@ extension VideoConsultBuyDiseaseView {
         txtView.delegates.didChangeHeight = { [weak self] height in
             guard let self = self else { return }
             let h = max(80, height)
-            self.heightProperty.value = h + 45 + 20
             self.txtView.snp.updateConstraints { (make) in
                 make.height.equalTo(h)
             }
+            self.heightProperty.value = h + 45 + 20
         }
 
         titleView.snp.makeConstraints { (make) in
@@ -73,24 +73,4 @@ extension VideoConsultBuyDiseaseView {
             make.right.bottom.equalTo(-10)
         }
     }
-}
-
-// MARK: - Action
-extension VideoConsultBuyDiseaseView {
-    
-}
-
-// MARK: - Helper
-extension VideoConsultBuyDiseaseView {
-    
-}
-
-// MARK: - Other
-extension VideoConsultBuyDiseaseView {
-    
-}
-
-// MARK: - Public
-extension VideoConsultBuyDiseaseView {
-    
 }

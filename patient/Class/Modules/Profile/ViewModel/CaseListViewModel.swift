@@ -11,12 +11,33 @@ import ReactiveSwift
 import Result
 
 class CaseListViewModel: BaseViewModel {
-    let dataSourceProperty = MutableProperty<[CaseRecordModel]>([CaseRecordModel]())
+    let dataSourceProperty = MutableProperty<[Group]>([Group]())
     
     func getData(){
-        HLRApi.caseRecordList(pid: patientId, type: 0).rac_responseModel([CaseRecordModel].self).startWithValues { [unowned self] (records) in
+        HLRApi.caseRecordList(pid: patientId, type: 0).rac_responseModel([CaseRecordModel].self).startWithValues { [weak self] (records) in
             if let records = records, !records.isEmpty {
-                self.dataSourceProperty.value = records
+                
+                var dict = [String: [CaseRecordModel]]()
+                for record in records {
+                    let key = record.createTime.toTime(format: "yyyy-MM-dd")
+                    let value = dict[key]
+                    if var value = value {
+                        value.append(record)
+                        dict[key] = value
+                    } else {
+                        dict[key] = [record]
+                    }
+                }
+                let result = dict.sorted(by: { (d1, d2) -> Bool in
+                    return d1.key > d2.key
+                })
+                
+                var groups = [Group]()
+                for item in result {
+                    groups.append(Group(title: item.key, list: item.value))
+                }
+                
+                self?.dataSourceProperty.value = groups
             }
         }
     }
@@ -32,5 +53,12 @@ class CaseListViewModel: BaseViewModel {
         default:
             return ""
         }
+    }
+}
+
+extension CaseListViewModel {
+    struct Group {
+        var title: String
+        var list: [CaseRecordModel]
     }
 }

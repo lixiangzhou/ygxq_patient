@@ -50,16 +50,6 @@ extension CaseDetailController {
     }
 }
 
-// MARK: - Action
-extension CaseDetailController {
-    
-}
-
-// MARK: - Network
-extension CaseDetailController {
-    
-}
-
 // MARK: - Delegate Internal
 
 // MARK: -
@@ -88,23 +78,3 @@ extension CaseDetailController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension CaseDetailController {
-    
-}
-
-// MARK: - Other
-extension CaseDetailController {
-    
-}
-
-// MARK: - Public
-extension CaseDetailController {
-    
-}
-

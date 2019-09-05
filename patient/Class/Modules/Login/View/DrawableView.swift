@@ -87,15 +87,6 @@ extension DrawableView {
             make.width.equalTo(cancelBtn)
         }
     }
-    
-    override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-            print(#function, safeAreaInsets)
-        } else {
-            
-        }
-    }
 }
 
 // MARK: - Action

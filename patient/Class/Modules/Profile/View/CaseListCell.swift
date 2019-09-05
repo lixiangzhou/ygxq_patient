@@ -25,48 +25,24 @@ class CaseListCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let createTimeLabel = UILabel(font: .size(15), textColor: .c6)
     let hospitalLabel = UILabel(font: .size(16), textColor: .c3)
     let clinicTimeLabel = UILabel(font: .size(16), textColor: .c3)
     let typeLabel = UILabel(font: .boldSize(14), textColor: .cff9a21, textAlignment: .center)
+    var bottomLine: UIView!
 }
 
 // MARK: - UI
 extension CaseListCell {
     private func setUI() {
-        let topView = contentView.zz_add(subview: UIView())
-        topView.addBottomLine(left: 15, right: 15)
-        
-        topView.addSubview(createTimeLabel)
-        
-        let midView = contentView.zz_add(subview: UIView())
-        contentView.addBottomLine(color: .cf0efef, height: 10)
-        
         typeLabel.backgroundColor = .cffebd3
         typeLabel.zz_setCorner(radius: 3, masksToBounds: true)
         
-        let arrowView = midView.zz_add(subview: UIImageView(image: UIImage(named: "common_arrow_right")))
+        contentView.addSubview(hospitalLabel)
+        contentView.addSubview(clinicTimeLabel)
+        contentView.addSubview(typeLabel)
+        bottomLine = contentView.addBottomLine()
         
-        midView.addSubview(hospitalLabel)
-        midView.addSubview(clinicTimeLabel)
-        midView.addSubview(typeLabel)
-        midView.addSubview(arrowView)
-        
-        topView.snp.makeConstraints { (make) in
-            make.top.right.left.equalToSuperview()
-            make.height.equalTo(45)
-        }
-        
-        createTimeLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(15)
-            make.centerY.equalToSuperview()
-        }
-        
-        midView.snp.makeConstraints { (make) in
-            make.top.equalTo(topView.snp.bottom)
-            make.left.right.equalToSuperview()
-            make.bottom.equalTo(-10)
-        }
+        let arrowView = contentView.zz_add(subview: UIImageView(image: UIImage(named: "common_arrow_right")))
         
         hospitalLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)

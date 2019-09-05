@@ -74,7 +74,22 @@ extension ExamListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.section].list[indexPath.row]
+        
+        var urlString: String?
+        switch model.type {
+        case "video", "drug":
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=2&pid=\(patientId)&resid=\(model.resultId)&client=2&qid=\(model.id)"
+        case "flp":
+            urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.resultId)&view=1"
+        default:
+            break
+        }
+        
+        guard let url = URL(string: urlString ?? "") else { return }
         let vc = WebController()
+        vc.url = url
+        vc.titleString = "查看问卷"
         push(vc)
     }
 

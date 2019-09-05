@@ -37,14 +37,9 @@ extension HomeHeaderCaseView {
         let titleLabel = zz_add(subview: UILabel(text: "我的病例", font: .boldSize(18), textColor: .c3)) as! UILabel
         let subTitleLabel = zz_add(subview: UILabel(text: "为您整理专业、完整的病历资料", font: .size(13), textColor: .c9))
         
-        let uploadBtn = zz_add(subview: UIButton(title: " 上传", font: .size(15), titleColor: .c6, imageName: "home_upload", hilightedImageName: "home_upload", target: self, action: #selector(uploadAction))) as! UIButton
-        let lookBtn = zz_add(subview: UIButton(title: " 查看", font: .size(15), titleColor: .c6, imageName: "home_look", hilightedImageName: "home_look", target: self, action: #selector(lookAction))) as! UIButton
+        let uploadView = addItemView(img: "home_upload", title: "上传", color: .c407cec, action: #selector(uploadAction))
         
-        uploadBtn.zz_setCorner(radius: 5, masksToBounds: true)
-        uploadBtn.zz_setBorder(color: .c407cec, width: 0.5)
-        
-        lookBtn.zz_setCorner(radius: 5, masksToBounds: true)
-        lookBtn.zz_setBorder(color: .cffa84c, width: 0.5)
+        let lookView = addItemView(img: "home_look", title: "查看", color: .cffa84c, action: #selector(lookAction))
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)
@@ -55,19 +50,48 @@ extension HomeHeaderCaseView {
             make.bottom.equalTo(titleLabel)
         }
         
-        uploadBtn.snp.makeConstraints { (make) in
+        uploadView.snp.makeConstraints { (make) in
             make.left.equalTo(30)
             make.bottom.equalTo(-15)
             make.width.equalTo(135)
             make.height.equalTo(39)
         }
         
-        lookBtn.snp.makeConstraints { (make) in
+        lookView.snp.makeConstraints { (make) in
             make.right.equalTo(-30)
             make.bottom.equalTo(-15)
             make.width.equalTo(135)
             make.height.equalTo(39)
         }
+    }
+    
+    private func addItemView(img: String, title: String, color: UIColor, action: Selector) -> UIView {
+        let view = zz_add(subview: UIView())
+        let innerView = view.zz_add(subview: UIView())
+        let iconView = innerView.zz_add(subview: UIImageView(image: UIImage(named: img)))
+        let titleLabel = innerView.zz_add(subview: UILabel(text: title, font: .size(15), textColor: .c6))
+        
+        view.zz_setCorner(radius: 5, masksToBounds: true)
+        view.zz_setBorder(color: color, width: 0.5)
+        
+        innerView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        
+        iconView.snp.makeConstraints { (make) in
+            make.top.left.bottom.equalToSuperview()
+            make.width.height.equalTo(22)
+        }
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.bottom.right.equalToSuperview()
+            make.height.equalTo(iconView)
+            make.left.equalTo(iconView.snp.right).offset(5)
+        }
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+        
+        return view
     }
 }
 

@@ -31,8 +31,8 @@ class ProfileViewModel: BaseViewModel {
     override init() {
         super.init()
         
-        dataSource.append(RowModel(type: .historyData, img: "", config: commonCellConfig()))
-        dataSource.append(RowModel(type: .drugRecord, img: "", config: lastCellConfig()))
+        dataSource.append(RowModel(type: .historyData, img: "", config: LeftRightConfigViewConfig(leftPaddingRight: 0)))
+        dataSource.append(RowModel(type: .drugRecord, img: "", config: LeftRightConfigViewConfig(leftPaddingRight: 0, hasBottomLine: false)))
     }
     
 }

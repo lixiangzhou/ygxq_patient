@@ -8,6 +8,8 @@
 
 import UIKit
 import ReactiveSwift
+import Result
+import TZImagePickerController
 
 class UploadResourceController: BaseController {
 
@@ -24,36 +26,65 @@ class UploadResourceController: BaseController {
     var tipString = "可上传病历、出院记录、手术记录、检查单、化验单等信息。"
     
     // MARK: - Private Property
+    let viewModel = UploadResourceViewModel()
     
-    private let tableView = UITableView()
-    private let descLabel = UILabel(font: .size(15), textColor: .c6)
-    private let viewModel = UploadResourceViewModel()
-    private let headerTipView = UploadResourceHeaderTipView()
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    private let picsView = PictureSelectView()
+    let submitBtn = UIButton(title: "提交", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
 }
 
 // MARK: - UI
 extension UploadResourceController {
     override func setUI() {
-        tableView.backgroundColor = .cf0efef
-        tableView.set(dataSource: self, delegate: self, rowHeight: viewModel.rowHeight)
-        tableView.register(cell: UploadResourceCell.self)
-        headerTipView.textLabel.text = tipString
-        headerTipView.zz_height = viewModel.getHeaderSize(tipString).height
-        tableView.tableHeaderView = headerTipView
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 15))
-        footer.backgroundColor = .cf
-        tableView.tableFooterView = footer
-        view.addSubview(tableView)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "上传记录", target: self, action: #selector(recordAction))
         
-        let submitBtn = UIButton(title: "提交", font: .size(18), titleColor: .cf, backgroundColor: .c407cec, target: self, action: #selector(submitAction))
-        view.addSubview(submitBtn)
+        scrollView.backgroundColor = .cf
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
         
-        tableView.snp.makeConstraints { (make) in
+        let topView = contentView.zz_add(subview: UIView())
+        let tipLabel = topView.zz_add(subview: UILabel(text: tipString, font: .size(16), textColor: .c6)) as! UILabel
+        topView.addBottomLine()
+        
+        let config = PictureSelectView.Config.defaultConfig()
+        picsView.config = config
+        contentView.addSubview(picsView)
+        
+        setActions()
+        
+        submitBtn.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
+        contentView.addSubview(submitBtn)
+        
+        scrollView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
+            make.width.equalTo(UIScreen.zz_width)
+            make.height.equalTo(UIScreen.zz_safeFrameUnderNavigation.height)
+        }
+        
+        topView.snp.makeConstraints { (make) in
+            make.top.right.left.equalToSuperview()
+        }
+        
+        let tipHeight = tipString.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: tipLabel.font.pointSize).height
+        tipLabel.snp.makeConstraints { (make) in
+            make.top.left.equalTo(15)
+            make.right.bottom.equalTo(-15)
+            make.height.equalTo(tipHeight)
+        }
+        
+        picsView.snp.makeConstraints { (make) in
+            make.top.equalTo(topView.snp.bottom).offset(15)
+            make.left.equalTo(15)
+            make.height.equalTo(config.itemSize)
+            make.width.equalTo(config.width)
         }
         
         submitBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(tableView.snp.bottom)
             make.left.right.equalToSuperview()
             make.height.equalTo(50)
             make.bottomOffsetFrom(self)
@@ -61,118 +92,89 @@ extension UploadResourceController {
     }
     
     override func setBinding() {
-        tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.skipRepeats().map(value: ())
+        let submitEnabledSignal = SignalProducer<Bool, NoError>(value: false).concat(viewModel.selectedImagesProperty.producer.map { !$0.isEmpty })
+        submitBtn.reactive.isUserInteractionEnabled <~ submitEnabledSignal
+        submitBtn.reactive.backgroundColor <~ submitEnabledSignal.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+        
+        picsView.viewModel.dataSourceProperty.signal.map { [weak self] (values) -> CGFloat in
+            guard let self = self, let config = self.picsView.config else { return 0 }
+            let row = ceil(CGFloat(values.count) / CGFloat(config.rowItemCount))
+            return config.itemSize.height * row + (row - 1) * config.ySpacing
+            }.skipRepeats().observeValues { [weak self] (height) in
+                self?.picsView.snp.updateConstraints { (make) in
+                    make.height.equalTo(height)
+                }
+                self?.updateContentHeight()
+        }
+        
+        // 选择图片
+        viewModel.selectedImagesProperty.signal.observeValues { [weak self] (imgs) in
+            guard let self = self else { return }
+            var values = [UIImage]()
+            HUD.showLoding()
+            DispatchQueue.global().async {
+                for img in imgs {
+                    if let resizeImage = UIImage(data: img.zz_resetToSize(1000, maxWidth: 1000, maxHeight: 1000)) {
+                        values.append(resizeImage)
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    HUD.hideLoding()
+                    self.picsView.viewModel.set(images: values)
+                }
+            }
+        }
+        
+        viewModel.uploadStatusProperty.signal.observeValues { [weak self] (uploaded) in
+            if uploaded {
+                self?.pop()
+            }
+        }
     }
 }
 
 // MARK: - Action
 extension UploadResourceController {
     @objc private func submitAction() {
-        viewModel.uploadImages().startWithValues { (urls) in
-            print(urls)
-            if let urls = urls {
-                HUD.show(toast: "上传成功")
-            } else {
-                HUD.show(toast: "上传失败")
-            }
+        viewModel.uploadImages()
+    }
+    
+    private func setActions() {
+        let count = 30
+        picsView.viewModel.maxCount = count
+        picsView.addClosure = { [weak self] in
+            TZImagePickerController.commonPresent(from: self, maxCount: count, selectedModels: self?.viewModel.selectedModelsProperty.value, delegate: self)
         }
+        
+        picsView.deleteClosure = { [weak self] idx, data in
+            self?.viewModel.removeAt(index: idx)
+        }
+    }
+    
+    @objc private func recordAction() {
+        let vc = UploadHistoryController()
+        push(vc)
     }
 }
 
 // MARK: - Network
-extension UploadResourceController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: - UITableViewDataSource
-extension UploadResourceController: UITableViewDataSource, UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.rowCount
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(cell: UploadResourceCell.self, for: indexPath)
-        
-        let items = viewModel.itemsInRow(indexPath.row)
-        
-        for (idx, itemView) in cell.itemViews.enumerated() {
-            if idx <= items.count - 1 {
-                itemView.isHidden = false
-                let item = items[idx]
-                itemView.imgView.image = item.image
-                itemView.delView.isHidden = false
-                itemView.tapClosure = { [weak self] view in
-                    guard let self = self else { return }
-                    if indexPath.row == 0 && idx == 0 { // 打开相册
-                        let ops = HEPickerOptions()
-                        ops.maxCountOfImage = 30
-                        ops.mediaType = .image
-                        let picker = HEPhotoPickerViewController(delegate: self, options: ops)
-                        self.hePresentPhotoPickerController(picker: picker, animated: true)
-                    } else {    // 点击图片
-                        
-                    }
-                }
-                
-                itemView.delClosure = { [weak self] view in
-                    guard let self = self else { return }
-                    self.viewModel.delItem(item)
-                }
-            } else {
-                itemView.isHidden = true
-            }
-        }
-        
-        return cell
+extension UploadResourceController: TZImagePickerControllerDelegate {
+    func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool, infos: [[AnyHashable : Any]]!) {
+        viewModel.selectedModelsProperty.value = picker.selectedModels
+        viewModel.selectedImagesProperty.value = photos
     }
 }
-
-
-// MARK: - Delegate External
-
-// MARK: -
-
-extension UploadResourceController: HEPhotoPickerViewControllerDelegate {
-    func pickerController(_ picker: UIViewController, didFinishPicking selectedImages: [UIImage], selectedModel: [HEPhotoAsset]) {
-        viewModel.addImages(selectedImages)
-    }
-}
-
-//extension UploadResourceController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        if let image = info[.editedImage] as? UIImage {
-//            let item = UploadResourceViewModel.ImageItem(url: nil, image: image)
-//            viewModel.addItem(item)
-//        }
-//
-//        picker.dismiss(animated: true, completion: nil)
-//    }
-//
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        picker.dismiss(animated: true, completion: nil)
-//    }
-//
-//    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-//        navigationController.navigationBar.setBackgroundImage(UIImage.zz_image(withColor: UIColor.c407cec.withAlphaComponent(0.95)), for: .default)
-//        navigationController.navigationBar.shadowImage = nil
-//    }
-//}
 
 // MARK: - Helper
 extension UploadResourceController {
-    
+    func updateContentHeight() {
+        print(#function)
+        contentView.layoutHeight()
+        contentView.snp.updateConstraints { (make) in
+            make.height.equalTo(contentView.zz_height)
+        }
+        
+        scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_height, UIScreen.zz_safeFrameUnderNavigation.height) + 50)
+    }
 }
-
-// MARK: - Other
-extension UploadResourceController {
-    
-}
-
-// MARK: - Public
-extension UploadResourceController {
-    
-}
-

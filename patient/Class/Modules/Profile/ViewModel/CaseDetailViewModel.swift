@@ -60,8 +60,7 @@ class CaseDetailViewModel: BaseViewModel {
                 }
                 
                 if caseRecord.preDiagnosis.count > 0 {
-//                    array.append(Record(title: "初步诊断", subTitle: caseRecord.preDiagnosis))
-                    array.append(Record(title: "初步诊断", subTitle: "dsjafldajfkldas;fjl;dsafjsdlk;fjl;asfjsadkl;fjsalfjakl;fjasl;jfklsa"))
+                    array.append(Record(title: "初步诊断", subTitle: caseRecord.preDiagnosis))
                 }
                 
                 for op in caseRecord.ops {

@@ -56,6 +56,5 @@ class PictureSelectViewModel: BaseViewModel {
         }
         
         dataSourceProperty.value = values
-        print(#function)
     }
 }

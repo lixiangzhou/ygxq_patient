@@ -226,20 +226,7 @@ extension VideoConsultBuyController {
         let count = 30
         picturesView.pictureSelectView.viewModel.maxCount = count
         picturesView.pictureSelectView.addClosure = { [weak self] in
-            let vc = TZImagePickerController(maxImagesCount: count, delegate: self)!
-            vc.showPhotoCannotSelectLayer = true
-            vc.allowTakeVideo = false
-            vc.allowPickingVideo = false
-            vc.photoPreviewPageUIConfigBlock = { _, _, _, _, _, _, originalPhotoButton, originalPhotoLabel, _, _, _ in
-                originalPhotoButton?.alpha = 0
-            }
-            vc.photoPickerPageUIConfigBlock = { _, _, previewButton, originalPhotoButton, originalPhotoLabel, _ , _, _, _ in
-                previewButton?.isHidden = true
-                originalPhotoButton?.isHidden = true
-                originalPhotoLabel?.isHidden = true
-            }
-            vc.selectedModels = self?.viewModel.selectedModelsProperty.value
-            self?.present(vc, animated: true, completion: nil)
+            TZImagePickerController.commonPresent(from: self, maxCount: count, selectedModels: self?.viewModel.selectedModelsProperty.value, delegate: self)
         }
         
         picturesView.pictureSelectView.deleteClosure = { [weak self] idx, data in
@@ -286,14 +273,9 @@ extension VideoConsultBuyController {
 // MARK: -
 
 extension VideoConsultBuyController: TZImagePickerControllerDelegate {
-    func tz_imagePickerControllerDidCancel(_ picker: TZImagePickerController!) {
-        print(#function)
-    }
-    
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool, infos: [[AnyHashable : Any]]!) {
-        print(#function)
-        viewModel.selectedImagesProperty.value = photos
         viewModel.selectedModelsProperty.value = picker.selectedModels
+        viewModel.selectedImagesProperty.value = photos
     }
 }
 

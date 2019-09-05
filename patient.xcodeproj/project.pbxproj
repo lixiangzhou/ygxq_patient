@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1008F6FB230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6FA230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift */; };
-		100AEDCE22C99E5D00094AE2 /* UploadResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEDCD22C99E5D00094AE2 /* UploadResourceCell.swift */; };
-		100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */; };
 		100AEE1F22C9F64000094AE2 /* NSObjectExtension+HE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE0522C9F64000094AE2 /* NSObjectExtension+HE.swift */; };
 		100AEE2022C9F64000094AE2 /* UIViewExtension+HE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE0622C9F64000094AE2 /* UIViewExtension+HE.swift */; };
 		100AEE2122C9F64000094AE2 /* UIColorExtension+HE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE0722C9F64000094AE2 /* UIColorExtension+HE.swift */; };
@@ -114,6 +112,13 @@
 		1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AABE229E868F00519CA4 /* InputFieldView.swift */; };
 		1030AAC1229E871600519CA4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC0229E871600519CA4 /* ViewExtension.swift */; };
 		1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */; };
+		1030C2A7231F99CC00F13755 /* TZImagePickerControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2A6231F99CC00F13755 /* TZImagePickerControllerExtension.swift */; };
+		1030C2A9231FBBE200F13755 /* UploadHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2A8231FBBE200F13755 /* UploadHistoryController.swift */; };
+		1030C2AD231FBC3700F13755 /* UploadHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2AC231FBC3700F13755 /* UploadHistoryViewModel.swift */; };
+		1030C2AF231FBC4A00F13755 /* PictureListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2AE231FBC4A00F13755 /* PictureListViewModel.swift */; };
+		1030C2B1231FBC5C00F13755 /* PictureListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B0231FBC5C00F13755 /* PictureListController.swift */; };
+		1030C2B3231FBD8D00F13755 /* UploadHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B2231FBD8D00F13755 /* UploadHistoryCell.swift */; };
+		1030C2B9231FCA8300F13755 /* MediaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B8231FCA8300F13755 /* MediaApi.swift */; };
 		10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10375FDC2304F92400B92403 /* VideoConsultResultController.swift */; };
 		104AD5B9231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5B8231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift */; };
 		104AD5BB231CF745000AD464 /* SunnyDrugBuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */; };
@@ -295,8 +300,6 @@
 
 /* Begin PBXFileReference section */
 		1008F6FA230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+ZZExtension.swift"; sourceTree = "<group>"; };
-		100AEDCD22C99E5D00094AE2 /* UploadResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceCell.swift; sourceTree = "<group>"; };
-		100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResourceHeaderTipView.swift; sourceTree = "<group>"; };
 		100AEE0522C9F64000094AE2 /* NSObjectExtension+HE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectExtension+HE.swift"; sourceTree = "<group>"; };
 		100AEE0622C9F64000094AE2 /* UIViewExtension+HE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewExtension+HE.swift"; sourceTree = "<group>"; };
 		100AEE0722C9F64000094AE2 /* UIColorExtension+HE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColorExtension+HE.swift"; sourceTree = "<group>"; };
@@ -403,6 +406,13 @@
 		1030AABE229E868F00519CA4 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		1030AAC0229E871600519CA4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		1030AAC2229FD52C00519CA4 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		1030C2A6231F99CC00F13755 /* TZImagePickerControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZImagePickerControllerExtension.swift; sourceTree = "<group>"; };
+		1030C2A8231FBBE200F13755 /* UploadHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadHistoryController.swift; sourceTree = "<group>"; };
+		1030C2AC231FBC3700F13755 /* UploadHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadHistoryViewModel.swift; sourceTree = "<group>"; };
+		1030C2AE231FBC4A00F13755 /* PictureListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListViewModel.swift; sourceTree = "<group>"; };
+		1030C2B0231FBC5C00F13755 /* PictureListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListController.swift; sourceTree = "<group>"; };
+		1030C2B2231FBD8D00F13755 /* UploadHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadHistoryCell.swift; sourceTree = "<group>"; };
+		1030C2B8231FCA8300F13755 /* MediaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaApi.swift; sourceTree = "<group>"; };
 		10375FDC2304F92400B92403 /* VideoConsultResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultController.swift; sourceTree = "<group>"; };
 		104AD5B8231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyAddressView.swift; sourceTree = "<group>"; };
 		104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyViewModel.swift; sourceTree = "<group>"; };
@@ -864,6 +874,7 @@
 				10FF88A32314F13F008148BC /* HomeApi.swift */,
 				10FF88B32315234E008148BC /* PatientApi.swift */,
 				106DE8CB231771B8001DF4DE /* PayApi.swift */,
+				1030C2B8231FCA8300F13755 /* MediaApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1040,6 +1051,7 @@
 				104E3A8622B8D61700A84DB2 /* BasicExtension.swift */,
 				109B74B8230401D80034346D /* StringExtension.swift */,
 				10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */,
+				1030C2A6231F99CC00F13755 /* TZImagePickerControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1184,6 +1196,8 @@
 				108C080D22BCD82000B2EBE9 /* CheckListController.swift */,
 				108C083022BD158D00B2EBE9 /* ExamListController.swift */,
 				1099E71A22C4663700C37A9E /* UploadResourceController.swift */,
+				1030C2A8231FBBE200F13755 /* UploadHistoryController.swift */,
+				1030C2B0231FBC5C00F13755 /* PictureListController.swift */,
 				100AEE4F22CC589D00094AE2 /* CaseDetailController.swift */,
 				100AEE5B22CC8FA400094AE2 /* CheckDetailController.swift */,
 				100AEE6D22CD967300094AE2 /* DrugUsedController.swift */,
@@ -1202,6 +1216,8 @@
 				100AEE5122CC596000094AE2 /* CaseDetailViewModel.swift */,
 				100AEE5D22CC8FC100094AE2 /* CheckDetailViewModel.swift */,
 				100AEE6F22CD969100094AE2 /* DrugUsedViewModel.swift */,
+				1030C2AC231FBC3700F13755 /* UploadHistoryViewModel.swift */,
+				1030C2AE231FBC4A00F13755 /* PictureListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1213,11 +1229,10 @@
 				108C081122BCDA5700B2EBE9 /* CaseListCell.swift */,
 				108C082422BCFCCC00B2EBE9 /* CheckListCell.swift */,
 				108C082E22BD155600B2EBE9 /* ExamListCell.swift */,
-				100AEDCD22C99E5D00094AE2 /* UploadResourceCell.swift */,
-				100AEDD122C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift */,
 				100AEE5922CC84C800094AE2 /* CaseDetailOpCell.swift */,
 				100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */,
 				100AEE7122CD9D5700094AE2 /* DrugUsedCell.swift */,
+				1030C2B2231FBD8D00F13755 /* UploadHistoryCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1854,6 +1869,9 @@
 				108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */,
 				104FC4D0231651D000ECB82B /* DoctorDetailMsgCell.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
+				1030C2B1231FBC5C00F13755 /* PictureListController.swift in Sources */,
+				1030C2B3231FBD8D00F13755 /* UploadHistoryCell.swift in Sources */,
+				1030C2A9231FBBE200F13755 /* UploadHistoryController.swift in Sources */,
 				104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
 				109B74C323040DB40034346D /* ConsultApi.swift in Sources */,
@@ -1868,6 +1886,7 @@
 				108C081F22BCFAA800B2EBE9 /* CheckListViewModel.swift in Sources */,
 				106DE8D82317BA28001DF4DE /* VideoConsultBuyDiseaseView.swift in Sources */,
 				104FC4C823162ABF00ECB82B /* DoctorDetailController.swift in Sources */,
+				1030C2AF231FBC4A00F13755 /* PictureListViewModel.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */,
@@ -1897,7 +1916,6 @@
 				100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */,
 				106D3753231E5A090079D899 /* PayResult2Controller.swift in Sources */,
 				109B74BD230408830034346D /* ConsultListCell.swift in Sources */,
-				100AEDD222C9B7BA00094AE2 /* UploadResourceHeaderTipView.swift in Sources */,
 				100AEE2C22C9F64000094AE2 /* HEPhotoPickerCell.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10A27559230BC17500B568B3 /* MsgModel.swift in Sources */,
@@ -1972,12 +1990,14 @@
 				1099E71B22C4663700C37A9E /* UploadResourceController.swift in Sources */,
 				104FC4CE231651C400ECB82B /* DoctorDetailActionsCell.swift in Sources */,
 				104FFB102314C9B900E51033 /* FSPageViewLayout.swift in Sources */,
+				1030C2B9231FCA8300F13755 /* MediaApi.swift in Sources */,
 				104AD5BB231CF745000AD464 /* SunnyDrugBuyViewModel.swift in Sources */,
 				104E3AA022B8E5E700A84DB2 /* LLSegmentItemBadgeView.swift in Sources */,
 				10FF88B023151065008148BC /* QRCodeScanController.swift in Sources */,
 				104AD5C1231D20DF000AD464 /* SignNameTipView.swift in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
 				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
+				1030C2A7231F99CC00F13755 /* TZImagePickerControllerExtension.swift in Sources */,
 				1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */,
 				10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */,
 				100AEE2522C9F64000094AE2 /* HESeletecedButton.swift in Sources */,
@@ -1991,6 +2011,7 @@
 				109B74B523028A9A0034346D /* ConsultController.swift in Sources */,
 				100C2CFA2318BA7800A820BF /* PictureSelectViewModel.swift in Sources */,
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
+				1030C2AD231FBC3700F13755 /* UploadHistoryViewModel.swift in Sources */,
 				100AEE2622C9F64000094AE2 /* HETool.swift in Sources */,
 				100AEE2A22C9F64000094AE2 /* HEPhotoPickerViewController.swift in Sources */,
 				106DE8C223168413001DF4DE /* PayListCell.swift in Sources */,
@@ -2025,7 +2046,6 @@
 				1059E46F230D1EDA005F5326 /* SunnyDrugOrderAssistWxInfoCell.swift in Sources */,
 				108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */,
 				10676BF623068EEC004A6419 /* AlertView.swift in Sources */,
-				100AEDCE22C99E5D00094AE2 /* UploadResourceCell.swift in Sources */,
 				100AEE3222C9F64000094AE2 /* HEAlbum.swift in Sources */,
 				1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */,
 				100AEE3E22CA120D00094AE2 /* AddressListViewModel.swift in Sources */,
