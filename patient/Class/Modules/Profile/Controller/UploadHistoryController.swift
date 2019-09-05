@@ -47,16 +47,6 @@ extension UploadHistoryController {
     }
 }
 
-// MARK: - Action
-extension UploadHistoryController {
-    
-}
-
-// MARK: - Network
-extension UploadHistoryController {
-    
-}
-
 // MARK: - Delegate Internal
 
 // MARK: -
@@ -83,24 +73,11 @@ extension UploadHistoryController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-}
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension UploadHistoryController {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        let vc = PictureListController()
+        vc.viewModel.time = model.title.zz_date(withDateFormat: "yyyy-MM-dd HH:mm:ss")!.timeIntervalSince1970 * 1000
+        push(vc)
+    }
 }
-
-// MARK: - Other
-extension UploadHistoryController {
-    
-}
-
-// MARK: - Public
-extension UploadHistoryController {
-    
-}
-

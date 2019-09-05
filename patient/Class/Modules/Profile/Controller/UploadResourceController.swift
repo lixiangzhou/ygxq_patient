@@ -98,7 +98,7 @@ extension UploadResourceController {
         
         picsView.viewModel.dataSourceProperty.signal.map { [weak self] (values) -> CGFloat in
             guard let self = self, let config = self.picsView.config else { return 0 }
-            let row = ceil(CGFloat(values.count) / CGFloat(config.rowItemCount))
+            let row = ceil(CGFloat(values.count) / CGFloat(config.column))
             return config.itemSize.height * row + (row - 1) * config.ySpacing
             }.skipRepeats().observeValues { [weak self] (height) in
                 self?.picsView.snp.updateConstraints { (make) in

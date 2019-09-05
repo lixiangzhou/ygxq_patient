@@ -119,6 +119,7 @@
 		1030C2B1231FBC5C00F13755 /* PictureListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B0231FBC5C00F13755 /* PictureListController.swift */; };
 		1030C2B3231FBD8D00F13755 /* UploadHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B2231FBD8D00F13755 /* UploadHistoryCell.swift */; };
 		1030C2B9231FCA8300F13755 /* MediaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B8231FCA8300F13755 /* MediaApi.swift */; };
+		1030C2BB23209F5500F13755 /* PictureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2BA23209F5500F13755 /* PictureListCell.swift */; };
 		10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10375FDC2304F92400B92403 /* VideoConsultResultController.swift */; };
 		104AD5B9231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5B8231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift */; };
 		104AD5BB231CF745000AD464 /* SunnyDrugBuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */; };
@@ -413,6 +414,7 @@
 		1030C2B0231FBC5C00F13755 /* PictureListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListController.swift; sourceTree = "<group>"; };
 		1030C2B2231FBD8D00F13755 /* UploadHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadHistoryCell.swift; sourceTree = "<group>"; };
 		1030C2B8231FCA8300F13755 /* MediaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaApi.swift; sourceTree = "<group>"; };
+		1030C2BA23209F5500F13755 /* PictureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListCell.swift; sourceTree = "<group>"; };
 		10375FDC2304F92400B92403 /* VideoConsultResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultController.swift; sourceTree = "<group>"; };
 		104AD5B8231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyAddressView.swift; sourceTree = "<group>"; };
 		104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyViewModel.swift; sourceTree = "<group>"; };
@@ -1233,6 +1235,7 @@
 				100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */,
 				100AEE7122CD9D5700094AE2 /* DrugUsedCell.swift */,
 				1030C2B2231FBD8D00F13755 /* UploadHistoryCell.swift */,
+				1030C2BA23209F5500F13755 /* PictureListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1917,6 +1920,7 @@
 				106D3753231E5A090079D899 /* PayResult2Controller.swift in Sources */,
 				109B74BD230408830034346D /* ConsultListCell.swift in Sources */,
 				100AEE2C22C9F64000094AE2 /* HEPhotoPickerCell.swift in Sources */,
+				1030C2BB23209F5500F13755 /* PictureListCell.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10A27559230BC17500B568B3 /* MsgModel.swift in Sources */,
 				100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */,

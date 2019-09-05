@@ -29,7 +29,7 @@ class PictureSelectView: BaseView {
         didSet {
             guard let config = config else { return }
             
-            let itemWH = (config.width - CGFloat(config.rowItemCount - 1) * config.xSpacing) / CGFloat(config.rowItemCount)
+            let itemWH = (config.width - CGFloat(config.column - 1) * config.xSpacing) / CGFloat(config.column)
             
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: itemWH, height: itemWH)
@@ -187,7 +187,7 @@ extension PictureSelectView {
     
     struct Config {
         let width: CGFloat
-        let rowItemCount: Int
+        let column: Int
         let xSpacing: CGFloat
         let ySpacing: CGFloat
         let picAction: Mode
@@ -199,12 +199,12 @@ extension PictureSelectView {
         }
         
         var itemSize: CGSize {
-            let itemWH = (width - CGFloat(rowItemCount - 1) * xSpacing) / CGFloat(rowItemCount)
+            let itemWH = (width - CGFloat(column - 1) * xSpacing) / CGFloat(column)
             return CGSize(width: itemWH, height: itemWH)
         }
         
         static func defaultConfig() -> Config {
-            return PictureSelectView.Config(width: UIScreen.zz_width - 30, rowItemCount: 4, xSpacing: 5, ySpacing: 5, picAction: .onlyPicShow)
+            return PictureSelectView.Config(width: UIScreen.zz_width - 30, column: 4, xSpacing: 5, ySpacing: 5, picAction: .onlyPicShow)
         }
     }
 }

@@ -108,12 +108,12 @@ extension VideoConsultPicCell: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        PhotoBrowser.showNetImage(numberOfItems: { () -> Int in
-            return self.dataSource.count
+        PhotoBrowser.showNetImage(numberOfItems: { [weak self] () -> Int in
+            return self?.dataSource.count ?? 0
         }, placeholder: { (index) -> UIImage? in
             return nil
-        }, autoloadURLString: { (index) -> String? in
-            return self.dataSource[index].mediaUrl
+        }, autoloadURLString: { [weak self] (index) -> String? in
+            return self?.dataSource[index].mediaUrl
         })
     }
 }

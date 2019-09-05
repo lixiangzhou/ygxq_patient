@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum MediaApi: TargetType {
-    case queryById(pid: Int, type: String)
+    case queryById(pid: Int, type: String, createTime: TimeInterval?)
 }
 
 extension MediaApi {
@@ -25,9 +25,12 @@ extension MediaApi {
     var task: Task {
         var params = [String: Any]()
         switch self {
-        case let .queryById(pid: pid, type: type):
+        case let .queryById(pid: pid, type: type, createTime: createTime):
             params["puid"] = pid
             params["serType"] = type
+            if let createTime = createTime {
+                params["createTime"] = createTime
+            }
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

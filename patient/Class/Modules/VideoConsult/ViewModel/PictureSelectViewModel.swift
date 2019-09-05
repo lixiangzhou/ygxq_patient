@@ -24,26 +24,6 @@ class PictureSelectViewModel: BaseViewModel {
         return values.count
     }
     
-    func add(images: [UIImage]) {
-        var values = dataSourceProperty.value
-        values.removeAll { (data) -> Bool in
-            switch data {
-            case .empty: return true
-            case .data: return false
-            }
-        }
-        if values.count < maxCount {
-            for img in images {
-                values.append(.data(image: img))
-            }
-        }
-        if values.count < maxCount {
-            values.append(.empty)
-        }
-        
-        dataSourceProperty.value = values
-    }
-    
     func set(images: [UIImage]) {
         var values = [PictureSelectView.ImageData]()
         
