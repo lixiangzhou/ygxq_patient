@@ -170,7 +170,7 @@ extension HomeController {
         
         // 更多
         headerView.taskView.moreClosure = { [weak self] in
-            self?.push(TaskTipListController)
+            self?.push(TaskTipListController())
         }
         
         // 按钮
