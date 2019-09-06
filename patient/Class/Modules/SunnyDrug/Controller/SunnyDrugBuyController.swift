@@ -192,10 +192,7 @@ extension SunnyDrugBuyController {
 
 // MARK: -
 
-extension SunnyDrugBuyController: TZImagePickerControllerDelegate {
-    func tz_imagePickerControllerDidCancel(_ picker: TZImagePickerController!) {
-    }
-    
+extension SunnyDrugBuyController: TZImagePickerControllerDelegate {    
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool, infos: [[AnyHashable : Any]]!) {
         viewModel.selectImageProperty.value = photos.first
         idView.picView.image = photos.first

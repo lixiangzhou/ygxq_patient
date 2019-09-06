@@ -81,8 +81,6 @@ extension HomeHeaderView {
         taskView.snp.makeConstraints { (make) in
             make.top.equalTo(caseView.snp.bottom).offset(10)
             make.left.right.equalToSuperview()
-//            make.height.equalTo(150)
-//            make.bottom.equalTo(-10)
         }
     }
 }

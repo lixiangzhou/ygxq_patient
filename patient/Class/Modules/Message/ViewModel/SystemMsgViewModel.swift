@@ -39,7 +39,7 @@ class SystemMsgViewModel: BaseViewModel {
     
     func selectModel(_ model: MsgModel) {
         if model.isLook == "N" {
-            CommonApi.setReaded(uid: patientId).rac_response(String.self).map { BoolString($0) }.startWithValues { [weak self] (result) in
+            CommonApi.setReaded(uid: model.id).rac_response(String.self).map { BoolString($0) }.startWithValues { [weak self] (result) in
                 guard let self = self else { return }
                 HUD.showError(result)
                 if result.isSuccess {

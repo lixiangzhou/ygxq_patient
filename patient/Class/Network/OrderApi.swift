@@ -19,6 +19,7 @@ enum OrderApi: TargetType {
     case cancelOrder(orderId: Int)
     case detail(orderId: Int)
     case addProtocol(imgUrl: String, pid: Int)
+    case queryBrugOrderInfoByVideoId(vid: Int)
 }
 
 extension OrderApi {
@@ -40,6 +41,8 @@ extension OrderApi {
             return "/order/details"
         case .addProtocol:
             return "/order/addPayProtocol"
+        case .queryBrugOrderInfoByVideoId:
+            return "/order/queryBrugOrderInfoByVideoId"
         }
     }
     
@@ -75,6 +78,8 @@ extension OrderApi {
         case let .addProtocol(imgUrl: imgUrl, pid: pid):
             params["protocolImg"] = imgUrl
             params["puid"] = pid
+        case let .queryBrugOrderInfoByVideoId(vid: vid):
+            params["id"] = vid
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

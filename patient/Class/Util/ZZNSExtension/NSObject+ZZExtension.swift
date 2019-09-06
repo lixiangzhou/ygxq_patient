@@ -102,4 +102,12 @@ public extension NSObject {
         print("----------------\(type(of: self))----------------")
         print(propertyValues as NSDictionary)
     }
+    
+    public var zz_className: String {
+        return type(of: self).zz_className
+    }
+    
+    public static var zz_className: String {
+        return String(describing: self)
+    }
 }

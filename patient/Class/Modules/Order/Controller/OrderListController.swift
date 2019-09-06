@@ -70,7 +70,7 @@ extension OrderListController {
             break
         }
         if let type = type {
-            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: className, type: type)
+            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: zz_className, type: type)
         }
         push(vc)
     }

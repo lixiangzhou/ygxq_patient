@@ -59,7 +59,6 @@ extension ForgetPwdController {
         
         pwdView.inputLengthLimit = 20
         pwdView.leftViewSize = CGSize(width: 25, height: 20)
-        pwdView.isSecureTextEntry = false
         pwdView.addShadowView("login_field_bg")
         
         confirmBtn.zz_setCorner(radius: 22.5, masksToBounds: true)
@@ -145,7 +144,7 @@ extension ForgetPwdController {
                     }
                 }
             } else {
-                self.popToViewController(SettingController.className)
+                self.popToViewController(SettingController.zz_className)
             }
         }
     }

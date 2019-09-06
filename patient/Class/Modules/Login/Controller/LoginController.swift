@@ -74,8 +74,15 @@ extension LoginController {
         
         pwdView.inputLengthLimit = 20
         pwdView.leftViewSize = CGSize(width: 25, height: 20)
-        pwdView.isSecureTextEntry = false
+        pwdView.isSecureTextEntry = true
         pwdView.addShadowView("login_field_bg")
+        
+        switch context {
+        case .release:
+            break
+        default:
+            pwdView.text = "123456"
+        }
         
         codeBtn.setTitleColor(.c407cec, for: .normal)
         codeBtn.setTitleColor(.c9, for: .disabled)

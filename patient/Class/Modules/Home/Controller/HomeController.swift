@@ -25,9 +25,12 @@ class HomeController: BaseController {
         super.viewWillAppear(animated)
         
         viewModel.getTasks()
+        viewModel.getUnReadMsgCount()
     }
     
     // MARK: - Properties
+    private let scanItem = ImageTitleView()
+    private let noticeItem = ImageTitleView()
     private let headerView = HomeHeaderView()
     private let tableView = UITableView()
     
@@ -61,33 +64,31 @@ extension HomeController {
     private func addNavigationItems() {
         let config = ImageTitleView.Config(imageSize: CGSize(width: 25, height: 25), verticalHeight1: 0, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .size(14), titleColor: .cf)
 
-        let leftView = ImageTitleView()
-        leftView.imgView.contentMode = .center
-        leftView.config = config
-        leftView.titleLabel.text = "扫一扫"
-        leftView.imgView.image = UIImage(named: "home_scan")
-        view.addSubview(leftView)
+        scanItem.imgView.contentMode = .center
+        scanItem.config = config
+        scanItem.titleLabel.text = "扫一扫"
+        scanItem.imgView.image = UIImage(named: "home_scan")
+        view.addSubview(scanItem)
         
-        leftView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scanAction)))
+        scanItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scanAction)))
         
-        let rightView = ImageTitleView()
-        rightView.imgView.contentMode = .center
-        rightView.config = config
-        rightView.titleLabel.text = "消息"
-        rightView.imgView.image = UIImage(named: "mine_nav_notice")
-        view.addSubview(rightView)
+        noticeItem.imgView.contentMode = .center
+        noticeItem.config = config
+        noticeItem.titleLabel.text = "消息"
+        noticeItem.imgView.image = UIImage(named: "mine_nav_notice")
+        view.addSubview(noticeItem)
         
-        rightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeAction)))
+        noticeItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeAction)))
         
-        leftView.snp.makeConstraints { (make) in
+        scanItem.snp.makeConstraints { (make) in
             make.top.equalTo(25 + UIScreen.zz_statusBar_additionHeight)
             make.left.equalTo(10)
             make.width.equalTo(50)
             make.height.equalTo(50)
         }
         
-        rightView.snp.makeConstraints { (make) in
-            make.top.width.height.equalTo(leftView)
+        noticeItem.snp.makeConstraints { (make) in
+            make.top.width.height.equalTo(scanItem)
             make.right.equalTo(-10)
         }
     }
@@ -100,19 +101,37 @@ extension HomeController {
         
         viewModel.taskListProperty.signal.observeValues { [weak self] (list) in
             if let model = list.first {
+                self?.headerView.taskView.showEmpty = false
                 self?.headerView.taskView.textLabel.text = model.content
                 self?.headerView.layoutHeight()
                 self?.tableView.tableHeaderView = self?.headerView
                 
-                switch model.subType {
-                case "CMN_MSG_T_05_01", "CMN_MSG_T_05_02", "CMN_MSG_T_05_06":
-                    self?.headerView.taskView.btn.setTitle("去填写", for: .normal)
-                case "CMN_MSG_T_05_03", "CMN_MSG_T_05_04", "CMN_MSG_T_05_07":
-                    self?.headerView.taskView.btn.setTitle("去完善", for: .normal)
-                case "CMN_MSG_T_05_05":
-                    self?.headerView.taskView.btn.setTitle("去购药", for: .normal)
-                default: self?.headerView.taskView.btn.setTitle("", for: .normal)
-                }
+                self?.headerView.taskView.btn.setTitle(model.taskActionTitle, for: .normal)
+            } else {
+                self?.headerView.taskView.showEmpty = true
+            }
+        }
+        
+        viewModel.unReadMsgCountProperty.signal.skipRepeats().observeValues { [weak self] (value) in
+            if value > 0 {
+                self?.noticeItem.imgView.showBadge(with: .redDot, value: value, animationType: .none)
+                self?.noticeItem.imgView.badgeCenterOffset = CGPoint(x: -5, y: 5)
+            } else {
+                self?.noticeItem.imgView.clearBadge()
+            }
+        }
+        
+        viewModel.drugOrderProperty.signal.skipNil().observeValues { [weak self] result in
+            if let order = result.1 {
+                let vc = PayController()
+                vc.viewModel.orderId = order.orderId
+                vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.zz_className ?? "HomeController", type: .singleSunnyDrug)
+                self?.push(vc)
+            } else {
+                let vc = SunnyDrugBuyController()
+                vc.viewModel.did = result.0.gotoJsonDuid
+                vc.viewModel.serType = result.0.serType
+                self?.push(vc)
             }
         }
     }
@@ -121,14 +140,11 @@ extension HomeController {
 // MARK: - Action
 extension HomeController {
     @objc private func scanAction() {
-        let vc = QRCodeScanController()
-        push(vc)
+        push(QRCodeScanController())
     }
 
     @objc private func noticeAction() {
-        print(#function)
-        let vc = PayResultController()
-        push(vc)
+        push(SystemMsgController())
     }
     
     private func setActions() {
@@ -145,9 +161,7 @@ extension HomeController {
         
         // 上传
         headerView.caseView.uploadClosure = { [weak self] in
-            let vc = UploadResourceController()
-            vc.title = "完善资料"
-            self?.push(vc)
+            self?.toUploadResource()
         }
         
         // 查看
@@ -158,14 +172,31 @@ extension HomeController {
         
         // 更多
         headerView.taskView.moreClosure = { [weak self] in
-            let vc = PayResult2Controller()
+            let vc = TaskTipListController()
             self?.push(vc)
         }
         
         // 按钮
         headerView.taskView.btnClosure = { [weak self] in
-            print("按钮")
+            if let model = self?.viewModel.taskListProperty.value.first {
+                switch model.actionType {
+                case .buyDrug:
+                    self?.viewModel.queryBrugOrderInfoByTask(model)
+                case .finishQuestion:
+                    break
+                case .uploadResource:
+                    self?.toUploadResource()
+                case .other:
+                    break
+                }
+            }
         }
+    }
+    
+    private func toUploadResource() {
+        let vc = UploadResourceController()
+        vc.title = "完善资料"
+        push(vc)
     }
 }
 

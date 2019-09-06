@@ -34,10 +34,14 @@ class MineController: BaseController {
     }
 
     // MARK: - Properties
-    private let tableView = UITableView()
+    private let editItem = ImageTitleView()
+    private let noticeItem = ImageTitleView()
+
     private let viewModel = MineViewModel()
     private let headerView = MineHeaderView()
     var noticeBtn: UIButton!
+
+    private let tableView = UITableView()
 }
 
 // MARK: - UI

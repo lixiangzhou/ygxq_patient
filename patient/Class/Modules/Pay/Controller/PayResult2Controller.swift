@@ -76,7 +76,7 @@ extension PayResult2Controller {
         }
         
         statusView.snp.makeConstraints { (make) in
-            make.top.equalTo(55)
+            make.top.equalTo(55 + UIScreen.zz_statusBar_additionHeight)
             make.centerX.equalToSuperview()
         }
         

@@ -23,8 +23,43 @@ class HomeHeaderTaskView: BaseView {
     }
 
     // MARK: - Public Property
+    let moreBtn = ZZImagePositionButton(title: "更多", font: .size(14), titleColor: .c6, imageName: "home_more", hilightedImageName: "home_more", imgPosition: .right)
     let textLabel = UILabel(font: .size(16), textColor: .c3)
-    let btn = UIButton(font: .size(18), titleColor: .c407cec)
+    let btn = UIButton(font: .size(16), titleColor: .c00cece)
+    let contentView = UIView()
+    let emptyLabel = UILabel(text: "暂无任务提醒", font: .size(16), textColor: .c9, textAlignment: .center)
+    private let titleLabel = UILabel(text: "任务提醒", font: .boldSize(18), textColor: .c3)
+    
+    var showEmpty: Bool = false {
+        didSet {
+            contentView.isHidden = showEmpty
+            emptyLabel.isHidden = !showEmpty
+            moreBtn.isHidden = showEmpty
+            
+            if showEmpty {
+                contentView.removeFromSuperview()
+                
+                addSubview(emptyLabel)
+                emptyLabel.snp.remakeConstraints { (make) in
+                    make.top.equalTo(titleLabel.snp.bottom).offset(15)
+                    make.left.equalTo(15)
+                    make.height.equalTo(40)
+                    make.right.equalTo(-15)
+                    make.bottom.equalTo(-15)
+                }
+            } else {
+                emptyLabel.removeFromSuperview()
+                
+                addSubview(contentView)
+                contentView.snp.remakeConstraints { (make) in
+                    make.top.equalTo(titleLabel.snp.bottom).offset(15)
+                    make.left.equalTo(15)
+                    make.right.equalTo(-15)
+                    make.bottom.equalTo(-15)
+                }
+            }
+        }
+    }
     
     var btnClosure: (() -> Void)?
     var moreClosure: (() -> Void)?
@@ -37,16 +72,20 @@ extension HomeHeaderTaskView {
     private func setUI() {
         backgroundColor = .cf
         
-        let titleLabel = zz_add(subview: UILabel(text: "任务提醒", font: .boldSize(18), textColor: .c3)) as! UILabel
-        let moreBtn = ZZImagePositionButton(title: "更多", font: .size(14), titleColor: .c6, imageName: "home_more", hilightedImageName: "home_more", target: self, action: #selector(moreAction), imgPosition: .right)
+        addSubview(titleLabel)
+        moreBtn.addTarget(self, action: #selector(moreAction), for: .touchUpInside)
         addSubview(moreBtn)
         
-        let iconView = zz_add(subview: UIImageView(image: UIImage(named: "home_task")))
-        addSubview(textLabel)
+        let iconView = contentView.zz_add(subview: UIImageView(image: UIImage(named: "home_task")))
+        contentView.addSubview(textLabel)
         btn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
-        btn.zz_setBorder(color: .c407cec, width: 0.5)
+        btn.zz_setBorder(color: .c00cece, width: 0.5)
         btn.zz_setCorner(radius: 5, masksToBounds: true)
-        addSubview(btn)
+        contentView.addSubview(btn)
+        contentView.isHidden = true
+        
+        addSubview(contentView)
+        addSubview(emptyLabel)
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)
@@ -59,23 +98,37 @@ extension HomeHeaderTaskView {
             make.height.equalTo(25)
         }
         
-        iconView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
-            make.left.equalTo(titleLabel)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+            make.bottom.equalTo(-15)
+        }
+        
+        iconView.snp.makeConstraints { (make) in
+            make.top.left.equalToSuperview()
             make.width.height.equalTo(55)
         }
         
         textLabel.snp.makeConstraints { (make) in
             make.top.equalTo(iconView)
             make.left.equalTo(iconView.snp.right).offset(15)
-            make.right.equalTo(-15)
+            make.right.equalToSuperview()
         }
         
         btn.snp.makeConstraints { (make) in
             make.top.equalTo(textLabel.snp.bottom).offset(10)
-            make.right.equalTo(textLabel)
+            make.right.equalToSuperview()
             make.width.equalTo(70)
             make.height.equalTo(30)
+            make.bottom.equalToSuperview()
+        }
+        
+        emptyLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(15)
+            make.left.equalTo(15)
+            make.height.equalTo(40)
+            make.right.equalTo(-15)
             make.bottom.equalTo(-15)
         }
     }

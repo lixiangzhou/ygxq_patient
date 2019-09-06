@@ -71,7 +71,6 @@ extension RegisterController {
         
         pwdView.inputLengthLimit = 20
         pwdView.leftViewSize = CGSize(width: 25, height: 20)
-        pwdView.isSecureTextEntry = false
         pwdView.addShadowView("login_field_bg")
         
         inviteCodeView.inputLengthLimit = 6

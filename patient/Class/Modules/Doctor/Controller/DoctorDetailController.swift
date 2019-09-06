@@ -47,7 +47,7 @@ extension DoctorDetailController {
                 if let orderId = orderId {
                     let vc = PayController()
                     vc.viewModel.orderId = orderId
-                    vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.className ?? "DoctorDetailController", type: .longSer)
+                    vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.zz_className ?? "DoctorDetailController", type: .longSer)
                     self?.push(vc)
                 }
             })

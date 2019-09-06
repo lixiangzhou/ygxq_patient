@@ -15,6 +15,7 @@ class FUVisitPlanController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "随访计划"
         setUI()
     }
 
@@ -26,7 +27,7 @@ class FUVisitPlanController: BaseController {
 
 // MARK: - UI
 extension FUVisitPlanController {
-    private func setUI() {
+    override func setUI() {
         
     }
 }
