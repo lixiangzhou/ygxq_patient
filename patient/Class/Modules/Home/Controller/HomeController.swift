@@ -150,13 +150,12 @@ extension HomeController {
     private func setActions() {
         // 复诊购药
         headerView.actionsView.item1Closure = { [weak self] in
-            let vc = BindedDoctorsController()
-            self?.push(vc)
+            self?.push(BindedDoctorsController())
         }
         
         // 随访计划
         headerView.actionsView.item2Closure = { [weak self] in
-            print("随访计划")
+            self?.push(FUVisitPlanController())
         }
         
         // 上传
@@ -166,14 +165,12 @@ extension HomeController {
         
         // 查看
         headerView.caseView.lookClosure = { [weak self] in
-            let vc = ProfileController()
-            self?.push(vc)
+            self?.push(ProfileController())
         }
         
         // 更多
         headerView.taskView.moreClosure = { [weak self] in
-            let vc = TaskTipListController()
-            self?.push(vc)
+            self?.push(TaskTipListController)
         }
         
         // 按钮
