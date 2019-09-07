@@ -40,7 +40,7 @@ extension CheckListCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(typeLabel)
         
-        let arrowView = contentView.zz_add(subview: UIImageView(image: UIImage(named: "common_arrow_right")))
+        let arrowView = contentView.zz_add(subview: UIImageView.defaultRightArrow())
         
         contentView.addBottomLine(left: 15, right: 15)
         

@@ -42,7 +42,7 @@ extension CaseListCell {
         contentView.addSubview(typeLabel)
         bottomLine = contentView.addBottomLine()
         
-        let arrowView = contentView.zz_add(subview: UIImageView(image: UIImage(named: "common_arrow_right")))
+        let arrowView = contentView.zz_add(subview: UIImageView.defaultRightArrow())
         
         hospitalLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)

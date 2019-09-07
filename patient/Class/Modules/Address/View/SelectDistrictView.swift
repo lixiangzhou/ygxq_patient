@@ -295,5 +295,5 @@ private class DistrictCell: UITableViewCell {
     
     // MARK: - Public Property
     let nameLabel = UILabel(font: .size(15), textColor: .c3)
-    let selView = UIImageView(image: UIImage(named: "common_arrow_right"))
+    let selView = UIImageView.defaultRightArrow()
 }

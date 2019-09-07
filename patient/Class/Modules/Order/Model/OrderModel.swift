@@ -35,4 +35,7 @@ struct OrderModel: ModelProtocol, Equatable {
     var productItemId: Int = 0
     
     var orderId: Int = 0
+    
+    
+    var isSelected: Bool = false
 }

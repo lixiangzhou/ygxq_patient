@@ -12,10 +12,14 @@ import ReactiveSwift
 class PictureListViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[String]>([])
     var time: TimeInterval?
+    /// 通过 getData 获取数据，否则从其他地方传入数据
+    var getDataFromSelf = true
+    
     func getData() {
-        MediaApi.queryById(pid: patientId, type: "SER_HLR", createTime: time).rac_responseModel([String: [String]].self).skipNil().startWithValues { [weak self] (value) in
-            self?.dataSourceProperty.value = value.values.first ?? []
+        if getDataFromSelf {        
+            MediaApi.queryById(pid: patientId, type: "SER_HLR", createTime: time).rac_responseModel([String: [String]].self).skipNil().startWithValues { [weak self] (value) in
+                self?.dataSourceProperty.value = value.values.first ?? []
+            }
         }
     }
-
 }

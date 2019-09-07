@@ -208,7 +208,7 @@ extension PersonInfoEditController {
         let left = view.zz_add(subview: UILabel(text: "头像", font: .size(14), textColor: .c3))
         avatorView.zz_setCorner(radius: 16, masksToBounds: true)
         view.addSubview(avatorView)
-        let arrowView = view.zz_add(subview: UIImageView(image: UIImage(named: "common_right_arrow")))
+        let arrowView = view.zz_add(subview: UIImageView.defaultRightArrow())
         view.addBottomLine()
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatorAction)))

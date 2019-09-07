@@ -234,7 +234,7 @@ struct LeftRightConfigViewConfig {
          leftPaddingRight: CGFloat = 10,
          leftFont: UIFont = UIFont.size(17),
          leftTextColor: UIColor = UIColor.c3,
-         rightView: UIView? = UIImageView(image: UIImage(named: "common_arrow_right")),
+         rightView: UIView? = UIImageView.defaultRightArrow(),
          rightViewSize: CGSize? = nil,
          rightPadding: CGFloat = 15,
          rightFont: UIFont = UIFont.size(16),

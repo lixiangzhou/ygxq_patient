@@ -113,7 +113,7 @@ extension DrugUsedController: UITableViewDataSource, UITableViewDelegate {
         
         let txtLabel = header.zz_add(subview: UILabel(text: group.title, font: .boldSize(16), textColor: .c3)) as! UILabel
         
-        let arrow = UIImageView(image: UIImage(named: "common_arrow_right"))
+        let arrow = UIImageView.defaultRightArrow()
         header.addSubview(arrow)
         arrow.transform = CGAffineTransform(rotationAngle: group.open ? 0 : CGFloat(Double.pi))
         

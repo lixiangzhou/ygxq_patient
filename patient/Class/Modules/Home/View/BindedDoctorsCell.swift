@@ -46,7 +46,7 @@ extension BindedDoctorsCell {
         contentView.addSubview(servicesLabel)
         contentView.addBottomLine()
         
-        let arrowView = contentView.zz_add(subview: UIImageView(image: UIImage(named: "common_right_arrow")))
+        let arrowView = contentView.zz_add(subview: UIImageView.defaultRightArrow())
         
         iconView.snp.makeConstraints { (make) in
             make.left.equalTo(15)

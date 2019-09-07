@@ -103,11 +103,11 @@ public extension NSObject {
         print(propertyValues as NSDictionary)
     }
     
-    public var zz_className: String {
+    var zz_className: String {
         return type(of: self).zz_className
     }
     
-    public static var zz_className: String {
+    static var zz_className: String {
         return String(describing: self)
     }
 }

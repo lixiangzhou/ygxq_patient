@@ -16,7 +16,6 @@ class PictureListController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "图片详情"
         setUI()
         setBinding()
         viewModel.getData()

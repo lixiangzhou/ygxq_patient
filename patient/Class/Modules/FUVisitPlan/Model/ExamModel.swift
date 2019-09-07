@@ -2,7 +2,7 @@
 //  ExamModel.swift
 //  patient
 //
-//  Created by Macbook Pro on 2019/6/21.
+//  Created by lixiangzhou on 2019/9/6.
 //  Copyright © 2019 sphr. All rights reserved.
 //
 
@@ -17,4 +17,6 @@ struct ExamModel: ModelProtocol, Equatable {
     var isEffect: String = ""
     var createTime: TimeInterval = 0
     var type: String = ""
+    var isFinished: Int = 0
 }
+

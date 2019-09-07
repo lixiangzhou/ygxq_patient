@@ -1,5 +1,5 @@
 //
-//  FUVisitPlanController.swift
+//  FUVistExamListController.swift
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/6.
@@ -9,14 +9,13 @@
 import UIKit
 import ReactiveSwift
 
-class FUVisitPlanController: BaseController {
+class FUVistExamListController: BaseController {
 
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "随访计划"
         setUI()
         setBinding()
         viewModel.getData()
@@ -25,17 +24,17 @@ class FUVisitPlanController: BaseController {
     // MARK: - Public Property
     
     // MARK: - Private Property
-    private let viewModel = FUVisitPlanViewModel()
+    let viewModel = FUVistExamListViewModel()
     
     private let tableView = UITableView()
 }
 
 // MARK: - UI
-extension FUVisitPlanController {
+extension FUVistExamListController {
     override func setUI() {
         tableView.backgroundColor = .cf0efef
-        tableView.set(dataSource: self, rowHeight: UITableView.automaticDimension)
-        tableView.register(cell: FUVisitPlanCell.self)
+        tableView.set(dataSource: self, delegate: self, rowHeight: 82)
+        tableView.register(cell: FUVistExamListCell.self)
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { (make) in
@@ -52,30 +51,33 @@ extension FUVisitPlanController {
 
 // MARK: -
 // MARK: - UITableViewDataSource, UITableViewDelegate
-extension FUVisitPlanController: UITableViewDataSource, UITableViewDelegate {
+extension FUVistExamListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.dataSourceProperty.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(cell: FUVisitPlanCell.self, for: indexPath)
+        let cell = tableView.dequeue(cell: FUVistExamListCell.self, for: indexPath)
         let model = viewModel.dataSourceProperty.value[indexPath.row]
-        cell.model = model
-        cell.rowClosure = { [weak self] type in
-            switch type {
-            case .materials:
-                let vc = PictureListController()
-                vc.title = "完善资料详情"
-                vc.viewModel.getDataFromSelf = false
-                vc.viewModel.dataSourceProperty.value = self?.viewModel.getImgs(model) ?? []
-                self?.push(vc)
-            case .lookFlpExams:
-                let vc = FUVistExamListController()
-                vc.title = "查看随访问卷"
-                vc.viewModel.id = model.id
-                self?.push(vc)
-            }
-        }
+        
+        cell.titleLabel.text = model.examName
+        cell.statusLabel.text = model.isFinished == 1 ? "已完成" : "未完成"
+        
+        let color = model.isFinished == 1 ? UIColor.c407cec : UIColor.cf25555
+        cell.statusLabel.zz_setBorder(color: color, width: 0.5)
+        cell.statusLabel.textColor = color
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        let urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)&view=1"
+        
+        guard let url = URL(string: urlString) else { return }
+        let vc = WebController()
+        vc.url = url
+        vc.titleString = "查看问卷"
+        push(vc)
     }
 }

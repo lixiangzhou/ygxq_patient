@@ -42,7 +42,7 @@ class OrderController: LLSegmentViewController {
 // MARK: - UI
 extension OrderController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "开发票", titleColor: .cf, target: self, action: #selector(getTicketAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "开发票", titleColor: .cf, target: self, action: #selector(getInvoiceAction))
         
         loadSegmentedConfig()
     }
@@ -67,8 +67,8 @@ extension OrderController {
 
 // MARK: - Action
 extension OrderController {
-    @objc private func getTicketAction() {
-        
+    @objc private func getInvoiceAction() {
+        push(InvoiceSelectController())
     }
 }
 

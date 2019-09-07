@@ -18,6 +18,7 @@ enum ServiceApi: TargetType {
     case isMyPrivateDoctor(did: Int, pid: Int, type: String)
     case createWorkOrder(params: [String: Any])
     case buySunnyDrug(params: [String: Any])
+    case querySunshineHutList
 }
 
 extension ServiceApi {
@@ -39,6 +40,8 @@ extension ServiceApi {
             return "/serlong/createWorkOrder"
         case .buySunnyDrug:
             return "/serDrugSunnyBuys/add"
+        case .querySunshineHutList:
+            return "/sunshineHut/querySunshineHutList"
         }
     }
     
@@ -77,6 +80,8 @@ extension ServiceApi {
             for (k, v) in ps {
                 params[k] = v
             }
+        case .querySunshineHutList:
+            break
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

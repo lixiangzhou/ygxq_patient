@@ -20,6 +20,9 @@ enum OrderApi: TargetType {
     case detail(orderId: Int)
     case addProtocol(imgUrl: String, pid: Int)
     case queryBrugOrderInfoByVideoId(vid: Int)
+    case invoiceList(pageNum: Int, pageSize: Int, pid: Int)
+    case invoiceHistory(pageNum: Int, pageSize: Int, pid: Int)
+    case invoiceHistoryDetail(id: Int)
 }
 
 extension OrderApi {
@@ -43,6 +46,12 @@ extension OrderApi {
             return "/order/addPayProtocol"
         case .queryBrugOrderInfoByVideoId:
             return "/order/queryBrugOrderInfoByVideoId"
+        case .invoiceList:
+            return "/order/invoice/list"
+        case .invoiceHistory:
+            return "/order/invoice/historyV2"
+        case .invoiceHistoryDetail:
+            return "/order/invoice/historyV2/details"
         }
     }
     
@@ -80,6 +89,16 @@ extension OrderApi {
             params["puid"] = pid
         case let .queryBrugOrderInfoByVideoId(vid: vid):
             params["id"] = vid
+        case let .invoiceList(pageNum: pn, pageSize: ps, pid: pid):
+            params["pageNum"] = pn
+            params["pageSize"] = ps
+            params["puid"] = pid
+        case let .invoiceHistory(pageNum: pn, pageSize: ps, pid: pid):
+            params["pageNum"] = pn
+            params["pageSize"] = ps
+            params["puid"] = pid
+        case let .invoiceHistoryDetail(id: id):
+            params["id"] = id
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

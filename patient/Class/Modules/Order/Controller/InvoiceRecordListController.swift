@@ -1,40 +1,40 @@
 //
-//  UploadHistoryController.swift
+//  InvoiceRecordListController.swift
 //  patient
 //
-//  Created by lixiangzhou on 2019/9/4.
+//  Created by lixiangzhou on 2019/9/7.
 //Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
 import ReactiveSwift
 
-class UploadHistoryController: BaseController {
+class InvoiceRecordListController: BaseController {
 
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "上传记录"
+        title = "开票历史"
         setUI()
-        viewModel.getData()
         setBinding()
+        viewModel.getData()
     }
 
     // MARK: - Public Property
-    
+    let viewModel = InvoiceRecordListViewModel()
     // MARK: - Private Property
-    private let tableView = UITableView()
-    let viewModel = UploadHistoryViewModel()
+    let tableView = UITableView()
 }
 
 // MARK: - UI
-extension UploadHistoryController {
+extension InvoiceRecordListController {
     override func setUI() {
-        tableView.backgroundColor = .cf
-        tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
-        tableView.register(cell: UploadHistoryCell.self)
+        tableView.backgroundColor = .cf0efef
+        
+        tableView.set(dataSource: self, delegate: self, rowHeight: 90)
+        tableView.register(cell: InvoiceRecordListCell.self)
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { (make) in
@@ -51,34 +51,26 @@ extension UploadHistoryController {
 
 // MARK: -
 // MARK: - UITableViewDataSource, UITableViewDelegate
-extension UploadHistoryController: UITableViewDataSource, UITableViewDelegate {
+extension InvoiceRecordListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.dataSourceProperty.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(cell: UploadHistoryCell.self, for: indexPath)
+        let cell = tableView.dequeue(cell: InvoiceRecordListCell.self, for: indexPath)
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         
-        cell.timeLabel.text = model.title
-        
-        for (idx, v) in cell.itemViews.enumerated() {
-            if idx < model.list.count {
-                v.isHidden = false
-                v.kf.setImage(with: URL(string: model.list[idx]), placeholder: nil)
-            } else {
-                v.isHidden = true
-            }
-        }
-        
+        cell.timeLabel.text = model.createTime.toTime(format: "yyyy-MM-dd HH:mm")
+        cell.priceLabel.text = String(format: "￥%.2f", model.invoiceAmount)
+        cell.statusLabel.text = model.invoiceStatus == 1 ? "开票中" : "已开票"
+                
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSourceProperty.value[indexPath.row]
-        let vc = PictureListController()
-        vc.title = "图片详情"
-        vc.viewModel.time = model.title.zz_date(withDateFormat: "yyyy-MM-dd HH:mm:ss")!.timeIntervalSince1970 * 1000
+        let vc = InvoiceDetailController()
+        vc.viewModel.modelProperty.value = model
         push(vc)
     }
 }

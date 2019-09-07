@@ -18,6 +18,7 @@ class MainTabBarController: BaseTabBarController {
     
     private func addChildControllers() {
         add(HomeController(), title: "首页")
+        add(SunShineHutListController(), title: "服务")
         add(MineController(), title: "我的")
     }
 
