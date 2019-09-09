@@ -17,6 +17,7 @@ class InvoiceDetailController: BaseController {
 
         title = "开票详情"
         setUI()
+        setBinding()
     }
 
     // MARK: - Public Property
@@ -26,7 +27,7 @@ class InvoiceDetailController: BaseController {
     private let contentView = UIView()
     
     private let infoView = InvoiceDetailInfoView()
-    private let expressView = InvoiceDetailExpressView()
+    
 }
 
 // MARK: - UI
@@ -42,7 +43,6 @@ extension InvoiceDetailController {
         scrollView.addSubview(contentView)
         
         contentView.addSubview(infoView)
-        contentView.addSubview(expressView)
         
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -57,15 +57,25 @@ extension InvoiceDetailController {
         infoView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
         }
-        
-        expressView.snp.makeConstraints { (make) in
-            make.top.equalTo(infoView.snp.bottom)
-            make.left.right.equalToSuperview()
-        }
     }
     
     override func setBinding() {
-        
+        viewModel.modelProperty.producer.startWithValues { [weak self] (model) in
+            guard let self = self, let model = model else { return }
+            self.infoView.stateLabel.text = model.invoiceStatus == 1 ? "开票中" : "已开票"
+            if model.finishedTime > 0 {
+                self.infoView.finishTimeLabel.text = model.finishedTime.toTime(format: "yyyy-MM-dd HH:mm")
+            }
+            self.infoView.titleView.rightLabel.text = model.invoiceTitle
+            self.infoView.idNoView.rightLabel.text = model.taxpayerNum
+            self.infoView.amountView.rightLabel.text = String(format: "￥%.2f", model.invoiceAmount)
+            self.infoView.createTimeView.rightLabel.text = model.createTime.toTime(format: "yyyy-MM-dd HH:mm")
+            
+            self.infoView.idNoView.isHidden = model.taxpayerNum.isEmpty
+            self.infoView.amountView.snp.updateConstraints { (make) in
+                make.top.equalTo(self.infoView.titleView.snp.bottom).offset(model.taxpayerNum.isEmpty ? 0 : 50)
+            }
+        }
     }
 }
 
