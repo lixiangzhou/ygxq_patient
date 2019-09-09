@@ -77,32 +77,3 @@ extension InvoiceDetailController {
         push(vc)
     }
 }
-
-// MARK: - Network
-extension InvoiceDetailController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension InvoiceDetailController {
-    
-}
-
-// MARK: - Other
-extension InvoiceDetailController {
-    
-}
-
-// MARK: - Public
-extension InvoiceDetailController {
-    
-}
-

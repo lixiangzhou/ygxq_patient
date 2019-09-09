@@ -109,6 +109,12 @@ extension InvoiceSelectController {
 
     @objc private func nextAction() {
         let vc = InvoiceMakeController()
+        vc.viewModel.orderModels = viewModel.selectedOrders
+        vc.viewModel.submitResultProperty.signal.observeValues { [weak self] (result) in
+            if result {
+                self?.viewModel.getData()
+            }
+        }
         push(vc)
     }
     
@@ -147,23 +153,3 @@ extension InvoiceSelectController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension InvoiceSelectController {
-    
-}
-
-// MARK: - Other
-extension InvoiceSelectController {
-    
-}
-
-// MARK: - Public
-extension InvoiceSelectController {
-    
-}
-

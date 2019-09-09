@@ -23,6 +23,8 @@ enum OrderApi: TargetType {
     case invoiceList(pageNum: Int, pageSize: Int, pid: Int)
     case invoiceHistory(pageNum: Int, pageSize: Int, pid: Int)
     case invoiceHistoryDetail(id: Int)
+    case lastInvoice(pid: Int)
+    case invoiceApply(params: [String: Any])
 }
 
 extension OrderApi {
@@ -52,6 +54,10 @@ extension OrderApi {
             return "/order/invoice/historyV2"
         case .invoiceHistoryDetail:
             return "/order/invoice/historyV2/details"
+        case .lastInvoice:
+            return "/order/invoice/historyV2/last"
+        case .invoiceApply:
+            return "/order/invoice/apply"
         }
     }
     
@@ -99,7 +105,14 @@ extension OrderApi {
             params["puid"] = pid
         case let .invoiceHistoryDetail(id: id):
             params["id"] = id
+        case let .lastInvoice(pid: pid):
+            params["puid"] = pid
+        case let .invoiceApply(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
         }
+        
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }
 }

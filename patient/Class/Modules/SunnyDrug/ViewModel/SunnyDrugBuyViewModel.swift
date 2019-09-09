@@ -13,7 +13,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     let myPrivateDoctorOrderProperty = MutableProperty<OrderModel?>(nil)
     let buyFromLongServiceSuccessProperty = MutableProperty<Bool>(false)
     let orderIdProperty = MutableProperty<Int>(0)
-    let addressModelProperty = MutableProperty<AddressModel?>(nil)
+//    let addressModelProperty = MutableProperty<AddressModel?>(nil)
     let selectImageProperty = MutableProperty<UIImage?>(nil)
     
     var did = 0
@@ -66,9 +66,9 @@ class SunnyDrugBuyViewModel: BaseViewModel {
         }
     }
     
-    func getDefaultAddress() {
-        AddressApi.payDeaultAddress(pid: patientId).rac_responseModel(AddressModel.self).startWithValues { [weak self] (model) in
-            self?.addressModelProperty.value = model
-        }
-    }
+//    func getDefaultAddress() {
+//        AddressApi.payDeaultAddress(pid: patientId).rac_responseModel(AddressModel.self).startWithValues { [weak self] (model) in
+//            self?.addressModelProperty.value = model
+//        }
+//    }
 }

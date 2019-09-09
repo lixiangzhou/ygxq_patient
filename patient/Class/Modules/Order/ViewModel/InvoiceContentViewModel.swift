@@ -15,8 +15,10 @@ class InvoiceContentViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[OrderModel]>([])
     
     func getData() {
-        OrderApi.invoiceHistoryDetail(id: id).rac_responseModel([OrderModel].self).startWithValues { [weak self] (models) in
-            self?.dataSourceProperty.value = models ?? []
+        if id > 0 {        
+            OrderApi.invoiceHistoryDetail(id: id).rac_responseModel([OrderModel].self).startWithValues { [weak self] (models) in
+                self?.dataSourceProperty.value = models ?? []
+            }
         }
     }
 }

@@ -107,6 +107,10 @@
 		101C2EA523237F8200AB4C53 /* InvoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EA423237F8200AB4C53 /* InvoiceModel.swift */; };
 		101C2EA72323891D00AB4C53 /* InvoiceDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EA62323891D00AB4C53 /* InvoiceDetailInfoView.swift */; };
 		101C2EA92323892A00AB4C53 /* InvoiceDetailExpressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EA82323892A00AB4C53 /* InvoiceDetailExpressView.swift */; };
+		101C2EAB2325EE3200AB4C53 /* AddressShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EAA2325EE3200AB4C53 /* AddressShowView.swift */; };
+		101C2EAD2325EF8E00AB4C53 /* AddressShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EAC2325EF8E00AB4C53 /* AddressShowViewModel.swift */; };
+		101C2EAF2325F80600AB4C53 /* InvoiceMakeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EAE2325F80600AB4C53 /* InvoiceMakeInfoView.swift */; };
+		101C2EB123261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EB023261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift */; };
 		1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */; };
 		1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA8D229CD1AD00519CA4 /* FontExtension.swift */; };
 		1030AA90229CD23D00519CA4 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA8F229CD23D00519CA4 /* ColorExtension.swift */; };
@@ -133,7 +137,6 @@
 		1030C2B9231FCA8300F13755 /* MediaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B8231FCA8300F13755 /* MediaApi.swift */; };
 		1030C2BB23209F5500F13755 /* PictureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2BA23209F5500F13755 /* PictureListCell.swift */; };
 		10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10375FDC2304F92400B92403 /* VideoConsultResultController.swift */; };
-		104AD5B9231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5B8231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift */; };
 		104AD5BB231CF745000AD464 /* SunnyDrugBuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */; };
 		104AD5BD231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BC231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift */; };
 		104AD5C1231D20DF000AD464 /* SignNameTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5C0231D20DF000AD464 /* SignNameTipView.swift */; };
@@ -416,6 +419,10 @@
 		101C2EA423237F8200AB4C53 /* InvoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceModel.swift; sourceTree = "<group>"; };
 		101C2EA62323891D00AB4C53 /* InvoiceDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailInfoView.swift; sourceTree = "<group>"; };
 		101C2EA82323892A00AB4C53 /* InvoiceDetailExpressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailExpressView.swift; sourceTree = "<group>"; };
+		101C2EAA2325EE3200AB4C53 /* AddressShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressShowView.swift; sourceTree = "<group>"; };
+		101C2EAC2325EF8E00AB4C53 /* AddressShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressShowViewModel.swift; sourceTree = "<group>"; };
+		101C2EAE2325F80600AB4C53 /* InvoiceMakeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceMakeInfoView.swift; sourceTree = "<group>"; };
+		101C2EB023261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceMakeInfoViewModel.swift; sourceTree = "<group>"; };
 		1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		1030AA8D229CD1AD00519CA4 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		1030AA8F229CD23D00519CA4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -442,7 +449,6 @@
 		1030C2B8231FCA8300F13755 /* MediaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaApi.swift; sourceTree = "<group>"; };
 		1030C2BA23209F5500F13755 /* PictureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListCell.swift; sourceTree = "<group>"; };
 		10375FDC2304F92400B92403 /* VideoConsultResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultController.swift; sourceTree = "<group>"; };
-		104AD5B8231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyAddressView.swift; sourceTree = "<group>"; };
 		104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyViewModel.swift; sourceTree = "<group>"; };
 		104AD5BC231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyIdTipView.swift; sourceTree = "<group>"; };
 		104AD5C0231D20DF000AD464 /* SignNameTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignNameTipView.swift; sourceTree = "<group>"; };
@@ -1268,6 +1274,7 @@
 				101C2E9C232348A700AB4C53 /* InvoiceContentViewModel.swift */,
 				101C2EA62323891D00AB4C53 /* InvoiceDetailInfoView.swift */,
 				101C2EA82323892A00AB4C53 /* InvoiceDetailExpressView.swift */,
+				101C2EB023261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1321,6 +1328,7 @@
 				101C2E9E23234B2F00AB4C53 /* InvoiceSelectCell.swift */,
 				101C2EA023234B4200AB4C53 /* InvoiceRecordListCell.swift */,
 				101C2EA223234B6E00AB4C53 /* InvoiceContentCell.swift */,
+				101C2EAE2325F80600AB4C53 /* InvoiceMakeInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1464,6 +1472,7 @@
 			children = (
 				100AEE3922CA115C00094AE2 /* AddressListCell.swift */,
 				100AEE4522CB306800094AE2 /* SelectDistrictView.swift */,
+				101C2EAA2325EE3200AB4C53 /* AddressShowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1482,6 +1491,7 @@
 				100AEE3D22CA120D00094AE2 /* AddressListViewModel.swift */,
 				100AEE4922CB396D00094AE2 /* SelectDistrictViewModel.swift */,
 				100AEE4D22CB6EEE00094AE2 /* AddressEditViewModel.swift */,
+				101C2EAC2325EF8E00AB4C53 /* AddressShowViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1537,7 +1547,6 @@
 				1059E46E230D1EDA005F5326 /* SunnyDrugOrderAssistWxInfoCell.swift */,
 				108DCE41231CE10A0038F377 /* SunnyDrugBuyIdView.swift */,
 				104AD5BC231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift */,
-				104AD5B8231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1874,6 +1883,7 @@
 				10FF88A62314F29D008148BC /* TaskModel.swift in Sources */,
 				101C2E6F2322480F00AB4C53 /* SunShineHutListCell.swift in Sources */,
 				108DCE42231CE10A0038F377 /* SunnyDrugBuyIdView.swift in Sources */,
+				101C2EAB2325EE3200AB4C53 /* AddressShowView.swift in Sources */,
 				101C2E952323484F00AB4C53 /* InvoiceSelectViewModel.swift in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
@@ -1981,6 +1991,7 @@
 				108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				101C2E932323483400AB4C53 /* InvoiceMakeController.swift in Sources */,
+				101C2EB123261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift in Sources */,
 				10CA472E22F81DC900A4E244 /* PersonInfoEditViewModel.swift in Sources */,
 				100AEE4422CAEBE700094AE2 /* AddressModel.swift in Sources */,
 				100AEE5222CC596000094AE2 /* CaseDetailViewModel.swift in Sources */,
@@ -2063,6 +2074,7 @@
 				1059E457230CEC67005F5326 /* SunnyDrugModel.swift in Sources */,
 				1030AAC3229FD52C00519CA4 /* NetworkConfig.swift in Sources */,
 				100AEE6C22CD8DE800094AE2 /* DrugSunApi.swift in Sources */,
+				101C2EAD2325EF8E00AB4C53 /* AddressShowViewModel.swift in Sources */,
 				104FC4D82316758F00ECB82B /* PayBottomView.swift in Sources */,
 				101C2EA72323891D00AB4C53 /* InvoiceDetailInfoView.swift in Sources */,
 				1059E463230D1642005F5326 /* SunnyDrugOrderPatientInfoCell.swift in Sources */,
@@ -2118,7 +2130,6 @@
 				106DE8CC231771B8001DF4DE /* PayApi.swift in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				101C2E6D2322473F00AB4C53 /* SunShineHutModel.swift in Sources */,
-				104AD5B9231CE6A3000AD464 /* SunnyDrugBuyAddressView.swift in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
 				104FC4D62316757800ECB82B /* PayController.swift in Sources */,
 				100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */,
@@ -2156,6 +2167,7 @@
 				1014D04E2293A6D700294558 /* Locale+ZZExtension.swift in Sources */,
 				1099E71D22C4A5BB00C37A9E /* UploadResourceViewModel.swift in Sources */,
 				104E3AA422B8E5E700A84DB2 /* LLSegmentedControl.swift in Sources */,
+				101C2EAF2325F80600AB4C53 /* InvoiceMakeInfoView.swift in Sources */,
 				104FFB0F2314C9B900E51033 /* FSPagerViewLayoutAttributes.swift in Sources */,
 				101C2E592321F91A00AB4C53 /* FLPApi.swift in Sources */,
 				1030AA90229CD23D00519CA4 /* ColorExtension.swift in Sources */,

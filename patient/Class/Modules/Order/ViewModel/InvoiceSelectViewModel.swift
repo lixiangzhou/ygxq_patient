@@ -40,4 +40,14 @@ class InvoiceSelectViewModel: BaseViewModel {
         
         dataSourceProperty.value = newOrders
     }
+    
+    var selectedOrders: [OrderModel] {
+        var orders = [OrderModel]()
+        for o in dataSourceProperty.value {
+            if o.isSelected {
+                orders.append(o)
+            }
+        }
+        return orders
+    }
 }

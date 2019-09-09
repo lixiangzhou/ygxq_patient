@@ -1,14 +1,14 @@
 //
-//  SunnyDrugBuyAddressView.swift
+//  AddressShowView.swift
 //  patient
 //
-//  Created by lixiangzhou on 2019/9/2.
+//  Created by lixiangzhou on 2019/9/9.
 //Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
 
-class SunnyDrugBuyAddressView: BaseView {
+class AddressShowView: BaseView {
     
     // MARK: - Life Cycle
     
@@ -16,43 +16,20 @@ class SunnyDrugBuyAddressView: BaseView {
         super.init(frame: frame)
         
         setUI()
+        setBinding()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    
     // MARK: - Public Property
-    var addressModel: AddressModel? {
-        didSet {
-            if let model = addressModel {
-                addressView.isHidden = false
-                addView.isHidden = true
-                
-                nameView.rightLabel.text = model.consignee.isEmpty ? "  " : model.consignee
-                mobileView.rightLabel.text = model.mobile.isEmpty ? "  " : model.mobile.mobileSecrectString
-                let addr = model.district + model.address
-                addrView.rightLabel.text = addr.isEmpty ? "  " : addr
-                
-                remarkView.snp.remakeConstraints { (make) in
-                    make.top.equalTo(addressView.snp.bottom)
-                    make.left.right.equalToSuperview()
-                    make.bottom.equalToSuperview()
-                }
-            } else {
-                addressView.isHidden = true
-                addView.isHidden = false
-                
-                remarkView.snp.remakeConstraints { (make) in
-                    make.top.equalTo(addView.snp.bottom)
-                    make.left.right.equalToSuperview()
-                    make.bottom.equalToSuperview()
-                }
-            }
-        }
-    }
-    var addressChangeClosure: (() -> Void)?
-    var addressAddClosure: (() -> Void)?
+    let viewModel = AddressShowViewModel()
+    
+    var hasRemark = true
+    
+    let titleLabel = UILabel(text: "收货地址", font: .size(15), textColor: .c6)
     
     let addView = UIButton(title: "  创建地址", font: .size(18), titleColor: .c407cec, imageName: "sunny_drug_add_addr")
     let addressView = UIView()
@@ -67,12 +44,11 @@ class SunnyDrugBuyAddressView: BaseView {
 }
 
 // MARK: - UI
-extension SunnyDrugBuyAddressView {
+extension AddressShowView {
     private func setUI() {
-        let titleLabel = UILabel(text: "您的收货地址", font: .size(15), textColor: .c6)
         addSubview(titleLabel)
         
-        let changeBtn = zz_add(subview: UIButton(title: "更换地址", font: .size(14), titleColor: .c407cec, target: self, action: #selector(changeAddressAction)))
+        let changeBtn = zz_add(subview: UIButton(title: "更换地址", font: .size(13), titleColor: .c407cec, target: self, action: #selector(changeAddressAction)))
         
         let contentView = zz_add(subview: UIView())
         contentView.zz_setCorner(radius: 6, masksToBounds: true)
@@ -84,24 +60,24 @@ extension SunnyDrugBuyAddressView {
         
         contentView.addSubview(addressView)
         
-        let config = TextLeftGrowTextRightViewConfig(leftWidth: 45, leftFont: .boldSize(15), leftTextColor: .c3, leftAlignment: .center, rightPadding: 15, rightFont: .size(15), rightTextColor: .c3, rightAlignment: .left, leftToRightMargin: 0, bottomLineLeftPadding: 15, bottomLineRightPadding: 15)
+        let config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, leftWidth: 70, leftFont: .size(15), leftTextColor: .c3, leftAlignment: .center, rightPadding: 15, rightTopPadding: 15, rightBottomPadding: 15, rightFont: .size(15), rightTextColor: .c3, rightAlignment: .left, leftToRightMargin: 0, bottomLineLeftPadding: 15, bottomLineRightPadding: 15)
         
         nameView.config = config
         nameView.leftLabel.text = "姓名"
         
         mobileView.config = config
-        mobileView.leftLabel.text = "电话"
+        mobileView.leftLabel.text = "手机号"
         
         addrView.config = config
-        addrView.leftLabel.text = "地址"
+        addrView.leftLabel.text = "收货地址"
         
         addressView.addSubview(nameView)
         addressView.addSubview(mobileView)
         addressView.addSubview(addrView)
         
         contentView.addSubview(remarkView)
-        let remarkLabel = remarkView.zz_add(subview: UILabel(text: "备注", font: .boldSize(15), textColor: .c3))
-
+        let remarkLabel = remarkView.zz_add(subview: UILabel(text: "备注", font: .size(15), textColor: .c3))
+        
         remarkInputView.textView.textColor = .c3
         remarkInputView.textView.font = .size(15)
         remarkInputView.minNumberOfLines = 1
@@ -163,7 +139,7 @@ extension SunnyDrugBuyAddressView {
         remarkLabel.snp.makeConstraints { (make) in
             make.left.equalTo(15)
             make.centerY.equalToSuperview()
-            make.width.equalTo(45)
+            make.width.equalTo(43)
         }
         
         remarkInputView.snp.makeConstraints { (make) in
@@ -174,34 +150,65 @@ extension SunnyDrugBuyAddressView {
         }
     }
     
-    private func addBackupView() {
-        
+    private func setBinding() {
+        viewModel.addressModelProperty.producer.startWithValues { [weak self] (addressModel) in
+            guard let self = self else { return }
+            
+            self.remarkView.isHidden = !self.hasRemark
+            
+            if let model = addressModel {
+                self.addressView.isHidden = false
+                self.addView.isHidden = true
+                
+                self.nameView.rightLabel.text = model.consignee.isEmpty ? "  " : model.consignee
+                self.mobileView.rightLabel.text = model.mobile.isEmpty ? "  " : model.mobile.mobileSecrectString
+                let addr = model.district + model.address
+                self.addrView.rightLabel.text = addr.isEmpty ? "  " : addr
+                
+                self.remarkView.snp.remakeConstraints { (make) in
+                    make.top.equalTo(self.addressView.snp.bottom)
+                    make.left.right.equalToSuperview()
+                    make.bottom.equalToSuperview()
+                    if !self.hasRemark {
+                        make.height.equalTo(0)
+                    }
+                }
+            } else {
+                self.addressView.isHidden = true
+                self.addView.isHidden = false
+                
+                self.remarkView.snp.remakeConstraints { (make) in
+                    make.top.equalTo(self.addView.snp.bottom)
+                    make.left.right.equalToSuperview()
+                    make.bottom.equalToSuperview()
+                    if !self.hasRemark {
+                        make.height.equalTo(0)
+                    }
+                }
+            }
+        }
     }
 }
 
 // MARK: - Action
-extension SunnyDrugBuyAddressView {
+extension AddressShowView {
     @objc private func changeAddressAction() {
-        addressChangeClosure?()
+        let vc = AddressListController()
+        vc.didSelectAddressClosure = { [weak self] model in
+            if model == nil {
+                self?.viewModel.getDefaultAddress()
+            } else {
+                self?.viewModel.addressModelProperty.value = model
+            }
+        }
+        zz_controller?.push(vc)
     }
     
     @objc private func addAddressAction() {
-        addressAddClosure?()
+        let vc = AddressEditController()
+        vc.completionClosure = { [weak self] in
+            self?.viewModel.getDefaultAddress()
+        }
+        zz_controller?.push(vc)
     }
-
-}
-
-// MARK: - Helper
-extension SunnyDrugBuyAddressView {
-    
-}
-
-// MARK: - Other
-extension SunnyDrugBuyAddressView {
-    
-}
-
-// MARK: - Public
-extension SunnyDrugBuyAddressView {
-    
 }

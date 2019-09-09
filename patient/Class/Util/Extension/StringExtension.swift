@@ -23,4 +23,10 @@ extension String {
         }
         return count != 11 ? self : zz_replace(start: 3, length: 4, with: "*")
     }
+    
+    func needed(with font: UIFont, color: UIColor) -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+        attributeString.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
+        return attributeString
+    }
 }

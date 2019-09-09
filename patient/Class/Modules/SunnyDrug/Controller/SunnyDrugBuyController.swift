@@ -21,7 +21,7 @@ class SunnyDrugBuyController: BaseController {
         title = "请填写购药信息"
         setUI()
         setBinding()
-        viewModel.getDefaultAddress()
+        addressView.viewModel.getDefaultAddress()
         viewModel.getPrivateDoctor()
     }
 
@@ -32,7 +32,7 @@ class SunnyDrugBuyController: BaseController {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let idView = SunnyDrugBuyIdView()
-    private let addressView = SunnyDrugBuyAddressView()
+    private let addressView = AddressShowView()
     private let buyBtn = UIButton(title: "购买", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
 }
 
@@ -42,6 +42,7 @@ extension SunnyDrugBuyController {
         scrollView.backgroundColor = .cf0efef
         scrollView.alwaysBounceVertical = true
         scrollView.keyboardDismissMode = .onDrag
+        scrollView.showsVerticalScrollIndicator = false
         view.addSubview(scrollView)
         
         contentView.backgroundColor = .cf0efef
@@ -94,8 +95,7 @@ extension SunnyDrugBuyController {
     }
     
     override func setBinding() {
-        viewModel.addressModelProperty.producer.startWithValues { [weak self] (model) in
-            self?.addressView.addressModel = model
+        addressView.viewModel.addressModelProperty.producer.startWithValues { [weak self] (model) in
             self?.updateContentHeight()
         }
         
@@ -113,7 +113,7 @@ extension SunnyDrugBuyController {
         }
         
         let imgEnabled = SignalProducer<Bool, NoError>(value: false).concat(viewModel.selectImageProperty.producer.skipNil().map(value: true))
-        let addressEnabled = SignalProducer<Bool, NoError>(value: false).concat(viewModel.addressModelProperty.producer.skipNil().map(value: true))
+        let addressEnabled = SignalProducer<Bool, NoError>(value: false).concat(addressView.viewModel.addressModelProperty.producer.skipNil().map(value: true))
         let buyEnabled = imgEnabled.and(addressEnabled)
         
         buyBtn.reactive.isUserInteractionEnabled <~ buyEnabled
@@ -139,30 +139,10 @@ extension SunnyDrugBuyController {
             }
             self?.present(vc, animated: true, completion: nil)
         }
-        
-        addressView.addressAddClosure = { [weak self] in
-            let vc = AddressEditController()
-            vc.completionClosure = { [weak self] in
-                self?.viewModel.getDefaultAddress()
-            }
-            self?.push(vc)
-        }
-        
-        addressView.addressChangeClosure = { [weak self] in
-            let vc = AddressListController()
-            vc.didSelectAddressClosure = { model in
-                if model == nil {
-                    self?.viewModel.getDefaultAddress()
-                } else {
-                    self?.viewModel.addressModelProperty.value = model
-                }
-            }
-            self?.push(vc)
-        }
     }
     
     @objc private func buyAction() {
-        guard let model = viewModel.addressModelProperty.value else { return }
+        guard let model = addressView.viewModel.addressModelProperty.value else { return }
         
         var params: [String: Any] = [
             "address": model.district + model.address,
