@@ -38,10 +38,6 @@ extension ProfileController {
         tableView.tableHeaderView = headerView
         view.addSubview(tableView)
         
-        headerView.uploadClosure = { [unowned self] in
-            self.uploadAction()
-        }
-        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -60,19 +56,6 @@ extension ProfileController {
             self?.tableView.tableHeaderView = self?.headerView
         }
     }
-}
-
-// MARK: - Action
-extension ProfileController {
-    private func uploadAction() {
-        let vc = UploadResourceController()
-        vc.title = "上传资料"
-        push(vc)
-    }
-}
-
-// MARK: - Network
-extension ProfileController {
 }
 
 // MARK: - Delegate Internal
@@ -105,23 +88,3 @@ extension ProfileController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension ProfileController {
-    
-}
-
-// MARK: - Other
-extension ProfileController {
-    
-}
-
-// MARK: - Public
-extension ProfileController {
-    
-}
-

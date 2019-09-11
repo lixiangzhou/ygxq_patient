@@ -14,6 +14,8 @@ enum ConsultApi: TargetType {
     case getVideoConsult(id: Int)
     case remindDoctor(id: Int)
     case pushMsg(uid: Int)
+    case addResources(pid: Int, id: Int, imgs: [String])
+    
 }
 
 extension ConsultApi {
@@ -27,6 +29,8 @@ extension ConsultApi {
             return "/serConsultVideo/remindDoctorFaceTime"
         case .pushMsg:
             return "/common/getCmnPushMsg/page"
+        case .addResources:
+            return "/serConsultVideo/addResources"
         }
     }
     
@@ -48,6 +52,11 @@ extension ConsultApi {
             params["pageSize"] = 1
             params["type"] = "CMN_MSG_T"
             params["uid"] = uid
+        case let .addResources(pid: pid, id: id, imgs: imgs):
+            params["fromWhere"] = 1
+            params["id"] = id
+            params["imgs"] = imgs
+//            params["puid"] = pid
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

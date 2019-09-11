@@ -193,6 +193,7 @@ extension HomeController {
     private func toUploadResource() {
         let vc = UploadResourceController()
         vc.title = "完善资料"
+        vc.viewModel.type = .default
         push(vc)
     }
 }

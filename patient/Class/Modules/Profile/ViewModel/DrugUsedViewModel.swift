@@ -25,7 +25,7 @@ class DrugUsedViewModel: BaseViewModel {
     let dataSourceProperty: MutableProperty<[GroupModel]> = MutableProperty([])
     
     func getData() {
-        DrugSunApi.usedDrugs(pid: patientId).rac_responseModel(Dictionary<String, Any>.self).skipNil().startWithValues { [unowned self] dict in
+        SunnyDrugApi.usedDrugs(pid: patientId).rac_responseModel(Dictionary<String, Any>.self).skipNil().startWithValues { [unowned self] dict in
             let keys = dict.keys.sorted()
             var array = [GroupModel]()
             for (idx, key) in keys.enumerated() {

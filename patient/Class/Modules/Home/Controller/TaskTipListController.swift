@@ -106,6 +106,14 @@ extension TaskTipListController {
         let vc = UploadResourceController()
         vc.title = "完善资料"
         vc.tipString = model.content
+        switch model.subType {
+        case "CMN_MSG_T_05_03": // 视频
+            vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_04": // 购药
+            vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
+        default:
+            break
+        }
         push(vc)
     }
     
@@ -118,7 +126,7 @@ extension TaskTipListController {
             vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
         case "CMN_MSG_T_05_02": // 购药
             vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
-        case "CMN_MSG_T_05_06": // 问卷
+        case "CMN_MSG_T_05_06": // 随访
             vc.viewModel.type = .flp(id: model.id, linkId: model.linkId)
         default:
             break

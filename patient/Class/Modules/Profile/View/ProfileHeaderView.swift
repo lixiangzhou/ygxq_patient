@@ -29,7 +29,6 @@ class ProfileHeaderView: BaseView {
     var ageLabel: UILabel!
     var diseaseLabel: UILabel!
     
-    var uploadClosure: (() -> Void)?
     // MARK: - Private Property
 }
 
@@ -86,9 +85,3 @@ extension ProfileHeaderView {
     }
 }
 
-// MARK: - Action
-extension ProfileHeaderView {
-    @objc private func uploadAction() {
-        uploadClosure?()
-    }
-}

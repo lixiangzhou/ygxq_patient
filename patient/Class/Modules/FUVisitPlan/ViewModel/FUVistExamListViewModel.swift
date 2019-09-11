@@ -51,7 +51,7 @@ class FUVistExamListViewModel: BaseViewModel {
                 self?.dataSourceProperty.value = models ?? []
             }
         case let .sunnyDrug(id: _, linkId: linkId):
-            DrugSunApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
+            SunnyDrugApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
                 self?.getList(model)
             }
         }
@@ -106,9 +106,5 @@ extension FUVistExamListViewModel {
                 return 0
             }
         }
-    }
-    
-    enum UploadType {
-        case sunnyDrug
     }
 }

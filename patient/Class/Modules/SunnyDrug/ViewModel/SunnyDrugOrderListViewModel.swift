@@ -21,7 +21,7 @@ class SunnyDrugOrderListViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[SunnyDrugOrderModel]>([SunnyDrugOrderModel]())
     
     func getData() {
-        DrugSunApi.orders(pid: patientId, state: state).rac_responseModel([SunnyDrugOrderModel].self).skipNil().startWithValues { [weak self] (orders) in
+        SunnyDrugApi.orders(pid: patientId, state: state).rac_responseModel([SunnyDrugOrderModel].self).skipNil().startWithValues { [weak self] (orders) in
             self?.dataSourceProperty.value = orders
         }
     }

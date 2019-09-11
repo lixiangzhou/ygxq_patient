@@ -35,7 +35,7 @@ class SunnyDrugOrderDetailViewModel: BaseViewModel {
     }
     
     func getData() {
-        DrugSunApi.orderInfo(id: id).rac_responseModel(SunnyDrugOrderModel.self).skipNil().startWithValues { [weak self] (model) in
+        SunnyDrugApi.orderInfo(id: id).rac_responseModel(SunnyDrugOrderModel.self).skipNil().startWithValues { [weak self] (model) in
             guard let self = self else { return }
             var models = self.dataSourceProperty.value
             models.removeAll(where: { model in

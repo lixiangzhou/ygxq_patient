@@ -126,8 +126,8 @@ extension UploadResourceController {
             }
         }
         
-        viewModel.uploadStatusProperty.signal.observeValues { [weak self] (uploaded) in
-            if uploaded {
+        viewModel.canPopProperty.signal.observeValues { [weak self] (canPop) in
+            if canPop {
                 self?.pop()
             }
         }
