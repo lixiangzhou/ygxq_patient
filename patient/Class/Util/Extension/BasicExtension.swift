@@ -36,7 +36,7 @@ extension Collection where Iterator.Element: ModelProtocol {
                     jsonData = try JSONSerialization.data(withJSONObject: anyArray, options: [])
                 }
                 return String(data: jsonData, encoding: .utf8)
-            } catch let error {
+            } catch {
                 
             }
         } else {

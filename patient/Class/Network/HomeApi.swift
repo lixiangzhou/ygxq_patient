@@ -22,11 +22,10 @@ extension HomeApi {
     }
     
     var task: Task {
-        var params = [String: Any]()
         switch self {
         case .bannerList: break
         }
-        return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+        return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
     }
 }
 

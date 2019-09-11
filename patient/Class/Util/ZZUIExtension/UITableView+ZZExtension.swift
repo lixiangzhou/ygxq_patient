@@ -43,7 +43,7 @@ public extension UITableView {
 }
 
 
-extension UITableView: UIGestureRecognizerDelegate {
+extension UITableView {
     // MARK: 监听
     @objc func gestureProcess(gesture: UILongPressGestureRecognizer) {
         let point = gesture.location(in: self)
@@ -101,7 +101,7 @@ extension UITableView: UIGestureRecognizerDelegate {
 
     
     // MARK: 辅助
-    fileprivate enum EndgeScrollDirection {
+    private enum EndgeScrollDirection {
         case top, bottom
     }
     
@@ -247,7 +247,7 @@ private var movableViewTagKey: Void?
 
 extension UITableView {
     /// 拖动长按手势
-    fileprivate var movableLongPressGesture: UILongPressGestureRecognizer {
+    private var movableLongPressGesture: UILongPressGestureRecognizer {
         get {
             var longPressGesture = objc_getAssociatedObject(self, &longPressGestureKey) as? UILongPressGestureRecognizer
             if longPressGesture == nil {
@@ -262,27 +262,27 @@ extension UITableView {
     }
  
     /// 开始拖动时cell的快照
-    fileprivate var startCellSnap: UIImageView! {
+    private var startCellSnap: UIImageView! {
         set {
             objc_setAssociatedObject(self, &startCellSnapKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return objc_getAssociatedObject(self, &startCellSnapKey) as! UIImageView
+            return (objc_getAssociatedObject(self, &startCellSnapKey) as! UIImageView)
         }
     }
     
     /// 开始拖动的IndexPath
-    fileprivate var startIndexPath: IndexPath! {
+    private var startIndexPath: IndexPath! {
         set {
             objc_setAssociatedObject(self, &startIndexPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return objc_getAssociatedObject(self, &startIndexPathKey) as! IndexPath
+            return (objc_getAssociatedObject(self, &startIndexPathKey) as! IndexPath)
         }
     }
     
     /// 拖动方向
-    fileprivate var edgeScrollDirection: EndgeScrollDirection {
+    private var edgeScrollDirection: EndgeScrollDirection {
         set {
             objc_setAssociatedObject(self, &edgeScrollDirectionKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -292,7 +292,7 @@ extension UITableView {
     }
     
     /// 自动滚动定时器
-    fileprivate var timer: CADisplayLink! {
+    private var timer: CADisplayLink! {
         set {
             objc_setAssociatedObject(self, &timerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -302,18 +302,18 @@ extension UITableView {
     }
     
     /// 拖动代理
-    fileprivate weak var movableDelegate: ZZTableViewMovableCellDelegate! {
+    private weak var movableDelegate: ZZTableViewMovableCellDelegate! {
         set {
             objc_setAssociatedObject(self, &movableDelegateKey, newValue, .OBJC_ASSOCIATION_ASSIGN)
         }
         get {
-            return objc_getAssociatedObject(self, &movableDelegateKey) as! ZZTableViewMovableCellDelegate
+            return (objc_getAssociatedObject(self, &movableDelegateKey) as! ZZTableViewMovableCellDelegate)
         }
 
     }
     
     /// 边界滚动速度
-    fileprivate var edgeScrollSpeed: Double {
+    private var edgeScrollSpeed: Double {
         set {
             objc_setAssociatedObject(self, &edgeScrollSpeedKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -323,7 +323,7 @@ extension UITableView {
     }
 
     /// cell 中可以拖动的View的 tag, 0 时则整个cell拖动
-    fileprivate var movableViewTag: Int {
+    private var movableViewTag: Int {
         set {
             objc_setAssociatedObject(self, &movableViewTagKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }

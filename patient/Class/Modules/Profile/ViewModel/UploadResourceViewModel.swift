@@ -62,21 +62,19 @@ extension UploadResourceViewModel {
                         self?.uploadStatusProperty.value = resp.isSuccess
                     }
                 case .sunnyDrug:
-                    SunnyDrugApi.addResources(pid: patientId, id: self.type.linkId, imgs: urls).rac_response(None.self).startWithValues { [weak self] (resp) in
+                    SunnyDrugApi.addResources(id: self.type.linkId, imgs: urls).rac_response(None.self).startWithValues { [weak self] (resp) in
                         HUD.hideLoding()
                         UIApplication.shared.endIgnoringInteractionEvents()
                         HUD.show(BoolString(resp))
                         self?.uploadStatusProperty.value = resp.isSuccess
                     }
                 case .video:
-                    ConsultApi.addResources(pid: patientId, id: self.type.linkId, imgs: urls).rac_response(None.self).startWithValues { [weak self] (resp) in
+                    ConsultApi.addResources(id: self.type.linkId, imgs: urls).rac_response(None.self).startWithValues { [weak self] (resp) in
                         HUD.hideLoding()
                         UIApplication.shared.endIgnoringInteractionEvents()
                         HUD.show(BoolString(resp))
                         self?.uploadStatusProperty.value = resp.isSuccess
                     }
-                default:
-                    break
                 }
                 
                 

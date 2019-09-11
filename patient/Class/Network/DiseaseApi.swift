@@ -22,12 +22,11 @@ extension DiseaseApi {
     }
     
     var task: Task {
-        var params = [String: Any]()
         switch self {
         case .diseasetypes:
             break
         }
         
-        return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+        return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
     }
 }

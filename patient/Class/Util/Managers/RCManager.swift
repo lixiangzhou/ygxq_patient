@@ -225,34 +225,6 @@ extension RCManager: RCIMUserInfoDataSource {
     }
 }
 
-// MARK: - RCCallSessionDelegate
-extension RCManager: RCCallSessionDelegate {
-    func callDidConnect() {
-        print(#function)
-    }
-    
-    func callDidDisconnect() {
-        print(#function)
-    }
-}
-
-// MARK: - RCCallReceiveDelegate
-extension RCManager: RCCallReceiveDelegate {
-    func didReceiveCall(_ callSession: RCCallSession!) {
-        print(#function)
-        callSession.setDelegate(self)
-        callSession.accept(.video)
-    }
-    
-    func didReceiveCallRemoteNotification(_ callId: String!, inviterUserId: String!, mediaType: RCCallMediaType, userIdList: [Any]!, userDict: [AnyHashable : Any]!) {
-        print(#function)
-    }
-    
-    func didCancelCallRemoteNotification(_ callId: String!, inviterUserId: String!, mediaType: RCCallMediaType, userIdList: [Any]!) {
-        print(#function)
-    }
-}
-
 /// TokenModel
 struct RCModel: ModelProtocol {
     var rcToken = ""

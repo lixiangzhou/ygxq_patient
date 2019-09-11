@@ -93,10 +93,9 @@ extension PayController {
                         vc.resultAction = self?.viewModel.resultAction
                         vc.viewModel.duid = self?.viewModel.orderProperty.value?.duid ?? 0
                         self?.push(vc)
-                    default:
-                        self?.pop()
-                        break
                     }
+                } else {
+                    self?.pop()
                 }
             case -1:
                 if !resp.errStr.isEmpty {

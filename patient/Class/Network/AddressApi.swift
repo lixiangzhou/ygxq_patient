@@ -36,8 +36,6 @@ extension AddressApi {
             return "/common/getareaListByFid"
         case .payDeaultAddress:
             return "/payAddressManage/queryDefault"
-        default:
-            break
         }
     }
     
@@ -72,8 +70,6 @@ extension AddressApi {
             params["id"] = id
         case let .payDeaultAddress(pid: pid):
             params["puid"] = pid
-        default:
-            break
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

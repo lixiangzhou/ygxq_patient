@@ -224,7 +224,7 @@ extension UIImage {
         
 //        var tempData = Data()
         var start = 0
-        var end = arr.count - 1
+        let end = arr.count - 1
         var index = 0
         
 //        var difference = Int.max

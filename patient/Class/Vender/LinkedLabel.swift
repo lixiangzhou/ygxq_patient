@@ -23,7 +23,7 @@ public class LinkedLabel: UILabel {
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = textAlignment
-        let attributedText = NSMutableAttributedString(string: text!, attributes: [.font: font, .foregroundColor: textColor, .paragraphStyle: paragraphStyle])
+        let attributedText = NSMutableAttributedString(string: text!, attributes: [.font: font!, .foregroundColor: textColor!, .paragraphStyle: paragraphStyle])
         self.attributedText = attributedText
 
         links.forEach { addAttributes(for: $0, isHighlighted: false) }

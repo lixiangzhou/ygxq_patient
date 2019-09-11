@@ -82,8 +82,6 @@ extension BaseShowView {
             maker.height.equalTo(UIScreen.main.bounds.width)
             maker.center.equalTo(UIApplication.shared.keyWindow!)
         })
-
-        let orientation = UIDevice.current.orientation
         alpha = 0
         
         UIApplication.shared.beginIgnoringInteractionEvents()
@@ -94,7 +92,6 @@ extension BaseShowView {
         }) { (_) in
             UIApplication.shared.endIgnoringInteractionEvents()
         }
-        UIApplication.shared.statusBarOrientation = UIInterfaceOrientation(rawValue: orientation.rawValue)!
     }
 
     
@@ -125,7 +122,6 @@ extension BaseShowView {
         }) { (_) in
             UIApplication.shared.endIgnoringInteractionEvents()
         }
-        UIApplication.shared.statusBarOrientation = UIInterfaceOrientation(rawValue: orientation.rawValue)!
     }
 }
 

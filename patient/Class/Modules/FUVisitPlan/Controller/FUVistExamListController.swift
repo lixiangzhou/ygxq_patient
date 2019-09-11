@@ -105,8 +105,6 @@ extension FUVistExamListController: UITableViewDataSource, UITableViewDelegate {
             urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=1&qid=\(model.id)&pid=\(patientId)&sid=\(linkId)&client=2"
         case .flp:
             urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)"
-        default:
-            break
         }
         
         

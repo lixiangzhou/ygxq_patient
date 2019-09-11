@@ -65,12 +65,12 @@ class FUVistExamListViewModel: BaseViewModel {
                         let idx = item.firstIndex(of: ":")!
                         return (String(item[..<idx]), String(item[item.index(after: idx)...]))
                     } {
-                    
+
                     var ids = [Int]()
                     for r in results {
                         ids.append(Int(r.0) ?? 0)
                     }
-                    
+
                     let values = models ?? []
                     var newValues = [ExamModel]()
                     for v in values {
@@ -79,7 +79,7 @@ class FUVistExamListViewModel: BaseViewModel {
                         newValues.append(newV)
                     }
                     self?.dataSourceProperty.value = newValues
-                }
+                }                
             } else {
                 self?.dataSourceProperty.value = models ?? []
             }

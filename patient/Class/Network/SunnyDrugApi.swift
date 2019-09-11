@@ -14,7 +14,7 @@ enum SunnyDrugApi: TargetType {
     case orders(pid: Int, state: SunnyDrugOrderState)
     case orderInfo(id: Int)
     case queryExamResult(id: Int)
-    case addResources(pid: Int, id: Int, imgs: [String])
+    case addResources(id: Int, imgs: [String])
 }
 
 extension SunnyDrugApi {
@@ -30,8 +30,6 @@ extension SunnyDrugApi {
             return "/serDrugSunnyBuys/queryExamResult"
         case .addResources:
             return "/serDrugSunnyBuys/addResources"
-        default:
-            break
         }
     }
     
@@ -47,13 +45,10 @@ extension SunnyDrugApi {
             params["id"] = id
         case let .queryExamResult(id: id):
             params["id"] = id
-        case let .addResources(pid: pid, id: id, imgs: imgs):
+        case let .addResources(id: id, imgs: imgs):
             params["fromWhere"] = 1
             params["id"] = id
             params["imgs"] = imgs
-//            params["puid"] = pid
-        default:
-            break
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
