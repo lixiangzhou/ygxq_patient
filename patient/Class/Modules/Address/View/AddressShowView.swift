@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/9.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -34,9 +34,9 @@ class AddressShowView: BaseView {
     let addView = UIButton(title: "  创建地址", font: .size(18), titleColor: .c407cec, imageName: "sunny_drug_add_addr")
     let addressView = UIView()
     
-    let nameView = TextLeftGrowTextRightView()
-    let mobileView = TextLeftGrowTextRightView()
-    let addrView = TextLeftGrowTextRightView()
+    let nameLabel = UILabel(font: .size(15), textColor: .c3)
+    let mobileLabel = UILabel(font: .size(15), textColor: .c3)
+    let addressLabel = UILabel(font: .size(15), textColor: .c3)
     
     let remarkView = UIView()
     let remarkInputView = NextGrowingTextView()
@@ -48,8 +48,6 @@ extension AddressShowView {
     private func setUI() {
         addSubview(titleLabel)
         
-        let changeBtn = zz_add(subview: UIButton(title: "更换地址", font: .size(13), titleColor: .c407cec, target: self, action: #selector(changeAddressAction)))
-        
         let contentView = zz_add(subview: UIView())
         contentView.zz_setCorner(radius: 6, masksToBounds: true)
         contentView.backgroundColor = .cf
@@ -59,21 +57,11 @@ extension AddressShowView {
         contentView.addSubview(addView)
         
         contentView.addSubview(addressView)
-        
-        let config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, leftWidth: 70, leftFont: .size(15), leftTextColor: .c3, leftAlignment: .center, rightPadding: 15, rightTopPadding: 15, rightBottomPadding: 15, rightFont: .size(15), rightTextColor: .c3, rightAlignment: .left, leftToRightMargin: 0, bottomLineLeftPadding: 15, bottomLineRightPadding: 15)
-        
-        nameView.config = config
-        nameView.leftLabel.text = "姓名"
-        
-        mobileView.config = config
-        mobileView.leftLabel.text = "手机号"
-        
-        addrView.config = config
-        addrView.leftLabel.text = "收货地址"
-        
-        addressView.addSubview(nameView)
-        addressView.addSubview(mobileView)
-        addressView.addSubview(addrView)
+
+        addressView.addSubview(nameLabel)
+        addressView.addSubview(mobileLabel)
+        addressView.addSubview(addressLabel)
+        let changeBtn = addressView.zz_add(subview: UIButton(title: "更换地址", font: .size(15), titleColor: .c407cec, target: self, action: #selector(changeAddressAction)))
         
         contentView.addSubview(remarkView)
         let remarkLabel = remarkView.zz_add(subview: UILabel(text: "备注", font: .size(15), textColor: .c3))
@@ -89,16 +77,14 @@ extension AddressShowView {
         remarkInputView.placeholderAttributedText = attrString
         remarkView.addSubview(remarkInputView)
         
+        let line = remarkView.zz_add(subview: UIView())
+        line.backgroundColor = .cdcdcdc
+        
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.height.equalTo(45)
-        }
-        
-        changeBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(-15)
-            make.centerY.height.equalTo(titleLabel)
         }
         
         contentView.snp.makeConstraints { (make) in
@@ -110,19 +96,30 @@ extension AddressShowView {
         addressView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
         }
-        
-        nameView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
+
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.left.equalTo(15)
+            make.height.equalTo(16)
         }
         
-        mobileView.snp.makeConstraints { (make) in
-            make.top.equalTo(nameView.snp.bottom)
-            make.left.right.equalToSuperview()
+        mobileLabel.snp.makeConstraints { (make) in
+            make.top.height.equalTo(nameLabel)
+            make.left.equalTo(nameLabel.snp.right).offset(10)
+            make.right.lessThanOrEqualTo(changeBtn.snp.left).offset(-5)
+            make.width.equalTo(0)
         }
         
-        addrView.snp.makeConstraints { (make) in
-            make.top.equalTo(mobileView.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
+        changeBtn.snp.makeConstraints { (make) in
+            make.centerY.equalTo(nameLabel)
+            make.right.equalTo(-15)
+            make.height.equalTo(40)
+            make.width.equalTo(changeBtn.zz_width)
+        }
+        
+        addressLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom).offset(15)
+            make.left.equalTo(15)
+            make.bottom.right.equalTo(-15)
         }
         
         addView.snp.makeConstraints { (make) in
@@ -134,6 +131,13 @@ extension AddressShowView {
             make.top.equalTo(addressView.snp.bottom)
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+        
+        line.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+            make.height.equalTo(0.5)
         }
         
         remarkLabel.snp.makeConstraints { (make) in
@@ -159,11 +163,11 @@ extension AddressShowView {
             if let model = addressModel {
                 self.addressView.isHidden = false
                 self.addView.isHidden = true
-                
-                self.nameView.rightLabel.text = model.consignee.isEmpty ? "  " : model.consignee
-                self.mobileView.rightLabel.text = model.mobile.isEmpty ? "  " : model.mobile.mobileSecrectString
+
+                self.nameLabel.text = model.consignee.isEmpty ? "  " : model.consignee
+                self.mobileLabel.text = model.mobile.isEmpty ? "  " : model.mobile.mobileSecrectString
                 let addr = model.district + model.address
-                self.addrView.rightLabel.text = addr.isEmpty ? "  " : addr
+                self.addressLabel.text = addr.isEmpty ? "  " : addr
                 
                 self.remarkView.snp.remakeConstraints { (make) in
                     make.top.equalTo(self.addressView.snp.bottom)
@@ -172,6 +176,11 @@ extension AddressShowView {
                     if !self.hasRemark {
                         make.height.equalTo(0)
                     }
+                }
+                
+                self.mobileLabel.sizeToFit()
+                self.mobileLabel.snp.updateConstraints { (make) in
+                    make.width.equalTo(self.mobileLabel.zz_width)
                 }
             } else {
                 self.addressView.isHidden = true

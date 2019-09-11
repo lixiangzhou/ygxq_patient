@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Moya
 
 let context = Context.develop
 
@@ -33,7 +32,7 @@ struct NetworkConfig {
         case .release:
             return URL(string: "http://www.lightheart.com.cn/shdr-pay")!
         case .test:
-            return URL(string: "http://172.21.24.251:8889/shdr-pay")!
+            return URL(string: "http://172.21.24.251:5082/shdr-pay")!
         case .develop:
             return URL(string: "http://172.21.24.252:5082/shdr-pay")!
         }

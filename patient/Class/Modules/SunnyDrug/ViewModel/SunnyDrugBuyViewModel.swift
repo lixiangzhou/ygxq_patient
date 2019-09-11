@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/2.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -13,7 +13,6 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     let myPrivateDoctorOrderProperty = MutableProperty<OrderModel?>(nil)
     let buyFromLongServiceSuccessProperty = MutableProperty<Bool>(false)
     let orderIdProperty = MutableProperty<Int>(0)
-//    let addressModelProperty = MutableProperty<AddressModel?>(nil)
     let selectImageProperty = MutableProperty<UIImage?>(nil)
     
     var did = 0
@@ -65,10 +64,5 @@ class SunnyDrugBuyViewModel: BaseViewModel {
             self?.myPrivateDoctorOrderProperty.value = value
         }
     }
-    
-//    func getDefaultAddress() {
-//        AddressApi.payDeaultAddress(pid: patientId).rac_responseModel(AddressModel.self).startWithValues { [weak self] (model) in
-//            self?.addressModelProperty.value = model
-//        }
-//    }
+
 }

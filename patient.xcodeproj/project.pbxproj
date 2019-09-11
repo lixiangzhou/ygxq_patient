@@ -110,6 +110,9 @@
 		101C2EAD2325EF8E00AB4C53 /* AddressShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EAC2325EF8E00AB4C53 /* AddressShowViewModel.swift */; };
 		101C2EAF2325F80600AB4C53 /* InvoiceMakeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EAE2325F80600AB4C53 /* InvoiceMakeInfoView.swift */; };
 		101C2EB123261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EB023261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift */; };
+		101C2EB323276AD200AB4C53 /* HutPackageDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EB223276AD200AB4C53 /* HutPackageDetailController.swift */; };
+		101C2EB523276AF500AB4C53 /* HutPackageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EB423276AF500AB4C53 /* HutPackageDetailViewModel.swift */; };
+		101C2EB7232885AA00AB4C53 /* TaskWorkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EB6232885AA00AB4C53 /* TaskWorkApi.swift */; };
 		1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */; };
 		1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA8D229CD1AD00519CA4 /* FontExtension.swift */; };
 		1030AA90229CD23D00519CA4 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA8F229CD23D00519CA4 /* ColorExtension.swift */; };
@@ -421,6 +424,9 @@
 		101C2EAC2325EF8E00AB4C53 /* AddressShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressShowViewModel.swift; sourceTree = "<group>"; };
 		101C2EAE2325F80600AB4C53 /* InvoiceMakeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceMakeInfoView.swift; sourceTree = "<group>"; };
 		101C2EB023261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceMakeInfoViewModel.swift; sourceTree = "<group>"; };
+		101C2EB223276AD200AB4C53 /* HutPackageDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailController.swift; sourceTree = "<group>"; };
+		101C2EB423276AF500AB4C53 /* HutPackageDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailViewModel.swift; sourceTree = "<group>"; };
+		101C2EB6232885AA00AB4C53 /* TaskWorkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorkApi.swift; sourceTree = "<group>"; };
 		1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		1030AA8D229CD1AD00519CA4 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		1030AA8F229CD23D00519CA4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -831,6 +837,7 @@
 				1030C2B8231FCA8300F13755 /* MediaApi.swift */,
 				101C2E582321F91A00AB4C53 /* FLPApi.swift */,
 				101C2E70232263FD00AB4C53 /* ECGApi.swift */,
+				101C2EB6232885AA00AB4C53 /* TaskWorkApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1427,6 +1434,7 @@
 				105039F42306A285000E90F0 /* LongServicesController.swift */,
 				105039F62306A298000E90F0 /* LongServiceController.swift */,
 				101C2E682322465E00AB4C53 /* SunShineHutListController.swift */,
+				101C2EB223276AD200AB4C53 /* HutPackageDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1437,6 +1445,7 @@
 				10676BF723069BD9004A6419 /* LongServiceDoctorListViewModel.swift */,
 				105039F82306A304000E90F0 /* LongServiceViewModel.swift */,
 				101C2E6A2322468000AB4C53 /* SunShineHutListViewModel.swift */,
+				101C2EB423276AF500AB4C53 /* HutPackageDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1913,6 +1922,7 @@
 				108C080422BB635D00B2EBE9 /* ApplyForRefundViewModel.swift in Sources */,
 				101C2E652322333D00AB4C53 /* FUVistExamListViewModel.swift in Sources */,
 				108C080222BB611B00B2EBE9 /* TextLeftRightCell.swift in Sources */,
+				101C2EB523276AF500AB4C53 /* HutPackageDetailViewModel.swift in Sources */,
 				108C081F22BCFAA800B2EBE9 /* CheckListViewModel.swift in Sources */,
 				106DE8D82317BA28001DF4DE /* VideoConsultBuyDiseaseView.swift in Sources */,
 				104FC4C823162ABF00ECB82B /* DoctorDetailController.swift in Sources */,
@@ -1926,6 +1936,7 @@
 				100AEE6E22CD967300094AE2 /* DrugUsedController.swift in Sources */,
 				101C2E672322338900AB4C53 /* ExamModel.swift in Sources */,
 				101C2E5F23222E5900AB4C53 /* FUVistExamListController.swift in Sources */,
+				101C2EB323276AD200AB4C53 /* HutPackageDetailController.swift in Sources */,
 				10CA473022F826C000A4E244 /* DatePicker.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				10FF88AA2314F2FD008148BC /* BannerModel.swift in Sources */,
@@ -2136,6 +2147,7 @@
 				101C2E63232230E900AB4C53 /* UIImageViewExtension.swift in Sources */,
 				100AEE3C22CA117200094AE2 /* AddressListController.swift in Sources */,
 				105039F72306A298000E90F0 /* LongServiceController.swift in Sources */,
+				101C2EB7232885AA00AB4C53 /* TaskWorkApi.swift in Sources */,
 				101C2E8D232347DB00AB4C53 /* InvoiceRecordListController.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				10676BF223065A42004A6419 /* ServiceApi.swift in Sources */,

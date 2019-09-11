@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/6.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -43,5 +43,4 @@ class SunShineHutListViewModel: BaseViewModel {
              self?.hasBuyECGProperty.value = resp.content == true
         }
     }
-
 }

@@ -13,6 +13,7 @@ enum DrugSunApi: TargetType {
     case usedDrugs(pid: Int)
     case orders(pid: Int, state: SunnyDrugOrderState)
     case orderInfo(id: Int)
+    case queryExamResult(id: Int)
 }
 
 extension DrugSunApi {
@@ -24,6 +25,8 @@ extension DrugSunApi {
             return "/serDrugSunnyBuys/listByPuid"
         case .orderInfo:
             return "/serDrugSunnyBuys/getOrderInfo"
+        case .queryExamResult:
+            return "/serDrugSunnyBuys/queryExamResult"
         default:
             break
         }
@@ -38,6 +41,8 @@ extension DrugSunApi {
             params["puid"] = pid
             params["serStatus"] = state.rawValue
         case let .orderInfo(id: id):
+            params["id"] = id
+        case let .queryExamResult(id: id):
             params["id"] = id
         default:
             break

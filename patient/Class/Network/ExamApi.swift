@@ -11,6 +11,7 @@ import Moya
 
 enum ExamApi: TargetType {
     case examList(pid: Int)
+    case listSerExamById(ids: [Int])
 }
 
 extension ExamApi {
@@ -18,6 +19,8 @@ extension ExamApi {
         switch self {
         case .examList:
             return "/exam/queryExamsByPuid"
+        case .listSerExamById:
+            return "/exam/listSerExamById"
         }
     }
     
@@ -26,6 +29,8 @@ extension ExamApi {
         switch self {
         case let .examList(pid: pid):
             params["puid"] = pid
+        case let .listSerExamById(ids: ids):
+            params["examIds"] = ids
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

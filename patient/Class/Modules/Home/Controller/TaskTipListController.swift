@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/5.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -85,9 +85,9 @@ extension TaskTipListController: UITableViewDataSource, UITableViewDelegate {
             case .buyDrug:
                 self?.viewModel.queryBrugOrderInfoByTask(model)
             case .finishQuestion:
-                break
+                self?.toFinishExam(model)
             case .uploadResource:
-                self?.toUploadResource()
+                self?.toUploadResource(model)
             case .other:
                 break
             }
@@ -102,9 +102,27 @@ extension TaskTipListController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - Helper
 extension TaskTipListController {
-    private func toUploadResource() {
+    private func toUploadResource(_ model: TaskModel) {
         let vc = UploadResourceController()
         vc.title = "完善资料"
+        vc.tipString = model.content
+        push(vc)
+    }
+    
+    private func toFinishExam(_ model: TaskModel) {
+        let vc = FUVistExamListController()
+        vc.title = "填写随访问卷"
+        
+        switch model.subType {
+        case "CMN_MSG_T_05_01": // 视频
+            vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_02": // 购药
+            vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_06": // 问卷
+            vc.viewModel.type = .flp(id: model.id, linkId: model.linkId)
+        default:
+            break
+        }
         push(vc)
     }
 }

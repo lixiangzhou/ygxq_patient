@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/6.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -18,6 +18,10 @@ class FUVistExamListController: BaseController {
 
         setUI()
         setBinding()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.getData()
     }
 
@@ -36,10 +40,28 @@ extension FUVistExamListController {
         tableView.set(dataSource: self, delegate: self, rowHeight: 82)
         tableView.register(cell: FUVistExamListCell.self)
         view.addSubview(tableView)
-        
+
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+
+        guard let type = viewModel.type else { return }
+        
+        switch type {
+        case .look:
+            break
+        default:
+            let tipLabel = UILabel(text: "温馨提示：请您尽快完成医生向您发送的随访问卷并提交，以便医生给您更全面的回复。", font: .size(13), textColor: .cf25555)
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 50))
+            headerView.addSubview(tipLabel)
+            tipLabel.snp.makeConstraints { (make) in
+                make.top.left.equalTo(15)
+                make.right.equalTo(-15)
+            }
+            tableView.tableHeaderView = headerView
+        }
+        
+        
     }
     
     override func setBinding() {
@@ -72,7 +94,23 @@ extension FUVistExamListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSourceProperty.value[indexPath.row]
-        let urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)&view=1"
+        
+        var urlString: String!
+        switch viewModel.type! {
+        case .look:
+            urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)&view=1"
+        case let .video(id: _, linkId: linkId):
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=1&qid=\(model.id)&pid=\(patientId)&vid=\(linkId)&client=2"
+        case let .sunnyDrug(id: _, linkId: linkId):
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=1&qid=\(model.id)&pid=\(patientId)&sid=\(linkId)&client=2"
+        case .flp:
+            urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)"
+        default:
+            break
+        }
+        
+        
+        
         
         guard let url = URL(string: urlString) else { return }
         let vc = WebController()

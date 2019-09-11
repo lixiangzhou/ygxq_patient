@@ -19,6 +19,7 @@ enum ServiceApi: TargetType {
     case createWorkOrder(params: [String: Any])
     case buySunnyDrug(params: [String: Any])
     case querySunshineHutList
+    case queryExamResult(id: Int)
 }
 
 extension ServiceApi {
@@ -42,6 +43,8 @@ extension ServiceApi {
             return "/serDrugSunnyBuys/add"
         case .querySunshineHutList:
             return "/sunshineHut/querySunshineHutList"
+        case .queryExamResult:
+            return "/serConsultVideo/queryExamResult"
         }
     }
     
@@ -80,6 +83,8 @@ extension ServiceApi {
             for (k, v) in ps {
                 params[k] = v
             }
+        case let .queryExamResult(id: id):
+            params["id"] = id
         case .querySunshineHutList:
             break
         }

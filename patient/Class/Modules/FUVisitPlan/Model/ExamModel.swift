@@ -20,3 +20,36 @@ struct ExamModel: ModelProtocol, Equatable {
     var isFinished: Int = 0
 }
 
+struct ExamResultModel: ModelProtocol, Equatable {
+    var isBuyDrug: Bool = false
+    var doctorAdvice: String = ""
+    var isLook: String = ""
+    var hospitalPuid: String = ""
+    var realName: String = ""
+    var lastRemindTime: TimeInterval = 0
+    var serExamResult: String = ""
+    var disease: String = ""
+    var duid: Int = 0
+    var clientConsultStatus: String = ""
+    var endTime: TimeInterval = 0
+    var remindNum: Int = 0
+    var pushMessage: String = ""
+    var id: Int = 0
+    var totalPrices: Int = 0
+    var consultStatus: String = ""
+    var consultContent: String = ""
+    var mobile: Int = 0
+    var idCardNo: String = ""
+    var auid: Int = 0
+    var isCompleteInfo: Bool = false
+    var appointTime: TimeInterval = 0
+    var createTime: Int = 0
+    var talkTime: TimeInterval = 0
+    var isCompleteNum: Int = 0
+    var firstTime: TimeInterval = 0
+    var puid: Int = 0
+    var serExam: String = ""
+
+}
+
+

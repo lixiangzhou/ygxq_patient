@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/8/29.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -257,7 +257,7 @@ extension VideoConsultBuyController {
             params["orderId"] = orderModel.orderId
             params["productItmId"] = orderModel.productItemId
             params["productName"] = orderModel.product_name
-            params["serCode"] = orderModel.serCode
+            params["serCode"] = orderModel.ser_code
             params["workType"] = "TSK_WORK_T_19"
         } else {
             params["hospitalPuid"] = 0

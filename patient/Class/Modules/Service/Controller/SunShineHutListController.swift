@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/6.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -83,7 +83,8 @@ extension SunShineHutListController: UITableViewDataSource, UITableViewDelegate 
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         switch model.serCode {
         case "UTOPIA13":
-            
+            let vc = HutPackageDetailController()
+            push(vc)
             break
         case "UTOPIA14":
             viewModel.canBuy(model)

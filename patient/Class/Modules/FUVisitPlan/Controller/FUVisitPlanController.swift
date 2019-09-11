@@ -3,7 +3,7 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/6.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
@@ -72,7 +72,7 @@ extension FUVisitPlanController: UITableViewDataSource, UITableViewDelegate {
             case .lookFlpExams:
                 let vc = FUVistExamListController()
                 vc.title = "查看随访问卷"
-                vc.viewModel.id = model.id
+                vc.viewModel.type = .look(id: model.id)
                 self?.push(vc)
             }
         }

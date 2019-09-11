@@ -14,6 +14,7 @@ enum CommonApi: TargetType {
     case pushMsgs(uid: Int)
     case setAllReaded(uid: Int)
     case setReaded(uid: Int)
+    case updateTaskState(id: Int)
 }
 
 extension CommonApi {
@@ -23,7 +24,7 @@ extension CommonApi {
             return "/common/pushMsg/unreadCount"
         case .pushMsgs:
             return "/common/getCmnPushMsg/page"
-        case .setAllReaded, .setReaded:
+        case .setAllReaded, .setReaded, .updateTaskState:
             return "/common/pushMsg/updateIsLook"
         }
     }
@@ -43,6 +44,8 @@ extension CommonApi {
             params["toUid"] = uid
         case let .setReaded(uid: uid):
             params["id"] = uid
+        case let .updateTaskState(id: id):
+            params["id"] = id
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }
