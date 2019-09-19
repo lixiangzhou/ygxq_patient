@@ -121,7 +121,7 @@ extension HomeController {
             }
         }
         
-        viewModel.drugOrderProperty.signal.skipNil().observeValues { [weak self] result in
+        viewModel.taskTipViewModel.drugOrderProperty.signal.skipNil().observeValues { [weak self] result in
             if let order = result.1 {
                 let vc = PayController()
                 vc.viewModel.orderId = order.orderId
@@ -176,16 +176,18 @@ extension HomeController {
         // 按钮
         headerView.taskView.btnClosure = { [weak self] in
             if let model = self?.viewModel.taskListProperty.value.first {
+                guard let self = self else { return }
                 switch model.actionType {
                 case .buyDrug:
-                    self?.viewModel.queryBrugOrderInfoByTask(model)
+                    self.viewModel.taskTipViewModel.queryBrugOrderInfoByTask(model)
                 case .finishQuestion:
-                    break
+                    self.viewModel.taskTipViewModel.toFinishExam(model, from: self)
                 case .uploadResource:
-                    self?.toUploadResource()
+                    self.viewModel.taskTipViewModel.toUploadResource(model, from: self)
                 case .other:
                     break
                 }
+                
             }
         }
     }

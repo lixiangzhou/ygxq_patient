@@ -98,6 +98,10 @@ extension UIColor {
     static var c00cece: UIColor {
         return UIColor(stringHexValue: "#00cece")!
     }
+    
+    static var ce5eeff: UIColor {
+        return UIColor(stringHexValue: "#e5eeff")!
+    }
  
     /// 
     static var fieldDefaultColor: UIColor {

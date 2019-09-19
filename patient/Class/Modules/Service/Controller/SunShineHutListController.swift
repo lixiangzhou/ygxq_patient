@@ -84,6 +84,7 @@ extension SunShineHutListController: UITableViewDataSource, UITableViewDelegate 
         switch model.serCode {
         case "UTOPIA13":
             let vc = HutPackageDetailController()
+            vc.viewModel.hutModelProperty.value = model
             push(vc)
             break
         case "UTOPIA14":

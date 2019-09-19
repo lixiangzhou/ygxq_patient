@@ -140,6 +140,7 @@
 		1030C2B9231FCA8300F13755 /* MediaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B8231FCA8300F13755 /* MediaApi.swift */; };
 		1030C2BB23209F5500F13755 /* PictureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2BA23209F5500F13755 /* PictureListCell.swift */; };
 		10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10375FDC2304F92400B92403 /* VideoConsultResultController.swift */; };
+		1043BF142328DD7500271194 /* JPushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043BF132328DD7500271194 /* JPushManager.swift */; };
 		104AD5BB231CF745000AD464 /* SunnyDrugBuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */; };
 		104AD5BD231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BC231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift */; };
 		104AD5C1231D20DF000AD464 /* SignNameTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5C0231D20DF000AD464 /* SignNameTipView.swift */; };
@@ -307,6 +308,12 @@
 		10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */; };
 		10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */; };
 		10E1DF38230500AC007AD76A /* VideoConsultDiseaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */; };
+		10E820BA23321550005466A0 /* HutPackageDetailOutlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820B923321550005466A0 /* HutPackageDetailOutlineCell.swift */; };
+		10E820BC23321567005466A0 /* HutPackageDetailContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820BB23321567005466A0 /* HutPackageDetailContentCell.swift */; };
+		10E820BE23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820BD23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift */; };
+		10E820C0233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820BF233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift */; };
+		10E820C2233215C2005466A0 /* HutPackageDetailAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C1233215C2005466A0 /* HutPackageDetailAddressCell.swift */; };
+		10E820C4233215D3005466A0 /* HutPackageDetailTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C3233215D3005466A0 /* HutPackageDetailTipCell.swift */; };
 		10FF889A2314D640008148BC /* ImageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88992314D640008148BC /* ImageTitleView.swift */; };
 		10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889D2314D80A008148BC /* HomeViewModel.swift */; };
 		10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */; };
@@ -455,6 +462,8 @@
 		1030C2B8231FCA8300F13755 /* MediaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaApi.swift; sourceTree = "<group>"; };
 		1030C2BA23209F5500F13755 /* PictureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListCell.swift; sourceTree = "<group>"; };
 		10375FDC2304F92400B92403 /* VideoConsultResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultController.swift; sourceTree = "<group>"; };
+		1043BF122328DC2A00271194 /* patient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = patient.entitlements; sourceTree = "<group>"; };
+		1043BF132328DD7500271194 /* JPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPushManager.swift; sourceTree = "<group>"; };
 		104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyViewModel.swift; sourceTree = "<group>"; };
 		104AD5BC231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyIdTipView.swift; sourceTree = "<group>"; };
 		104AD5C0231D20DF000AD464 /* SignNameTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignNameTipView.swift; sourceTree = "<group>"; };
@@ -626,6 +635,12 @@
 		10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultPicCell.swift; sourceTree = "<group>"; };
 		10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultTimeCell.swift; sourceTree = "<group>"; };
 		10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultDiseaseCell.swift; sourceTree = "<group>"; };
+		10E820B923321550005466A0 /* HutPackageDetailOutlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailOutlineCell.swift; sourceTree = "<group>"; };
+		10E820BB23321567005466A0 /* HutPackageDetailContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailContentCell.swift; sourceTree = "<group>"; };
+		10E820BD23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailTargetAudienceCell.swift; sourceTree = "<group>"; };
+		10E820BF233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailServiceFlowCell.swift; sourceTree = "<group>"; };
+		10E820C1233215C2005466A0 /* HutPackageDetailAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailAddressCell.swift; sourceTree = "<group>"; };
+		10E820C3233215D3005466A0 /* HutPackageDetailTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailTipCell.swift; sourceTree = "<group>"; };
 		10FF88992314D640008148BC /* ImageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTitleView.swift; sourceTree = "<group>"; };
 		10FF889D2314D80A008148BC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTaskView.swift; sourceTree = "<group>"; };
@@ -674,6 +689,7 @@
 		1014CF9D229391DF00294558 /* patient */ = {
 			isa = PBXGroup;
 			children = (
+				1043BF122328DC2A00271194 /* patient.entitlements */,
 				1014D00E2293A6D700294558 /* Class */,
 				1014CF9E229391DF00294558 /* AppDelegate.swift */,
 				1014CFA5229391E200294558 /* Assets.xcassets */,
@@ -1460,6 +1476,12 @@
 				10503A07230794ED000E90F0 /* LongServiceListCell.swift */,
 				10503A0923079539000E90F0 /* LongServiceOutlineCell.swift */,
 				101C2E6E2322480F00AB4C53 /* SunShineHutListCell.swift */,
+				10E820B923321550005466A0 /* HutPackageDetailOutlineCell.swift */,
+				10E820BB23321567005466A0 /* HutPackageDetailContentCell.swift */,
+				10E820BD23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift */,
+				10E820BF233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift */,
+				10E820C1233215C2005466A0 /* HutPackageDetailAddressCell.swift */,
+				10E820C3233215D3005466A0 /* HutPackageDetailTipCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1705,6 +1727,7 @@
 				108C080522BCCF6B00B2EBE9 /* LoginManager.swift */,
 				1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */,
 				1059E470230D3416005F5326 /* AuthorizationManager.swift */,
+				1043BF132328DD7500271194 /* JPushManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1780,6 +1803,11 @@
 				TargetAttributes = {
 					1014CF9A229391DF00294558 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1906,6 +1934,7 @@
 				10CA473622F9163100A4E244 /* DiseaseModel.swift in Sources */,
 				10A2755B230BC34300B568B3 /* SystemMsgCell.swift in Sources */,
 				105653BE23211376001C31A0 /* TaskTipListController.swift in Sources */,
+				1043BF142328DD7500271194 /* JPushManager.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				101C2EB92328A35900AB4C53 /* WorkOrderModel.swift in Sources */,
 				108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */,
@@ -1972,6 +2001,7 @@
 				100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
 				10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */,
+				10E820C0233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift in Sources */,
 				108C082F22BD155600B2EBE9 /* ExamListCell.swift in Sources */,
 				10CA473222F8326F00A4E244 /* CommonPicker.swift in Sources */,
 				106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */,
@@ -2012,6 +2042,7 @@
 				109B74B9230401D80034346D /* StringExtension.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
 				106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */,
+				10E820BA23321550005466A0 /* HutPackageDetailOutlineCell.swift in Sources */,
 				101C2E9D232348A700AB4C53 /* InvoiceContentViewModel.swift in Sources */,
 				101C2E692322465E00AB4C53 /* SunShineHutListController.swift in Sources */,
 				1059E455230CEAC3005F5326 /* SunnyDrugOrderListViewModel.swift in Sources */,
@@ -2049,6 +2080,7 @@
 				104E3AA022B8E5E700A84DB2 /* LLSegmentItemBadgeView.swift in Sources */,
 				10FF88B023151065008148BC /* QRCodeScanController.swift in Sources */,
 				104AD5C1231D20DF000AD464 /* SignNameTipView.swift in Sources */,
+				10E820BE23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
 				101C2E972323486200AB4C53 /* InvoiceMakeViewModel.swift in Sources */,
 				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
@@ -2077,6 +2109,8 @@
 				100AEE5E22CC8FC100094AE2 /* CheckDetailViewModel.swift in Sources */,
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
+				10E820C4233215D3005466A0 /* HutPackageDetailTipCell.swift in Sources */,
+				10E820BC23321567005466A0 /* HutPackageDetailContentCell.swift in Sources */,
 				104FFB162314CB5C00E51033 /* HomeHeaderActionView.swift in Sources */,
 				10CAF3E022AF7CFC00F20E81 /* DoctorApi.swift in Sources */,
 				10503A0A23079539000E90F0 /* LongServiceOutlineCell.swift in Sources */,
@@ -2099,6 +2133,7 @@
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				1059E46F230D1EDA005F5326 /* SunnyDrugOrderAssistWxInfoCell.swift in Sources */,
 				108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */,
+				10E820C2233215C2005466A0 /* HutPackageDetailAddressCell.swift in Sources */,
 				10676BF623068EEC004A6419 /* AlertView.swift in Sources */,
 				101C2E6123222F0200AB4C53 /* FUVistExamListCell.swift in Sources */,
 				1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */,
@@ -2311,6 +2346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = patient/patient.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
 				ENABLE_BITCODE = NO;
@@ -2338,6 +2374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = patient/patient.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GG8NZVPWNG;
 				ENABLE_BITCODE = NO;

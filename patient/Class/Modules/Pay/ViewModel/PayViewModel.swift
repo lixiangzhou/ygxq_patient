@@ -74,6 +74,7 @@ extension PayViewModel {
             case longSer
             case singleVideoConsult
             case singleSunnyDrug
+            case sunShineHut
         }
     }
     

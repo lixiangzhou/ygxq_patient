@@ -84,7 +84,7 @@ extension PayController {
             case 0:
                 if let type = self?.viewModel.resultAction?.type {
                     switch type {
-                    case .singleVideoConsult, .longSer:
+                    case .singleVideoConsult, .longSer, .sunShineHut:
                         let vc = PayResultController()
                         vc.resultAction = self?.viewModel.resultAction
                         self?.push(vc)

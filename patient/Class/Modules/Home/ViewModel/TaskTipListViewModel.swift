@@ -26,4 +26,37 @@ class TaskTipListViewModel: BaseViewModel {
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
+    
+    
+    func toUploadResource(_ model: TaskModel, from controller: UIViewController) {
+        let vc = UploadResourceController()
+        vc.title = "完善资料"
+        vc.tipString = model.content
+        switch model.subType {
+        case "CMN_MSG_T_05_03": // 视频
+            vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_04": // 购药
+            vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
+        default:
+            break
+        }
+        controller.push(vc)
+    }
+    
+    func toFinishExam(_ model: TaskModel, from controller: UIViewController) {
+        let vc = FUVistExamListController()
+        vc.title = "填写随访问卷"
+        
+        switch model.subType {
+        case "CMN_MSG_T_05_01": // 视频
+            vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_02": // 购药
+            vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_06": // 随访
+            vc.viewModel.type = .flp(id: model.id, linkId: model.linkId)
+        default:
+            break
+        }
+        controller.push(vc)
+    }
 }

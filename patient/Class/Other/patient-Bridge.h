@@ -16,5 +16,7 @@
 #import <RongCallKit/RCCall.h>
 #import <RongIMLib/RongIMLib.h>
 
+#import "JPUSHService.h"
+
 
 #endif /* patient_Bridge_h */

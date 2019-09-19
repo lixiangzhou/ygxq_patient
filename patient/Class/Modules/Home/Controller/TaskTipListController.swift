@@ -81,56 +81,18 @@ extension TaskTipListController: UITableViewDataSource, UITableViewDelegate {
         cell.txtLabel.text = model.content
         cell.btn.setTitle(model.taskActionTitle, for: .normal)
         cell.btnClosure = { [weak self] in
+            guard let self = self else { return }
             switch model.actionType {
             case .buyDrug:
-                self?.viewModel.queryBrugOrderInfoByTask(model)
+                self.viewModel.queryBrugOrderInfoByTask(model)
             case .finishQuestion:
-                self?.toFinishExam(model)
+                self.viewModel.toFinishExam(model, from: self)
             case .uploadResource:
-                self?.toUploadResource(model)
+                self.viewModel.toUploadResource(model, from: self)
             case .other:
                 break
             }
         }
         return cell
-    }
-}
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension TaskTipListController {
-    private func toUploadResource(_ model: TaskModel) {
-        let vc = UploadResourceController()
-        vc.title = "完善资料"
-        vc.tipString = model.content
-        switch model.subType {
-        case "CMN_MSG_T_05_03": // 视频
-            vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
-        case "CMN_MSG_T_05_04": // 购药
-            vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
-        default:
-            break
-        }
-        push(vc)
-    }
-    
-    private func toFinishExam(_ model: TaskModel) {
-        let vc = FUVistExamListController()
-        vc.title = "填写随访问卷"
-        
-        switch model.subType {
-        case "CMN_MSG_T_05_01": // 视频
-            vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
-        case "CMN_MSG_T_05_02": // 购药
-            vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
-        case "CMN_MSG_T_05_06": // 随访
-            vc.viewModel.type = .flp(id: model.id, linkId: model.linkId)
-        default:
-            break
-        }
-        push(vc)
     }
 }
