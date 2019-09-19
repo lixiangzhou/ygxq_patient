@@ -12,22 +12,14 @@ import ReactiveSwift
 class SunnyDrugOrderDetailViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[Model]>([Model.docinfo(model: DoctorInfoModel())])
     
-    var did = 0
     var id = 0
     
     let showBottomProperty = MutableProperty<Bool>(false)
     
-    func getDocData() {
+    func getDocData(_ did: Int) {
         DoctorApi.doctorInfo(duid: did).rac_responseModel(DoctorInfoModel.self).startWithValues { [weak self] (docModel) in
             guard let self = self else { return }
             var models = self.dataSourceProperty.value
-            models.removeAll(where: { model in
-                if case Model.docinfo = model {
-                    return true
-                } else {
-                    return false
-                }
-            })
             
             models.insert(Model.docinfo(model: docModel ?? DoctorInfoModel()), at: 0)
             self.dataSourceProperty.value = models
@@ -37,24 +29,16 @@ class SunnyDrugOrderDetailViewModel: BaseViewModel {
     func getData() {
         SunnyDrugApi.orderInfo(id: id).rac_responseModel(SunnyDrugOrderModel.self).skipNil().startWithValues { [weak self] (model) in
             guard let self = self else { return }
-            var models = self.dataSourceProperty.value
-            models.removeAll(where: { model in
-                switch model {
-                case .docinfo, .assist: return false
-                default: return true
-                }
-            })
+            var models = [Model]()
             
-            var temp = [Model]()
-            
-            temp.append(Model.patient(model: model))
+            models.append(Model.patient(model: model))
             
             if !model.notPassReason.isEmpty {
-                temp.append(Model.failReason(reason: model.notPassReason))
+                models.append(Model.failReason(reason: model.notPassReason))
             }
             
             if !model.serDrugUesds.isEmpty {
-                temp.append(Model.buyedDrugs(drugs: model.serDrugUesds, price: model.totalPrices))
+                models.append(Model.buyedDrugs(drugs: model.serDrugUesds, price: model.totalPrices))
             }
             
             if !model.waybillNumber.isEmpty {
@@ -64,25 +48,35 @@ class SunnyDrugOrderDetailViewModel: BaseViewModel {
                 case 2: company = "申通"
                 default: break
                 }
-                temp.append(Model.express(company: company, expNo: model.waybillNumber))
+                models.append(Model.express(company: company, expNo: model.waybillNumber))
             }
             
-            models.insert(contentsOf: temp, at: 1)
-            
-            self.dataSourceProperty.value = models
+            CommonApi.getFinishTaskMsgInfos(linkId: self.id, puid: patientId).rac_responseModel(ExamPicModel.self).startWithValues { [weak self] (m) in
+                guard let self = self else { return }
+                
+                self.getDocData(model.duid)
+                self.getAssistData(model.duid)
+                
+                if let m = m {
+                    var temps = [Model]()
+                    if m.showExams {
+                        temps.append(.exam)
+                    }
+                    if m.showTidyInfo {
+                        temps.append(.lookPics)
+                    }
+                    models.append(contentsOf: temps)
+                }
+                self.dataSourceProperty.value = models
+            }
         }
     }
     
-    func getAssistData() {
+    func getAssistData(_ did: Int) {
         DoctorApi.assist(duid: did).rac_responseModel(DoctorAssistModel.self).skipNil().startWithValues { [weak self] (model) in
             guard let self = self else { return }
             var models = self.dataSourceProperty.value
-            models.removeAll(where: { model in
-                switch model {
-                case .assist: return true
-                default: return false
-                }
-            })
+            
             models.append(Model.assist(model: model))
             self.dataSourceProperty.value = models
         }
@@ -108,5 +102,7 @@ extension SunnyDrugOrderDetailViewModel {
         case failReason(reason: String)
         case express(company: String, expNo: String)
         case assist(model: DoctorAssistModel)
+        case exam
+        case lookPics
     }
 }

@@ -67,7 +67,6 @@ extension ConsultListController: UITableViewDataSource, UITableViewDelegate {
         cell.descLabel.text = model.consultContent
         cell.lookClosure = { [weak self] in
             let vc = VideoConsultResultController()
-            vc.viewModel.did = model.duid
             vc.viewModel.vid = model.linkId
             self?.push(vc)
         }

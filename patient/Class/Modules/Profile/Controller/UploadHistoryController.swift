@@ -78,7 +78,7 @@ extension UploadHistoryController: UITableViewDataSource, UITableViewDelegate {
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         let vc = PictureListController()
         vc.title = "图片详情"
-        vc.viewModel.time = model.title.zz_date(withDateFormat: "yyyy-MM-dd HH:mm:ss")!.timeIntervalSince1970 * 1000
+        vc.viewModel.type = .history(time: model.title.zz_date(withDateFormat: "yyyy-MM-dd HH:mm:ss")!.timeIntervalSince1970 * 1000)
         push(vc)
     }
 }

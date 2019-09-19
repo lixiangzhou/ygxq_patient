@@ -34,7 +34,7 @@ extension HomeHeaderCaseView {
     private func setUI() {
         backgroundColor = .cf
         
-        let titleLabel = zz_add(subview: UILabel(text: "我的病例", font: .boldSize(18), textColor: .c3)) as! UILabel
+        let titleLabel = zz_add(subview: UILabel(text: "我的病历", font: .boldSize(18), textColor: .c3)) as! UILabel
         let subTitleLabel = zz_add(subview: UILabel(text: "为您整理专业、完整的病历资料", font: .size(13), textColor: .c9))
         
         let uploadView = addItemView(img: "home_upload", title: "上传", color: .c407cec, action: #selector(uploadAction))

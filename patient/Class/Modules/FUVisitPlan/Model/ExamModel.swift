@@ -18,6 +18,9 @@ struct ExamModel: ModelProtocol, Equatable {
     var createTime: TimeInterval = 0
     var type: String = ""
     var isFinished: Int = 0
+    
+    var serExamName = ""
+    var linkId = 0
 }
 
 struct ExamResultModel: ModelProtocol, Equatable {

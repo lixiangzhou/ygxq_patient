@@ -35,6 +35,7 @@ class AddressEditController: BaseController {
     // MARK: - Public Property
     var mode = Mode.add
     var addressModel: AddressModel?
+    var isDefault = false
     
     var completionClosure: (() -> Void)?
     // MARK: - Private Property
@@ -60,6 +61,7 @@ extension AddressEditController {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .cf0efef
         scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .onDrag
         view.addSubview(scrollView)
         
         let contentView = UIView()
@@ -76,6 +78,11 @@ extension AddressEditController {
         self.districtField = districtField
         self.addressTxtView = addressTxtView
         self.switchView = switchView
+        
+        if mode == .add {
+            switchView.isOn = isDefault
+            switchView.isUserInteractionEnabled = !isDefault
+        }
         
         districtField.placeholder = "请选择所在地区"
         

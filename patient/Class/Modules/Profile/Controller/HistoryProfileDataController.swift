@@ -15,7 +15,7 @@ class HistoryProfileDataController: LLSegmentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "历史数据"
+        title = "就诊记录"
         setUI()
     }
 }

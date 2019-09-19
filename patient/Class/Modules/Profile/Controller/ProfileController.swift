@@ -15,7 +15,7 @@ class ProfileController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "我的档案"
+        title = "我的病历"
         setUI()
         setBinding()
         PatientManager.shared.getPatientInfo()

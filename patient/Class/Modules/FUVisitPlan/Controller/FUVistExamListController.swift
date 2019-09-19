@@ -48,7 +48,7 @@ extension FUVistExamListController {
         guard let type = viewModel.type else { return }
         
         switch type {
-        case .look:
+        case .look, .videolookLinkId, .druglookLinkId:
             break
         default:
             let tipLabel = UILabel(text: "温馨提示：请您尽快完成医生向您发送的随访问卷并提交，以便医生给您更全面的回复。", font: .size(13), textColor: .cf25555)
@@ -94,21 +94,23 @@ extension FUVistExamListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSourceProperty.value[indexPath.row]
-        
         var urlString: String!
+        let isFinished = model.isFinished == 1
+        
         switch viewModel.type! {
         case .look:
             urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)&view=1"
         case let .video(id: _, linkId: linkId):
-            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=1&qid=\(model.id)&pid=\(patientId)&vid=\(linkId)&client=2"
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=\(isFinished ? 2 : 1)&qid=\(model.id)&pid=\(patientId)&vid=\(linkId)&client=2"
         case let .sunnyDrug(id: _, linkId: linkId):
-            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=1&qid=\(model.id)&pid=\(patientId)&sid=\(linkId)&client=2"
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=\(isFinished ? 2 : 1)&qid=\(model.id)&pid=\(patientId)&sid=\(linkId)&client=2"
         case .flp:
-            urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)"
+            urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)\(isFinished ? "&view=1" : "")"
+        case let .videolookLinkId(linkId: linkId):
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=\(isFinished ? 2 : 1)&qid=\(model.id)&pid=\(patientId)&vid=\(linkId)&resid=\(model.resultId)&client=2"
+        case let .druglookLinkId(linkId: linkId):
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=\(isFinished ? 2 : 1)&qid=\(model.id)&pid=\(patientId)&sid=\(linkId)&resid=\(model.resultId)&client=2"
         }
-        
-        
-        
         
         guard let url = URL(string: urlString) else { return }
         let vc = WebController()

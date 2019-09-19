@@ -13,8 +13,6 @@ import Result
 class PersonInfoEditViewModel: BaseViewModel {
     
     let sexDataSource = CommonPicker.DataSouce.one(["男", "女"])
-    let heightDataSource: CommonPicker.DataSouce
-    let weightDataSource: CommonPicker.DataSouce
     let diseasesProperty = MutableProperty<[DiseaseModel]>([])
     var diseasesDataSource = CommonPicker.DataSouce.one([])
     
@@ -22,19 +20,6 @@ class PersonInfoEditViewModel: BaseViewModel {
     var imgUrl = ""
     
     override init() {
-        var heightDS = [GroupModel<String>]()
-        for idx in 50...250 {
-            heightDS.append(GroupModel(title: idx.description, list: ["cm"]))
-        }
-        heightDataSource = CommonPicker.DataSouce.two(heightDS)
-        
-        
-        var weightDS = [GroupModel<String>]()
-        for idx in 20...250 {
-            weightDS.append(GroupModel(title: idx.description, list: ["kg"]))
-        }
-        weightDataSource = CommonPicker.DataSouce.two(weightDS)
-        
         let nameAttr = NSMutableAttributedString(string: "真实姓名")
         nameAttr.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
         nameAttributeString = nameAttr
@@ -54,6 +39,10 @@ class PersonInfoEditViewModel: BaseViewModel {
 
     var inputConfig: TextLeftRightFieldViewConfig {
         return TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c6, rightWidth: 200, rightLimit: 20)
+    }
+    
+    var idConfig: TextLeftRightFieldViewConfig {
+        return TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c6, rightWidth: 200, rightLimit: 18)
     }
     
     var arrowConfig: LeftRightConfigViewConfig {

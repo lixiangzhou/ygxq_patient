@@ -12,23 +12,14 @@ import ReactiveSwift
 class VideoConsultResultViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[Model]>([Model.docinfo(model: DoctorInfoModel())])
     
-    var did = 0
     var vid = 0
     
     let showBottomProperty = MutableProperty<Bool>(false)
     
-    func getDocData() {
+    func getDocData(_ did: Int) {
         DoctorApi.doctorInfo(duid: did).rac_responseModel(DoctorInfoModel.self).startWithValues { [weak self] (docModel) in
             guard let self = self else { return }
             var models = self.dataSourceProperty.value
-            models.removeAll(where: { model in
-                if case Model.docinfo = model {
-                    return true
-                } else {
-                    return false
-                }
-            })
-            
             models.insert(Model.docinfo(model: docModel ?? DoctorInfoModel()), at: 0)
             self.dataSourceProperty.value = models
         }
@@ -37,14 +28,10 @@ class VideoConsultResultViewModel: BaseViewModel {
     func getVideoData() {
         ConsultApi.getVideoConsult(id: vid).rac_responseModel(VideoConsultModel.self).skipNil().startWithValues { [weak self] (model) in
             guard let self = self else { return }
-            var models = self.dataSourceProperty.value
-            models.removeAll(where: { model in
-                if case Model.docinfo = model {
-                    return false
-                } else {
-                    return true
-                }
-            })
+            var models = [Model]()
+            
+            self.getDocData(model.serConsultVideo.duid)
+            self.examAndPics()
             
             models.append(Model.patient(model: model.serConsultVideo))
             
@@ -61,6 +48,24 @@ class VideoConsultResultViewModel: BaseViewModel {
             self.dataSourceProperty.value = models
             
             self.showBottomProperty.value = model.serConsultVideo.clientConsultStatus == "SER_CST_S_ING" && model.serConsultVideo.appointTime != 0 && model.leftSeconds > 0
+        }
+    }
+    
+    func examAndPics() {
+        CommonApi.videoExamAndPics(linkId: vid, puid: patientId).rac_responseModel(ExamPicModel.self).skipNil().startWithValues { [weak self] (model) in
+            guard let self = self else { return }
+            var models = self.dataSourceProperty.value
+            
+            var temps = [Model]()
+            if model.showExams {
+                temps.append(.exam)
+            }
+            if model.showTidyInfo {
+                temps.append(.lookPics)
+            }
+            
+            models.insert(contentsOf: temps, at: models.count - 1)
+            self.dataSourceProperty.value = models
         }
     }
     
@@ -81,5 +86,7 @@ extension VideoConsultResultViewModel {
         case disease(disease: String)
         case picture(pics: [ImageModel])
         case time(model: VideoConsultModel)
+        case lookPics   // 完善资料
+        case exam   // 问卷
     }
 }

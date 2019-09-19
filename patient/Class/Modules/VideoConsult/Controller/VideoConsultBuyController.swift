@@ -282,7 +282,6 @@ extension VideoConsultBuyController: TZImagePickerControllerDelegate {
 // MARK: - Helper
 extension VideoConsultBuyController {
     func updateContentHeight() {
-        print(#function)
         contentView.layoutHeight()
         contentView.snp.updateConstraints { (make) in
             make.height.equalTo(contentView.zz_height)

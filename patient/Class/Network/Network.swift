@@ -43,7 +43,12 @@ extension TargetType {
     var sampleData: Data { return "sampleData".data(using: .utf8)! }
     
     var headers: [String : String]? {
-        return nil
+        return [
+            "Content-Type": "application/json;charset=utf-8",
+//            "sessionId": LoginManager.shared.sessionId,
+            "os_type": "CMN_OS_T_IOS",
+            "client_type": "CMN_CLNT_T_PT"
+        ]
     }
 }
 

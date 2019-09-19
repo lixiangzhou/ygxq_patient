@@ -82,17 +82,17 @@ extension OrderListController {
     
     /// 退款
     func refundOrderAction(_ cell: OrderListCell?, _ model: OrderModel) {
-        viewModel.refundIsApply(orderId: model.id).startWithValues { [unowned self] (result) in
-            HUD.showError(result)
-            if result.isSuccess {
+//        viewModel.refundIsApply(orderId: model.id).startWithValues { [unowned self] (result) in
+//            HUD.showError(result)
+//            if result.isSuccess {
                 let vc = ApplyForRefundController()
                 vc.orderModel = model
                 vc.submitCompleteClosure = { order in
                     self.viewModel.getData()
                 }
                 self.push(vc)
-            }
-        }
+//            }
+//        }
     }
     
     /// 订单详情

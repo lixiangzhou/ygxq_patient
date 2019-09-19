@@ -54,6 +54,14 @@ class FUVistExamListViewModel: BaseViewModel {
             SunnyDrugApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
                 self?.getList(model)
             }
+        case let .videolookLinkId(linkId: linkId):
+            ServiceApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
+                self?.getList(model)
+            }
+        case let .druglookLinkId(linkId: linkId):
+            SunnyDrugApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
+                self?.getList(model)
+            }
         }
     }
     
@@ -66,16 +74,17 @@ class FUVistExamListViewModel: BaseViewModel {
                         return (String(item[..<idx]), String(item[item.index(after: idx)...]))
                     } {
 
-                    var ids = [Int]()
+                    var ids = [Int: Int]()
                     for r in results {
-                        ids.append(Int(r.0) ?? 0)
+                        ids[Int(r.0) ?? 0] = Int(r.1) ?? 0
                     }
 
                     let values = models ?? []
                     var newValues = [ExamModel]()
                     for v in values {
                         var newV = v
-                        newV.isFinished = ids.contains(v.id) ? 1 : 0
+                        newV.isFinished = ids.keys.contains(v.id) ? 1 : 0
+                        newV.resultId = ids[v.id] ?? 0
                         newValues.append(newV)
                     }
                     self?.dataSourceProperty.value = newValues
@@ -89,6 +98,8 @@ class FUVistExamListViewModel: BaseViewModel {
 
 extension FUVistExamListViewModel {
     enum ExamType {
+        case videolookLinkId(linkId: Int)
+        case druglookLinkId(linkId: Int)
         case look(id: Int)
         case video(id: Int, linkId: Int)
         case flp(id: Int, linkId: Int)

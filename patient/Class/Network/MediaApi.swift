@@ -11,6 +11,7 @@ import Moya
 
 enum MediaApi: TargetType {
     case queryById(pid: Int, type: String, createTime: TimeInterval?)
+    case listAllMediasByLinkId(linkId: Int, serType: String, imgType: Int)
 }
 
 extension MediaApi {
@@ -19,6 +20,8 @@ extension MediaApi {
         switch self {
         case .queryById:
             return "/serMediaMore/querySerMediasByPuid"
+        case .listAllMediasByLinkId:
+            return "/serMediaMore/listAllMediasByLinkId"
         }
     }
     
@@ -31,6 +34,12 @@ extension MediaApi {
             if let createTime = createTime {
                 params["createTime"] = createTime
             }
+        case let .listAllMediasByLinkId(linkId: linkId, serType: serType, imgType: imgType):
+            params["firstUpload"] = false
+            params["imgType"] = imgType
+            params["linkId"] = linkId
+            params["mediaType"] = "img"
+            params["serType"] = serType
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

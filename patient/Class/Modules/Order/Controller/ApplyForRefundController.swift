@@ -56,6 +56,7 @@ extension ApplyForRefundController {
         let orderNameView = contentView.zz_add(subview: TextLeftRightView(viewModel.getGrayConfig())) as! TextLeftRightView
         let orderAmountView = contentView.zz_add(subview: TextLeftRightView(viewModel.getRedConfig())) as! TextLeftRightView
         let refundAmountView = contentView.zz_add(subview: TextLeftRightView(viewModel.getRedConfig())) as! TextLeftRightView
+        let reasonTitleView = contentView.zz_add(subview: TextLeftRightView(viewModel.getRedConfig())) as! TextLeftRightView
         
         txtView.placeholder = "请填写您的退款原因"
         txtView.placeholderFont = .size(16)
@@ -68,6 +69,7 @@ extension ApplyForRefundController {
         orderNameView.leftLabel.text = "名称"
         orderAmountView.leftLabel.text = "订单金额"
         refundAmountView.leftLabel.text = "退款金额"
+        reasonTitleView.leftLabel.text = "退款原因"
         
         orderNoLabel = orderNoView.rightLabel
         orderNameLabel = orderNameView.rightLabel
@@ -103,9 +105,15 @@ extension ApplyForRefundController {
             make.top.equalTo(orderAmountView.snp.bottom)
             make.height.left.right.equalTo(orderNoView)
         }
+
+        reasonTitleView.snp.makeConstraints { (make) in
+            make.top.equalTo(refundAmountView.snp.bottom)
+            make.height.left.right.equalTo(orderNoView)
+        }
+
         
         txtView.snp.makeConstraints { (make) in
-            make.top.equalTo(refundAmountView.snp.bottom).offset(10)
+            make.top.equalTo(reasonTitleView.snp.bottom).offset(10)
             make.left.equalTo(10)
             make.right.equalTo(-10)
             make.height.equalTo(80)

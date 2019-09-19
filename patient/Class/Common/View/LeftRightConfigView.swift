@@ -25,11 +25,7 @@ class LeftRightConfigView: BaseView {
 
     // MARK: - Public Property
     var config: LeftRightConfigViewConfig? {
-        didSet {
-            if config == oldValue {
-                return
-            }
-            
+        didSet {            
             guard let config = config else {
                 return
             }

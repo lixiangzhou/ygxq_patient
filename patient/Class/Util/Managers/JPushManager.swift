@@ -59,6 +59,40 @@ extension JPushManager: JPUSHRegisterDelegate {
         
         guard let type = userInfo["type"] as? String, let linkId = userInfo["linkId"] as? Int else { return }
         
+        if PatientManager.shared.isLogin {
+            guard let rootVC = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController,
+                let nav = rootVC.selectedViewController as? BaseNavigationController else { return }
+
+            switch type {
+            case "BindingDoctor_SUC":   // 绑定医生
+                let vc = BindedDoctorsController()
+                nav.push(vc)
+            case "SerConsultVideo_AT":  // 预约时间提醒
+                let vc = VideoConsultResultController()
+                vc.viewModel.vid = linkId
+                nav.push(vc)
+            case "order_10min_remind":
+                let vc = OrderController()
+                nav.push(vc)
+            case "picture_finishing":   // 就诊记录
+                let vc = HistoryProfileDataController()
+                nav.push(vc)
+            case "CMN_MSG_T_05_01", "CMN_MSG_T_05_02", "CMN_MSG_T_05_06", "CMN_MSG_T_05_03", "CMN_MSG_T_05_04", "CMN_MSG_T_05_07", "CMN_MSG_T_05_05":   // 任务提醒
+                let vc = TaskTipListController()
+                nav.push(vc)
+            case "SerDrugSunnyBuys_FAL", "SerDrugSunnyBuys_SUC":    // 续药快递提醒
+                let vc = SunnyDrugOrderDetailController()
+                vc.viewModel.id = linkId
+                nav.push(vc)
+            case "ECG12":   // 十二导联的推送
+                break
+            case "SunshineHut_SB":  // 阳光小屋设备已发快递提醒
+                break
+            default:
+                break
+            }
+        }
+        
         
         completionHandler()
     }

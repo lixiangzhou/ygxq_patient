@@ -50,6 +50,7 @@ class OrderListViewModel: BaseViewModel {
             guard let self = self else { return }
             if let orders = orders, !orders.isEmpty {
                 self.dataSourceProperty.value = orders
+                self.removeAllTimer()
             }
         }
     }
@@ -105,6 +106,13 @@ class OrderListViewModel: BaseViewModel {
     
     func timerString(model: OrderModel) -> String {
         return (timeLimit - (Date().timeIntervalSince1970 * 1000 - model.orderTime)).toTime(format: "mm:ss") + "后自动取消订单"
+    }
+    
+    func removeAllTimer() {
+        for (_ ,v) in timers {
+            v.invalidate()
+        }
+        timers.removeAll()
     }
     
     func updateModel(model: OrderModel) {

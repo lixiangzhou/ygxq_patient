@@ -19,7 +19,6 @@ class VideoConsultResultController: BaseController {
         title = "视频咨询"
         setUI()
         setBinding()
-        viewModel.getDocData()
         viewModel.getVideoData()
     }
 
@@ -40,6 +39,7 @@ extension VideoConsultResultController {
         tableView.register(cell: VideoConsultDiseaseCell.self)
         tableView.register(cell: VideoConsultPicCell.self)
         tableView.register(cell: VideoConsultTimeCell.self)
+        tableView.register(cell: VideoConsultArrowCell.self)
         tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
         
@@ -132,10 +132,37 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
             cell.dataSource = pics
             return cell
             
+        case .exam:
+            let cell = tableView.dequeue(cell: VideoConsultArrowCell.self, for: indexPath)
+            cell.innerView.leftLabel.text = "随访问卷"
+            return cell
+        case .lookPics:
+            let cell = tableView.dequeue(cell: VideoConsultArrowCell.self, for: indexPath)
+            cell.innerView.leftLabel.text = "查看完善资料"
+            return cell
+            
         case let .time(model: videoModel):
             let cell = tableView.dequeue(cell: VideoConsultTimeCell.self, for: indexPath)
             cell.setData(videoModel)
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        
+        switch model {
+        case .exam:
+            let vc = FUVistExamListController()
+            vc.title = "查看随访问卷"
+            vc.viewModel.type = .videolookLinkId(linkId: viewModel.vid)
+            push(vc)
+        case .lookPics:
+            let vc = PictureListController()
+            vc.title = "查看完善资料"
+            vc.viewModel.type = .videoOrDrugDetail(linkId: viewModel.vid, serType: "UTOPIA15", imgType: 0)
+            push(vc)
+        default: break
         }
     }
 }

@@ -23,7 +23,7 @@ class SunShineHutListViewModel: BaseViewModel {
         
         let priceString = String(format: "%.2f", model.serPrice)
         if let idx = priceString.firstIndex(of: ".") {
-            attrString.append(NSAttributedString(string: "\(priceString[...idx])", attributes: [NSAttributedString.Key.font: UIFont.boldSize(20)]))
+            attrString.append(NSAttributedString(string: "\(priceString[..<idx])", attributes: [NSAttributedString.Key.font: UIFont.boldSize(20)]))
             var unit = ""
             switch model.serCode {
             case "UTOPIA13": unit = "元/年"

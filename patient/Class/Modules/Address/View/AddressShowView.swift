@@ -178,9 +178,9 @@ extension AddressShowView {
                     }
                 }
                 
-                self.mobileLabel.sizeToFit()
+                let width = (self.mobileLabel.text ?? "").zz_size(withLimitWidth: 100, fontSize: self.mobileLabel.font!.pointSize).width
                 self.mobileLabel.snp.updateConstraints { (make) in
-                    make.width.equalTo(self.mobileLabel.zz_width)
+                    make.width.equalTo(width)
                 }
             } else {
                 self.addressView.isHidden = true

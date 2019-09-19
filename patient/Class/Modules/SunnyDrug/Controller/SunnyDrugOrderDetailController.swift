@@ -19,9 +19,7 @@ class SunnyDrugOrderDetailController: BaseController {
         title = "阳光续药"
         setUI()
         setBinding()
-        viewModel.getDocData()
         viewModel.getData()
-        viewModel.getAssistData()
     }
 
     // MARK: - Public Property
@@ -40,6 +38,7 @@ extension SunnyDrugOrderDetailController {
         tableView.register(cell: SunnyDrugOrderExpressCell.self)
         tableView.register(cell: SunnyDrugOrderDrugsCell.self)
         tableView.register(cell: SunnyDrugOrderAssistWxInfoCell.self)
+        tableView.register(cell: VideoConsultArrowCell.self)
         tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
         
@@ -98,11 +97,40 @@ extension SunnyDrugOrderDetailController: UITableViewDataSource, UITableViewDele
             cell.nameView.rightLabel.text = company
             cell.noView.rightLabel.text = expNo
             return cell
+            
+        case .exam:
+            let cell = tableView.dequeue(cell: VideoConsultArrowCell.self, for: indexPath)
+            cell.innerView.leftLabel.text = "随访问卷"
+            return cell
+            
+        case .lookPics:
+            let cell = tableView.dequeue(cell: VideoConsultArrowCell.self, for: indexPath)
+            cell.innerView.leftLabel.text = "查看完善资料"
+            return cell
+
         case let .assist(model: model):
             let cell = tableView.dequeue(cell: SunnyDrugOrderAssistWxInfoCell.self, for: indexPath)
             cell.codeView.kf.setImage(with: URL(string: model.wechatQrCode))
             cell.wxLabel.text = model.wechatId
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        
+        switch model {
+        case .exam:
+            let vc = FUVistExamListController()
+            vc.title = "查看随访问卷"
+            vc.viewModel.type = .druglookLinkId(linkId: viewModel.id)
+            push(vc)
+        case .lookPics:
+            let vc = PictureListController()
+            vc.title = "查看完善资料"
+            vc.viewModel.type = .videoOrDrugDetail(linkId: viewModel.id, serType: "UTOPIA16", imgType: 1)
+            push(vc)
+        default: break
         }
     }
 }

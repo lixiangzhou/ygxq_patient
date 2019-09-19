@@ -14,7 +14,7 @@ class TaskTipListViewModel: BaseViewModel {
     var drugOrderProperty = MutableProperty<(TaskModel, OrderModel?)?>(nil)
     
     func getTasks() {
-        CommonApi.pushMsgs(uid: patientId).rac_responseModel([TaskModel].self).startWithValues { [weak self] (list) in
+        CommonApi.pushMsgs(uid: patientId, type: nil).rac_responseModel([TaskModel].self).startWithValues { [weak self] (list) in
             self?.dataSourceProperty.value = list ?? []
         }
     }

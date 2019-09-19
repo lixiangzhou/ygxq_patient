@@ -78,10 +78,10 @@ extension LoginController {
         pwdView.addShadowView("login_field_bg")
         
         switch context {
-        case .release:
-            break
-        default:
+        case .develop:
             pwdView.text = "123456"
+        default:
+            break
         }
         
         codeBtn.setTitleColor(.c407cec, for: .normal)

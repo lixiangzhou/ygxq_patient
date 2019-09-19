@@ -11,6 +11,7 @@ import ReactiveSwift
 
 class LoginManager {
     static let shared = LoginManager()
+    var sessionId = ""
     private init() { }
     
     func setup() {
@@ -23,6 +24,7 @@ class LoginManager {
                     rootVC.selectedIndex = 0
                 }
             }
+            self.sessionId = p?.sessionId ?? ""
         }
     }
 }

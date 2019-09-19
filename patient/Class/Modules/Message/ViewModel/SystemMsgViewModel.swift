@@ -22,7 +22,7 @@ class SystemMsgViewModel: BaseViewModel {
     }
     
     func getData() {
-        CommonApi.pushMsgs(uid: patientId).rac_responseModel([MsgModel].self).skipNil().startWithValues { [weak self] (models) in
+        CommonApi.pushMsgs(uid: patientId, type: nil).rac_responseModel([MsgModel].self).skipNil().startWithValues { [weak self] (models) in
             self?.dataSourceProperty.value = models
         }
     }

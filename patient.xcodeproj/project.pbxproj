@@ -314,6 +314,8 @@
 		10E820C0233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820BF233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift */; };
 		10E820C2233215C2005466A0 /* HutPackageDetailAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C1233215C2005466A0 /* HutPackageDetailAddressCell.swift */; };
 		10E820C4233215D3005466A0 /* HutPackageDetailTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C3233215D3005466A0 /* HutPackageDetailTipCell.swift */; };
+		10E820C623337765005466A0 /* ExamPicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C523337765005466A0 /* ExamPicModel.swift */; };
+		10E820C823337D0A005466A0 /* VideoConsultArrowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C723337D0A005466A0 /* VideoConsultArrowCell.swift */; };
 		10FF889A2314D640008148BC /* ImageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88992314D640008148BC /* ImageTitleView.swift */; };
 		10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889D2314D80A008148BC /* HomeViewModel.swift */; };
 		10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */; };
@@ -641,6 +643,8 @@
 		10E820BF233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailServiceFlowCell.swift; sourceTree = "<group>"; };
 		10E820C1233215C2005466A0 /* HutPackageDetailAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailAddressCell.swift; sourceTree = "<group>"; };
 		10E820C3233215D3005466A0 /* HutPackageDetailTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailTipCell.swift; sourceTree = "<group>"; };
+		10E820C523337765005466A0 /* ExamPicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPicModel.swift; sourceTree = "<group>"; };
+		10E820C723337D0A005466A0 /* VideoConsultArrowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultArrowCell.swift; sourceTree = "<group>"; };
 		10FF88992314D640008148BC /* ImageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTitleView.swift; sourceTree = "<group>"; };
 		10FF889D2314D80A008148BC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTaskView.swift; sourceTree = "<group>"; };
@@ -1156,6 +1160,7 @@
 				10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */,
 				10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */,
 				10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */,
+				10E820C723337D0A005466A0 /* VideoConsultArrowCell.swift */,
 				106DE8D52317BA13001DF4DE /* VideoConsultBuyPatientInfoView.swift */,
 				106DE8D72317BA28001DF4DE /* VideoConsultBuyDiseaseView.swift */,
 				106DE8D92317BA3A001DF4DE /* VideoConsultBuyPicturesView.swift */,
@@ -1746,6 +1751,7 @@
 			isa = PBXGroup;
 			children = (
 				10E1DF2B2304FAA6007AD76A /* VideoConsultModel.swift */,
+				10E820C523337765005466A0 /* ExamPicModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1918,6 +1924,7 @@
 				104FFB0E2314C9B900E51033 /* FSPagerViewCell.swift in Sources */,
 				1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */,
 				10FF88A62314F29D008148BC /* TaskModel.swift in Sources */,
+				10E820C623337765005466A0 /* ExamPicModel.swift in Sources */,
 				101C2E6F2322480F00AB4C53 /* SunShineHutListCell.swift in Sources */,
 				108DCE42231CE10A0038F377 /* SunnyDrugBuyIdView.swift in Sources */,
 				101C2EAB2325EE3200AB4C53 /* AddressShowView.swift in Sources */,
@@ -1971,6 +1978,7 @@
 				101C2E5F23222E5900AB4C53 /* FUVistExamListController.swift in Sources */,
 				101C2EB323276AD200AB4C53 /* HutPackageDetailController.swift in Sources */,
 				10CA473022F826C000A4E244 /* DatePicker.swift in Sources */,
+				10E820C823337D0A005466A0 /* VideoConsultArrowCell.swift in Sources */,
 				1014D05F2293A6D700294558 /* UIButton+ZZExtension.swift in Sources */,
 				10FF88AA2314F2FD008148BC /* BannerModel.swift in Sources */,
 				101C2E9F23234B2F00AB4C53 /* InvoiceSelectCell.swift in Sources */,

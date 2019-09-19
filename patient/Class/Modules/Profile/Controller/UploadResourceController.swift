@@ -37,7 +37,12 @@ class UploadResourceController: BaseController {
 // MARK: - UI
 extension UploadResourceController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "上传记录", target: self, action: #selector(recordAction))
+        switch viewModel.type {
+        case .default:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "上传记录", target: self, action: #selector(recordAction))
+        default:
+            break
+        }
         
         scrollView.backgroundColor = .cf
         view.addSubview(scrollView)

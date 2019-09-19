@@ -109,6 +109,9 @@ extension AddressListController {
         let vc = AddressEditController()
         vc.mode = mode
         vc.addressModel = model
+        if mode == .add {
+            vc.isDefault = viewModel.dataSourceProperty.value.isEmpty
+        }
         vc.completionClosure = { [unowned self] in
             self.viewModel.getList()
         }

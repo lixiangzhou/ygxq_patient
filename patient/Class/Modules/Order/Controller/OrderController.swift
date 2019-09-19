@@ -35,6 +35,7 @@ class OrderController: LLSegmentViewController {
 
     // MARK: - Public Property
     var selectIndex: Int?
+    var resultAction: PayViewModel.ResultAction?
     // MARK: - Private Property
     
 }
@@ -69,6 +70,14 @@ extension OrderController {
 extension OrderController {
     @objc private func getInvoiceAction() {
         push(InvoiceSelectController())
+    }
+    
+    override func backAction() {
+        if let backName = resultAction?.backClassName {
+            popToViewController(backName)
+        } else {
+            super.backAction()
+        }
     }
 }
 

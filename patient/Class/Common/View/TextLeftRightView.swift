@@ -29,11 +29,7 @@ class TextLeftRightView: UIView {
 
     // MARK: - Public Property
     var config: TextLeftRightViewConfig? {
-        didSet {
-            if config == oldValue {
-                return
-            }
-            
+        didSet {            
             guard let config = config else {
                 return
             }

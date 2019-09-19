@@ -73,6 +73,7 @@ extension PayResultController {
     @objc private func lookOrderAction() {
         let vc = OrderController()
         vc.selectIndex = 1
+        vc.resultAction = resultAction
         push(vc)
     }
     

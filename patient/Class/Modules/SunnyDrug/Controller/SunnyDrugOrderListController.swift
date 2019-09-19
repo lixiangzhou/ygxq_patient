@@ -66,7 +66,6 @@ extension SunnyDrugOrderListController: UITableViewDataSource, UITableViewDelega
         cell.lookClosure = { [weak self] in
             let vc = SunnyDrugOrderDetailController()
             vc.viewModel.id = model.id
-            vc.viewModel.did = model.duid
             self?.push(vc)
         }
         return cell

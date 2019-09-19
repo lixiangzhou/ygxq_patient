@@ -23,7 +23,7 @@ class HomeViewModel: BaseViewModel {
     }
     
     func getTasks() {
-        CommonApi.pushMsgs(uid: patientId).rac_responseModel([TaskModel].self).startWithValues { [weak self] (list) in
+        CommonApi.pushMsgs(uid: patientId, type: "CMN_MSG_T_05").rac_responseModel([TaskModel].self).startWithValues { [weak self] (list) in
             self?.taskListProperty.value = list ?? []
         }
     }

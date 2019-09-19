@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveSwift
+import Result
 
 class PersonInfoEditController: BaseController {
 
@@ -34,10 +35,9 @@ class PersonInfoEditController: BaseController {
     // MARK: - Private Property
     private let avatorView = UIImageView(image: UIImage(named: "mine_avator_default"))
     private let nameView = TextLeftRightFieldView()
+    private let idView = TextLeftRightFieldView()
     private let birthView = LeftRightConfigView()
     private let sexView = LeftRightConfigView()
-    private let heightView = LeftRightConfigView()
-    private let weightView = LeftRightConfigView()
     private let nationView = TextLeftRightFieldView()
     private let addressView = LeftRightConfigView()
     private let diseaseView = LeftRightConfigView()
@@ -91,6 +91,11 @@ extension PersonInfoEditController {
         nameView.rightField.placeholder = "请输入真实姓名"
         nameView.rightField.textAlignment = .right
         
+        idView.config = viewModel.idConfig
+        idView.leftLabel.text = "身份证号码"
+        idView.rightField.placeholder = "请输入身份证号码"
+        idView.rightField.textAlignment = .right
+
         birthView.config = viewModel.arrowConfig
         birthView.leftLabel.text = "出生日期"
         birthView.rightLabel.text = arrowOpt
@@ -98,14 +103,6 @@ extension PersonInfoEditController {
         sexView.config = viewModel.arrowConfig
         sexView.leftLabel.text = "性别"
         sexView.rightLabel.text = arrowOpt
-        
-        heightView.config = viewModel.arrowConfig
-        heightView.leftLabel.text = "身高"
-        heightView.rightLabel.text = arrowOpt
-        
-        weightView.config = viewModel.arrowConfig
-        weightView.leftLabel.text = "体重"
-        weightView.rightLabel.text = arrowOpt
         
         nationView.config = viewModel.inputConfig
         nationView.leftLabel.text = "民族"
@@ -123,8 +120,6 @@ extension PersonInfoEditController {
         
         birthView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthAction)))
         sexView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sexAction)))
-        heightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(heightAction)))
-        weightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(weightAction)))
         
         addressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addressAction)))
         diseaseView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(diseaseAction)))
@@ -134,10 +129,9 @@ extension PersonInfoEditController {
         }
         
         contentView.addSubview(nameView)
+        contentView.addSubview(idView)
         contentView.addSubview(birthView)
         contentView.addSubview(sexView)
-        contentView.addSubview(heightView)
-        contentView.addSubview(weightView)
         contentView.addSubview(nationView)
         contentView.addSubview(addressView)
         contentView.addSubview(diseaseView)
@@ -161,8 +155,13 @@ extension PersonInfoEditController {
             make.height.equalTo(50)
         }
         
-        birthView.snp.makeConstraints { (make) in
+        idView.snp.makeConstraints { (make) in
             make.top.equalTo(nameView.snp.bottom)
+            make.left.right.height.equalTo(nameView)
+        }
+        
+        birthView.snp.makeConstraints { (make) in
+            make.top.equalTo(idView.snp.bottom)
             make.left.right.height.equalTo(nameView)
         }
         
@@ -171,18 +170,8 @@ extension PersonInfoEditController {
             make.left.right.height.equalTo(nameView)
         }
         
-        heightView.snp.makeConstraints { (make) in
-            make.top.equalTo(sexView.snp.bottom)
-            make.left.right.height.equalTo(nameView)
-        }
-        
-        weightView.snp.makeConstraints { (make) in
-            make.top.equalTo(heightView.snp.bottom)
-            make.left.right.height.equalTo(nameView)
-        }
-        
         nationView.snp.makeConstraints { (make) in
-            make.top.equalTo(weightView.snp.bottom)
+            make.top.equalTo(sexView.snp.bottom)
             make.left.right.height.equalTo(nameView)
         }
         
@@ -233,19 +222,17 @@ extension PersonInfoEditController {
     }
     
     override func setBinding() {
-        if hasIcon {
-            finishBtn.isEnabled = true
-            finishBtn.setTitleColor(.cf, for: .normal)
-        } else {
-            finishBtn.isEnabled = false
-            let nameEnabledSignal = nameView.rightField.reactive.continuousTextValues.map { $0.count >= 2 }
-            let finishEnabledSignal = nameEnabledSignal
-            
-            finishBtn.reactive.isEnabled <~ finishEnabledSignal
-            finishBtn.reactive.makeBindingTarget { (btn, color) in
-                btn.setTitleColor(color, for: .normal)
-                } <~ finishEnabledSignal.map { $0 ? UIColor.cf : UIColor.cdcdcdc }
-        }
+        finishBtn.isEnabled = false
+        let nameEnabledSignal = nameView.rightField.reactive.continuousTextValues.producer.map { $0.count >= 2 }
+        
+        let idEnabledSignal = SignalProducer<Bool, NoError>(value: true).concat(idView.rightField.reactive.continuousTextValues.map { $0.isEmpty || $0.count == 15 || $0.count == 18 })
+        
+        let finishEnabledSignal = nameEnabledSignal.and(idEnabledSignal)
+        
+        finishBtn.reactive.isEnabled <~ finishEnabledSignal
+        finishBtn.reactive.makeBindingTarget { (btn, color) in
+            btn.setTitleColor(color, for: .normal)
+            } <~ finishEnabledSignal.map { $0 ? UIColor.cf : UIColor.cdcdcdc }
     }
     
     private func setData() {
@@ -254,13 +241,15 @@ extension PersonInfoEditController {
                 self?.viewModel.imgUrl = info.imgUrl
                 self?.avatorView.kf.setImage(with: URL(string: info.imgUrl), placeholder: UIImage(named: "mine_avator_default"))
                 self?.nameView.rightField.text = info.realName
+                self?.idView.rightField.text = info.idCardNo
                 self?.sexView.rightLabel.text = info.sex == Sex.unknown ? self?.arrowOpt : info.sex.description
                 self?.birthView.rightLabel.text = (info.birth / 1000).toTime(format: "yyyy-MM-dd")
-                self?.heightView.rightLabel.text = info.height.description + "cm"
-                self?.weightView.rightLabel.text = Int(info.weight).description + "kg"
                 self?.nationView.rightField.text = info.race
                 self?.addressView.rightLabel.text = info.address
                 self?.diseaseView.rightLabel.text = info.diseaseName
+                
+                self?.nameView.rightField.sendActions(for: .allEditingEvents)
+                self?.idView.rightField.sendActions(for: .allEditingEvents)
             }
         }
     }
@@ -301,42 +290,6 @@ extension PersonInfoEditController {
         }
     }
     
-    @objc private func heightAction() {
-        view.endEditing(true)
-        
-        let picker = CommonPicker.show()
-        picker.dataSource = viewModel.heightDataSource
-        picker.selectOne(selectHeight)
-        picker.finishClosure = { [weak self] picker in
-            guard let self = self else { return }
-            let row = picker.commmonPicker.selectedRow(inComponent: 0)
-            switch self.viewModel.heightDataSource {
-            case let .two(ds):
-                self.heightView.rightLabel.text = ds[row].title + "cm"
-            default:
-                break
-            }
-        }
-    }
-    
-    @objc private func weightAction() {
-        view.endEditing(true)
-        
-        let picker = CommonPicker.show()
-        picker.dataSource = viewModel.weightDataSource
-        picker.selectOne(selectWeight)
-        picker.finishClosure = { [weak self] picker in
-            guard let self = self else { return }
-            let row = picker.commmonPicker.selectedRow(inComponent: 0)
-            switch self.viewModel.weightDataSource {
-            case let .two(ds):
-                self.weightView.rightLabel.text = ds[row].title + "kg"
-            default:
-                break
-            }
-        }
-    }
-    
     @objc private func addressAction() {
         view.endEditing(true)
         
@@ -365,15 +318,16 @@ extension PersonInfoEditController {
         var params = [String: Any]()
         params["realName"] = nameView.rightField.text ?? ""
         params["birth"] = selectBirth?.zz_date(withDateFormat: "yyyy-MM-dd")?.timeIntervalSince1970 ?? 0
+        params["idCardNo"] = idView.rightField.text ?? ""
         params["sex"] = Sex.string(selectSex).rawValue
-        params["height"] = Int(selectHeight ?? "0")
-        params["weight"] = Int(selectWeight ?? "0")
         params["race"] = nationView.rightField.text ?? ""
         params["address"] = addressView.rightLabel.text ?? ""
         params["diseaseCode"] = viewModel.selectDiseaseCodeFrom(selectDisease) ?? "0"
-        params["id"] = PatientManager.shared.id
+        params["id"] = patientId
         params["fromWhere"] = 1
         params["imgUrl"] = viewModel.imgUrl
+        params["height"] = 0
+        params["weight"] = 0
         
         viewModel.saveInfo(params).startWithValues { [weak self] (result) in
             if result.isSuccess {
@@ -429,22 +383,6 @@ extension PersonInfoEditController {
             return nil
         } else {
             return sexView.rightLabel.text
-        }
-    }
-    
-    var selectHeight: String? {
-        if heightView.rightLabel.text == arrowOpt {
-            return "120"
-        } else {
-            return heightView.rightLabel.text?.replacingOccurrences(of: "cm", with: "")
-        }
-    }
-    
-    var selectWeight: String? {
-        if weightView.rightLabel.text == arrowOpt {
-            return "60"
-        } else {
-            return weightView.rightLabel.text?.replacingOccurrences(of: "kg", with: "")
         }
     }
     
