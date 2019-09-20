@@ -1,21 +1,20 @@
 //
-//  HutPackageDetailTipCell.swift
+//  HutPackageTimeBuyTipCell.swift
 //  patient
 //
-//  Created by lixiangzhou on 2019/9/18.
-//  Copyright © 2019 sphr. All rights reserved.
+//  Created by lixiangzhou on 2019/9/20.
+//Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
 
-class HutPackageDetailTipCell: UITableViewCell {
+class HutPackageTimeBuyTipCell: UITableViewCell {
     
     // MARK: - Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        selectionStyle = .none
         setUI()
     }
     
@@ -23,19 +22,17 @@ class HutPackageDetailTipCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public Property
-    let txtLabel = UILabel(text: "温馨提示\n我们将以快递的形式给您配送设备，请务必填写信息！此为医疗器械设备，购买后不支持退货退款。", font: .size(15), textColor: .c6)
+    let txtLabel = UILabel(text: "退款计算方式：退款金额=总价-剩余次数的价格。", font: .size(15), textColor: .c6)
     // MARK: - Private Property
     
 }
 
 // MARK: - UI
-extension HutPackageDetailTipCell {
+extension HutPackageTimeBuyTipCell {
     private func setUI() {
         backgroundColor = .cf0efef
-        
         contentView.addSubview(txtLabel)
-            
+        
         txtLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalTo(15)

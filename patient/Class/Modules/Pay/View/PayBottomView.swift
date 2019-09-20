@@ -23,9 +23,9 @@ class PayBottomView: BaseView {
     }
 
     // MARK: - Public Property
-    let descLabel = UILabel(text: "合计金额：", font: .size(15), textColor: .c3)
-    let priceLabel = UILabel(text: "", font: .size(15), textColor: .cf25555)
-    let payBtn = UIButton(title: "去支付", font: .boldSize(16), titleColor: .cf, backgroundColor: .cf25555)
+    let descLabel = UILabel(text: "合计金额：", font: .boldSize(16), textColor: .c3)
+    let priceLabel = UILabel(text: "", font: .size(15), textColor: .cff3a33)
+    let payBtn = UIButton(title: "去支付", font: .boldSize(18), titleColor: .cf, backgroundColor: .cffa84c)
     var payClosure: (() -> Void)?
     // MARK: - Private Property
     
@@ -74,19 +74,4 @@ extension PayBottomView {
     @objc private func payAction() {
         payClosure?()
     }
-}
-
-// MARK: - Helper
-extension PayBottomView {
-    
-}
-
-// MARK: - Other
-extension PayBottomView {
-    
-}
-
-// MARK: - Public
-extension PayBottomView {
-    
 }

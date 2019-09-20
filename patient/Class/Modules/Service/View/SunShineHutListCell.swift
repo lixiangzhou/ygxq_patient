@@ -27,7 +27,7 @@ class SunShineHutListCell: UITableViewCell {
     let iconView = UIImageView()
     let nameLabel = UILabel(font: .size(17), textColor: .c3, numOfLines: 2)
     let featureLabel = UILabel(font: .size(15), textColor: .c6, numOfLines: 1)
-    let priceLabel = UILabel(textColor: .cf25555)
+    let priceLabel = UILabel(textColor: .cff3a33)
     // MARK: - Private Property
     
 }

@@ -102,6 +102,11 @@ extension UIColor {
     static var ce5eeff: UIColor {
         return UIColor(stringHexValue: "#e5eeff")!
     }
+    
+    /// 价格
+    static var cff3a33: UIColor {
+        return UIColor(stringHexValue: "#ff3a33")!
+    }
  
     /// 
     static var fieldDefaultColor: UIColor {

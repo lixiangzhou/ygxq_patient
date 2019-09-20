@@ -16,6 +16,7 @@ class HutPackageDetailController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "套餐详情"
         setUI()
         setBinding()
     }

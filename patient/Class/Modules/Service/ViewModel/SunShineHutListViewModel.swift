@@ -11,7 +11,7 @@ import ReactiveSwift
 
 class SunShineHutListViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[SunShineHutModel]>([])
-    let hasBuyECGProperty = MutableProperty<Bool>(true)
+    let hasBuyECGProperty = MutableProperty<(Bool, SunShineHutModel?)>((true, nil))
     func getData() {
         ServiceApi.querySunshineHutList.rac_responseModel([SunShineHutModel].self).startWithValues { [weak self] (value) in
             self?.dataSourceProperty.value = value ?? []
@@ -40,7 +40,7 @@ class SunShineHutListViewModel: BaseViewModel {
     
     func canBuy(_ model: SunShineHutModel) {
         ECGApi.isBuyECG(pid: patientId, keyword: model.serCode).rac_response(Bool.self).startWithValues { [weak self] (resp) in
-             self?.hasBuyECGProperty.value = resp.content == true
+             self?.hasBuyECGProperty.value = (resp.content == true, model)
         }
     }
 }

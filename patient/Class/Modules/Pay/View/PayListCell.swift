@@ -38,7 +38,7 @@ extension PayListCell {
         titleView.config = TextLeftRightViewConfig(leftFont: .size(14), leftTextColor: .c6)
         titleView.leftLabel.text = "服务清单"
         
-        productView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .cf25555)
+        productView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .cff3a33)
         
         contentView.addSubview(titleView)
         contentView.addSubview(productView)

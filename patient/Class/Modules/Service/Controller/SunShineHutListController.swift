@@ -45,9 +45,11 @@ extension SunShineHutListController {
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
         
-        viewModel.hasBuyECGProperty.signal.observeValues { (value) in
-            if value {
-                
+        viewModel.hasBuyECGProperty.signal.observeValues { [weak self] (value) in
+            if value.0 {
+                let vc = HutPackageTimeBuyController()
+                vc.viewModel.hutModelProperty.value = value.1
+                self?.push(vc)
             } else {
                 AlertView.show(title: nil, msg: "请购买心电套餐后再购买服务包", firstTitle: "再想想", secondTitle: "去购买", firstClosure: { alert in
                     alert.hide()
@@ -74,7 +76,12 @@ extension SunShineHutListController: UITableViewDataSource, UITableViewDelegate 
         let cell = tableView.dequeue(cell: SunShineHutListCell.self, for: indexPath)
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         
-        cell.iconView.kf.setImage(with: URL(string: model.firstImg), placeholder: nil)
+        cell.iconView.kf.setImage(with: URL(string: model.firstImg), placeholder: UIImage(named: "service_placeholder")) { (result) in
+            switch result {
+            case .failure: cell.iconView.image = UIImage(named: "service_neterror")
+            case .success: break
+            }
+        }
         cell.nameLabel.text = model.serName
         cell.featureLabel.text = model.serFeatures
         cell.priceLabel.attributedText = viewModel.getPrice(model)

@@ -3,10 +3,11 @@
 //  patient
 //
 //  Created by lixiangzhou on 2019/9/20.
-//Copyright © 2019 sphr. All rights reserved.
+//  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
+import ReactiveSwift
 
 class HutPackageTimeBuyController: BaseController {
 
@@ -14,53 +15,92 @@ class HutPackageTimeBuyController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = "套餐详情"
         setUI()
+        setBinding()
     }
 
     // MARK: - Public Property
+    let viewModel = HutPackageTimeBuyViewModel()
     
     // MARK: - Private Property
-    
+    private let tableView = UITableView()
+    private let bottomView = PayBottomView()
 }
 
 // MARK: - UI
 extension HutPackageTimeBuyController {
     override func setUI() {
+        tableView.backgroundColor = .cf0efef
         
+        tableView.set(dataSource: self, delegate: nil, rowHeight: UITableView.automaticDimension)
+        tableView.register(cell: HutPackageTimeBuyCell.self)
+        tableView.register(cell: HutPackageTimeBuyDetailCell.self)
+        tableView.register(cell: HutPackageTimeBuyTipCell.self)
+        tableView.estimatedRowHeight = 150
+        view.addSubview(tableView)
+        
+        bottomView.payClosure = { [weak self] in
+            self?.viewModel.getOrder { (orderId) in
+                if let orderId = orderId {
+                    let vc = PayController()
+                    vc.viewModel.orderId = orderId
+                    vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.zz_className ?? "HutPackageTimeBuyController", type: .sunShineHut)
+                    self?.push(vc)
+                }
+            }
+        }
+        view.addSubview(bottomView)
+        
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        tableView.contentInset.bottom = 50
+        
+        bottomView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(bottomView.zz_height)
+            make.bottomOffsetFrom(self)
+        }
     }
-}
-
-// MARK: - Action
-extension HutPackageTimeBuyController {
     
-}
-
-// MARK: - Network
-extension HutPackageTimeBuyController {
-    
+    override func setBinding() {
+        tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
+        viewModel.hutModelProperty.producer.skipNil().startWithValues { (model) in
+            self.bottomView.priceLabel.text = "￥\(model.serPrice)"
+        }
+    }
 }
 
 // MARK: - Delegate Internal
 
 // MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension HutPackageTimeBuyController {
+extension HutPackageTimeBuyController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.dataSourceProperty.value.count
+    }
     
-}
-
-// MARK: - Other
-extension HutPackageTimeBuyController {
-    
-}
-
-// MARK: - Public
-extension HutPackageTimeBuyController {
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        
+        switch model {
+        case let .outline(name: name, price: price):
+            let cell = tableView.dequeue(cell: HutPackageTimeBuyCell.self, for: indexPath)
+            cell.nameLabel.text = name
+            cell.priceLabel.attributedText = price
+            cell.countProperty.producer.startWithValues { [weak self] (value) in
+                self?.viewModel.count = value
+            }
+            return cell
+        case let .detail(txt: txt):
+            let cell = tableView.dequeue(cell: HutPackageTimeBuyDetailCell.self, for: indexPath)
+            cell.txtLabel.text = txt
+            return cell
+        case .tip:
+            return tableView.dequeue(cell: HutPackageTimeBuyTipCell.self, for: indexPath)
+        }
+    }
 }
 

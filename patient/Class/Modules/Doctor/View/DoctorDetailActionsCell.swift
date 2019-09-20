@@ -79,7 +79,7 @@ extension DoctorDetailActionsCell {
             super.init(frame: frame)
             
             txtLabel.zz_setCorner(radius: 4, masksToBounds: true)
-            txtLabel.zz_setBorder(color: .cf25555, width: 0.5)
+            txtLabel.zz_setBorder(color: .cff3a33, width: 0.5)
             contentView.addSubview(txtLabel)
             
             txtLabel.snp.makeConstraints { (make) in
@@ -92,6 +92,6 @@ extension DoctorDetailActionsCell {
             fatalError("init(coder:) has not been implemented")
         }
         
-        let txtLabel = UILabel(font: .size(15), textColor: .cf25555, textAlignment: .center)
+        let txtLabel = UILabel(font: .size(15), textColor: .cff3a33, textAlignment: .center)
     }
 }

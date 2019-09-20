@@ -1,14 +1,14 @@
 //
-//  HutPackageDetailOutlineCell.swift
+//  HutPackageTimeBuyDetailCell.swift
 //  patient
 //
-//  Created by lixiangzhou on 2019/9/18.
+//  Created by lixiangzhou on 2019/9/20.
 //  Copyright © 2019 sphr. All rights reserved.
 //
 
 import UIKit
 
-class HutPackageDetailOutlineCell: UITableViewCell {
+class HutPackageTimeBuyDetailCell: UITableViewCell {
     
     // MARK: - Life Cycle
     
@@ -24,15 +24,13 @@ class HutPackageDetailOutlineCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let titleLabel = UILabel(font: .boldSize(17), textColor: .c3)
-    let timeLabel = UILabel(font: .size(16), textColor: .c3)
-    let featureLabel = UILabel(font: .size(16), textColor: .c3)
-    // MARK: - Private Property
+    let txtLabel = UILabel(font: .size(16), textColor: .c3)
     
+    // MARK: - Private Property
 }
 
 // MARK: - UI
-extension HutPackageDetailOutlineCell {
+extension HutPackageTimeBuyDetailCell {
     private func setUI() {
         backgroundColor = .cf0efef
         
@@ -40,31 +38,25 @@ extension HutPackageDetailOutlineCell {
         whiteView.zz_setCorner(radius: 6, masksToBounds: true)
         whiteView.backgroundColor = .cf
         
-        whiteView.addSubview(titleLabel)
-        whiteView.addSubview(timeLabel)
-        whiteView.addSubview(featureLabel)
+        let titleLabel = whiteView.zz_add(subview: UILabel(text: "服务详情", font: .boldSize(17), textColor: .c3))
+        whiteView.addSubview(txtLabel)
         
         whiteView.snp.makeConstraints { (make) in
-            make.top.equalTo(12)
+            make.top.equalToSuperview()
             make.left.equalTo(15)
-            make.bottom.equalTo(-12)
+            make.bottom.equalTo(-15)
             make.right.equalTo(-15)
         }
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(15)
-            make.left.equalTo(12)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
         }
         
-        timeLabel.snp.makeConstraints { (make) in
+        txtLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
-            make.left.equalTo(titleLabel)
-            make.right.equalTo(-12)
-        }
-        
-        featureLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(timeLabel.snp.bottom).offset(12)
-            make.left.right.equalTo(timeLabel)
+            make.left.right.equalTo(titleLabel)
             make.bottom.equalTo(-15)
         }
     }
