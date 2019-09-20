@@ -72,7 +72,7 @@ extension PictureListController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(cell: PictureListCell.self, for: indexPath)
         let url = viewModel.dataSourceProperty.value[indexPath.item]
-        cell.imgView.kf.setImage(with: URL(string: url), placeholder: nil)
+        cell.imgView.setImage(with: URL(string: url))
         return cell
     }
     

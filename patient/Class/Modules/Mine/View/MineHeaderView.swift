@@ -13,7 +13,7 @@ class MineHeaderView: UIView {
     // MARK: - Life Cycle
     
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 175 + UIScreen.zz_statusBar_additionHeight))
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 180 + UIScreen.zz_statusBar_additionHeight))
         
         setUI()
     }

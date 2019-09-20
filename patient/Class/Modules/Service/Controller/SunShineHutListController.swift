@@ -76,12 +76,7 @@ extension SunShineHutListController: UITableViewDataSource, UITableViewDelegate 
         let cell = tableView.dequeue(cell: SunShineHutListCell.self, for: indexPath)
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         
-        cell.iconView.kf.setImage(with: URL(string: model.firstImg), placeholder: UIImage(named: "service_placeholder")) { (result) in
-            switch result {
-            case .failure: cell.iconView.image = UIImage(named: "service_neterror")
-            case .success: break
-            }
-        }
+        cell.iconView.setImage(with: URL(string: model.firstImg))
         cell.nameLabel.text = model.serName
         cell.featureLabel.text = model.serFeatures
         cell.priceLabel.attributedText = viewModel.getPrice(model)

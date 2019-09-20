@@ -110,7 +110,7 @@ extension SunnyDrugOrderDetailController: UITableViewDataSource, UITableViewDele
 
         case let .assist(model: model):
             let cell = tableView.dequeue(cell: SunnyDrugOrderAssistWxInfoCell.self, for: indexPath)
-            cell.codeView.kf.setImage(with: URL(string: model.wechatQrCode))
+            cell.codeView.setImage(with: URL(string: model.wechatQrCode))
             cell.wxLabel.text = model.wechatId
             return cell
         }

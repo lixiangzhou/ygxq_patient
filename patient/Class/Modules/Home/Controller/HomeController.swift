@@ -30,8 +30,7 @@ class HomeController: BaseController {
     }
     
     // MARK: - Properties
-    private let scanItem = ImageTitleView()
-    private let noticeItem = ImageTitleView()
+    private var noticeItem: ImageTitleView!
     private let headerView = HomeHeaderView()
     private let tableView = UITableView()
     
@@ -52,45 +51,14 @@ extension HomeController {
         tableView.tableHeaderView = headerView
         view.addSubview(tableView)
         
-        addNavigationItems()
+        addNavigationItem(position: .left, title: "扫一扫", imgName: "home_scan", action: #selector(scanAction))
+        noticeItem = addNavigationItem(position: .right, title: "消息", imgName: "mine_nav_notice", action: #selector(noticeAction))
         
         setActions()
         
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(-UIScreen.zz_nav_statusHeight)
             make.bottom.left.right.equalToSuperview()
-        }
-    }
-    
-    private func addNavigationItems() {
-        let config = ImageTitleView.Config(imageSize: CGSize(width: 25, height: 25), verticalHeight1: 0, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .size(14), titleColor: .cf)
-
-        scanItem.imgView.contentMode = .center
-        scanItem.config = config
-        scanItem.titleLabel.text = "扫一扫"
-        scanItem.imgView.image = UIImage(named: "home_scan")
-        view.addSubview(scanItem)
-        
-        scanItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scanAction)))
-        
-        noticeItem.imgView.contentMode = .center
-        noticeItem.config = config
-        noticeItem.titleLabel.text = "消息"
-        noticeItem.imgView.image = UIImage(named: "mine_nav_notice")
-        view.addSubview(noticeItem)
-        
-        noticeItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeAction)))
-        
-        scanItem.snp.makeConstraints { (make) in
-            make.top.equalTo(25 + UIScreen.zz_statusBar_additionHeight)
-            make.left.equalTo(10)
-            make.width.equalTo(50)
-            make.height.equalTo(50)
-        }
-        
-        noticeItem.snp.makeConstraints { (make) in
-            make.top.width.height.equalTo(scanItem)
-            make.right.equalTo(-10)
         }
     }
     
@@ -227,7 +195,7 @@ extension HomeController: FSPagerViewDataSource, FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: FSPagerViewCell.description(), at: index)
         let model = viewModel.bannerListProperty.value[index]
-        cell.imageView?.kf.setImage(with: URL(string: model.imgUrl))
+        cell.imageView?.setImage(with: URL(string: model.imgUrl))
         return cell
     }
     

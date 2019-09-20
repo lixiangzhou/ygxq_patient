@@ -34,9 +34,6 @@ class MineController: BaseController {
     }
 
     // MARK: - Properties
-    private let editItem = ImageTitleView()
-    private let noticeItem = ImageTitleView()
-
     private let viewModel = MineViewModel()
     private let headerView = MineHeaderView()
     var noticeBtn: UIButton!
@@ -47,12 +44,10 @@ class MineController: BaseController {
 // MARK: - UI
 extension MineController {
     override func setUI() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "mine_nav_edit", target: self, action: #selector(editAction))
-        
-        noticeBtn = UIButton(imageName: "mine_nav_notice", target: self, action: #selector(noticeAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: noticeBtn)
+        hideNavigation = true
         
         view.addSubview(tableView)
+        addNavigationItem(position: .right, title: "编辑", imgName: "mine_nav_edit", action: #selector(editAction))
         
         tableView.register(cell: TextTableViewCell.self)
         tableView.set(dataSource: self, delegate: self)
@@ -65,7 +60,7 @@ extension MineController {
         tableView.tableHeaderView = headerView
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(-UIScreen.zz_navHeight)
+            make.top.equalTo(-UIScreen.zz_nav_statusHeight)
             make.bottom.left.right.equalToSuperview()
         }
     }
@@ -73,7 +68,7 @@ extension MineController {
     override func setBinding() {
         patientInfoProperty.producer.startWithValues { [weak self](pinfo) in
             if let pinfo = pinfo {
-                self?.headerView.iconView.kf.setImage(with: URL(string: pinfo.imgUrl), placeholder: UIImage(named: "mine_avator_default"))
+                self?.headerView.iconView.setImage(with: URL(string: pinfo.imgUrl))
                 self?.headerView.nameLabel.text = pinfo.realName.isEmpty ? "未填写姓名" : pinfo.realName
             } else {
                 self?.headerView.iconView.image = UIImage(named: "mine_avator_default")

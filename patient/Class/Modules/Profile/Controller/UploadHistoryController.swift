@@ -65,7 +65,7 @@ extension UploadHistoryController: UITableViewDataSource, UITableViewDelegate {
         for (idx, v) in cell.itemViews.enumerated() {
             if idx < model.list.count {
                 v.isHidden = false
-                v.kf.setImage(with: URL(string: model.list[idx]), placeholder: nil)
+                v.setImage(with: URL(string: model.list[idx]))
             } else {
                 v.isHidden = true
             }

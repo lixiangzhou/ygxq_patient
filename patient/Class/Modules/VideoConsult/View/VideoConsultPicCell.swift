@@ -104,7 +104,7 @@ extension VideoConsultPicCell: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(cell: ImageCell.self, for: indexPath)
-        cell.imgView.kf.setImage(with: URL(string: dataSource[indexPath.item].mediaUrl))
+        cell.imgView.setImage(with: URL(string: dataSource[indexPath.item].mediaUrl))
         return cell
     }
     

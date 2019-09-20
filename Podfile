@@ -27,6 +27,6 @@ target 'patient' do
     pod 'RongCloudRTC/RongCallLib'
     pod 'RongCloudRTC/RongCallKit'
     pod 'TZImagePickerController'
-    
+    pod 'FDFullscreenPopGesture'
     pod 'Bugly'
 end

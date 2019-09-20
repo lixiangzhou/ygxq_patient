@@ -159,7 +159,9 @@ extension BaseController {
 }
 
 extension BaseController {
-    private func addLeftNavigationItems(title: String, imgName: String, action: Selector) {
+    
+    @discardableResult
+    func addNavigationItem(position: NavItemPosition, title: String, imgName: String, action: Selector) -> ImageTitleView {
         let config = ImageTitleView.Config(imageSize: CGSize(width: 25, height: 25), verticalHeight1: 0, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .size(14), titleColor: .cf)
         
         let item = ImageTitleView()
@@ -171,12 +173,21 @@ extension BaseController {
         
         item.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
         
-        
         item.snp.makeConstraints { (make) in
             make.top.equalTo(25 + UIScreen.zz_statusBar_additionHeight)
-            make.left.equalTo(10)
             make.width.equalTo(50)
             make.height.equalTo(50)
+            switch position {
+            case .left: make.left.equalTo(10)
+            case .right: make.right.equalTo(-10)
+            }
         }
+        return item
+    }
+}
+
+extension BaseController {
+    enum NavItemPosition {
+        case left, right
     }
 }

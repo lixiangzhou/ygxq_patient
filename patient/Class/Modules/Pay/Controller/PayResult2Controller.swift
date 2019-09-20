@@ -149,7 +149,7 @@ extension PayResult2Controller {
     
     override func setBinding() {
         viewModel.assistModelProperty.signal.skipNil().observeValues { [weak self] (model) in
-            self?.codeView.kf.setImage(with: URL(string: model.wechatQrCode))
+            self?.codeView.setImage(with: URL(string: model.wechatQrCode))
             self?.wxLabel.text = model.wechatId
         }
     }

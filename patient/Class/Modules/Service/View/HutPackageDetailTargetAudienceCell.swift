@@ -52,9 +52,8 @@ class HutPackageDetailTargetAudienceCell: UITableViewCell {
                 
                 let view = ImageTitleView(frame: CGRect(x: itemX, y: itemY, width: itemWidth, height: itemHeight))
                 view.config = .init(imageInTop: true, imageSize: CGSize(width: 80, height: 80), verticalHeight1: 0, verticalHeight2: 12, titleLeft: 0, titleRight: 0, titleFont: .size(15), titleColor: .c3)
-                view.imgView.kf.setImage(with: URL(string: m.pic))
+                view.imgView.setImage(with: URL(string: m.pic))
                 view.titleLabel.text = m.title
-                view.imgView.backgroundColor = .orange
                 itemsView.addSubview(view)
                 lastY = view.frame.maxY
             }

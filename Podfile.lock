@@ -3,6 +3,7 @@ PODS:
   - Bugly (2.5.0)
   - EmptyDataSet-Swift (4.2.0)
   - ESTabBarController-swift (2.7)
+  - FDFullscreenPopGesture (1.1)
   - HandyJSON (5.0.0)
   - IQKeyboardManagerSwift (6.4.1)
   - JCore (2.1.2)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - Bugly
   - EmptyDataSet-Swift
   - ESTabBarController-swift
+  - FDFullscreenPopGesture
   - HandyJSON
   - IQKeyboardManagerSwift
   - JPush
@@ -74,6 +76,7 @@ SPEC REPOS:
     - Bugly
     - EmptyDataSet-Swift
     - ESTabBarController-swift
+    - FDFullscreenPopGesture
     - HandyJSON
     - IQKeyboardManagerSwift
     - JCore
@@ -99,6 +102,7 @@ SPEC CHECKSUMS:
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   EmptyDataSet-Swift: 1fa0b35f530a35f852ecb2b53564728b0c300aaf
   ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
   JCore: 1a426120b510cdebfd67b82bfb9483238ee09413
@@ -119,6 +123,6 @@ SPEC CHECKSUMS:
   WKWebViewJavascriptBridge: 43c5948c08c29b8777530d512d02eb921ca0881f
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
 
-PODFILE CHECKSUM: ebf865f14365c4df4f2b8ca6ce9a873ed13f8580
+PODFILE CHECKSUM: 06ce366d6b7d91b214dfb09faf673253c2732ba6
 
 COCOAPODS: 1.7.4
