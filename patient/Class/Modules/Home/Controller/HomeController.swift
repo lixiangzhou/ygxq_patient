@@ -26,6 +26,7 @@ class HomeController: BaseController {
         
         viewModel.getTasks()
         viewModel.getUnReadMsgCount()
+        RCManager.shared.connect(nil)
     }
     
     // MARK: - Properties

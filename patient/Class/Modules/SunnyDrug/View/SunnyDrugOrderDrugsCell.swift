@@ -37,7 +37,8 @@ extension SunnyDrugOrderDrugsCell {
         let topSepView = contentView.zz_add(subview: UIView())
         topSepView.backgroundColor = .cf0efef
         
-        let titleView = TextLeftRightView(TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3))
+        let titleView = TextLeftRightView()
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
         titleView.leftLabel.text = "购买药品"
         contentView.addSubview(titleView)
         
