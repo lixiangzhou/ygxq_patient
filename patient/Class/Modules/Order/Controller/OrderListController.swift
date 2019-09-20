@@ -148,7 +148,7 @@ extension OrderListController {
            
             viewModel.removeTimer(cell.hash)
             
-            if viewModel.showTimer(model: model) {
+            if viewModel.showTimer(model: model) && !closed {
                 cell.orderCancelTimeLabel.text = self.viewModel.timerString(model: model)
                 let timer = Timer(timeInterval: 1, repeats: true) { [weak cell, weak self] (timer) in
                     guard let cell = cell, let self = self else { timer.invalidate(); return }

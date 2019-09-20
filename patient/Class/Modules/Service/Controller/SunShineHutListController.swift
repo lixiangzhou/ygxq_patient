@@ -51,8 +51,11 @@ extension SunShineHutListController {
             } else {
                 AlertView.show(title: nil, msg: "请购买心电套餐后再购买服务包", firstTitle: "再想想", secondTitle: "去购买", firstClosure: { alert in
                     alert.hide()
-                }, secondClosure: { alert in
+                }, secondClosure: { [weak self] alert in
                     alert.hide()
+                    let vc = HutPackageDetailController()
+                    vc.viewModel.hutModelProperty.value = self?.viewModel.dataSourceProperty.value[0]
+                    self?.push(vc)
                 })
             }
         }
@@ -86,7 +89,6 @@ extension SunShineHutListController: UITableViewDataSource, UITableViewDelegate 
             let vc = HutPackageDetailController()
             vc.viewModel.hutModelProperty.value = model
             push(vc)
-            break
         case "UTOPIA14":
             viewModel.canBuy(model)
         default: break

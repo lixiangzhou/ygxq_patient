@@ -41,6 +41,8 @@ class ApplyForRefundController: BaseController {
 extension ApplyForRefundController {
     override func setUI() {
         let scrollView = UIScrollView()
+        scrollView.keyboardDismissMode = .onDrag
+        scrollView.alwaysBounceVertical = true
         scrollView.backgroundColor = .cf0efef
         let contentView = UIView()
         contentView.backgroundColor = .cf

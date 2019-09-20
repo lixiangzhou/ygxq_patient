@@ -316,6 +316,7 @@
 		10E820C4233215D3005466A0 /* HutPackageDetailTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C3233215D3005466A0 /* HutPackageDetailTipCell.swift */; };
 		10E820C623337765005466A0 /* ExamPicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C523337765005466A0 /* ExamPicModel.swift */; };
 		10E820C823337D0A005466A0 /* VideoConsultArrowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C723337D0A005466A0 /* VideoConsultArrowCell.swift */; };
+		10E820CA23347B39005466A0 /* HutPackageTimeBuyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820C923347B39005466A0 /* HutPackageTimeBuyController.swift */; };
 		10FF889A2314D640008148BC /* ImageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF88992314D640008148BC /* ImageTitleView.swift */; };
 		10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889D2314D80A008148BC /* HomeViewModel.swift */; };
 		10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */; };
@@ -645,6 +646,7 @@
 		10E820C3233215D3005466A0 /* HutPackageDetailTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailTipCell.swift; sourceTree = "<group>"; };
 		10E820C523337765005466A0 /* ExamPicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPicModel.swift; sourceTree = "<group>"; };
 		10E820C723337D0A005466A0 /* VideoConsultArrowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultArrowCell.swift; sourceTree = "<group>"; };
+		10E820C923347B39005466A0 /* HutPackageTimeBuyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageTimeBuyController.swift; sourceTree = "<group>"; };
 		10FF88992314D640008148BC /* ImageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTitleView.swift; sourceTree = "<group>"; };
 		10FF889D2314D80A008148BC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTaskView.swift; sourceTree = "<group>"; };
@@ -1458,6 +1460,7 @@
 				105039F62306A298000E90F0 /* LongServiceController.swift */,
 				101C2E682322465E00AB4C53 /* SunShineHutListController.swift */,
 				101C2EB223276AD200AB4C53 /* HutPackageDetailController.swift */,
+				10E820C923347B39005466A0 /* HutPackageTimeBuyController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1916,6 +1919,7 @@
 				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
 				109B74BF23040CA70034346D /* ConsultListViewModel.swift in Sources */,
 				101C2E5D2322296000AB4C53 /* TextShowController.swift in Sources */,
+				10E820CA23347B39005466A0 /* HutPackageTimeBuyController.swift in Sources */,
 				10FF88B42315234E008148BC /* PatientApi.swift in Sources */,
 				1059E459230CED9D005F5326 /* SunnyDrugOrderCell.swift in Sources */,
 				1014D0572293A6D700294558 /* UILabel+ZZExtension.swift in Sources */,

@@ -232,7 +232,7 @@ extension PersonInfoEditController {
         finishBtn.reactive.isEnabled <~ finishEnabledSignal
         finishBtn.reactive.makeBindingTarget { (btn, color) in
             btn.setTitleColor(color, for: .normal)
-            } <~ finishEnabledSignal.map { $0 ? UIColor.cf : UIColor.cdcdcdc }
+            } <~ finishEnabledSignal.map { $0 ? UIColor.cf : UIColor.cdcdcdc.withAlphaComponent(0.6) }
     }
     
     private func setData() {
