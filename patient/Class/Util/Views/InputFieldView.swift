@@ -420,9 +420,12 @@ extension InputFieldView {
         
         fieldView.hasRightView = true
         fieldView.rightView.isUserInteractionEnabled = true
-        fieldView.rightImage = UIImage(named: "pwd_eye_close")
-        fieldView.rightSelectedImage = UIImage(named: "pwd_eye_open")
+        fieldView.rightImage = UIImage(named: "pwd_eye_open")
+        fieldView.rightSelectedImage = UIImage(named: "pwd_eye_close")
+        fieldView.rightViewSize = CGSize(width: 20, height: 10)
+        fieldView.rightView.contentMode = .scaleAspectFill
         fieldView.right2InputViewPadding = 5
+        fieldView.rightView.isHighlighted = true
         fieldView.isSecureTextEntry = true
         
         fieldView.rightView.addGestureRecognizer(UITapGestureRecognizer(target: fieldView, action: #selector(tapEye)))
