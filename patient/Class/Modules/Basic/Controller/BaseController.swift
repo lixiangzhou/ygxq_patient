@@ -174,7 +174,7 @@ extension BaseController {
         item.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
         
         item.snp.makeConstraints { (make) in
-            make.top.equalTo(25 + UIScreen.zz_statusBar_additionHeight)
+            make.top.equalTo(35 + UIScreen.zz_statusBar_additionHeight)
             make.width.equalTo(50)
             make.height.equalTo(50)
             switch position {

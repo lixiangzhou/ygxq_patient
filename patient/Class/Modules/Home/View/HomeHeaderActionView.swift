@@ -32,16 +32,33 @@ class HomeHeaderActionView: BaseView {
 // MARK: - UI
 extension HomeHeaderActionView {
     private func setUI() {
-        backgroundColor = .cf
+        backgroundColor = .cf0efef
         
-        let item1View = getItemView(title: "复诊/购药", subTitle: "足不出户 找医生", icon: "home_consult", action: #selector(item1Action))
-        let item2View = getItemView(title: "随访计划", subTitle: "随访计划一键查看", icon: "home_plan", action: #selector(item2Action))
+//        let item1View = getItemView(title: "复诊/购药", subTitle: "足不出户 找医生", icon: "home_consult", action: #selector(item1Action))
+//        let item2View = getItemView(title: "随访计划", subTitle: "随访计划一键查看", icon: "home_plan", action: #selector(item2Action))
+        
+        let config = ImageTitleView.Config(imageInTop: true, imageSize: CGSize(width: 40, height: 40), verticalHeight1: 12, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .boldSize(19), titleColor: .c3)
+        
+        let item1View = ImageTitleView()
+        item1View.titleLabel.text = "复诊/购药"
+        item1View.imgView.image = UIImage(named: "home_consult")
+        item1View.backgroundColor = .cf
+        item1View.config = config
+        
+        let item2View = ImageTitleView()
+        item2View.titleLabel.text = "随访计划"
+        item2View.imgView.image = UIImage(named: "home_plan")
+        item2View.backgroundColor = .cf
+        item2View.config = config
+        
+        item1View.zz_setCorner(radius: 6, masksToBounds: true)
+        item2View.zz_setCorner(radius: 6, masksToBounds: true)
+        
+        item1View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(item1Action)))
+        item2View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(item2Action)))
         
         addSubview(item1View)
         addSubview(item2View)
-        
-        let line = zz_add(subview: UIView())
-        line.backgroundColor = .cdcdcdc
         
         item1View.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
@@ -49,24 +66,9 @@ extension HomeHeaderActionView {
         
         item2View.snp.makeConstraints { (make) in
             make.top.bottom.right.equalToSuperview()
-            make.left.equalTo(item1View.snp.right)
+            make.left.equalTo(item1View.snp.right).offset(12)
             make.width.equalTo(item1View)
         }
-        
-        line.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.equalTo(0.5)
-            make.height.equalTo(80)
-        }
-    }
-    
-    func getItemView(title: String, subTitle: String, icon: String, action: Selector) -> ItemView {
-        let itemView = ItemView()
-        itemView.titleLabel.text = title
-        itemView.subTitleLabel.text = subTitle
-        itemView.iconView.image = UIImage(named: icon)
-        itemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
-        return itemView
     }
 }
 
@@ -78,51 +80,5 @@ extension HomeHeaderActionView {
     
     @objc private func item2Action() {
         item2Closure?()
-    }
-}
-
-// MARK: - Other
-extension HomeHeaderActionView {
-    class ItemView: BaseView {
-        let titleLabel = UILabel(font: .boldSize(18), textColor: .c3)
-        let subTitleLabel = UILabel(font: .size(14), textColor: .c6)
-        let iconView = UIImageView()
-        
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            
-            let contentView = zz_add(subview: UIView())
-            
-            contentView.addSubview(titleLabel)
-            contentView.addSubview(subTitleLabel)
-            contentView.addSubview(iconView)
-            
-            contentView.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.equalTo(20)
-                make.right.equalTo(-15)
-            }
-            
-            titleLabel.snp.makeConstraints { (make) in
-                make.left.top.equalToSuperview()
-                make.left.lessThanOrEqualTo(iconView).offset(10)
-            }
-            
-            subTitleLabel.snp.makeConstraints { (make) in
-                make.top.equalTo(titleLabel.snp.bottom).offset(10)
-                make.left.bottom.equalToSuperview()
-                make.left.lessThanOrEqualTo(iconView).offset(-5)
-            }
-            
-            iconView.snp.makeConstraints { (make) in
-                make.centerY.right.equalToSuperview()
-                make.width.equalTo(35)
-                make.height.equalTo(35)
-            }
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
     }
 }

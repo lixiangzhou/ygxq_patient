@@ -34,34 +34,33 @@ extension HomeHeaderCaseView {
     private func setUI() {
         backgroundColor = .cf
         
-        let titleLabel = zz_add(subview: UILabel(text: "我的病历", font: .boldSize(18), textColor: .c3)) as! UILabel
-        let subTitleLabel = zz_add(subview: UILabel(text: "为您整理专业、完整的病历资料", font: .size(13), textColor: .c9))
+        let titleLabel = zz_add(subview: UILabel(text: "我的病历", font: .boldSize(19), textColor: .c3)) as! UILabel
+        let subTitleLabel = zz_add(subview: UILabel(text: "为您整理专业、完整的病历资料", font: .size(15), textColor: .c6))
         
         let uploadView = addItemView(img: "home_upload", title: "上传", color: .c407cec, action: #selector(uploadAction))
         
         let lookView = addItemView(img: "home_look", title: "查看", color: .cffa84c, action: #selector(lookAction))
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.left.equalTo(15)
+            make.top.equalTo(15)
+            make.left.equalTo(12)
         }
         
         subTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(titleLabel.snp.right).offset(15)
+            make.left.equalTo(titleLabel.snp.right).offset(10)
             make.bottom.equalTo(titleLabel)
         }
         
         uploadView.snp.makeConstraints { (make) in
-            make.left.equalTo(30)
+            make.left.equalTo(12)
             make.bottom.equalTo(-15)
-            make.width.equalTo(135)
-            make.height.equalTo(39)
+            make.width.equalTo(140)
+            make.height.equalTo(45)
         }
         
         lookView.snp.makeConstraints { (make) in
-            make.right.equalTo(-30)
-            make.bottom.equalTo(-15)
-            make.width.equalTo(135)
-            make.height.equalTo(39)
+            make.right.equalTo(-12)
+            make.width.height.bottom.equalTo(uploadView)
         }
     }
     
@@ -69,10 +68,10 @@ extension HomeHeaderCaseView {
         let view = zz_add(subview: UIView())
         let innerView = view.zz_add(subview: UIView())
         let iconView = innerView.zz_add(subview: UIImageView(image: UIImage(named: img)))
-        let titleLabel = innerView.zz_add(subview: UILabel(text: title, font: .size(15), textColor: .c6))
+        let titleLabel = innerView.zz_add(subview: UILabel(text: title, font: .size(18), textColor: .c6))
         
         view.zz_setCorner(radius: 5, masksToBounds: true)
-        view.zz_setBorder(color: color, width: 0.5)
+        view.zz_setBorder(color: color, width: 1)
         
         innerView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
@@ -80,7 +79,7 @@ extension HomeHeaderCaseView {
         
         iconView.snp.makeConstraints { (make) in
             make.top.left.bottom.equalToSuperview()
-            make.width.height.equalTo(22)
+            make.width.height.equalTo(24)
         }
         
         titleLabel.snp.makeConstraints { (make) in

@@ -7,12 +7,8 @@
 //
 
 import UIKit
-import Moya
 
 class HomeController: BaseController {
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,16 +45,29 @@ extension HomeController {
         tableView.register(cell: UITableViewCell.self)
         tableView.backgroundColor = .cf0efef
         tableView.tableHeaderView = headerView
+        tableView.tableFooterView = getFooterView()
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
         
         addNavigationItem(position: .left, title: "扫一扫", imgName: "home_scan", action: #selector(scanAction))
-        noticeItem = addNavigationItem(position: .right, title: "消息", imgName: "mine_nav_notice", action: #selector(noticeAction))
+        noticeItem = addNavigationItem(position: .right, title: "消息", imgName: "home_msg", action: #selector(noticeAction))
+        
+        let titleLabel = view.zz_add(subview: UILabel(text: "阳光客户端", font: .boldSize(20), textColor: .cf))
         
         setActions()
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(-UIScreen.zz_nav_statusHeight)
-            make.bottom.left.right.equalToSuperview()
+            make.edges.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(38 + UIScreen.zz_statusBar_additionHeight)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -69,16 +78,20 @@ extension HomeController {
         }
         
         viewModel.taskListProperty.signal.observeValues { [weak self] (list) in
+            guard let self = self else { return }
             if let model = list.first {
-                self?.headerView.taskView.showEmpty = false
-                self?.headerView.taskView.textLabel.text = model.content
-                self?.headerView.layoutHeight()
-                self?.tableView.tableHeaderView = self?.headerView
+                self.headerView.taskView.showEmpty = false
+                self.headerView.taskView.textLabel.text = model.content
                 
-                self?.headerView.taskView.btn.setTitle(model.taskActionTitle, for: .normal)
+                self.headerView.taskView.taskActionLabel.text = model.taskActionTitle
             } else {
-                self?.headerView.taskView.showEmpty = true
+                self.headerView.taskView.showEmpty = true
             }
+            
+            self.headerView.layoutHeight()
+            self.tableView.tableHeaderView = self.headerView
+            let height = self.headerView.zz_height + self.tableView.tableFooterView!.zz_height
+            self.tableView.contentSize = CGSize(width: 0, height: height + 50)
         }
         
         viewModel.unReadMsgCountProperty.signal.skipRepeats().observeValues { [weak self] (value) in
@@ -143,7 +156,7 @@ extension HomeController {
         }
         
         // 按钮
-        headerView.taskView.btnClosure = { [weak self] in
+        headerView.taskView.taskClosure = { [weak self] in
             if let model = self?.viewModel.taskListProperty.value.first {
                 guard let self = self else { return }
                 switch model.actionType {
@@ -156,7 +169,6 @@ extension HomeController {
                 case .other:
                     break
                 }
-                
             }
         }
     }
@@ -218,12 +230,30 @@ extension HomeController: FSPagerViewDataSource, FSPagerViewDelegate {
 
 // MARK: - Helper
 extension HomeController {
-    private func configRedDotBadge(badgeView: UIView, show:Bool) -> Void {
-        if show {
-            badgeView.showBadge(with: .redDot, value: 0, animationType: .none)
-            badgeView.badgeCenterOffset = CGPoint(x: -5, y: -1)
-        } else {
-            badgeView.clearBadge()
+    func getFooterView() -> UIView {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 44))
+        let label = view.zz_add(subview: UILabel(text: "让人人拥有健康变的更简单", font: .size(14), textColor: .c6))
+        
+        let line1 = view.zz_add(subview: UIView())
+        line1.backgroundColor = .c9
+        let line2 = view.zz_add(subview: UIView())
+        line2.backgroundColor = .c9
+        
+        label.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
         }
+        
+        line1.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.width.equalTo(45)
+            make.height.equalTo(1)
+            make.right.equalTo(label.snp.left).offset(-10)
+        }
+        
+        line2.snp.makeConstraints { (make) in
+            make.centerY.width.height.equalTo(line1)
+            make.left.equalTo(label.snp.right).offset(10)
+        }
+        return view
     }
 }
