@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 extension UITableView {
     func set(dataSource: UITableViewDataSource? = nil, delegate: UITableViewDelegate? = nil, separatorStyle: UITableViewCell.SeparatorStyle = .none, rowHeight: CGFloat = 50) {
@@ -45,3 +46,20 @@ extension IDView {
 extension UITableViewCell: IDView {}
 extension UICollectionViewCell: IDView {}
 
+extension UIScrollView {
+    func setEmptyData(title: String?) {
+        emptyDataSetView { (emptyView) in
+            emptyView.titleLabelString(NSMutableAttributedString(string:title ?? "")).verticalOffset(-60)
+        }
+        self.reloadEmptyDataSet()
+    }
+}
+
+extension Reactive where Base: UIScrollView {
+    public var emptyDataString: BindingTarget<String?> {
+        return makeBindingTarget { base, value in
+            base.setEmptyData(title: value)
+            base.reloadEmptyDataSet()
+        }
+    }
+}

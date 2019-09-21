@@ -124,7 +124,7 @@ extension VideoConsultTimeCell {
             } else {
                 if videoModel.serConsultVideo.talkTime == 0 {   // 预约了时间，没有通话过
                     statusView.image = UIImage(named: "consult_status_ing")
-                    appointTimeLabel.text = videoModel.serConsultVideo.appointTime.toTime(format: "yyyy-MM-dd HH:mm")
+                    appointTimeLabel.text = "预约成功 " + videoModel.serConsultVideo.appointTime.toTime(format: "yyyy-MM-dd HH:mm")
                     statusEndLabel.textColor = .c9
                     talkTimeLabel.text = nil
                     noTalkLabel.isHidden = false
@@ -143,7 +143,7 @@ extension VideoConsultTimeCell {
     
     private func overStatus(_ videoModel: VideoConsultModel) {
         statusView.image = UIImage(named: "consult_status_end")
-        appointTimeLabel.text = videoModel.serConsultVideo.appointTime.toTime(format: "yyyy-MM-dd HH:mm")
+        appointTimeLabel.text = "预约成功 " + videoModel.serConsultVideo.appointTime.toTime(format: "yyyy-MM-dd HH:mm")
         statusEndLabel.textColor = .c3
         talkTimeLabel.text = videoModel.serConsultVideo.talkTime.toTime(format: "yyyy-MM-dd HH:mm")
         noTalkLabel.isHidden = true

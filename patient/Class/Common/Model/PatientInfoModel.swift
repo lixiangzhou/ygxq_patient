@@ -38,7 +38,7 @@ enum Sex: String, EnumProtocol, CustomStringConvertible {
 struct PatientInfoModel: ModelProtocol {
     // /auth/code/login 获取
     var serDiagnosisId: Int = 0
-    var birth: TimeInterval = 0
+    var birth: TimeInterval?
     var id: Int = 0
     var profession: String = ""
     var hospitalName: String = ""
@@ -103,15 +103,18 @@ struct PatientInfoModel: ModelProtocol {
 }
 
 extension PatientInfoModel {
-    var age: Int {
-        let birthDate = Date(timeIntervalSince1970: birth / 1000)
-        let date = Date()
-        
-        var age = date.zz_year - birthDate.zz_year
-        if (birthDate.zz_month > date.zz_month) || (birthDate.zz_month == date.zz_month && birthDate.zz_day > date.zz_day) {
-            age -= 1
+    var age: Int? {
+        if let birth = birth {
+            let birthDate = Date(timeIntervalSince1970: birth / 1000)
+            let date = Date()
+            
+            var age = date.zz_year - birthDate.zz_year
+            if (birthDate.zz_month > date.zz_month) || (birthDate.zz_month == date.zz_month && birthDate.zz_day > date.zz_day) {
+                age -= 1
+            }
+            return age
+        } else {
+            return nil
         }
-        
-        return age
     }
 }

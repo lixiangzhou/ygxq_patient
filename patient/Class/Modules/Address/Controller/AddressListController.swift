@@ -40,11 +40,7 @@ extension AddressListController {
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: AddressListCell.self)
         view.addSubview(tableView)
-        
-        tableView.emptyDataSetView { (emptyView) in
-            emptyView.titleLabelString(NSMutableAttributedString(string:"暂无数据"))
-        }
-        
+                
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -52,6 +48,7 @@ extension AddressListController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.skipRepeats().map(value: ())
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
     }
 }
 
@@ -93,9 +90,11 @@ extension AddressListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.dataSourceProperty.value[indexPath.row]
-        didSelectAddressClosure?(model)
-        pop()
+        if didSelectAddressClosure != nil {
+            let model = viewModel.dataSourceProperty.value[indexPath.row]
+            didSelectAddressClosure?(model)
+            pop()
+        }
     }
 }
 
@@ -111,6 +110,8 @@ extension AddressListController {
         vc.addressModel = model
         if mode == .add {
             vc.isDefault = viewModel.dataSourceProperty.value.isEmpty
+        } else {
+            vc.isDefault = model!.isDefault
         }
         vc.completionClosure = { [unowned self] in
             self.viewModel.getList()

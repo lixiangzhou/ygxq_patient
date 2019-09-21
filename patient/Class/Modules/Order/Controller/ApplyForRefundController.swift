@@ -17,7 +17,7 @@ class ApplyForRefundController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "退款申请"
+        title = "申请退款"
         setUI()
         setBinding()
         setData()
@@ -57,7 +57,7 @@ extension ApplyForRefundController {
         let orderNoView = contentView.zz_add(subview: TextLeftRightView(viewModel.getGrayConfig())) as! TextLeftRightView
         let orderNameView = contentView.zz_add(subview: TextLeftRightView(viewModel.getGrayConfig())) as! TextLeftRightView
         let orderAmountView = contentView.zz_add(subview: TextLeftRightView(viewModel.getRedConfig())) as! TextLeftRightView
-        let refundAmountView = contentView.zz_add(subview: TextLeftRightView(viewModel.getRedConfig())) as! TextLeftRightView
+        let orderStateView = contentView.zz_add(subview: TextLeftRightView(viewModel.getGrayConfig())) as! TextLeftRightView
         let reasonTitleView = contentView.zz_add(subview: TextLeftRightView(viewModel.getRedConfig())) as! TextLeftRightView
         
         txtView.placeholder = "请填写您的退款原因"
@@ -69,14 +69,14 @@ extension ApplyForRefundController {
         
         orderNoView.leftLabel.text = "订单号"
         orderNameView.leftLabel.text = "名称"
-        orderAmountView.leftLabel.text = "订单金额"
-        refundAmountView.leftLabel.text = "退款金额"
+        orderAmountView.leftLabel.text = "订单价格"
+        orderStateView.leftLabel.text = "订单状态"
         reasonTitleView.leftLabel.text = "退款原因"
         
         orderNoLabel = orderNoView.rightLabel
         orderNameLabel = orderNameView.rightLabel
         orderAmountLabel = orderAmountView.rightLabel
-        refundAmountLabel = refundAmountView.rightLabel
+        refundAmountLabel = orderStateView.rightLabel
         
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -103,13 +103,13 @@ extension ApplyForRefundController {
             make.height.left.right.equalTo(orderNoView)
         }
         
-        refundAmountView.snp.makeConstraints { (make) in
+        orderStateView.snp.makeConstraints { (make) in
             make.top.equalTo(orderAmountView.snp.bottom)
             make.height.left.right.equalTo(orderNoView)
         }
 
         reasonTitleView.snp.makeConstraints { (make) in
-            make.top.equalTo(refundAmountView.snp.bottom)
+            make.top.equalTo(orderStateView.snp.bottom)
             make.height.left.right.equalTo(orderNoView)
         }
 
@@ -164,6 +164,6 @@ extension ApplyForRefundController {
         orderNoLabel.text = orderModel.id.description
         orderNameLabel.text = orderModel.productName
         orderAmountLabel.attributedText = viewModel.getMoneyString(orderModel.payAmount)
-        refundAmountLabel.attributedText = viewModel.getMoneyString(orderModel.refundAmount)
+        refundAmountLabel.text = "已支付"
     }
 }

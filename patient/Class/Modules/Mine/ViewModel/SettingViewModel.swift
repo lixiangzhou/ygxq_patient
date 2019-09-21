@@ -35,11 +35,11 @@ class SettingViewModel: BaseViewModel {
         switchView.isOn = patientInfoProperty.value!.isPushMsg == "Y"
         
         dataSource += [
-            RowModel(type: .changePwd, config: LeftRightConfigViewConfig()),
-            RowModel(type: .messageTip, config: LeftRightConfigViewConfig(rightView: switchView)),
-            RowModel(type: .addressMgr, config: LeftRightConfigViewConfig()),
-            RowModel(type: .serviceProtocol, config: LeftRightConfigViewConfig()),
-            RowModel(type: .version, config: LeftRightConfigViewConfig(rightView: versionLabel, hasBottomLine: false)),
+            RowModel(type: .changePwd, config: LeftRightConfigViewConfig(leftPaddingRight: 0)),
+            RowModel(type: .messageTip, config: LeftRightConfigViewConfig(leftPaddingRight: 0, rightView: switchView)),
+            RowModel(type: .addressMgr, config: LeftRightConfigViewConfig(leftPaddingRight: 0)),
+            RowModel(type: .serviceProtocol, config: LeftRightConfigViewConfig(leftPaddingRight: 0)),
+            RowModel(type: .version, config: LeftRightConfigViewConfig(leftPaddingRight: 0, rightView: versionLabel, hasBottomLine: false)),
         ]
         
         switchView.reactive.controlEvents(.valueChanged).observeValues { [weak self] (view) in

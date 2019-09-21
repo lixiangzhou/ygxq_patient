@@ -49,9 +49,6 @@ extension ForgetPwdController {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.c3]
         }
         
-        let tipLabel = UILabel(text: "验证码已发送到您的手机号\(mobile.mobileSecrectString)", font: .size(14), textColor: .c3)
-        view.addSubview(tipLabel)
-        
         codeView.inputLengthLimit = 6
         codeView.keyboardType = .numberPad
         codeView.leftViewSize = CGSize(width: 25, height: 20)
@@ -73,17 +70,12 @@ extension ForgetPwdController {
             addLoginBottomView()
         }
         
-        tipLabel.snp.makeConstraints { (make) in
+        codeView.snp.makeConstraints { (make) in
             if fromLogin {
-                make.top.equalTo(40)
+                make.top.equalTo(25)
             } else {
                 make.topOffsetFrom(self, 40)
             }
-            make.centerX.equalToSuperview()
-        }
-        
-        codeView.snp.makeConstraints { (make) in
-            make.top.equalTo(tipLabel.snp.bottom).offset(25)
             make.left.equalTo(30)
             make.right.equalTo(-30)
             make.height.equalTo(45)
@@ -127,7 +119,6 @@ extension ForgetPwdController {
                 }
             })
         }
-        codeBtn.sendActions(for: .touchUpInside)
     }
 }
 

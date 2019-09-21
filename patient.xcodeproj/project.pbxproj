@@ -39,6 +39,7 @@
 		100C2CF62317D79300A820BF /* PictureSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100C2CF52317D79300A820BF /* PictureSelectView.swift */; };
 		100C2CF82318B96A00A820BF /* VideoConsultBuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100C2CF72318B96A00A820BF /* VideoConsultBuyViewModel.swift */; };
 		100C2CFA2318BA7800A820BF /* PictureSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100C2CF92318BA7800A820BF /* PictureSelectViewModel.swift */; };
+		100FCC2D233620FD000E8E14 /* InvoiceExpressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FCC2C233620FD000E8E14 /* InvoiceExpressView.swift */; };
 		1014CF9F229391DF00294558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1014CF9E229391DF00294558 /* AppDelegate.swift */; };
 		1014CFA6229391E200294558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1014CFA5229391E200294558 /* Assets.xcassets */; };
 		1014D0462293A6D700294558 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1014D0122293A6D700294558 /* HomeController.swift */; };
@@ -366,6 +367,7 @@
 		100C2CF52317D79300A820BF /* PictureSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureSelectView.swift; sourceTree = "<group>"; };
 		100C2CF72318B96A00A820BF /* VideoConsultBuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultBuyViewModel.swift; sourceTree = "<group>"; };
 		100C2CF92318BA7800A820BF /* PictureSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureSelectViewModel.swift; sourceTree = "<group>"; };
+		100FCC2C233620FD000E8E14 /* InvoiceExpressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceExpressView.swift; sourceTree = "<group>"; };
 		1014CF9B229391DF00294558 /* patient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = patient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1014CF9E229391DF00294558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1014CFA5229391E200294558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -433,7 +435,7 @@
 		101C2EA023234B4200AB4C53 /* InvoiceRecordListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceRecordListCell.swift; sourceTree = "<group>"; };
 		101C2EA223234B6E00AB4C53 /* InvoiceContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceContentCell.swift; sourceTree = "<group>"; };
 		101C2EA423237F8200AB4C53 /* InvoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceModel.swift; sourceTree = "<group>"; };
-		101C2EA62323891D00AB4C53 /* InvoiceDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailInfoView.swift; sourceTree = "<group>"; };
+		101C2EA62323891D00AB4C53 /* InvoiceDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InvoiceDetailInfoView.swift; path = patient/Class/Modules/Order/ViewModel/InvoiceDetailInfoView.swift; sourceTree = SOURCE_ROOT; };
 		101C2EAA2325EE3200AB4C53 /* AddressShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressShowView.swift; sourceTree = "<group>"; };
 		101C2EAC2325EF8E00AB4C53 /* AddressShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressShowViewModel.swift; sourceTree = "<group>"; };
 		101C2EAE2325F80600AB4C53 /* InvoiceMakeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceMakeInfoView.swift; sourceTree = "<group>"; };
@@ -1310,7 +1312,6 @@
 				101C2E982323488700AB4C53 /* InvoiceRecordListViewModel.swift */,
 				101C2E9A2323489800AB4C53 /* InvoiceDetailViewModel.swift */,
 				101C2E9C232348A700AB4C53 /* InvoiceContentViewModel.swift */,
-				101C2EA62323891D00AB4C53 /* InvoiceDetailInfoView.swift */,
 				101C2EB023261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1366,6 +1367,8 @@
 				101C2EA023234B4200AB4C53 /* InvoiceRecordListCell.swift */,
 				101C2EA223234B6E00AB4C53 /* InvoiceContentCell.swift */,
 				101C2EAE2325F80600AB4C53 /* InvoiceMakeInfoView.swift */,
+				101C2EA62323891D00AB4C53 /* InvoiceDetailInfoView.swift */,
+				100FCC2C233620FD000E8E14 /* InvoiceExpressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2038,6 +2041,7 @@
 				1059E45D230CF2CC005F5326 /* SunnyDrugOrderDetailViewModel.swift in Sources */,
 				101C2EA323234B6E00AB4C53 /* InvoiceContentCell.swift in Sources */,
 				106DE8CA23176FA9001DF4DE /* WXManager.swift in Sources */,
+				100FCC2D233620FD000E8E14 /* InvoiceExpressView.swift in Sources */,
 				104FFB0D2314C9B900E51033 /* FSPageViewTransformer.swift in Sources */,
 				10CA472822F8073200A4E244 /* PersonInfoEditController.swift in Sources */,
 				1014D0552293A6D700294558 /* UIApplication+ZZExtension.swift in Sources */,

@@ -31,7 +31,7 @@ class RegisterController: BaseController {
     // MARK: - Public Property
     
     // MARK: - Private Property
-    private var mobileView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的账号", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
+    private var mobileView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_account"), placeholder: "请输入您的手机号码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private var (codeView, codeBtn, timeLabel) = InputFieldView.codeFieldView(leftImage: UIImage(named: "login_msg"), text: "验证码", placeholder: "请输入验证码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private var pwdView = InputFieldView.eyeFieldView(leftImage: UIImage(named: "login_pwd"), placeholder: "请输入您的密码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
     private var inviteCodeView = InputFieldView.commonFieldView(leftImage: UIImage(named: "login_invite"), placeholder: "请输入邀请码", leftSpacing: 15, rightSpacing: 15, bottomLineColor: .clear)
@@ -78,8 +78,10 @@ extension RegisterController {
         inviteCodeView.leftViewSize = CGSize(width: 25, height: 20)
         let inviteTipLabel = UILabel(text: "选填", font: .size(14), textColor: .c9)
         inviteTipLabel.frame = CGRect(x: 0, y: 0, width: 30, height: 15)
+        inviteCodeView.hasRightView = true
         inviteCodeView.rightView.addSubview(inviteTipLabel)
         inviteCodeView.rightViewSize = CGSize(width: 30, height: 15)
+        inviteCodeView.right2InputViewPadding = 0
         inviteCodeView.addShadowView("login_field_bg")
         
         nextBtn.zz_setCorner(radius: 22.5, masksToBounds: true)

@@ -49,7 +49,6 @@ extension InvoiceDetailInfoView {
         let contentView = zz_add(subview: UIView())
         contentView.backgroundColor = .cf
         
-        
         titleView.config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, leftWidth: 100, leftFont: .size(15), leftTextColor: .c6, rightTopPadding: 15, rightBottomPadding: 15, rightFont: .size(15), rightTextColor: .c3)
         idNoView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3)
         amountView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .cf25555)
@@ -110,24 +109,4 @@ extension InvoiceDetailInfoView {
             make.bottom.equalToSuperview()
         }
     }
-}
-
-// MARK: - Action
-extension InvoiceDetailInfoView {
-    
-}
-
-// MARK: - Helper
-extension InvoiceDetailInfoView {
-    
-}
-
-// MARK: - Other
-extension InvoiceDetailInfoView {
-    
-}
-
-// MARK: - Public
-extension InvoiceDetailInfoView {
-    
 }

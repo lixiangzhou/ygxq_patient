@@ -12,12 +12,12 @@ import Result
 
 class CaseDetailViewModel: BaseViewModel {
     let dataSourceProperty: MutableProperty<[Record]> = MutableProperty([])
+    var caseModelProperty = MutableProperty<CaseRecordModel?>(nil)
     
     struct Record {
         var title = ""
         var subTitle = ""
         var items = [CaseRecordModel.OPAS]()
-        var imgs = [ImageModel]()
         
         init(title: String, subTitle: String) {
             self.title = title
@@ -26,13 +26,12 @@ class CaseDetailViewModel: BaseViewModel {
     }
     
     func getData(_ id: Int) {
-        HLRApi.caseRecord(id: id).rac_responseModel(CaseRecordModel.self).startWithValues { [unowned self] (caseRecord) in
+        HLRApi.caseRecord(id: id).rac_responseModel(CaseRecordModel.self).startWithValues { [weak self] (caseRecord) in
+            self?.caseModelProperty.value = caseRecord
             if let caseRecord = caseRecord {
                 var array = [Record]()
                 if caseRecord.clinicHospital.count > 0 {
-                    var r = Record(title: "就诊医院", subTitle: caseRecord.clinicHospital)
-                    r.imgs = caseRecord.imgs
-                    array.append(r)
+                    array.append(Record(title: "就诊医院", subTitle: caseRecord.clinicHospital))
                 }
                 
                 if caseRecord.clinicTime > 0 {
@@ -85,9 +84,9 @@ class CaseDetailViewModel: BaseViewModel {
                 if caseRecord.dischargeInstructions.count > 0 {
                     array.append(Record(title: "出院医嘱", subTitle: caseRecord.dischargeInstructions))
                 }
-                self.dataSourceProperty.value = array
+                self?.dataSourceProperty.value = array
             } else {
-                self.dataSourceProperty.value = []
+                self?.dataSourceProperty.value = []
             }
         }
     }

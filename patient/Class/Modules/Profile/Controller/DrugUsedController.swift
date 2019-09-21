@@ -46,6 +46,7 @@ extension DrugUsedController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.map(value: ())
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
     }
 }
 
@@ -64,11 +65,6 @@ extension DrugUsedController {
         
         viewModel.dataSourceProperty.value = datas
     }
-}
-
-// MARK: - Network
-extension DrugUsedController {
-    
 }
 
 // MARK: - Delegate Internal
@@ -115,7 +111,16 @@ extension DrugUsedController: UITableViewDataSource, UITableViewDelegate {
         
         let arrow = UIImageView.defaultRightArrow()
         header.addSubview(arrow)
-        arrow.transform = CGAffineTransform(rotationAngle: group.open ? 0 : CGFloat(Double.pi))
+        arrow.transform = CGAffineTransform(rotationAngle: group.open ? CGFloat(Double.pi / 2) : 0)
+        
+        if section == 0 {
+            let tipLabel = UILabel(text: "最新用药", font: .size(16), textColor: .c3)
+            header.addSubview(tipLabel)
+            tipLabel.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.right.equalTo(arrow.snp.left).offset(-10)
+            }
+        }
         
         txtLabel.snp.makeConstraints { (maker) in
             maker.left.equalTo(15)
@@ -143,24 +148,3 @@ extension DrugUsedController: UITableViewDataSource, UITableViewDelegate {
         return 12
     }
 }
-
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension DrugUsedController {
-    
-}
-
-// MARK: - Other
-extension DrugUsedController {
-    
-}
-
-// MARK: - Public
-extension DrugUsedController {
-    
-}
-

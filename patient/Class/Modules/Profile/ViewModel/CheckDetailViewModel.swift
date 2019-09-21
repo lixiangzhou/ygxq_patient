@@ -13,7 +13,7 @@ import Result
 class CheckDetailViewModel: BaseViewModel {
     let dataSourceProperty: MutableProperty<[Record]> = MutableProperty([])
     
-    var checkRecord: CheckRecordModel?
+    var checkModelProperty = MutableProperty<CheckRecordModel?>(nil)
     
     struct Record {
         var title = ""
@@ -27,9 +27,9 @@ class CheckDetailViewModel: BaseViewModel {
     }
     
     func getData(_ id: Int) {
-        HLRApi.checkRecord(id: id).rac_responseModel(CheckRecordModel.self).startWithValues { [unowned self] (checkRecord) in
+        HLRApi.checkRecord(id: id).rac_responseModel(CheckRecordModel.self).startWithValues { [weak self] (checkRecord) in
             if let checkRecord = checkRecord {
-                self.checkRecord = checkRecord
+                self?.checkModelProperty.value = checkRecord
                 
                 var array = [Record]()
                 array.append(Record(title: checkRecord.checklistName, subTitle: ""))
@@ -38,9 +38,9 @@ class CheckDetailViewModel: BaseViewModel {
                 var items = Record(title: "", subTitle: "")
                 items.results = checkRecord.results
                 array.append(items)
-                self.dataSourceProperty.value = array
+                self?.dataSourceProperty.value = array
             } else {
-                self.dataSourceProperty.value = []
+                self?.dataSourceProperty.value = []
             }
         }
     }

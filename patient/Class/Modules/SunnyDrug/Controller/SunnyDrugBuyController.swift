@@ -18,7 +18,7 @@ class SunnyDrugBuyController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "请填写购药信息"
+        title = "填写购药信息"
         setUI()
         setBinding()
         addressView.viewModel.getDefaultAddress()

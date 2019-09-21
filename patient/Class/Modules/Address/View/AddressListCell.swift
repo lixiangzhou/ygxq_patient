@@ -43,7 +43,7 @@ extension AddressListCell {
         contentView.backgroundColor = .cf
         
         defaultView.backgroundColor = .cffebd3
-        defaultView.zz_setCorner(radius: 3, masksToBounds: true)
+        defaultView.zz_setCorner(radius: 5, masksToBounds: true)
         
         contentView.addSubview(nameLabel)
         contentView.addSubview(mobileLabel)
@@ -100,19 +100,4 @@ extension AddressListCell {
     @objc private func toEditAction() {
         editClosure?()
     }
-}
-
-// MARK: - Helper
-extension AddressListCell {
-    
-}
-
-// MARK: - Other
-extension AddressListCell {
-    
-}
-
-// MARK: - Public
-extension AddressListCell {
-    
 }

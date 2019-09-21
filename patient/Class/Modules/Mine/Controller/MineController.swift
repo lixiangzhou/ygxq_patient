@@ -68,7 +68,7 @@ extension MineController {
     override func setBinding() {
         patientInfoProperty.producer.startWithValues { [weak self](pinfo) in
             if let pinfo = pinfo {
-                self?.headerView.iconView.setImage(with: URL(string: pinfo.imgUrl))
+                self?.headerView.iconView.kf.setImage(with: URL(string: pinfo.imgUrl), placeholder: UIImage(named: "mine_avator_default"))
                 self?.headerView.nameLabel.text = pinfo.realName.isEmpty ? "未填写姓名" : pinfo.realName
             } else {
                 self?.headerView.iconView.image = UIImage(named: "mine_avator_default")

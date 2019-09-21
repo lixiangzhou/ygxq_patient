@@ -26,7 +26,7 @@ class DrugUsedViewModel: BaseViewModel {
     
     func getData() {
         SunnyDrugApi.usedDrugs(pid: patientId).rac_responseModel(Dictionary<String, Any>.self).skipNil().startWithValues { [unowned self] dict in
-            let keys = dict.keys.sorted()
+            let keys = dict.keys.sorted().reversed()
             var array = [GroupModel]()
             for (idx, key) in keys.enumerated() {
                 if let list = [DrugModel].deserialize(from: dict[key] as? NSArray) as? [DrugModel] {

@@ -167,7 +167,7 @@ extension AddressShowView {
                 self.nameLabel.text = model.consignee.isEmpty ? "  " : model.consignee
                 self.mobileLabel.text = model.mobile.isEmpty ? "  " : model.mobile.mobileSecrectString
                 let addr = model.district + model.address
-                self.addressLabel.text = addr.isEmpty ? "  " : addr
+                self.setAddress(addr.isEmpty ? "  " : addr, isDefault: model.isDefault)
                 
                 self.remarkView.snp.remakeConstraints { (make) in
                     make.top.equalTo(self.addressView.snp.bottom)
@@ -219,5 +219,20 @@ extension AddressShowView {
             self?.viewModel.getDefaultAddress()
         }
         zz_controller?.push(vc)
+    }
+}
+
+extension AddressShowView {
+    func setAddress(_ address: String, isDefault: Bool) {
+        let attr = NSMutableAttributedString(string: address, attributes: [NSAttributedString.Key.font: addressLabel.font!, NSAttributedString.Key.foregroundColor: addressLabel.textColor!])
+        
+        if isDefault {
+            let defaultImg = NSTextAttachment()
+            defaultImg.image = UIImage(named: "mine_top_bg")
+            defaultImg.bounds = CGRect(x: 0, y: -4, width: 22, height: 10)
+            attr.insert(NSAttributedString(attachment: defaultImg), at: 0)
+            attr.insert(NSAttributedString(string: "   "), at: 1)
+        }
+        addressLabel.attributedText = attr
     }
 }

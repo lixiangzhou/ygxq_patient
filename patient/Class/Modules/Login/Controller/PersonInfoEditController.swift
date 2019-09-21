@@ -88,7 +88,7 @@ extension PersonInfoEditController {
         
         nameView.config = viewModel.inputConfig
         nameView.leftLabel.attributedText = viewModel.nameAttributeString
-        nameView.rightField.placeholder = "请输入真实姓名"
+        nameView.rightField.placeholder = "请输入姓名"
         nameView.rightField.textAlignment = .right
         
         idView.config = viewModel.idConfig
@@ -114,7 +114,7 @@ extension PersonInfoEditController {
         addressView.rightLabel.text = arrowOpt
         
         diseaseView.config = viewModel.arrowConfig
-        diseaseView.leftLabel.text = "疾病"
+        diseaseView.leftLabel.text = "病史"
         diseaseView.rightLabel.text = arrowOpt
         diseaseView.bottomLine.isHidden = true
         
@@ -243,10 +243,10 @@ extension PersonInfoEditController {
                 self?.nameView.rightField.text = info.realName
                 self?.idView.rightField.text = info.idCardNo
                 self?.sexView.rightLabel.text = info.sex == Sex.unknown ? self?.arrowOpt : info.sex.description
-                self?.birthView.rightLabel.text = (info.birth / 1000).toTime(format: "yyyy-MM-dd")
+                self?.birthView.rightLabel.text = info.birth != nil ? info.birth!.toTime(format: "yyyy-MM-dd") : self?.arrowOpt
                 self?.nationView.rightField.text = info.race
-                self?.addressView.rightLabel.text = info.address
-                self?.diseaseView.rightLabel.text = info.diseaseName
+                self?.addressView.rightLabel.text = info.address.isEmpty ? self?.arrowOpt : info.address
+                self?.diseaseView.rightLabel.text = info.diseaseName.isEmpty ? self?.arrowOpt : info.diseaseName
                 
                 self?.nameView.rightField.sendActions(for: .allEditingEvents)
                 self?.idView.rightField.sendActions(for: .allEditingEvents)
@@ -317,7 +317,7 @@ extension PersonInfoEditController {
     @objc private func finishAction() {
         var params = [String: Any]()
         params["realName"] = nameView.rightField.text ?? ""
-        params["birth"] = selectBirth?.zz_date(withDateFormat: "yyyy-MM-dd")?.timeIntervalSince1970 ?? 0
+        params["birth"] = (selectBirth?.zz_date(withDateFormat: "yyyy-MM-dd")?.timeIntervalSince1970 ?? 0) * 1000
         params["idCardNo"] = idView.rightField.text ?? ""
         params["sex"] = Sex.string(selectSex).rawValue
         params["race"] = nationView.rightField.text ?? ""

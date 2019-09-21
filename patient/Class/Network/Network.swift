@@ -30,7 +30,8 @@ private func getPlugin() -> [PluginType] {
     case .release:
         return [activityPlugin]
     default:
-        return [NetworkSimpleLoggerPlugin(), activityPlugin]
+        return [activityPlugin]
+//        return [NetworkSimpleLoggerPlugin(), activityPlugin]
     }
 }
 

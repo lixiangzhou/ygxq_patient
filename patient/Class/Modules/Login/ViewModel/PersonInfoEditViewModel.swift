@@ -20,7 +20,7 @@ class PersonInfoEditViewModel: BaseViewModel {
     var imgUrl = ""
     
     override init() {
-        let nameAttr = NSMutableAttributedString(string: "真实姓名")
+        let nameAttr = NSMutableAttributedString(string: "姓名")
         nameAttr.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
         nameAttributeString = nameAttr
         

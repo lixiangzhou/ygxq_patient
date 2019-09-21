@@ -45,6 +45,7 @@ extension FUVisitPlanController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "您还没有随访计划" : nil }
     }
 }
 

@@ -47,6 +47,7 @@ extension HomeHeaderView {
         pagerView.removesInfiniteLoopForSingleItem = true
         pagerView.automaticSlidingInterval = 2
         pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: FSPagerViewCell.description())
+        pagerView.backgroundColor = .cf0efef
         addSubview(pagerView)
         
         pageControl.setFillColor(.cf, for: .normal)

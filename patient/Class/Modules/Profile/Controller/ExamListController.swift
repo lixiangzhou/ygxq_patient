@@ -44,6 +44,7 @@ extension ExamListController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.skipRepeats().map(value: ())
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
     }
 }
 
@@ -68,7 +69,7 @@ extension ExamListController: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = model.examName
 
         cell.typeLabel.text = viewModel.getTypeString(model)
-        cell.typeLabel.isHidden = viewModel.getTypeString(model).isEmpty
+        cell.typeLabel.isHidden = true//viewModel.getTypeString(model).isEmpty
 
         return cell
     }

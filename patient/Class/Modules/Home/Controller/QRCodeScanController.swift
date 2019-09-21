@@ -83,7 +83,6 @@ extension QRCodeScanController {
     }
     
     private func addEffect(rect: CGRect) {
-//        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         let effectView = UIView()
         effectView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         effectView.frame = rect
@@ -105,7 +104,7 @@ extension QRCodeScanController: AVCaptureMetadataOutputObjectsDelegate {
         
         for item in metadataObjects {
             let prefix = "cn.com.lightheart://code="
-            if let txt = (item as? AVMetadataMachineReadableCodeObject)?.stringValue, txt.contains(prefix), txt.count > prefix.count {
+            if let txt = (item as? AVMetadataMachineReadableCodeObject)?.stringValue, txt.count > prefix.count {
                 let code = txt.zz_substring(range: NSRange(location: prefix.count, length: txt.count - prefix.count))
                 HUD.showLoding()
                 PatientApi.bindingDoctor(code: code, puid: patientId).rac_response(String.self).map { BoolString($0) }.startWithValues { [weak self] (result) in
@@ -120,6 +119,7 @@ extension QRCodeScanController: AVCaptureMetadataOutputObjectsDelegate {
                     }
                 }
             } else {
+                HUD.show(toast: "扫描失败")
                 continueScan = true
             }
         }

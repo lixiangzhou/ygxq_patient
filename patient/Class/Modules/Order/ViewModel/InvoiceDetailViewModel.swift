@@ -11,4 +11,12 @@ import ReactiveSwift
 
 class InvoiceDetailViewModel: BaseViewModel {
     let modelProperty = MutableProperty<InvoiceModel?>(nil)
+    
+    var isFinished: Bool {
+        if let model = modelProperty.value {
+            return model.invoiceStatus != 1
+        } else {
+            return false
+        }
+    }
 }

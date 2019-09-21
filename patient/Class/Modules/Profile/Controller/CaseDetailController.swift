@@ -47,6 +47,23 @@ extension CaseDetailController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.map(value: ())
+        viewModel.caseModelProperty.producer.startWithValues { [weak self] (m) in
+            guard let self = self, let m = m, m.imgs.count > 0 else { return }
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "查看原图", target: self, action: #selector(self.lookPicAction))
+        }
+    }
+}
+
+// MARK: - Action
+extension CaseDetailController {
+    @objc private func lookPicAction() {
+        PhotoBrowser.showNetImage(numberOfItems: { [weak self] () -> Int in
+            return self?.viewModel.caseModelProperty.value?.imgs.count ?? 0
+            }, placeholder: { (index) -> UIImage? in
+                return nil
+        }, autoloadURLString: { [weak self] (index) -> String? in
+            return self?.viewModel.caseModelProperty.value?.imgs[index].url
+        })
     }
 }
 

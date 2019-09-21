@@ -63,6 +63,8 @@ extension TaskTipListController {
                 self?.push(vc)
             }
         }
+        
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
     }
 }
 

@@ -57,6 +57,7 @@ extension PictureListController {
     
     override func setBinding() {
         collectionView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
+        collectionView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
     }
 }
 

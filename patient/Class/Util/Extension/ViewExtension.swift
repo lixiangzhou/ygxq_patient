@@ -143,3 +143,12 @@ extension UIView: LayoutHeightProtocol {
         zz_height = height
     }
 }
+
+
+extension UILabel {
+    func append(_ sufix: String = "*", color: UIColor = UIColor.cf25555) {
+        let attr = NSMutableAttributedString(string: text ?? "")
+        attr.append(NSAttributedString(string: sufix, attributes: [NSAttributedString.Key.foregroundColor: color]))
+        attributedText = attr
+    }
+}

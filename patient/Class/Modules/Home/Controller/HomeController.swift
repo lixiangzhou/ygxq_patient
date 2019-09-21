@@ -14,12 +14,12 @@ class HomeController: BaseController {
         
         setUI()
         setBinding()
-        viewModel.getBanners()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        viewModel.getBanners()
         viewModel.getTasks()
         viewModel.getUnReadMsgCount()
         RCManager.shared.connect(nil)

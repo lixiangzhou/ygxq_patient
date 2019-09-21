@@ -47,17 +47,24 @@ extension CheckDetailController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.map(value: ())
+        viewModel.checkModelProperty.producer.startWithValues { [weak self] (m) in
+            guard let self = self, let m = m, m.imgs.count > 0 else { return }
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "查看原图", target: self, action: #selector(self.lookPicAction))
+        }
     }
 }
 
 // MARK: - Action
 extension CheckDetailController {
-    
-}
-
-// MARK: - Network
-extension CheckDetailController {
-    
+    @objc private func lookPicAction() {
+        PhotoBrowser.showNetImage(numberOfItems: { [weak self] () -> Int in
+            return self?.viewModel.checkModelProperty.value?.imgs.count ?? 0
+            }, placeholder: { (index) -> UIImage? in
+                return nil
+        }, autoloadURLString: { [weak self] (index) -> String? in
+            return self?.viewModel.checkModelProperty.value?.imgs[index].url
+        })
+    }
 }
 
 // MARK: - Delegate Internal
@@ -87,23 +94,3 @@ extension CheckDetailController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension CheckDetailController {
-    
-}
-
-// MARK: - Other
-extension CheckDetailController {
-    
-}
-
-// MARK: - Public
-extension CheckDetailController {
-    
-}
-

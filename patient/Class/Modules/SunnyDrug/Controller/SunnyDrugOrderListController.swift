@@ -36,10 +36,6 @@ extension SunnyDrugOrderListController {
         tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
         
-        tableView.emptyDataSetView { (emptyView) in
-            emptyView.titleLabelString(NSMutableAttributedString(string:"暂无数据"))
-        }
-        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -47,6 +43,7 @@ extension SunnyDrugOrderListController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.skipRepeats().map(value: ())
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
     }
 }
 

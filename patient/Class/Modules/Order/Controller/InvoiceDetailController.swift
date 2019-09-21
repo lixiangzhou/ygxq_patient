@@ -27,6 +27,7 @@ class InvoiceDetailController: BaseController {
     private let contentView = UIView()
     
     private let infoView = InvoiceDetailInfoView()
+    private let expressView = InvoiceExpressView()
     
 }
 
@@ -43,6 +44,16 @@ extension InvoiceDetailController {
         scrollView.addSubview(contentView)
         
         contentView.addSubview(infoView)
+        
+        if viewModel.isFinished {
+            infoView.createTimeView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3)
+            
+            contentView.addSubview(expressView)
+            expressView.snp.makeConstraints { (make) in
+                make.top.equalTo(infoView.snp.bottom)
+                make.left.right.width.equalTo(infoView)
+            }
+        }
         
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -74,6 +85,17 @@ extension InvoiceDetailController {
             self.infoView.idNoView.isHidden = model.taxpayerNum.isEmpty
             self.infoView.amountView.snp.updateConstraints { (make) in
                 make.top.equalTo(self.infoView.titleView.snp.bottom).offset(model.taxpayerNum.isEmpty ? 0 : 50)
+            }
+            
+            if self.viewModel.isFinished {
+                var company = ""
+                switch model.logisticsCompany {
+                    case 1: company = "圆通"
+                    case 2: company = "申通"
+                    default: break
+                }
+                self.expressView.nameView.rightLabel.text = company
+                self.expressView.noView.rightLabel.text = model.waybillNumber
             }
         }
     }

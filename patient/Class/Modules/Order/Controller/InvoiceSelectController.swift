@@ -73,6 +73,8 @@ extension InvoiceSelectController {
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
         
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
+        
         viewModel.dataSourceProperty.signal.observeValues { [weak self] (orders) in
             self?.tableView.contentInset.bottom = orders.isEmpty ? 0 : 50
             self?.bottomView.isHidden = orders.isEmpty

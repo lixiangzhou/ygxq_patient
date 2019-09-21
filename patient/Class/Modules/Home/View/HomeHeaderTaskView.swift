@@ -130,12 +130,11 @@ extension HomeHeaderTaskView {
         
         taskActionLabel.snp.makeConstraints { (make) in
             make.top.left.bottom.equalToSuperview()
-            make.height.equalTo(20)
         }
         
         taskMoreView.snp.makeConstraints { (make) in
             make.left.equalTo(taskActionLabel.snp.right).offset(5)
-            make.centerX.right.equalToSuperview()
+            make.centerY.right.equalToSuperview()
             make.width.equalTo(7)
             make.height.equalTo(12)
         }

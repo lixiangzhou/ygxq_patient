@@ -68,7 +68,7 @@ class FUVistExamListViewModel: BaseViewModel {
     func getList(_ model: ExamResultModel) {
         ExamApi.listSerExamById(ids: model.serExam.split(separator: ",").map { Int(String($0)) ?? 0 }).rac_responseModel([ExamModel].self).startWithValues { [weak self] (models) in
             if !model.serExamResult.isEmpty {
-                if let items = try? model.serExamResult.split(separator: ",").map { String($0) },
+                if let self = self, let items = try? model.serExamResult.split(separator: ",").map { String($0) },
                     let results = try? items.map { (item) -> (String, String) in
                         let idx = item.firstIndex(of: ":")!
                         return (String(item[..<idx]), String(item[item.index(after: idx)...]))
@@ -85,9 +85,15 @@ class FUVistExamListViewModel: BaseViewModel {
                         var newV = v
                         newV.isFinished = ids.keys.contains(v.id) ? 1 : 0
                         newV.resultId = ids[v.id] ?? 0
-                        newValues.append(newV)
+                        switch self.type! {
+                        case .videolookLinkId, .druglookLinkId:
+                            if newV.isFinished == 1 {
+                                newValues.append(newV)
+                            }
+                        default: break
+                        }
                     }
-                    self?.dataSourceProperty.value = newValues
+                    self.dataSourceProperty.value = newValues
                 }                
             } else {
                 self?.dataSourceProperty.value = models ?? []

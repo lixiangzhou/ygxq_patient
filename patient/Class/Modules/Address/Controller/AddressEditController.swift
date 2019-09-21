@@ -83,6 +83,10 @@ extension AddressEditController {
             switchView.isOn = isDefault
             switchView.isUserInteractionEnabled = !isDefault
         }
+        if !showDetault {  // 编辑默认地址，不显示开关
+            switchView.isOn = true
+            defaultView.isHidden = true
+        }
         
         districtField.placeholder = "请选择所在地区"
         
@@ -136,9 +140,13 @@ extension AddressEditController {
             make.top.equalTo(addressView.snp.bottom)
             make.left.right.equalToSuperview()
         }
-        
+
         saveBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(defaultView.snp.bottom).offset(15)
+            if showDetault {
+                make.top.equalTo(defaultView.snp.bottom).offset(15)
+            } else {
+                make.top.equalTo(addressView.snp.bottom).offset(15)
+            }
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.height.equalTo(44)
@@ -195,13 +203,17 @@ extension AddressEditController {
     private func addRow(title: String) -> (UIView, UITextField) {
         let view = UIView()
         view.backgroundColor = .cf
-        let titleLabel = view.zz_add(subview: UILabel(text: title, font: .size(16), textColor: .c3))
+        let titleLabel = view.zz_add(subview: UILabel(text: title, font: .size(16), textColor: .c3)) as! UILabel
         let field = view.zz_add(subview: UITextField()) as! UITextField
         field.font = .boldSize(16)
         field.textColor = .c3
         field.placeholder = "请输入\(title)"
         
         view.addBottomLine(left: 15)
+        
+        if mode == .add {
+            titleLabel.append()
+        }
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)
@@ -221,14 +233,20 @@ extension AddressEditController {
     private func addDetailAddress() -> (UIView, NextGrowingTextView) {
         let view = UIView()
         view.backgroundColor = .cf
-        let titleLabel = view.zz_add(subview: UILabel(text: "详细地址", font: .size(16), textColor: .c3))
+        let titleLabel = view.zz_add(subview: UILabel(text: "详细地址", font: .size(16), textColor: .c3)) as! UILabel
         let inputView = view.zz_add(subview: NextGrowingTextView()) as! NextGrowingTextView
         inputView.textView.font = .boldSize(16)
         inputView.placeholderAttributedText = NSAttributedString(string: "请输入详细地址", attributes: [NSAttributedString.Key.font: inputView.textView.font!, NSAttributedString.Key.foregroundColor: UIColor.fieldDefaultColor])
         inputView.minNumberOfLines = 1
         inputView.maxNumberOfLines = 3
         
-        view.addBottomLine(left: 15)
+        if showDetault {
+            view.addBottomLine(left: 15)
+        }
+        
+        if mode == .add {
+            titleLabel.append()
+        }
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)
@@ -249,7 +267,7 @@ extension AddressEditController {
     private func addDefault() -> (UIView, UISwitch) {
         let view = UIView()
         view.backgroundColor = .cf
-        let titleLabel = view.zz_add(subview: UILabel(text: "设为默认", font: .size(16), textColor: .c3))
+        let titleLabel = view.zz_add(subview: UILabel(text: "设为默认", font: .size(16), textColor: .c3)) as! UILabel
         let switchView = view.zz_add(subview: UISwitch()) as! UISwitch
         
         titleLabel.snp.makeConstraints { (make) in
@@ -304,6 +322,7 @@ extension AddressEditController {
     }
     
     private func selectDistrictAction() {
+        view.endEditing(true)
         selectDistrictView.show()
     }
 }
@@ -337,5 +356,14 @@ extension AddressEditController {
     enum Mode {
         case add
         case update
+    }
+    
+    var showDetault: Bool {
+        switch mode {
+        case .add:
+            return true
+        case .update:
+            return !isDefault
+        }
     }
 }

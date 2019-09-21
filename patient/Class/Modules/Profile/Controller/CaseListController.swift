@@ -44,6 +44,7 @@ extension CaseListController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
+        tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
     }
 }
 
@@ -69,7 +70,7 @@ extension CaseListController: UITableViewDataSource, UITableViewDelegate {
         cell.clinicTimeLabel.text = "入院时间：" + model.clinicTime.toTime(format: "yyyy-MM-dd")
         
         cell.typeLabel.text = viewModel.getTypeString(model)
-        cell.typeLabel.isHidden = viewModel.getTypeString(model).isEmpty
+        cell.typeLabel.isHidden = true//viewModel.getTypeString(model).isEmpty
         cell.bottomLine.isHidden = list.count - 1 == indexPath.row
         
         return cell
