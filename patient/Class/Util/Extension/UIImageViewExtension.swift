@@ -15,6 +15,7 @@ extension UIImageView {
     
     func setImage(with url: URL?, placeholder: String = "service_placeholder", neterror: String = "service_neterror") {
         contentMode = .scaleAspectFit
+        
         kf.setImage(with: url, placeholder: UIImage(named: placeholder)) { (result) in
             switch result {
             case .failure:

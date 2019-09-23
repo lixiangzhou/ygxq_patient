@@ -37,4 +37,13 @@ class RefundDetailViewModel: BaseViewModel {
             return ""
         }
     }
+    
+    func getRefundTime() -> String {
+        switch orderModel.status {
+        case "PAY_ORD_S_REF_SUC", "PAY_ORD_S_REF_FAL":
+            return orderModel.refundTime.toTime(format: "yyyy-MM-dd HH:mm")
+        default:
+            return ""
+        }
+    }
 }

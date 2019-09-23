@@ -39,6 +39,9 @@ class AddressEditController: BaseController {
     
     var completionClosure: (() -> Void)?
     // MARK: - Private Property
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    
     private var nameField: UITextField!
     private var mobileField: UITextField!
     private var districtField: UITextField!
@@ -58,13 +61,11 @@ extension AddressEditController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "删除", titleColor: .cf, target: self, action: #selector(deleteAction))
         }
         
-        let scrollView = UIScrollView()
         scrollView.backgroundColor = .cf0efef
         scrollView.alwaysBounceVertical = true
         scrollView.keyboardDismissMode = .onDrag
         view.addSubview(scrollView)
         
-        let contentView = UIView()
         scrollView.addSubview(contentView)
         
         let (nameView, nameField) = addRow(title: "收货人")
@@ -78,6 +79,10 @@ extension AddressEditController {
         self.districtField = districtField
         self.addressTxtView = addressTxtView
         self.switchView = switchView
+        
+        addressTxtView.delegates.didChangeHeight = { [weak self] _ in
+            self?.updateHeight()
+        }
         
         if mode == .add {
             switchView.isOn = isDefault
@@ -152,12 +157,7 @@ extension AddressEditController {
             make.height.equalTo(44)
         }
         
-        contentView.layoutHeight()
-        contentView.snp.updateConstraints { (make) in
-            make.height.equalTo(contentView.zz_height)
-        }
-        
-        scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_maxY, UIScreen.zz_safeFrameUnderNavigation.height))
+        updateHeight()
     }
     
     private func setData() {
@@ -349,6 +349,17 @@ extension AddressEditController: UITextFieldDelegate {
         } else {
             return true
         }
+    }
+}
+
+extension AddressEditController {
+    func updateHeight() {
+        contentView.layoutHeight()
+        contentView.snp.updateConstraints { (make) in
+            make.height.equalTo(contentView.zz_height)
+        }
+        
+        scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_maxY, UIScreen.zz_safeFrameUnderNavigation.height))
     }
 }
 

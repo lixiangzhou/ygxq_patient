@@ -30,7 +30,7 @@ class HutPackageDetailViewModel: BaseViewModel {
                     detailString += "\n"
                 }
             }
-            dataSource.append(.content(contents: model.serContentList, detail: detailString, pic: ""))
+            dataSource.append(.content(contents: model.serContentList, detail: detailString, pic: model.equipmentImg))
             
             var audienceList = [TargetAudienceModel]()
             for item in model.targetAudiencList {

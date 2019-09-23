@@ -17,6 +17,7 @@
 #import <RongIMLib/RongIMLib.h>
 
 #import "JPUSHService.h"
+#import "YYText.h"
 
 
 #endif /* patient_Bridge_h */

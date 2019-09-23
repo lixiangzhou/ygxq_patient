@@ -45,6 +45,7 @@ PODS:
   - WechatOpenSDK (1.8.4)
   - WKWebViewJavascriptBridge (1.2.0)
   - WZLBadge (1.2.6)
+  - YYText (1.0.7)
 
 DEPENDENCIES:
   - Alamofire
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - WechatOpenSDK
   - WKWebViewJavascriptBridge
   - WZLBadge
+  - YYText
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -96,6 +98,7 @@ SPEC REPOS:
     - WechatOpenSDK
     - WKWebViewJavascriptBridge
     - WZLBadge
+    - YYText
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
@@ -122,7 +125,8 @@ SPEC CHECKSUMS:
   WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
   WKWebViewJavascriptBridge: 43c5948c08c29b8777530d512d02eb921ca0881f
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 06ce366d6b7d91b214dfb09faf673253c2732ba6
+PODFILE CHECKSUM: ab2c2837a032227d04100421013faaad27603247
 
 COCOAPODS: 1.7.4

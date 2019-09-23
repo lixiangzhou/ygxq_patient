@@ -215,6 +215,7 @@ extension AddressShowView {
     
     @objc private func addAddressAction() {
         let vc = AddressEditController()
+        vc.isDefault = true
         vc.completionClosure = { [weak self] in
             self?.viewModel.getDefaultAddress()
         }

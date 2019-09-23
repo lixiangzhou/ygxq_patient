@@ -34,6 +34,7 @@ extension OrderListController {
         tableView.set(dataSource: self, delegate: self, rowHeight: 210)
         tableView.register(cell: OrderListCell.self)
         tableView.backgroundColor = .cf0efef
+        tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { (make) in

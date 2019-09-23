@@ -73,17 +73,18 @@ extension HutPackageDetailController {
         viewModel.hutModelProperty.producer.skipNil().startWithValues { (model) in
             self.bottomView.priceLabel.text = "￥\(model.serPrice)"
         }
+        tableView.reactive.reloadData <~ viewModel.addressModelProperty.signal.skipRepeats({ (m1, m2) -> Bool in
+            if m1 == nil, m2 == nil {
+                return true
+            } else if m1 == nil, m2 != nil {
+                return false
+            } else if m1 != nil, m2 == nil {
+                return false
+            } else {
+                return m1!.id == m2!.id
+            }
+        }).map(value: ())
     }
-}
-
-// MARK: - Action
-extension HutPackageDetailController {
-    
-}
-
-// MARK: - Network
-extension HutPackageDetailController {
-    
 }
 
 // MARK: - Delegate Internal
@@ -108,7 +109,7 @@ extension HutPackageDetailController: UITableViewDataSource {
             let cell = tableView.dequeue(cell: HutPackageDetailContentCell.self, for: indexPath)
             cell.contents = contents
             cell.detailLabel.text = detail
-            cell.iconView.image = UIImage(named: pic)
+            cell.iconView.setImage(with: URL(string: pic))
             return cell
         case let .targetAudience(models: models):
             let cell = tableView.dequeue(cell: HutPackageDetailTargetAudienceCell.self, for: indexPath)
@@ -129,24 +130,3 @@ extension HutPackageDetailController: UITableViewDataSource {
         }
     }
 }
-
-
-// MARK: - Delegate External
-
-// MARK: -
-
-// MARK: - Helper
-extension HutPackageDetailController {
-    
-}
-
-// MARK: - Other
-extension HutPackageDetailController {
-    
-}
-
-// MARK: - Public
-extension HutPackageDetailController {
-    
-}
-

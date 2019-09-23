@@ -20,8 +20,8 @@ class PictureListViewModel: BaseViewModel {
         if getDataFromSelf {
             switch type {
             case let .history(time: time):
-                MediaApi.queryById(pid: patientId, type: "SER_HLR", createTime: time).rac_responseModel([String: [String]].self).skipNil().startWithValues { [weak self] (value) in
-                    self?.dataSourceProperty.value = value.values.first ?? []
+                MediaApi.queryById(pid: patientId, type: "SER_HLR", createTime: time).rac_responseModel([String: [String]].self).startWithValues { [weak self] (value) in
+                    self?.dataSourceProperty.value = value?.values.first ?? []
                 }
             case let .videoOrDrugDetail(linkId: linkId, serType: serType, imgType: imgType):
                 MediaApi.listAllMediasByLinkId(linkId: linkId, serType: serType, imgType: imgType).rac_responseModel([ImageModel].self).startWithValues { [weak self] (models) in

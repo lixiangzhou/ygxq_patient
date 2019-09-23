@@ -87,7 +87,6 @@ extension HutPackageDetailContentCell {
         let detailTitleLabel = whiteView.zz_add(subview: UILabel(text: "服务详情", font: .boldSize(17), textColor: .c3))
         whiteView.addSubview(detailLabel)
         
-        iconView.backgroundColor = .red
         whiteView.addSubview(iconView)
         
         whiteView.snp.makeConstraints { (make) in

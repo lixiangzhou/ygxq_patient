@@ -39,7 +39,8 @@ extension DoctorDetailController {
         tableView.register(cell: DoctorDetailInfoCell.self)
         tableView.register(cell: DoctorDetailActionsCell.self)
         tableView.register(cell: DoctorDetailMsgCell.self)
-        tableView.estimatedRowHeight = 250
+        tableView.register(cell: DoctorDetailMsgExpendableCell.self)
+        tableView.estimatedRowHeight = 200
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
@@ -124,10 +125,17 @@ extension DoctorDetailController: UITableViewDataSource {
             }
             cell.serView.reloadData()
             return cell
-        case let .docInfoMsg(title: title, txt: txt):
-            let cell = tableView.dequeue(cell: DoctorDetailMsgCell.self, for: indexPath)
+        case let .docInfoMsg(title: title, txt: txt, showMore: showMore):
+            let cell = tableView.dequeue(cell: DoctorDetailMsgExpendableCell.self, for: indexPath)
             cell.titleLabel.text = title
-            cell.txtLabel.text = txt
+            let style = NSMutableParagraphStyle()
+            style.lineSpacing = 2
+            cell.txtLabel.attributedText = NSAttributedString(string: txt, attributes: [NSAttributedString.Key.font: UIFont.size(14), NSAttributedString.Key.paragraphStyle: style])
+            cell.addMore()
+            cell.updateConstraint(expend: showMore)
+            cell.expendAction = { [weak self] expend in
+                self?.viewModel.expendModel(model: model, index: indexPath.row)
+            }
             return cell
         case let .serMsg(title: title, txt: txt):
             let cell = tableView.dequeue(cell: DoctorDetailMsgCell.self, for: indexPath)

@@ -25,24 +25,28 @@ class DrugUsedViewModel: BaseViewModel {
     let dataSourceProperty: MutableProperty<[GroupModel]> = MutableProperty([])
     
     func getData() {
-        SunnyDrugApi.usedDrugs(pid: patientId).rac_responseModel(Dictionary<String, Any>.self).skipNil().startWithValues { [unowned self] dict in
-            let keys = dict.keys.sorted().reversed()
-            var array = [GroupModel]()
-            for (idx, key) in keys.enumerated() {
-                if let list = [DrugModel].deserialize(from: dict[key] as? NSArray) as? [DrugModel] {
-                    var drugs = [RowModel]()
-                    for model in list {
-                        drugs.append(.drug(model))
+        SunnyDrugApi.usedDrugs(pid: patientId).rac_responseModel(Dictionary<String, Any>.self).startWithValues { [weak self] dict in
+            if let dict = dict {
+                let keys = dict.keys.sorted().reversed()
+                var array = [GroupModel]()
+                for (idx, key) in keys.enumerated() {
+                    if let list = [DrugModel].deserialize(from: dict[key] as? NSArray) as? [DrugModel] {
+                        var drugs = [RowModel]()
+                        for model in list {
+                            drugs.append(.drug(model))
+                        }
+                        if let advice = list.last?.doctorAdvice, !advice.isEmpty {
+                            drugs.append(.advice(advice))
+                        }
+                        let group = GroupModel(title: key, open: idx == 0, list: drugs)
+                        array.append(group)
                     }
-                    if let advice = list.last?.doctorAdvice, !advice.isEmpty {
-                        drugs.append(.advice(advice))
-                    }
-                    let group = GroupModel(title: key, open: idx == 0, list: drugs)
-                    array.append(group)
                 }
+                
+                self?.dataSourceProperty.value = array
+            } else {
+                self?.dataSourceProperty.value = []
             }
-            
-            self.dataSourceProperty.value = array
         }
     }
     

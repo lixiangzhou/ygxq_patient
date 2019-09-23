@@ -90,7 +90,8 @@ class FUVistExamListViewModel: BaseViewModel {
                             if newV.isFinished == 1 {
                                 newValues.append(newV)
                             }
-                        default: break
+                        default: 
+                            newValues.append(newV)
                         }
                     }
                     self.dataSourceProperty.value = newValues

@@ -34,6 +34,7 @@ extension SunnyDrugOrderListController {
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: SunnyDrugOrderCell.self)
         tableView.backgroundColor = .cf0efef
+        tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { (make) in

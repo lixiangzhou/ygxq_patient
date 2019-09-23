@@ -102,7 +102,7 @@ extension VideoConsultTimeCell {
         
         noTalkLabel.snp.makeConstraints { (make) in
             make.right.equalTo(-15)
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(appointTimeLabel)
         }
     }
 }

@@ -46,23 +46,3 @@ extension HutPackageDetailAddressCell {
         }
     }
 }
-
-// MARK: - Action
-extension HutPackageDetailAddressCell {
-    
-}
-
-// MARK: - Helper
-extension HutPackageDetailAddressCell {
-    
-}
-
-// MARK: - Other
-extension HutPackageDetailAddressCell {
-    
-}
-
-// MARK: - Public
-extension HutPackageDetailAddressCell {
-    
-}

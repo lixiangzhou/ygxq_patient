@@ -40,6 +40,7 @@
 		100C2CF82318B96A00A820BF /* VideoConsultBuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100C2CF72318B96A00A820BF /* VideoConsultBuyViewModel.swift */; };
 		100C2CFA2318BA7800A820BF /* PictureSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100C2CF92318BA7800A820BF /* PictureSelectViewModel.swift */; };
 		100FCC2D233620FD000E8E14 /* InvoiceExpressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FCC2C233620FD000E8E14 /* InvoiceExpressView.swift */; };
+		100FCC2F2338D0D1000E8E14 /* DoctorDetailMsgExpendableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FCC2E2338D0D0000E8E14 /* DoctorDetailMsgExpendableCell.swift */; };
 		1014CF9F229391DF00294558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1014CF9E229391DF00294558 /* AppDelegate.swift */; };
 		1014CFA6229391E200294558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1014CFA5229391E200294558 /* Assets.xcassets */; };
 		1014D0462293A6D700294558 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1014D0122293A6D700294558 /* HomeController.swift */; };
@@ -368,6 +369,7 @@
 		100C2CF72318B96A00A820BF /* VideoConsultBuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultBuyViewModel.swift; sourceTree = "<group>"; };
 		100C2CF92318BA7800A820BF /* PictureSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureSelectViewModel.swift; sourceTree = "<group>"; };
 		100FCC2C233620FD000E8E14 /* InvoiceExpressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceExpressView.swift; sourceTree = "<group>"; };
+		100FCC2E2338D0D0000E8E14 /* DoctorDetailMsgExpendableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailMsgExpendableCell.swift; sourceTree = "<group>"; };
 		1014CF9B229391DF00294558 /* patient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = patient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1014CF9E229391DF00294558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1014CFA5229391E200294558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1397,6 +1399,7 @@
 				104FC4CB231651AB00ECB82B /* DoctorDetailInfoCell.swift */,
 				104FC4CD231651C400ECB82B /* DoctorDetailActionsCell.swift */,
 				104FC4CF231651D000ECB82B /* DoctorDetailMsgCell.swift */,
+				100FCC2E2338D0D0000E8E14 /* DoctorDetailMsgExpendableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2238,6 +2241,7 @@
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,
 				108C07FE22BB583D00B2EBE9 /* TextLeftRightView.swift in Sources */,
 				10A27557230BC11500B568B3 /* SystemMsgViewModel.swift in Sources */,
+				100FCC2F2338D0D1000E8E14 /* DoctorDetailMsgExpendableCell.swift in Sources */,
 				10E1DF38230500AC007AD76A /* VideoConsultDiseaseCell.swift in Sources */,
 				100AEE5022CC589D00094AE2 /* CaseDetailController.swift in Sources */,
 				104E3AA322B8E5E700A84DB2 /* LLSegmentBaseItemView.swift in Sources */,

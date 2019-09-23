@@ -31,7 +31,7 @@ enum LLSegmentedCtontrolPositionType {
 
 //控件布局位置信息
 class LLSubViewsLayoutInfo:NSObject{
-    var minimumHeight:CGFloat = 64
+    var minimumHeight:CGFloat = UIScreen.zz_navHeight
     var segmentControlPositionType:LLSegmentedCtontrolPositionType = .top(size: CGSize.init(width: UIScreen.main.bounds.width, height: 50), offset: 0)
     var refreshType = LLDragRefreshType.container
     var headView:UIView?
@@ -193,8 +193,8 @@ extension LLSegmentViewController :LLCtlPageViewDataSource{
 
 extension LLSegmentViewController{
     private func initSubviews() {
-        layoutInfo.minimumHeight = (self.navigationController?.navigationBar.isHidden == true) ? 0 : mTopHeight()
-        
+//        layoutInfo.minimumHeight = (self.navigationController?.navigationBar.isHidden == true) ? 0 : mTopHeight()
+
         containerScrView.frame =  view.bounds
         containerScrView.dragDeleage = self
         containerScrView.paralaxHeader = self.layoutInfo

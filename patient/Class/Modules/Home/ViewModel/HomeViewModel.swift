@@ -17,8 +17,8 @@ class HomeViewModel: BaseViewModel {
     let taskTipViewModel = TaskTipListViewModel()
     
     func getBanners() {
-        HomeApi.bannerList.rac_responseModel([BannerModel].self).skipNil().startWithValues { [weak self] (list) in
-            self?.bannerListProperty.value = list
+        HomeApi.bannerList.rac_responseModel([BannerModel].self).startWithValues { [weak self] (list) in
+            self?.bannerListProperty.value = list ?? []
         }
     }
     

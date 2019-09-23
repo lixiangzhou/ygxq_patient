@@ -163,7 +163,7 @@ extension ApplyForRefundController {
     private func setData() {
         orderNoLabel.text = orderModel.id.description
         orderNameLabel.text = orderModel.productName
-        orderAmountLabel.attributedText = viewModel.getMoneyString(orderModel.payAmount)
+        orderAmountLabel.attributedText = viewModel.getMoneyString(orderModel.refundAmount)
         refundAmountLabel.text = "已支付"
     }
 }

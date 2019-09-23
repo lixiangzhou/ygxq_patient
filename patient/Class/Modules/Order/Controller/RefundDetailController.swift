@@ -131,7 +131,7 @@ extension RefundDetailController {
         stateBgView.addSubview(stateRoundBgView)
         stateBgView.addSubview(stateBottomBgView)
         
-        let stateDescLabel = stateBgView.zz_add(subview: UILabel(text: "订单状态及下单时间", font: .size(16), textColor: .cf))
+        let stateDescLabel = stateBgView.zz_add(subview: UILabel(text: "退款状态及时间", font: .size(16), textColor: .cf))
         stateBgView.addSubview(stateLabel)
         stateBgView.addSubview(timeLabel)
         
@@ -252,17 +252,21 @@ extension RefundDetailController {
     
     private func setData() {
         stateLabel.text = viewModel.getStatus()
-        timeLabel.text = viewModel.orderModel.refundTime.toTime(format: "yyyy-MM-dd HH:mm")
+        timeLabel.text = viewModel.getRefundTime()
+        refundFailReasonLabel.text = viewModel.orderModel.refundApply
         refundAmountLabel.attributedText = viewModel.getMoneyString(viewModel.orderModel.refundAmount)
         refundReasonLabel.text = viewModel.orderModel.refundReason
         orderNoLabel.text = viewModel.orderModel.id.description
         nameLabel.text = viewModel.orderModel.productName
         
-        refundFailReasonView.isHidden = viewModel.orderModel.refundApply.isEmpty
-        if !viewModel.orderModel.refundApply.isEmpty {
+        let isFail = viewModel.orderModel.status == "PAY_ORD_S_REF_FAL"
+        refundFailReasonView.isHidden = !isFail
+        
+        if isFail {
             refundAmountView.snp.remakeConstraints { (make) in
                 make.top.equalTo(refundFailReasonView.snp.bottom)
                 make.left.right.equalToSuperview()
+                make.height.equalTo(45)
             }
         }
         

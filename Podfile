@@ -29,4 +29,5 @@ target 'patient' do
     pod 'TZImagePickerController'
     pod 'FDFullscreenPopGesture'
     pod 'Bugly'
+    pod 'YYText'
 end

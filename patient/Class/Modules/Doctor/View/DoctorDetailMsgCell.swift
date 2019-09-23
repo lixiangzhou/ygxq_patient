@@ -61,23 +61,3 @@ extension DoctorDetailMsgCell {
         }
     }
 }
-
-// MARK: - Action
-extension DoctorDetailMsgCell {
-    
-}
-
-// MARK: - Helper
-extension DoctorDetailMsgCell {
-    
-}
-
-// MARK: - Other
-extension DoctorDetailMsgCell {
-    
-}
-
-// MARK: - Public
-extension DoctorDetailMsgCell {
-    
-}

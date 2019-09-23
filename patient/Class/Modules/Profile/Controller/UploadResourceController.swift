@@ -119,7 +119,7 @@ extension UploadResourceController {
             HUD.showLoding()
             DispatchQueue.global().async {
                 for img in imgs {
-                    if let resizeImage = UIImage(data: img.zz_resetToSize(1000, maxWidth: 1000, maxHeight: 1000)) {
+                    if let resizeImage = UIImage(data: img.zz_resetToSize(300, maxWidth: 1000, maxHeight: 1000)) {
                         values.append(resizeImage)
                     }
                 }

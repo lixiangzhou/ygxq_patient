@@ -66,7 +66,7 @@ class DoctorDetailViewModel: BaseViewModel {
             }
         }
         
-        // 跟新服务内容
+        // 更新服务内容
         var temp = [Model]()
         if var ser = sers.first {
             ser.selected = true
@@ -93,7 +93,7 @@ class DoctorDetailViewModel: BaseViewModel {
             }
         })
         
-        // 跟新医生信息
+        // 更新医生信息
         if let idx = idx {
             switch values[idx] {
             case let .docInfo(docInfo: docInfo, sers: sers):
@@ -107,26 +107,28 @@ class DoctorDetailViewModel: BaseViewModel {
             }
         }
         
-        // 移除底部医生信息
-        values.removeAll { (model) -> Bool in
-            switch model {
-            case .docInfoMsg: return true
-            default: return false
+        if let docModel = docModel {
+            // 移除底部医生信息
+            values.removeAll { (model) -> Bool in
+                switch model {
+                case .docInfoMsg: return true
+                default: return false
+                }
             }
-        }
-        
-        // 更新底部医生信息
-        var msgs = [Model]()
-        if let majorIn = docModel?.majorIn, !majorIn.isEmpty {
-            msgs.append(.docInfoMsg(title: "专业擅长", txt: majorIn))
-        }
-        
-        if let summary = docModel?.summary, !summary.isEmpty {
-            msgs.append(.docInfoMsg(title: "职业履历", txt: summary))
-        }
-        
-        if !msgs.isEmpty {
-            values.append(contentsOf: msgs)
+            
+            // 更新底部医生信息
+            var msgs = [Model]()
+            if !docModel.majorIn.isEmpty {
+                msgs.append(.docInfoMsg(title: "专业擅长", txt: docModel.majorIn, showMore: false))
+            }
+            
+            if !docModel.summary.isEmpty {
+                msgs.append(.docInfoMsg(title: "职业履历", txt: docModel.summary, showMore: false))
+            }
+            
+            if !msgs.isEmpty {
+                values.append(contentsOf: msgs)
+            }
         }
         
         dataSourceProperty.value = values
@@ -264,12 +266,24 @@ class DoctorDetailViewModel: BaseViewModel {
         }
         return nil
     }
+    
+    func expendModel(model: Model, index: Int) {
+        var values = dataSourceProperty.value
+        switch model {
+        case let .docInfoMsg(title: title, txt: txt, showMore: showMore):
+            let m = Model.docInfoMsg(title: title, txt: txt, showMore: !showMore)
+            values.replaceSubrange(index...index, with: [m])
+        default:
+            break
+        }
+        dataSourceProperty.value = values
+    }
 }
 
 extension DoctorDetailViewModel {
     enum Model {
         case docInfo(docInfo: DoctorInfoModel, sers: [DoctorSerModel])
-        case docInfoMsg(title: String, txt: String)
+        case docInfoMsg(title: String, txt: String, showMore: Bool)
         case serMsg(title: String, txt: String)
         case sersAction(title: String, sers: [DoctorSerModel])
     }

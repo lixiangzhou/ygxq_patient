@@ -17,15 +17,17 @@ extension HomeApi {
     var path: String {
         switch self {
         case .bannerList:
-            return "/homepage/getCmnBannerlist"
+            return "/homepage/getAllBannerConfig"
         }
     }
     
     var task: Task {
+        var params = [String: Any]()
         switch self {
-        case .bannerList: break
+        case .bannerList:
+            params["clientType"] = "P"
         }
-        return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
+        return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }
 }
 

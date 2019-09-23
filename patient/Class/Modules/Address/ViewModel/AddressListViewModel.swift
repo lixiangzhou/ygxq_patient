@@ -30,8 +30,8 @@ class AddressListViewModel: BaseViewModel {
     }
     
     func getList() {
-        AddressApi.list(uid: patientId).rac_responseModel([AddressModel].self).skipNil().startWithValues { [unowned self] (models) in
-            self.dataSourceProperty.value = models
+        AddressApi.list(uid: patientId).rac_responseModel([AddressModel].self).startWithValues { [unowned self] (models) in
+            self.dataSourceProperty.value = models ?? []
         }
     }
 }
