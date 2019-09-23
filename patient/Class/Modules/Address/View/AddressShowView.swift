@@ -228,10 +228,10 @@ extension AddressShowView {
         
         if isDefault {
             let defaultImg = NSTextAttachment()
-            defaultImg.image = UIImage(named: "mine_top_bg")
-            defaultImg.bounds = CGRect(x: 0, y: -4, width: 22, height: 10)
+            defaultImg.image = UIImage(named: "address_default")
+            defaultImg.bounds = CGRect(x: 0, y: -5, width: 40, height: 20)
             attr.insert(NSAttributedString(attachment: defaultImg), at: 0)
-            attr.insert(NSAttributedString(string: "   "), at: 1)
+            attr.insert(NSAttributedString(string: "  "), at: 1)
         }
         addressLabel.attributedText = attr
     }

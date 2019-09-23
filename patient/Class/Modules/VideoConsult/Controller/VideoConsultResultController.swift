@@ -134,7 +134,7 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
             
         case .exam:
             let cell = tableView.dequeue(cell: VideoConsultArrowCell.self, for: indexPath)
-            cell.innerView.leftLabel.text = "随访问卷"
+            cell.innerView.leftLabel.text = "查看随访问卷"
             return cell
         case .lookPics:
             let cell = tableView.dequeue(cell: VideoConsultArrowCell.self, for: indexPath)
