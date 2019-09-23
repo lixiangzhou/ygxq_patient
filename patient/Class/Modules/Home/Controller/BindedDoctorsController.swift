@@ -19,6 +19,10 @@ class BindedDoctorsController: BaseController {
         title = "复诊/购药"
         setUI()
         setBinding()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.getData()
     }
     

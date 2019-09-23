@@ -14,7 +14,7 @@ class HutPackageTimeBuyViewModel: BaseViewModel {
     
     let dataSourceProperty = MutableProperty<[RowModel]>([])
     
-    var count = 1
+    var countProperty = MutableProperty<Int>(1)
     
     override init() {
         super.init()
@@ -56,7 +56,7 @@ class HutPackageTimeBuyViewModel: BaseViewModel {
             "serCode": model.serCode,
             "serName": model.serName,
             "puid": patientId,
-            "surplusNum": count
+            "surplusNum": countProperty.value
         ]
         ServiceApi.addSerSunshineHut(params: params).rac_response(Int.self).startWithValues { (resp) in
             HUD.showError(BoolString(resp))

@@ -68,8 +68,12 @@ extension HutPackageTimeBuyController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
-        viewModel.hutModelProperty.producer.skipNil().startWithValues { (model) in
-            self.bottomView.priceLabel.text = "￥\(model.serPrice)"
+        viewModel.hutModelProperty.producer.skipNil().startWithValues { [weak self] (model) in
+            self?.bottomView.priceLabel.text = "￥\(model.serPrice)"
+        }
+        viewModel.countProperty.signal.observeValues { [weak self] (v) in
+            guard let self = self, let model = self.viewModel.hutModelProperty.value else { return }
+            self.bottomView.priceLabel.text = "￥\(model.serPrice * Double(v))"
         }
     }
 }
@@ -90,9 +94,7 @@ extension HutPackageTimeBuyController: UITableViewDataSource {
             let cell = tableView.dequeue(cell: HutPackageTimeBuyCell.self, for: indexPath)
             cell.nameLabel.text = name
             cell.priceLabel.attributedText = price
-            cell.countProperty.producer.startWithValues { [weak self] (value) in
-                self?.viewModel.count = value
-            }
+            viewModel.countProperty <~ cell.countProperty
             return cell
         case let .detail(txt: txt):
             let cell = tableView.dequeue(cell: HutPackageTimeBuyDetailCell.self, for: indexPath)

@@ -13,9 +13,9 @@ class BindedDoctorsViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[DoctorInfoModel]>([DoctorInfoModel]())
     
     func getData() {
-        PatientApi.bindedDoctors(puid: patientId).rac_responseModel([DoctorInfoModel].self).skipNil().startWithValues { [weak self] (result) in
+        PatientApi.bindedDoctors(puid: patientId).rac_responseModel([DoctorInfoModel].self).startWithValues { [weak self] (result) in
             guard let self = self else { return }
-            self.dataSourceProperty.value = result
+            self.dataSourceProperty.value = result ?? []
         }
     }
 }
