@@ -122,7 +122,6 @@ extension ApplyForRefundController {
         }
         
         submitBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(scrollView.snp.bottom)
             make.left.right.equalToSuperview()
             make.height.equalTo(50)
             make.bottomOffsetFrom(self)

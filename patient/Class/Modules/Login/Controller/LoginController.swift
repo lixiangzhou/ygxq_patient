@@ -57,7 +57,7 @@ extension LoginController {
         let contentView = UIView()
         view.addSubview(contentView)
         
-        pwdLoginBtn = UIButton(title: "密码登录", font: .boldSize(16), titleColor: .c9)
+        pwdLoginBtn = UIButton(title: "账号登录", font: .boldSize(16), titleColor: .c9)
         pwdLoginBtn.setTitleColor(.c3, for: .disabled)
         pwdLoginBtn.tag = LoginType.password.rawValue
         contentView.addSubview(pwdLoginBtn)
@@ -66,6 +66,8 @@ extension LoginController {
         codeLoginBtn.setTitleColor(.c3, for: .disabled)
         codeLoginBtn.tag = LoginType.code.rawValue
         contentView.addSubview(codeLoginBtn)
+        
+        let sep = contentView.zz_add(subview: UIImageView(image: UIImage(named: "login_mid_sep")))
         
         mobileView.inputLengthLimit = 11
         mobileView.keyboardType = .numberPad
@@ -129,6 +131,13 @@ extension LoginController {
         codeLoginBtn.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.right.equalTo(-20)
+        }
+        
+        sep.snp.makeConstraints { (make) in
+            make.width.equalTo(2)
+            make.height.equalTo(30)
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(pwdLoginBtn)
         }
         
         mobileView.snp.makeConstraints { (make) in
