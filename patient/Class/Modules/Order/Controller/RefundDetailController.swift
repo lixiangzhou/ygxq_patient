@@ -253,9 +253,9 @@ extension RefundDetailController {
     private func setData() {
         stateLabel.text = viewModel.getStatus()
         timeLabel.text = viewModel.getRefundTime()
-        refundFailReasonLabel.text = viewModel.orderModel.refundApply
+        refundFailReasonLabel.text = viewModel.orderModel.refundReason
         refundAmountLabel.attributedText = viewModel.getMoneyString(viewModel.orderModel.refundAmount)
-        refundReasonLabel.text = viewModel.orderModel.refundReason
+        refundReasonLabel.text = viewModel.orderModel.refundApply
         orderNoLabel.text = viewModel.orderModel.id.description
         nameLabel.text = viewModel.orderModel.productName
         

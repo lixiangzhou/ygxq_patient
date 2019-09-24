@@ -90,6 +90,9 @@ extension PersonInfoEditController {
         nameView.leftLabel.attributedText = viewModel.nameAttributeString
         nameView.rightField.placeholder = "请输入姓名"
         nameView.rightField.textAlignment = .right
+        nameView.inputLimitClosure = { string in
+            return string.isMatchNameInputValidate
+        }
         
         idView.config = viewModel.idConfig
         idView.leftLabel.text = "身份证号码"

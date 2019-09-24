@@ -48,6 +48,9 @@ extension VideoConsultBuyPatientInfoView {
         nameView.leftLabel.text = "姓名"
         nameView.rightField.placeholder = "请输入您的姓名"
         nameView.rightField.textAlignment = .right
+        nameView.inputLimitClosure = { string in
+            return string.isMatchNameInputValidate
+        }
         
         mobileView.leftLabel.text = "手机号"
         mobileView.rightField.isUserInteractionEnabled = false

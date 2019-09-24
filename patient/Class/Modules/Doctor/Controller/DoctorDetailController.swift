@@ -44,7 +44,9 @@ extension DoctorDetailController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
+            UIApplication.shared.beginIgnoringInteractionEvents()
             self?.viewModel.getOrder({ (orderId) in
+                UIApplication.shared.endIgnoringInteractionEvents()
                 if let orderId = orderId {
                     let vc = PayController()
                     vc.viewModel.orderId = orderId

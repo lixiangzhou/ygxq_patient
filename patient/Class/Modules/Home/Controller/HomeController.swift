@@ -206,6 +206,7 @@ extension HomeController: FSPagerViewDataSource, FSPagerViewDelegate {
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: FSPagerViewCell.description(), at: index)
+        cell.backgroundColor = .cf0efef
         let model = viewModel.bannerListProperty.value[index]
         cell.imageView?.setImage(with: URL(string: model.imgUrl))
         return cell

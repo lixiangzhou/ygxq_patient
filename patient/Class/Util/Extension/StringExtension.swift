@@ -29,4 +29,23 @@ extension String {
         attributeString.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
         return attributeString
     }
+    
+    var isChinese: Bool {
+        let regex = "[\\u4e00-\\u9fa5]+"
+        let pre = NSPredicate(format: "SELF MATCHES %@", regex)
+        return pre.evaluate(with: self.zz_ns)
+    }
+    
+    var isEnglish: Bool {
+        let regex = "[a-zA-Z]*"
+        let pre = NSPredicate(format: "SELF MATCHES %@", regex)
+        return pre.evaluate(with: self.zz_ns)
+    }
+    
+    /// 是否符合姓名输入要求
+    var isMatchNameInputValidate: Bool {
+        let regex = "[\\u4e00-\\u9fa5a-zA-Z·]*"
+        let pre = NSPredicate(format: "SELF MATCHES %@", regex)
+        return pre.evaluate(with: self.zz_ns)
+    }
 }

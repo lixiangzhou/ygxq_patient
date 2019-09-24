@@ -26,7 +26,7 @@ class DoctorDetailMsgExpendableCell: UITableViewCell {
     // MARK: - Public Property
     let titleLabel = UILabel(font: .boldSize(15), textColor: .c3)
     let txtLabel = YYLabel()
-    
+    let bgView = UIView()
     var expendAction: ((Bool) -> Void)?
     // MARK: - Private Property
     
@@ -37,13 +37,14 @@ extension DoctorDetailMsgExpendableCell {
     private func setUI() {
         contentView.backgroundColor = .cf0efef
         
-        let bgView = contentView.zz_add(subview: UIView())
+        contentView.addSubview(bgView)
         bgView.zz_setCorner(radius: 5, masksToBounds: true)
         bgView.backgroundColor = .cf
         
         txtLabel.font = .size(14)
         txtLabel.textColor = .c3
         txtLabel.numberOfLines = 0
+        txtLabel.frame = CGRect(x: 15, y: 50, width: UIScreen.zz_width - 60, height: 200)
         
         bgView.addSubview(titleLabel)
         bgView.addSubview(txtLabel)
@@ -54,6 +55,7 @@ extension DoctorDetailMsgExpendableCell {
             make.top.equalToSuperview()
             make.left.equalTo(15)
             make.right.equalTo(-15)
+            make.height.equalTo(60 + 15)
             make.bottom.equalTo(-15)
         }
         
@@ -62,13 +64,13 @@ extension DoctorDetailMsgExpendableCell {
             make.left.equalTo(15)
         }
         
-        txtLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.left.equalTo(15)
-            make.width.equalTo(UIScreen.zz_width - 60)
-            make.height.equalTo(17)
-            make.bottom.equalTo(-10)
-        }
+//        txtLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+//            make.left.equalTo(15)
+//            make.width.equalTo(UIScreen.zz_width - 60)
+//            make.height.equalTo(17)
+//            make.bottom.equalTo(-10)
+//        }
     }
 }
 
@@ -77,8 +79,7 @@ extension DoctorDetailMsgExpendableCell {
         let upString = "  收起"
         let attr = txtLabel.attributedText!.mutableCopy() as! NSMutableAttributedString
         
-        txtLabel.sizeToFit()
-        var height = txtLabel.zz_height
+        var height: CGFloat = 0
         
         if expend { // 展开
             let upAttr = NSMutableAttributedString(string: upString, attributes: [NSAttributedString.Key.font: UIFont.size(14), NSAttributedString.Key.foregroundColor: UIColor.c407cec])
@@ -96,17 +97,21 @@ extension DoctorDetailMsgExpendableCell {
             
             txtLabel.sizeToFit()
             height = txtLabel.zz_height
+            txtLabel.frame = CGRect(x: 15, y: 50, width: UIScreen.zz_width - 60, height: height)
         } else { // 收起
             let range = attr.string.zz_ns.range(of: upString, options: .backwards)
             if range.location != NSNotFound {
                 attr.deleteCharacters(in: range)
             }
-            height = min((UIFont.size(14).pointSize + 3.2) * 5, height)
             txtLabel.attributedText = attr
+            
+            txtLabel.sizeToFit()
+            height = min((UIFont.size(14).pointSize + 3.4) * 5, txtLabel.zz_height)
+            txtLabel.frame = CGRect(x: 15, y: 50, width: UIScreen.zz_width - 60, height: height + 4)
         }
 
-        txtLabel.snp.updateConstraints { (make) in
-            make.height.equalTo(height)
+        bgView.snp.updateConstraints { (make) in
+            make.height.equalTo(60 + height)
         }
     }
     

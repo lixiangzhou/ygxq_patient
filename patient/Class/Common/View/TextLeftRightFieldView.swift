@@ -66,6 +66,8 @@ class TextLeftRightFieldView: UIView {
     let leftLabel = UILabel()
     let rightField = UITextField()
     let bottomLine = UIView()
+    
+    var inputLimitClosure: ((String) -> Bool)?
 }
 
 // MARK: - UI
@@ -91,7 +93,11 @@ extension TextLeftRightFieldView: UITextFieldDelegate {
                 return true
             } else {
                 let text = textField.text ?? ""
-                return (text + string).count <= config.rightLimit
+                var validate = true
+                if let closure = inputLimitClosure {
+                    validate = closure(string)
+                }
+                return validate && (text + string).count <= config.rightLimit
             }
         }
     }

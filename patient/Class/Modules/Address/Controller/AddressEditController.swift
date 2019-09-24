@@ -346,6 +346,12 @@ extension AddressEditController: UITextFieldDelegate {
             } else {
                 return textField.text!.count < 11
             }
+        } else if textField == nameField {
+            if string.isEmpty {
+                return true
+            } else {
+                return string.isMatchNameInputValidate && (textField.text! + string).count <= 20
+            }
         } else {
             return true
         }
