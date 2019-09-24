@@ -217,6 +217,7 @@ extension LoginController {
 // MARK: - Action
 extension LoginController {
     @objc private func loginAction() {
+        view.endEditing(true)
         switch loginTypeProperty.value {
         case .password:
             viewModel.loginPwd(mobile: mobileView.text!, password: pwdView.text!).map { BoolString($0) }.startWithValues { [weak self] (result) in

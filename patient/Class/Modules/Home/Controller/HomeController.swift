@@ -54,7 +54,7 @@ extension HomeController {
         tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
         
-        addNavigationItem(position: .left, title: "扫一扫", imgName: "home_scan", action: #selector(scanAction))
+        addNavigationItem(position: .left, title: "扫医生", imgName: "home_scan", action: #selector(scanAction))
         noticeItem = addNavigationItem(position: .right, title: "消息", imgName: "home_msg", action: #selector(noticeAction))
         
         let titleLabel = view.zz_add(subview: UILabel(text: "阳光客户端", font: .boldSize(20), textColor: .cf))

@@ -2,7 +2,6 @@ PODS:
   - Alamofire (4.9.0)
   - Bugly (2.5.0)
   - EmptyDataSet-Swift (4.2.0)
-  - ESTabBarController-swift (2.7)
   - FDFullscreenPopGesture (1.1)
   - HandyJSON (5.0.0)
   - IQKeyboardManagerSwift (6.4.1)
@@ -51,7 +50,6 @@ DEPENDENCIES:
   - Alamofire
   - Bugly
   - EmptyDataSet-Swift
-  - ESTabBarController-swift
   - FDFullscreenPopGesture
   - HandyJSON
   - IQKeyboardManagerSwift
@@ -77,7 +75,6 @@ SPEC REPOS:
     - Alamofire
     - Bugly
     - EmptyDataSet-Swift
-    - ESTabBarController-swift
     - FDFullscreenPopGesture
     - HandyJSON
     - IQKeyboardManagerSwift
@@ -104,7 +101,6 @@ SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   EmptyDataSet-Swift: 1fa0b35f530a35f852ecb2b53564728b0c300aaf
-  ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
@@ -127,6 +123,6 @@ SPEC CHECKSUMS:
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: ab2c2837a032227d04100421013faaad27603247
+PODFILE CHECKSUM: 9c97bff2665de2841a36685b864b2131cba63c6d
 
 COCOAPODS: 1.7.4

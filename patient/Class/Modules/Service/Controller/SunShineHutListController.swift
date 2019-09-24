@@ -19,6 +19,10 @@ class SunShineHutListController: BaseController {
         title = "服务"
         setUI()
         setBinding()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.getData()
     }
 

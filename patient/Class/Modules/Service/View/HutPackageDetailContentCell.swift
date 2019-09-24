@@ -55,7 +55,7 @@ class HutPackageDetailContentCell: UITableViewCell {
                 txtLabel.backgroundColor = UIColor.ce5eeff
                 txtLabel.zz_setCorner(radius: 15, masksToBounds: true)
                 txtLabel.frame = CGRect(x: itemX, y: itemY, width: itemWidth, height: itemHeight)
-                itemX = itemX + txtLabel.frame.maxX + 15
+                itemX = itemX + txtLabel.zz_width + 15
                 
                 contentListView.addSubview(txtLabel)
                 lastY = txtLabel.frame.maxY

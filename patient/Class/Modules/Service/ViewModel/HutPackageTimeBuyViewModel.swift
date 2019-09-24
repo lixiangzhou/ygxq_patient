@@ -22,7 +22,7 @@ class HutPackageTimeBuyViewModel: BaseViewModel {
         hutModelProperty.producer.skipNil().startWithValues { [weak self] (model) in
             var dataSource = [RowModel]()
             
-            let attrString = NSMutableAttributedString(string: "￥", attributes: [NSAttributedString.Key.font: UIFont.size(16)])
+            let attrString = NSMutableAttributedString(string: "￥", attributes: [NSAttributedString.Key.font: UIFont.size(13)])
             
             let priceString = String(format: "%.2f", model.serPrice)
             if let idx = priceString.firstIndex(of: ".") {

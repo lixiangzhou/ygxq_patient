@@ -21,7 +21,18 @@ class HutPackageDetailViewModel: BaseViewModel {
         
         hutModelProperty.producer.skipNil().startWithValues { [weak self] (model) in
             var dataSource = [RowModel]()
-            dataSource.append(.outline(name: model.serName, time: model.indate.description, feature: model.serFeatures))
+            
+            let attrString = NSMutableAttributedString(string: "￥", attributes: [NSAttributedString.Key.font: UIFont.size(13)])
+            
+            let priceString = String(format: "%.2f", model.serPrice)
+            if let idx = priceString.firstIndex(of: ".") {
+                attrString.append(NSAttributedString(string: "\(priceString[..<idx])", attributes: [NSAttributedString.Key.font: UIFont.boldSize(16)]))
+                attrString.append(NSAttributedString(string: "\(priceString[idx...])", attributes: [NSAttributedString.Key.font: UIFont.size(13)]))
+            } else {
+                attrString.append(NSAttributedString(string: priceString, attributes: [NSAttributedString.Key.font: UIFont.boldSize(13)]))
+            }
+            
+            dataSource.append(.outline(name: model.serName, time: model.indate.description, feature: model.serFeatures, price: attrString))
             
             var detailString = ""
             for (idx, detail) in model.serDetailList.enumerated() {
@@ -81,7 +92,7 @@ class HutPackageDetailViewModel: BaseViewModel {
 
 extension HutPackageDetailViewModel {
     enum RowModel {
-        case outline(name: String, time: String, feature: String)
+        case outline(name: String, time: String, feature: String, price: NSAttributedString)
         case content(contents: [String], detail: String, pic: String)
         case targetAudience(models: [TargetAudienceModel])
         case serviceFlow(progress: [String])

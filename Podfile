@@ -9,7 +9,7 @@ target 'patient' do
 
     pod 'Alamofire'
     pod 'SnapKit'
-    pod 'ESTabBarController-swift'
+    #pod 'ESTabBarController-swift'
     pod 'Kingfisher'
     pod 'ReactiveCocoa'
     pod 'HandyJSON'

@@ -80,7 +80,9 @@ extension OrderListController {
     
     /// 退款
     func refundOrderAction(_ cell: OrderListCell?, _ model: OrderModel) {
+        UIApplication.shared.beginIgnoringInteractionEvents()
         viewModel.refundIsApply(orderId: model.id).startWithValues { [unowned self] (result) in
+            UIApplication.shared.endIgnoringInteractionEvents()
             HUD.showError(result)
             if result.isSuccess {
                 let vc = ApplyForRefundController()

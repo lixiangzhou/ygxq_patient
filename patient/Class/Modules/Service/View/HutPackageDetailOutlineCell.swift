@@ -25,6 +25,7 @@ class HutPackageDetailOutlineCell: UITableViewCell {
     
     // MARK: - Public Property
     let titleLabel = UILabel(font: .boldSize(17), textColor: .c3)
+    let priceLabel = UILabel(textColor: .cff3a33)
     let timeLabel = UILabel(font: .size(16), textColor: .c3)
     let featureLabel = UILabel(font: .size(16), textColor: .c3)
     // MARK: - Private Property
@@ -41,6 +42,7 @@ extension HutPackageDetailOutlineCell {
         whiteView.backgroundColor = .cf
         
         whiteView.addSubview(titleLabel)
+        whiteView.addSubview(priceLabel)
         whiteView.addSubview(timeLabel)
         whiteView.addSubview(featureLabel)
         
@@ -56,15 +58,20 @@ extension HutPackageDetailOutlineCell {
             make.left.equalTo(12)
         }
         
-        timeLabel.snp.makeConstraints { (make) in
+        priceLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
             make.left.equalTo(titleLabel)
+        }
+        
+        timeLabel.snp.makeConstraints { (make) in
             make.right.equalTo(-12)
+            make.centerY.equalTo(priceLabel)
         }
         
         featureLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(timeLabel.snp.bottom).offset(12)
-            make.left.right.equalTo(timeLabel)
+            make.top.equalTo(priceLabel.snp.bottom).offset(12)
+            make.left.equalTo(priceLabel)
+            make.right.equalTo(timeLabel)
             make.bottom.equalTo(-15)
         }
     }

@@ -27,7 +27,7 @@ class HomeHeaderTaskView: BaseView {
     let textLabel = UILabel(font: .size(16), textColor: .c3)
     let taskActionLabel = UILabel(text: "", font: .size(17), textColor: .cff9a21)
     let contentView = UIView()
-    let emptyLabel = UILabel(text: "暂无任务提醒", font: .size(17), textColor: .c9, textAlignment: .center)
+    let emptyLabel = UILabel(text: "暂无任务提醒~", font: .size(16), textColor: .c3, textAlignment: .center)
     private let titleLabel = UILabel(text: "任务提醒", font: .boldSize(19), textColor: .c3)
     
     var showEmpty: Bool = false {
@@ -43,7 +43,7 @@ class HomeHeaderTaskView: BaseView {
                 emptyLabel.snp.remakeConstraints { (make) in
                     make.top.equalTo(titleLabel.snp.bottom).offset(15)
                     make.left.equalTo(15)
-                    make.height.equalTo(40)
+                    make.height.equalTo(50)
                     make.right.equalTo(-15)
                     make.bottom.equalTo(-15)
                 }
@@ -90,6 +90,8 @@ extension HomeHeaderTaskView {
         
         contentView.addSubview(taskActionView)
         contentView.isHidden = true
+        
+        let emptyIconView = emptyLabel.zz_add(subview: UIImageView(image: UIImage(named: "home_task_empty")))
         
         addSubview(contentView)
         addSubview(emptyLabel)
@@ -142,9 +144,15 @@ extension HomeHeaderTaskView {
         emptyLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
             make.left.equalTo(12)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
             make.right.equalTo(-12)
             make.bottom.equalTo(-15)
+        }
+        
+        emptyIconView.sizeToFit()
+        emptyIconView.snp.makeConstraints { (make) in
+            make.left.centerY.equalToSuperview()
+            make.left.size.equalTo(emptyIconView.zz_size)
         }
     }
 }

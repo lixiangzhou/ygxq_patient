@@ -165,7 +165,7 @@ extension VideoConsultBuyController {
             
             let idAttr = NSMutableAttributedString(string: "身份证号码")
             if model.idCardNo.isEmpty {
-                nameAttr.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
+                idAttr.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
             } else {
                 self.patientInfoView.idView.rightField.text = model.idCardNo.idSecrectString
                 self.patientInfoView.idView.isUserInteractionEnabled = false
@@ -196,7 +196,7 @@ extension VideoConsultBuyController {
             let nameEnabledProducer: SignalProducer<Bool, NoError>!
             if model.realName.isEmpty {
                 nameEnabledProducer = SignalProducer<Bool, NoError>(value: false)
-                    .concat(self.patientInfoView.nameView.rightField.reactive.continuousTextValues.map { $0.count > 2 }.producer)
+                    .concat(self.patientInfoView.nameView.rightField.reactive.continuousTextValues.map { $0.count >= 2 }.producer)
             } else {
                 nameEnabledProducer = SignalProducer<Bool, NoError>(value: true)
             }

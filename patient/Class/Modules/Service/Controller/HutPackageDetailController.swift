@@ -99,9 +99,10 @@ extension HutPackageDetailController: UITableViewDataSource {
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         
         switch model {
-        case let .outline(name: name, time: time, feature: feature):
+        case let .outline(name: name, time: time, feature: feature, price: price):
             let cell = tableView.dequeue(cell: HutPackageDetailOutlineCell.self, for: indexPath)
             cell.titleLabel.text = name
+            cell.priceLabel.attributedText = price
             cell.timeLabel.text = "有效期：\(time)年"
             cell.featureLabel.text = "产品特点：\(feature)"
             return cell
