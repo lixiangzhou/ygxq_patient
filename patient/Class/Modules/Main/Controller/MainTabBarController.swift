@@ -14,6 +14,9 @@ class MainTabBarController: BaseTabBarController {
         super.viewDidLoad()
 
         addChildControllers()
+        
+        tabBar.shadowImage = UIImage(named: "tabbar_line")
+        tabBar.backgroundImage = UIImage.zz_image(withColor: UIColor.clear)
     }
     
     private func addChildControllers() {

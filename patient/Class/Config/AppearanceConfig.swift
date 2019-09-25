@@ -21,5 +21,6 @@ struct AppearanceConfig {
     
     static func setTabAppearance() {
         UITabBar.appearance().tintColor = .c407cec
+        UITabBar.appearance().backgroundColor = .cf
     }
 }

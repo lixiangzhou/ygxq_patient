@@ -50,9 +50,9 @@ extension HomeHeaderView {
         pagerView.backgroundColor = .cf0efef
         addSubview(pagerView)
         
-        pageControl.setFillColor(.cf, for: .normal)
-        pageControl.setFillColor(.c407cec, for: .selected)
         pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        pageControl.setImage(UIImage(named: "home_banner_selected"), for: .selected)
+        pageControl.setImage(UIImage(named: "home_banner_normal"), for: .normal)
         pagerView.addSubview(pageControl)
         
         addSubview(actionsView)

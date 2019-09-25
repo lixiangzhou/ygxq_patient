@@ -173,7 +173,7 @@ extension AddressEditController {
     override func setBinding() {
         districtField.reactive.text <~ viewModel.selectAreaModel.map { $0?.fullName.replacingOccurrences(of: "-", with: "") }
         
-        let nameEnabledSignal = nameField.reactive.continuousTextValues.map { !$0.isEmpty }
+        let nameEnabledSignal = nameField.reactive.continuousTextValues.map { $0.count >= 2 }
         let mobileEnabledSignal = mobileField.reactive.continuousTextValues.map { $0.count == 11 }
         let areaEnabledSignal = viewModel.selectAreaModel.map { $0 != nil }.signal
         let addressEnabledSignal = addressTxtView.textView.reactive.continuousTextValues.map { !$0.isEmpty }
@@ -295,6 +295,11 @@ extension AddressEditController {
         let address = addressTxtView.textView.text ?? ""
         let isDefault = switchView.isOn
         let id = addressModel?.id ?? 0
+        
+        if !mobile.hasPrefix("1") {
+            HUD.show(toast: "请输入正确的手机号码")
+            return
+        }
         
         viewModel.update(mode: mode, id: id, uid: patientId, name: name, mobile: mobile, districtId: districtId, district: district, address: address, isDefault: isDefault).startWithValues { [unowned self] (result) in
             HUD.show(result)

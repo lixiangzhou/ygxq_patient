@@ -27,7 +27,7 @@ class ApplyForRefundViewModel: BaseViewModel {
         attr.append(NSAttributedString(string: "\(Int(money))", attributes: largeFont))
         
         let point = (Int(money * 100) % 100).description
-        let pointString = point.count == 1 ? "\(point)0" : point.description
+        let pointString = point.count == 1 ? "0\(point)" : point.description
         
         attr.append(NSAttributedString(string: ".\(pointString)", attributes: smallFont))
         return attr
