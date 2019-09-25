@@ -27,25 +27,22 @@ class HomeHeaderActionView: BaseView {
     var item2Closure: (() -> Void)?
     // MARK: - Private Property
     
+    let item1View = ImageTitleView()
+    let item2View = ImageTitleView()
 }
 
 // MARK: - UI
 extension HomeHeaderActionView {
     private func setUI() {
         backgroundColor = .cf0efef
-        
-//        let item1View = getItemView(title: "复诊/购药", subTitle: "足不出户 找医生", icon: "home_consult", action: #selector(item1Action))
-//        let item2View = getItemView(title: "随访计划", subTitle: "随访计划一键查看", icon: "home_plan", action: #selector(item2Action))
-        
+ 
         let config = ImageTitleView.Config(imageInTop: true, imageSize: CGSize(width: 40, height: 40), verticalHeight1: 12, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .boldSize(19), titleColor: .c3)
         
-        let item1View = ImageTitleView()
         item1View.titleLabel.text = "复诊/购药"
         item1View.imgView.image = UIImage(named: "home_consult")
         item1View.backgroundColor = .cf
         item1View.config = config
         
-        let item2View = ImageTitleView()
         item2View.titleLabel.text = "随访计划"
         item2View.imgView.image = UIImage(named: "home_plan")
         item2View.backgroundColor = .cf

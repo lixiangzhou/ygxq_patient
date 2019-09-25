@@ -17,6 +17,7 @@ enum CommonApi: TargetType {
     case updateTaskState(id: Int)
     case videoExamAndPics(linkId: Int, puid: Int)
     case getFinishTaskMsgInfos(linkId: Int, puid: Int)
+    case appInfo
 }
 
 extension CommonApi {
@@ -32,6 +33,8 @@ extension CommonApi {
             return "/pushMsg/getVideoFinishTaskMsgInfos"
         case .getFinishTaskMsgInfos:
             return "/pushMsg/getFinishTaskMsgInfos"
+        case .appInfo:
+            return "/common/getAppInfos"
         }
     }
     
@@ -60,6 +63,9 @@ extension CommonApi {
         case let .getFinishTaskMsgInfos(linkId: linkId, puid: pid):
             params["linkId"] = linkId
             params["toUid"] = pid
+        case .appInfo:
+            params["appType"] = "YX"
+            params["osType"] = "IOS"
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

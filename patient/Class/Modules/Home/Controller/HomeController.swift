@@ -25,12 +25,23 @@ class HomeController: BaseController {
         RCManager.shared.connect(nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        HomeHelpTipView().show(with: scanItem, caseView: headerView.caseView, doctorsView: headerView.actionsView.item1View, planView: headerView.actionsView.item2View)
+        
+        UpdateTipView.update()
+        
+    }
+    
     // MARK: - Properties
     private var noticeItem: ImageTitleView!
     private let headerView = HomeHeaderView()
     private let tableView = UITableView()
     
     private let viewModel = HomeViewModel()
+    
+    private var scanItem: ImageTitleView!
 }
 
 // MARK: - UI
@@ -54,7 +65,7 @@ extension HomeController {
         tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
         
-        addNavigationItem(position: .left, title: "扫医生", imgName: "home_scan", action: #selector(scanAction))
+        scanItem = addNavigationItem(position: .left, title: "扫医生", imgName: "home_scan", action: #selector(scanAction))
         noticeItem = addNavigationItem(position: .right, title: "消息", imgName: "home_msg", action: #selector(noticeAction))
         
         let titleLabel = view.zz_add(subview: UILabel(text: "阳光客户端", font: .boldSize(20), textColor: .cf))

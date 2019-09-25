@@ -30,7 +30,7 @@ class HomeHeaderView: BaseView {
     let taskView = HomeHeaderTaskView()
     
     // MARK: - Private Property
-    private let pagerHeight = (UIScreen.zz_width - 30) * 4.0 / 7.0
+    private let pagerHeight = (UIScreen.zz_width - 30) * 3.0 / 7.0
     private let actionsHeight: CGFloat = 85
     private let caseHeight: CGFloat = 110
     private let taskHeight: CGFloat = 150

@@ -116,6 +116,8 @@
 		101C2EB7232885AA00AB4C53 /* TaskWorkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EB6232885AA00AB4C53 /* TaskWorkApi.swift */; };
 		101C2EB92328A35900AB4C53 /* WorkOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EB82328A35900AB4C53 /* WorkOrderModel.swift */; };
 		101C2EBB2328A89900AB4C53 /* SunnyDrugApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C2EBA2328A89900AB4C53 /* SunnyDrugApi.swift */; };
+		102DDA9F233B3A0B009FC7AA /* UpdateTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102DDA9E233B3A0B009FC7AA /* UpdateTipView.swift */; };
+		102DDAA1233B40C2009FC7AA /* UpdateInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102DDAA0233B40C2009FC7AA /* UpdateInfoModel.swift */; };
 		1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */; };
 		1030AA8E229CD1AD00519CA4 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA8D229CD1AD00519CA4 /* FontExtension.swift */; };
 		1030AA90229CD23D00519CA4 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA8F229CD23D00519CA4 /* ColorExtension.swift */; };
@@ -213,6 +215,7 @@
 		105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7322A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m */; };
 		105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7422A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m */; };
 		105DBA7B22A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = 105DBA7522A6655800F55FE6 /* NSSet+HYBUnicodeReadable.m */; };
+		105EFDF0233B04CD00ECC7EE /* HomeHelpTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105EFDEF233B04CD00ECC7EE /* HomeHelpTipView.swift */; };
 		10676BEE23055F82004A6419 /* JXPhotoBrowserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */; };
 		10676BF223065A42004A6419 /* ServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF123065A42004A6419 /* ServiceApi.swift */; };
 		10676BF623068EEC004A6419 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF523068EEC004A6419 /* AlertView.swift */; };
@@ -447,6 +450,8 @@
 		101C2EB6232885AA00AB4C53 /* TaskWorkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorkApi.swift; sourceTree = "<group>"; };
 		101C2EB82328A35900AB4C53 /* WorkOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOrderModel.swift; sourceTree = "<group>"; };
 		101C2EBA2328A89900AB4C53 /* SunnyDrugApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugApi.swift; sourceTree = "<group>"; };
+		102DDA9E233B3A0B009FC7AA /* UpdateTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTipView.swift; sourceTree = "<group>"; };
+		102DDAA0233B40C2009FC7AA /* UpdateInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoModel.swift; sourceTree = "<group>"; };
 		1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		1030AA8D229CD1AD00519CA4 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		1030AA8F229CD23D00519CA4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -548,6 +553,7 @@
 		105DBA7622A6655800F55FE6 /* NSArray+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7722A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
 		105DBA7822A6655800F55FE6 /* NSSet+HYBUnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HYBUnicodeReadable.h"; sourceTree = "<group>"; };
+		105EFDEF233B04CD00ECC7EE /* HomeHelpTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHelpTipView.swift; sourceTree = "<group>"; };
 		10676BED23055F81004A6419 /* JXPhotoBrowserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPhotoBrowserExtension.swift; sourceTree = "<group>"; };
 		10676BF123065A42004A6419 /* ServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApi.swift; sourceTree = "<group>"; };
 		10676BF523068EEC004A6419 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -767,6 +773,7 @@
 			children = (
 				10FF88A52314F29D008148BC /* TaskModel.swift */,
 				10FF88A92314F2FD008148BC /* BannerModel.swift */,
+				102DDAA0233B40C2009FC7AA /* UpdateInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -780,6 +787,8 @@
 				10FF889F2314D860008148BC /* HomeHeaderTaskView.swift */,
 				10C78893231535A900B65462 /* BindedDoctorsCell.swift */,
 				105653C12321141D001C31A0 /* TaskTipListCell.swift */,
+				105EFDEF233B04CD00ECC7EE /* HomeHelpTipView.swift */,
+				102DDA9E233B3A0B009FC7AA /* UpdateTipView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2105,6 +2114,7 @@
 				1099E71B22C4663700C37A9E /* UploadResourceController.swift in Sources */,
 				101C2E8B232347B700AB4C53 /* InvoiceSelectController.swift in Sources */,
 				104FC4CE231651C400ECB82B /* DoctorDetailActionsCell.swift in Sources */,
+				102DDAA1233B40C2009FC7AA /* UpdateInfoModel.swift in Sources */,
 				104FFB102314C9B900E51033 /* FSPageViewLayout.swift in Sources */,
 				1030C2B9231FCA8300F13755 /* MediaApi.swift in Sources */,
 				101C2E71232263FD00AB4C53 /* ECGApi.swift in Sources */,
@@ -2177,6 +2187,7 @@
 				10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */,
 				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
 				104FFB0C2314C9B900E51033 /* FSPagerView.swift in Sources */,
+				105EFDF0233B04CD00ECC7EE /* HomeHelpTipView.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,
 				1059E461230D1624005F5326 /* SunnyDrugOrderDocInfoCell.swift in Sources */,
 				1014D0622293A6D700294558 /* BaseController.swift in Sources */,
@@ -2205,6 +2216,7 @@
 				1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */,
 				1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */,
 				104E3AA622B8E5E700A84DB2 /* LLSegmentViewController.swift in Sources */,
+				102DDA9F233B3A0B009FC7AA /* UpdateTipView.swift in Sources */,
 				100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */,
 				10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */,
 				106DE8CC231771B8001DF4DE /* PayApi.swift in Sources */,
