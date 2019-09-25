@@ -52,7 +52,7 @@ class HutPackageTimeBuyViewModel: BaseViewModel {
     func getOrder(_ completion: @escaping (Int?) -> Void) {
         guard let model = hutModelProperty.value else { return }
         let params: [String: Any] = [
-            "price": model.serPrice,
+            "price": model.serPrice * Double(countProperty.value),
             "serCode": model.serCode,
             "serName": model.serName,
             "puid": patientId,

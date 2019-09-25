@@ -22,20 +22,32 @@ class SelectDistrictViewModel: BaseViewModel {
     let contentSizeProperty = MutableProperty(CGSize(width: UIScreen.zz_width, height: 0))
     
     func getProvinces() {
-        AddressApi.provinces.rac_responseModel([AreaModel].self).skipNil().startWithValues { [unowned self] in
-            self.provincesProperty.value = $0
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        AddressApi.provinces.rac_responseModel([AreaModel].self).startWithValues { [unowned self] value in
+            UIApplication.shared.endIgnoringInteractionEvents()
+            if let value = value {
+                self.provincesProperty.value = value
+            }
         }
     }
     
     func getCitys(id: Int) {
-        AddressApi.areasByFid(id: id).rac_responseModel([AreaModel].self).skipNil().startWithValues { [unowned self] in
-            self.citysProperty.value = $0
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        AddressApi.areasByFid(id: id).rac_responseModel([AreaModel].self).startWithValues { [unowned self] value in
+            UIApplication.shared.endIgnoringInteractionEvents()
+            if let value = value {
+                self.citysProperty.value = value
+            }
         }
     }
     
     func getDistricts(id: Int) {
-        AddressApi.areasByFid(id: id).rac_responseModel([AreaModel].self).skipNil().startWithValues { [unowned self] in
-            self.districtsProperty.value = $0
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        AddressApi.areasByFid(id: id).rac_responseModel([AreaModel].self).startWithValues { [unowned self] value in
+            UIApplication.shared.endIgnoringInteractionEvents()
+            if let value = value {
+                self.districtsProperty.value = value
+            }
         }
     }
     
@@ -93,5 +105,4 @@ class SelectDistrictViewModel: BaseViewModel {
             districtsProperty.value = models
         }
     }
-    
 }

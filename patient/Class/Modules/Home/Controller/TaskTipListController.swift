@@ -60,6 +60,8 @@ extension TaskTipListController {
                 let vc = SunnyDrugBuyController()
                 vc.viewModel.did = result.0.gotoJsonDuid
                 vc.viewModel.serType = result.0.serType
+                vc.viewModel.serVideoId = result.0.linkId
+                vc.viewModel.backAction = PayViewModel.ResultAction(backClassName: self?.zz_className ?? "TaskTipListController", type: .singleSunnyDrug)
                 self?.push(vc)
             }
         }

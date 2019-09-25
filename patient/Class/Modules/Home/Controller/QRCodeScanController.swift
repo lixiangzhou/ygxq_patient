@@ -16,7 +16,7 @@ class QRCodeScanController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "扫一扫"
+        title = "扫医生"
         setUI()
         requestAuth()
     }

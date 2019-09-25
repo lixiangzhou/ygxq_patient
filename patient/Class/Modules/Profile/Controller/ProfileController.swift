@@ -49,7 +49,7 @@ extension ProfileController {
             self?.headerView.mobileLabel.text = pinfo.mobile.mobileSecrectString
             self?.headerView.ageLabel.text = pinfo.age?.description ?? "未知"
             self?.headerView.sexLabel.text = pinfo.sex.description
-            self?.headerView.diseaseLabel.text = pinfo.diseaseName
+            self?.headerView.diseaseLabel.text = pinfo.diseaseName.isEmpty ? "无" : pinfo.diseaseName
             
             self?.headerView.layoutHeight()
             self?.headerView.zz_height += 10

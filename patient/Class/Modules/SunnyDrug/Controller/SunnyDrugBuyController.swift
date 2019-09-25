@@ -34,6 +34,7 @@ class SunnyDrugBuyController: BaseController {
     private let idView = SunnyDrugBuyIdView()
     private let addressView = AddressShowView()
     private let buyBtn = UIButton(title: "购买", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
+    private let bottomView = PayBottomView()
 }
 
 // MARK: - UI
@@ -102,7 +103,11 @@ extension SunnyDrugBuyController {
         viewModel.orderIdProperty.signal.filter { $0 > 0 }.observeValues { [weak self] (orderId) in
             let vc = PayController()
             vc.viewModel.orderId = orderId
-            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: "DoctorDetailController", type: .singleSunnyDrug)
+            if let action = self?.viewModel.backAction {
+                vc.viewModel.resultAction = action
+            } else {
+                vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: "DoctorDetailController", type: .singleSunnyDrug)
+            }
             self?.push(vc)
         }
         
@@ -152,16 +157,24 @@ extension SunnyDrugBuyController {
             "realName": model.consignee,
         ]
         
-        if let orderModel = viewModel.myPrivateDoctorOrderProperty.value {
-            params["keyObject"] = "阳光续药"
-            params["orderId"] = orderModel.orderId
-            params["productItmId"] = orderModel.productItemId
-            params["productName"] = orderModel.product_name
-            params["serCode"] = orderModel.ser_code
-            params["workType"] = "TSK_WORK_T_20"
-            params["consultContent"] = addressView.remarkInputView.textView.text!
-            params["fromWhere"] = 1
+        if !viewModel.isToPayWay {
+            if let orderModel = viewModel.myPrivateDoctorOrderProperty.value {
+                params["keyObject"] = "阳光续药"
+                params["orderId"] = orderModel.orderId
+                params["productItmId"] = orderModel.productItemId
+                params["productName"] = orderModel.product_name
+                params["serCode"] = orderModel.ser_code
+                params["workType"] = "TSK_WORK_T_20"
+                params["consultContent"] = addressView.remarkInputView.textView.text!
+                params["fromWhere"] = 1
+            } else {
+                return
+            }
         } else {
+            
+            if let videoid = viewModel.serVideoId {
+                params["serConsultVideoId"] = videoid
+            }
             params["remark"] = addressView.remarkInputView.textView.text!
         }
         

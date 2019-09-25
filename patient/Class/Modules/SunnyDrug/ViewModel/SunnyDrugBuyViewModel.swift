@@ -15,6 +15,10 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     let orderIdProperty = MutableProperty<Int>(0)
     let selectImageProperty = MutableProperty<UIImage?>(nil)
     
+    var backAction: PayViewModel.ResultAction?
+    /// 如果有值，说明是视频后的购药，必须微信支付
+    var serVideoId: Int?
+    
     var did = 0
     var serType = ""
     
@@ -38,16 +42,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     }
     
     func _buySunnyDrug(params: [String: Any]) {
-        if myPrivateDoctorOrderProperty.value != nil {
-            ServiceApi.createWorkOrder(params: params).rac_response(Int.self).startWithValues { [weak self] (resp) in
-                HUD.hideLoding()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                HUD.show(BoolString(resp))
-                if resp.isSuccess {
-                    self?.buyFromLongServiceSuccessProperty.value = true
-                }
-            }
-        } else {
+        if isToPayWay {
             ServiceApi.buySunnyDrug(params: params).rac_response(Int.self).startWithValues { [weak self] (resp) in
                 HUD.hideLoding()
                 UIApplication.shared.endIgnoringInteractionEvents()
@@ -56,7 +51,20 @@ class SunnyDrugBuyViewModel: BaseViewModel {
                     self?.orderIdProperty.value = resp.content ?? 0
                 }
             }
+        } else {
+            ServiceApi.createWorkOrder(params: params).rac_response(Int.self).startWithValues { [weak self] (resp) in
+                HUD.hideLoding()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                HUD.show(BoolString(resp))
+                if resp.isSuccess {
+                    self?.buyFromLongServiceSuccessProperty.value = true
+                }
+            }
         }
+    }
+    
+    var isToPayWay: Bool {
+        return serVideoId != nil || myPrivateDoctorOrderProperty.value == nil
     }
     
     func getPrivateDoctor() {
