@@ -79,7 +79,7 @@ extension ProfileHeaderView {
         let view = TextLeftGrowTextRightView()
         view.backgroundColor = .cf
         view.leftLabel.text = title
-        view.config = TextLeftGrowTextRightViewConfig()
+        view.config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, rightTopPadding: 15, rightBottomPadding: 15)
         addSubview(view)
         return view
     }

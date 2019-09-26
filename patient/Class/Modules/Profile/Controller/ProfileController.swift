@@ -25,7 +25,7 @@ class ProfileController: BaseController {
     
     // MARK: - Private Property
     private let tableView = UITableView()
-    private let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 175))
+    private let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 225))
     private let viewModel = ProfileViewModel()
 }
 

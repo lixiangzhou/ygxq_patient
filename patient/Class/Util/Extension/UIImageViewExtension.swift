@@ -14,12 +14,12 @@ extension UIImageView {
     }
     
     func setImage(with url: URL?, placeholder: String = "service_placeholder", neterror: String = "service_neterror") {
-        contentMode = .scaleAspectFit
-        
+        contentMode = .center
+        backgroundColor = .cf0efef
         kf.setImage(with: url, placeholder: UIImage(named: placeholder)) { (result) in
             switch result {
             case .failure:
-                self.contentMode = .scaleAspectFit
+                self.contentMode = .center
                 self.image = UIImage(named: neterror)
             case .success:
                 self.contentMode = .scaleToFill

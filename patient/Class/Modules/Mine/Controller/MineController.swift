@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import WZLBadge
 
 /// 我的
 class MineController: BaseController {
