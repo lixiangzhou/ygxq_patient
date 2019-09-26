@@ -34,7 +34,7 @@ class AddressListController: BaseController {
 // MARK: - UI
 extension AddressListController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "新增地址", target: self, action: #selector(addAddressAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "新建地址", target: self, action: #selector(addAddressAction))
         
         tableView.backgroundColor = .cf0efef
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
