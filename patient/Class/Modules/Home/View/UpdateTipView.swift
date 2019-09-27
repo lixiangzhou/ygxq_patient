@@ -33,7 +33,7 @@ class UpdateTipView: BaseView {
 // MARK: - UI
 extension UpdateTipView {
     private func setUI() {
-        backgroundColor = UIColor(white: 0, alpha: 0.4)
+        backgroundColor = UIColor(white: 0, alpha: 0.6)
         
         let contentView = zz_add(subview: UIView())
         contentView.backgroundColor = .cf

@@ -115,7 +115,7 @@ extension PwdChangeController {
     
     private func addField(placeholder: String, hasLine: Bool = true) -> UITextField {
         let field = UITextField()
-        field.placeholder = placeholder
+        field.placeHolderString = placeholder
         field.textColor = .c3
         if hasLine {
             field.addBottomLine()

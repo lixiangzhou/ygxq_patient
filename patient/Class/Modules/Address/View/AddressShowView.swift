@@ -31,7 +31,7 @@ class AddressShowView: BaseView {
     
     let titleLabel = UILabel(text: "收货地址", font: .size(15), textColor: .c6)
     
-    let addView = UIButton(title: "  创建地址", font: .size(18), titleColor: .c407cec, imageName: "sunny_drug_add_addr")
+    let addView = UIButton(title: "  新建地址", font: .size(18), titleColor: .c407cec, imageName: "sunny_drug_add_addr")
     let addressView = UIView()
     
     let nameLabel = UILabel(font: .size(15), textColor: .c3)

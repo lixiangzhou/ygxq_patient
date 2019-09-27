@@ -72,10 +72,10 @@ extension InvoiceMakeInfoView {
         invoiceAmountView.config = TextLeftRightFieldViewConfig(leftFont: .size(15), rightWidth: UIScreen.zz_width - 30 - invoiceAmountView.leftLabel.text!.zz_size(withLimitWidth: 1000, fontSize: 15).width - 15, rightLimit: 20)
         
         invoiceTitleView.leftLabel.attributedText = "发票抬头".needed(with: .size(15), color: .c3)
-        invoiceTitleView.rightField.placeholder = "请填写发票抬头"
+        invoiceTitleView.rightField.placeHolderString = "请填写发票抬头"
         
         invoiceIdentifyNoView.leftLabel.attributedText = "纳税人识别号".needed(with: .size(15), color: .c3)
-        invoiceIdentifyNoView.rightField.placeholder = "请填写纳税人识别号"
+        invoiceIdentifyNoView.rightField.placeHolderString = "请填写纳税人识别号"
         
         invoiceAmountView.rightField.textColor = .cf25555
 

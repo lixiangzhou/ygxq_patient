@@ -123,7 +123,7 @@ class HomeHelpTipView: BaseView {
     @discardableResult
     func addTip(_ closure: () -> Void, tipImg: String, tipBtnFrameClosure: (UIButton) -> Void, nextClosure: @escaping () -> Void) -> UIView {
         UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
-        UIColor(white: 0, alpha: 0.4).setFill()
+        UIColor(white: 0, alpha: 0.6).setFill()
         UIRectFill(frame)
         
         closure()

@@ -152,3 +152,14 @@ extension UILabel {
         attributedText = attr
     }
 }
+
+extension UITextField {
+    var placeHolderString: String {
+        set {
+            attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.c9])
+        }
+        get {
+            return attributedPlaceholder?.string ?? ""
+        }
+    }
+}

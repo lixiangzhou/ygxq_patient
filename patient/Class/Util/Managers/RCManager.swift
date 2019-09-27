@@ -19,6 +19,8 @@ class RCManager: NSObject {
     func setup() {
         RCIM.shared().initWithAppKey(key)
         RCIM.shared()?.userInfoDataSource = self
+        addCallVCHook()
+        setUserInfo()
     }
     
     // MARK: - Property
@@ -146,11 +148,23 @@ extension RCManager {
 // MARK: - UserInfo
 extension RCManager {
     private func setUserInfo() {
-        if isLogin {
-            if let patientModel = PatientManager.shared.patientInfoModel {
-                RCIM.shared()?.currentUserInfo = RCUserInfo(userId: patientModel.id.description, name: patientModel.realName, portrait: "")
-            }
+        PatientManager.shared.getPatientInfo()
+        patientInfoProperty.producer.skipNil().startWithValues { (model) in
+            let userInfo = RCUserInfo()
+            userInfo.name = model.realName
+            userInfo.portraitUri = model.imgUrl
+            userInfo.userId = "RC_\(model.id)"
+            RCIMClient.shared()?.currentUserInfo = userInfo
         }
+    }
+}
+
+extension RCManager {
+    private func addCallVCHook() {
+        let viewDidLoad: @convention(block) (AspectInfo)-> Void = { aspectInfo in
+            (aspectInfo.instance() as? RCCallBaseViewController)?.cameraCloseButton.alpha = 0
+        }
+        _ = try? RCCallBaseViewController.aspect_hook(NSSelectorFromString("viewDidLoad"), with: [], usingBlock: viewDidLoad)
     }
 }
 

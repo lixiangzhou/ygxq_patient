@@ -86,9 +86,9 @@ extension PersonInfoEditController {
             }
         }
         
-        nameView.config = viewModel.inputConfig
+        nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c6, rightWidth: 200)
         nameView.leftLabel.attributedText = viewModel.nameAttributeString
-        nameView.rightField.placeholder = "请输入姓名"
+        nameView.rightField.placeHolderString = "请输入姓名"
         nameView.rightField.textAlignment = .right
         nameView.inputLimitClosure = { string in
             return string.isMatchNameInputValidate
@@ -96,7 +96,7 @@ extension PersonInfoEditController {
         
         idView.config = viewModel.idConfig
         idView.leftLabel.text = "身份证号码"
-        idView.rightField.placeholder = "请输入身份证号码"
+        idView.rightField.placeHolderString = "请输入身份证号码"
         idView.rightField.textAlignment = .right
 
         birthView.config = viewModel.arrowConfig
@@ -109,7 +109,7 @@ extension PersonInfoEditController {
         
         nationView.config = viewModel.inputConfig
         nationView.leftLabel.text = "民族"
-        nationView.rightField.placeholder = "请输入民族"
+        nationView.rightField.placeHolderString = "请输入民族"
         nationView.rightField.textAlignment = .right
         
         addressView.config = viewModel .arrowConfig
@@ -139,7 +139,9 @@ extension PersonInfoEditController {
         contentView.addSubview(addressView)
         contentView.addSubview(diseaseView)
         
-        addLoginBottomView()
+        if !hasIcon {
+            addLoginBottomView()
+        }
         
         scrollView.snp.makeConstraints { (make) in
             make.topOffsetFrom(self, hasIcon ? 0 : 44)
@@ -228,7 +230,7 @@ extension PersonInfoEditController {
         finishBtn.isEnabled = false
         let nameEnabledSignal = nameView.rightField.reactive.continuousTextValues.producer.map { $0.count >= 2 }
         
-        let idEnabledSignal = SignalProducer<Bool, NoError>(value: true).concat(idView.rightField.reactive.continuousTextValues.map { $0.isEmpty || $0.count == 15 || $0.count == 18 })
+        let idEnabledSignal = SignalProducer<Bool, NoError>(value: true).concat(idView.rightField.reactive.continuousTextValues.map { $0.isEmpty || $0.isMatchIdNo })
         
         let finishEnabledSignal = nameEnabledSignal.and(idEnabledSignal)
         
@@ -319,7 +321,8 @@ extension PersonInfoEditController {
 
     @objc private func finishAction() {
         var params = [String: Any]()
-        params["realName"] = nameView.rightField.text ?? ""
+        let name = nameView.rightField.text ?? ""
+        params["realName"] = name
         params["birth"] = (selectBirth?.zz_date(withDateFormat: "yyyy-MM-dd")?.timeIntervalSince1970 ?? 0) * 1000
         params["idCardNo"] = idView.rightField.text ?? ""
         params["sex"] = Sex.string(selectSex).rawValue
@@ -331,6 +334,11 @@ extension PersonInfoEditController {
         params["imgUrl"] = viewModel.imgUrl
         params["height"] = 0
         params["weight"] = 0
+        
+        if name.count > 20 {
+            HUD.show(toast: "姓名不能超过20个字符")
+            return
+        }
         
         viewModel.saveInfo(params).startWithValues { [weak self] (result) in
             if result.isSuccess {

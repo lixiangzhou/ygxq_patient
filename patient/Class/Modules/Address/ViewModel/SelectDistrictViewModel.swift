@@ -34,20 +34,24 @@ class SelectDistrictViewModel: BaseViewModel {
     func getCitys(id: Int) {
         UIApplication.shared.beginIgnoringInteractionEvents()
         AddressApi.areasByFid(id: id).rac_responseModel([AreaModel].self).startWithValues { [unowned self] value in
-            UIApplication.shared.endIgnoringInteractionEvents()
             if let value = value {
                 self.citysProperty.value = value
             }
+            DispatchQueue.main.zz_after(0.25, execute: {
+                UIApplication.shared.endIgnoringInteractionEvents()
+            })
         }
     }
     
     func getDistricts(id: Int) {
         UIApplication.shared.beginIgnoringInteractionEvents()
         AddressApi.areasByFid(id: id).rac_responseModel([AreaModel].self).startWithValues { [unowned self] value in
-            UIApplication.shared.endIgnoringInteractionEvents()
             if let value = value {
                 self.districtsProperty.value = value
             }
+            DispatchQueue.main.zz_after(0.25, execute: {
+                UIApplication.shared.endIgnoringInteractionEvents()
+            })
         }
     }
     

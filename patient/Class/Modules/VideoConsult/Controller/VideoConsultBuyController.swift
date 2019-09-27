@@ -204,7 +204,7 @@ extension VideoConsultBuyController {
             let idEnabledProducer: SignalProducer<Bool, NoError>!
             if model.idCardNo.isEmpty {
                 idEnabledProducer = SignalProducer<Bool, NoError>(value: false)
-                    .concat(self.patientInfoView.idView.rightField.reactive.continuousTextValues.map { $0.count == 18 || $0.count == 15 }.producer)
+                    .concat(self.patientInfoView.idView.rightField.reactive.continuousTextValues.map { $0.isMatchIdNo }.producer)
             } else {
                 idEnabledProducer = SignalProducer<Bool, NoError>(value: true)
             }
@@ -236,10 +236,18 @@ extension VideoConsultBuyController {
     
     @objc private func appointAction() {
         guard let model = patientInfoProperty.value else { return }
+        
         let needUpdate = model.realName.isEmpty || model.idCardNo.isEmpty
         let realName = model.realName.isEmpty ? patientInfoView.nameView.rightField.text! : model.realName
         let idCardNo = model.idCardNo.isEmpty ? patientInfoView.idView.rightField.text! : model.idCardNo
         let consultContent = diseaseView.txtView.textView.text!
+        
+        if model.realName.isEmpty {
+            if realName.count > 20 {
+                HUD.show(toast: "姓名不能超过20个字符")
+                return
+            }
+        }
         
         var params: [String: Any] = [
             "consultContent": consultContent,

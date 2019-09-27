@@ -93,7 +93,7 @@ extension AddressEditController {
             defaultView.isHidden = true
         }
         
-        districtField.placeholder = "请选择所在地区"
+        districtField.placeHolderString = "请选择所在地区"
         
         nameField.delegate = self
         mobileField.delegate = self
@@ -207,7 +207,7 @@ extension AddressEditController {
         let field = view.zz_add(subview: UITextField()) as! UITextField
         field.font = .boldSize(16)
         field.textColor = .c3
-        field.placeholder = "请输入\(title)"
+        field.attributedPlaceholder = NSAttributedString(string: "请输入\(title)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.c9])
         
         view.addBottomLine(left: 15)
         
@@ -296,6 +296,11 @@ extension AddressEditController {
         let isDefault = switchView.isOn
         let id = addressModel?.id ?? 0
         
+        if name.count > 20 {
+            HUD.show(toast: "姓名不能超过20个字符")
+            return
+        }
+        
         if !mobile.hasPrefix("1") {
             HUD.show(toast: "请输入正确的手机号码")
             return
@@ -355,7 +360,8 @@ extension AddressEditController: UITextFieldDelegate {
             if string.isEmpty {
                 return true
             } else {
-                return string.isMatchNameInputValidate && (textField.text! + string).count <= 20
+                print(string)
+                return string.isMatchNameInputValidate
             }
         } else {
             return true

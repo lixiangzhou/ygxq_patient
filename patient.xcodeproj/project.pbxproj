@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10052CF2233C83A000C6FDE5 /* PwdChangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10052CF1233C83A000C6FDE5 /* PwdChangeViewModel.swift */; };
 		10052CF4233C83B400C6FDE5 /* PwdChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10052CF3233C83B400C6FDE5 /* PwdChangeController.swift */; };
+		10052CFA233CBED000C6FDE5 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 10052CF9233CBED000C6FDE5 /* Aspects.m */; };
 		1008F6FB230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6FA230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift */; };
 		100AEE3422C9FF5300094AE2 /* UploadApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE3322C9FF5300094AE2 /* UploadApi.swift */; };
 		100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AEE3922CA115C00094AE2 /* AddressListCell.swift */; };
@@ -343,6 +344,8 @@
 /* Begin PBXFileReference section */
 		10052CF1233C83A000C6FDE5 /* PwdChangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwdChangeViewModel.swift; sourceTree = "<group>"; };
 		10052CF3233C83B400C6FDE5 /* PwdChangeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwdChangeController.swift; sourceTree = "<group>"; };
+		10052CF8233CBED000C6FDE5 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		10052CF9233CBED000C6FDE5 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		1008F6FA230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+ZZExtension.swift"; sourceTree = "<group>"; };
 		100AEE3322C9FF5300094AE2 /* UploadApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadApi.swift; sourceTree = "<group>"; };
 		100AEE3922CA115C00094AE2 /* AddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListCell.swift; sourceTree = "<group>"; };
@@ -696,6 +699,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10052CF7233CBED000C6FDE5 /* Aspects */ = {
+			isa = PBXGroup;
+			children = (
+				10052CF8233CBED000C6FDE5 /* Aspects.h */,
+				10052CF9233CBED000C6FDE5 /* Aspects.m */,
+			);
+			path = Aspects;
+			sourceTree = "<group>";
+		};
 		1014CF92229391DF00294558 = {
 			isa = PBXGroup;
 			children = (
@@ -1007,6 +1019,7 @@
 		1014D0452293A6D700294558 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				10052CF7233CBED000C6FDE5 /* Aspects */,
 				104FFB042314C9B900E51033 /* FSPagerView */,
 				104E3A9022B8E5E600A84DB2 /* LLSegmentViewController */,
 				104E3A6B22B79F7A00A84DB2 /* NextGrowingTextView */,
@@ -2045,6 +2058,7 @@
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10A27559230BC17500B568B3 /* MsgModel.swift in Sources */,
 				100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */,
+				10052CFA233CBED000C6FDE5 /* Aspects.m in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
 				10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */,
 				10E820C0233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift in Sources */,

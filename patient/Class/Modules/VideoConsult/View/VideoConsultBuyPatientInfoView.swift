@@ -40,13 +40,13 @@ extension VideoConsultBuyPatientInfoView {
         titleView.leftLabel.text = "个人基本信息"
         addSubview(titleView)
         
-        nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c6, rightWidth: 200, rightLimit: 20, bottomLineLeftPadding: 15)
-        mobileView.config = TextLeftRightFieldViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c6, bottomLineLeftPadding: 15)
+        nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c6, rightWidth: 200, bottomLineLeftPadding: 15)
+        mobileView.config = TextLeftRightFieldViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c6, rightLimit: 11, bottomLineLeftPadding: 15)
         idView.config = TextLeftRightFieldViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c6, rightWidth: 200, rightLimit: 18, hasBottomLine: false)
         
         
         nameView.leftLabel.text = "姓名"
-        nameView.rightField.placeholder = "请输入您的姓名"
+        nameView.rightField.placeHolderString = "请输入您的姓名"
         nameView.rightField.textAlignment = .right
         nameView.inputLimitClosure = { string in
             return string.isMatchNameInputValidate
@@ -57,7 +57,7 @@ extension VideoConsultBuyPatientInfoView {
         mobileView.rightField.textAlignment = .right
         
         idView.leftLabel.text = "身份证号码"
-        idView.rightField.placeholder = "请输入您的身份证号码"
+        idView.rightField.placeHolderString = "请输入您的身份证号码"
         idView.rightField.textAlignment = .right
         
         
