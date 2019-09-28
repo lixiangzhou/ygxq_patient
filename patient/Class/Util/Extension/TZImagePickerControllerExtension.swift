@@ -23,7 +23,7 @@ extension TZImagePickerController {
             originalPhotoButton?.isHidden = true
             originalPhotoLabel?.isHidden = true
         }
-        vc.selectedModels = selectedModels
+//        vc.selectedModels = selectedModels
         controller?.present(vc, animated: true, completion: nil)
     }
 }

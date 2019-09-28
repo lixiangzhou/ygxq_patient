@@ -208,8 +208,11 @@ extension SelectDistrictView {
         
         scrollView.setContentOffset(CGPoint(x: CGFloat(sender.tag) * UIScreen.zz_width, y: 0), animated: true)
         
-        UIView.animate(withDuration: 0.25) {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        UIView.animate(withDuration: 0.25, animations: {
             self.layoutIfNeeded()
+        }) { (_) in
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
 }

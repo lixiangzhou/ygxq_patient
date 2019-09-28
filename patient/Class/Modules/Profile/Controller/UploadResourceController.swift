@@ -114,21 +114,7 @@ extension UploadResourceController {
         
         // 选择图片
         viewModel.selectedImagesProperty.signal.observeValues { [weak self] (imgs) in
-            guard let self = self else { return }
-            var values = [UIImage]()
-            HUD.showLoding()
-            DispatchQueue.global().async {
-                for img in imgs {
-                    if let resizeImage = UIImage(data: img.zz_resetToSize(300, maxWidth: 1000, maxHeight: 1000)) {
-                        values.append(resizeImage)
-                    }
-                }
-                
-                DispatchQueue.main.async {
-                    HUD.hideLoding()
-                    self.picsView.viewModel.set(images: values)
-                }
-            }
+            self?.picsView.viewModel.set(images: imgs)
         }
         
         viewModel.canPopProperty.signal.observeValues { [weak self] (canPop) in
@@ -149,7 +135,12 @@ extension UploadResourceController {
         let count = 30
         picsView.viewModel.maxCount = count
         picsView.addClosure = { [weak self] in
-            TZImagePickerController.commonPresent(from: self, maxCount: count, selectedModels: self?.viewModel.selectedModelsProperty.value, delegate: self)
+            guard let self = self else { return }
+            if self.viewModel.selectedImagesProperty.value.count < count {
+                TZImagePickerController.commonPresent(from: self, maxCount: count - self.viewModel.selectedImagesProperty.value.count, selectedModels: self.viewModel.selectedModelsProperty.value, delegate: self)
+            } else {
+                HUD.show(toast: "最多选择30张图片")
+            }
         }
         
         picsView.deleteClosure = { [weak self] idx, data in
@@ -167,7 +158,7 @@ extension UploadResourceController {
 extension UploadResourceController: TZImagePickerControllerDelegate {
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool, infos: [[AnyHashable : Any]]!) {
         viewModel.selectedModelsProperty.value = picker.selectedModels
-        viewModel.selectedImagesProperty.value = photos
+        addImages(photos)
     }
 }
 
@@ -176,9 +167,27 @@ extension UploadResourceController {
     func updateContentHeight() {
         contentView.layoutHeight()
         contentView.snp.updateConstraints { (make) in
-            make.height.equalTo(contentView.zz_height)
+            make.height.equalTo(contentView.zz_height + 60)
         }
         
         scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_height, UIScreen.zz_safeFrameUnderNavigation.height) + 50)
+    }
+    
+    private func addImages(_ photos: [UIImage]) {
+        var values = [UIImage]()
+        HUD.showLoding()
+        DispatchQueue.global().async {
+            for img in photos {
+                if let resizeImage = UIImage(data: img.zz_resetToSize(300, maxWidth: 1000, maxHeight: 1000)) {
+                    values.append(resizeImage)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                HUD.hideLoding()
+                
+                self.viewModel.selectedImagesProperty.value += values
+            }
+        }
     }
 }

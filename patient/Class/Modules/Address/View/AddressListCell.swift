@@ -25,10 +25,10 @@ class AddressListCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let nameLabel = UILabel(font: .boldSize(16), textColor: .c3)
-    let mobileLabel = UILabel(font: .boldSize(16), textColor: .c3)
+    let nameLabel = UILabel(font: .boldSize(16), textColor: .c3, numOfLines: 1)
+    let mobileLabel = UILabel(font: .boldSize(16), textColor: .c3, numOfLines: 1)
     let defaultView = UILabel(text: "默认", font: .size(16), textColor: .cff9a21, textAlignment: .center)
-    let addressLabel = UILabel(font: .size(16), textColor: .c3)
+    let addressLabel = UILabel(font: .size(16), textColor: .c3, numOfLines: 1)
     
     var editClosure: (() -> Void)?
     
@@ -71,6 +71,7 @@ extension AddressListCell {
         defaultView.snp.makeConstraints { (make) in
             make.centerY.equalTo(nameLabel)
             make.left.equalTo(mobileLabel.snp.right).offset(5)
+            make.right.lessThanOrEqualTo(sepLine).offset(-5)
             make.size.equalTo(CGSize(width: 45, height: 20))
         }
         

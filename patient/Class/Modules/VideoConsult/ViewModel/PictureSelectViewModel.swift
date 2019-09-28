@@ -31,9 +31,7 @@ class PictureSelectViewModel: BaseViewModel {
             values.append(.data(image: img))
         }
         
-        if values.count < maxCount {
-            values.append(.empty)
-        }
+        values.insert(.empty, at: 0)
         
         dataSourceProperty.value = values
     }

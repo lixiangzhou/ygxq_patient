@@ -137,6 +137,7 @@ extension BaseController {
         if navigationController?.viewControllers.count ?? 0 > 1 {
             // 空 title 是为了增加可点击范围
             let btn = UIButton(imageName: imgName, target: self, action: #selector(backAction))
+            btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 15)
             btn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
         }

@@ -89,13 +89,14 @@ class LoginViewModel: BaseViewModel {
     }
     
     
-    func getCode(_ type: AuthApi.CodeType, mobile: String) {
+    func getCode(_ type: AuthApi.CodeType, mobile: String, completion: @escaping (Bool) -> Void) {
         AuthApi.getCode(type: type, mobile: mobile).rac_response(None.self).startWithValues { (resp) in
-            if resp.resultcode == 200 {
+            if resp.isSuccess {
                 HUD.show(toast: "验证码已发送成功，请注意查收！")
             } else {
                 HUD.show(toast: resp.resultmsg ?? "验证码发送失败！")
             }
+            completion(resp.isSuccess)
         }
     }
     

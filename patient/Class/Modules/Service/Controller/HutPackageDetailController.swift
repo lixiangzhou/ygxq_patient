@@ -122,7 +122,7 @@ extension HutPackageDetailController: UITableViewDataSource {
             return cell
         case .address:
             let cell = tableView.dequeue(cell: HutPackageDetailAddressCell.self, for: indexPath)
-            cell.addressView.viewModel.getDefaultAddress()
+            cell.getDefault()
             viewModel.addressModelProperty <~ cell.addressView.viewModel.addressModelProperty
             return cell
         case .tip:

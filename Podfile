@@ -30,4 +30,5 @@ target 'patient' do
     pod 'FDFullscreenPopGesture'
     pod 'Bugly'
     pod 'YYText'
+    pod 'MJRefresh'
 end

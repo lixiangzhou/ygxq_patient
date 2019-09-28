@@ -17,6 +17,7 @@ class LoginManager {
     func setup() {
         patientInfoProperty.skipRepeats { return $0?.id == $1?.id }.signal.observeValues { (p) in
             if p == nil {
+                RCIM.shared().logout()
                 guard let rootVC = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController,
                     let nav = rootVC.selectedViewController as? BaseNavigationController else { return }
                 rootVC.present(BaseNavigationController(rootViewController: LoginController()), animated: true) {

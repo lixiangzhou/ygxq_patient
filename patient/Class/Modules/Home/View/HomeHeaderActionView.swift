@@ -38,7 +38,7 @@ extension HomeHeaderActionView {
  
         let config = ImageTitleView.Config(imageInTop: true, imageSize: CGSize(width: 40, height: 40), verticalHeight1: 12, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .boldSize(19), titleColor: .c3)
         
-        item1View.titleLabel.text = "复诊/购药"
+        item1View.titleLabel.text = "复诊 / 购药"
         item1View.imgView.image = UIImage(named: "home_consult")
         item1View.backgroundColor = .cf
         item1View.config = config

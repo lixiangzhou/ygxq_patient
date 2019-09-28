@@ -93,7 +93,10 @@ extension HomeController {
             guard let self = self else { return }
             if let model = list.first {
                 self.headerView.taskView.showEmpty = false
-                self.headerView.taskView.textLabel.text = model.content
+                let style = NSMutableParagraphStyle()
+                style.lineSpacing = 5
+                let attr = NSMutableAttributedString(string: model.content, attributes: [NSAttributedString.Key.paragraphStyle: style])
+                self.headerView.taskView.textLabel.attributedText = attr
                 
                 self.headerView.taskView.taskActionLabel.text = model.taskActionTitle
             } else {

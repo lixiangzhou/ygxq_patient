@@ -14,7 +14,7 @@ class InvoiceMakeInfoViewModel: BaseViewModel {
     let selectTypeProperty = MutableProperty<InvoiceType>(.company)
     
     func getData() {
-        OrderApi.lastInvoice(pid: patientId).rac_responseModel(InvoiceModel.self).skipNil().startWithValues { [weak self] (model) in
+        OrderApi.lastInvoice(pid: patientId).rac_responseModel(InvoiceModel.self).startWithValues { [weak self] (model) in
             self?.invoiceModelProperty.value = model
         }
     }

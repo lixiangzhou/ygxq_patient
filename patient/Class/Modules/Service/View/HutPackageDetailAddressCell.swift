@@ -25,8 +25,8 @@ class HutPackageDetailAddressCell: UITableViewCell {
     
     // MARK: - Public Property
     let addressView = AddressShowView()
+    var edited: Bool = false
     // MARK: - Private Property
-    
 }
 
 // MARK: - UI
@@ -43,6 +43,15 @@ extension HutPackageDetailAddressCell {
             make.top.equalTo(-45)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(-15)
+        }
+    }
+}
+
+extension HutPackageDetailAddressCell {
+    func getDefault() {
+        if !edited {
+            edited = true
+            addressView.viewModel.getDefaultAddress()
         }
     }
 }

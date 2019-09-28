@@ -104,20 +104,28 @@ extension ForgetPwdController {
         
         codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.getCode(.forModifyPwd, mobile: self.mobile!)
-            self.timeLabel.text = "60秒"
-            var count = 60
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
-                guard let self = self else { timer.invalidate(); return }
-                count -= 1
-                if count < 0 {
-                    self.timeLabel.isHidden = true
-                    self.codeBtn.isHidden = false
-                    timer.invalidate()
-                } else {
-                    self.timeLabel.text = String(format: "%2d秒", count)
+            
+            self.timeLabel.isHidden = true
+            self.codeBtn.isHidden = false
+            self.viewModel.getCode(.forModifyPwd, mobile: self.mobile!) { isSuccess in
+                if isSuccess {
+                    self.timeLabel.isHidden = false
+                    self.codeBtn.isHidden = true
+                    self.timeLabel.text = "60秒"
+                    var count = 60
+                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
+                        guard let self = self else { timer.invalidate(); return }
+                        count -= 1
+                        if count < 0 {
+                            self.timeLabel.isHidden = true
+                            self.codeBtn.isHidden = false
+                            timer.invalidate()
+                        } else {
+                            self.timeLabel.text = String(format: "%2d秒", count)
+                        }
+                    })
                 }
-            })
+            }
         }
     }
 }

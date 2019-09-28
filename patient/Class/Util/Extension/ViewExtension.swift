@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 extension UIView {
     static func sepLine(color: UIColor = .cdcdcdc) -> UIView {
@@ -156,10 +157,28 @@ extension UILabel {
 extension UITextField {
     var placeHolderString: String {
         set {
-            attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.c9])
+            attributedPlaceholder = NSAttributedString(string: newValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.c9])
         }
         get {
             return attributedPlaceholder?.string ?? ""
         }
+    }
+}
+
+extension UIScrollView {
+    var headerRefreshClosure: (() -> Void)? {
+        set {
+            mj_header = MJRefreshNormalHeader {
+                newValue?()
+            }
+        }
+        
+        get {
+            return mj_header.refreshingBlock
+        }
+    }
+    
+    func endRefreshHeader() {
+        mj_header?.endRefreshing()
     }
 }

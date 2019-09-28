@@ -115,6 +115,7 @@ extension MineController: UITableViewDataSource, UITableViewDelegate {
         
         cell.config = model.config
         cell.leftIconView?.image = UIImage(named: model.img)
+        cell.leftIconView?.contentMode = .scaleAspectFit
         cell.leftLabel.text = model.type.rawValue
         
         return cell

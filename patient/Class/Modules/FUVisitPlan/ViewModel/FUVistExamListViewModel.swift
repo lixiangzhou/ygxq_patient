@@ -101,6 +101,16 @@ class FUVistExamListViewModel: BaseViewModel {
             }
         }
     }
+    
+    var webTitleString: String {
+        switch type! {
+        case .flp, .video, .sunnyDrug:
+            
+            return "填写随访问卷"
+        default:
+            return "查看问卷"
+        }
+    }
 }
 
 extension FUVistExamListViewModel {

@@ -96,11 +96,11 @@ extension PictureSelectView: UICollectionViewDataSource {
                 PhotoBrowser.showLocalImage(numberOfItems: { () -> Int in
                     return self.viewModel.imgsCount
                 }, localImage: { (idx) -> UIImage? in
-                    switch self.viewModel.dataSourceProperty.value[idx] {
+                    switch self.viewModel.dataSourceProperty.value[idx + 1] {
                     case .empty: return nil
                     case let .data(image: image): return image
                     }
-                }, showAt: indexPath.row)
+                }, showAt: indexPath.row - 1)
             }
             
             switch config.picAction {

@@ -42,16 +42,19 @@ extension PwdChangeController {
         pwdView.config = TextLeftRightFieldViewConfig(rightFont: .size(16), rightLimit: 20, hasBottomLine: true, bottomLineLeftPadding: 15)
         pwdView.rightField.isSecureTextEntry = true
         pwdView.rightField.textAlignment = .right
+        pwdView.rightField.placeHolderString = "请输入原密码"
         
         newPwdView.leftLabel.text = "新密码"
         newPwdView.config = TextLeftRightFieldViewConfig(rightFont: .size(16), rightLimit: 20, hasBottomLine: true, bottomLineLeftPadding: 15)
         newPwdView.rightField.isSecureTextEntry = true
         newPwdView.rightField.textAlignment = .right
+        newPwdView.rightField.placeHolderString = "请输入新密码"
         
         newPwdView2.leftLabel.text = "确认新密码"
         newPwdView2.config = TextLeftRightFieldViewConfig(rightFont: .size(16), rightLimit: 20, hasBottomLine: false)
         newPwdView2.rightField.isSecureTextEntry = true
         newPwdView2.rightField.textAlignment = .right
+        newPwdView2.rightField.placeHolderString = "请再次确认新密码"
         
         btn.addTarget(self, action: #selector(changeAction), for: .touchUpInside)
         

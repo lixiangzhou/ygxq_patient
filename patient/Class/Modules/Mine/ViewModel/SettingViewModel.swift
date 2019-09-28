@@ -28,10 +28,12 @@ class SettingViewModel: BaseViewModel {
     override init() {
         super.init()
         
-        let versionLabel = UILabel(text: "\(UIApplication.shared.zz_appVersion)", font: .size(14), textColor: .c6)
+        let versionLabel = UILabel(text: "V\(UIApplication.shared.zz_appVersion)", font: .size(14), textColor: .c6)
         versionLabel.sizeToFit()
         
         let switchView = UISwitch()
+        switchView.tintColor = .c407cec
+        switchView.onTintColor = .c407cec
         switchView.isOn = patientInfoProperty.value!.isPushMsg == "Y"
         
         dataSource += [

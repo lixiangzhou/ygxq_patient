@@ -116,7 +116,8 @@ extension FUVistExamListController: UITableViewDataSource, UITableViewDelegate {
         guard let url = URL(string: urlString) else { return }
         let vc = WebController()
         vc.url = url
-        vc.titleString = "查看问卷"
+        vc.titleString = isFinished ? "查看问卷" : "填写问卷"
+        
         push(vc)
     }
 }

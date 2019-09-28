@@ -99,6 +99,8 @@ extension AddressEditController {
         mobileField.delegate = self
         districtField.delegate = self
         
+        mobileField.keyboardType = .numberPad
+        
         contentView.addSubview(nameView)
         contentView.addSubview(mobileView)
         contentView.addSubview(districtView)
@@ -236,7 +238,7 @@ extension AddressEditController {
         let titleLabel = view.zz_add(subview: UILabel(text: "详细地址", font: .size(16), textColor: .c3)) as! UILabel
         let inputView = view.zz_add(subview: NextGrowingTextView()) as! NextGrowingTextView
         inputView.textView.font = .boldSize(16)
-        inputView.placeholderAttributedText = NSAttributedString(string: "请输入详细地址", attributes: [NSAttributedString.Key.font: inputView.textView.font!, NSAttributedString.Key.foregroundColor: UIColor.fieldDefaultColor])
+        inputView.placeholderAttributedText = NSAttributedString(string: "请输入详细地址", attributes: [NSAttributedString.Key.font: inputView.textView.font!, NSAttributedString.Key.foregroundColor: UIColor.c9])
         inputView.minNumberOfLines = 1
         inputView.maxNumberOfLines = 3
         
@@ -302,7 +304,7 @@ extension AddressEditController {
         }
         
         if !mobile.hasPrefix("1") {
-            HUD.show(toast: "请输入正确的手机号码")
+            HUD.show(toast: "手机号码格式错误")
             return
         }
         

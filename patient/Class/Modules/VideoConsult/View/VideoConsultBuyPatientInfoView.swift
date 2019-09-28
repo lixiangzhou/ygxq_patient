@@ -54,12 +54,15 @@ extension VideoConsultBuyPatientInfoView {
         
         mobileView.leftLabel.text = "手机号"
         mobileView.rightField.isUserInteractionEnabled = false
+        mobileView.rightField.keyboardType = .numberPad
         mobileView.rightField.textAlignment = .right
         
         idView.leftLabel.text = "身份证号码"
         idView.rightField.placeHolderString = "请输入您的身份证号码"
         idView.rightField.textAlignment = .right
-        
+        idView.inputLimitClosure = { string in
+            return string.isMatchIdNoInputing
+        }
         
         addSubview(nameView)
         addSubview(mobileView)

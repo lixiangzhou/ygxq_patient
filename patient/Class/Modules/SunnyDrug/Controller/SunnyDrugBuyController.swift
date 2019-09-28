@@ -23,6 +23,7 @@ class SunnyDrugBuyController: BaseController {
         setBinding()
         addressView.viewModel.getDefaultAddress()
         viewModel.getPrivateDoctor()
+        viewModel.getDrugPrice()
     }
 
     // MARK: - Public Property
@@ -33,7 +34,7 @@ class SunnyDrugBuyController: BaseController {
     private let contentView = UIView()
     private let idView = SunnyDrugBuyIdView()
     private let addressView = AddressShowView()
-    private let buyBtn = UIButton(title: "购买", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
+    private let buyBtn = UIButton(title: "立即预约", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
     private let bottomView = PayBottomView()
 }
 
@@ -56,7 +57,13 @@ extension SunnyDrugBuyController {
         
         scrollView.contentInset.bottom = 50
         buyBtn.addTarget(self, action: #selector(buyAction), for: .touchUpInside)
+        
+        bottomView.payClosure = { [weak self] in
+            self?.buyAction()
+        }
+        
         view.addSubview(buyBtn)
+        view.addSubview(bottomView)
         
         addActions()
         
@@ -93,11 +100,22 @@ extension SunnyDrugBuyController {
             make.height.equalTo(50)
             make.bottomOffsetFrom(self)
         }
+        
+        bottomView.snp.makeConstraints { (make) in
+            make.edges.equalTo(buyBtn)
+        }
     }
     
     override func setBinding() {
         addressView.viewModel.addressModelProperty.producer.startWithValues { [weak self] (model) in
             self?.updateContentHeight()
+        }
+        
+        bottomView.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 != nil }
+        buyBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 == nil }
+        
+        viewModel.priceProperty.producer.startWithValues { (value) in
+            self.bottomView.priceLabel.text = "￥\(value)"
         }
         
         viewModel.orderIdProperty.signal.filter { $0 > 0 }.observeValues { [weak self] (orderId) in
@@ -123,6 +141,9 @@ extension SunnyDrugBuyController {
         
         buyBtn.reactive.isUserInteractionEnabled <~ buyEnabled
         buyBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+        
+        bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+        bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }
     }
 }
 

@@ -14,6 +14,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     let buyFromLongServiceSuccessProperty = MutableProperty<Bool>(false)
     let orderIdProperty = MutableProperty<Int>(0)
     let selectImageProperty = MutableProperty<UIImage?>(nil)
+    let priceProperty = MutableProperty<Double>(0)
     
     var backAction: PayViewModel.ResultAction?
     /// 如果有值，说明是视频后的购药，必须微信支付
@@ -70,6 +71,14 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     func getPrivateDoctor() {
         ServiceApi.isMyPrivateDoctor(did: did, pid: patientId, type: serType).rac_responseModel(OrderModel.self).skipNil().skip { $0.orderId == 0 }.startWithValues { [weak self] (value) in
             self?.myPrivateDoctorOrderProperty.value = value
+        }
+    }
+    
+    func getDrugPrice() {
+        if isToPayWay {        
+            ServiceApi.getDrugPrice(did: did, serType: "UTOPIA16").rac_responseModel(LongServiceModel.self).startWithValues { [weak self] (model) in
+                self?.priceProperty.value = model?.serPrice ?? 0
+            }
         }
     }
 

@@ -42,6 +42,10 @@ extension TaskTipListController {
         tableView.backgroundColor = .cf
         view.addSubview(tableView)
         
+        tableView.headerRefreshClosure = { [weak self] in
+            self?.viewModel.getTasks()
+        }
+        
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -49,6 +53,10 @@ extension TaskTipListController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
+        
+        viewModel.dataSourceProperty.signal.observeValues { [weak self] (_) in
+            self?.tableView.endRefreshHeader()
+        }
         
         viewModel.drugOrderProperty.signal.skipNil().observeValues { [weak self] result in
             if let order = result.1 {

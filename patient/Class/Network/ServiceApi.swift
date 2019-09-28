@@ -21,6 +21,7 @@ enum ServiceApi: TargetType {
     case querySunshineHutList
     case queryExamResult(id: Int)
     case addSerSunshineHut(params: [String: Any])
+    case getDrugPrice(did: Int, serType: String)
 }
 
 extension ServiceApi {
@@ -48,6 +49,8 @@ extension ServiceApi {
             return "/serConsultVideo/queryExamResult"
         case .addSerSunshineHut:
             return "/sunshineHut/addSerSunshineHut"
+        case .getDrugPrice:
+            return "/serConfigMore/getPrice"
         }
     }
     
@@ -94,6 +97,9 @@ extension ServiceApi {
             for (k, v) in ps {
                 params[k] = v
             }
+        case let .getDrugPrice(did: did, serType: type):
+            params["duid"] = did
+            params["keyWord"] = type
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

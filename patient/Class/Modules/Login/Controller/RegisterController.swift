@@ -167,20 +167,34 @@ extension RegisterController {
         
         codeBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.getCode(.forRegister, mobile: self.mobileView.text!)
-            self.timeLabel.text = "60秒"
-            var count = 60
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
-                guard let self = self else { timer.invalidate(); return }
-                count -= 1
-                if count < 0 {
-                    self.timeLabel.isHidden = true
-                    self.codeBtn.isHidden = false
-                    timer.invalidate()
-                } else {
-                    self.timeLabel.text = String(format: "%2d秒", count)
+            
+            if !self.mobileView.text!.hasPrefix("1") {
+                HUD.show(toast: "手机号码格式错误")
+                self.timeLabel.isHidden = true
+                self.codeBtn.isHidden = false
+                return
+            }
+            self.timeLabel.isHidden = true
+            self.codeBtn.isHidden = false
+            self.viewModel.getCode(.forRegister, mobile: self.mobileView.text!) { isSuccess in
+                if isSuccess {
+                    self.timeLabel.isHidden = false
+                    self.codeBtn.isHidden = true
+                    self.timeLabel.text = "60秒"
+                    var count = 60
+                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (timer) in
+                        guard let self = self else { timer.invalidate(); return }
+                        count -= 1
+                        if count < 0 {
+                            self.timeLabel.isHidden = true
+                            self.codeBtn.isHidden = false
+                            timer.invalidate()
+                        } else {
+                            self.timeLabel.text = String(format: "%2d秒", count)
+                        }
+                    })
                 }
-            })
+            }
         }
         
         codeBtn.reactive.isEnabled <~ mobileView.valueChangedSignal.map { $0.count == 11 }
@@ -190,6 +204,10 @@ extension RegisterController {
 // MARK: - Action
 extension RegisterController {
     @objc private func nextAction() {
+        if !mobileView.text!.hasPrefix("1") {
+            HUD.show(toast: "手机号码格式错误")
+            return
+        }
         viewModel.verifyCodeAndRegister(mobile: mobileView.text!, code: codeView.text!, password: pwdView.text!, inviter: inviteCodeView.text ?? "").startWithValues { [weak self] (result) in
             HUD.show(result)
             if result.isSuccess {

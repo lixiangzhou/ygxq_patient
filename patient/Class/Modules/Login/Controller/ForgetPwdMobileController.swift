@@ -93,6 +93,11 @@ extension ForgetPwdMobileController {
 // MARK: - Action
 extension ForgetPwdMobileController {
     @objc private func nextAction() {
+        if !mobileView.text!.hasPrefix("1") {
+            HUD.show(toast: "手机号码格式错误")
+            return
+        }
+        
         let vc = ForgetPwdController()
         vc.couldShowLogin = false
         vc.mobile = mobileView.text

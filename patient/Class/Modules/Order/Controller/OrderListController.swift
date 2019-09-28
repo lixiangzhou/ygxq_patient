@@ -24,6 +24,7 @@ class OrderListController: BaseController {
 
     // MARK: - Public Property
     let viewModel = OrderListViewModel()
+    weak var ordersVC: OrderController?
     // MARK: - Private Property
     private let tableView = UITableView()
 }
@@ -32,10 +33,15 @@ class OrderListController: BaseController {
 extension OrderListController {
     override func setUI() {
         tableView.set(dataSource: self, delegate: self, rowHeight: 210)
+        tableView.estimatedRowHeight = 210
         tableView.register(cell: OrderListCell.self)
         tableView.backgroundColor = .cf0efef
         tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
+        
+        tableView.headerRefreshClosure = { [weak self] in
+            self?.viewModel.getData()
+        }
         
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -44,6 +50,10 @@ extension OrderListController {
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.skipRepeats().map(value: ())
         tableView.reactive.emptyDataString <~ viewModel.dataSourceProperty.signal.map { $0.isEmpty ? "暂无数据" : nil }
+        
+        viewModel.dataSourceProperty.signal.observeValues { [weak self] (_) in
+            self?.tableView.endRefreshHeader()
+        }
     }
 }
 
@@ -89,6 +99,7 @@ extension OrderListController {
                 vc.orderModel = model
                 vc.submitCompleteClosure = { order in
                     self.viewModel.getData()
+                    self.ordersVC?.selected(at: 2, animation: true)
                 }
                 self.push(vc)
             }

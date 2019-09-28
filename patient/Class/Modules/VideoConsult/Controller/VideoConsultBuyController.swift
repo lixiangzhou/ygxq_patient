@@ -57,7 +57,7 @@ extension VideoConsultBuyController {
         
         setActions()
         
-        let bottomTip = contentView.zz_add(subview: UILabel(text: "温馨提示：视频咨询服务按次收费，每次总时长不可超过30分钟，请您把控好就诊时间。所有问题均由医生本人回复，医生临床工作繁忙，均在休息时上网，一般在24小时内回复，请耐心等待", font: .size(14), textColor: .cf25555))
+        let bottomTip = contentView.zz_add(subview: UILabel(text: viewModel.tipString, font: .size(14), textColor: .cf25555))
         
         let telLabel = LinkedLabel(text: "客服电话：400-6251-120", font: .size(14), textColor: .c407cec)
         contentView.addSubview(telLabel)
@@ -130,21 +130,7 @@ extension VideoConsultBuyController {
         
         // 选择图片
         viewModel.selectedImagesProperty.signal.observeValues { [weak self] (imgs) in
-            guard let self = self else { return }
-            var values = [UIImage]()
-            HUD.showLoding()
-            DispatchQueue.global().async {
-                for img in imgs {
-                    if let resizeImage = UIImage(data: img.zz_resetToSize(1000, maxWidth: 1000, maxHeight: 1000)) {
-                        values.append(resizeImage)
-                    }
-                }
-                
-                DispatchQueue.main.async {
-                    HUD.hideLoding()
-                    self.picturesView.pictureSelectView.viewModel.set(images: values)
-                }
-            }
+            self?.picturesView.pictureSelectView.viewModel.set(images: imgs)
         }
         
         // 基本信息
@@ -226,7 +212,13 @@ extension VideoConsultBuyController {
         let count = 30
         picturesView.pictureSelectView.viewModel.maxCount = count
         picturesView.pictureSelectView.addClosure = { [weak self] in
-            TZImagePickerController.commonPresent(from: self, maxCount: count, selectedModels: self?.viewModel.selectedModelsProperty.value, delegate: self)
+            guard let self = self else { return }
+            if self.viewModel.selectedImagesProperty.value.count < count {
+                
+                TZImagePickerController.commonPresent(from: self, maxCount: count - self.viewModel.selectedImagesProperty.value.count, selectedModels: self.viewModel.selectedModelsProperty.value, delegate: self)
+            } else {
+                HUD.show(toast: "最多选择30张图片")
+            }
         }
         
         picturesView.pictureSelectView.deleteClosure = { [weak self] idx, data in
@@ -283,7 +275,7 @@ extension VideoConsultBuyController {
 extension VideoConsultBuyController: TZImagePickerControllerDelegate {
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool, infos: [[AnyHashable : Any]]!) {
         viewModel.selectedModelsProperty.value = picker.selectedModels
-        viewModel.selectedImagesProperty.value = photos
+        addImages(photos)
     }
 }
 
@@ -296,6 +288,23 @@ extension VideoConsultBuyController {
         }
         
         scrollView.contentSize = CGSize(width: UIScreen.zz_width, height: max(contentView.zz_height, UIScreen.zz_safeFrameUnderNavigation.height) + 10)
+    }
+    
+    private func addImages(_ photos: [UIImage]) {
+        var values = [UIImage]()
+        HUD.showLoding()
+        DispatchQueue.global().async {
+            for img in photos {
+                if let resizeImage = UIImage(data: img.zz_resetToSize(300, maxWidth: 1000, maxHeight: 1000)) {
+                    values.append(resizeImage)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                HUD.hideLoding()
+                self.viewModel.selectedImagesProperty.value += values
+            }
+        }
     }
 }
 

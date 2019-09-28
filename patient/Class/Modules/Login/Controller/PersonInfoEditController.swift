@@ -98,6 +98,9 @@ extension PersonInfoEditController {
         idView.leftLabel.text = "身份证号码"
         idView.rightField.placeHolderString = "请输入身份证号码"
         idView.rightField.textAlignment = .right
+        idView.inputLimitClosure = { string in
+            return string.isMatchIdNoInputing
+        }
 
         birthView.config = viewModel.arrowConfig
         birthView.leftLabel.text = "出生日期"

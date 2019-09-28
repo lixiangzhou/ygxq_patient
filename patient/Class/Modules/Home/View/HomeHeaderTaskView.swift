@@ -23,9 +23,9 @@ class HomeHeaderTaskView: BaseView {
     }
 
     // MARK: - Public Property
-    let moreBtn = ZZImagePositionButton(title: "更多", font: .size(17), titleColor: .c407cec, imageName: "home_more", hilightedImageName: "home_more", imgPosition: .right)
+    let moreBtn = ZZImagePositionButton(title: "更多", font: .boldSize(17), titleColor: .c407cec, imageName: "home_more", hilightedImageName: "home_more", imgPosition: .right)
     let textLabel = UILabel(font: .size(16), textColor: .c3)
-    let taskActionLabel = UILabel(text: "", font: .size(17), textColor: .cff9a21)
+    let taskActionLabel = UILabel(text: "", font: .boldSize(17), textColor: .cff9a21)
     let contentView = UIView()
     let emptyLabel = UILabel(text: "暂无任务提醒~", font: .size(16), textColor: .c3, textAlignment: .center)
     private let titleLabel = UILabel(text: "任务提醒", font: .boldSize(19), textColor: .c3)

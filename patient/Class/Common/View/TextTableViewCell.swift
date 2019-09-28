@@ -72,12 +72,6 @@ class TextTableViewCell: UITableViewCell {
 // MARK: - UI
 extension TextTableViewCell {
     fileprivate func setUI() {
-//        contentView.addSubview(leftView)
-//        contentView.addSubview(leftLabel)
-//        contentView.addSubview(rightView)
-//        contentView.addSubview(rightLabel)
-//        contentView.addSubview(bottomLine)
-
         contentView.addSubview(view)
         
         view.snp.makeConstraints { (make) in

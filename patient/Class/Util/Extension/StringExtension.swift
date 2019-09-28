@@ -50,8 +50,21 @@ extension String {
     }
     
     /// 是否匹配身份证号
+    var isMatchIdNoInputing: Bool {
+        let regex = "[\\dxX]*"
+        let pre = NSPredicate(format: "SELF MATCHES %@", regex)
+        return pre.evaluate(with: self.zz_ns)
+    }
+    
+    /// 是否匹配身份证号
     var isMatchIdNo: Bool {
         let regex = "^(\\d{14}|\\d{17})(\\d|[xX])$"
+        let pre = NSPredicate(format: "SELF MATCHES %@", regex)
+        return pre.evaluate(with: self.zz_ns)
+    }
+    
+    var isMatchMobile: Bool {
+        let regex = "^1\\d{10}"
         let pre = NSPredicate(format: "SELF MATCHES %@", regex)
         return pre.evaluate(with: self.zz_ns)
     }

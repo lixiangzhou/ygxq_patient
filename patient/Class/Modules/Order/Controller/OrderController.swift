@@ -25,8 +25,8 @@ class OrderController: LLSegmentViewController {
         setUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         if let idx = selectIndex {
             selected(at: idx, animation: true)
@@ -37,7 +37,9 @@ class OrderController: LLSegmentViewController {
     var selectIndex: Int?
     var resultAction: PayViewModel.ResultAction?
     // MARK: - Private Property
-    
+    let toPayVC = OrderListController()
+    let payedVC = OrderListController()
+    let refundVC = OrderListController()
 }
 
 // MARK: - UI
@@ -46,23 +48,39 @@ extension OrderController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "开发票", titleColor: .cf, target: self, action: #selector(getInvoiceAction))
         
         loadSegmentedConfig()
+        segmentCtlView.delegate = self
     }
     
     
     override func loadCtls() {
-        let toPayVC = OrderListController()
         toPayVC.title = "待支付"
         toPayVC.viewModel.state = .toPay
+        toPayVC.ordersVC = self
         
-        let payedVC = OrderListController()
         payedVC.title = "已支付"
         payedVC.viewModel.state = .payed
+        payedVC.ordersVC = self
         
-        let refundVC = OrderListController()
         refundVC.title = "退款"
         refundVC.viewModel.state = .refund
+        refundVC.ordersVC = self
         
         reloadViewControllers(ctls:[toPayVC, payedVC, refundVC])
+    }
+}
+
+extension OrderController: LLSegmentedControlDelegate {
+    func segMegmentCtlView(segMegmentCtlView: LLSegmentedControl, clickItemAt sourceItemView: LLSegmentBaseItemView, to destinationItemView: LLSegmentBaseItemView) {
+        switch destinationItemView.index {
+        case 0:
+            toPayVC.viewModel.getData()
+        case 1:
+            payedVC.viewModel.getData()
+        case 2:
+            refundVC.viewModel.getData()
+        default:
+            break
+        }
     }
 }
 

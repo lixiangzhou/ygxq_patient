@@ -36,7 +36,9 @@ class HomeHelpTipView: BaseView {
     }
     
     func show() {
+        UIApplication.shared.beginIgnoringInteractionEvents()
         DispatchQueue.main.zz_after(1) {
+            UIApplication.shared.endIgnoringInteractionEvents()
             UIApplication.shared.keyWindow?.addSubview(self)
             self.frame = UIScreen.main.bounds
             let bgView = UIImageView(image: UIApplication.shared.keyWindow!.zz_snapshotImage())

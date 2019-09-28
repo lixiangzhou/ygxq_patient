@@ -189,6 +189,7 @@ extension DoctorDetailController: UICollectionViewDataSource, UICollectionViewDe
                 let vc = SunnyDrugBuyController()
                 vc.viewModel.did = model.duid
                 vc.viewModel.serType = model.serType
+                vc.viewModel.priceProperty.value = model.serPrice
                 push(vc)
             default: break
             }
