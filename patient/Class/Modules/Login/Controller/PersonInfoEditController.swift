@@ -379,6 +379,10 @@ extension PersonInfoEditController: UIImagePickerControllerDelegate & UINavigati
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        setNavigation(navigationController, style: .default)
+    }
 }
 
 // MARK: - Helper

@@ -109,6 +109,10 @@ extension BaseController {
 extension BaseController {
     /// 设置导航栏样式
     func setNavigationStyle(_ style: NavigationStyle) {
+        setNavigation(navigationController, style: style)
+    }
+    
+    func setNavigation(_ navigationController: UINavigationController?, style: NavigationStyle) {
         var backgroundImage: UIImage? = nil
         var shadowImage: UIImage? = nil
         switch style {
@@ -132,6 +136,8 @@ extension BaseController {
         navigationController?.navigationBar.setBackgroundImage(backgroundImage, for: .default)
         navigationController?.navigationBar.shadowImage = shadowImage
     }
+    
+    
     
     func setBackImage(_ imgName: String) {
         if navigationController?.viewControllers.count ?? 0 > 1 {

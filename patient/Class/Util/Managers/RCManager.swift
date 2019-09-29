@@ -19,6 +19,7 @@ class RCManager: NSObject {
     func setup() {
         RCIM.shared().initWithAppKey(key)
         RCIM.shared()?.userInfoDataSource = self
+        RCIMClient.shared()?.logLevel = .log_Level_Info
         addCallVCHook()
         setUserInfo()
     }
