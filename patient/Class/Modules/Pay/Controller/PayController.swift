@@ -41,10 +41,15 @@ extension PayController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
-            if let model = self?.viewModel.orderProperty.value, model.isProtocol == false {
-                self?.signName(model)
+//            UIApplication.shared.canOpenURL(URL(string: ""))
+            if WXApi.isWXAppInstalled() {
+                if let model = self?.viewModel.orderProperty.value, model.isProtocol == false {
+                    self?.signName(model)
+                } else {
+                    self?.viewModel.getPayInfo()
+                }
             } else {
-                self?.viewModel.getPayInfo()
+                HUD.show(toast: "您还未安装微信")
             }
         }
         view.addSubview(bottomView)
