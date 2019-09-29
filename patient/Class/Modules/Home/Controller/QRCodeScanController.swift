@@ -184,6 +184,7 @@ extension QRCodeScanController {
         
         let layer = AVCaptureVideoPreviewLayer(session: session)
         layer.frame = view.layer.bounds
+        layer.videoGravity = .resizeAspectFill
         view.layer.insertSublayer(layer, at: 0)
         session.startRunning()
     }
