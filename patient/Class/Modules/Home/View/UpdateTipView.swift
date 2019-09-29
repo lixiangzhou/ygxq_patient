@@ -96,7 +96,7 @@ extension UpdateTipView {
 // MARK: - Action
 extension UpdateTipView {
     @objc private func updateAction() {
-        UIApplication.shared.zz_launchAppStore("=")
+        UIApplication.shared.zz_launchAppStore("1280316516")
     }
 }
 

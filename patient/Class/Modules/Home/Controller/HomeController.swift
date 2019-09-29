@@ -32,7 +32,6 @@ class HomeController: BaseController {
         HomeHelpTipView().show(with: scanItem, caseView: headerView.caseView, doctorsView: headerView.actionsView.item1View, planView: headerView.actionsView.item2View)
         
         UpdateTipView.update()
-        
     }
     
     // MARK: - Properties
