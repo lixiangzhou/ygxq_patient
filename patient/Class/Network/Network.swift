@@ -114,7 +114,9 @@ extension TargetType {
             if responseModel.resultcode == 200 {
                 return responseModel.content
             } else if responseModel.resultcode == 209 {
-                HUD.show(toast: "您已在其他设备登录")
+                DispatchQueue.main.zz_after(0.25) {
+                    HUD.show(toast: "您已在其他设备登录")
+                }
                 patientInfoProperty.value = nil
                 return nil
             } else {
