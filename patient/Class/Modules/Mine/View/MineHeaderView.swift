@@ -40,7 +40,7 @@ extension MineHeaderView {
         addSubview(nameLabel)
         
         iconView.zz_setCorner(radius: 40, masksToBounds: true)
-//        iconView.zz_setBorder(color: .white, width: 3)
+        iconView.zz_setBorder(color: .c7bbbfd, width: 2)
         iconView.isUserInteractionEnabled = true
         nameLabel.isUserInteractionEnabled = true
         

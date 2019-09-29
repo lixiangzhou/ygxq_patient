@@ -107,6 +107,11 @@ extension UIColor {
     static var cff3a33: UIColor {
         return UIColor(stringHexValue: "#ff3a33")!
     }
+    
+    /// 头像边框色
+    static var c7bbbfd: UIColor {
+        return UIColor(stringHexValue: "#7BBBFD")!
+    }
  
     /// 
     static var fieldDefaultColor: UIColor {

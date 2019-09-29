@@ -78,29 +78,34 @@ extension UIImagePickerController {
     }
     
     private static func attemptAccessVideo(success:@escaping () -> Void) {
-        let session: AVCaptureDevice.DiscoverySession
-        if #available(iOS 10.0, *) {
-            if #available(iOS 10.2, *) {
-                session = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back)
-            } else {
-                session = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDuoCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back)
-            }
-            if !session.devices.isEmpty {
-                AVCaptureDevice.requestAccess(for: .video) { (granted) in
-                    if granted {
-                        success()
-                    }
-                }
-            }
-        } else {
-            if !AVCaptureDevice.devices(for: .video).isEmpty {
-                AVCaptureDevice.requestAccess(for: .video) { (granted) in
-                    if granted {
-                        success()
-                    }
-                }
+        AVCaptureDevice.requestAccess(for: .video) { (granted) in
+            if granted {
+                success()
             }
         }
+//        if #available(iOS 10.0, *) {
+//            let session: AVCaptureDevice.DiscoverySession
+//            if #available(iOS 10.2, *) {
+//                session = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back)
+//            } else {
+//                session = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDuoCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back)
+//            }
+//            if !session.devices.isEmpty {
+//                AVCaptureDevice.requestAccess(for: .video) { (granted) in
+//                    if granted {
+//                        success()
+//                    }
+//                }
+//            }
+//        } else {
+//            if !AVCaptureDevice.devices(for: .video).isEmpty {
+//                AVCaptureDevice.requestAccess(for: .video) { (granted) in
+//                    if granted {
+//                        success()
+//                    }
+//                }
+//            }
+//        }
     }
     
     private static func attemptAccessPhoto(success:@escaping () -> Void) {
