@@ -64,6 +64,11 @@ class LoginViewModel: BaseViewModel {
         return UserApi.loginCode(mobile: mobile, code: code).rac_response(PatientInfoModel.self).on { (resp) in
             if let patientModel = resp.content {
                 patientInfoProperty.value = patientModel
+                if !patientModel.sessionId.isEmpty {
+                    LoginManager.shared.sessionId = patientModel.sessionId + ",2"
+                } else {
+                    LoginManager.shared.sessionId = ""
+                }
             }
         }
     }
@@ -72,6 +77,11 @@ class LoginViewModel: BaseViewModel {
         return UserApi.loginPwd(mobile: mobile, password: password).rac_response(PatientInfoModel.self).on { (resp) in
             if let patientModel = resp.content {
                 patientInfoProperty.value = patientModel
+                if !patientModel.sessionId.isEmpty {
+                    LoginManager.shared.sessionId = patientModel.sessionId + ",2"
+                } else {
+                    LoginManager.shared.sessionId = ""
+                }
             }
         }
     }

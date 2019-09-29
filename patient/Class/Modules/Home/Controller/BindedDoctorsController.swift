@@ -16,7 +16,7 @@ class BindedDoctorsController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "复诊/购药"
+        title = "复诊 / 购药"
         setUI()
         setBinding()
     }

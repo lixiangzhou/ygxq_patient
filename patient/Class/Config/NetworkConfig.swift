@@ -24,7 +24,7 @@ struct NetworkConfig {
         }
         
         //    return "http://172.21.20.247:8889/shdr-service-basic"
-        //    return "http://172.21.20.68:8889/shdr-service-basic"
+//        return URL(string: "http://172.21.20.68:8889/shdr-service-basic")!
     }
 
     static var APP_PAY_URL: URL {

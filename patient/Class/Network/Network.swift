@@ -46,7 +46,7 @@ extension TargetType {
     var headers: [String : String]? {
         return [
             "Content-Type": "application/json;charset=utf-8",
-//            "sessionId": LoginManager.shared.sessionId,
+            "sessionId": LoginManager.shared.sessionId,
             "os_type": "CMN_OS_T_IOS",
             "client_type": "CMN_CLNT_T_PT"
         ]
@@ -113,6 +113,10 @@ extension TargetType {
         case .success:
             if responseModel.resultcode == 200 {
                 return responseModel.content
+            } else if responseModel.resultcode == 209 {
+                HUD.show(toast: "您已在其他设备登录")
+                patientInfoProperty.value = nil
+                return nil
             } else {
                 return nil
             }

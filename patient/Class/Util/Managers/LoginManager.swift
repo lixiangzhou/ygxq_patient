@@ -11,8 +11,17 @@ import ReactiveSwift
 
 class LoginManager {
     static let shared = LoginManager()
-    var sessionId = ""
-    private init() { }
+    var sessionId: String = "" {
+        didSet {
+            UserDefaults.standard.set(sessionId, forKey: sessionKey)
+        }
+    }
+    
+    private let sessionKey = "sessionKey"
+    
+    private init() {
+        sessionId = (UserDefaults.standard.value(forKey: sessionKey) as? String) ?? ""
+    }
     
     func setup() {
         patientInfoProperty.skipRepeats { return $0?.id == $1?.id }.signal.observeValues { (p) in
@@ -25,7 +34,6 @@ class LoginManager {
                     rootVC.selectedIndex = 0
                 }
             }
-            self.sessionId = p?.sessionId ?? ""
         }
     }
 }

@@ -20,6 +20,8 @@ class LongServiceViewModel: BaseViewModel {
     let doctorProperty = MutableProperty<DoctorInfoModel?>(nil)
     let servicesProperty = MutableProperty<[LongServiceModel]?>(nil)
     
+    let hasOpenSerProperty = MutableProperty<Bool>(false)
+    
     /// 获取套餐
     func getServices() {
         ServiceApi.queryServices(did: did).rac_responseModel([LongServiceModel].self).skipNil().startWithValues { [weak self] (result) in
@@ -43,6 +45,25 @@ class LongServiceViewModel: BaseViewModel {
                 self?.getDocData()
             } else {
                 self?.dataSourceProperty.value = []
+            }
+        }
+    }
+    
+    func getSers() {
+        DoctorApi.serList(duid: did, puid: patientId).rac_responseModel([DoctorSerModel].self).startWithValues { [weak self] list in
+            guard let self = self else { return }
+            if let list = list {
+                for m in list {
+                    if !m.serType.hasPrefix("UTOPIA") {
+                        if m.indate == self.indate {
+                            self.hasOpenSerProperty.value = true
+                            return
+                        }
+                    }
+                }
+                self.hasOpenSerProperty.value = false
+            } else {
+                self.hasOpenSerProperty.value = false
             }
         }
     }
