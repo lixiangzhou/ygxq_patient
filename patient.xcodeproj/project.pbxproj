@@ -316,6 +316,46 @@
 		10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */; };
 		10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */; };
 		10E1DF38230500AC007AD76A /* VideoConsultDiseaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */; };
+		10E22BE9234C664F0084E6FB /* AIEcgSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10E22B85234C664E0084E6FB /* AIEcgSDK.bundle */; };
+		10E22BEA234C664F0084E6FB /* AIEcgSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E22B86234C664E0084E6FB /* AIEcgSDK.framework */; };
+		10E22BEB234C664F0084E6FB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B89234C664E0084E6FB /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		10E22BEC234C664F0084E6FB /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B92234C664E0084E6FB /* ViewController+MASAdditions.m */; };
+		10E22BED234C664F0084E6FB /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B96234C664E0084E6FB /* MASCompositeConstraint.m */; };
+		10E22BEE234C664F0084E6FB /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B97234C664E0084E6FB /* MASConstraintMaker.m */; };
+		10E22BEF234C664F0084E6FB /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B98234C664E0084E6FB /* MASLayoutConstraint.m */; };
+		10E22BF0234C664F0084E6FB /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B99234C664E0084E6FB /* NSArray+MASAdditions.m */; };
+		10E22BF1234C664F0084E6FB /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B9A234C664E0084E6FB /* View+MASAdditions.m */; };
+		10E22BF2234C664F0084E6FB /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B9D234C664E0084E6FB /* MASConstraint.m */; };
+		10E22BF3234C664F0084E6FB /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22B9F234C664E0084E6FB /* MASViewConstraint.m */; };
+		10E22BF4234C664F0084E6FB /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BA0234C664E0084E6FB /* MASViewAttribute.m */; };
+		10E22BF6234C664F0084E6FB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BA3234C664E0084E6FB /* Reachability.m */; };
+		10E22BF7234C664F0084E6FB /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BA8234C664E0084E6FB /* unzip.c */; };
+		10E22BF8234C664F0084E6FB /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BA9234C664E0084E6FB /* zip.c */; };
+		10E22BF9234C664F0084E6FB /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BAA234C664E0084E6FB /* ioapi.c */; };
+		10E22BFA234C664F0084E6FB /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BAB234C664E0084E6FB /* mztools.c */; };
+		10E22BFB234C664F0084E6FB /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BB3234C664E0084E6FB /* SSZipArchive.m */; };
+		10E22BFC234C664F0084E6FB /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BB6234C664F0084E6FB /* aeskey.c */; };
+		10E22BFD234C664F0084E6FB /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BB7234C664F0084E6FB /* hmac.c */; };
+		10E22BFE234C664F0084E6FB /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BBA234C664F0084E6FB /* aescrypt.c */; };
+		10E22BFF234C664F0084E6FB /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BBB234C664F0084E6FB /* fileenc.c */; };
+		10E22C00234C664F0084E6FB /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BBE234C664F0084E6FB /* sha1.c */; };
+		10E22C01234C664F0084E6FB /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BC3234C664F0084E6FB /* prng.c */; };
+		10E22C02234C664F0084E6FB /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BC5234C664F0084E6FB /* pwd2key.c */; };
+		10E22C03234C664F0084E6FB /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BC6234C664F0084E6FB /* aestab.c */; };
+		10E22C04234C664F0084E6FB /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BC9234C664F0084E6FB /* entropy.c */; };
+		10E22C05234C664F0084E6FB /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BCF234C664F0084E6FB /* AFURLResponseSerialization.m */; };
+		10E22C06234C664F0084E6FB /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BD0234C664F0084E6FB /* AFHTTPSessionManager.m */; };
+		10E22C07234C664F0084E6FB /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BD2234C664F0084E6FB /* AFURLSessionManager.m */; };
+		10E22C08234C664F0084E6FB /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BD3234C664F0084E6FB /* AFURLRequestSerialization.m */; };
+		10E22C09234C664F0084E6FB /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BD5234C664F0084E6FB /* AFNetworkReachabilityManager.m */; };
+		10E22C0A234C664F0084E6FB /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BD6234C664F0084E6FB /* AFSecurityPolicy.m */; };
+		10E22C0B234C664F0084E6FB /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BDB234C664F0084E6FB /* DDXMLElement.m */; };
+		10E22C0C234C664F0084E6FB /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BDF234C664F0084E6FB /* DDXMLElementAdditions.m */; };
+		10E22C0D234C664F0084E6FB /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BE0234C664F0084E6FB /* DDXMLNode.m */; };
+		10E22C0E234C664F0084E6FB /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BE1234C664F0084E6FB /* DDXMLDocument.m */; };
+		10E22C0F234C664F0084E6FB /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E22BE7234C664F0084E6FB /* NSString+DDXML.m */; };
+		10E22C11234C68EF0084E6FB /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E22C10234C68EF0084E6FB /* libxml2.tbd */; };
+		10E22C18234C6B440084E6FB /* HealthDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E22C17234C6B440084E6FB /* HealthDataController.swift */; };
 		10E820BA23321550005466A0 /* HutPackageDetailOutlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820B923321550005466A0 /* HutPackageDetailOutlineCell.swift */; };
 		10E820BC23321567005466A0 /* HutPackageDetailContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820BB23321567005466A0 /* HutPackageDetailContentCell.swift */; };
 		10E820BE23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E820BD23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift */; };
@@ -659,6 +699,97 @@
 		10E1DF332304FB39007AD76A /* VideoConsultPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultPicCell.swift; sourceTree = "<group>"; };
 		10E1DF352304FB4B007AD76A /* VideoConsultTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultTimeCell.swift; sourceTree = "<group>"; };
 		10E1DF37230500AC007AD76A /* VideoConsultDiseaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultDiseaseCell.swift; sourceTree = "<group>"; };
+		10E22B85234C664E0084E6FB /* AIEcgSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AIEcgSDK.bundle; sourceTree = "<group>"; };
+		10E22B86234C664E0084E6FB /* AIEcgSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AIEcgSDK.framework; sourceTree = "<group>"; };
+		10E22B88234C664E0084E6FB /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		10E22B89234C664E0084E6FB /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		10E22B8A234C664E0084E6FB /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		10E22B8B234C664E0084E6FB /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		10E22B8C234C664E0084E6FB /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		10E22B8D234C664E0084E6FB /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		10E22B8E234C664E0084E6FB /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		10E22B8F234C664E0084E6FB /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		10E22B90234C664E0084E6FB /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		10E22B91234C664E0084E6FB /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		10E22B92234C664E0084E6FB /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		10E22B93234C664E0084E6FB /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		10E22B94234C664E0084E6FB /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		10E22B95234C664E0084E6FB /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		10E22B96234C664E0084E6FB /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		10E22B97234C664E0084E6FB /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		10E22B98234C664E0084E6FB /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		10E22B99234C664E0084E6FB /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		10E22B9A234C664E0084E6FB /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		10E22B9B234C664E0084E6FB /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		10E22B9C234C664E0084E6FB /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		10E22B9D234C664E0084E6FB /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		10E22B9E234C664E0084E6FB /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		10E22B9F234C664E0084E6FB /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		10E22BA0234C664E0084E6FB /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		10E22BA3234C664E0084E6FB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		10E22BA4234C664E0084E6FB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		10E22BA6234C664E0084E6FB /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		10E22BA8234C664E0084E6FB /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		10E22BA9234C664E0084E6FB /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		10E22BAA234C664E0084E6FB /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		10E22BAB234C664E0084E6FB /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		10E22BAC234C664E0084E6FB /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		10E22BAD234C664E0084E6FB /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		10E22BAE234C664E0084E6FB /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		10E22BAF234C664E0084E6FB /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		10E22BB0234C664E0084E6FB /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		10E22BB1234C664E0084E6FB /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		10E22BB2234C664E0084E6FB /* SSZipCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipCommon.h; sourceTree = "<group>"; };
+		10E22BB3234C664E0084E6FB /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		10E22BB5234C664F0084E6FB /* prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng.h; sourceTree = "<group>"; };
+		10E22BB6234C664F0084E6FB /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
+		10E22BB7234C664F0084E6FB /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		10E22BB8234C664F0084E6FB /* aestab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aestab.h; sourceTree = "<group>"; };
+		10E22BB9234C664F0084E6FB /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
+		10E22BBA234C664F0084E6FB /* aescrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aescrypt.c; sourceTree = "<group>"; };
+		10E22BBB234C664F0084E6FB /* fileenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileenc.c; sourceTree = "<group>"; };
+		10E22BBC234C664F0084E6FB /* aesopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aesopt.h; sourceTree = "<group>"; };
+		10E22BBD234C664F0084E6FB /* aes_via_ace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes_via_ace.h; sourceTree = "<group>"; };
+		10E22BBE234C664F0084E6FB /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		10E22BBF234C664F0084E6FB /* brg_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_types.h; sourceTree = "<group>"; };
+		10E22BC0234C664F0084E6FB /* entropy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entropy.h; sourceTree = "<group>"; };
+		10E22BC1234C664F0084E6FB /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		10E22BC2234C664F0084E6FB /* brg_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_endian.h; sourceTree = "<group>"; };
+		10E22BC3234C664F0084E6FB /* prng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prng.c; sourceTree = "<group>"; };
+		10E22BC4234C664F0084E6FB /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		10E22BC5234C664F0084E6FB /* pwd2key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pwd2key.c; sourceTree = "<group>"; };
+		10E22BC6234C664F0084E6FB /* aestab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aestab.c; sourceTree = "<group>"; };
+		10E22BC7234C664F0084E6FB /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		10E22BC8234C664F0084E6FB /* fileenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileenc.h; sourceTree = "<group>"; };
+		10E22BC9234C664F0084E6FB /* entropy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = entropy.c; sourceTree = "<group>"; };
+		10E22BCB234C664F0084E6FB /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		10E22BCC234C664F0084E6FB /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		10E22BCD234C664F0084E6FB /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		10E22BCE234C664F0084E6FB /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		10E22BCF234C664F0084E6FB /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		10E22BD0234C664F0084E6FB /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		10E22BD1234C664F0084E6FB /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		10E22BD2234C664F0084E6FB /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		10E22BD3234C664F0084E6FB /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		10E22BD4234C664F0084E6FB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		10E22BD5234C664F0084E6FB /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		10E22BD6234C664F0084E6FB /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		10E22BD7234C664F0084E6FB /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		10E22BD9234C664F0084E6FB /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
+		10E22BDA234C664F0084E6FB /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		10E22BDB234C664F0084E6FB /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElement.m; sourceTree = "<group>"; };
+		10E22BDC234C664F0084E6FB /* KissXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissXML.h; sourceTree = "<group>"; };
+		10E22BDE234C664F0084E6FB /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		10E22BDF234C664F0084E6FB /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		10E22BE0234C664F0084E6FB /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
+		10E22BE1234C664F0084E6FB /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
+		10E22BE3234C664F0084E6FB /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		10E22BE4234C664F0084E6FB /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
+		10E22BE6234C664F0084E6FB /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
+		10E22BE7234C664F0084E6FB /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
+		10E22BE8234C664F0084E6FB /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
+		10E22C10234C68EF0084E6FB /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		10E22C17234C6B440084E6FB /* HealthDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataController.swift; sourceTree = "<group>"; };
 		10E820B923321550005466A0 /* HutPackageDetailOutlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailOutlineCell.swift; sourceTree = "<group>"; };
 		10E820BB23321567005466A0 /* HutPackageDetailContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailContentCell.swift; sourceTree = "<group>"; };
 		10E820BD23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutPackageDetailTargetAudienceCell.swift; sourceTree = "<group>"; };
@@ -691,7 +822,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E22C11234C68EF0084E6FB /* libxml2.tbd in Frameworks */,
 				10CAF3E522AFAFB600F20E81 /* RongCallKit.framework in Frameworks */,
+				10E22BEA234C664F0084E6FB /* AIEcgSDK.framework in Frameworks */,
 				A881DD3C9A26108C9D825B66 /* Pods_patient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1019,6 +1152,12 @@
 		1014D0452293A6D700294558 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				10E22BCA234C664F0084E6FB /* AFNetworking */,
+				10E22B84234C664E0084E6FB /* AIEcgSDK */,
+				10E22BD8234C664F0084E6FB /* KissXML */,
+				10E22B87234C664E0084E6FB /* Masonry */,
+				10E22BA2234C664E0084E6FB /* Reachability */,
+				10E22BA5234C664E0084E6FB /* SSZipArchive */,
 				10052CF7233CBED000C6FDE5 /* Aspects */,
 				104FFB042314C9B900E51033 /* FSPagerView */,
 				104E3A9022B8E5E600A84DB2 /* LLSegmentViewController */,
@@ -1223,6 +1362,7 @@
 		104E3A7B22B892E800A84DB2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				10E22C12234C6A590084E6FB /* HealthData */,
 				105653C32321F0EA001C31A0 /* FUVisitPlan */,
 				104FC4D12316755800ECB82B /* Pay */,
 				104FC4C323162A7A00ECB82B /* Doctor */,
@@ -1805,6 +1945,217 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		10E22B84234C664E0084E6FB /* AIEcgSDK */ = {
+			isa = PBXGroup;
+			children = (
+				10E22B85234C664E0084E6FB /* AIEcgSDK.bundle */,
+				10E22B86234C664E0084E6FB /* AIEcgSDK.framework */,
+			);
+			path = AIEcgSDK;
+			sourceTree = "<group>";
+		};
+		10E22B87234C664E0084E6FB /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				10E22B88234C664E0084E6FB /* MASCompositeConstraint.h */,
+				10E22B89234C664E0084E6FB /* NSLayoutConstraint+MASDebugAdditions.m */,
+				10E22B8A234C664E0084E6FB /* MASConstraint+Private.h */,
+				10E22B8B234C664E0084E6FB /* MASLayoutConstraint.h */,
+				10E22B8C234C664E0084E6FB /* NSArray+MASShorthandAdditions.h */,
+				10E22B8D234C664E0084E6FB /* MASConstraintMaker.h */,
+				10E22B8E234C664E0084E6FB /* View+MASAdditions.h */,
+				10E22B8F234C664E0084E6FB /* NSArray+MASAdditions.h */,
+				10E22B90234C664E0084E6FB /* MASUtilities.h */,
+				10E22B91234C664E0084E6FB /* MASViewAttribute.h */,
+				10E22B92234C664E0084E6FB /* ViewController+MASAdditions.m */,
+				10E22B93234C664E0084E6FB /* MASViewConstraint.h */,
+				10E22B94234C664E0084E6FB /* MASConstraint.h */,
+				10E22B95234C664E0084E6FB /* NSLayoutConstraint+MASDebugAdditions.h */,
+				10E22B96234C664E0084E6FB /* MASCompositeConstraint.m */,
+				10E22B97234C664E0084E6FB /* MASConstraintMaker.m */,
+				10E22B98234C664E0084E6FB /* MASLayoutConstraint.m */,
+				10E22B99234C664E0084E6FB /* NSArray+MASAdditions.m */,
+				10E22B9A234C664E0084E6FB /* View+MASAdditions.m */,
+				10E22B9B234C664E0084E6FB /* View+MASShorthandAdditions.h */,
+				10E22B9C234C664E0084E6FB /* Masonry.h */,
+				10E22B9D234C664E0084E6FB /* MASConstraint.m */,
+				10E22B9E234C664E0084E6FB /* ViewController+MASAdditions.h */,
+				10E22B9F234C664E0084E6FB /* MASViewConstraint.m */,
+				10E22BA0234C664E0084E6FB /* MASViewAttribute.m */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		10E22BA2234C664E0084E6FB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BA3234C664E0084E6FB /* Reachability.m */,
+				10E22BA4234C664E0084E6FB /* Reachability.h */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		10E22BA5234C664E0084E6FB /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BA6234C664E0084E6FB /* ZipArchive.h */,
+				10E22BA7234C664E0084E6FB /* minizip */,
+				10E22BB1234C664E0084E6FB /* SSZipArchive.h */,
+				10E22BB2234C664E0084E6FB /* SSZipCommon.h */,
+				10E22BB3234C664E0084E6FB /* SSZipArchive.m */,
+				10E22BB4234C664E0084E6FB /* aes */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		10E22BA7234C664E0084E6FB /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BA8234C664E0084E6FB /* unzip.c */,
+				10E22BA9234C664E0084E6FB /* zip.c */,
+				10E22BAA234C664E0084E6FB /* ioapi.c */,
+				10E22BAB234C664E0084E6FB /* mztools.c */,
+				10E22BAC234C664E0084E6FB /* crypt.h */,
+				10E22BAD234C664E0084E6FB /* zip.h */,
+				10E22BAE234C664E0084E6FB /* unzip.h */,
+				10E22BAF234C664E0084E6FB /* mztools.h */,
+				10E22BB0234C664E0084E6FB /* ioapi.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		10E22BB4234C664E0084E6FB /* aes */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BB5234C664F0084E6FB /* prng.h */,
+				10E22BB6234C664F0084E6FB /* aeskey.c */,
+				10E22BB7234C664F0084E6FB /* hmac.c */,
+				10E22BB8234C664F0084E6FB /* aestab.h */,
+				10E22BB9234C664F0084E6FB /* pwd2key.h */,
+				10E22BBA234C664F0084E6FB /* aescrypt.c */,
+				10E22BBB234C664F0084E6FB /* fileenc.c */,
+				10E22BBC234C664F0084E6FB /* aesopt.h */,
+				10E22BBD234C664F0084E6FB /* aes_via_ace.h */,
+				10E22BBE234C664F0084E6FB /* sha1.c */,
+				10E22BBF234C664F0084E6FB /* brg_types.h */,
+				10E22BC0234C664F0084E6FB /* entropy.h */,
+				10E22BC1234C664F0084E6FB /* hmac.h */,
+				10E22BC2234C664F0084E6FB /* brg_endian.h */,
+				10E22BC3234C664F0084E6FB /* prng.c */,
+				10E22BC4234C664F0084E6FB /* aes.h */,
+				10E22BC5234C664F0084E6FB /* pwd2key.c */,
+				10E22BC6234C664F0084E6FB /* aestab.c */,
+				10E22BC7234C664F0084E6FB /* sha1.h */,
+				10E22BC8234C664F0084E6FB /* fileenc.h */,
+				10E22BC9234C664F0084E6FB /* entropy.c */,
+			);
+			path = aes;
+			sourceTree = "<group>";
+		};
+		10E22BCA234C664F0084E6FB /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BCB234C664F0084E6FB /* AFSecurityPolicy.h */,
+				10E22BCC234C664F0084E6FB /* AFNetworkReachabilityManager.h */,
+				10E22BCD234C664F0084E6FB /* AFURLSessionManager.h */,
+				10E22BCE234C664F0084E6FB /* AFURLRequestSerialization.h */,
+				10E22BCF234C664F0084E6FB /* AFURLResponseSerialization.m */,
+				10E22BD0234C664F0084E6FB /* AFHTTPSessionManager.m */,
+				10E22BD1234C664F0084E6FB /* AFURLResponseSerialization.h */,
+				10E22BD2234C664F0084E6FB /* AFURLSessionManager.m */,
+				10E22BD3234C664F0084E6FB /* AFURLRequestSerialization.m */,
+				10E22BD4234C664F0084E6FB /* AFNetworking.h */,
+				10E22BD5234C664F0084E6FB /* AFNetworkReachabilityManager.m */,
+				10E22BD6234C664F0084E6FB /* AFSecurityPolicy.m */,
+				10E22BD7234C664F0084E6FB /* AFHTTPSessionManager.h */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		10E22BD8234C664F0084E6FB /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BD9234C664F0084E6FB /* DDXMLDocument.h */,
+				10E22BDA234C664F0084E6FB /* DDXML.h */,
+				10E22BDB234C664F0084E6FB /* DDXMLElement.m */,
+				10E22BDC234C664F0084E6FB /* KissXML.h */,
+				10E22BDD234C664F0084E6FB /* Additions */,
+				10E22BE0234C664F0084E6FB /* DDXMLNode.m */,
+				10E22BE1234C664F0084E6FB /* DDXMLDocument.m */,
+				10E22BE2234C664F0084E6FB /* Private */,
+				10E22BE4234C664F0084E6FB /* DDXMLElement.h */,
+				10E22BE5234C664F0084E6FB /* Categories */,
+				10E22BE8234C664F0084E6FB /* DDXMLNode.h */,
+			);
+			path = KissXML;
+			sourceTree = "<group>";
+		};
+		10E22BDD234C664F0084E6FB /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BDE234C664F0084E6FB /* DDXMLElementAdditions.h */,
+				10E22BDF234C664F0084E6FB /* DDXMLElementAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		10E22BE2234C664F0084E6FB /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BE3234C664F0084E6FB /* DDXMLPrivate.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		10E22BE5234C664F0084E6FB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				10E22BE6234C664F0084E6FB /* NSString+DDXML.h */,
+				10E22BE7234C664F0084E6FB /* NSString+DDXML.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		10E22C12234C6A590084E6FB /* HealthData */ = {
+			isa = PBXGroup;
+			children = (
+				10E22C16234C6A730084E6FB /* View */,
+				10E22C15234C6A6D0084E6FB /* Model */,
+				10E22C14234C6A660084E6FB /* ViewModel */,
+				10E22C13234C6A620084E6FB /* Controller */,
+			);
+			path = HealthData;
+			sourceTree = "<group>";
+		};
+		10E22C13234C6A620084E6FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				10E22C17234C6B440084E6FB /* HealthDataController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		10E22C14234C6A660084E6FB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		10E22C15234C6A6D0084E6FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		10E22C16234C6A730084E6FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		23724EEF2FE00151F84E95C2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1817,6 +2168,7 @@
 		63206486C1EFA5B7A6507BB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10E22C10234C68EF0084E6FB /* libxml2.tbd */,
 				10CAF3E422AFAFB600F20E81 /* RongCallKit.framework */,
 				E9153057767E54CA68B84852 /* Pods_patient.framework */,
 			);
@@ -1889,6 +2241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E22BE9234C664F0084E6FB /* AIEcgSDK.bundle in Resources */,
 				1014CFA6229391E200294558 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1959,7 +2312,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E22C01234C664F0084E6FB /* prng.c in Sources */,
 				1014D0522293A6D700294558 /* UIViewController+ZZExtension.swift in Sources */,
+				10E22BF7234C664F0084E6FB /* unzip.c in Sources */,
 				100AEE3422C9FF5300094AE2 /* UploadApi.swift in Sources */,
 				100B6C3A22A1311200C5262C /* HUDConfig.swift in Sources */,
 				10CAF38E22A8B5DF00F20E81 /* PatientInfoModel.swift in Sources */,
@@ -1979,6 +2334,7 @@
 				108DCE42231CE10A0038F377 /* SunnyDrugBuyIdView.swift in Sources */,
 				101C2EAB2325EE3200AB4C53 /* AddressShowView.swift in Sources */,
 				101C2E952323484F00AB4C53 /* InvoiceSelectViewModel.swift in Sources */,
+				10E22BF1234C664F0084E6FB /* View+MASAdditions.m in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
 				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
@@ -1989,11 +2345,13 @@
 				106D3755231E64A60079D899 /* PayResultViewModel.swift in Sources */,
 				10E1DF2E2304FAC0007AD76A /* VideoConsultResultViewModel.swift in Sources */,
 				10CA473622F9163100A4E244 /* DiseaseModel.swift in Sources */,
+				10E22BEF234C664F0084E6FB /* MASLayoutConstraint.m in Sources */,
 				10A2755B230BC34300B568B3 /* SystemMsgCell.swift in Sources */,
 				105653BE23211376001C31A0 /* TaskTipListController.swift in Sources */,
 				1043BF142328DD7500271194 /* JPushManager.swift in Sources */,
 				1014D0612293A6D700294558 /* BaseTabBarController.swift in Sources */,
 				101C2EB92328A35900AB4C53 /* WorkOrderModel.swift in Sources */,
+				10E22C05234C664F0084E6FB /* AFURLResponseSerialization.m in Sources */,
 				108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */,
 				104FC4D0231651D000ECB82B /* DoctorDetailMsgCell.swift in Sources */,
 				1014D0592293A6D700294558 /* UIFont+ZZExtension.swift in Sources */,
@@ -2002,6 +2360,7 @@
 				1030C2A9231FBBE200F13755 /* UploadHistoryController.swift in Sources */,
 				104E3A7322B7A6F600A84DB2 /* NextGrowingInternalTextView.swift in Sources */,
 				1014D05C2293A6D700294558 /* UIScrollView+ZZExtension.swift in Sources */,
+				10E22C04234C664F0084E6FB /* entropy.c in Sources */,
 				109B74C323040DB40034346D /* ConsultApi.swift in Sources */,
 				1014D0582293A6D700294558 /* UIImageView+ZZExtension.swift in Sources */,
 				10E820CE233480EE005466A0 /* HutPackageTimeBuyDetailCell.swift in Sources */,
@@ -2015,13 +2374,16 @@
 				108C080222BB611B00B2EBE9 /* TextLeftRightCell.swift in Sources */,
 				101C2EB523276AF500AB4C53 /* HutPackageDetailViewModel.swift in Sources */,
 				108C081F22BCFAA800B2EBE9 /* CheckListViewModel.swift in Sources */,
+				10E22C0C234C664F0084E6FB /* DDXMLElementAdditions.m in Sources */,
 				106DE8D82317BA28001DF4DE /* VideoConsultBuyDiseaseView.swift in Sources */,
 				104FC4C823162ABF00ECB82B /* DoctorDetailController.swift in Sources */,
 				1030C2AF231FBC4A00F13755 /* PictureListViewModel.swift in Sources */,
 				10CAF3DC22AE339700F20E81 /* DrawableView.swift in Sources */,
 				1014D0492293A6D700294558 /* Timer+ZZExtension.swift in Sources */,
 				101C2E992323488700AB4C53 /* InvoiceRecordListViewModel.swift in Sources */,
+				10E22C18234C6B440084E6FB /* HealthDataController.swift in Sources */,
 				10FF889E2314D80A008148BC /* HomeViewModel.swift in Sources */,
+				10E22BF3234C664F0084E6FB /* MASViewConstraint.m in Sources */,
 				10CAF3DE22AF42DD00F20E81 /* RCManager.swift in Sources */,
 				101C2EA123234B4200AB4C53 /* InvoiceRecordListCell.swift in Sources */,
 				100AEE6E22CD967300094AE2 /* DrugUsedController.swift in Sources */,
@@ -2053,12 +2415,14 @@
 				10E1DF342304FB39007AD76A /* VideoConsultPicCell.swift in Sources */,
 				100AEE4A22CB396D00094AE2 /* SelectDistrictViewModel.swift in Sources */,
 				106D3753231E5A090079D899 /* PayResult2Controller.swift in Sources */,
+				10E22BFA234C664F0084E6FB /* mztools.c in Sources */,
 				109B74BD230408830034346D /* ConsultListCell.swift in Sources */,
 				1030C2BB23209F5500F13755 /* PictureListCell.swift in Sources */,
 				1030AABF229E868F00519CA4 /* InputFieldView.swift in Sources */,
 				10A27559230BC17500B568B3 /* MsgModel.swift in Sources */,
 				100AEE6622CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift in Sources */,
 				10052CFA233CBED000C6FDE5 /* Aspects.m in Sources */,
+				10E22BF2234C664F0084E6FB /* MASConstraint.m in Sources */,
 				1014D04B2293A6D700294558 /* String+ZZExtension.swift in Sources */,
 				10CAF3CE22A917ED00F20E81 /* SizeColorConfig.swift in Sources */,
 				10E820C0233215A7005466A0 /* HutPackageDetailServiceFlowCell.swift in Sources */,
@@ -2072,6 +2436,8 @@
 				10CAF38C22A7CC8B00F20E81 /* AuthApi.swift in Sources */,
 				1059E45D230CF2CC005F5326 /* SunnyDrugOrderDetailViewModel.swift in Sources */,
 				101C2EA323234B6E00AB4C53 /* InvoiceContentCell.swift in Sources */,
+				10E22C0D234C664F0084E6FB /* DDXMLNode.m in Sources */,
+				10E22BFC234C664F0084E6FB /* aeskey.c in Sources */,
 				106DE8CA23176FA9001DF4DE /* WXManager.swift in Sources */,
 				100FCC2D233620FD000E8E14 /* InvoiceExpressView.swift in Sources */,
 				104FFB0D2314C9B900E51033 /* FSPageViewTransformer.swift in Sources */,
@@ -2082,6 +2448,7 @@
 				1014D0512293A6D700294558 /* Calendar+ZZExtension.swift in Sources */,
 				104FFB122314C9B900E51033 /* FSPagerCollectionView.swift in Sources */,
 				10A2754C230BBD1D00B568B3 /* CommonApi.swift in Sources */,
+				10E22C00234C664F0084E6FB /* sha1.c in Sources */,
 				108C081922BCE99400B2EBE9 /* HLRApi.swift in Sources */,
 				100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
@@ -2091,6 +2458,7 @@
 				105653C0232113A2001C31A0 /* TaskTipListViewModel.swift in Sources */,
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
 				108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */,
+				10E22C06234C664F0084E6FB /* AFHTTPSessionManager.m in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				101C2E932323483400AB4C53 /* InvoiceMakeController.swift in Sources */,
 				101C2EB123261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift in Sources */,
@@ -2102,6 +2470,7 @@
 				104AD5BD231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift in Sources */,
 				109B74B9230401D80034346D /* StringExtension.swift in Sources */,
 				1030AA9E229D17FD00519CA4 /* SettingViewModel.swift in Sources */,
+				10E22BEB234C664F0084E6FB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */,
 				10E820BA23321550005466A0 /* HutPackageDetailOutlineCell.swift in Sources */,
 				101C2E9D232348A700AB4C53 /* InvoiceContentViewModel.swift in Sources */,
@@ -2110,6 +2479,7 @@
 				104FC4CC231651AB00ECB82B /* DoctorDetailInfoCell.swift in Sources */,
 				1059E45B230CF2AC005F5326 /* SunnyDrugOrderDetailController.swift in Sources */,
 				10503A06230794D7000E90F0 /* LongServiceDocInfoCell.swift in Sources */,
+				10E22BED234C664F0084E6FB /* MASCompositeConstraint.m in Sources */,
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
 				108C080A22BCD36000B2EBE9 /* HistoryProfileDataController.swift in Sources */,
 				10CAF3D022ADE83D00F20E81 /* ConstraintExtension.swift in Sources */,
@@ -2143,6 +2513,7 @@
 				10FF88B023151065008148BC /* QRCodeScanController.swift in Sources */,
 				104AD5C1231D20DF000AD464 /* SignNameTipView.swift in Sources */,
 				10E820BE23321587005466A0 /* HutPackageDetailTargetAudienceCell.swift in Sources */,
+				10E22BF0234C664F0084E6FB /* NSArray+MASAdditions.m in Sources */,
 				100B6C3E22A1341100C5262C /* AppearanceConfig.swift in Sources */,
 				101C2E972323486200AB4C53 /* InvoiceMakeViewModel.swift in Sources */,
 				108C081722BCE23A00B2EBE9 /* CaseRecordModel.swift in Sources */,
@@ -2157,6 +2528,7 @@
 				104E3A8F22B8E2A700A84DB2 /* OrderController.swift in Sources */,
 				10676BFC23069C0B004A6419 /* LongServiceDoctorListCell.swift in Sources */,
 				109B74B523028A9A0034346D /* ConsultController.swift in Sources */,
+				10E22BFF234C664F0084E6FB /* fileenc.c in Sources */,
 				100C2CFA2318BA7800A820BF /* PictureSelectViewModel.swift in Sources */,
 				1030AA94229CFAE300519CA4 /* BaseViewModel.swift in Sources */,
 				1030C2AD231FBC3700F13755 /* UploadHistoryViewModel.swift in Sources */,
@@ -2169,6 +2541,7 @@
 				1059E469230D1686005F5326 /* SunnyDrugOrderFailCell.swift in Sources */,
 				100AEE5A22CC84C800094AE2 /* CaseDetailOpCell.swift in Sources */,
 				100AEE5E22CC8FC100094AE2 /* CheckDetailViewModel.swift in Sources */,
+				10E22BEE234C664F0084E6FB /* MASConstraintMaker.m in Sources */,
 				1014D0472293A6D700294558 /* DateFormatter+ZZExtension.swift in Sources */,
 				1014D05E2293A6D700294558 /* UISceen+ZZExtension.swift in Sources */,
 				10E820C4233215D3005466A0 /* HutPackageDetailTipCell.swift in Sources */,
@@ -2193,10 +2566,12 @@
 				105653C22321141D001C31A0 /* TaskTipListCell.swift in Sources */,
 				10E1DF302304FB00007AD76A /* VideoConsultDocInfoCell.swift in Sources */,
 				1014D0502293A6D700294558 /* NSObject+ZZExtension.swift in Sources */,
+				10E22C08234C664F0084E6FB /* AFURLRequestSerialization.m in Sources */,
 				1014D0602293A6D700294558 /* UIAlertController+ZZExtension.swift in Sources */,
 				1059E46F230D1EDA005F5326 /* SunnyDrugOrderAssistWxInfoCell.swift in Sources */,
 				108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */,
 				10E820C2233215C2005466A0 /* HutPackageDetailAddressCell.swift in Sources */,
+				10E22C07234C664F0084E6FB /* AFURLSessionManager.m in Sources */,
 				10676BF623068EEC004A6419 /* AlertView.swift in Sources */,
 				101C2E6123222F0200AB4C53 /* FUVistExamListCell.swift in Sources */,
 				1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */,
@@ -2205,10 +2580,13 @@
 				109B74C123040D1A0034346D /* ConsultModel.swift in Sources */,
 				104E3AA822B8E5E700A84DB2 /* LLCtlPageView.swift in Sources */,
 				10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */,
+				10E22BF6234C664F0084E6FB /* Reachability.m in Sources */,
 				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
 				104FFB0C2314C9B900E51033 /* FSPagerView.swift in Sources */,
 				105EFDF0233B04CD00ECC7EE /* HomeHelpTipView.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,
+				10E22BFE234C664F0084E6FB /* aescrypt.c in Sources */,
+				10E22BEC234C664F0084E6FB /* ViewController+MASAdditions.m in Sources */,
 				1059E461230D1624005F5326 /* SunnyDrugOrderDocInfoCell.swift in Sources */,
 				10052CF2233C83A000C6FDE5 /* PwdChangeViewModel.swift in Sources */,
 				1014D0622293A6D700294558 /* BaseController.swift in Sources */,
@@ -2227,20 +2605,25 @@
 				10503A042306B20B000E90F0 /* ThreeColumnView.swift in Sources */,
 				1014D0532293A6D700294558 /* UIView+ZZExtension.swift in Sources */,
 				1030AA9A229CFD9200519CA4 /* TextActionRow.swift in Sources */,
+				10E22C03234C664F0084E6FB /* aestab.c in Sources */,
 				10E820D023348FDF005466A0 /* HutPackageTimeBuyViewModel.swift in Sources */,
 				100AEE4C22CB6B6E00094AE2 /* AddressEditController.swift in Sources */,
 				1014D0542293A6D700294558 /* UIColor+ZZExtension.swift in Sources */,
 				1008F6FB230265CE0078CABD /* UIBarButtonItem+ZZExtension.swift in Sources */,
+				10E22BF4234C664F0084E6FB /* MASViewAttribute.m in Sources */,
 				106DE8D02317B344001DF4DE /* VideoConsultBuyController.swift in Sources */,
 				108C080622BCCF6C00B2EBE9 /* LoginManager.swift in Sources */,
 				1014D0562293A6D700294558 /* UIImage+ZZExtension.swift in Sources */,
 				1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */,
+				10E22C09234C664F0084E6FB /* AFNetworkReachabilityManager.m in Sources */,
 				1030AAA2229D4B8E00519CA4 /* MineHeaderView.swift in Sources */,
 				104E3AA622B8E5E700A84DB2 /* LLSegmentViewController.swift in Sources */,
 				102DDA9F233B3A0B009FC7AA /* UpdateTipView.swift in Sources */,
+				10E22BF8234C664F0084E6FB /* zip.c in Sources */,
 				100AEE4E22CB6EEE00094AE2 /* AddressEditViewModel.swift in Sources */,
 				10E1DF362304FB4B007AD76A /* VideoConsultTimeCell.swift in Sources */,
 				106DE8CC231771B8001DF4DE /* PayApi.swift in Sources */,
+				10E22BFB234C664F0084E6FB /* SSZipArchive.m in Sources */,
 				105DBA7922A6655800F55FE6 /* NSArray+HYBUnicodeReadable.m in Sources */,
 				101C2E6D2322473F00AB4C53 /* SunShineHutModel.swift in Sources */,
 				1014D05A2293A6D700294558 /* UITextField+ZZExtension.swift in Sources */,
@@ -2248,6 +2631,8 @@
 				100AEE5422CC702200094AE2 /* TextLeftGrowTextRightCell.swift in Sources */,
 				1030AA96229CFB2D00519CA4 /* MineViewModel.swift in Sources */,
 				101C2E512321F13B00AB4C53 /* FUVisitPlanController.swift in Sources */,
+				10E22C0A234C664F0084E6FB /* AFSecurityPolicy.m in Sources */,
+				10E22C0F234C664F0084E6FB /* NSString+DDXML.m in Sources */,
 				1030AAB2229E6B5A00519CA4 /* LoginViewModel.swift in Sources */,
 				108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */,
 				101C2E63232230E900AB4C53 /* UIImageViewExtension.swift in Sources */,
@@ -2255,10 +2640,13 @@
 				105039F72306A298000E90F0 /* LongServiceController.swift in Sources */,
 				101C2EB7232885AA00AB4C53 /* TaskWorkApi.swift in Sources */,
 				101C2E8D232347DB00AB4C53 /* InvoiceRecordListController.swift in Sources */,
+				10E22C0E234C664F0084E6FB /* DDXMLDocument.m in Sources */,
 				10052CF4233C83B400C6FDE5 /* PwdChangeController.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
 				10676BF223065A42004A6419 /* ServiceApi.swift in Sources */,
+				10E22C0B234C664F0084E6FB /* DDXMLElement.m in Sources */,
 				1059E471230D3416005F5326 /* AuthorizationManager.swift in Sources */,
+				10E22C02234C664F0084E6FB /* pwd2key.c in Sources */,
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				101C2E912323482400AB4C53 /* InvoiceContentController.swift in Sources */,
 				101C2EBB2328A89900AB4C53 /* SunnyDrugApi.swift in Sources */,
@@ -2267,9 +2655,11 @@
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,
 				1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */,
 				104FFB182314CB6D00E51033 /* HomeHeaderCaseView.swift in Sources */,
+				10E22BF9234C664F0084E6FB /* ioapi.c in Sources */,
 				100AEE5C22CC8FA400094AE2 /* CheckDetailController.swift in Sources */,
 				109B74B223028A250034346D /* SunnyDrugOrderController.swift in Sources */,
 				108C082522BCFCCC00B2EBE9 /* CheckListCell.swift in Sources */,
+				10E22BFD234C664F0084E6FB /* hmac.c in Sources */,
 				105039FC2306A578000E90F0 /* LongServiceModel.swift in Sources */,
 				104E3A7422B7A6F600A84DB2 /* NextGrowingTextView.swift in Sources */,
 				10CAF39122A8BB9C00F20E81 /* PatientManager.swift in Sources */,
@@ -2423,6 +2813,33 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/RongCloudRTC/RongCloudRTC",
+					"$(PROJECT_DIR)/patient/Class/Vender/AIEcgSDK",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HandyJSON/HandyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JXPhotoBrowser/JXPhotoBrowser.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Moya/Moya.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveSwift/ReactiveSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TZImagePickerController/TZImagePickerController.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/WKWebViewJavascriptBridge/WKWebViewJavascriptBridge.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/WZLBadge/WZLBadge.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/WechatOpenSDK\"",
+					"${SDK_ROOT}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = patient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2451,6 +2868,33 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/RongCloudRTC/RongCloudRTC",
+					"$(PROJECT_DIR)/patient/Class/Vender/AIEcgSDK",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HandyJSON/HandyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JXPhotoBrowser/JXPhotoBrowser.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Moya/Moya.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveSwift/ReactiveSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TZImagePickerController/TZImagePickerController.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/WKWebViewJavascriptBridge/WKWebViewJavascriptBridge.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/WZLBadge/WZLBadge.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/WechatOpenSDK\"",
+					"${SDK_ROOT}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = patient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

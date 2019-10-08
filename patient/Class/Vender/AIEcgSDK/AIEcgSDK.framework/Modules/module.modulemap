@@ -1,0 +1,6 @@
+framework module AIEcgSDK {
+  umbrella header "AIEcgSDK.h"
+
+  export *
+  module * { export * }
+}
