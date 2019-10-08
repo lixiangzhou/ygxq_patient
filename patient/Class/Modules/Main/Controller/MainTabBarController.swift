@@ -22,6 +22,7 @@ class MainTabBarController: BaseTabBarController {
     private func addChildControllers() {
         add(HomeController(), title: "首页", img: "tabbar_home", selImg: "tabbar_home_sel")
         add(SunShineHutListController(), title: "服务", img: "tabbar_service", selImg: "tabbar_service_sel")
+        add(HealthDataController(), title: "数据", img: "tabbar_data", selImg: "tabbar_data_sel")
         add(MineController(), title: "我的", img: "tabbar_mine", selImg: "tabbar_mine_sel")
     }
 
