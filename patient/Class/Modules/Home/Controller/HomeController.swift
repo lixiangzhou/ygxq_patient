@@ -57,11 +57,6 @@ extension HomeController {
         tableView.backgroundColor = .cf0efef
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = getFooterView()
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
         tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
         
@@ -73,7 +68,8 @@ extension HomeController {
         setActions()
         
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(-UIScreen.zz_nav_statusHeight)
+            make.bottom.left.right.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { (make) in

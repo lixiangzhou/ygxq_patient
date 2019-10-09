@@ -18,7 +18,7 @@ struct HealthDataModel: ModelProtocol {
     var puid: Int = 0
     var createTime: TimeInterval?
 //    var uploadType:
-    var healthLogValues: String = ""
+    var healthLogValues: String?
     var healthLogValue: Int?
 //    var hlrHealthLogExerciseList:
 }

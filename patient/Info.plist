@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ECG_setting</key>
+	<dict>
+		<key>app_id</key>
+		<string>39288255774797082968</string>
+		<key>app_secret</key>
+		<string>axd4db6114bfac8882b488a1f02514d8539</string>
+		<key>sdk_mode</key>
+		<string>0</string>
+	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

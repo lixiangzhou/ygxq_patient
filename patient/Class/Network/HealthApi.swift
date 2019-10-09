@@ -11,6 +11,8 @@ import Moya
 
 enum HealthApi: TargetType {
     case queryHealthLogs(pid: Int)
+    case queryHealthLogList(pid: Int, type: String, time: TimeInterval)
+    case addLog(params: [String: Any])
 }
 
 extension HealthApi {
@@ -18,6 +20,10 @@ extension HealthApi {
         switch self {
         case .queryHealthLogs:
             return "/health/log/queryHealthLogs"
+        case .queryHealthLogList:
+            return "/health/log/queryHealthLogList"
+        case .addLog:
+            return "/health/log/add"
         }
     }
     
@@ -26,6 +32,14 @@ extension HealthApi {
         switch self {
         case let .queryHealthLogs(pid: pid):
             params["puid"] = pid
+        case let .queryHealthLogList(pid: pid, type: type, time: time):
+            params["createTime"] = time
+            params["healthLogType"] = type
+            params["puid"] = pid
+        case let .addLog(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

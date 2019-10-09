@@ -69,8 +69,8 @@ extension HealthDataCell {
         }
         
         dataLabel.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.left.equalTo(105)
+            make.center.equalToSuperview()
+//            make.left.equalTo(105)
         }
         
         timeLabel.snp.makeConstraints { (make) in

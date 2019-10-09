@@ -21,6 +21,7 @@ class HealthDataController: BaseController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         viewModel.getData()
     }
     // MARK: - Public Property
@@ -35,7 +36,7 @@ class HealthDataController: BaseController {
 extension HealthDataController {
     override func setUI() {
         tableView.backgroundColor = .cf0efef
-        tableView.set(dataSource: self, rowHeight: UITableView.automaticDimension)
+        tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: HealthDataCell.self)
         view.addSubview(tableView)
         
@@ -67,5 +68,12 @@ extension HealthDataController: UITableViewDataSource, UITableViewDelegate {
         cell.dataLabel.attributedText = viewModel.getValue(model: model)
         cell.timeLabel.text = model.createTime?.toTime(format: "MM-dd HH:mm") ?? "暂无数据"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.dataSourceProperty.value[indexPath.row]
+        let vc = HealthDataShowController()
+        vc.viewModel.type = model.healthLogType
+        push(vc)
     }
 }

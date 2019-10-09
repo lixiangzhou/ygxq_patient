@@ -37,7 +37,7 @@ class AlertView: BaseView {
 // MARK: - UI
 extension AlertView {
     private func setUI() {
-        backgroundColor = UIColor(white: 0, alpha: 0.5)
+        backgroundColor = UIColor(white: 0, alpha: 0.6)
         
         contentView.backgroundColor = .cf
         contentView.zz_setCorner(radius: 5, masksToBounds: true)
@@ -73,16 +73,30 @@ extension AlertView {
             make.right.equalTo(-15)
         }
         
-        firstBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(msgLabel.snp.bottom).offset(25)
-            make.left.bottom.equalToSuperview()
-            make.height.equalTo(40)
-        }
-        
-        secondBtn.snp.makeConstraints { (make) in
-            make.top.height.width.equalTo(firstBtn)
-            make.left.equalTo(firstBtn.snp.right)
-            make.right.bottom.equalToSuperview()
+        if firstBtn.currentTitle != nil && secondBtn.currentTitle != nil {
+            firstBtn.snp.makeConstraints { (make) in
+                make.top.equalTo(msgLabel.snp.bottom).offset(25)
+                make.left.bottom.equalToSuperview()
+                make.height.equalTo(40)
+            }
+            
+            secondBtn.snp.makeConstraints { (make) in
+                make.top.height.width.equalTo(firstBtn)
+                make.left.equalTo(firstBtn.snp.right)
+                make.right.bottom.equalToSuperview()
+            }
+        } else if firstBtn.currentTitle != nil {
+            firstBtn.snp.makeConstraints { (make) in
+                make.top.equalTo(msgLabel.snp.bottom).offset(25)
+                make.left.bottom.right.equalToSuperview()
+                make.height.equalTo(40)
+            }
+        } else if secondBtn.currentTitle != nil {
+            secondBtn.snp.makeConstraints { (make) in
+                make.top.equalTo(msgLabel.snp.bottom).offset(25)
+                make.left.bottom.right.equalToSuperview()
+                make.height.equalTo(40)
+            }
         }
     }
 }
