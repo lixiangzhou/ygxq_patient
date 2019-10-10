@@ -35,6 +35,10 @@ class LineView: BaseView {
     var maxYValue: Int?
     var rowCountValue: Int?
     
+    var lineWidth: CGFloat = 1
+    var pointRadius: CGFloat = 2.5
+    var pointWidth: CGFloat = 1.5
+    
     var selectClosure: ((Int) -> Void)?
     
     private var itemWidth: CGFloat = 0
@@ -143,17 +147,15 @@ class LineView: BaseView {
                 scrollView.addSubview(xLine)
                 
                 // 点
-                let pView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
+                let pView = UIView(frame: CGRect(x: 0, y: 0, width: pointRadius * 2, height: pointRadius * 2))
                 pView.center = point
-                pView.layer.masksToBounds = true
-                pView.layer.cornerRadius = 2.5
-                pView.zz_setCorner(radius: 2.5, masksToBounds: true)
-                pView.zz_setBorder(color: model.lineColor, width: 1.5)
+                pView.zz_setCorner(radius: pointRadius, masksToBounds: true)
+                pView.zz_setBorder(color: model.lineColor, width: pointWidth)
                 scrollView.addSubview(pView)
             }
             
             let line = CAShapeLayer()
-            line.lineWidth = 1
+            line.lineWidth = lineWidth
             line.lineJoin = .bevel
             line.lineCap = .round
             line.strokeColor = model.lineColor.cgColor

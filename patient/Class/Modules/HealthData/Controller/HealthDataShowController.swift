@@ -47,6 +47,8 @@ extension HealthDataShowController {
         contentView.addSubview(panelView)
         contentView.addSubview(healthLineView)
         
+        addLineColorView()
+        
         panelView.addClosure = {
             AlertView.show(title: nil, msg: "此功能暂未开通，敬请期待", firstTitle: nil, secondTitle: "我知道了", firstClosure: nil) { (alert) in
                 alert.hide()
@@ -56,14 +58,33 @@ extension HealthDataShowController {
         panelView.inputClosure = { [weak self] in
             let vc = HealthDataInputController()
             vc.viewModel.type = self?.viewModel.type ?? ""
+            vc.viewModel.saveResultProperty.signal.observeValues { (isSuccess) in
+                if isSuccess {
+                    self?.viewModel.selectDate = Date()
+                }
+            }
+            
             self?.push(vc)
         }
         
         healthLineView.titleLabel.text = viewModel.lineTitle
         healthLineView.lineView.selectClosure = { [weak self] idx in
             guard let self = self else { return }
-            self.panelView.valueLabel.text = String(self.viewModel.showValues.first![idx])
+            
+            switch self.viewModel.type {
+            case "HLR_HLG_T_01":
+                let high = self.viewModel.showValues[0][idx]
+                let low = self.viewModel.showValues[1][idx]
+                self.panelView.valueLabel.text = "\(high)/\(low)"
+            default:
+                self.panelView.valueLabel.text = String(self.viewModel.showValues.first![idx])
+            }
             self.panelView.timeLabel.text = self.viewModel.showTimes[idx].toTime()
+        }
+        
+        healthLineView.selectDateClosure = { [weak self] date in
+            self?.viewModel.selectDate = date
+            self?.viewModel.getData()
         }
         
         scrollView.snp.makeConstraints { (make) in
@@ -89,6 +110,44 @@ extension HealthDataShowController {
         }
     }
     
+    private func addLineColorView() {
+        switch viewModel.type {
+        case "HLR_HLG_T_01":
+            let colorView = UIView()
+            let v1 = getColorView(title: "低压", color: .cff7b4f)
+            let v2 = getColorView(title: "高压", color: .cffa306)
+            colorView.addSubview(v1)
+            colorView.addSubview(v2)
+            healthLineView.addSubview(colorView)
+            
+            colorView.snp.makeConstraints { (make) in
+                make.right.equalTo(-15)
+                make.top.bottom.equalTo(healthLineView.titleLabel)
+            }
+            
+            v1.snp.makeConstraints { (make) in
+                make.right.equalTo(v2.snp.left).offset(10)
+                make.width.equalTo(70)
+                make.top.bottom.equalToSuperview()
+            }
+            
+            v2.snp.makeConstraints { (make) in
+                make.width.top.bottom.equalTo(v1)
+                make.right.equalToSuperview()
+            }
+        default:
+            break
+        }
+    }
+    
+    private func getColorView(title: String, color: UIColor) -> UIView {
+        let btn = UIButton(title: " " + title, font: .size(13), titleColor: .c6)
+        btn.isEnabled = false
+        btn.setImage(UIImage.zz_image(withColor: color, imageSize: CGSize(width: 20, height: 10)), for: .normal)
+        btn.sizeToFit()
+        return btn
+    }
+    
     override func setBinding() {
         viewModel.dataSourceProperty.signal.observeValues { [weak self] (models) in
             guard let self = self else { return }
@@ -105,28 +164,8 @@ extension HealthDataShowController {
                 self.panelView.unitLabel.text = model.unit
                 self.panelView.timeLabel.text = model.createTime?.toTime() ?? "  "
                 
+                self.processLineData(models)
                 
-                var times = [String]()
-                var values = [Int]()
-                var timeValues = [TimeInterval]()
-                for m in models {
-                    if let time = m.createTime, let value = m.healthLogValue {
-                        times.append(time.toTime(format: "MM-dd"))
-                        values.append(value)
-                        timeValues.append(time)
-                    }
-                }
-                
-                self.viewModel.showTimes = timeValues
-                self.viewModel.showValues = [values]
-                
-                self.healthLineView.lineView.pointXs = times
-                self.healthLineView.lineView.pointYs = [
-                    LineView.LineModel(lineColor: .cff9a21, string: self.viewModel.title, values: values)
-                ]
-                self.healthLineView.lineView.maxYValue = 200
-                self.healthLineView.lineView.rowCountValue = 5
-                self.healthLineView.lineView.refreshViews()
             } else {
                 self.panelView.valueLabel.text = "  "
                 self.panelView.unitLabel.text = "  "
@@ -136,27 +175,68 @@ extension HealthDataShowController {
     }
 }
 
-// MARK: - Action
-extension HealthDataShowController {
-    
-}
-
-// MARK: - Network
-extension HealthDataShowController {
-    
-}
-
-// MARK: - Delegate Internal
-
-// MARK: -
-
-// MARK: - Delegate External
-
-// MARK: -
-
 // MARK: - Helper
 extension HealthDataShowController {
-    
+    private func processLineData(_ models: [HealthDataModel]) {
+        var times = [String]()
+        var values0 = [Int]()
+        var values1 = [Int]()
+        var timeValues = [TimeInterval]()
+        
+        for m in models {
+            if let time = m.createTime, let value = m.healthLogValue {
+                let t = time.toTime(format: "MM-dd")
+                if !timeValues.contains(time) {
+                    times.append(t)
+                    timeValues.append(time)
+                }
+                
+                switch m.healthLogType {
+                case "HLR_HLG_T_01":
+                    values0.append(value)
+                case "HLR_HLG_T_02":
+                    values1.append(value)
+                case "HLR_HLG_T_10":
+                    values0.append(value)
+                default: break
+                }
+            }
+        }
+        
+        if !timeValues.isEmpty {
+            healthLineView.lineEmpytLabel.isHidden = true
+        }
+        
+        var values = [[Int]]()
+        if !values0.isEmpty {
+            values.append(values0)
+        }
+        if !values1.isEmpty {
+            values.append(values1)
+        }
+        
+        viewModel.showTimes = timeValues
+        viewModel.showValues = values
+        
+        switch viewModel.type {
+        case "HLR_HLG_T_01":
+            healthLineView.lineView.pointYs = [
+                LineView.LineModel(lineColor: .cffa306, string: self.viewModel.title, values: values0),
+                LineView.LineModel(lineColor: .cff7b4f, string: self.viewModel.title, values: values1)
+            ]
+        case "HLR_HLG_T_10":
+            healthLineView.lineView.pointYs = [
+                LineView.LineModel(lineColor: .cff9a21, string: self.viewModel.title, values: values0)
+            ]
+        default: break
+        }
+        
+        healthLineView.lineView.pointXs = times
+        
+        healthLineView.lineView.maxYValue = 200
+        healthLineView.lineView.rowCountValue = 5
+        healthLineView.lineView.refreshViews()
+    }
 }
 
 // MARK: - Other

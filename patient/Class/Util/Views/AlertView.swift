@@ -86,15 +86,19 @@ extension AlertView {
                 make.right.bottom.equalToSuperview()
             }
         } else if firstBtn.currentTitle != nil {
+            firstBtn.zz_setCorner(radius: 5, masksToBounds: true)
             firstBtn.snp.makeConstraints { (make) in
                 make.top.equalTo(msgLabel.snp.bottom).offset(25)
-                make.left.bottom.right.equalToSuperview()
+                make.left.equalTo(15)
+                make.bottom.right.equalTo(-15)
                 make.height.equalTo(40)
             }
         } else if secondBtn.currentTitle != nil {
+            secondBtn.zz_setCorner(radius: 5, masksToBounds: true)
             secondBtn.snp.makeConstraints { (make) in
                 make.top.equalTo(msgLabel.snp.bottom).offset(25)
-                make.left.bottom.right.equalToSuperview()
+                make.left.equalTo(15)
+                make.bottom.right.equalTo(-15)
                 make.height.equalTo(40)
             }
         }

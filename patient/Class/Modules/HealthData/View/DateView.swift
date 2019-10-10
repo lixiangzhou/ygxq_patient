@@ -33,6 +33,7 @@ class DateView: BaseShowView {
 extension DateView {
     private func setUI() {
         backgroundColor = UIColor(white: 0, alpha: 0.6)
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hide)))
         
         let toolBar = UIView()
         toolBar.backgroundColor = .cf0efef

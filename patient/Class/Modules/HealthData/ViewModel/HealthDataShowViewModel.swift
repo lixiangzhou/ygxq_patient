@@ -22,8 +22,12 @@ class HealthDataShowViewModel: BaseViewModel {
         if self.type == "HLR_HLG_T_01" {
             type = "HLR_HLG_T_01,HLR_HLG_T_02"
         }
-        HealthApi.queryHealthLogList(pid: patientId, type: type, time: TimeInterval(Int(selectDate.timeIntervalSince1970 * 1000))).rac_responseModel([HealthDataModel].self).startWithValues { [weak self] (models) in
-            self?.dataSourceProperty.value = models ?? []
+        HealthApi.queryHealthLogList(pid: patientId, type: type, time: TimeInterval(Int(selectDate.timeIntervalSince1970 * 1000))).rac_responseModel([HealthDataModel].self).skipNil().startWithValues { [weak self] (models) in
+            if !models.isEmpty {
+                self?.dataSourceProperty.value = models
+            } else {
+                HUD.show(toast: "当前无测量数据")
+            }
         }
     }
 

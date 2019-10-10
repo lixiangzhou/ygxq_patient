@@ -30,13 +30,7 @@
 @property (readonly, copy) NSString *navigationBarTitle;
 
 @property (strong, nonatomic) EKEventStore *eventStore;
-
-
-
-
 @end
-
-
 
 @implementation YFDayCalendarView
 
@@ -320,7 +314,7 @@
     [self.weekHeaderView.arrangedSubviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UILabel *weekdayLabel = (id) obj;
         weekdayLabel.textAlignment = NSTextAlignmentCenter;
-        weekdayLabel.font = [UIFont systemFontOfSize:12];
+        weekdayLabel.font = [UIFont systemFontOfSize:13];
         weekdayLabel.textColor = (idx == 0 || idx == 6) ? self.weekdayHeaderWeekendTextColor : self.weekdayHeaderTextColor;
         if (canUseLocalizedStrings) {
             weekdayLabel.text = self.localizedStringsOfWeekday[idx];
@@ -599,7 +593,7 @@
                 return;
             }
             
-            [UIView transitionWithView:self.contentWrapperView duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop animations:nil completion:nil];
+//            [UIView transitionWithView:self.contentWrapperView duration:0.4 options:UIViewAnimationOptionTransitionFlipFromTop animations:nil completion:nil];
             [self updateCurrentVisibleRow];
             
             return;
@@ -632,7 +626,7 @@
     if (self.singleRowMode) {
         if (self->_currentVisibleRow > 0) {
             --self->_currentVisibleRow;
-            [UIView transitionWithView:self.contentWrapperView duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
+//            [UIView transitionWithView:self.contentWrapperView duration:0.4 options:UIViewAnimationOptionTransitionFlipFromBottom animations:nil completion:nil];
             [self updateCurrentVisibleRow];
             
             return;
@@ -693,11 +687,13 @@
     
     [self configureContentView];
     
-    self.contentView.transform = CGAffineTransformMakeTranslation(0, CGRectGetHeight(self.contentView.frame) / 3 * (direction ? 1 : -1));
+    self.contentView.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.contentView.frame) / 3 * (direction ? 1 : -1), 0);
+//    self.contentView.transform = CGAffineTransformMakeTranslation(0, CGRectGetHeight(self.contentView.frame) / 3 * (direction ? 1 : -1));
     self.contentView.alpha = 0;
     
     [UIView animateWithDuration:0.35 delay:0 usingSpringWithDamping:0.72 initialSpringVelocity:0 options:kNilOptions animations:^{
-        snapshotView.transform = CGAffineTransformMakeTranslation(0, -CGRectGetHeight(self.contentView.frame) / 2 * (direction ? 1 : -1));
+//        snapshotView.transform = CGAffineTransformMakeTranslation(0, -CGRectGetHeight(self.contentView.frame) / 2 * (direction ? 1 : -1));
+        snapshotView.transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(self.contentView.frame) / 2 * (direction ? 1 : -1), 0);
         snapshotView.alpha = 0;
         
         self.selectedIndicatorView.transform = CGAffineTransformMakeScale(0, 0);

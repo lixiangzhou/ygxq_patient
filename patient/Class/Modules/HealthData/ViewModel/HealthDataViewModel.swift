@@ -41,8 +41,12 @@ class HealthDataViewModel: BaseViewModel {
     }
     
     func getValue(model: HealthDataModel) -> NSAttributedString? {
-        if let value = model.healthLogValue {
-            let attr = NSMutableAttributedString(string: value.description, attributes: [NSAttributedString.Key.font: UIFont.size(25), NSAttributedString.Key.foregroundColor: UIColor.c407cec])
+        if model.healthLogValue != nil || model.healthLogValues != nil {
+            var value = model.healthLogValues
+            if value == nil {
+                value = model.healthLogValue!.description
+            }
+            let attr = NSMutableAttributedString(string: value!, attributes: [NSAttributedString.Key.font: UIFont.size(25), NSAttributedString.Key.foregroundColor: UIColor.c407cec])
             attr.append(NSAttributedString(string: model.unit, attributes: [NSAttributedString.Key.font: UIFont.size(12), NSAttributedString.Key.foregroundColor: UIColor.c6]))
             return attr
         } else {

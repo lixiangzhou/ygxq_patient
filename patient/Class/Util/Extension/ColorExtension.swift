@@ -59,6 +59,11 @@ extension UIColor {
         return UIColor(stringHexValue: "#f25555")!
     }
     
+    /// 用于折线图展示页面
+    static var cffa306: UIColor {
+        return UIColor(stringHexValue: "#ffa306")!
+    }
+    
     /// 用于页面背景色
     static var cf0efef: UIColor {
         return UIColor(stringHexValue: "#f0efef")!
