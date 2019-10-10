@@ -127,6 +127,14 @@
 		10225DAD234DA48E0026749B /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10225DAC234DA48E0026749B /* DataView.swift */; };
 		10225DAF234DC1F50026749B /* HealthDataShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10225DAE234DC1F50026749B /* HealthDataShowController.swift */; };
 		10225DB1234DC2430026749B /* HealthDataShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10225DB0234DC2430026749B /* HealthDataShowViewModel.swift */; };
+		10225DB3234DD0F20026749B /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10225DB2234DD0F10026749B /* LineView.swift */; };
+		10225DB7234DD2850026749B /* SCTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10225DB5234DD2850026749B /* SCTool.m */; };
+		10225DB9234DD9D30026749B /* HealthDataLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10225DB8234DD9D30026749B /* HealthDataLineView.swift */; };
+		10225DC5234ED9F70026749B /* YFDayCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10225DBB234ED9F60026749B /* YFDayCalendarView.m */; };
+		10225DC6234ED9F70026749B /* YFDayNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 10225DBC234ED9F60026749B /* YFDayNavigationBar.m */; };
+		10225DC7234ED9F70026749B /* YFDayUnits.m in Sources */ = {isa = PBXBuildFile; fileRef = 10225DBD234ED9F60026749B /* YFDayUnits.m */; };
+		10225DC8234ED9F70026749B /* YFDayComponentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10225DBE234ED9F60026749B /* YFDayComponentView.m */; };
+		10225DC9234ED9F70026749B /* YFDayIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10225DC4234ED9F60026749B /* YFDayIndicatorView.m */; };
 		102DDA9F233B3A0B009FC7AA /* UpdateTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102DDA9E233B3A0B009FC7AA /* UpdateTipView.swift */; };
 		102DDAA1233B40C2009FC7AA /* UpdateInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102DDAA0233B40C2009FC7AA /* UpdateInfoModel.swift */; };
 		1030AA87229CCF4700519CA4 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */; };
@@ -518,6 +526,20 @@
 		10225DAC234DA48E0026749B /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		10225DAE234DC1F50026749B /* HealthDataShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataShowController.swift; sourceTree = "<group>"; };
 		10225DB0234DC2430026749B /* HealthDataShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataShowViewModel.swift; sourceTree = "<group>"; };
+		10225DB2234DD0F10026749B /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		10225DB5234DD2850026749B /* SCTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTool.m; sourceTree = "<group>"; };
+		10225DB6234DD2850026749B /* SCTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTool.h; sourceTree = "<group>"; };
+		10225DB8234DD9D30026749B /* HealthDataLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataLineView.swift; sourceTree = "<group>"; };
+		10225DBB234ED9F60026749B /* YFDayCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFDayCalendarView.m; sourceTree = "<group>"; };
+		10225DBC234ED9F60026749B /* YFDayNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFDayNavigationBar.m; sourceTree = "<group>"; };
+		10225DBD234ED9F60026749B /* YFDayUnits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFDayUnits.m; sourceTree = "<group>"; };
+		10225DBE234ED9F60026749B /* YFDayComponentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFDayComponentView.m; sourceTree = "<group>"; };
+		10225DBF234ED9F60026749B /* YFDayIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFDayIndicatorView.h; sourceTree = "<group>"; };
+		10225DC0234ED9F60026749B /* YFDayCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFDayCalendarView.h; sourceTree = "<group>"; };
+		10225DC1234ED9F60026749B /* YFDayComponentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFDayComponentView.h; sourceTree = "<group>"; };
+		10225DC2234ED9F60026749B /* YFDayNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFDayNavigationBar.h; sourceTree = "<group>"; };
+		10225DC3234ED9F60026749B /* YFDayUnits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFDayUnits.h; sourceTree = "<group>"; };
+		10225DC4234ED9F60026749B /* YFDayIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFDayIndicatorView.m; sourceTree = "<group>"; };
 		102DDA9E233B3A0B009FC7AA /* UpdateTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTipView.swift; sourceTree = "<group>"; };
 		102DDAA0233B40C2009FC7AA /* UpdateInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoModel.swift; sourceTree = "<group>"; };
 		1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
@@ -1179,6 +1201,8 @@
 		1014D0452293A6D700294558 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				10225DBA234ED9F60026749B /* YFCalendar */,
+				10225DB4234DD2850026749B /* SCTool */,
 				10E22BCA234C664F0084E6FB /* AFNetworking */,
 				10E22B84234C664E0084E6FB /* AIEcgSDK */,
 				10E22BD8234C664F0084E6FB /* KissXML */,
@@ -1215,6 +1239,7 @@
 		1014D07A229CCB1000294558 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10225DB2234DD0F10026749B /* LineView.swift */,
 				1030AA86229CCF4700519CA4 /* TextTableViewCell.swift */,
 				10CA472B22F815C600A4E244 /* LeftRightConfigView.swift */,
 				108C07FD22BB583D00B2EBE9 /* TextLeftRightView.swift */,
@@ -1266,6 +1291,32 @@
 				101C2E642322333D00AB4C53 /* FUVistExamListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		10225DB4234DD2850026749B /* SCTool */ = {
+			isa = PBXGroup;
+			children = (
+				10225DB5234DD2850026749B /* SCTool.m */,
+				10225DB6234DD2850026749B /* SCTool.h */,
+			);
+			path = SCTool;
+			sourceTree = "<group>";
+		};
+		10225DBA234ED9F60026749B /* YFCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				10225DC1234ED9F60026749B /* YFDayComponentView.h */,
+				10225DBE234ED9F60026749B /* YFDayComponentView.m */,
+				10225DC0234ED9F60026749B /* YFDayCalendarView.h */,
+				10225DBB234ED9F60026749B /* YFDayCalendarView.m */,
+				10225DC2234ED9F60026749B /* YFDayNavigationBar.h */,
+				10225DBC234ED9F60026749B /* YFDayNavigationBar.m */,
+				10225DC3234ED9F60026749B /* YFDayUnits.h */,
+				10225DBD234ED9F60026749B /* YFDayUnits.m */,
+				10225DBF234ED9F60026749B /* YFDayIndicatorView.h */,
+				10225DC4234ED9F60026749B /* YFDayIndicatorView.m */,
+			);
+			path = YFCalendar;
 			sourceTree = "<group>";
 		};
 		1030AA8C229CD19200519CA4 /* Extension */ = {
@@ -2191,6 +2242,7 @@
 				10225DA8234D83D60026749B /* HealthDataInputDateView.swift */,
 				10225DAA234D87120026749B /* DateView.swift */,
 				10225DAC234DA48E0026749B /* DataView.swift */,
+				10225DB8234DD9D30026749B /* HealthDataLineView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2368,6 +2420,7 @@
 				10225DA9234D83D60026749B /* HealthDataInputDateView.swift in Sources */,
 				10F7590B234C71FE001C35B5 /* HealthApi.swift in Sources */,
 				104FFB0E2314C9B900E51033 /* FSPagerViewCell.swift in Sources */,
+				10225DB7234DD2850026749B /* SCTool.m in Sources */,
 				1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */,
 				10FF88A62314F29D008148BC /* TaskModel.swift in Sources */,
 				10E820C623337765005466A0 /* ExamPicModel.swift in Sources */,
@@ -2445,6 +2498,7 @@
 				10E1DF322304FB26007AD76A /* VideoConsultPatientInfoCell.swift in Sources */,
 				106DE8D62317BA13001DF4DE /* VideoConsultBuyPatientInfoView.swift in Sources */,
 				100B6C4022A145BD00C5262C /* ZZHud.swift in Sources */,
+				10225DC9234ED9F70026749B /* YFDayIndicatorView.m in Sources */,
 				10F75909234C716D001C35B5 /* HealthDataModel.swift in Sources */,
 				104E3A8522B8AA4200A84DB2 /* ProfileHeaderView.swift in Sources */,
 				10CAF3DA22AE21F700F20E81 /* DrawablePanel.swift in Sources */,
@@ -2506,6 +2560,7 @@
 				104E3A8722B8D61800A84DB2 /* BasicExtension.swift in Sources */,
 				108C081222BCDA5700B2EBE9 /* CaseListCell.swift in Sources */,
 				10E22C06234C664F0084E6FB /* AFHTTPSessionManager.m in Sources */,
+				10225DB9234DD9D30026749B /* HealthDataLineView.swift in Sources */,
 				1030AABA229E7F0E00519CA4 /* UserApi.swift in Sources */,
 				101C2E932323483400AB4C53 /* InvoiceMakeController.swift in Sources */,
 				101C2EB123261D9100AB4C53 /* InvoiceMakeInfoViewModel.swift in Sources */,
@@ -2539,6 +2594,8 @@
 				10CAF3CC22A90BC400F20E81 /* GetIDCardPicturesController.swift in Sources */,
 				10CAF3E322AF9C4D00F20E81 /* DoctorInfoModel.swift in Sources */,
 				101C2E8F232347FE00AB4C53 /* InvoiceDetailController.swift in Sources */,
+				10225DC8234ED9F70026749B /* YFDayComponentView.m in Sources */,
+				10225DB3234DD0F20026749B /* LineView.swift in Sources */,
 				104E3A8D22B8E13000A84DB2 /* OrderListController.swift in Sources */,
 				100AEE6822CCB14500094AE2 /* WebController.swift in Sources */,
 				1014D0462293A6D700294558 /* HomeController.swift in Sources */,
@@ -2587,6 +2644,7 @@
 				104E3AA522B8E5E700A84DB2 /* LLIndicatorView.swift in Sources */,
 				105DBA7A22A6655800F55FE6 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
 				10676BF823069BD9004A6419 /* LongServiceDoctorListViewModel.swift in Sources */,
+				10225DC7234ED9F70026749B /* YFDayUnits.m in Sources */,
 				1059E469230D1686005F5326 /* SunnyDrugOrderFailCell.swift in Sources */,
 				100AEE5A22CC84C800094AE2 /* CaseDetailOpCell.swift in Sources */,
 				100AEE5E22CC8FC100094AE2 /* CheckDetailViewModel.swift in Sources */,
@@ -2621,6 +2679,7 @@
 				1059E46F230D1EDA005F5326 /* SunnyDrugOrderAssistWxInfoCell.swift in Sources */,
 				108C080022BB5D1100B2EBE9 /* ApplyForRefundController.swift in Sources */,
 				10E820C2233215C2005466A0 /* HutPackageDetailAddressCell.swift in Sources */,
+				10225DC6234ED9F70026749B /* YFDayNavigationBar.m in Sources */,
 				10E22C07234C664F0084E6FB /* AFURLSessionManager.m in Sources */,
 				10676BF623068EEC004A6419 /* AlertView.swift in Sources */,
 				101C2E6123222F0200AB4C53 /* FUVistExamListCell.swift in Sources */,
@@ -2632,6 +2691,7 @@
 				10FF88A02314D860008148BC /* HomeHeaderTaskView.swift in Sources */,
 				10E22BF6234C664F0084E6FB /* Reachability.m in Sources */,
 				10CAF3D622AE00B400F20E81 /* LinkedLabel.swift in Sources */,
+				10225DC5234ED9F70026749B /* YFDayCalendarView.m in Sources */,
 				104FFB0C2314C9B900E51033 /* FSPagerView.swift in Sources */,
 				105EFDF0233B04CD00ECC7EE /* HomeHelpTipView.swift in Sources */,
 				1014D0642293A6D700294558 /* BaseModel.swift in Sources */,

@@ -35,6 +35,8 @@ class HealthDataShowController: BaseController {
     let contentView = UIView()
     
     let panelView = HealthDataPanelView()
+    let healthLineView = HealthDataLineView()
+    
 }
 
 // MARK: - UI
@@ -43,6 +45,7 @@ extension HealthDataShowController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(panelView)
+        contentView.addSubview(healthLineView)
         
         panelView.addClosure = {
             AlertView.show(title: nil, msg: "此功能暂未开通，敬请期待", firstTitle: nil, secondTitle: "我知道了", firstClosure: nil) { (alert) in
@@ -54,6 +57,13 @@ extension HealthDataShowController {
             let vc = HealthDataInputController()
             vc.viewModel.type = self?.viewModel.type ?? ""
             self?.push(vc)
+        }
+        
+        healthLineView.titleLabel.text = viewModel.lineTitle
+        healthLineView.lineView.selectClosure = { [weak self] idx in
+            guard let self = self else { return }
+            self.panelView.valueLabel.text = String(self.viewModel.showValues.first![idx])
+            self.panelView.timeLabel.text = self.viewModel.showTimes[idx].toTime()
         }
         
         scrollView.snp.makeConstraints { (make) in
@@ -71,6 +81,12 @@ extension HealthDataShowController {
             make.right.left.top.equalToSuperview()
             make.height.equalTo(panelView.zz_height)
         }
+        
+        healthLineView.snp.makeConstraints { (make) in
+            make.top.equalTo(panelView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(healthLineView.zz_height)
+        }
     }
     
     override func setBinding() {
@@ -85,10 +101,32 @@ extension HealthDataShowController {
                 default:
                     self.panelView.valueLabel.text = model.healthLogValue?.description ?? "  "
                 }
-
                 
                 self.panelView.unitLabel.text = model.unit
                 self.panelView.timeLabel.text = model.createTime?.toTime() ?? "  "
+                
+                
+                var times = [String]()
+                var values = [Int]()
+                var timeValues = [TimeInterval]()
+                for m in models {
+                    if let time = m.createTime, let value = m.healthLogValue {
+                        times.append(time.toTime(format: "MM-dd"))
+                        values.append(value)
+                        timeValues.append(time)
+                    }
+                }
+                
+                self.viewModel.showTimes = timeValues
+                self.viewModel.showValues = [values]
+                
+                self.healthLineView.lineView.pointXs = times
+                self.healthLineView.lineView.pointYs = [
+                    LineView.LineModel(lineColor: .cff9a21, string: self.viewModel.title, values: values)
+                ]
+                self.healthLineView.lineView.maxYValue = 200
+                self.healthLineView.lineView.rowCountValue = 5
+                self.healthLineView.lineView.refreshViews()
             } else {
                 self.panelView.valueLabel.text = "  "
                 self.panelView.unitLabel.text = "  "

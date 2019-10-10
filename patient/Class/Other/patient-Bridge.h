@@ -11,6 +11,7 @@
 
 #import "WXApi.h"
 #import "WechatAuthSDK.h"
+#import "SCTool.h"
 
 #import <RongIMKit/RongIMKit.h>
 #import <RongCallKit/RCCall.h>
@@ -20,6 +21,8 @@
 #import "JPUSHService.h"
 #import "YYText.h"
 #import "Aspects.h"
+
+#import "YFDayCalendarView.h"
 
 
 #endif /* patient_Bridge_h */
