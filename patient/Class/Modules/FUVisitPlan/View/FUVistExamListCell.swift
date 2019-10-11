@@ -45,10 +45,10 @@ extension FUVistExamListCell {
         arrowView.sizeToFit()
         
         containerView.snp.makeConstraints { (make) in
-            make.top.equalTo(5)
+            make.top.equalTo(12)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-            make.bottom.equalTo(-5)
+            make.bottom.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { (make) in
