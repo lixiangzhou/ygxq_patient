@@ -133,7 +133,6 @@ extension UploadResourceController {
     
     private func setActions() {
         let count = 30
-        picsView.viewModel.maxCount = count
         picsView.addClosure = { [weak self] in
             guard let self = self else { return }
             if self.viewModel.selectedImagesProperty.value.count < count {

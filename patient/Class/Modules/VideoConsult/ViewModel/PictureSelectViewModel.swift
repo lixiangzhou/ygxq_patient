@@ -11,7 +11,8 @@ import ReactiveSwift
 
 class PictureSelectViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[PictureSelectView.ImageData]>([PictureSelectView.ImageData.empty])
-    var maxCount = 30
+//    var maxCount = 30
+    var emptyFirst = true
     
     var imgsCount: Int {
         var values = dataSourceProperty.value
@@ -31,7 +32,11 @@ class PictureSelectViewModel: BaseViewModel {
             values.append(.data(image: img))
         }
         
-        values.insert(.empty, at: 0)
+        if emptyFirst {
+            values.insert(.empty, at: 0)
+        } else {
+            values.append(.empty)
+        }
         
         dataSourceProperty.value = values
     }

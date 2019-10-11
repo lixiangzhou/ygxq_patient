@@ -210,7 +210,6 @@ extension VideoConsultBuyController {
 extension VideoConsultBuyController {
     private func setActions() {
         let count = 30
-        picturesView.pictureSelectView.viewModel.maxCount = count
         picturesView.pictureSelectView.addClosure = { [weak self] in
             guard let self = self else { return }
             if self.viewModel.selectedImagesProperty.value.count < count {

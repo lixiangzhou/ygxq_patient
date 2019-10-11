@@ -86,7 +86,9 @@ extension PictureSelectView: UICollectionViewDataSource {
         }
         
         cell.deleteClosure = { [weak self] data in
-            self?.deleteClosure?(indexPath.row, data)
+            guard let self = self else { return }
+            let offset = self.viewModel.emptyFirst ? 1 : 0
+            self.deleteClosure?(indexPath.row - offset, data)
         }
         
         cell.pictureClosure = { [weak self] data in
@@ -96,7 +98,8 @@ extension PictureSelectView: UICollectionViewDataSource {
                 PhotoBrowser.showLocalImage(numberOfItems: { () -> Int in
                     return self.viewModel.imgsCount
                 }, localImage: { (idx) -> UIImage? in
-                    switch self.viewModel.dataSourceProperty.value[idx + 1] {
+                    let offset = self.viewModel.emptyFirst ? 1 : 0
+                    switch self.viewModel.dataSourceProperty.value[idx + offset] {
                     case .empty: return nil
                     case let .data(image: image): return image
                     }
@@ -207,9 +210,4 @@ extension PictureSelectView {
             return PictureSelectView.Config(width: UIScreen.zz_width - 30, column: 4, xSpacing: 5, ySpacing: 5, picAction: .onlyPicShow)
         }
     }
-}
-
-// MARK: - Public
-extension PictureSelectView {
-    
 }
