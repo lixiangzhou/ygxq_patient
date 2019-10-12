@@ -33,7 +33,7 @@ class SystemMsgController: BaseController {
 // MARK: - UI
 extension SystemMsgController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "全部已读", target: self, action: #selector(readedAction))
+        setRightBarItem(title: "全部已读", action: #selector(readedAction))
         
         tableView.backgroundColor = .cf0efef
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)

@@ -36,7 +36,7 @@ class BindedDoctorsController: BaseController {
 // MARK: - UI
 extension BindedDoctorsController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "我的咨询", target: self, action: #selector(myConsultAction))
+        setRightBarItem(title: "我的咨询", action: #selector(myConsultAction))
         
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: BindedDoctorsCell.self)

@@ -34,7 +34,7 @@ class InvoiceDetailController: BaseController {
 // MARK: - UI
 extension InvoiceDetailController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "具体内容", titleColor: .cf, target: self, action: #selector(invoiceDetailAction))
+        setRightBarItem(title: "具体内容", action: #selector(invoiceDetailAction))
         
         scrollView.backgroundColor = .cf0efef
         scrollView.alwaysBounceVertical = true

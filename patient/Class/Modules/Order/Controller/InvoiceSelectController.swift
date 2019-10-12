@@ -34,7 +34,7 @@ class InvoiceSelectController: BaseController {
 // MARK: - UI
 extension InvoiceSelectController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "开票历史", titleColor: .cf, target: self, action: #selector(invoiceRecordsAction))
+        setRightBarItem(title: "开票历史", action: #selector(invoiceRecordsAction))
 
         tableView.backgroundColor = .cf0efef
         

@@ -164,6 +164,10 @@
 		1030C2BB23209F5500F13755 /* PictureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2BA23209F5500F13755 /* PictureListCell.swift */; };
 		10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10375FDC2304F92400B92403 /* VideoConsultResultController.swift */; };
 		1043BF142328DD7500271194 /* JPushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043BF132328DD7500271194 /* JPushManager.swift */; };
+		1044A27D2351A0E600363887 /* HealthDataECGShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1044A27C2351A0E600363887 /* HealthDataECGShowController.swift */; };
+		1044A27F2351A0F900363887 /* HealthDataECGShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1044A27E2351A0F900363887 /* HealthDataECGShowViewModel.swift */; };
+		1044A2812351A15700363887 /* HealthDataECGPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1044A2802351A15700363887 /* HealthDataECGPanelView.swift */; };
+		1044A2832351CC6300363887 /* HealthDataECGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1044A2822351CC6300363887 /* HealthDataECGModel.swift */; };
 		104AD5BB231CF745000AD464 /* SunnyDrugBuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */; };
 		104AD5BD231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5BC231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift */; };
 		104AD5C1231D20DF000AD464 /* SignNameTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AD5C0231D20DF000AD464 /* SignNameTipView.swift */; };
@@ -570,6 +574,10 @@
 		10375FDC2304F92400B92403 /* VideoConsultResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultController.swift; sourceTree = "<group>"; };
 		1043BF122328DC2A00271194 /* patient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = patient.entitlements; sourceTree = "<group>"; };
 		1043BF132328DD7500271194 /* JPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPushManager.swift; sourceTree = "<group>"; };
+		1044A27C2351A0E600363887 /* HealthDataECGShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataECGShowController.swift; sourceTree = "<group>"; };
+		1044A27E2351A0F900363887 /* HealthDataECGShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataECGShowViewModel.swift; sourceTree = "<group>"; };
+		1044A2802351A15700363887 /* HealthDataECGPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataECGPanelView.swift; sourceTree = "<group>"; };
+		1044A2822351CC6300363887 /* HealthDataECGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataECGModel.swift; sourceTree = "<group>"; };
 		104AD5BA231CF745000AD464 /* SunnyDrugBuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyViewModel.swift; sourceTree = "<group>"; };
 		104AD5BC231CFB9C000AD464 /* SunnyDrugBuyIdTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyDrugBuyIdTipView.swift; sourceTree = "<group>"; };
 		104AD5C0231D20DF000AD464 /* SignNameTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignNameTipView.swift; sourceTree = "<group>"; };
@@ -2211,6 +2219,7 @@
 				10E22C17234C6B440084E6FB /* HealthDataController.swift */,
 				10225DAE234DC1F50026749B /* HealthDataShowController.swift */,
 				10225DA4234D7AA00026749B /* HealthDataInputController.swift */,
+				1044A27C2351A0E600363887 /* HealthDataECGShowController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2221,6 +2230,7 @@
 				10F75906234C70DD001C35B5 /* HealthDataViewModel.swift */,
 				10225DB0234DC2430026749B /* HealthDataShowViewModel.swift */,
 				10225DA2234D7A880026749B /* HealthDataInputViewModel.swift */,
+				1044A27E2351A0F900363887 /* HealthDataECGShowViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2229,6 +2239,7 @@
 			isa = PBXGroup;
 			children = (
 				10F75908234C716D001C35B5 /* HealthDataModel.swift */,
+				1044A2822351CC6300363887 /* HealthDataECGModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2243,6 +2254,7 @@
 				10225DAA234D87120026749B /* DateView.swift */,
 				10225DAC234DA48E0026749B /* DataView.swift */,
 				10225DB8234DD9D30026749B /* HealthDataLineView.swift */,
+				1044A2802351A15700363887 /* HealthDataECGPanelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2427,6 +2439,7 @@
 				101C2E6F2322480F00AB4C53 /* SunShineHutListCell.swift in Sources */,
 				108DCE42231CE10A0038F377 /* SunnyDrugBuyIdView.swift in Sources */,
 				101C2EAB2325EE3200AB4C53 /* AddressShowView.swift in Sources */,
+				1044A27D2351A0E600363887 /* HealthDataECGShowController.swift in Sources */,
 				101C2E952323484F00AB4C53 /* InvoiceSelectViewModel.swift in Sources */,
 				10E22BF1234C664F0084E6FB /* View+MASAdditions.m in Sources */,
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
@@ -2527,6 +2540,7 @@
 				108C082F22BD155600B2EBE9 /* ExamListCell.swift in Sources */,
 				10CA473222F8326F00A4E244 /* CommonPicker.swift in Sources */,
 				106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */,
+				1044A27F2351A0F900363887 /* HealthDataECGShowViewModel.swift in Sources */,
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,
@@ -2752,6 +2766,7 @@
 				105039F72306A298000E90F0 /* LongServiceController.swift in Sources */,
 				101C2EB7232885AA00AB4C53 /* TaskWorkApi.swift in Sources */,
 				101C2E8D232347DB00AB4C53 /* InvoiceRecordListController.swift in Sources */,
+				1044A2812351A15700363887 /* HealthDataECGPanelView.swift in Sources */,
 				10E22C0E234C664F0084E6FB /* DDXMLDocument.m in Sources */,
 				10052CF4233C83B400C6FDE5 /* PwdChangeController.swift in Sources */,
 				1014D0632293A6D700294558 /* BaseNavigationController.swift in Sources */,
@@ -2762,6 +2777,7 @@
 				1014D04C2293A6D700294558 /* CGRect+ZZExtension.swift in Sources */,
 				101C2E912323482400AB4C53 /* InvoiceContentController.swift in Sources */,
 				101C2EBB2328A89900AB4C53 /* SunnyDrugApi.swift in Sources */,
+				1044A2832351CC6300363887 /* HealthDataECGModel.swift in Sources */,
 				100AEE7022CD969100094AE2 /* DrugUsedViewModel.swift in Sources */,
 				106DE8CE2317A2B8001DF4DE /* PayResultController.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,

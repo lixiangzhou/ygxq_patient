@@ -64,6 +64,16 @@ extension UIColor {
         return UIColor(stringHexValue: "#ffa306")!
     }
     
+    /// 用于折线图展示页面
+    static var cfd7b55: UIColor {
+        return UIColor(stringHexValue: "#fd7b55")!
+    }
+        
+    /// 用于折线图展示页面
+    static var cfdad2b: UIColor {
+        return UIColor(stringHexValue: "#fdad2b")!
+    }
+    
     /// 用于页面背景色
     static var cf0efef: UIColor {
         return UIColor(stringHexValue: "#f0efef")!
@@ -118,6 +128,8 @@ extension UIColor {
         return UIColor(stringHexValue: "#7BBBFD")!
     }
  
+    
+    
     /// 
     static var fieldDefaultColor: UIColor {
         return UIColor(red: 0, green: 0, blue: 0.0980392, alpha: 0.22)

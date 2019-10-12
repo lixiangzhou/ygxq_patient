@@ -47,6 +47,8 @@ extension HealthDataShowController {
         contentView.addSubview(panelView)
         contentView.addSubview(healthLineView)
         
+        healthLineView.lineView.rowCountValue = 5
+        
         addLineColorView()
         
         panelView.addClosure = {
@@ -156,20 +158,20 @@ extension HealthDataShowController {
                 
                 switch self.viewModel.type {
                 case "HLR_HLG_T_01":
-                    self.panelView.valueLabel.text = model.healthLogValues?.description ?? "  "
+                    self.panelView.valueLabel.text = model.healthLogValues?.description ?? "--"
                 default:
-                    self.panelView.valueLabel.text = model.healthLogValue?.description ?? "  "
+                    self.panelView.valueLabel.text = model.healthLogValue?.description ?? "--"
                 }
                 
                 self.panelView.unitLabel.text = model.unit
-                self.panelView.timeLabel.text = model.createTime?.toTime() ?? "  "
+                self.panelView.timeLabel.text = model.createTime?.toTime() ?? "--"
                 
                 self.processLineData(models)
                 
             } else {
-                self.panelView.valueLabel.text = "  "
-                self.panelView.unitLabel.text = "  "
-                self.panelView.timeLabel.text = "  "
+                self.panelView.valueLabel.text = "--"
+                self.panelView.unitLabel.text = "--"
+                self.panelView.timeLabel.text = "--"
             }
         }
     }
@@ -224,28 +226,17 @@ extension HealthDataShowController {
                 LineView.LineModel(lineColor: .cffa306, string: self.viewModel.title, values: values0),
                 LineView.LineModel(lineColor: .cff7b4f, string: self.viewModel.title, values: values1)
             ]
+            healthLineView.lineView.maxYValue = 300
         case "HLR_HLG_T_10":
             healthLineView.lineView.pointYs = [
                 LineView.LineModel(lineColor: .cff9a21, string: self.viewModel.title, values: values0)
             ]
+            healthLineView.lineView.maxYValue = 200
         default: break
         }
         
         healthLineView.lineView.pointXs = times
         
-        healthLineView.lineView.maxYValue = 200
-        healthLineView.lineView.rowCountValue = 5
         healthLineView.lineView.refreshViews()
     }
 }
-
-// MARK: - Other
-extension HealthDataShowController {
-    
-}
-
-// MARK: - Public
-extension HealthDataShowController {
-    
-}
-

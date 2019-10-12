@@ -39,7 +39,7 @@ extension UploadResourceController {
     override func setUI() {
         switch viewModel.type {
         case .default:
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "上传记录", target: self, action: #selector(recordAction))
+            setRightBarItem(title: "上传记录", action: #selector(recordAction))
         default:
             break
         }

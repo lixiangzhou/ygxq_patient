@@ -87,6 +87,18 @@ extension HutPackageDetailController {
     }
 }
 
+// MARK: - Action
+extension HutPackageDetailController {
+    override func backAction() {
+        switch viewModel.from {
+        case .list:
+            super.backAction()
+        default:
+            popToRoot()
+        }
+    }
+}
+
 // MARK: - Delegate Internal
 
 // MARK: -

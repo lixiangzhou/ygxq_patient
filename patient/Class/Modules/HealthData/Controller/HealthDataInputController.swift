@@ -33,7 +33,7 @@ class HealthDataInputController: BaseController {
 // MARK: - UI
 extension HealthDataInputController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", target: self, action: #selector(saveAction))
+        setRightBarItem(title: "保存", action: #selector(saveAction))
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)

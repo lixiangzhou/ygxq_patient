@@ -192,6 +192,12 @@ extension BaseController {
         }
         return item
     }
+    
+    @discardableResult
+    func setRightBarItem(title: String, action: Selector) -> UIButton {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, target: self, action: action)
+        return navigationItem.rightBarButtonItem!.customView as! UIButton
+    }
 }
 
 extension BaseController {

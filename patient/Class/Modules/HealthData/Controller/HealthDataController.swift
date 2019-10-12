@@ -72,8 +72,14 @@ extension HealthDataController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSourceProperty.value[indexPath.row]
-        let vc = HealthDataShowController()
-        vc.viewModel.type = model.healthLogType
-        push(vc)
+        switch model.healthLogType {
+        case "HLR_HLG_T_11":
+            let vc = HealthDataECGShowController()
+            push(vc)
+        default:
+            let vc = HealthDataShowController()
+            vc.viewModel.type = model.healthLogType
+            push(vc)
+        }
     }
 }

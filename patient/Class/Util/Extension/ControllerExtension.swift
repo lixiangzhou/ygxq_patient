@@ -18,6 +18,10 @@ extension UIViewController {
     func pop(animated: Bool = true) {
         navigationController?.popViewController(animated: animated)
     }
+    
+    func popToRoot(animated: Bool = true) {
+        navigationController?.popToRootViewController(animated: animated)
+    }
 }
 
 // MARK: - 打开相册和相机（有相册和相机权限验证）

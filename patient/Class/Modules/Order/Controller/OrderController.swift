@@ -45,7 +45,7 @@ class OrderController: LLSegmentViewController {
 // MARK: - UI
 extension OrderController {
     override func setUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "开发票", titleColor: .cf, target: self, action: #selector(getInvoiceAction))
+        setRightBarItem(title: "开发票", action: #selector(self.getInvoiceAction))
         
         loadSegmentedConfig()
         segmentCtlView.delegate = self

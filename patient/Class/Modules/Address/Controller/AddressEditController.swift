@@ -58,7 +58,7 @@ class AddressEditController: BaseController {
 extension AddressEditController {
     override func setUI() {
         if mode == .update {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "删除", titleColor: .cf, target: self, action: #selector(deleteAction))
+            setRightBarItem(title: "删除", action: #selector(deleteAction))
         }
         
         scrollView.backgroundColor = .cf0efef

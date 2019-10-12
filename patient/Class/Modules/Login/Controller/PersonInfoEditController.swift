@@ -42,7 +42,7 @@ class PersonInfoEditController: BaseController {
     private let addressView = LeftRightConfigView()
     private let diseaseView = LeftRightConfigView()
     
-    let finishBtn = UIButton(title: "完成", font: .size(itemFontSize), titleColor: .cdcdcdc)
+    var finishBtn: UIButton!
     
     private let selectDistrictView = SelectDistrictView()
     private let arrowOpt = "请选择"
@@ -53,8 +53,7 @@ class PersonInfoEditController: BaseController {
 // MARK: - UI
 extension PersonInfoEditController {
     override func setUI() {
-        finishBtn.addTarget(self, action: #selector(finishAction), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: finishBtn)
+        finishBtn = setRightBarItem(title: "完成", action: #selector(finishAction))
         
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true

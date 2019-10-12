@@ -49,7 +49,7 @@ extension CheckDetailController {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.map(value: ())
         viewModel.checkModelProperty.producer.startWithValues { [weak self] (m) in
             guard let self = self, let m = m, m.imgs.count > 0 else { return }
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "查看原图", target: self, action: #selector(self.lookPicAction))
+            self.setRightBarItem(title: "查看原图", action: #selector(self.lookPicAction))
         }
     }
 }
