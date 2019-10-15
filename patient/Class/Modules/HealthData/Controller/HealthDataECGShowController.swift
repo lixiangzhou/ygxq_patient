@@ -200,7 +200,8 @@ extension HealthDataECGShowController {
 // MARK: - Action
 extension HealthDataECGShowController {
     @objc private func historyAction() {
-        
+        let vc = HealthDataECGHistoryController()
+        push(vc)
     }
 }
 

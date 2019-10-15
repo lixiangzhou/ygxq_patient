@@ -18,6 +18,8 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
     
     let selectPatientInfoProperty = MutableProperty<HealthDataECGPatientModel?>(nil)
     
+    var backClass: String?
+    
     var selectMode = SelectMode.add
     
     var selectPatientInfo: HealthDataECGPatientModel?

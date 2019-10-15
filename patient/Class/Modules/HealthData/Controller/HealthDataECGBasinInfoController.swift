@@ -50,17 +50,20 @@ extension HealthDataECGBasinInfoController {
         scrollView.alwaysBounceVertical = true
         scrollView.keyboardDismissMode = .onDrag
         
+        topView.buyClosure = { [weak self] in
+            self?.viewModel.checkToBuy { (model) in
+                let vc = HutPackageTimeBuyController()
+                vc.viewModel.hutModelProperty.value = model
+                self?.push(vc)
+            }
+        }
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(topView)
         contentView.addSubview(patientView)
         contentView.addSubview(conditionView)
         contentView.addSubview(otherView)
-        
-        DispatchQueue.main.async {
-            let offset = self.scrollView.contentOffset
-            self.scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y + 0.1), animated: true)
-        }
         
         let confirmBtn = UIButton(title: "确定", font: .size(16), titleColor: .cf, backgroundColor: .c407cec, target: self, action: #selector(confirmAction))
         
@@ -140,14 +143,7 @@ extension HealthDataECGBasinInfoController {
 
 // MARK: - Action
 extension HealthDataECGBasinInfoController {
-    @objc private func buyAction() {
-        viewModel.checkToBuy { [weak self] (model) in
-            let vc = HutPackageTimeBuyController()
-            vc.viewModel.hutModelProperty.value = model
-            self?.push(vc)
-        }
-    }
-    
+        
     @objc private func confirmAction() {
         guard let model = viewModel.selectPatientInfoProperty.value, model.id != 0, !model.realName.isEmpty else {
             HUD.show(toast: "请选择测量人的信息")
@@ -188,5 +184,13 @@ extension HealthDataECGBasinInfoController {
             print(error)
         }
         push(vc)
+    }
+    
+    override func backAction() {
+        if let backClazz = viewModel.backClass {
+            popToViewController(backClazz)
+        } else {
+            super.backAction()
+        }
     }
 }
