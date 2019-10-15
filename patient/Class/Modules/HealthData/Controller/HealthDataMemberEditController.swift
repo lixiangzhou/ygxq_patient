@@ -44,7 +44,6 @@ extension HealthDataMemberEditController {
         scrollView.alwaysBounceVertical = true
         scrollView.keyboardDismissMode = .onDrag
         view.addSubview(scrollView)
-        
         scrollView.addSubview(contentView)
         
         nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c3, rightWidth: 200, rightLimit: 100)

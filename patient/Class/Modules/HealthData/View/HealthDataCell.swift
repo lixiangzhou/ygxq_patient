@@ -29,6 +29,8 @@ class HealthDataCell: UITableViewCell {
     let dataLabel = UILabel()
     let timeLabel = UILabel(font: .size(12), textColor: .c6)
     
+    let imgView = UIImageView(image: UIImage(named: "health_xd_data"))
+    
     // MARK: - Private Property
     
 }
@@ -48,6 +50,7 @@ extension HealthDataCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(dataLabel)
         contentView.addSubview(timeLabel)
+        contentView.addSubview(imgView)
         
         contentView.snp.makeConstraints { (make) in
             make.top.equalTo(12)
@@ -70,12 +73,15 @@ extension HealthDataCell {
         
         dataLabel.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-//            make.left.equalTo(105)
         }
         
         timeLabel.snp.makeConstraints { (make) in
             make.right.equalTo(-15)
             make.centerY.equalToSuperview()
+        }
+        
+        imgView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
         }
     }
 }

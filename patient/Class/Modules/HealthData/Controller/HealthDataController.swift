@@ -67,6 +67,17 @@ extension HealthDataController: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = model.description
         cell.dataLabel.attributedText = viewModel.getValue(model: model)
         cell.timeLabel.text = model.createTime?.toTime(format: "MM-dd HH:mm") ?? "暂无数据"
+        
+        let isXD = model.healthLogType == "HLR_HLG_T_11"
+        cell.imgView.isHidden = !isXD
+        cell.dataLabel.isHidden = isXD
+        
+        if isXD {
+            let hasValue = model.healthLogValues != nil
+            cell.imgView.isHidden = !hasValue
+            cell.dataLabel.isHidden = hasValue
+        }
+        
         return cell
     }
     

@@ -16,7 +16,7 @@ class HealthDataECGHistoryController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "检测历史"
+        title = "监测历史"
         setUI()
         setBinding()
         viewModel.getData()
@@ -124,8 +124,8 @@ extension HealthDataECGHistoryController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSourceProperty.value[indexPath.section][indexPath.row]
-        let vc = LongServicesController()
-        
+        let vc = HealthDataECGDetailController()
+        vc.viewModel.dataProperty.value = model
         push(vc)
     }
 }

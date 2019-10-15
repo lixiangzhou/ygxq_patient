@@ -18,20 +18,3 @@ struct HealthDataECGPatientModel: ModelProtocol {
     var sex: Int = 0
     var createTime: TimeInterval = 0
 }
-
-extension HealthDataECGPatientModel {
-    var age: Int? {
-        if let birth = birth {
-            let birthDate = Date(timeIntervalSince1970: birth / 1000)
-            let date = Date()
-            
-            var age = date.zz_year - birthDate.zz_year
-            if (birthDate.zz_month > date.zz_month) || (birthDate.zz_month == date.zz_month && birthDate.zz_day > date.zz_day) {
-                age -= 1
-            }
-            return age
-        } else {
-            return nil
-        }
-    }
-}

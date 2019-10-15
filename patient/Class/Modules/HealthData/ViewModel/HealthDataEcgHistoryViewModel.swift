@@ -12,7 +12,7 @@ import ReactiveSwift
 class HealthDataECGHistoryViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[[HealthDataECGModel]]>([])
     func getData() {
-        ECGApi.queryEcg12List(pid: 1012).rac_responseModel([[HealthDataECGModel]].self).startWithValues { [weak self] (models) in
+        ECGApi.queryEcg12List(pid: patientId).rac_responseModel([[HealthDataECGModel]].self).startWithValues { [weak self] (models) in
             self?.dataSourceProperty.value = models ?? []
         }
     }

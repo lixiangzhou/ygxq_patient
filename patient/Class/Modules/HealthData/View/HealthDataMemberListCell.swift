@@ -36,7 +36,7 @@ class HealthDataMemberListCell: UITableViewCell {
         didSet {
             nameLabel.text = model.realName
             sexLabel.text = model.sex == 1 ? "男" : "女"
-            ageLabel.text = "\(model.age ?? 0)岁"
+            ageLabel.text = "\(getAge(model.birth) ?? 0)岁"
             let isDefault = model.isDefault == "Y"
             defaultLabel.isHidden = !isDefault
             
