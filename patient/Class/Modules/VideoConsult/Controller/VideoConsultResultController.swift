@@ -44,7 +44,7 @@ extension VideoConsultResultController {
         view.addSubview(tableView)
         
         let tipView = bottomView.zz_add(subview: UIButton(title: "提醒医生", font: .boldSize(17), titleColor: .cf, backgroundColor: .c407cec, target: self, action: #selector(tipAction)))
-        let serviceView = bottomView.zz_add(subview: UIButton(title: "转客服", font: .boldSize(17), titleColor: .cf, backgroundColor: UIColor.cffa84c, target: self, action: #selector(serviceAction)))
+        let serviceView = bottomView.zz_add(subview: UIButton(title: "联系客服", font: .boldSize(17), titleColor: .cf, backgroundColor: UIColor.cffa84c, target: self, action: #selector(serviceAction)))
         
         view.addSubview(bottomView)
         

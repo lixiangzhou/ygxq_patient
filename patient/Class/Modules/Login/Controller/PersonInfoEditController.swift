@@ -85,8 +85,8 @@ extension PersonInfoEditController {
             }
         }
         
-        nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c6, rightWidth: 200)
-        nameView.leftLabel.attributedText = viewModel.nameAttributeString
+        nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c6, rightWidth: 200, rightLimit: 100)
+        nameView.leftLabel.attributedText = "姓名".needed(with: .size(14), color: .c3)
         nameView.rightField.placeHolderString = "请输入姓名"
         nameView.rightField.textAlignment = .right
         nameView.inputLimitClosure = { string in

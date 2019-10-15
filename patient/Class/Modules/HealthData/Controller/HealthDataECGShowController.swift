@@ -54,8 +54,9 @@ extension HealthDataECGShowController {
         
         addLineColorView()
         
-        panelView.startClosure = {
-            
+        panelView.startClosure = { [weak self] in
+            let vc = HealthDataECGBasinInfoController()
+            self?.push(vc)
         }
         
         healthLineView.titleLabel.text = "心率值(bpm)"

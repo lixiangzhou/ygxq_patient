@@ -60,11 +60,6 @@ extension SettingController {
     }
 }
 
-// MARK: - Network
-extension SettingController {
-    
-}
-
 // MARK: - Delegate Internal
 
 // MARK: -

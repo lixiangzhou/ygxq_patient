@@ -18,6 +18,9 @@ enum CommonApi: TargetType {
     case videoExamAndPics(linkId: Int, puid: Int)
     case getFinishTaskMsgInfos(linkId: Int, puid: Int)
     case appInfo
+    case queryPatientConsultantList(pid: Int)
+    case addUsrPatientConsultant(params: [String: Any])
+    case updateUsrPatientConsultant(params: [String: Any])
 }
 
 extension CommonApi {
@@ -35,6 +38,12 @@ extension CommonApi {
             return "/pushMsg/getFinishTaskMsgInfos"
         case .appInfo:
             return "/common/getAppInfos"
+        case .queryPatientConsultantList:
+            return "/common/queryUsrPatientConsultantList"
+        case .addUsrPatientConsultant:
+            return "/common/addUsrPatientConsultant"
+        case .updateUsrPatientConsultant:
+            return "/common/updateUsrPatientConsultant"
         }
     }
     
@@ -66,6 +75,16 @@ extension CommonApi {
         case .appInfo:
             params["appType"] = "YX"
             params["osType"] = "IOS"
+        case let .queryPatientConsultantList(pid: pid):
+            params["puid"] = pid
+        case let .addUsrPatientConsultant(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
+        case let .updateUsrPatientConsultant(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

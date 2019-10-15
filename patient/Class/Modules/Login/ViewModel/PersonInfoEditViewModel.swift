@@ -16,14 +16,9 @@ class PersonInfoEditViewModel: BaseViewModel {
     let diseasesProperty = MutableProperty<[DiseaseModel]>([])
     var diseasesDataSource = CommonPicker.DataSouce.one([])
     
-    let nameAttributeString: NSAttributedString
     var imgUrl = ""
     
     override init() {
-        let nameAttr = NSMutableAttributedString(string: "姓名")
-        nameAttr.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
-        nameAttributeString = nameAttr
-        
         super.init()
         
         diseasesProperty.signal.observeValues { [weak self] (results) in

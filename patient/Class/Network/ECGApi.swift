@@ -13,6 +13,7 @@ enum ECGApi: TargetType {
     case isBuyECG(pid: Int, keyword: String)
     case list7Ago(pid: Int)
     case getLastOneByDate(pid: Int, time: TimeInterval)
+    case querySurpluNum(pid: Int)
 }
 
 extension ECGApi {
@@ -25,6 +26,8 @@ extension ECGApi {
             return "/ecg12/list7Ago"
         case .getLastOneByDate:
             return "/ecg12/getLastOneByDate"
+        case .querySurpluNum:
+            return "/ecg12/querySurpluNum"
         }
     }
     
@@ -39,6 +42,8 @@ extension ECGApi {
         case let .getLastOneByDate(pid: pid, time: time):
             params["puid"] = pid
             params["createTime"] = time
+        case let .querySurpluNum(pid: pid):
+            params["puid"] = pid
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

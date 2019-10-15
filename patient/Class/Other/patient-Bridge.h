@@ -23,6 +23,7 @@
 #import "Aspects.h"
 
 #import "YFDayCalendarView.h"
+#import <AIEcgSDK/AIEcgSDK.h>
 
 
 #endif /* patient_Bridge_h */

@@ -37,9 +37,7 @@ extension VideoConsultBuyDiseaseView {
         backgroundColor = .cf
         
         let titleView = TextLeftRightView(TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3))
-        let attributeString = NSMutableAttributedString(string: "病情描述")
-        attributeString.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
-        titleView.leftLabel.attributedText = attributeString
+        titleView.leftLabel.attributedText = "病情描述".needed(with: .boldSize(16), color: .c3)
         addSubview(titleView)
 
         txtView.textView.textColor = .c3

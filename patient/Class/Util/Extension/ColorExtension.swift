@@ -79,6 +79,11 @@ extension UIColor {
         return UIColor(stringHexValue: "#f0efef")!
     }
     
+    static var cf0fafc: UIColor {
+        return UIColor(stringHexValue: "#f0fafc")!
+    }
+    
+    
     ///
     static var cf5f5f5: UIColor {
         return UIColor(stringHexValue: "#f5f5f5")!
@@ -122,6 +127,12 @@ extension UIColor {
     static var cff3a33: UIColor {
         return UIColor(stringHexValue: "#ff3a33")!
     }
+    
+    static var c7c97b0: UIColor {
+        return UIColor(stringHexValue: "#7c97b0")!
+    }
+    
+    
     
     /// 头像边框色
     static var c7bbbfd: UIColor {

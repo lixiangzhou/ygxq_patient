@@ -271,6 +271,8 @@ extension AddressEditController {
         view.backgroundColor = .cf
         let titleLabel = view.zz_add(subview: UILabel(text: "设为默认", font: .size(16), textColor: .c3)) as! UILabel
         let switchView = view.zz_add(subview: UISwitch()) as! UISwitch
+        switchView.tintColor = .c407cec
+        switchView.onTintColor = .c407cec
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)
