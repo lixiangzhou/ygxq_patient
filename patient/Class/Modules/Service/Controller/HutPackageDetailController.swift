@@ -70,9 +70,11 @@ extension HutPackageDetailController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
+        
         viewModel.hutModelProperty.producer.skipNil().startWithValues { (model) in
             self.bottomView.priceLabel.text = "￥\(model.serPrice)"
         }
+        
         tableView.reactive.reloadData <~ viewModel.addressModelProperty.signal.skipRepeats({ (m1, m2) -> Bool in
             if m1 == nil, m2 == nil {
                 return true

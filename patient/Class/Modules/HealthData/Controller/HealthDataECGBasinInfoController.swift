@@ -158,18 +158,22 @@ extension HealthDataECGBasinInfoController {
         var phys_sign = ""
         for btn in conditionView.btns {
             if btn.isSelected {
-                phys_sign.append("\(btn.tag) ")
+                phys_sign.append("\(btn.currentTitle!) ")
             }
         }
+        
+        let ecgId = "\(patientId)\(Int(Date().timeIntervalSince1970 * 1000))"
+        let birthday = model.birth!.toTime(format: "yyyy-MM-dd")
+        let remark = otherView.txtView.text ?? ""
         
         let info: [String: Any] = [
             "user_id": model.id.description,
             "user_name": model.realName,
             "sex": model.sex.description,
             "phone_number": "13333333333",
-            "birthday": model.birth!.toTime(format: "yyyy-MM-dd"),
+            "birthday": birthday,
             "id_card": "",
-            "app_ecg_id": "\(patientId)\(Int(Date().timeIntervalSince1970 * 1000))",
+            "app_ecg_id": ecgId,
             "ecg_mode": viewModel.ecgMode,
             "phys_sign": phys_sign,
             "pacemaker_ind": pacemaker_ind.description
@@ -178,8 +182,29 @@ extension HealthDataECGBasinInfoController {
         let cardNo = context == .release ? "18435171908657539440" : "29350960875683080269"
         let cardKey = context == .release ? "11235372426" : "18202593751"
         
-        let vc = AIEcgCollectViewController(deviceMac: [], ecgInfo: info, ecgCardNo: cardNo, ecgCardKey: cardKey, ecgDataBlock: { (data) in
+        let vc = AIEcgCollectViewController(deviceMac: [], ecgInfo: info, ecgCardNo: cardNo, ecgCardKey: cardKey, ecgDataBlock: { [weak self] (data) in
             print(data)
+            if let dict = (data as? [[String: Any]])?.first {
+                let params: [String: Any] = [
+                    "appEcgId": ecgId,
+                    "birthday": birthday,
+                    "consultantId": model.id,
+                    "idCard": "",
+                    "initialEcgUrl": "",
+                    "name": model.realName,
+                    "pacemakerInd": pacemaker_ind,
+                    "physSign": phys_sign,
+                    "puid": patientId,
+                    "remark": remark,
+                    "saveEcgData": 0,
+                    "sex": model.sex == 1 ? "男" : "女",
+                    "stopDate": dict["stop_date"] ?? "",
+                    "totalNum": dict["verify_total_num"] ?? "",
+                    "uploadResult": "",
+                    "usedNum": dict["verify_used_num"] ?? "",
+                ]
+                self?.viewModel.addECG(params: params)
+            }
         }) { (error) in
             print(error)
         }

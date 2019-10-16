@@ -12,7 +12,7 @@ import ReactiveSwift
 class HealthDataECGBasinInfoViewModel: BaseViewModel {
     let orderInfoProperty = MutableProperty<[HealthDatECGOrderInfoModel]>([])
     
-    var ecgMode = ""
+    var ecgMode = "0"
     
     let topInfoAttrProperty = MutableProperty<NSAttributedString?>(nil)
     
@@ -57,7 +57,7 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
         ECGApi.querySurpluNum(pid: patientId).rac_responseModel([HealthDatECGOrderInfoModel].self).skipNil().startWithValues { [weak self] (models) in
             self?.orderInfoProperty.value = models
             
-            self?.ecgMode = ""
+            self?.ecgMode = "0"
             for m in models {
                 if (m.surplusNum ?? 0) > 0 {
                     self?.ecgMode = "1"
@@ -114,6 +114,14 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
                 return m.serCode == "UTOPIA14"
             }) {
                 completion(model)
+            }
+        }
+    }
+    
+    func addECG(params: [String: Any]) {
+        ECGApi.addECG(params: params).rac_response(String.self).startWithValues { (resp) in
+            if resp.isSuccess {
+                HUD.show(toast: "上传成功")
             }
         }
     }

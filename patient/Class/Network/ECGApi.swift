@@ -12,9 +12,10 @@ import Moya
 enum ECGApi: TargetType {
     case isBuyECG(pid: Int, keyword: String)
     case list7Ago(pid: Int)
-    case getLastOneByDate(pid: Int, time: TimeInterval)
+    case getLastOneByDate(pid: Int, time: TimeInterval?)
     case querySurpluNum(pid: Int)
     case queryEcg12List(pid: Int)
+    case addECG(params: [String: Any])
 }
 
 extension ECGApi {
@@ -31,6 +32,8 @@ extension ECGApi {
             return "/ecg12/querySurpluNum"
         case .queryEcg12List:
             return "/ecg12/queryEcg12List"
+        case .addECG:
+            return "/ecg12/addECG"
         }
     }
     
@@ -44,11 +47,17 @@ extension ECGApi {
             params["puid"] = pid
         case let .getLastOneByDate(pid: pid, time: time):
             params["puid"] = pid
-            params["createTime"] = time
+            if let time = time {
+                params["createTime"] = time
+            }
         case let .querySurpluNum(pid: pid):
             params["puid"] = pid
         case let .queryEcg12List(pid: pid):
             params["puid"] = pid
+        case let .addECG(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }

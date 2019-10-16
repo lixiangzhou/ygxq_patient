@@ -47,6 +47,7 @@ extension HealthDataController {
     
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
+        tableView.reactive.reloadData <~ viewModel.xdDataProperty.signal.map(value: ())
     }
 }
 
@@ -73,9 +74,12 @@ extension HealthDataController: UITableViewDataSource, UITableViewDelegate {
         cell.dataLabel.isHidden = isXD
         
         if isXD {
-            let hasValue = model.healthLogValues != nil
-            cell.imgView.isHidden = !hasValue
-            cell.dataLabel.isHidden = hasValue
+            let hasData = viewModel.xdDataProperty.value
+            cell.imgView.isHidden = !hasData
+            cell.dataLabel.isHidden = hasData
+        } else {
+            cell.imgView.isHidden = true
+            cell.dataLabel.isHidden = false
         }
         
         return cell

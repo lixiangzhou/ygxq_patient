@@ -36,6 +36,8 @@ class QRCodeScanController: BaseController {
 // MARK: - UI
 extension QRCodeScanController {
     override func setUI() {
+        setRightBarItem(title: "相册", action: #selector(photosAction))
+        
         let paddingX: CGFloat = 80
         let wh = view.bounds.width - paddingX * 2
         
@@ -90,6 +92,13 @@ extension QRCodeScanController {
     }
 }
 
+extension QRCodeScanController {
+    @objc private func photosAction() {
+        UIImagePickerController.showPicker(sourceType: .photoLibrary, from: self, delegate: self)
+        
+    }
+}
+
 // MARK: - Delegate Internal
 
 // MARK: - AVCaptureMetadataOutputObjectsDelegate
@@ -126,10 +135,28 @@ extension QRCodeScanController: AVCaptureMetadataOutputObjectsDelegate {
     }
 }
 
-
-// MARK: - Delegate External
-
-// MARK: -
+// MARK: - UIImagePickerControllerDelegate
+extension QRCodeScanController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            guard let img = info[.originalImage] as? UIImage,
+                let ciimg = CIImage(image: img) else { return }
+    
+            let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+            guard let feature = detector?.features(in: ciimg).first as? CIQRCodeFeature else { return }
+            
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        setNavigation(navigationController, style: .default)
+    }
+}
 
 // MARK: - Helper
 extension QRCodeScanController {
