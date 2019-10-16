@@ -16,7 +16,7 @@ class DrugUsedController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "用药记录"
+        title = "续药记录"
         setUI()
         setBinding()
         viewModel.getData()
@@ -114,7 +114,7 @@ extension DrugUsedController: UITableViewDataSource, UITableViewDelegate {
         arrow.transform = CGAffineTransform(rotationAngle: group.open ? CGFloat(Double.pi / 2) : 0)
         
         if section == 0 {
-            let tipLabel = UILabel(text: "最新用药", font: .size(16), textColor: .c3)
+            let tipLabel = UILabel(text: "最新续药", font: .size(16), textColor: .c3)
             header.addSubview(tipLabel)
             tipLabel.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()

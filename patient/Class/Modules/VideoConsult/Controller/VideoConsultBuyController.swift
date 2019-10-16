@@ -50,7 +50,7 @@ extension VideoConsultBuyController {
         contentView.backgroundColor = .cf0efef
         scrollView.addSubview(contentView)
         
-        let topTip = contentView.zz_add(subview: UILabel(text: "提示：急重症患者不适合视频咨询，请及时前往医院就医", font: .size(13), textColor: .cf25555))
+        let topTip = contentView.zz_add(subview: UILabel(text: "提示：急重症患者不适合视频咨询，请及时前往医院就医。为确保与医生正常通话，请您务必填写正确的手机号码。", font: .size(15), textColor: .c6)) as! UILabel
         
         contentView.addSubview(patientInfoView)
         contentView.addSubview(diseaseView)
@@ -58,9 +58,9 @@ extension VideoConsultBuyController {
         
         setActions()
         
-        let bottomTip = contentView.zz_add(subview: UILabel(text: viewModel.tipString, font: .size(14), textColor: .cf25555))
+        let bottomTip = contentView.zz_add(subview: UILabel(text: viewModel.tipString, font: .size(15), textColor: .c6))
         
-        let telLabel = LinkedLabel(text: "客服电话：400-6251-120", font: .size(14), textColor: .c407cec)
+        let telLabel = LinkedLabel(text: "客服电话：400-6251-120", font: .size(15), textColor: .c6)
         contentView.addSubview(telLabel)
         telLabel.addLinks([(string: telLabel.text!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { _ in
             UIApplication.shared.open(URL(string: "tel://4006251120")!, options: [:], completionHandler: nil)
@@ -88,24 +88,24 @@ extension VideoConsultBuyController {
         }
         
         topTip.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalTo(12)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-            make.height.equalTo(40)
+            make.height.equalTo(viewModel.tipString.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: 15).height - 10)
         }
         
         patientInfoView.snp.makeConstraints { (make) in
-            make.top.equalTo(topTip.snp.bottom)
+            make.top.equalTo(topTip.snp.bottom).offset(12)
             make.left.right.equalToSuperview()
         }
         
         diseaseView.snp.makeConstraints { (make) in
-            make.top.equalTo(patientInfoView.snp.bottom).offset(10)
+            make.top.equalTo(patientInfoView.snp.bottom).offset(12)
             make.left.right.equalToSuperview()
         }
         
         picturesView.snp.makeConstraints { (make) in
-            make.top.equalTo(diseaseView.snp.bottom).offset(10)
+            make.top.equalTo(diseaseView.snp.bottom).offset(12)
             make.left.right.equalToSuperview()
         }
         

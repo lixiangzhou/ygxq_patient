@@ -17,11 +17,11 @@ extension String {
     /// 身份证号脱敏显示
     var idSecrectString: String {
         if count == 15 {
-            return zz_replace(start: 8, length: 4, with: "*")
+            return zz_replace(start: 3, length: 10, with: "*")
         } else if count == 18 {
-            return zz_replace(start: 10, length: 4, with: "*")
+            return zz_replace(start: 3, length: 13, with: "*")
         }
-        return count != 11 ? self : zz_replace(start: 3, length: 4, with: "*")
+        return self
     }
     
     func needed(with font: UIFont, color: UIColor) -> NSAttributedString {

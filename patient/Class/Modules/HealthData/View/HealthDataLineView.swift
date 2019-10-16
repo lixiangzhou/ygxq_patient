@@ -50,6 +50,7 @@ extension HealthDataLineView {
         calendarView.zz_setCorner(radius: 5, masksToBounds: true)
         calendarView.weekdayHeaderWeekendTextColor = .c6
         calendarView.weekdayHeaderTextColor = .c6
+        calendarView.selectedDate = Date()
         
         lineEmpytLabel.backgroundColor = .cf
         lineEmpytLabel.zz_setCorner(radius: 5, masksToBounds: true)

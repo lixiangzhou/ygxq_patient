@@ -19,4 +19,12 @@ struct IQKBManager {
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = true // 是否显示占位文字
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "完成"
     }
+    
+    static func enable() {
+        IQKeyboardManager.shared.enable = true
+    }
+    
+    static func disable() {
+        IQKeyboardManager.shared.enable = false
+    }
 }

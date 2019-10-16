@@ -20,6 +20,18 @@ class HealthDataMemberEditController: BaseController {
         setData()
         setBinding()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        IQKBManager.disable()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        IQKBManager.enable()
+    }
 
     // MARK: - Public Property
     private let scrollView = UIScrollView()

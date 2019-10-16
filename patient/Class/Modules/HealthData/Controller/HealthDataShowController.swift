@@ -62,6 +62,7 @@ extension HealthDataShowController {
             vc.viewModel.type = self?.viewModel.type ?? ""
             vc.viewModel.saveResultProperty.signal.observeValues { (isSuccess) in
                 if isSuccess {
+                    self?.healthLineView.calendarView.selectedDate = Date()
                     self?.viewModel.selectDate = Date()
                 }
             }

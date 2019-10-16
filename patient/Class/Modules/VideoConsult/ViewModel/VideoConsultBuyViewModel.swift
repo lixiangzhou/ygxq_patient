@@ -40,6 +40,9 @@ class VideoConsultBuyViewModel: BaseViewModel {
     }
     
     func buyVideoConsult(params: [String: Any]) {
+        
+        
+        
         HUD.showLoding()
         UIApplication.shared.beginIgnoringInteractionEvents()
         var params = params

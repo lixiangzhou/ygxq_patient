@@ -36,11 +36,12 @@ extension VideoConsultBuyPicturesView {
     private func setUI() {
         backgroundColor = .cf
         
-        let titleView = TextLeftRightView(TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3))
+        let titleView = TextLeftRightView()
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "上传图片资料"
         addSubview(titleView)
         
-        let config = PictureSelectView.Config.defaultConfig()
+        let config = PictureSelectView.Config.newConfig()
         pictureSelectView.config = config
         addSubview(pictureSelectView)
         

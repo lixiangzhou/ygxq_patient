@@ -29,10 +29,8 @@ class PictureSelectView: BaseView {
         didSet {
             guard let config = config else { return }
             
-            let itemWH = (config.width - CGFloat(config.column - 1) * config.xSpacing) / CGFloat(config.column)
-            
             let layout = UICollectionViewFlowLayout()
-            layout.itemSize = CGSize(width: itemWH, height: itemWH)
+            layout.itemSize = config.itemSize
             layout.minimumLineSpacing = config.ySpacing
             layout.minimumInteritemSpacing = config.xSpacing
             collectionView.setCollectionViewLayout(layout, animated: false)
@@ -135,13 +133,14 @@ extension PictureSelectView {
             addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
                         
             imgView.snp.makeConstraints { (make) in
-                make.top.left.equalTo(5)
-                make.right.bottom.equalTo(-5)
+//                make.top.left.equalTo(5)
+//                make.right.bottom.equalTo(-5)
+                make.edges.equalToSuperview()
             }
             
             delView.snp.makeConstraints { (make) in
                 make.right.top.equalToSuperview()
-                make.width.height.equalTo(15)
+                make.width.height.equalTo(20)
             }
         }
         
@@ -202,12 +201,16 @@ extension PictureSelectView {
         }
         
         var itemSize: CGSize {
-            let itemWH = (width - CGFloat(column - 1) * xSpacing) / CGFloat(column)
+            let itemWH = CGFloat(Int((width - CGFloat(column - 1) * xSpacing) / CGFloat(column)))
             return CGSize(width: itemWH, height: itemWH)
         }
         
         static func defaultConfig() -> Config {
             return PictureSelectView.Config(width: UIScreen.zz_width - 30, column: 4, xSpacing: 5, ySpacing: 5, picAction: .onlyPicShow)
+        }
+        
+        static func newConfig() -> Config {
+            return PictureSelectView.Config(width: UIScreen.zz_width - 30, column: 3, xSpacing: 8, ySpacing: 8, picAction: .onlyPicShow)
         }
     }
 }

@@ -248,7 +248,7 @@ extension PersonInfoEditController {
                 self?.viewModel.imgUrl = info.imgUrl
                 self?.avatorView.kf.setImage(with: URL(string: info.imgUrl), placeholder: UIImage(named: "mine_avator_default"))
                 self?.nameView.rightField.text = info.realName
-                self?.idView.rightField.text = info.idCardNo
+                self?.idView.rightField.text = info.idCardNo.idSecrectString
                 self?.sexView.rightLabel.text = info.sex == Sex.unknown ? self?.arrowOpt : info.sex.description
                 self?.birthView.rightLabel.text = info.birth != nil ? info.birth!.toTime(format: "yyyy-MM-dd") : self?.arrowOpt
                 self?.nationView.rightField.text = info.race
@@ -323,10 +323,14 @@ extension PersonInfoEditController {
 
     @objc private func finishAction() {
         var params = [String: Any]()
+        
+        var idCard = idView.rightField.text ?? ""
+        idCard = idCard.contains("*") ? patientInfoProperty.value!.idCardNo : idCard
+        
         let name = nameView.rightField.text ?? ""
         params["realName"] = name
         params["birth"] = (selectBirth?.zz_date(withDateFormat: "yyyy-MM-dd")?.timeIntervalSince1970 ?? 0) * 1000
-        params["idCardNo"] = idView.rightField.text ?? ""
+        params["idCardNo"] = idCard
         params["sex"] = Sex.string(selectSex).rawValue
         params["race"] = nationView.rightField.text ?? ""
         params["address"] = addressView.rightLabel.text ?? ""

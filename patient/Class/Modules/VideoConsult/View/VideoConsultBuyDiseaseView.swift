@@ -36,18 +36,19 @@ extension VideoConsultBuyDiseaseView {
     private func setUI() {
         backgroundColor = .cf
         
-        let titleView = TextLeftRightView(TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3))
-        titleView.leftLabel.attributedText = "病情描述".needed(with: .boldSize(16), color: .c3)
+        let titleView = TextLeftRightView()
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
+        titleView.leftLabel.attributedText = "病情描述".needed(with: .boldSize(17), color: .c3)
         addSubview(titleView)
 
         txtView.textView.textColor = .c3
-        txtView.textView.font = .size(15)
+        txtView.textView.font = .size(16)
         txtView.minNumberOfLines = 3
         txtView.maxNumberOfLines = 30
         txtView.inputLimit = 300
         txtView.textView.keyboardDismissMode = .onDrag
         txtView.textView.showsVerticalScrollIndicator = false
-        txtView.placeholderAttributedText = NSMutableAttributedString(string: "请详细描述您的主要症状，持续时间，或者上传近期检查单等资料，供医生参考并给出更详细的回复", attributes: [NSAttributedString.Key.foregroundColor: UIColor.fieldDefaultColor, NSAttributedString.Key.font: UIFont.size(15)])
+        txtView.placeholderAttributedText = NSMutableAttributedString(string: "请详细描述您的主要症状，持续时间，或者上传近期检查单等资料，供医生参考并给出更详细的回复。", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c9, NSAttributedString.Key.font: UIFont.size(15)])
         addSubview(txtView)
         
         txtView.delegates.didChangeHeight = { [weak self] height in
