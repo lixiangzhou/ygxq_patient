@@ -92,10 +92,30 @@ extension QRCodeScanController {
     }
 }
 
+// MARK: - Action
 extension QRCodeScanController {
     @objc private func photosAction() {
         UIImagePickerController.showPicker(sourceType: .photoLibrary, from: self, delegate: self)
-        
+    }
+}
+
+// MARK: - Network
+extension QRCodeScanController {
+    private func bindDoctor(code txt: String) {
+        let prefix = "cn.com.lightheart://code="
+        let code = txt.zz_substring(range: NSRange(location: prefix.count, length: txt.count - prefix.count))
+        HUD.showLoding()
+        PatientApi.bindingDoctor(code: code, puid: patientId).rac_response(String.self).map { BoolString($0) }.startWithValues { [weak self] (result) in
+            HUD.hideLoding()
+            if result.isSuccess {
+                HUD.show(toast: "您的申请已提交，请耐心等待医生同意")
+            } else {
+                HUD.show(result)
+            }
+            DispatchQueue.main.zz_after(0.5) {
+                self?.pop()
+            }
+        }
     }
 }
 
@@ -113,20 +133,8 @@ extension QRCodeScanController: AVCaptureMetadataOutputObjectsDelegate {
         
         for item in metadataObjects {
             let prefix = "cn.com.lightheart://code="
-            if let txt = (item as? AVMetadataMachineReadableCodeObject)?.stringValue, txt.count > prefix.count {
-                let code = txt.zz_substring(range: NSRange(location: prefix.count, length: txt.count - prefix.count))
-                HUD.showLoding()
-                PatientApi.bindingDoctor(code: code, puid: patientId).rac_response(String.self).map { BoolString($0) }.startWithValues { [weak self] (result) in
-                    HUD.hideLoding()
-                    if result.isSuccess {
-                        HUD.show(toast: "您的申请已提交，请耐心等待医生同意")
-                    } else {
-                        HUD.show(result)
-                    }
-                    DispatchQueue.main.zz_after(0.5) {
-                        self?.pop()
-                    }
-                }
+            if let txt = (item as? AVMetadataMachineReadableCodeObject)?.stringValue, txt.hasPrefix(prefix) {
+                bindDoctor(code: txt)
             } else {
                 HUD.show(toast: "扫描失败")
                 continueScan = true
@@ -142,18 +150,33 @@ extension QRCodeScanController: UIImagePickerControllerDelegate & UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.editedImage] as? UIImage {
-            guard let img = info[.originalImage] as? UIImage,
-                let ciimg = CIImage(image: img) else { return }
-    
-            let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
-            guard let feature = detector?.features(in: ciimg).first as? CIQRCodeFeature else { return }
-            
+        if let image = info[.editedImage] as? UIImage, let ciimg = CIImage(image: image) {
+            let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: CIContext(options: nil), options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+            if let features = detector?.features(in: ciimg) {//.first, let feature = first as? CIQRCodeFeature else { return }
+                let prefix = "cn.com.lightheart://code="
+                var hasFind = false
+                for feature in features {
+                    if let f = feature as? CIQRCodeFeature {
+                        if let txt = f.messageString, txt.hasPrefix(prefix) {
+                            bindDoctor(code: txt)
+                            hasFind = true
+                            break
+                        }
+                    }
+                }
+                if !hasFind {
+                    HUD.show(toast: "扫描失败")
+                }
+            }
         }
         picker.dismiss(animated: true, completion: nil)
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        setNavigation(navigationController, style: .default)
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         setNavigation(navigationController, style: .default)
     }
 }
@@ -215,5 +238,4 @@ extension QRCodeScanController {
         view.layer.insertSublayer(layer, at: 0)
         session.startRunning()
     }
-    
 }

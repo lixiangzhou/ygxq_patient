@@ -71,9 +71,10 @@ extension HutPackageDetailController {
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
         
-        viewModel.hutModelProperty.producer.skipNil().startWithValues { (model) in
-            self.bottomView.priceLabel.text = "￥\(model.serPrice)"
-        }
+        let buyEnabled = viewModel.addressModelProperty.producer.map { $0 != nil }
+        
+        bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+        bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }
         
         tableView.reactive.reloadData <~ viewModel.addressModelProperty.signal.skipRepeats({ (m1, m2) -> Bool in
             if m1 == nil, m2 == nil {

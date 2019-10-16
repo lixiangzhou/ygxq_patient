@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreTelephony
 
 class RCManager: NSObject {
     static let shared = RCManager()
@@ -18,9 +19,16 @@ class RCManager: NSObject {
     
     func setup() {
         RCIM.shared().initWithAppKey(key)
+        RCIM.shared()?.receiveMessageDelegate = self
+        
+        
         RCIM.shared()?.userInfoDataSource = self
         RCIMClient.shared()?.logLevel = .log_Level_Info
+        
+        addFloatingBoardHook()
+        addVideoHook()
         addCallVCHook()
+        
         setUserInfo()
     }
     
@@ -47,6 +55,14 @@ class RCManager: NSObject {
     
     private let rcModelsPath = zz_filePath(with: .documentDirectory, fileName: "rcModels")
     private var rcModels = [RCModel]()
+    
+    
+    var leftSeconds: Int = 1800
+    var leftSecondLabel = UILabel(text: "30", font: .size(15), textColor: .white)
+    var timer: Timer?
+    var callSession: RCCallSession?
+    var callFloatBoard: RCCallFloatingBoard?
+    var callCenter = CTCallCenter()
 }
 
 // MARK: - 连接
@@ -146,6 +162,97 @@ extension RCManager {
     }
 }
 
+extension RCManager {
+    private func addFloatingBoardHook() {
+        let connectClosure: @convention(block) (AspectInfo)-> Void = { [weak self] aspectInfo in
+            self?.callSession = (aspectInfo.instance() as? RCCallFloatingBoard)?.callSession
+            
+            self?.startTimer()
+            NotificationCenter.default.post(name: .init("callDidConnect"), object: (aspectInfo.instance() as? RCCallFloatingBoard)?.callSession)
+        }
+        _ = try? RCCallBaseViewController.aspect_hook(NSSelectorFromString("callDidConnect"), with: [], usingBlock: connectClosure)
+        
+        let disConnectClosure: @convention(block) (AspectInfo)-> Void = { [weak self] aspectInfo in
+            self?.callSession = nil
+            NotificationCenter.default.post(name: .init("callDidDisconnect"), object: (aspectInfo.instance() as? RCCallFloatingBoard)?.callSession)
+        }
+        _ = try? RCCallFloatingBoard.aspect_hook(NSSelectorFromString("callDidDisconnect"), with: [], usingBlock: disConnectClosure)
+        
+        let startClosure: @convention(block) (AspectInfo)-> Void = { [weak self] aspectInfo in
+            self?.callFloatBoard = aspectInfo.instance() as? RCCallFloatingBoard
+        }
+        _ = try? RCCallFloatingBoard.aspect_hook(NSSelectorFromString("initBoard"), with: [], usingBlock: startClosure)
+        
+        let stopClosure: @convention(block) (AspectInfo)-> Void = { [weak self] aspectInfo in
+            self?.callFloatBoard = nil
+            
+        }
+        _ = try? RCCallFloatingBoard.aspect_hook(NSSelectorFromString("clearCallFloatingBoard"), with: [], usingBlock: stopClosure)
+    }
+    
+    private func addVideoHook() {
+        let connectClosure: @convention(block) (AspectInfo)-> Void = { [weak self] aspectInfo in
+            self?.callSession = (aspectInfo.instance() as? RCCallBaseViewController)?.callSession
+            
+            self?.startTimer()
+            NotificationCenter.default.post(name: .init("callDidConnect"), object: (aspectInfo.instance() as? RCCallBaseViewController)?.callSession)
+        }
+        _ = try? RCCallBaseViewController.aspect_hook(NSSelectorFromString("callDidConnect"), with: [], usingBlock: connectClosure)
+        
+        let disConnectClosure: @convention(block) (AspectInfo)-> Void = { [weak self] aspectInfo in
+            self?.callSession = nil
+            NotificationCenter.default.post(name: .init("callDidDisconnect"), object: (aspectInfo.instance() as? RCCallBaseViewController)?.callSession)
+        }
+        _ = try? RCCallBaseViewController.aspect_hook(NSSelectorFromString("callDidDisconnect"), with: [], usingBlock: disConnectClosure)
+    }
+    
+    private func addCallVCHook() {
+        let viewDidLoad: @convention(block) (AspectInfo)-> Void = { aspectInfo in
+            (aspectInfo.instance() as? RCCallBaseViewController)?.cameraCloseButton.alpha = 0
+        }
+        _ = try? RCCallBaseViewController.aspect_hook(NSSelectorFromString("viewDidLoad"), with: [], usingBlock: viewDidLoad)
+    }
+    
+    
+    func startTimer() {
+        stopTimer()
+        timer = Timer(timeInterval: 1, target: self, selector: #selector(run), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer!, forMode: .common)
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    @objc func run() {
+        guard let session = callSession else { return }
+        let runSecond = Date().timeIntervalSince1970 - TimeInterval(session.connectedTime / 1000)
+        let left = leftSeconds - Int(runSecond)
+        
+        if left <= 30 {
+            leftSecondLabel.text = "还剩\(left)秒"
+            
+            if let timeLabel = (UIApplication.shared.keyWindow?.rootViewController as? RCCallBaseViewController)?.timeLabel {
+                timeLabel.addSubview(leftSecondLabel)
+                leftSecondLabel.snp.makeConstraints { (make) in
+                    make.centerX.equalToSuperview()
+                    make.top.equalTo(timeLabel.snp.bottom).offset(20)
+                }
+            }
+            
+            if left <= 0 {
+                let vc = (UIApplication.shared.keyWindow?.rootViewController as? RCCallBaseViewController)
+                vc?.hangupButtonClicked()
+                if let callFloatBoard = callFloatBoard {
+                    callFloatBoard.callSession.hangup()
+                    callFloatBoard.perform(NSSelectorFromString("callDidDisconnect"))
+                }
+            }
+        }
+    }
+}
+
 // MARK: - UserInfo
 extension RCManager {
     private func setUserInfo() {
@@ -157,15 +264,6 @@ extension RCManager {
             userInfo.userId = "RC_\(model.id)"
             RCIMClient.shared()?.currentUserInfo = userInfo
         }
-    }
-}
-
-extension RCManager {
-    private func addCallVCHook() {
-        let viewDidLoad: @convention(block) (AspectInfo)-> Void = { aspectInfo in
-            (aspectInfo.instance() as? RCCallBaseViewController)?.cameraCloseButton.alpha = 0
-        }
-        _ = try? RCCallBaseViewController.aspect_hook(NSSelectorFromString("viewDidLoad"), with: [], usingBlock: viewDidLoad)
     }
 }
 
@@ -236,6 +334,15 @@ extension RCManager: RCIMUserInfoDataSource {
             user.name = model?.realName
             user.portraitUri = model?.imgUrl
             completion(user)
+        }
+    }
+}
+
+extension RCManager: RCIMReceiveMessageDelegate {
+    func onRCIMReceive(_ message: RCMessage!, left: Int32) {
+        if let txt = (message.content as? RCTextMessage)?.content, let time = Int(txt), time > 0 {
+            print("TIME: =>", time)
+            leftSeconds = time
         }
     }
 }

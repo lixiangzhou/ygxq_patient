@@ -36,6 +36,7 @@ class VideoConsultBuyController: BaseController {
     private let picturesView = VideoConsultBuyPicturesView()
     
     private let appointBtn = UIButton(title: "立即预约", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
+    private let bottomView = PayBottomView()
 }
 
 // MARK: - UI
@@ -66,7 +67,14 @@ extension VideoConsultBuyController {
         })])
         
         scrollView.contentInset.bottom = 50
-        appointBtn.addTarget(self, action: #selector(appointAction), for: .touchUpInside)
+        
+        appointBtn.addTarget(self, action: #selector(buyAction), for: .touchUpInside)
+        
+        bottomView.payClosure = { [weak self] in
+            self?.buyAction()
+        }
+        
+        view.addSubview(bottomView)
         view.addSubview(appointBtn)
         
         scrollView.snp.makeConstraints { (make) in
@@ -117,6 +125,10 @@ extension VideoConsultBuyController {
             make.height.equalTo(50)
             make.bottomOffsetFrom(self)
         }
+        
+        bottomView.snp.makeConstraints { (make) in
+            make.edges.equalTo(appointBtn)
+        }
     }
     
     override func setBinding() {
@@ -127,6 +139,9 @@ extension VideoConsultBuyController {
         reactive.makeBindingTarget { (base, _) in
             base.updateContentHeight()
             } <~ picturesView.heightProperty.skipRepeats().signal.map(value: ())
+        
+        bottomView.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 != nil }
+        appointBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 == nil }
         
         // 选择图片
         viewModel.selectedImagesProperty.signal.observeValues { [weak self] (imgs) in
@@ -225,7 +240,7 @@ extension VideoConsultBuyController {
         }
     }
     
-    @objc private func appointAction() {
+    @objc private func buyAction() {
         guard let model = patientInfoProperty.value else { return }
         
         let needUpdate = model.realName.isEmpty || model.idCardNo.isEmpty
@@ -251,14 +266,14 @@ extension VideoConsultBuyController {
             "realName": realName
         ]
         
-        if let orderModel = viewModel.myPrivateDoctorOrderProperty.value {
+        if let orderModel = viewModel.myPrivateDoctorOrderProperty.value { // 预约
             params["keyObject"] = "视频咨询"
             params["orderId"] = orderModel.orderId
             params["productItmId"] = orderModel.productItemId
             params["productName"] = orderModel.product_name
             params["serCode"] = orderModel.ser_code
             params["workType"] = "TSK_WORK_T_19"
-        } else {
+        } else { // 购买
             params["hospitalPuid"] = 0
         }
         

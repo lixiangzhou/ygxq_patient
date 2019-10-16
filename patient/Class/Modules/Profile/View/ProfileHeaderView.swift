@@ -41,7 +41,7 @@ extension ProfileHeaderView {
         let mobileView = getRowView("手机号")
         let sexView = getRowView("性别")
         let ageView = getRowView("年龄")
-        let diseaseView = getRowView("疾病")
+        let diseaseView = getRowView("病史")
         
         self.nameLabel = nameView.rightLabel
         self.mobileLabel = mobileView.rightLabel

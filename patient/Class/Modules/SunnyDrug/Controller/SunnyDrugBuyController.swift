@@ -34,7 +34,7 @@ class SunnyDrugBuyController: BaseController {
     private let contentView = UIView()
     private let idView = SunnyDrugBuyIdView()
     private let addressView = AddressShowView()
-    private let buyBtn = UIButton(title: "立即预约", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
+    private let appointBtn = UIButton(title: "立即预约", font: .size(18), titleColor: .cf, backgroundColor: .c407cec)
     private let bottomView = PayBottomView()
 }
 
@@ -56,13 +56,13 @@ extension SunnyDrugBuyController {
         let tipLabel = contentView.zz_add(subview: UILabel(text: tipString, font: .size(14), textColor: .c9)) as! UILabel
         
         scrollView.contentInset.bottom = 50
-        buyBtn.addTarget(self, action: #selector(buyAction), for: .touchUpInside)
+        appointBtn.addTarget(self, action: #selector(buyAction), for: .touchUpInside)
         
         bottomView.payClosure = { [weak self] in
             self?.buyAction()
         }
         
-        view.addSubview(buyBtn)
+        view.addSubview(appointBtn)
         view.addSubview(bottomView)
         
         addActions()
@@ -95,14 +95,14 @@ extension SunnyDrugBuyController {
             make.height.equalTo(height)
         }
         
-        buyBtn.snp.makeConstraints { (make) in
+        appointBtn.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(50)
             make.bottomOffsetFrom(self)
         }
         
         bottomView.snp.makeConstraints { (make) in
-            make.edges.equalTo(buyBtn)
+            make.edges.equalTo(appointBtn)
         }
     }
     
@@ -112,7 +112,7 @@ extension SunnyDrugBuyController {
         }
         
         bottomView.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 != nil }
-        buyBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 == nil }
+        appointBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 == nil }
         
         viewModel.priceProperty.producer.startWithValues { (value) in
             self.bottomView.priceLabel.text = "￥\(value)"
@@ -139,8 +139,8 @@ extension SunnyDrugBuyController {
         let addressEnabled = SignalProducer<Bool, NoError>(value: false).concat(addressView.viewModel.addressModelProperty.producer.skipNil().map(value: true))
         let buyEnabled = imgEnabled.and(addressEnabled)
         
-        buyBtn.reactive.isUserInteractionEnabled <~ buyEnabled
-        buyBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+        appointBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+        appointBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
         
         bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
         bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }

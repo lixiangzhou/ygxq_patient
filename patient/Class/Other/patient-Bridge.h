@@ -17,6 +17,7 @@
 #import <RongCallKit/RCCall.h>
 #import <RongIMLib/RongIMLib.h>
 #import <RongCallKit/RCCallBaseViewController.h>
+#import <RongCallKit/RCCallFloatingBoard.h>
 
 #import "JPUSHService.h"
 #import "YYText.h"

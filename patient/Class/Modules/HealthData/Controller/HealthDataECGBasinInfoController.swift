@@ -166,6 +166,12 @@ extension HealthDataECGBasinInfoController {
         let birthday = model.birth!.toTime(format: "yyyy-MM-dd")
         let remark = otherView.txtView.text ?? ""
         
+        if remark.count > 200 {
+            HUD.show(toast: "其他要描述的内容 不能超过200个字符")
+            otherView.becomeFirstResponder()
+            return
+        }
+        
         let info: [String: Any] = [
             "user_id": model.id.description,
             "user_name": model.realName,

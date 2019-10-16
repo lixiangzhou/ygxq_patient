@@ -28,6 +28,11 @@ class VideoConsultBuyViewModel: BaseViewModel {
         return tipString
     }
     
+    var isToPayWay: Bool {
+        return myPrivateDoctorOrderProperty.value == nil
+    }
+
+    
     func getPrivateDoctor() {
         ServiceApi.isMyPrivateDoctor(did: did, pid: patientId, type: serType).rac_responseModel(OrderModel.self).skipNil().skip { $0.orderId == 0 }.startWithValues { [weak self] (value) in
             self?.myPrivateDoctorOrderProperty.value = value
@@ -60,7 +65,7 @@ class VideoConsultBuyViewModel: BaseViewModel {
     }
     
     func _buyVideoConsult(params: [String: Any]) {
-        if myPrivateDoctorOrderProperty.value != nil {
+        if !isToPayWay {
             ServiceApi.createWorkOrder(params: params).rac_response(Int.self).startWithValues { [weak self] (resp) in
                 HUD.hideLoding()
                 UIApplication.shared.endIgnoringInteractionEvents()
