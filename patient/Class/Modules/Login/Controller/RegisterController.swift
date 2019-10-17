@@ -204,6 +204,8 @@ extension RegisterController {
 // MARK: - Action
 extension RegisterController {
     @objc private func nextAction() {
+        ActionCollecter.sendData(lev: "5")
+        
         if !mobileView.text!.hasPrefix("1") {
             HUD.show(toast: "手机号码格式错误")
             return

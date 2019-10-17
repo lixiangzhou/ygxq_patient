@@ -21,6 +21,7 @@ enum CommonApi: TargetType {
     case queryPatientConsultantList(pid: Int)
     case addUsrPatientConsultant(params: [String: Any])
     case updateUsrPatientConsultant(params: [String: Any])
+    case upAction(params: [String: Any])
 }
 
 extension CommonApi {
@@ -44,6 +45,8 @@ extension CommonApi {
             return "/common/addUsrPatientConsultant"
         case .updateUsrPatientConsultant:
             return "/common/updateUsrPatientConsultant"
+        case .upAction:
+            return "/udtEvent/upAction"
         }
     }
     
@@ -82,6 +85,10 @@ extension CommonApi {
                 params[k] = v
             }
         case let .updateUsrPatientConsultant(params: ps):
+            for (k, v) in ps {
+                params[k] = v
+            }
+        case let .upAction(params: ps):
             for (k, v) in ps {
                 params[k] = v
             }

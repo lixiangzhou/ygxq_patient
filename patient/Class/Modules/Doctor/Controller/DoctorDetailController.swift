@@ -50,6 +50,7 @@ extension DoctorDetailController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
+            ActionCollecter.sendData(lev: "31")
             UIApplication.shared.beginIgnoringInteractionEvents()
             self?.viewModel.getOrder({ (orderId) in
                 UIApplication.shared.endIgnoringInteractionEvents()
@@ -149,11 +150,6 @@ extension DoctorDetailController: UITableViewDataSource {
                 self?.viewModel.expendModel(model: model, index: indexPath.row)
             }
             return cell
-//        case let .serMsg(title: title, txt: txt):
-//            let cell = tableView.dequeue(cell: DoctorDetailMsgCell.self, for: indexPath)
-//            cell.titleLabel.text = title
-//            cell.txtLabel.text = txt
-//            return cell
         }
     }
 }
@@ -192,6 +188,7 @@ extension DoctorDetailController: UICollectionViewDataSource, UICollectionViewDe
             let model = viewModel.sersDataSource[indexPath.row]
             switch model.serType {
             case "UTOPIA15":
+                ActionCollecter.sendData(lev: "10")
                 let vc = VideoConsultBuyController()
                 vc.viewModel.did = model.duid
                 vc.viewModel.serType = model.serType

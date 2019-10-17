@@ -49,10 +49,13 @@ class TaskTipListViewModel: BaseViewModel {
         
         switch model.subType {
         case "CMN_MSG_T_05_01": // 视频
+            ActionCollecter.sendData(lev: "34")
             vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
         case "CMN_MSG_T_05_02": // 购药
+            ActionCollecter.sendData(lev: "36")
             vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
         case "CMN_MSG_T_05_06": // 随访
+            ActionCollecter.sendData(lev: "35")
             vc.viewModel.type = .flp(id: model.id, linkId: model.linkId)
         default:
             break

@@ -172,6 +172,7 @@ extension SunnyDrugBuyController {
     }
     
     @objc private func buyAction() {
+        ActionCollecter.sendData(lev: "19")
         guard let model = addressView.viewModel.addressModelProperty.value else { return }
         
         var params: [String: Any] = [

@@ -18,6 +18,7 @@ struct AppSetupConfig {
         RCManager.shared.setup()
         LoginManager.shared.setup()
         IQKBManager.setup()
+        ActionCollecter.shared.setup()
     }
 }
 

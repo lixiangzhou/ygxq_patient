@@ -31,4 +31,5 @@ target 'patient' do
     pod 'Bugly'
     pod 'YYText'
     pod 'MJRefresh'
+    pod 'KeychainSwift'
 end

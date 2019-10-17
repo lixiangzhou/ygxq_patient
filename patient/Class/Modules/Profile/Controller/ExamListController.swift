@@ -77,6 +77,8 @@ extension ExamListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.dataSourceProperty.value[indexPath.section].list[indexPath.row]
         
+        ActionCollecter.sendData(lev: "15")
+        
         var urlString: String?
         switch model.type {
         case "video", "drug":

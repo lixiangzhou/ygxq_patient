@@ -58,7 +58,7 @@ extension HealthDataMemberEditController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c3, rightWidth: 200, rightLimit: 100)
+        nameView.config = TextLeftRightFieldViewConfig(leftFont: .size(14), leftTextColor: .c3, rightFont: .size(14), rightTextColor: .c3, rightWidth: 240, rightLimit: 100)
         nameView.backgroundColor = .cf
         nameView.leftLabel.attributedText = viewModel.nameAttr
         nameView.rightField.placeHolderString = "请输入"

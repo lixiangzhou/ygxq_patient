@@ -96,6 +96,7 @@ extension TaskTipListController: UITableViewDataSource, UITableViewDelegate {
             guard let self = self else { return }
             switch model.actionType {
             case .buyDrug:
+                ActionCollecter.sendData(lev: "26")
                 self.viewModel.queryBrugOrderInfoByTask(model)
             case .finishQuestion:
                 self.viewModel.toFinishExam(model, from: self)

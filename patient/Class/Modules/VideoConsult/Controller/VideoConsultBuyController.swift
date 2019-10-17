@@ -241,6 +241,10 @@ extension VideoConsultBuyController {
     }
     
     @objc private func buyAction() {
+        if let _ = viewModel.myPrivateDoctorOrderProperty.value { // 预约
+            ActionCollecter.sendData(lev: "11")
+        }
+        
         guard let model = patientInfoProperty.value else { return }
         
         let needUpdate = model.realName.isEmpty || model.idCardNo.isEmpty

@@ -62,9 +62,18 @@ extension SunnyDrugOrderListController: UITableViewDataSource, UITableViewDelega
         cell.timeLabel.text = model.createTime.toTime()
         cell.descLabel.text = model.drugName.isEmpty ? "发起了阳光续药服务" : "购买药品：\(model.drugName)"
         cell.lookClosure = { [weak self] in
+            guard let self = self else { return }
+            switch self.viewModel.state {
+            case .failed:
+                ActionCollecter.sendData(lev: "39")
+            case .ing:
+                ActionCollecter.sendData(lev: "37")
+            case .success:
+                ActionCollecter.sendData(lev: "38")
+            }
             let vc = SunnyDrugOrderDetailController()
             vc.viewModel.id = model.id
-            self?.push(vc)
+            self.push(vc)
         }
         return cell
     }

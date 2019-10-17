@@ -25,7 +25,7 @@ class HealthDataECGShowController: BaseController {
         super.viewWillAppear(animated)
         
 //        setNavigationStyle(.transparency)
-//        viewModel.getData()
+        viewModel.getData()
     }
 
     // MARK: - Public Property
@@ -50,7 +50,7 @@ extension HealthDataECGShowController {
         contentView.addSubview(healthLineView)
         
         healthLineView.lineView.maxYValue = 200
-        healthLineView.lineView.rowCountValue = 5
+        healthLineView.lineView.rowCountValue = 4
         
         addLineColorView()
         

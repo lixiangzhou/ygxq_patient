@@ -134,6 +134,7 @@ extension HomeController {
 // MARK: - Action
 extension HomeController {
     @objc private func scanAction() {
+        ActionCollecter.sendData(lev: "21")
         push(QRCodeScanController())
     }
 
@@ -144,6 +145,7 @@ extension HomeController {
     private func setActions() {
         // 复诊购药
         headerView.actionsView.item1Closure = { [weak self] in
+            ActionCollecter.sendData(lev: "8")
             self?.push(BindedDoctorsController())
         }
         
@@ -154,6 +156,7 @@ extension HomeController {
         
         // 上传
         headerView.caseView.uploadClosure = { [weak self] in
+            ActionCollecter.sendData(lev: "22")
             self?.toUploadResource()
         }
         
@@ -164,6 +167,7 @@ extension HomeController {
         
         // 更多
         headerView.taskView.moreClosure = { [weak self] in
+            ActionCollecter.sendData(lev: "23")
             self?.push(TaskTipListController())
         }
         
@@ -173,6 +177,7 @@ extension HomeController {
                 guard let self = self else { return }
                 switch model.actionType {
                 case .buyDrug:
+                    ActionCollecter.sendData(lev: "24")
                     self.viewModel.taskTipViewModel.queryBrugOrderInfoByTask(model)
                 case .finishQuestion:
                     self.viewModel.taskTipViewModel.toFinishExam(model, from: self)

@@ -322,6 +322,8 @@ extension PersonInfoEditController {
     }
 
     @objc private func finishAction() {
+        ActionCollecter.sendData(lev: "7")
+        
         var params = [String: Any]()
         
         var idCard = idView.rightField.text ?? ""

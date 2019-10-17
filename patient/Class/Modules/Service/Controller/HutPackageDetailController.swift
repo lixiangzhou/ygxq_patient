@@ -44,6 +44,7 @@ extension HutPackageDetailController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
+            ActionCollecter.sendData(lev: "29")
             self?.viewModel.getOrder { (orderId) in
                 if let orderId = orderId {
                     let vc = PayController()

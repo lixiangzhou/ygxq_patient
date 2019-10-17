@@ -126,6 +126,8 @@ extension BindedDoctorsController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ActionCollecter.sendData(lev: "9")
+        
         let model = viewModel.dataSourceProperty.value[indexPath.row]
         let vc = DoctorDetailController()
         vc.viewModel.did = model.duid

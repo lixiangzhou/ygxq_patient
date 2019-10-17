@@ -42,6 +42,7 @@ extension HutPackageTimeBuyController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
+            ActionCollecter.sendData(lev: "30")
             self?.viewModel.getOrder { (orderId) in
                 if let orderId = orderId {
                     let vc = PayController()
@@ -73,6 +74,7 @@ extension HutPackageTimeBuyController {
         }
         viewModel.countProperty.signal.observeValues { [weak self] (v) in
             guard let self = self, let model = self.viewModel.hutModelProperty.value else { return }
+            ActionCollecter.sendData(lev: "33")
             self.bottomView.priceLabel.text = "￥\(model.serPrice * Double(v))"
         }
     }

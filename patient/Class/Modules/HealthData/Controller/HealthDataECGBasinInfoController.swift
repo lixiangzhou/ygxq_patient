@@ -20,13 +20,12 @@ class HealthDataECGBasinInfoController: BaseController {
         
         setUI()
         setBinding()
-        viewModel.querySurpluNum()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        viewModel.querySurpluNum()
         viewModel.queryPatientConsultantList()
     }
 
@@ -167,8 +166,7 @@ extension HealthDataECGBasinInfoController {
         let remark = otherView.txtView.text ?? ""
         
         if remark.count > 200 {
-            HUD.show(toast: "其他要描述的内容 不能超过200个字符")
-            otherView.becomeFirstResponder()
+            HUD.show(toast: "其他 不能超过200个字符")
             return
         }
         

@@ -64,9 +64,12 @@ extension ConsultListController: UITableViewDataSource, UITableViewDelegate {
         cell.timeLabel.text = model.createTime.toTime()
         cell.descLabel.text = model.consultContent
         cell.lookClosure = { [weak self] in
+            guard let self = self else { return }
+            ActionCollecter.sendData(lev: self.viewModel.state == .ing ? "13" : "17")
+            
             let vc = VideoConsultResultController()
             vc.viewModel.vid = model.linkId
-            self?.push(vc)
+            self.push(vc)
         }
         return cell
     }

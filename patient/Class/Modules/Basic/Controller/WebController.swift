@@ -186,6 +186,7 @@ extension WebController {
     private func registerHandlers() {
         register("nav_back") { [weak self] (data, callBack) in
             self?.navigationController?.popViewController(animated: true)
+            ActionCollecter.sendData(lev: "16")
         }
     }
 }

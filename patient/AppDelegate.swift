@@ -30,5 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return WXManager.shared.handOpenUrl(url)
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        ActionCollecter.shared.sendData(lev1: "5", lev2: "0")
+    }
 }
 

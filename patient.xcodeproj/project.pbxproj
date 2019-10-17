@@ -279,6 +279,7 @@
 		106DE8D62317BA13001DF4DE /* VideoConsultBuyPatientInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8D52317BA13001DF4DE /* VideoConsultBuyPatientInfoView.swift */; };
 		106DE8D82317BA28001DF4DE /* VideoConsultBuyDiseaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8D72317BA28001DF4DE /* VideoConsultBuyDiseaseView.swift */; };
 		106DE8DA2317BA3A001DF4DE /* VideoConsultBuyPicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106DE8D92317BA3A001DF4DE /* VideoConsultBuyPicturesView.swift */; };
+		10727A5623584B5E007EEB4D /* ActionCollecter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10727A5523584B5D007EEB4D /* ActionCollecter.swift */; };
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
 		1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */; };
 		1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */; };
@@ -712,6 +713,7 @@
 		106DE8D52317BA13001DF4DE /* VideoConsultBuyPatientInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultBuyPatientInfoView.swift; sourceTree = "<group>"; };
 		106DE8D72317BA28001DF4DE /* VideoConsultBuyDiseaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultBuyDiseaseView.swift; sourceTree = "<group>"; };
 		106DE8D92317BA3A001DF4DE /* VideoConsultBuyPicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultBuyPicturesView.swift; sourceTree = "<group>"; };
+		10727A5523584B5D007EEB4D /* ActionCollecter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCollecter.swift; sourceTree = "<group>"; };
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
 		1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailController.swift; sourceTree = "<group>"; };
 		1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailViewModel.swift; sourceTree = "<group>"; };
@@ -1041,6 +1043,7 @@
 		1014D0152293A6D700294558 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				10727A5523584B5D007EEB4D /* ActionCollecter.swift */,
 				10CAF38F22A8BB5900F20E81 /* Managers */,
 				1030AABB229E864900519CA4 /* Views */,
 				1030AA8C229CD19200519CA4 /* Extension */,
@@ -2506,6 +2509,7 @@
 				1014D04F2293A6D700294558 /* Date+ZZExtension.swift in Sources */,
 				1014D04D2293A6D700294558 /* Data+ZZExtension.swift in Sources */,
 				104E3A7E22B8A99500A84DB2 /* ProfileController.swift in Sources */,
+				10727A5623584B5E007EEB4D /* ActionCollecter.swift in Sources */,
 				10CA472A22F8096D00A4E244 /* TextLeftRightFieldView.swift in Sources */,
 				1059E450230CE948005F5326 /* SunnyDrugOrderListController.swift in Sources */,
 				1030AAA0229D1E5D00519CA4 /* ControllerExtension.swift in Sources */,

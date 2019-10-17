@@ -55,6 +55,7 @@ extension UploadResourceViewModel {
             if resp.isSuccess, let urls = resp.content, !urls.isEmpty, let self = self {
                 switch self.type {
                 case .default:
+                    ActionCollecter.sendData(lev: "27")
                     HLRApi.addRecord(pid: patientId, id: 0, urls: urls).rac_response(None.self).startWithValues { [weak self] (resp) in
                         HUD.hideLoding()
                         UIApplication.shared.endIgnoringInteractionEvents()

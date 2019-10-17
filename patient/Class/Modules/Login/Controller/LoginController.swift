@@ -178,6 +178,12 @@ extension LoginController {
         loginTypeProperty <~ pwdLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
         loginTypeProperty <~ codeLoginBtn.reactive.controlEvents(.touchUpInside).map { LoginType(rawValue: $0.tag)! }
         
+        loginTypeProperty.signal.observeValues { (type) in
+            if case .code = type {
+                ActionCollecter.sendData(lev: "1")
+            }
+        }
+        
         mobileView.reactive.makeBindingTarget { (view, text) in
             view.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.c9])
         } <~ loginTypeProperty.map { $0 == .password ? "请输入您的账号" : "请输入手机号码" }
@@ -251,6 +257,7 @@ extension LoginController {
         
         switch loginTypeProperty.value {
         case .password:
+            ActionCollecter.sendData(lev: "2")
             viewModel.loginPwd(mobile: mobileView.text!, password: pwdView.text!).map { BoolString($0) }.startWithValues { [weak self] (result) in
                 if result.isSuccess {
                     self?.dismiss(animated: true, completion: nil)
@@ -259,6 +266,7 @@ extension LoginController {
                 }
             }
         case .code:
+            ActionCollecter.sendData(lev: "4")
             viewModel.verifyCodeAndLogin(mobile: mobileView.text!, code: codeView.text!).startWithValues { [weak self] (result) in
                 if result.isSuccess {
                     self?.dismiss(animated: true, completion: nil)
@@ -276,6 +284,7 @@ extension LoginController {
     }
     
     @objc private func toRegisterAction() {
+        ActionCollecter.sendData(lev: "3")
         push(RegisterController())
     }
 }
