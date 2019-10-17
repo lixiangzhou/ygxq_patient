@@ -39,13 +39,13 @@ extension VideoConsultPatientInfoCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "个人基本信息"
         contentView.addSubview(titleView)
         
-        nameView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3, bottomLineLeftPadding: 15)
-        mobileView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3, bottomLineLeftPadding: 15)
-        idView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3, hasBottomLine: false)
+        nameView.config = TextLeftRightViewConfig(leftFont: .size(16), rightFont: .size(16), bottomLineLeftPadding: 15)
+        mobileView.config = TextLeftRightViewConfig(leftFont: .size(16), rightFont: .size(16), bottomLineLeftPadding: 15)
+        idView.config = TextLeftRightViewConfig(leftFont: .size(16), rightFont: .size(15), hasBottomLine: false)
         
         nameView.leftLabel.text = "姓名"
         mobileView.leftLabel.text = "手机号"
@@ -57,28 +57,29 @@ extension VideoConsultPatientInfoCell {
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         nameView.snp.makeConstraints { (make) in
             make.top.equalTo(titleView.snp.bottom)
-            make.height.left.right.equalTo(titleView)
+            make.left.right.equalTo(titleView)
+            make.height.equalTo(50)
         }
         
         mobileView.snp.makeConstraints { (make) in
             make.top.equalTo(nameView.snp.bottom)
-            make.height.left.right.equalTo(titleView)
+            make.height.left.right.equalTo(nameView)
         }
         
         idView.snp.makeConstraints { (make) in
             make.top.equalTo(mobileView.snp.bottom)
-            make.height.left.right.equalTo(titleView)
+            make.height.left.right.equalTo(nameView)
             make.bottom.equalToSuperview()
         }
     }

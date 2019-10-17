@@ -43,8 +43,8 @@ extension VideoConsultResultController {
         tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
         
-        let tipView = bottomView.zz_add(subview: UIButton(title: "提醒医生", font: .boldSize(17), titleColor: .cf, backgroundColor: .c407cec, target: self, action: #selector(tipAction)))
-        let serviceView = bottomView.zz_add(subview: UIButton(title: "联系客服", font: .boldSize(17), titleColor: .cf, backgroundColor: UIColor.cffa84c, target: self, action: #selector(serviceAction)))
+        let tipView = bottomView.zz_add(subview: UIButton(title: "提醒医生", font: .boldSize(18), titleColor: .cf, backgroundColor: .c407cec, target: self, action: #selector(tipAction)))
+        let serviceView = bottomView.zz_add(subview: UIButton(title: "联系客服", font: .boldSize(18), titleColor: .cf, backgroundColor: UIColor.cffa84c, target: self, action: #selector(serviceAction)))
         
         view.addSubview(bottomView)
         
@@ -110,7 +110,7 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
             cell.iconView.kf.setImage(with: URL(string: docModel.imgUrl), placeholder: UIImage(named: "doctor_avator"))
             cell.nameLabel.text = docModel.realName.isEmpty ? " " : docModel.realName
             cell.professionLabel.text = docModel.titleName
-            cell.hospitalLabel.text = docModel.hospitalName
+            cell.hospitalLabel.text = docModel.hospitalName.isEmpty ? " " : docModel.hospitalName
             cell.professionLabel.snpUpdateWidth()
             
             return cell

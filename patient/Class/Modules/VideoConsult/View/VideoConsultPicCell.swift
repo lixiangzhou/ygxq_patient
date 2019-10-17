@@ -31,8 +31,8 @@ class VideoConsultPicCell: UITableViewCell {
         didSet {
             collectionView.reloadData()
             
-            let row = ceil(Double(dataSource.count) / 4.0)
-            let height = (row - 1) * 10 + row * Double(itemWidth)
+            let row = ceil(Double(dataSource.count) / 3.0)
+            let height = (row - 1) * 8 + row * Double(itemWidth)
             
             imgsView.snp.updateConstraints { (make) in
                 make.height.equalTo(height)
@@ -40,7 +40,7 @@ class VideoConsultPicCell: UITableViewCell {
         }
     }
     // MARK: - Private Property
-    private let itemWidth = floor((UIScreen.zz_width - 30 - 30) / 4)
+    private let itemWidth = floor((UIScreen.zz_width - 30 - 16) / 3)
     private let imgsView = UIView()
 }
 
@@ -51,7 +51,7 @@ extension VideoConsultPicCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "图片资料"
         contentView.addSubview(titleView)
         
@@ -60,8 +60,8 @@ extension VideoConsultPicCell {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
         
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width - 30, height: itemWidth), collectionViewLayout: layout)
 //        collectionView.isUserInteractionEnabled = false
@@ -73,13 +73,13 @@ extension VideoConsultPicCell {
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         imgsView.snp.makeConstraints { (make) in

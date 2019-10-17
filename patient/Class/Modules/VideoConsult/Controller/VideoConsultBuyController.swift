@@ -88,14 +88,14 @@ extension VideoConsultBuyController {
         }
         
         topTip.snp.makeConstraints { (make) in
-            make.top.equalTo(12)
+            make.top.equalTo(2)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-            make.height.equalTo(viewModel.tipString.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: 15).height - 10)
+            make.height.equalTo(viewModel.tipString.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: 15).height)
         }
         
         patientInfoView.snp.makeConstraints { (make) in
-            make.top.equalTo(topTip.snp.bottom).offset(12)
+            make.top.equalTo(topTip.snp.bottom).offset(2)
             make.left.right.equalToSuperview()
         }
         

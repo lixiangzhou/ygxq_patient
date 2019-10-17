@@ -34,9 +34,9 @@ class AddressShowView: BaseView {
     let addView = UIButton(title: "  新建地址", font: .size(18), titleColor: .c407cec, imageName: "sunny_drug_add_addr")
     let addressView = UIView()
     
-    let nameLabel = UILabel(font: .size(15), textColor: .c3)
-    let mobileLabel = UILabel(font: .size(15), textColor: .c3)
-    let addressLabel = UILabel(font: .size(15), textColor: .c3)
+    let nameLabel = UILabel(font: .size(17), textColor: .c3)
+    let mobileLabel = UILabel(font: .size(17), textColor: .c3)
+    let addressLabel = UILabel(font: .size(17), textColor: .c3)
     
     let remarkView = UIView()
     let remarkInputView = NextGrowingTextView()
@@ -61,19 +61,19 @@ extension AddressShowView {
         addressView.addSubview(nameLabel)
         addressView.addSubview(mobileLabel)
         addressView.addSubview(addressLabel)
-        let changeBtn = addressView.zz_add(subview: UIButton(title: "更换地址", font: .size(15), titleColor: .c407cec, target: self, action: #selector(changeAddressAction)))
+        let changeBtn = addressView.zz_add(subview: UIButton(title: "更换地址", font: .size(17), titleColor: .c407cec, target: self, action: #selector(changeAddressAction)))
         
         contentView.addSubview(remarkView)
-        let remarkLabel = remarkView.zz_add(subview: UILabel(text: "备注", font: .size(15), textColor: .c3))
+        let remarkLabel = remarkView.zz_add(subview: UILabel(text: "备注", font: .size(17), textColor: .c6))
         
         remarkInputView.textView.textColor = .c3
-        remarkInputView.textView.font = .size(15)
+        remarkInputView.textView.font = .size(17)
         remarkInputView.minNumberOfLines = 1
         remarkInputView.maxNumberOfLines = 4
         remarkInputView.inputLimit = 100
         remarkInputView.textView.keyboardDismissMode = .onDrag
         remarkInputView.textView.showsVerticalScrollIndicator = false
-        let attrString = NSMutableAttributedString(string: "可输入特殊要求", attributes: [NSAttributedString.Key.foregroundColor: UIColor.fieldDefaultColor, NSAttributedString.Key.font: UIFont.size(15)])
+        let attrString = NSMutableAttributedString(string: "可输入特殊要求", attributes: [NSAttributedString.Key.foregroundColor: UIColor.fieldDefaultColor, NSAttributedString.Key.font: UIFont.size(17)])
         remarkInputView.placeholderAttributedText = attrString
         remarkView.addSubview(remarkInputView)
         

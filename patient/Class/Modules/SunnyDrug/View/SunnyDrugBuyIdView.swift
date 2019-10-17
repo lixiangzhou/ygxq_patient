@@ -40,7 +40,7 @@ extension SunnyDrugBuyIdView {
         contentView.zz_setCorner(radius: 6, masksToBounds: true)
         contentView.backgroundColor = .cf
         
-        let sampleBtn = contentView.zz_add(subview: UIButton(title: "示例", font: .size(14), titleColor: .c407cec, target: self, action: #selector(sampleAction)))
+        let sampleBtn = contentView.zz_add(subview: UIButton(title: "示例", font: .size(17), titleColor: .c407cec, target: self, action: #selector(sampleAction)))
         
         picView.isUserInteractionEnabled = true
         picView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))

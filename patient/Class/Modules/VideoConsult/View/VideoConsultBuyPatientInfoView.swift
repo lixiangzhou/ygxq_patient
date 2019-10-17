@@ -76,7 +76,7 @@ extension VideoConsultBuyPatientInfoView {
         
         nameView.snp.makeConstraints { (make) in
             make.top.equalTo(titleView.snp.bottom)
-            make.left.height.equalTo(titleView)
+            make.left.right.equalTo(titleView)
             make.height.equalTo(45)
         }
         

@@ -35,13 +35,13 @@ extension VideoConsultArrowCell {
         contentView.backgroundColor = .cf0efef
         
         innerView.backgroundColor = .cf
-        innerView.config = LeftRightConfigViewConfig(leftPaddingRight: 0, leftFont: .boldSize(16), hasBottomLine: false)
+        innerView.config = LeftRightConfigViewConfig(leftPaddingRight: 0, leftFont: .boldSize(17), hasBottomLine: false)
         contentView.addSubview(innerView)
         
         innerView.snp.makeConstraints { (make) in
-            make.top.equalTo(10)
+            make.top.equalTo(12)
             make.bottom.left.right.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
     }
 }

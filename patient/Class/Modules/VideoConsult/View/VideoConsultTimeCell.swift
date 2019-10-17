@@ -28,9 +28,9 @@ class VideoConsultTimeCell: UITableViewCell {
     let statusView = UIImageView(image: UIImage(named: "consult_status_ing"))
     
     let appointTimeLabel = UILabel(text: "等待医生确认", font: .size(15), textColor: .c6)
-    let talkTimeLabel = UILabel(font: .size(15), textColor: .c6)
-    let statusEndLabel = UILabel(text: "已通话", font: .size(15), textColor: .c9)
-    let noTalkLabel = UILabel(text: "未通话", font: .size(15), textColor: .c407cec)
+    let talkTimeLabel = UILabel(font: .size(16), textColor: .c6)
+    let statusEndLabel = UILabel(text: "已通话", font: .size(16), textColor: .c9)
+    let noTalkLabel = UILabel(text: "未通话", font: .size(16), textColor: .c407cec)
     
     // MARK: - Private Property
     
@@ -43,7 +43,7 @@ extension VideoConsultTimeCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "视频通话时间"
         contentView.addSubview(titleView)
         
@@ -51,7 +51,7 @@ extension VideoConsultTimeCell {
         
         bottomView.addSubview(statusView)
         
-        let ingLabel = bottomView.zz_add(subview: UILabel(text: "进行中", font: .size(15), textColor: .c3))
+        let ingLabel = bottomView.zz_add(subview: UILabel(text: "进行中", font: .size(16), textColor: .c3))
         
         bottomView.addSubview(appointTimeLabel)
         bottomView.addSubview(talkTimeLabel)
@@ -60,13 +60,13 @@ extension VideoConsultTimeCell {
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         bottomView.snp.makeConstraints { (make) in
