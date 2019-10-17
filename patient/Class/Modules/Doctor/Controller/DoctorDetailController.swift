@@ -22,6 +22,12 @@ class DoctorDetailController: BaseController {
         viewModel.getDocInfo()
         viewModel.getSers()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setNavigationStyle(.transparency)
+    }
 
     // MARK: - Public Property
     let viewModel = DoctorDetailViewModel()
@@ -58,7 +64,8 @@ extension DoctorDetailController {
         view.addSubview(bottomView)
         
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(-UIScreen.zz_navHeight)
+            make.left.bottom.right.equalToSuperview()
         }
         
         bottomView.snp.makeConstraints { (make) in
@@ -109,13 +116,16 @@ extension DoctorDetailController: UITableViewDataSource {
             let (layout, height) = viewModel.getSerLayout(sers)
             cell.serView.setCollectionViewLayout(layout, animated: false)
             cell.serView.snp.updateConstraints { (make) in
-                make.height.equalTo(height)
+                make.height.equalTo(height + 15)
             }
             cell.serView.reloadData()
             return cell
-        case let .sersAction(title: title, sers: sers):
+        case let .sersAction(title: title, sers: sers, msg: msg):
             let cell = tableView.dequeue(cell: DoctorDetailActionsCell.self, for: indexPath)
             cell.titleLabel.text = title
+            let style = NSMutableParagraphStyle()
+            style.lineSpacing = 8
+            cell.txtLabel.attributedText = NSAttributedString(string: msg, attributes: [NSAttributedString.Key.paragraphStyle: style])
             cell.serView.dataSource = self
             cell.serView.delegate = self
             cell.serView.tag = SersViewType.longSer.rawValue
@@ -139,11 +149,11 @@ extension DoctorDetailController: UITableViewDataSource {
                 self?.viewModel.expendModel(model: model, index: indexPath.row)
             }
             return cell
-        case let .serMsg(title: title, txt: txt):
-            let cell = tableView.dequeue(cell: DoctorDetailMsgCell.self, for: indexPath)
-            cell.titleLabel.text = title
-            cell.txtLabel.text = txt
-            return cell
+//        case let .serMsg(title: title, txt: txt):
+//            let cell = tableView.dequeue(cell: DoctorDetailMsgCell.self, for: indexPath)
+//            cell.titleLabel.text = title
+//            cell.txtLabel.text = txt
+//            return cell
         }
     }
 }
@@ -169,8 +179,9 @@ extension DoctorDetailController: UICollectionViewDataSource, UICollectionViewDe
         case .longSer:
             let cell = collectionView.dequeue(cell: DoctorDetailActionsCell.SerCell.self, for: indexPath)
             let model = viewModel.longSersDataSource[indexPath.row]
-            cell.txtLabel.text = viewModel.getLongSerTitle(model)
-            cell.txtLabel.backgroundColor = model.selected ? UIColor.cf25555.withAlphaComponent(0.2) : .cf
+            cell.txtLabel.text = model.serName
+            cell.txtLabel.textColor = model.selected ? UIColor.cff9a21 : .c9
+            cell.txtLabel.zz_setBorder(color: model.selected ? UIColor.cff9a21 : .cdcdcdc, width: 0.5)
             return cell
         }
     }

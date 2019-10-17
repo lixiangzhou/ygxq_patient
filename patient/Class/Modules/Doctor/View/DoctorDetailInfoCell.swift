@@ -25,9 +25,9 @@ class DoctorDetailInfoCell: UITableViewCell {
     
     // MARK: - Public Property
     let iconView = UIImageView(image: UIImage(named: "doctor_avator"))
-    let nameLabel = UILabel(font: .size(16), textColor: .c3)
-    let professionLabel = UILabel(font: .size(14), textColor: .c9)
-    let hospitalLabel = UILabel(font: .size(13), textColor: .c6)
+    let nameLabel = UILabel(font: .boldSize(22), textColor: .cf)
+    let professionLabel = UILabel(font: .size(17), textColor: .cf)
+    let hospitalLabel = UILabel(font: .size(17), textColor: .cf)
     var serView: UICollectionView!
     
     // MARK: - Private Property
@@ -39,64 +39,64 @@ extension DoctorDetailInfoCell {
     private func setUI() {
         contentView.backgroundColor = .cf0efef
         
-        let bgView = contentView.zz_add(subview: UIView())
-        bgView.zz_setCorner(radius: 5, masksToBounds: true)
-        bgView.backgroundColor = .cf
+        let topBgView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 180), image: UIImage.zz_gradientImage(fromColor: UIColor(stringHexValue: "#295DC3")!, toColor: UIColor(stringHexValue: "#74B0F6")!, size: CGSize(width: UIScreen.zz_width, height: 180), isHorizontal: false))
+        contentView.addSubview(topBgView)
+        
+//        let bgView = contentView.zz_add(subview: UIView())
+//        bgView.zz_setCorner(radius: 5, masksToBounds: true)
+//        bgView.backgroundColor = .cf
         
         iconView.zz_setCorner(radius: 35, masksToBounds: true)
         iconView.zz_setBorder(color: .cf, width: 1.5)
         
         serView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         serView.register(cell: SerCell.self)
+        serView.zz_setCorner(radius: 5, masksToBounds: true)
         serView.backgroundColor = .cf
         
-        contentView.addSubview(iconView)
-        bgView.addSubview(nameLabel)
-        bgView.addSubview(professionLabel)
-        bgView.addSubview(hospitalLabel)
-        bgView.addSubview(serView)
+        topBgView.addSubview(iconView)
+        topBgView.addSubview(nameLabel)
+        topBgView.addSubview(professionLabel)
+        topBgView.addSubview(hospitalLabel)
+        contentView.addSubview(serView)
         
-        bgView.snp.makeConstraints { (make) in
-            make.top.equalTo(50)
-            make.left.equalTo(15)
-            make.right.equalTo(-15)
-            make.bottom.equalTo(-15)
+        topBgView.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(180)
         }
         
         iconView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.centerY.equalTo(bgView.snp.top)
+            make.left.equalTo(15)
+            make.top.equalTo(64)
             make.width.height.equalTo(70)
         }
         
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(iconView.snp.bottom).offset(12)
-            make.centerX.equalToSuperview()
+            make.left.equalTo(iconView.snp.right).offset(10)
         }
         
         professionLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(12)
-            make.centerX.equalToSuperview()
+            make.bottom.equalTo(nameLabel)
+            make.left.equalTo(nameLabel.snp.right).offset(15)
+            make.width.equalTo(0)
+            make.right.lessThanOrEqualTo(-15)
         }
         
         hospitalLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(professionLabel.snp.bottom).offset(12)
-            make.centerX.equalToSuperview()
+            make.bottom.equalTo(iconView).offset(-12)
+            make.left.equalTo(nameLabel)
+            make.right.lessThanOrEqualTo(-15)
         }
         
         serView.snp.makeConstraints { (make) in
-            make.top.equalTo(hospitalLabel.snp.bottom)
-            make.left.equalTo(30)
-            make.right.equalTo(-30)
+            make.top.equalTo(topBgView.snp.bottom).offset(-30)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
             make.height.equalTo(0)
-            make.bottom.equalTo(-15)
+            make.bottom.lessThanOrEqualTo(-15)
         }
     }
-}
-
-// MARK: - Action
-extension DoctorDetailInfoCell {
-    
 }
 
 // MARK: - Helper
@@ -106,7 +106,7 @@ extension DoctorDetailInfoCell {
             super.init(frame: frame)
             
             innerView = ImageTitleView()
-            innerView.config = ImageTitleView.Config(imageSize: CGSize(width: 45, height: 45), verticalHeight1: 15, verticalHeight2: 10, titleLeft: 0, titleRight: 0, titleFont: .size(13), titleColor: .c6)
+            innerView.config = ImageTitleView.Config(imageSize: CGSize(width: 62, height: 62), verticalHeight1: 15, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .size(17), titleColor: .c3)
             contentView.addSubview(innerView)
             
             innerView.snp.makeConstraints { (make) in
@@ -126,14 +126,4 @@ extension DoctorDetailInfoCell {
             return innerView.titleLabel
         }
     }
-}
-
-// MARK: - Other
-extension DoctorDetailInfoCell {
-    
-}
-
-// MARK: - Public
-extension DoctorDetailInfoCell {
-    
 }

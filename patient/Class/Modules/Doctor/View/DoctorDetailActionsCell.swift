@@ -24,9 +24,11 @@ class DoctorDetailActionsCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let titleLabel = UILabel(font: .boldSize(15), textColor: .c3)
+    let titleLabel = UILabel(font: .boldSize(17), textColor: .c3)
     // MARK: - Private Property
     var serView: UICollectionView!
+    
+    let txtLabel = UILabel(font: .size(16), textColor: .c3)
 }
 
 // MARK: - UI
@@ -44,17 +46,19 @@ extension DoctorDetailActionsCell {
         serView.register(cell: SerCell.self)
         serView.backgroundColor = .cf
         bgView.addSubview(serView)
+        
+        bgView.addSubview(txtLabel)
 
         bgView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalTo(12)
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.bottom.equalTo(-15)
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(20)
-            make.left.equalTo(15)
+            make.top.equalTo(15)
+            make.left.equalTo(12)
         }
         
         serView.snp.makeConstraints { (make) in
@@ -62,14 +66,15 @@ extension DoctorDetailActionsCell {
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.height.equalTo(35)
-            make.bottom.equalTo(-20)
+        }
+        
+        txtLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(serView.snp.bottom).offset(15)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+            make.bottom.bottom.equalTo(-15)
         }
     }
-}
-
-// MARK: - Action
-extension DoctorDetailActionsCell {
-    
 }
 
 // MARK: - Helper
@@ -79,7 +84,7 @@ extension DoctorDetailActionsCell {
             super.init(frame: frame)
             
             txtLabel.zz_setCorner(radius: 4, masksToBounds: true)
-            txtLabel.zz_setBorder(color: .cff3a33, width: 0.5)
+            txtLabel.zz_setBorder(color: .cdcdcdc, width: 0.5)
             contentView.addSubview(txtLabel)
             
             txtLabel.snp.makeConstraints { (make) in
@@ -92,6 +97,6 @@ extension DoctorDetailActionsCell {
             fatalError("init(coder:) has not been implemented")
         }
         
-        let txtLabel = UILabel(font: .size(15), textColor: .cff3a33, textAlignment: .center)
+        let txtLabel = UILabel(font: .size(15), textColor: .c9, textAlignment: .center)
     }
 }

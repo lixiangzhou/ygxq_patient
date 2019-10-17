@@ -61,7 +61,7 @@ class DoctorDetailViewModel: BaseViewModel {
         // 删除服务内容
         values.removeAll { (model) -> Bool in
             switch model {
-            case .sersAction, .serMsg: return true
+            case .sersAction: return true
             default: return false
             }
         }
@@ -73,12 +73,8 @@ class DoctorDetailViewModel: BaseViewModel {
             priceProperty.value = "￥" + getLongSerTitle(ser)
             var sers = sers
             sers.replaceSubrange(0...0, with: [ser])
-            temp.append(.sersAction(title: "长期服务", sers: sers))
-            if !ser.serSummary.isEmpty {
-                temp.append(.serMsg(title: "服务内容", txt: ser.serSummary))
-            }
+            temp.append(.sersAction(title: "长期服务", sers: sers, msg: ser.serSummary))
             values.insert(contentsOf: temp, at: 1)
-            
             dataSourceProperty.value = values
         }
     }
@@ -136,7 +132,7 @@ class DoctorDetailViewModel: BaseViewModel {
     
     func getSerLayout(_ sers: [DoctorSerModel]) -> (UICollectionViewFlowLayout, CGFloat) {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 70, height: 85)
+        layout.itemSize = CGSize(width: 70, height: 100)
         let width: CGFloat = UIScreen.zz_width - (15 + 30) * 2
         
         switch sers.count {
@@ -230,9 +226,9 @@ class DoctorDetailViewModel: BaseViewModel {
             }
             values.append(model)
         }
-        
+
         var datas = dataSourceProperty.value
-        
+
         let idx1 = datas.firstIndex { (model) -> Bool in
             switch model {
             case .sersAction: return true
@@ -241,20 +237,9 @@ class DoctorDetailViewModel: BaseViewModel {
         }
 
         if let idx1 = idx1 {
-            datas.replaceSubrange(idx1...idx1, with: [.sersAction(title: "长期服务", sers: values)])
+            datas.replaceSubrange(idx1...idx1, with: [.sersAction(title: "长期服务", sers: values, msg: msgs)])
         }
 
-        let idx2 = datas.firstIndex { (model) -> Bool in
-            switch model {
-            case let .serMsg(title: title, txt: _): return title == "服务内容"
-            default: return false
-            }
-        }
-
-        if let idx2 = idx2 {
-            datas.replaceSubrange(idx2...idx2, with: [.serMsg(title: "服务内容", txt: msgs)])
-        }
-        
         dataSourceProperty.value = datas
     }
     
@@ -284,7 +269,7 @@ extension DoctorDetailViewModel {
     enum Model {
         case docInfo(docInfo: DoctorInfoModel, sers: [DoctorSerModel])
         case docInfoMsg(title: String, txt: String, showMore: Bool)
-        case serMsg(title: String, txt: String)
-        case sersAction(title: String, sers: [DoctorSerModel])
+//        case serMsg(title: String, txt: String)
+        case sersAction(title: String, sers: [DoctorSerModel], msg: String)
     }
 }

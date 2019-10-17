@@ -34,8 +34,8 @@ extension PayTipCell {
     private func setUI() {
         backgroundColor = .cf0efef
         
-        let titleLabel = UILabel(text: "温馨提示", font: .size(13), textColor: .c6)
-        let tipLabel = LinkedLabel(text: "请在18分钟内完成付款，否则将自动取消该订单，签字既同意《\(appService)》", font: .size(13), textColor: .c6)
+        let titleLabel = UILabel(text: "温馨提示", font: .size(15), textColor: .c6)
+        let tipLabel = LinkedLabel(text: "请在18分钟内完成付款，否则将自动取消该订单，签字既同意《\(appService)》。", font: .size(15), textColor: .c6)
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(tipLabel)
@@ -51,7 +51,7 @@ extension PayTipCell {
         
         tipLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.right.bottom.equalTo(-15)
         }
     }

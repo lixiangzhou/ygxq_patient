@@ -41,7 +41,6 @@ extension PayController {
         view.addSubview(tableView)
         
         bottomView.payClosure = { [weak self] in
-//            UIApplication.shared.canOpenURL(URL(string: ""))
             if WXApi.isWXAppInstalled() {
                 if let model = self?.viewModel.orderProperty.value, model.isProtocol == false {
                     self?.signName(model)

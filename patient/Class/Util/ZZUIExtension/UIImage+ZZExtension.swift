@@ -104,7 +104,7 @@ public extension UIImage {
     ///   - toColor: 终点颜色
     ///   - size: 图片大小
     /// - Returns: UIImage
-    class func zz_gradientImage(fromColor: UIColor, toColor: UIColor, size: CGSize = CGSize(width: 100, height: 1)) -> UIImage {
+    class func zz_gradientImage(fromColor: UIColor, toColor: UIColor, size: CGSize = CGSize(width: 100, height: 1), isHorizontal: Bool = true) -> UIImage {
         let frame = CGRect(origin: CGPoint.zero, size: size)
         
         UIGraphicsBeginImageContextWithOptions(frame.size, true, 0)
@@ -114,7 +114,11 @@ public extension UIImage {
         gradientLayer.colors = [fromColor.cgColor, toColor.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.startPoint = CGPoint.zero
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0)
+        if isHorizontal {
+            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0)
+        } else {
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1.0)
+        }
         gradientLayer.frame = frame
         
         gradientLayer.render(in: UIGraphicsGetCurrentContext()!)

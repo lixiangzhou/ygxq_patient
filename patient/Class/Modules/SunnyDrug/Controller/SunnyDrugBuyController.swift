@@ -57,6 +57,7 @@ extension SunnyDrugBuyController {
         tipString.append(NSAttributedString(string: "（药品费支付后，不予退款）", attributes: [NSAttributedString.Key.font: UIFont.boldSize(15), NSAttributedString.Key.foregroundColor: UIColor.c3]))
         tipString.append(NSAttributedString(string: "。除药品费用外，您需要在平台上额外支付我们购药的服务费用（包含挂号费：50元；服务费：50元），共100元。", attributes: [NSAttributedString.Key.font: UIFont.size(15), NSAttributedString.Key.foregroundColor: UIColor.c6]))
         let tipLabel = contentView.zz_add(subview: UILabel(font: .size(15), textColor: .c6)) as! UILabel
+        tipLabel.attributedText = tipString
         
         scrollView.contentInset.bottom = 50
         appointBtn.addTarget(self, action: #selector(buyAction), for: .touchUpInside)
