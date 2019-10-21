@@ -37,7 +37,7 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
             }
             
             attr.append(NSAttributedString(string: "\(model13?.surplusNum ?? 0)次", attributes: colorDict))
-            let time = model13?.dueDate?.toTime() ?? ""
+            let time = model13?.dueDate?.toTime(format: "yyyy-MM-dd") ?? ""
             attr.append(NSAttributedString(string: "，有效期至\(time)", attributes: defaultDict))
             
             let model14 = models.first { (model) -> Bool in
@@ -118,8 +118,9 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
         }
     }
     
-    func addECG(params: [String: Any]) {
+    func addECG(params: [String: Any], completion: @escaping () -> ()) {
         ECGApi.addECG(params: params).rac_response(String.self).startWithValues { (resp) in
+            completion()
             if resp.isSuccess {
                 HUD.show(toast: "上传成功")
             }

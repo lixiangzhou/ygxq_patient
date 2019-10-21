@@ -35,7 +35,7 @@ extension PayTipCell {
         backgroundColor = .cf0efef
         
         let titleLabel = UILabel(text: "温馨提示", font: .size(15), textColor: .c6)
-        let tipLabel = LinkedLabel(text: "请在18分钟内完成付款，否则将自动取消该订单，签字既同意《\(appService)》。", font: .size(15), textColor: .c6)
+        let tipLabel = LinkedLabel(text: "请在18分钟内完成付款，否则将自动取消该订单，签字即同意《\(appService)》。", font: .size(15), textColor: .c6)
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(tipLabel)

@@ -15,6 +15,7 @@ enum CommonApi: TargetType {
     case setAllReaded(uid: Int)
     case setReaded(uid: Int)
     case updateTaskState(id: Int)
+    case telExamAndPics(linkId: Int, puid: Int)
     case videoExamAndPics(linkId: Int, puid: Int)
     case getFinishTaskMsgInfos(linkId: Int, puid: Int)
     case appInfo
@@ -33,6 +34,8 @@ extension CommonApi {
             return "/common/getCmnPushMsg/page"
         case .setAllReaded, .setReaded, .updateTaskState:
             return "/common/pushMsg/updateIsLook"
+        case .telExamAndPics:
+            return "/pushMsg/getTelFinishTaskMsgInfos"
         case .videoExamAndPics:
             return "/pushMsg/getVideoFinishTaskMsgInfos"
         case .getFinishTaskMsgInfos:
@@ -69,6 +72,9 @@ extension CommonApi {
             params["id"] = uid
         case let .updateTaskState(id: id):
             params["id"] = id
+        case let .telExamAndPics(linkId: linkId, puid: pid):
+            params["linkId"] = linkId
+            params["toUid"] = pid
         case let .videoExamAndPics(linkId: linkId, puid: pid):
             params["linkId"] = linkId
             params["toUid"] = pid

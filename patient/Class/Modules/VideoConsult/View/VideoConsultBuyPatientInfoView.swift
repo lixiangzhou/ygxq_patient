@@ -54,7 +54,6 @@ extension VideoConsultBuyPatientInfoView {
         }
         
         mobileView.leftLabel.text = "手机号"
-        mobileView.rightField.isUserInteractionEnabled = false
         mobileView.rightField.keyboardType = .numberPad
         mobileView.rightField.textAlignment = .right
         

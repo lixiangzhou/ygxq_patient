@@ -25,9 +25,9 @@ class DoctorDetailInfoCell: UITableViewCell {
     
     // MARK: - Public Property
     let iconView = UIImageView(image: UIImage(named: "doctor_avator"))
-    let nameLabel = UILabel(font: .boldSize(22), textColor: .cf)
+    let nameLabel = UILabel(font: .boldSize(22), textColor: .cf, numOfLines: 1)
     let professionLabel = UILabel(font: .size(17), textColor: .cf)
-    let hospitalLabel = UILabel(font: .size(17), textColor: .cf)
+    let hospitalLabel = UILabel(font: .size(17), textColor: .cf, numOfLines: 1)
     var serView: UICollectionView!
     
     // MARK: - Private Property
@@ -72,7 +72,7 @@ extension DoctorDetailInfoCell {
         }
         
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(12)
+            make.top.equalTo(iconView).offset(8)
             make.left.equalTo(iconView.snp.right).offset(10)
         }
         
@@ -84,7 +84,7 @@ extension DoctorDetailInfoCell {
         }
         
         hospitalLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(iconView).offset(-12)
+            make.bottom.equalTo(iconView).offset(-8)
             make.left.equalTo(nameLabel)
             make.right.lessThanOrEqualTo(-15)
         }
@@ -94,7 +94,7 @@ extension DoctorDetailInfoCell {
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.height.equalTo(0)
-            make.bottom.lessThanOrEqualTo(-15)
+            make.bottom.lessThanOrEqualToSuperview()
         }
     }
 }

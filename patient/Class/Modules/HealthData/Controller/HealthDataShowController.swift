@@ -62,8 +62,9 @@ extension HealthDataShowController {
             vc.viewModel.type = self?.viewModel.type ?? ""
             vc.viewModel.saveResultProperty.signal.observeValues { (isSuccess) in
                 if isSuccess {
-                    self?.healthLineView.calendarView.selectedDate = Date()
+                    self?.viewModel.needMinutes = true
                     self?.viewModel.selectDate = Date()
+                    self?.healthLineView.calendarView.selectedDate = Date()
                 }
             }
             
@@ -86,8 +87,13 @@ extension HealthDataShowController {
         }
         
         healthLineView.selectDateClosure = { [weak self] date in
-            self?.viewModel.selectDate = date
-            self?.viewModel.getData()
+            guard let self = self else { return }
+            if self.viewModel.needMinutes {
+                self.viewModel.needMinutes = false
+            } else {
+                self.viewModel.selectDate = date
+            }
+            self.viewModel.getData()
         }
         
         scrollView.snp.makeConstraints { (make) in

@@ -67,9 +67,18 @@ extension ConsultListController: UITableViewDataSource, UITableViewDelegate {
             guard let self = self else { return }
             ActionCollecter.sendData(lev: self.viewModel.state == .ing ? "13" : "17")
             
-            let vc = VideoConsultResultController()
-            vc.viewModel.vid = model.linkId
-            self.push(vc)
+            switch model.serCode {
+            case "UTOPIA15":
+                let vc = VideoConsultResultController()
+                vc.viewModel.vid = model.linkId
+                self.push(vc)
+            case "UTOPIA10":
+                let vc = VideoConsultResultController()
+                vc.viewModel.telId = model.linkId
+                self.push(vc)
+            default: break
+            }
+            
         }
         return cell
     }

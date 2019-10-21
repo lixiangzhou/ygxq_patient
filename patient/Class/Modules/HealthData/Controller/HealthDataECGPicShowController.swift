@@ -32,6 +32,7 @@ extension HealthDataECGPicShowController {
         
         imageView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinAction)))
         imageView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: #selector(rotationAction)))
+        imageView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panAction)))
         
         
         view.addSubview(imageView)
@@ -52,6 +53,19 @@ extension HealthDataECGPicShowController {
         case .began, .changed:
             view.transform = view.transform.scaledBy(x: ges.scale, y: ges.scale)
             ges.scale = 1
+        default:
+            break
+        }
+    }
+    
+    @objc private func panAction(_ ges: UIPanGestureRecognizer) {
+        guard let view = ges.view else { return }
+        
+        switch ges.state {
+        case .began, .changed:
+            let point = ges.translation(in: view)
+            view.transform = view.transform.translatedBy(x: point.x, y: point.y)
+            ges.setTranslation(.zero, in: view)
         default:
             break
         }

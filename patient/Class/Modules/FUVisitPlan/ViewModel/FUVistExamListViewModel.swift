@@ -54,6 +54,10 @@ class FUVistExamListViewModel: BaseViewModel {
             SunnyDrugApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
                 self?.getList(model)
             }
+        case let .tellookLinkId(linkId: linkId):
+            TelApi.queryExamResult(tid: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
+                self?.getList(model)
+            }
         case let .videolookLinkId(linkId: linkId):
             ServiceApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
                 self?.getList(model)
@@ -86,7 +90,7 @@ class FUVistExamListViewModel: BaseViewModel {
                         newV.isFinished = ids.keys.contains(v.id) ? 1 : 0
                         newV.resultId = ids[v.id] ?? 0
                         switch self.type! {
-                        case .videolookLinkId, .druglookLinkId:
+                        case .videolookLinkId, .druglookLinkId, .tellookLinkId:
                             if newV.isFinished == 1 {
                                 newValues.append(newV)
                             }
@@ -116,6 +120,7 @@ class FUVistExamListViewModel: BaseViewModel {
 extension FUVistExamListViewModel {
     enum ExamType {
         case videolookLinkId(linkId: Int)
+        case tellookLinkId(linkId: Int)
         case druglookLinkId(linkId: Int)
         case look(id: Int)
         case video(id: Int, linkId: Int)

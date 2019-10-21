@@ -207,7 +207,9 @@ extension HealthDataECGBasinInfoController {
                     "uploadResult": "",
                     "usedNum": dict["verify_used_num"] ?? "",
                 ]
-                self?.viewModel.addECG(params: params)
+                self?.viewModel.addECG(params: params) {
+                    self?.pop()
+                }
             }
         }) { (error) in
             print(error)

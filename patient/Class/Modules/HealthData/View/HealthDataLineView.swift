@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class HealthDataLineView: BaseView {
     
@@ -16,6 +17,17 @@ class HealthDataLineView: BaseView {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 350))
         
         setUI()
+        
+        currentBtnProperty.signal.skipNil().observeValues { [weak self] (btn) in
+            guard let self = self else { return }
+            self.dataBtn.isEnabled = self.dataBtn != btn
+            self.dateBtn.isEnabled = self.dateBtn != btn
+            
+            self.lineView.isHidden = self.dataBtn.isEnabled
+            self.calendarView.isHidden = !self.dataBtn.isEnabled
+        }
+        
+        currentBtnProperty.value = dataBtn
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +42,11 @@ class HealthDataLineView: BaseView {
     let lineEmpytLabel = UILabel(text: "无数据", font: .size(16), textColor: .c6, textAlignment: .center)
     let calendarView = YFDayCalendarView()
     var selectDateClosure: ((Date) -> Void)?
+    
+    let dataBtn = UIButton(imageName: "health_input_data")
+    let dateBtn = UIButton(imageName: "health_input_date")
+    
+    let currentBtnProperty = MutableProperty<UIButton?>(nil)
 }
 
 // MARK: - UI
@@ -52,6 +69,7 @@ extension HealthDataLineView {
         calendarView.weekdayHeaderTextColor = .c6
         calendarView.selectedDate = Date()
         
+        
         lineEmpytLabel.backgroundColor = .cf
         lineEmpytLabel.zz_setCorner(radius: 5, masksToBounds: true)
         
@@ -59,37 +77,25 @@ extension HealthDataLineView {
         addSubview(lineView)
         addSubview(lineEmpytLabel)
         addSubview(calendarView)
+
+        dataBtn.setImage(UIImage(named: "health_input_data_sel"), for: .disabled)
+        dateBtn.setImage(UIImage(named: "health_input_date_sel"), for: .disabled)
+        dataBtn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
+        dateBtn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
         
-        let v1 = UIButton(imageName: "health_input_data")
-        let v2 = UIButton(imageName: "health_input_date")
-        v1.setImage(UIImage(named: "health_input_data_sel"), for: .disabled)
-        v2.setImage(UIImage(named: "health_input_date_sel"), for: .disabled)
+        addSubview(dataBtn)
+        addSubview(dateBtn)
         
-        addSubview(v1)
-        addSubview(v2)
-        
-        calendarView.reactive.controlEvents(.valueChanged).observeValues { [weak self] (view) in
-            self?.selectDateClosure?(view.selectedDate)
-            v1.sendActions(for: .touchUpInside)
-        }
-        
-        v1.reactive.controlEvents(.touchUpInside).observeValues { (_) in
-            v1.isEnabled = !v1.isEnabled
-            v2.isEnabled = !v1.isEnabled
+        calendarView.reactive.controlEvents(.valueChanged).skip(first: 1).observeValues { [weak self] (view) in
+            guard let self = self else { return }
             
-            self.lineView.isHidden = v1.isEnabled
-            self.calendarView.isHidden = !v1.isEnabled
+            self.selectDateClosure?(view.selectedDate)
+            if self.dataBtn.isEnabled {
+                self.currentBtnProperty.value = self.dataBtn
+            }
         }
         
-        v2.reactive.controlEvents(.touchUpInside).observeValues { (_) in
-            v2.isEnabled = !v2.isEnabled
-            v1.isEnabled = !v2.isEnabled
-            
-            self.lineView.isHidden = v1.isEnabled
-            self.calendarView.isHidden = !v1.isEnabled
-        }
-        
-        v1.sendActions(for: .touchUpInside)
+        dataBtn.sendActions(for: .touchUpInside)
         
         lineView.showTop = false
         lineView.topPadding = 20
@@ -118,15 +124,21 @@ extension HealthDataLineView {
             make.edges.equalTo(lineView)
         }
         
-        v1.snp.makeConstraints { (make) in
+        dataBtn.snp.makeConstraints { (make) in
             make.top.equalTo(lineView.snp.bottom).offset(12)
             make.width.height.equalTo(40)
             make.right.equalTo(lineView.snp.centerX).offset(-25)
         }
         
-        v2.snp.makeConstraints { (make) in
-            make.top.width.height.equalTo(v1)
+        dateBtn.snp.makeConstraints { (make) in
+            make.top.width.height.equalTo(dataBtn)
             make.left.equalTo(lineView.snp.centerX).offset(25)
         }
+    }
+}
+
+extension HealthDataLineView {
+    @objc private func btnAction(_ sender: UIButton) {
+        currentBtnProperty.value = sender
     }
 }

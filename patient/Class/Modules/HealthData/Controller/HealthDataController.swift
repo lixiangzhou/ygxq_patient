@@ -74,9 +74,11 @@ extension HealthDataController: UITableViewDataSource, UITableViewDelegate {
         cell.dataLabel.isHidden = isXD
         
         if isXD {
-            let hasData = viewModel.xdDataProperty.value
+            let hasData = viewModel.xdDataProperty.value != nil
             cell.imgView.isHidden = !hasData
             cell.dataLabel.isHidden = hasData
+            
+            cell.timeLabel.text = viewModel.xdDataProperty.value?.createTime.toTime(format: "MM-dd HH:mm") ?? "暂无数据"
         } else {
             cell.imgView.isHidden = true
             cell.dataLabel.isHidden = false

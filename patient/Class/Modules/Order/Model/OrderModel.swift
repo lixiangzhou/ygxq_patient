@@ -36,6 +36,8 @@ struct OrderModel: ModelProtocol, Equatable {
     
     var orderId: Int = 0
     
+    var unfinishConsult: String = ""
+    
     
     var isSelected: Bool = false
 }

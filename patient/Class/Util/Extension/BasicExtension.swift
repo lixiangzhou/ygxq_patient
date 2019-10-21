@@ -18,6 +18,22 @@ extension TimeInterval {
     }
 }
 
+extension Double {
+    var bottomPayPriceString: NSAttributedString {
+        let attrString = NSMutableAttributedString(string: "￥", attributes: [NSAttributedString.Key.font: UIFont.boldSize(14)])
+        
+        let priceString = String(format: "%.2f", self)
+        if let idx = priceString.firstIndex(of: ".") {
+            attrString.append(NSAttributedString(string: "\(priceString[..<idx])", attributes: [NSAttributedString.Key.font: UIFont.boldSize(17)]))
+            attrString.append(NSAttributedString(string: "\(priceString[idx...])", attributes: [NSAttributedString.Key.font: UIFont.boldSize(14)]))
+        } else {
+            attrString.append(NSAttributedString(string: priceString, attributes: [NSAttributedString.Key.font: UIFont.boldSize(17)]))
+        }
+        
+        return attrString
+    }
+}
+
 func getAge(_ birth: TimeInterval?) -> Int? {
     if let birth = birth {
         let birthDate = Date(timeIntervalSince1970: birth / 1000)

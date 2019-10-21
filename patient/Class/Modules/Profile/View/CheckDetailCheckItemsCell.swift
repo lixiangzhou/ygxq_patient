@@ -46,23 +46,3 @@ extension CheckDetailCheckItemsCell {
         }
     }
 }
-
-// MARK: - Action
-extension CheckDetailCheckItemsCell {
-    
-}
-
-// MARK: - Helper
-extension CheckDetailCheckItemsCell {
-    
-}
-
-// MARK: - Other
-extension CheckDetailCheckItemsCell {
-    
-}
-
-// MARK: - Public
-extension CheckDetailCheckItemsCell {
-    
-}

@@ -12,7 +12,7 @@ import ReactiveSwift
 class PayViewModel: BaseViewModel {
     var orderId = 0
     
-    let dataSourceProperty = MutableProperty<[Model]>([.list(name: "  ", price: "  "), .method, .tip])
+    let dataSourceProperty = MutableProperty<[Model]>([.list(name: "  ", price: 0), .method, .tip])
     
     let orderProperty = MutableProperty<OrderModel?>(nil)
     
@@ -28,7 +28,7 @@ class PayViewModel: BaseViewModel {
             if let model = resp.content {
                 self.orderProperty.value = model
                 var values = self.dataSourceProperty.value
-                values.replaceSubrange(0...0, with: [.list(name: model.productName, price: "￥\(model.payAmount)")])
+                values.replaceSubrange(0...0, with: [.list(name: model.productName, price: model.payAmount)])
                 self.dataSourceProperty.value = values
             }
         }
@@ -73,13 +73,14 @@ extension PayViewModel {
         enum ResultType {
             case longSer
             case singleVideoConsult
+            case singleTelConsult
             case singleSunnyDrug
             case sunShineHut
         }
     }
     
     enum Model {
-        case list(name: String, price: String)
+        case list(name: String, price: Double)
         case method
         case tip
     }

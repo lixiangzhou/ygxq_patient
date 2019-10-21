@@ -20,7 +20,7 @@ class ActionCollecter {
     
     private init() { }
     
-    let UUIDIdentifier = "2dd88370e17949b59bcb6dac46562204"
+    let UUIDIdentifier = "ee61dfc8baf34e10a0b52d066286f355"
     
     private let reachabilityManager = NetworkReachabilityManager()
     
@@ -35,13 +35,17 @@ class ActionCollecter {
     private func hookControllerLifeCycle() {
         let appearClosure: @convention(block) (AspectInfo)-> Void = { aspectInfo in
 //            print("\((aspectInfo.instance()! as! UIViewController).zz_className) viewDidAppear")
-            self.sendData(lev1: "1", lev2: "0", page: (aspectInfo.instance()! as! UIViewController).zz_className, method: "viewDidAppear")
+            if let clazz = aspectInfo.instance() as? BaseController {
+                self.sendData(lev1: "1", lev2: "0", page: clazz.zz_className, method: "viewDidAppear")
+            }
         }
         _ = try? UIViewController.aspect_hook(#selector(UIViewController.viewDidAppear(_:)), with: .positionBefore, usingBlock: appearClosure)
         
         let disAppearClosure: @convention(block) (AspectInfo)-> Void = { aspectInfo in
 //            print("\(String(describing: aspectInfo.instance()!)) viewDidDisappear")
-            self.sendData(lev1: "2", lev2: "0", page: (aspectInfo.instance()! as! UIViewController).zz_className, method: "viewDidDisappear")
+            if let clazz = aspectInfo.instance() as? BaseController {
+                self.sendData(lev1: "2", lev2: "0", page: clazz.zz_className, method: "viewDidDisappear")
+            }
         }
         _ = try? UIViewController.aspect_hook(#selector(UIViewController.viewDidDisappear(_:)), with: .positionBefore, usingBlock: disAppearClosure)
     }

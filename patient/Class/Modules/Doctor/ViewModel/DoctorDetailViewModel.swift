@@ -135,29 +135,38 @@ class DoctorDetailViewModel: BaseViewModel {
         layout.itemSize = CGSize(width: 70, height: 100)
         let width: CGFloat = UIScreen.zz_width - (15 + 30) * 2
         
-        switch sers.count {
-        case 0:
+        if sers.count == 0 {
             return (layout, 0)
-        case 1:
-            let paddingX = (width - layout.itemSize.width) / 2
-            layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)
-            return (layout, layout.itemSize.height)
-        case 2:
-            let paddingX = (width - layout.itemSize.width * 2) / 4
-            layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)
-            layout.minimumInteritemSpacing = paddingX * 2
-            return (layout, layout.itemSize.height)
-        case 3:
+        } else {
             let paddingX = (width - layout.itemSize.width * 3) / 6
             layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)
             layout.minimumInteritemSpacing = paddingX * 2
             return (layout, layout.itemSize.height)
-        default:
-            let paddingX = (width - layout.itemSize.width * 4) / 8
-            layout.minimumInteritemSpacing = paddingX * 2
-            layout.minimumLineSpacing = 0
-            return (layout, layout.itemSize.height * ceil(CGFloat(sers.count) / 4))
         }
+        
+//        switch sers.count {
+//        case 0:
+//            return (layout, 0)
+//        case 1:
+//            let paddingX = (width - layout.itemSize.width) / 2
+//            layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)
+//            return (layout, layout.itemSize.height)
+//        case 2:
+//            let paddingX = (width - layout.itemSize.width * 2) / 4
+//            layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)
+//            layout.minimumInteritemSpacing = paddingX * 2
+//            return (layout, layout.itemSize.height)
+//        case 3:
+//            let paddingX = (width - layout.itemSize.width * 3) / 6
+//            layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)
+//            layout.minimumInteritemSpacing = paddingX * 2
+//            return (layout, layout.itemSize.height)
+//        default:
+//            let paddingX = (width - layout.itemSize.width * 4) / 8
+//            layout.minimumInteritemSpacing = paddingX * 2
+//            layout.minimumLineSpacing = 0
+//            return (layout, layout.itemSize.height * ceil(CGFloat(sers.count) / 4))
+//        }
     }
     
     func getLongSerLayout(_ sers: [DoctorSerModel]) -> (UICollectionViewFlowLayout, CGFloat) {
@@ -193,6 +202,8 @@ class DoctorDetailViewModel: BaseViewModel {
             return UIImage(named: "service_sunnydrug")
         case "UTOPIA15":
             return UIImage(named: "service_video")
+        case "UTOPIA10":
+            return UIImage(named: "service_tel")
         default: return nil
         }
     }

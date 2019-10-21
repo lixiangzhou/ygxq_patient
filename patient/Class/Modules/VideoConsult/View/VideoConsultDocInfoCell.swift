@@ -27,8 +27,8 @@ class VideoConsultDocInfoCell: UITableViewCell {
     // MARK: - Public Property
     let iconView = UIImageView(image: UIImage(named: "doctor_avator"))
     let nameLabel = UILabel(font: .size(17), textColor: .c3, numOfLines: 1)
-    let professionLabel = UILabel(font: .size(15), textColor: .c9)
-    let hospitalLabel = UILabel(font: .size(15), textColor: .c6)
+    let professionLabel = UILabel(font: .size(17), textColor: .c6)
+    let hospitalLabel = UILabel(font: .size(17), textColor: .c6)
     // MARK: - Private Property
     
 }

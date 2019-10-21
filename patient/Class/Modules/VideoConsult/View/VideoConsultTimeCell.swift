@@ -25,6 +25,8 @@ class VideoConsultTimeCell: UITableViewCell {
     }
     
     // MARK: - Public Property
+    let titleView = TextLeftRightView()
+    
     let statusView = UIImageView(image: UIImage(named: "consult_status_ing"))
     
     let appointTimeLabel = UILabel(text: "等待医生确认", font: .size(15), textColor: .c6)
@@ -42,9 +44,7 @@ extension VideoConsultTimeCell {
         let topSepView = contentView.zz_add(subview: UIView())
         topSepView.backgroundColor = .cf0efef
         
-        let titleView = TextLeftRightView()
         titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
-        titleView.leftLabel.text = "视频通话时间"
         contentView.addSubview(titleView)
         
         let bottomView = contentView.zz_add(subview: UIView())
@@ -109,9 +109,9 @@ extension VideoConsultTimeCell {
 
 // MARK: - Public
 extension VideoConsultTimeCell {
-    func setData(_ videoModel: VideoConsultModel) {
-        if videoModel.serConsultVideo.clientConsultStatus == "SER_CST_S_ING" {
-            if videoModel.serConsultVideo.appointTime == 0 {    // 未预约时间
+    func setData(status: String, appointTime: TimeInterval, talkTime: TimeInterval) {
+        if status == "SER_CST_S_ING" {
+            if appointTime == 0 {    // 未预约时间
                 statusView.image = UIImage(named: "consult_status_ing")
                 appointTimeLabel.text = "等待医生确认"
                 statusEndLabel.textColor = .c9
@@ -122,9 +122,9 @@ extension VideoConsultTimeCell {
                     make.top.equalTo(statusEndLabel.snp.bottom).offset(0)
                 }
             } else {
-                if videoModel.serConsultVideo.talkTime == 0 {   // 预约了时间，没有通话过
+                if talkTime == 0 {   // 预约了时间，没有通话过
                     statusView.image = UIImage(named: "consult_status_ing")
-                    appointTimeLabel.text = "预约成功 " + videoModel.serConsultVideo.appointTime.toTime(format: "yyyy-MM-dd HH:mm")
+                    appointTimeLabel.text = "预约成功 " + appointTime.toTime(format: "yyyy-MM-dd HH:mm")
                     statusEndLabel.textColor = .c9
                     talkTimeLabel.text = nil
                     noTalkLabel.isHidden = false
@@ -133,19 +133,19 @@ extension VideoConsultTimeCell {
                         make.top.equalTo(statusEndLabel.snp.bottom).offset(0)
                     }
                 } else {    // 预约了时间，通话过
-                    overStatus(videoModel)
+                    overStatus(appointTime: appointTime, talkTime: talkTime)
                 }
             }
         } else { // 已结束咨询
-            overStatus(videoModel)
+            overStatus(appointTime: appointTime, talkTime: talkTime)
         }
     }
     
-    private func overStatus(_ videoModel: VideoConsultModel) {
+    private func overStatus(appointTime: TimeInterval, talkTime: TimeInterval) {
         statusView.image = UIImage(named: "consult_status_end")
-        appointTimeLabel.text = "预约成功 " + videoModel.serConsultVideo.appointTime.toTime(format: "yyyy-MM-dd HH:mm")
+        appointTimeLabel.text = "预约成功 " + appointTime.toTime(format: "yyyy-MM-dd HH:mm")
         statusEndLabel.textColor = .c3
-        talkTimeLabel.text = videoModel.serConsultVideo.talkTime.toTime(format: "yyyy-MM-dd HH:mm")
+        talkTimeLabel.text = talkTime.toTime(format: "yyyy-MM-dd HH:mm")
         noTalkLabel.isHidden = true
         
         talkTimeLabel.snp.updateConstraints { (make) in

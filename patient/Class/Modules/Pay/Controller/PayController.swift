@@ -71,7 +71,7 @@ extension PayController {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
                 
         viewModel.orderProperty.signal.skipNil().observeValues { [weak self] (model) in
-            self?.bottomView.priceLabel.text = "￥\(model.payAmount)"
+            self?.bottomView.priceLabel.attributedText = model.payAmount.bottomPayPriceString
         }
         
         viewModel.orderProperty.signal.skipNil().skipRepeats { $0.isProtocol == $1.isProtocol }.observeValues { [weak self] (model) in
@@ -89,7 +89,7 @@ extension PayController {
             case 0:
                 if let type = self?.viewModel.resultAction?.type {
                     switch type {
-                    case .singleVideoConsult, .longSer, .sunShineHut:
+                    case .singleVideoConsult, .longSer, .sunShineHut, .singleTelConsult:
                         let vc = PayResultController()
                         vc.resultAction = self?.viewModel.resultAction
                         self?.push(vc)
@@ -131,7 +131,7 @@ extension PayController: UITableViewDataSource {
         case let .list(name: name, price: price):
             let cell = tableView.dequeue(cell: PayListCell.self, for: indexPath)
             cell.productView.leftLabel.text = name
-            cell.productView.rightLabel.text = price
+            cell.productView.rightLabel.attributedText = price.bottomPayPriceString
             return cell
         case .method:
             return tableView.dequeue(cell: PayMethodCell.self, for: indexPath)

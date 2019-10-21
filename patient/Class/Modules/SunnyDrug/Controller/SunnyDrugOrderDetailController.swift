@@ -128,7 +128,7 @@ extension SunnyDrugOrderDetailController: UITableViewDataSource, UITableViewDele
         case .lookPics:
             let vc = PictureListController()
             vc.title = "查看完善资料"
-            vc.viewModel.type = .videoOrDrugDetail(linkId: viewModel.id, serType: "UTOPIA16", imgType: 1)
+            vc.viewModel.type = .telOrVideoOrDrugDetail(linkId: viewModel.id, serType: "UTOPIA16", imgType: 1)
             push(vc)
         default: break
         }

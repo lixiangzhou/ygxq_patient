@@ -163,6 +163,9 @@
 		1030C2B9231FCA8300F13755 /* MediaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2B8231FCA8300F13755 /* MediaApi.swift */; };
 		1030C2BB23209F5500F13755 /* PictureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030C2BA23209F5500F13755 /* PictureListCell.swift */; };
 		10375FDD2304F92400B92403 /* VideoConsultResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10375FDC2304F92400B92403 /* VideoConsultResultController.swift */; };
+		103D94A3235AB10F00A8119C /* TelApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D94A2235AB10F00A8119C /* TelApi.swift */; };
+		103D94A5235AB21A00A8119C /* TelPatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D94A4235AB21A00A8119C /* TelPatientModel.swift */; };
+		103D94A7235AFA4800A8119C /* TelConsultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D94A6235AFA4800A8119C /* TelConsultModel.swift */; };
 		1043BF142328DD7500271194 /* JPushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043BF132328DD7500271194 /* JPushManager.swift */; };
 		1044A27D2351A0E600363887 /* HealthDataECGShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1044A27C2351A0E600363887 /* HealthDataECGShowController.swift */; };
 		1044A27F2351A0F900363887 /* HealthDataECGShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1044A27E2351A0F900363887 /* HealthDataECGShowViewModel.swift */; };
@@ -593,6 +596,9 @@
 		1030C2B8231FCA8300F13755 /* MediaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaApi.swift; sourceTree = "<group>"; };
 		1030C2BA23209F5500F13755 /* PictureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListCell.swift; sourceTree = "<group>"; };
 		10375FDC2304F92400B92403 /* VideoConsultResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConsultResultController.swift; sourceTree = "<group>"; };
+		103D94A2235AB10F00A8119C /* TelApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelApi.swift; sourceTree = "<group>"; };
+		103D94A4235AB21A00A8119C /* TelPatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelPatientModel.swift; sourceTree = "<group>"; };
+		103D94A6235AFA4800A8119C /* TelConsultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelConsultModel.swift; sourceTree = "<group>"; };
 		1043BF122328DC2A00271194 /* patient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = patient.entitlements; sourceTree = "<group>"; };
 		1043BF132328DD7500271194 /* JPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPushManager.swift; sourceTree = "<group>"; };
 		1044A27C2351A0E600363887 /* HealthDataECGShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataECGShowController.swift; sourceTree = "<group>"; };
@@ -1132,6 +1138,7 @@
 				101C2E70232263FD00AB4C53 /* ECGApi.swift */,
 				101C2EB6232885AA00AB4C53 /* TaskWorkApi.swift */,
 				10F7590A234C71FE001C35B5 /* HealthApi.swift */,
+				103D94A2235AB10F00A8119C /* TelApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1479,6 +1486,34 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		103D949C2359AEA400A8119C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		103D949D2359AEA800A8119C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		103D949E2359AEAE00A8119C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		103D949F2359AEB200A8119C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		104E3A6B22B79F7A00A84DB2 /* NextGrowingTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1491,6 +1526,7 @@
 		104E3A7B22B892E800A84DB2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				106C7EFB2359AE31004B55D5 /* TelService */,
 				10E22C12234C6A590084E6FB /* HealthData */,
 				105653C32321F0EA001C31A0 /* FUVisitPlan */,
 				104FC4D12316755800ECB82B /* Pay */,
@@ -1936,6 +1972,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		106C7EFB2359AE31004B55D5 /* TelService */ = {
+			isa = PBXGroup;
+			children = (
+				103D949F2359AEB200A8119C /* Controller */,
+				103D949E2359AEAE00A8119C /* View */,
+				103D949D2359AEA800A8119C /* Model */,
+				103D949C2359AEA400A8119C /* ViewModel */,
+			);
+			path = TelService;
+			sourceTree = "<group>";
+		};
 		108C07F822BA44BB00B2EBE9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2070,7 +2117,9 @@
 			isa = PBXGroup;
 			children = (
 				10E1DF2B2304FAA6007AD76A /* VideoConsultModel.swift */,
+				103D94A6235AFA4800A8119C /* TelConsultModel.swift */,
 				10E820C523337765005466A0 /* ExamPicModel.swift */,
+				103D94A4235AB21A00A8119C /* TelPatientModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2569,6 +2618,7 @@
 				10225DA7234D82560026749B /* HealthDataInputRowView.swift in Sources */,
 				10FF88AA2314F2FD008148BC /* BannerModel.swift in Sources */,
 				101C2E9F23234B2F00AB4C53 /* InvoiceSelectCell.swift in Sources */,
+				103D94A5235AB21A00A8119C /* TelPatientModel.swift in Sources */,
 				1014D05B2293A6D700294558 /* UIDevice+ZZExtension.swift in Sources */,
 				10CA46B322F431D600A4E244 /* RegisterController.swift in Sources */,
 				1044A2AB2355B6D800363887 /* HealthDataECGHistoryController.swift in Sources */,
@@ -2614,6 +2664,7 @@
 				106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */,
 				1044A27F2351A0F900363887 /* HealthDataECGShowViewModel.swift in Sources */,
 				1030AA92229CDCB600519CA4 /* TableViewExtension.swift in Sources */,
+				103D94A3235AB10F00A8119C /* TelApi.swift in Sources */,
 				1014D0652293A6D700294558 /* MineController.swift in Sources */,
 				1014D04A2293A6D700294558 /* DispatchQueue+ZZExtension.swift in Sources */,
 				106DE8C623168433001DF4DE /* PayTipCell.swift in Sources */,
@@ -2861,6 +2912,7 @@
 				101C2E912323482400AB4C53 /* InvoiceContentController.swift in Sources */,
 				101C2EBB2328A89900AB4C53 /* SunnyDrugApi.swift in Sources */,
 				1044A2832351CC6300363887 /* HealthDataECGModel.swift in Sources */,
+				103D94A7235AFA4800A8119C /* TelConsultModel.swift in Sources */,
 				100AEE7022CD969100094AE2 /* DrugUsedViewModel.swift in Sources */,
 				106DE8CE2317A2B8001DF4DE /* PayResultController.swift in Sources */,
 				1014D05D2293A6D700294558 /* UITableView+ZZExtension.swift in Sources */,

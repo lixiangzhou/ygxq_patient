@@ -16,10 +16,10 @@ class VideoConsultResultController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "视频咨询"
+        title = viewModel.title
         setUI()
         setBinding()
-        viewModel.getVideoData()
+        viewModel.getData()
     }
 
     // MARK: - Public Property
@@ -114,12 +114,12 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
             cell.professionLabel.snpUpdateWidth()
             
             return cell
-        case let .patient(model: serModel):
+        case let .patient(name: name, mobile: mobile, idCardNo: idCardNo):
             let cell = tableView.dequeue(cell: VideoConsultPatientInfoCell.self, for: indexPath)
             
-            cell.nameView.rightLabel.text = serModel.realName
-            cell.mobileView.rightLabel.text = serModel.mobile.mobileSecrectString
-            cell.idView.rightLabel.text = serModel.idCardNo.idSecrectString
+            cell.nameView.rightLabel.text = name
+            cell.mobileView.rightLabel.text = mobile.mobileSecrectString
+            cell.idView.rightLabel.text = idCardNo.idSecrectString
             
             return cell
         case let .disease(disease: disease):
@@ -141,9 +141,10 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
             cell.innerView.leftLabel.text = "查看完善资料"
             return cell
             
-        case let .time(model: videoModel):
+        case let .time(status: status, appointTime: appointTime, talkTime: talkTime):
             let cell = tableView.dequeue(cell: VideoConsultTimeCell.self, for: indexPath)
-            cell.setData(videoModel)
+            cell.titleView.leftLabel.text = viewModel.timeTitle
+            cell.setData(status: status, appointTime: appointTime, talkTime: talkTime)
             return cell
         }
     }
@@ -155,12 +156,16 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
         case .exam:
             let vc = FUVistExamListController()
             vc.title = "查看随访问卷"
-            vc.viewModel.type = .videolookLinkId(linkId: viewModel.vid)
+            if viewModel.vid > 0 {
+                vc.viewModel.type = .videolookLinkId(linkId: viewModel.vid)
+            } else if viewModel.telId > 0 {
+                vc.viewModel.type = .tellookLinkId(linkId: viewModel.telId)
+            }
             push(vc)
         case .lookPics:
             let vc = PictureListController()
             vc.title = "查看完善资料"
-            vc.viewModel.type = .videoOrDrugDetail(linkId: viewModel.vid, serType: "UTOPIA15", imgType: 0)
+            vc.viewModel.type = .telOrVideoOrDrugDetail(linkId: viewModel.id, serType: viewModel.serType, imgType: 0)
             push(vc)
         default: break
         }

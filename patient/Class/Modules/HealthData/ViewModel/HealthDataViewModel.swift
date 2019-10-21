@@ -11,11 +11,11 @@ import ReactiveSwift
 
 class HealthDataViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[HealthDataModel]>([])
-    let xdDataProperty = MutableProperty<Bool>(false)
+    let xdDataProperty = MutableProperty<HealthDataECGModel?>(nil)
     
     func getData() {
         ECGApi.getLastOneByDate(pid: patientId, time: nil).rac_responseModel(HealthDataECGModel.self).startWithValues { [weak self] (model) in
-            self?.xdDataProperty.value = model != nil
+            self?.xdDataProperty.value = model
         }
         
         HealthApi.queryHealthLogs(pid: patientId).rac_responseModel([HealthDataModel].self).startWithValues { [weak self] (models) in

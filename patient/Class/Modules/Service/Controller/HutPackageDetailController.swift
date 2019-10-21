@@ -77,6 +77,10 @@ extension HutPackageDetailController {
         bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
         bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }
         
+        viewModel.hutModelProperty.producer.skipNil().startWithValues { (model) in
+            self.bottomView.priceLabel.attributedText = model.serPrice.bottomPayPriceString
+        }
+        
         tableView.reactive.reloadData <~ viewModel.addressModelProperty.signal.skipRepeats({ (m1, m2) -> Bool in
             if m1 == nil, m2 == nil {
                 return true

@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 
 class SunnyDrugBuyViewModel: BaseViewModel {
-    let myPrivateDoctorOrderProperty = MutableProperty<OrderModel?>(nil)
+    let myPrivateDoctorOrderProperty = MutableProperty<OrderModel>(OrderModel())
     let buyFromLongServiceSuccessProperty = MutableProperty<Bool>(false)
     let orderIdProperty = MutableProperty<Int>(0)
     let selectImageProperty = MutableProperty<UIImage?>(nil)
@@ -65,7 +65,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     }
     
     var isToPayWay: Bool {
-        return serVideoId != nil || myPrivateDoctorOrderProperty.value == nil
+        return serVideoId != nil || myPrivateDoctorOrderProperty.value.ser_code.isEmpty
     }
     
     func getPrivateDoctor() {

@@ -53,7 +53,7 @@ extension DoctorDetailActionsCell {
             make.top.equalTo(12)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-            make.bottom.equalTo(-15)
+            make.bottom.equalTo(-12)
         }
         
         titleLabel.snp.makeConstraints { (make) in

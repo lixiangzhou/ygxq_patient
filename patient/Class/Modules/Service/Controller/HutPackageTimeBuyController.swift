@@ -70,12 +70,12 @@ extension HutPackageTimeBuyController {
     override func setBinding() {
         tableView.reactive.reloadData <~ viewModel.dataSourceProperty.signal.map(value: ())
         viewModel.hutModelProperty.producer.skipNil().startWithValues { [weak self] (model) in
-            self?.bottomView.priceLabel.text = "￥\(model.serPrice)"
+            self?.bottomView.priceLabel.attributedText = model.serPrice.bottomPayPriceString
         }
         viewModel.countProperty.signal.observeValues { [weak self] (v) in
             guard let self = self, let model = self.viewModel.hutModelProperty.value else { return }
             ActionCollecter.sendData(lev: "33")
-            self.bottomView.priceLabel.text = "￥\(model.serPrice * Double(v))"
+            self.bottomView.priceLabel.attributedText = (model.serPrice * Double(v)).bottomPayPriceString
         }
     }
 }

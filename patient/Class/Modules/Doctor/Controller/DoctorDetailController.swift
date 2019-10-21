@@ -110,6 +110,8 @@ extension DoctorDetailController: UITableViewDataSource {
             cell.professionLabel.text = model.titleName
             cell.hospitalLabel.text = model.hospitalName
             
+            cell.professionLabel.snpUpdateWidth()
+            
             cell.serView.dataSource = self
             cell.serView.delegate = self
             cell.serView.tag = SersViewType.ser.rawValue
@@ -117,8 +119,9 @@ extension DoctorDetailController: UITableViewDataSource {
             let (layout, height) = viewModel.getSerLayout(sers)
             cell.serView.setCollectionViewLayout(layout, animated: false)
             cell.serView.snp.updateConstraints { (make) in
-                make.height.equalTo(height + 15)
+                make.height.equalTo(sers.isEmpty ? 30 : height + 15)
             }
+            cell.serView.isHidden = sers.isEmpty
             cell.serView.reloadData()
             return cell
         case let .sersAction(title: title, sers: sers, msg: msg):
@@ -142,7 +145,7 @@ extension DoctorDetailController: UITableViewDataSource {
             let cell = tableView.dequeue(cell: DoctorDetailMsgExpendableCell.self, for: indexPath)
             cell.titleLabel.text = title
             let style = NSMutableParagraphStyle()
-            style.lineSpacing = 2
+            style.lineSpacing = 5
             cell.txtLabel.attributedText = NSAttributedString(string: txt, attributes: [NSAttributedString.Key.font: UIFont.size(14), NSAttributedString.Key.paragraphStyle: style])
             cell.addMore()
             cell.updateConstraint(expend: showMore)
@@ -187,9 +190,16 @@ extension DoctorDetailController: UICollectionViewDataSource, UICollectionViewDe
         case .ser:
             let model = viewModel.sersDataSource[indexPath.row]
             switch model.serType {
+            case "UTOPIA10":
+                let vc = VideoConsultBuyController()
+                vc.viewModel.priceProperty.value = model.serPrice
+                vc.viewModel.did = model.duid
+                vc.viewModel.serType = model.serType
+                push(vc)
             case "UTOPIA15":
                 ActionCollecter.sendData(lev: "10")
                 let vc = VideoConsultBuyController()
+                vc.viewModel.priceProperty.value = model.serPrice
                 vc.viewModel.did = model.duid
                 vc.viewModel.serType = model.serType
                 push(vc)

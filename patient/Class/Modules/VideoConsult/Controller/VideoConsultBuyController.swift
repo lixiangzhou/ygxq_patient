@@ -18,10 +18,10 @@ class VideoConsultBuyController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "视频咨询"
+        title = viewModel.title
         setUI()
         setBinding()
-        PatientManager.shared.getPatientInfo()
+        viewModel.getPatientData()
         viewModel.getPrivateDoctor()
     }
 
@@ -50,7 +50,7 @@ extension VideoConsultBuyController {
         contentView.backgroundColor = .cf0efef
         scrollView.addSubview(contentView)
         
-        let topTip = contentView.zz_add(subview: UILabel(text: "提示：急重症患者不适合视频咨询，请及时前往医院就医。为确保与医生正常通话，请您务必填写正确的手机号码。", font: .size(15), textColor: .c6)) as! UILabel
+        let topTip = contentView.zz_add(subview: UILabel(text: viewModel.topTipString, font: .size(15), textColor: .c6)) as! UILabel
         
         contentView.addSubview(patientInfoView)
         contentView.addSubview(diseaseView)
@@ -88,14 +88,14 @@ extension VideoConsultBuyController {
         }
         
         topTip.snp.makeConstraints { (make) in
-            make.top.equalTo(2)
+            make.top.equalTo(12)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-            make.height.equalTo(viewModel.tipString.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: 15).height)
+            make.height.equalTo(viewModel.topTipString.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: 15))
         }
         
         patientInfoView.snp.makeConstraints { (make) in
-            make.top.equalTo(topTip.snp.bottom).offset(2)
+            make.top.equalTo(topTip.snp.bottom).offset(12)
             make.left.right.equalToSuperview()
         }
         
@@ -140,15 +140,98 @@ extension VideoConsultBuyController {
             base.updateContentHeight()
             } <~ picturesView.heightProperty.skipRepeats().signal.map(value: ())
         
-        bottomView.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 != nil }
-        appointBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0 == nil }
+        viewModel.priceProperty.producer.startWithValues { (value) in
+            self.bottomView.priceLabel.attributedText = value.bottomPayPriceString
+        }
         
         // 选择图片
         viewModel.selectedImagesProperty.signal.observeValues { [weak self] (imgs) in
             self?.picturesView.pictureSelectView.viewModel.set(images: imgs)
         }
         
-        // 基本信息
+        setPatientDataBinding()
+        
+        enabledBinding()
+        
+        viewModel.orderIdProperty.signal.filter { $0 > 0 }.observeValues { [weak self] (orderId) in
+            guard let self = self else { return }
+            let vc = PayController()
+            vc.viewModel.orderId = orderId
+            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: "DoctorDetailController", type: self.viewModel.serType == "UTOPIA15" ? .singleVideoConsult : .singleTelConsult)
+            self.push(vc)
+        }
+        
+        viewModel.buyFromLongServiceSuccessProperty.signal.observeValues { (isSuccess) in
+            if isSuccess {
+                self.pop()
+            }
+        }
+    }
+    
+    /// 基本信息
+    private func setPatientDataBinding() {
+        if viewModel.serType == "UTOPIA15" {
+            bottomView.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0.ser_code.isEmpty }
+            appointBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { !$0.ser_code.isEmpty }
+            setVideoPatientBinding()
+        } else if viewModel.serType == "UTOPIA10" {
+            bottomView.isHidden = false
+            appointBtn.isHidden = true
+            setTelPatientBinding()
+        }
+    }
+    
+    private func setTelPatientBinding() {
+        viewModel.lastPatientInfoModelProperty.signal.observeValues { [weak self] (model) in
+            guard let self = self else { return }
+            
+            let font = self.patientInfoView.nameView.leftLabel.font!
+            let color = self.patientInfoView.nameView.leftLabel.textColor!
+
+            self.patientInfoView.mobileView.leftLabel.attributedText = "手机号".needed(with: font, color: color)
+            
+            self.patientInfoView.mobileView.rightField.text = model.mobileStr.mobileSecrectString
+            
+            self.patientInfoView.mobileView.rightField.reactive.controlEvents(.editingDidBegin).observeValues { (field) in
+                let txt = field.text ?? ""
+                if txt.contains("****") {
+                    field.text = model.mobileStr
+                }
+            }
+        }
+        
+        patientInfoProperty.producer.skipNil().startWithValues { [weak self] (model) in
+            guard let self = self else { return }
+            
+            let nameAttr = NSMutableAttributedString(string: "姓名")
+            if model.realName.isEmpty {
+                nameAttr.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
+            } else {
+                self.patientInfoView.nameView.rightField.text = model.realName
+                self.patientInfoView.nameView.isUserInteractionEnabled = false
+            }
+            self.patientInfoView.nameView.leftLabel.attributedText = nameAttr
+            
+            let idAttr = NSMutableAttributedString(string: "身份证号码")
+            if model.idCardNo.isEmpty {
+                idAttr.append(NSAttributedString(string: "*", attributes: [NSAttributedString.Key.foregroundColor: UIColor.cf25555]))
+            } else {
+                self.patientInfoView.idView.rightField.text = model.idCardNo.idSecrectString
+                self.patientInfoView.idView.isUserInteractionEnabled = false
+            }
+            
+            self.patientInfoView.idView.leftLabel.attributedText = idAttr
+            
+            self.patientInfoView.idView.rightField.reactive.controlEvents(.editingDidBegin).observeValues { (field) in
+                let txt = field.text ?? ""
+                if txt.contains("****") {
+                    field.text = model.idCardNo
+                }
+            }
+        }
+    }
+    
+    private func setVideoPatientBinding() {
         patientInfoProperty.producer.skipNil().startWithValues { [weak self] (model) in
             guard let self = self else { return }
             
@@ -173,50 +256,64 @@ extension VideoConsultBuyController {
             }
             self.patientInfoView.idView.leftLabel.attributedText = idAttr
         }
-        
-        enabledBinding()
-        
-        viewModel.orderIdProperty.signal.filter { $0 > 0 }.observeValues { [weak self] (orderId) in
-            let vc = PayController()
-            vc.viewModel.orderId = orderId
-            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: "DoctorDetailController", type: .singleVideoConsult)
-            self?.push(vc)
-        }
-        
-        viewModel.buyFromLongServiceSuccessProperty.signal.observeValues { (isSuccess) in
-            if isSuccess {
-                self.pop()
-            }
-        }
     }
     
     /// 底部按钮状态
     private func enabledBinding() {
+        if viewModel.serType == "UTOPIA15" {
+            videoEnabledBinding()
+        } else if viewModel.serType == "UTOPIA10" {
+            telEnabledBinding()
+        }
+    }
+    
+    private func videoEnabledBinding() {
         patientInfoProperty.producer.skipNil().startWithValues { [weak self] (model) in
             guard let self = self else { return }
-            let nameEnabledProducer: SignalProducer<Bool, NoError>!
-            if model.realName.isEmpty {
-                nameEnabledProducer = SignalProducer<Bool, NoError>(value: false)
+            let nameEnabledProducer = SignalProducer<Bool, NoError>(value: !model.realName.isEmpty)
                     .concat(self.patientInfoView.nameView.rightField.reactive.continuousTextValues.map { $0.count >= 2 }.producer)
-            } else {
-                nameEnabledProducer = SignalProducer<Bool, NoError>(value: true)
-            }
             
-            let idEnabledProducer: SignalProducer<Bool, NoError>!
-            if model.idCardNo.isEmpty {
-                idEnabledProducer = SignalProducer<Bool, NoError>(value: false)
+            let idEnabledProducer = SignalProducer<Bool, NoError>(value: !model.idCardNo.isEmpty)
                     .concat(self.patientInfoView.idView.rightField.reactive.continuousTextValues.map { $0.isMatchIdNo }.producer)
-            } else {
-                idEnabledProducer = SignalProducer<Bool, NoError>(value: true)
-            }
             
             let diseaseEnabledProducer = SignalProducer<Bool, NoError>(value: false)
                 .concat(self.diseaseView.txtView.textView.reactive.continuousTextValues.map { !$0.isEmpty }.producer)
             
-            let appointEnabledProducer = nameEnabledProducer.and(idEnabledProducer).and(diseaseEnabledProducer)
+            let buyEnabled = nameEnabledProducer.and(idEnabledProducer).and(diseaseEnabledProducer)
             
-            self.appointBtn.reactive.isUserInteractionEnabled <~ appointEnabledProducer
-            self.appointBtn.reactive.backgroundColor <~ appointEnabledProducer.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+            self.appointBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+            self.appointBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+            
+            self.bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+            self.bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }
+        }
+    }
+    
+    private func telEnabledBinding() {
+        patientInfoProperty.producer.skipNil().startWithValues { [weak self] (pModel) in
+            guard let self = self else { return }
+            
+            self.viewModel.lastPatientInfoModelProperty.signal.observeValues { [weak self] (model) in
+                guard let self = self else { return }
+                
+                let nameEnabledProducer = SignalProducer<Bool, NoError>(value: !pModel.realName.isEmpty).concat(self.patientInfoView.nameView.rightField.reactive.continuousTextValues.map { $0.count >= 2 }.producer)
+                
+                let idEnabledProducer = SignalProducer<Bool, NoError>(value: !pModel.idCardNo.isEmpty)
+                        .concat(self.patientInfoView.idView.rightField.reactive.continuousTextValues.map { $0.isMatchIdNo }.producer)
+                
+                let telEnabledProducer = SignalProducer<Bool, NoError>(value: !model.idCardNo.isEmpty).concat(self.patientInfoView.mobileView.rightField.reactive.continuousTextValues.map { $0.isMatchMobile }.producer)
+                
+                let diseaseEnabledProducer = SignalProducer<Bool, NoError>(value: false)
+                    .concat(self.diseaseView.txtView.textView.reactive.continuousTextValues.map { !$0.isEmpty }.producer)
+                
+                let buyEnabled = nameEnabledProducer.and(telEnabledProducer).and(idEnabledProducer).and(diseaseEnabledProducer)
+                
+                self.appointBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+                self.appointBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+                
+                self.bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+                self.bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }
+            }
         }
     }
 }
@@ -241,15 +338,46 @@ extension VideoConsultBuyController {
     }
     
     @objc private func buyAction() {
-        if let _ = viewModel.myPrivateDoctorOrderProperty.value { // 预约
+        if !viewModel.isToPayWay { // 预约
             ActionCollecter.sendData(lev: "11")
         }
         
+        if viewModel.cantBuy {
+            AlertView.show(title: nil, msg: viewModel.alertMsg, firstTitle: "是", secondTitle: "否", firstClosure: { [weak self] (alert) in
+                alert.hide()
+                self?._buyAction()
+            }) { [weak self] (alert) in
+                alert.hide()
+                self?.pop()
+            }
+        } else {
+            _buyAction()
+        }
+    }
+    
+    @objc private func _buyAction() {
         guard let model = patientInfoProperty.value else { return }
         
         let needUpdate = model.realName.isEmpty || model.idCardNo.isEmpty
-        let realName = model.realName.isEmpty ? patientInfoView.nameView.rightField.text! : model.realName
-        let idCardNo = model.idCardNo.isEmpty ? patientInfoView.idView.rightField.text! : model.idCardNo
+        
+        let realName = patientInfoView.nameView.rightField.text!
+        
+        var mobile = patientInfoView.mobileView.rightField.text!
+        if mobile.contains("****") {
+            switch viewModel.serType {
+            case "UTOPIA10":
+                mobile = viewModel.lastPatientInfoModelProperty.value.mobileStr
+            case "UTOPIA15":
+                mobile = patientInfoProperty.value?.mobile ?? ""
+            default: break
+            }
+        }
+        
+        var idCardNo = patientInfoView.idView.rightField.text!
+        if idCardNo.contains("****") {
+            idCardNo = patientInfoProperty.value?.idCardNo ?? ""
+        }
+        
         let consultContent = diseaseView.txtView.textView.text!
         
         if model.realName.isEmpty {
@@ -259,29 +387,49 @@ extension VideoConsultBuyController {
             }
         }
         
-        var params: [String: Any] = [
-            "consultContent": consultContent,
-            "duid": viewModel.did,
-            "fromWhere": 1,
-            "idCardNo": idCardNo,
-            "isUpUsrPf": needUpdate,
-            "mobile": model.mobile,
-            "puid": patientId,
-            "realName": realName
-        ]
-        
-        if let orderModel = viewModel.myPrivateDoctorOrderProperty.value { // 预约
-            params["keyObject"] = "视频咨询"
-            params["orderId"] = orderModel.orderId
-            params["productItmId"] = orderModel.productItemId
-            params["productName"] = orderModel.product_name
-            params["serCode"] = orderModel.ser_code
-            params["workType"] = "TSK_WORK_T_19"
-        } else { // 购买
-            params["hospitalPuid"] = 0
+        switch viewModel.serType {
+        case "UTOPIA10":
+            let params: [String: Any] = [
+                "consultContent": consultContent,
+                "duid": viewModel.did,
+                "fromWhere": 1,
+                "idCardNo": idCardNo,
+                "productName": "电话咨询",
+                "telNum": mobile,
+                "puid": patientId,
+                "realName": realName,
+                "serCode": viewModel.serType
+            ]
+            viewModel.buyConsult(params: params)
+        case "UTOPIA15":
+            var params: [String: Any] = [
+                "consultContent": consultContent,
+                "duid": viewModel.did,
+                "fromWhere": 1,
+                "idCardNo": idCardNo,
+                "isUpUsrPf": needUpdate,
+                "mobile": model.mobile,
+                "puid": patientId,
+                "realName": realName
+            ]
+            
+            if !viewModel.isToPayWay { // 预约
+                let orderModel = viewModel.myPrivateDoctorOrderProperty.value
+                params["keyObject"] = "视频咨询"
+                params["orderId"] = orderModel.orderId
+                params["productItmId"] = orderModel.productItemId
+                params["productName"] = orderModel.product_name
+                params["serCode"] = viewModel.serType
+                params["workType"] = "TSK_WORK_T_19"
+            } else { // 购买
+                params["hospitalPuid"] = 0
+            }
+            
+            viewModel.buyConsult(params: params)
+        default: break
         }
         
-        viewModel.buyVideoConsult(params: params)
+        
     }
 }
 

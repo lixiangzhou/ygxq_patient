@@ -23,7 +23,7 @@ class PictureListViewModel: BaseViewModel {
                 MediaApi.queryById(pid: patientId, type: "SER_HLR", createTime: time).rac_responseModel([String: [String]].self).startWithValues { [weak self] (value) in
                     self?.dataSourceProperty.value = value?.values.first ?? []
                 }
-            case let .videoOrDrugDetail(linkId: linkId, serType: serType, imgType: imgType):
+            case let .telOrVideoOrDrugDetail(linkId: linkId, serType: serType, imgType: imgType):
                 MediaApi.listAllMediasByLinkId(linkId: linkId, serType: serType, imgType: imgType).rac_responseModel([ImageModel].self).startWithValues { [weak self] (models) in
                     if let models = models {
                         var urls = [String]()
@@ -44,6 +44,6 @@ class PictureListViewModel: BaseViewModel {
 extension PictureListViewModel {
     enum DataFromSelfType {
         case history(time: TimeInterval?)
-        case videoOrDrugDetail(linkId: Int, serType: String, imgType: Int)
+        case telOrVideoOrDrugDetail(linkId: Int, serType: String, imgType: Int)
     }
 }

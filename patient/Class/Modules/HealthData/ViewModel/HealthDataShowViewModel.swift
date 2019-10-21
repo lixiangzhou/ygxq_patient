@@ -13,6 +13,7 @@ class HealthDataShowViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[HealthDataModel]>([])
     var type = ""
     var selectDate = Date()
+    var needMinutes = false
     
     var showTimes = [TimeInterval]()
     var showValues = [[Int]]()
