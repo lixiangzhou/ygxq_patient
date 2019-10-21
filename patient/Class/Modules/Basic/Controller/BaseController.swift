@@ -120,7 +120,7 @@ extension BaseController {
             backgroundImage = nil
             shadowImage = nil
         case .default:
-            backgroundImage = UIImage.zz_image(withColor: UIColor.c407cec.withAlphaComponent(0.95))
+            backgroundImage = UIImage.zz_image(withColor: UIColor.c407cec)
             shadowImage = nil
         case .transparency:
             backgroundImage = UIImage.zz_image(withColor: .clear)

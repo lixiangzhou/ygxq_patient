@@ -46,6 +46,10 @@ class FUVistExamListViewModel: BaseViewModel {
             ServiceApi.queryExamResult(id: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
                 self?.getList(model)
             }
+        case let .tel(id: _, linkId: linkId):
+            TelApi.queryExamResult(tid: linkId).rac_responseModel(ExamResultModel.self).skipNil().filter { !$0.serExam.isEmpty }.startWithValues { [weak self] (model) in
+                self?.getList(model)
+            }
         case let .flp(id: _, linkId: linkId):
             FLPApi.queryFlpExams(id: linkId).rac_responseModel([ExamModel].self).startWithValues { [weak self] (models) in
                 self?.dataSourceProperty.value = models ?? []
@@ -109,7 +113,6 @@ class FUVistExamListViewModel: BaseViewModel {
     var webTitleString: String {
         switch type! {
         case .flp, .video, .sunnyDrug:
-            
             return "填写随访问卷"
         default:
             return "查看问卷"
@@ -124,6 +127,7 @@ extension FUVistExamListViewModel {
         case druglookLinkId(linkId: Int)
         case look(id: Int)
         case video(id: Int, linkId: Int)
+        case tel(id: Int, linkId: Int)
         case flp(id: Int, linkId: Int)
         case sunnyDrug(id: Int, linkId: Int)
         

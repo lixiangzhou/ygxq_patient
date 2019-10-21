@@ -128,7 +128,7 @@ extension DoctorDetailController: UITableViewDataSource {
             let cell = tableView.dequeue(cell: DoctorDetailActionsCell.self, for: indexPath)
             cell.titleLabel.text = title
             let style = NSMutableParagraphStyle()
-            style.lineSpacing = 8
+            style.lineSpacing = 7
             cell.txtLabel.attributedText = NSAttributedString(string: msg, attributes: [NSAttributedString.Key.paragraphStyle: style])
             cell.serView.dataSource = self
             cell.serView.delegate = self

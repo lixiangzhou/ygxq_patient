@@ -35,6 +35,8 @@ class TaskTipListViewModel: BaseViewModel {
         switch model.subType {
         case "CMN_MSG_T_05_03": // 视频
             vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_09": // 电话
+            vc.viewModel.type = .tel(id: model.id, linkId: model.linkId)
         case "CMN_MSG_T_05_04": // 购药
             vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)
         default:
@@ -51,6 +53,8 @@ class TaskTipListViewModel: BaseViewModel {
         case "CMN_MSG_T_05_01": // 视频
             ActionCollecter.sendData(lev: "34")
             vc.viewModel.type = .video(id: model.id, linkId: model.linkId)
+        case "CMN_MSG_T_05_08": // 电话
+            vc.viewModel.type = .tel(id: model.id, linkId: model.linkId)
         case "CMN_MSG_T_05_02": // 购药
             ActionCollecter.sendData(lev: "36")
             vc.viewModel.type = .sunnyDrug(id: model.id, linkId: model.linkId)

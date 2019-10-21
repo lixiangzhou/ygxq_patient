@@ -54,7 +54,7 @@ struct NetworkConfig {
         case .test:
             return "http://172.21.24.251/sphr-pages/sphr-doctor-h5"
         case .develop:
-            return "http://172.21.24.252/sphr-pages/sphr-doctor-h5"
+            return "http://172.21.24.252/sphr-pages-dev/sphr-doctor-h5"
         }
     }
     

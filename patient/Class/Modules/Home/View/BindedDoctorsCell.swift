@@ -27,8 +27,8 @@ class BindedDoctorsCell: UITableViewCell {
     // MARK: - Public Property
     let iconView = UIImageView(image: UIImage(named: "doctor_avator"))
     let nameLabel = UILabel(font: .boldSize(18), textColor: .c3, numOfLines: 1)
-    let professionLabel = UILabel(font: .size(16), textColor: .c6)
-    let hospitalLabel = UILabel(font: .size(16), textColor: .c6)
+    let professionLabel = UILabel(font: .size(16), textColor: .c6, numOfLines: 1)
+    let hospitalLabel = UILabel(font: .size(16), textColor: .c6, numOfLines: 1)
     let servicesView = ServiceView()
     
     var services: [String]! {

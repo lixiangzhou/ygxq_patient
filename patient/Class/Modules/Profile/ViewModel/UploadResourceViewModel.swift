@@ -76,6 +76,13 @@ extension UploadResourceViewModel {
                         HUD.show(BoolString(resp))
                         self?.uploadStatusProperty.value = resp.isSuccess
                     }
+                case .tel:
+                    TelApi.addResources(id: self.type.linkId, imgs: urls).rac_response(None.self).startWithValues { [weak self] (resp) in
+                        HUD.hideLoding()
+                        UIApplication.shared.endIgnoringInteractionEvents()
+                        HUD.show(BoolString(resp))
+                        self?.uploadStatusProperty.value = resp.isSuccess
+                    }
                 }
                 
                 
@@ -91,12 +98,15 @@ extension UploadResourceViewModel {
     enum UploadType {
         case `default`
         case video(id: Int, linkId: Int)
+        case tel(id: Int, linkId: Int)
         case sunnyDrug(id: Int, linkId: Int)
         
         
         var id: Int {
             switch self {
             case let .video(id: id, linkId: _):
+                return id
+            case let .tel(id: id, linkId: _):
                 return id
             case let .sunnyDrug(id: id, linkId: _):
                 return id
@@ -108,6 +118,8 @@ extension UploadResourceViewModel {
         var linkId: Int {
             switch self {
             case let .video(id: _, linkId: linkId):
+                return linkId
+            case let .tel(id: _, linkId: linkId):
                 return linkId
             case let .sunnyDrug(id: _, linkId: linkId):
                 return linkId

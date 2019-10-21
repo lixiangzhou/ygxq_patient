@@ -14,6 +14,7 @@ enum TelApi: TargetType {
     case addSerConsultTel(params: [String: Any])
     case serConsultTelDetail(tid: Int)
     case queryExamResult(tid: Int)
+    case addResources(id: Int, imgs: [String])
 }
 
 extension TelApi {
@@ -26,7 +27,9 @@ extension TelApi {
         case .serConsultTelDetail:
             return "/serconsulttel/serConsultTelDetail"
         case .queryExamResult:
-            return "serconsulttel/queryExamResult"
+            return "/serconsulttel/queryExamResult"
+        case .addResources:
+            return "/serconsulttel/addResources"
         }
     }
     
@@ -43,6 +46,10 @@ extension TelApi {
             params["id"] = tid
         case let .queryExamResult(tid: tid):
             params["id"] = tid
+        case let .addResources(id: id, imgs: imgs):
+            params["fromWhere"] = 1
+            params["id"] = id
+            params["imgs"] = imgs
         }
         
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)

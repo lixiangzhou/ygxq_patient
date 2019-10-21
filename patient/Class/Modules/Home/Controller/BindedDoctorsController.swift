@@ -113,6 +113,7 @@ extension BindedDoctorsController: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = model.realName.isEmpty ? " " : model.realName
         cell.professionLabel.text = model.titleName
         cell.hospitalLabel.text = model.hospitalName
+        cell.professionLabel.snpUpdateWidth()
         
         var sers = [String]()
         for ser in model.doctorSers {
@@ -120,7 +121,7 @@ extension BindedDoctorsController: UITableViewDataSource, UITableViewDelegate {
         }
 //        cell.servicesLabel.attributedText = viewModel.getServices(model: model) //sers.isEmpty ? "暂未开通任何服务" : sers.joined(separator: " ")
         cell.services = sers
-//        cell.professionLabel.snpUpdateWidth()
+        
         
         return cell
     }

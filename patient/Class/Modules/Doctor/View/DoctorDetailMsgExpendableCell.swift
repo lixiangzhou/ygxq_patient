@@ -52,11 +52,11 @@ extension DoctorDetailMsgExpendableCell {
         addMore()
         
         bgView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalTo(12)
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.height.equalTo(60 + 15)
-            make.bottom.equalTo(-12)
+            make.bottom.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { (make) in

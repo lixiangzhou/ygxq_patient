@@ -29,7 +29,7 @@ class VideoConsultTimeCell: UITableViewCell {
     
     let statusView = UIImageView(image: UIImage(named: "consult_status_ing"))
     
-    let appointTimeLabel = UILabel(text: "等待医生确认", font: .size(15), textColor: .c6)
+    let appointTimeLabel = UILabel(text: "等待医生确认", font: .size(16), textColor: .c6)
     let talkTimeLabel = UILabel(font: .size(16), textColor: .c6)
     let statusEndLabel = UILabel(text: "已通话", font: .size(16), textColor: .c9)
     let noTalkLabel = UILabel(text: "未通话", font: .size(16), textColor: .c407cec)

@@ -39,9 +39,9 @@ extension TaskModel {
     
     var actionType: ActionType {
         switch subType {
-        case "CMN_MSG_T_05_01", "CMN_MSG_T_05_02", "CMN_MSG_T_05_06":
+        case "CMN_MSG_T_05_01", "CMN_MSG_T_05_02", "CMN_MSG_T_05_06", "CMN_MSG_T_05_08":
             return .finishQuestion
-        case "CMN_MSG_T_05_03", "CMN_MSG_T_05_04", "CMN_MSG_T_05_07":
+        case "CMN_MSG_T_05_03", "CMN_MSG_T_05_04", "CMN_MSG_T_05_07", "CMN_MSG_T_05_09":
             return .uploadResource
         case "CMN_MSG_T_05_05":
             return .buyDrug

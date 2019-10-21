@@ -232,9 +232,15 @@ extension PersonInfoEditController {
         finishBtn.isEnabled = false
         let nameEnabledSignal = nameView.rightField.reactive.continuousTextValues.producer.map { $0.count >= 2 }
         
-        let idEnabledSignal = SignalProducer<Bool, NoError>(value: true).concat(idView.rightField.reactive.continuousTextValues.map { $0.isEmpty || $0.isMatchIdNo })
+        let idEnabledSignal = SignalProducer<Bool, NoError>(value: true).concat(idView.rightField.reactive.continuousTextValues.map { $0.isEmpty || $0.isMatchIdNo || ($0.contains("*") && ($0.count == 15 || $0.count == 18))})
         
         let finishEnabledSignal = nameEnabledSignal.and(idEnabledSignal)
+        
+        idView.rightField.reactive.controlEvents(.editingDidBegin).observeValues { (field) in
+            if (field.text ?? "").contains("****") {
+                field.text = patientInfoProperty.value?.idCardNo
+            }
+        }
         
         finishBtn.reactive.isEnabled <~ finishEnabledSignal
         finishBtn.reactive.makeBindingTarget { (btn, color) in

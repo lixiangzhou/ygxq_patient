@@ -38,7 +38,7 @@ class VideoConsultBuyViewModel: BaseViewModel {
     }
     
     func getPrivateDoctor() {
-        ServiceApi.isMyPrivateDoctor(did: did, pid: patientId, type: serType).rac_responseModel(OrderModel.self).skipNil().skip { $0.orderId == 0 }.startWithValues { [weak self] (value) in
+        ServiceApi.isMyPrivateDoctor(did: did, pid: patientId, type: serType).rac_responseModel(OrderModel.self).skipNil().startWithValues { [weak self] (value) in
             self?.myPrivateDoctorOrderProperty.value = value
         }
     }

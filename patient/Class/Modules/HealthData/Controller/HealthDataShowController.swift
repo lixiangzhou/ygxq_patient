@@ -91,7 +91,7 @@ extension HealthDataShowController {
             if self.viewModel.needMinutes {
                 self.viewModel.needMinutes = false
             } else {
-                self.viewModel.selectDate = date
+                self.viewModel.selectDate = date.zz_date(bySetting: 23, minute: 59, second: 59)!
             }
             self.viewModel.getData()
         }

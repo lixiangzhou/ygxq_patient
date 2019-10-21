@@ -105,6 +105,8 @@ extension FUVistExamListController: UITableViewDataSource, UITableViewDelegate {
             urlString = NetworkConfig.HTML_SERVE_URL + "/flp-ques.html?id=\(model.id)&view=1"
         case let .video(id: _, linkId: linkId):
             urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=\(isFinished ? 2 : 1)&qid=\(model.id)&pid=\(patientId)&vid=\(linkId)&resid=\(model.resultId)&client=2"
+        case let .tel(id: _, linkId: linkId):
+            urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=\(isFinished ? 2 : 1)&qid=\(model.id)&pid=\(patientId)&tid=\(linkId)&resid=\(model.resultId)&client=2"
         case let .sunnyDrug(id: _, linkId: linkId):
             urlString = NetworkConfig.HTML_SERVE_URL + "/question.html?type=\(isFinished ? 2 : 1)&qid=\(model.id)&pid=\(patientId)&sid=\(linkId)&resid=\(model.resultId)&client=2"
         case .flp:

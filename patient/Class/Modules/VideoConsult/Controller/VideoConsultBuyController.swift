@@ -171,8 +171,8 @@ extension VideoConsultBuyController {
     /// 基本信息
     private func setPatientDataBinding() {
         if viewModel.serType == "UTOPIA15" {
-            bottomView.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0.ser_code.isEmpty }
-            appointBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { !$0.ser_code.isEmpty }
+            bottomView.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { !$0.ser_code.isEmpty }
+            appointBtn.reactive.isHidden <~ viewModel.myPrivateDoctorOrderProperty.signal.map { $0.ser_code.isEmpty }
             setVideoPatientBinding()
         } else if viewModel.serType == "UTOPIA10" {
             bottomView.isHidden = false
