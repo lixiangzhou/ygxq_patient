@@ -16,7 +16,6 @@ class DoctorDetailController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "医生详情页"
         setUI()
         setBinding()
         viewModel.getDocInfo()
@@ -26,7 +25,7 @@ class DoctorDetailController: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationStyle(.transparency)
+        setNavigationStyle(.other(BaseController.NavigationStyle.Images(background: UIImage.zz_image(withColor: UIColor(stringHexValue: "#295DC3")!), shadow: UIImage())))
     }
 
     // MARK: - Public Property
@@ -65,8 +64,7 @@ extension DoctorDetailController {
         view.addSubview(bottomView)
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(-UIScreen.zz_navHeight)
-            make.left.bottom.right.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         bottomView.snp.makeConstraints { (make) in
@@ -82,7 +80,7 @@ extension DoctorDetailController {
         viewModel.showBottomProperty.producer.startWithValues { [weak self] (show) in
             guard let self = self else { return }
             self.bottomView.isHidden = !show
-            self.tableView.contentInset.bottom = show ? self.bottomView.zz_height : 0
+            self.tableView.contentInset.bottom = (show ? self.bottomView.zz_height : 0) + 12
         }
         
         viewModel.priceProperty.signal.observeValues { [weak self] (price) in
@@ -128,7 +126,7 @@ extension DoctorDetailController: UITableViewDataSource {
             let cell = tableView.dequeue(cell: DoctorDetailActionsCell.self, for: indexPath)
             cell.titleLabel.text = title
             let style = NSMutableParagraphStyle()
-            style.lineSpacing = 7
+            style.lineSpacing = 5
             cell.txtLabel.attributedText = NSAttributedString(string: msg, attributes: [NSAttributedString.Key.paragraphStyle: style])
             cell.serView.dataSource = self
             cell.serView.delegate = self
@@ -146,7 +144,7 @@ extension DoctorDetailController: UITableViewDataSource {
             cell.titleLabel.text = title
             let style = NSMutableParagraphStyle()
             style.lineSpacing = 5
-            cell.txtLabel.attributedText = NSAttributedString(string: txt, attributes: [NSAttributedString.Key.font: UIFont.size(14), NSAttributedString.Key.paragraphStyle: style])
+            cell.txtLabel.attributedText = NSAttributedString(string: txt, attributes: [NSAttributedString.Key.font: UIFont.size(16), NSAttributedString.Key.paragraphStyle: style])
             cell.addMore()
             cell.updateConstraint(expend: showMore)
             cell.expendAction = { [weak self] expend in
@@ -180,7 +178,7 @@ extension DoctorDetailController: UICollectionViewDataSource, UICollectionViewDe
             let model = viewModel.longSersDataSource[indexPath.row]
             cell.txtLabel.text = model.serName
             cell.txtLabel.textColor = model.selected ? UIColor.cff9a21 : .c9
-            cell.txtLabel.zz_setBorder(color: model.selected ? UIColor.cff9a21 : .cdcdcdc, width: 0.5)
+            cell.txtLabel.zz_setBorder(color: model.selected ? UIColor.cff9a21 : .cdcdcdc, width: 1)
             return cell
         }
     }

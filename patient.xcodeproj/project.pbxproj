@@ -286,6 +286,7 @@
 		1075C8BC22C20C4600DC0B5A /* BuglyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */; };
 		1075C8C022C219F200DC0B5A /* RefundDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */; };
 		1075C8C222C3079D00DC0B5A /* RefundDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */; };
+		1088614C235F138A001BDE44 /* CaseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088614B235F138A001BDE44 /* CaseDetailCell.swift */; };
 		108C07F522BA41C100B2EBE9 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F422BA41C100B2EBE9 /* OrderApi.swift */; };
 		108C07F722BA435B00B2EBE9 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */; };
 		108C07FA22BA450A00B2EBE9 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108C07F922BA450A00B2EBE9 /* OrderModel.swift */; };
@@ -723,6 +724,7 @@
 		1075C8BB22C20C4600DC0B5A /* BuglyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuglyManager.swift; sourceTree = "<group>"; };
 		1075C8BF22C219F200DC0B5A /* RefundDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailController.swift; sourceTree = "<group>"; };
 		1075C8C122C3079D00DC0B5A /* RefundDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDetailViewModel.swift; sourceTree = "<group>"; };
+		1088614B235F138A001BDE44 /* CaseDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailCell.swift; sourceTree = "<group>"; };
 		108C07F422BA41C100B2EBE9 /* OrderApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
 		108C07F622BA435B00B2EBE9 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		108C07F922BA450A00B2EBE9 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -1604,6 +1606,7 @@
 				100AEE6522CCA1A400094AE2 /* CheckDetailCheckItemsCell.swift */,
 				100AEE7122CD9D5700094AE2 /* DrugUsedCell.swift */,
 				1030C2B2231FBD8D00F13755 /* UploadHistoryCell.swift */,
+				1088614B235F138A001BDE44 /* CaseDetailCell.swift */,
 				1030C2BA23209F5500F13755 /* PictureListCell.swift */,
 			);
 			path = View;
@@ -2717,6 +2720,7 @@
 				101C2E9D232348A700AB4C53 /* InvoiceContentViewModel.swift in Sources */,
 				101C2E692322465E00AB4C53 /* SunShineHutListController.swift in Sources */,
 				1059E455230CEAC3005F5326 /* SunnyDrugOrderListViewModel.swift in Sources */,
+				1088614C235F138A001BDE44 /* CaseDetailCell.swift in Sources */,
 				104FC4CC231651AB00ECB82B /* DoctorDetailInfoCell.swift in Sources */,
 				1059E45B230CF2AC005F5326 /* SunnyDrugOrderDetailController.swift in Sources */,
 				1044A29523545A5F00363887 /* HealthDataMemberListController.swift in Sources */,

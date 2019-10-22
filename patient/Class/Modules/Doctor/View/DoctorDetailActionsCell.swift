@@ -84,7 +84,7 @@ extension DoctorDetailActionsCell {
             super.init(frame: frame)
             
             txtLabel.zz_setCorner(radius: 4, masksToBounds: true)
-            txtLabel.zz_setBorder(color: .cdcdcdc, width: 0.5)
+            txtLabel.zz_setBorder(color: .cdcdcdc, width: 1)
             contentView.addSubview(txtLabel)
             
             txtLabel.snp.makeConstraints { (make) in

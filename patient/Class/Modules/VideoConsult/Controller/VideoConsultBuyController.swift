@@ -343,13 +343,21 @@ extension VideoConsultBuyController {
         }
         
         if viewModel.cantBuy {
-            AlertView.show(title: nil, msg: viewModel.alertMsg, firstTitle: "是", secondTitle: "否", firstClosure: { [weak self] (alert) in
-                alert.hide()
-                self?._buyAction()
-            }) { [weak self] (alert) in
-                alert.hide()
-                self?.pop()
+            if viewModel.isToPayWay {
+                AlertView.show(title: nil, msg: viewModel.alertMsg, firstTitle: "是", secondTitle: "否", firstClosure: { [weak self] (alert) in
+                    alert.hide()
+                    self?._buyAction()
+                }) { [weak self] (alert) in
+                    alert.hide()
+                    self?.pop()
+                }
+            } else {
+                if !viewModel.toastMsg.isEmpty {
+                    HUD.show(toast: viewModel.toastMsg)
+                }
+                return
             }
+            
         } else {
             _buyAction()
         }

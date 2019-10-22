@@ -137,6 +137,11 @@ class DoctorDetailViewModel: BaseViewModel {
         
         if sers.count == 0 {
             return (layout, 0)
+        } else if sers.count == 2 {
+            let paddingX = (width - layout.itemSize.width * 2) / 4
+            layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)
+            layout.minimumInteritemSpacing = paddingX * 2
+            return (layout, layout.itemSize.height)
         } else {
             let paddingX = (width - layout.itemSize.width * 3) / 6
             layout.sectionInset = UIEdgeInsets(top: 0, left: paddingX, bottom: 0, right: paddingX)

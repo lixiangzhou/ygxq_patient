@@ -19,11 +19,9 @@ struct NetworkConfig {
         case .test:
             return URL(string: "http://172.21.24.251:8889/shdr-service-basic")!
         case .develop:
-//            retFUVistExamListControllerurn URL(string: "http://172.21.20.68:8889/shdr-service-basic")!
-            return URL(string: "http://172.21.24.252:8889/shdr-service-basic")!
+            return URL(string: "http://172.21.20.68:8889/shdr-service-basic")!
+//            return URL(string: "http://172.21.24.252:8889/shdr-service-basic")!
         }
-        
-
     }
 
     static var APP_PAY_URL: URL {

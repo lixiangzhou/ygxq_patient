@@ -34,7 +34,8 @@ class CaseDetailController: BaseController {
 extension CaseDetailController {
     override func setUI() {
         tableView.set(dataSource: self, delegate: self)
-        tableView.register(cell: TextLeftGrowTextRightCell.self)
+        tableView.register(cell: CaseDetailCell.self)
+//        tableView.register(cell: TextLeftGrowTextRightCell.self)
         tableView.register(cell: CaseDetailOpCell.self)
         tableView.backgroundColor = .cf0efef
         tableView.rowHeight = UITableView.automaticDimension
@@ -80,11 +81,12 @@ extension CaseDetailController: UITableViewDataSource, UITableViewDelegate {
         let record = viewModel.dataSourceProperty.value[indexPath.row]
 
         if record.title != "冠状动脉造影狭窄" {
-            let cell = tableView.dequeue(cell: TextLeftGrowTextRightCell.self, for: indexPath)
+            let cell = tableView.dequeue(cell: CaseDetailCell.self, for: indexPath)
             
-            cell.config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, rightTopPadding: 15, rightBottomPadding: 15, rightFont: .boldSize(16))
-            cell.leftLabel.text = record.title
-            cell.rightLabel.text = record.subTitle
+//            cell.config = TextLeftGrowTextRightViewConfig(leftTopPadding: 15, leftBottomPadding: 15, rightTopPadding: 15, rightBottomPadding: 15, rightFont: .boldSize(16))
+//            cell.leftLabel.text = record.title
+//            cell.rightLabel.text = record.subTitle
+            cell.record = record
             
             return cell
         } else {

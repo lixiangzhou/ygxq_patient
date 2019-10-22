@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum HLRApi: TargetType {
-    case caseRecordList(pid: Int, type: Int)
+    case caseRecordList(pid: Int)
     case checkList(pid: Int, type: Int)
     case caseRecord(id: Int)
     case checkRecord(id: Int)
@@ -36,9 +36,8 @@ extension HLRApi {
     var task: Task {
         var params = [String: Any]()
         switch self {
-        case let .caseRecordList(pid: pid, type: type):
+        case let .caseRecordList(pid: pid):
             params["puid"] = pid
-            params["type"] = type
         case let .checkList(pid: pid, type: type):
             params["puid"] = pid
             params["type"] = type

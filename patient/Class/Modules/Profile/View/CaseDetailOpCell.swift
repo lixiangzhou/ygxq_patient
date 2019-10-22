@@ -23,7 +23,7 @@ class CaseDetailOpCell: UITableViewCell {
     }
     
     // MARK: - Public Properties
-    let titleLabel = UILabel(font: .size(16), textColor: .c3)
+    let titleLabel = UILabel(font: .size(16), textColor: .c6)
     let opView = FourColumnView()
     
     // MARK: - Private Properties

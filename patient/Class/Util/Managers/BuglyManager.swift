@@ -13,6 +13,6 @@ class BuglyManager {
     static let shared = BuglyManager()
     
     func setup() {
-        Bugly.start(withAppId: nil)
+        Bugly.start(withAppId: "0c5b33ba95")
     }
 }

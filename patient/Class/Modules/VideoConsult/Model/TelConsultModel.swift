@@ -17,6 +17,7 @@ struct TelConsultModel: ModelProtocol {
     var idCardNo: String = ""
     var appointTime: TimeInterval = 0
     var finishedTime: TimeInterval = 0
+    var talkTime: TimeInterval = 0
     var consultStatus: String = ""
     var consultContent: String = ""
     var medias: [ImageModel] = [ImageModel]()

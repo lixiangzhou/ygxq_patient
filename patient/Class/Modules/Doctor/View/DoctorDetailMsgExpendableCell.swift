@@ -73,7 +73,7 @@ extension DoctorDetailMsgExpendableCell {
         
         attr.yy_font = UIFont.size(16)
         attr.yy_color = .c3
-        attr.yy_lineSpacing = 8
+        attr.yy_lineSpacing = 5
         
         var height: CGFloat = 0
         
@@ -84,7 +84,7 @@ extension DoctorDetailMsgExpendableCell {
             upAttr.yy_setTextHighlight(hi, range: upAttr.string.zz_ns.range(of: upString))
             upAttr.yy_font = UIFont.size(16)
             upAttr.yy_color = .c407cec
-            upAttr.yy_lineSpacing = 8
+            upAttr.yy_lineSpacing = 5
             
             hi.tapAction = { [weak self] view, txt, range, rect in
                 self?.expendAction?(false)
@@ -106,7 +106,8 @@ extension DoctorDetailMsgExpendableCell {
             txtLabel.attributedText = attr
             
             txtLabel.sizeToFit()
-            height = min((UIFont.size(16).pointSize + 6.5) * 5, txtLabel.zz_height)
+            height = min((UIFont.size(16).pointSize + 5) * 5, txtLabel.zz_height)
+            
             txtLabel.frame = CGRect(x: 15, y: 50, width: UIScreen.zz_width - 60, height: height + 4)
         }
 
@@ -128,7 +129,7 @@ extension DoctorDetailMsgExpendableCell {
         moreTxt.yy_setColor(.c407cec, range: moreTxt.string.zz_ns.range(of: "展开"))
         moreTxt.yy_setTextHighlight(hi, range: moreTxt.string.zz_ns.range(of: "展开"))
         moreTxt.yy_font = UIFont.size(16)
-        moreTxt.yy_lineSpacing = 8
+        moreTxt.yy_lineSpacing = 5
         
         let seeMore = YYLabel()
         seeMore.attributedText = moreTxt

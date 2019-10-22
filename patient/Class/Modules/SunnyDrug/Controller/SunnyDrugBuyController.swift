@@ -92,7 +92,7 @@ extension SunnyDrugBuyController {
             make.left.right.equalToSuperview()
         }
         
-        let height = tipString.string.zz_ns.boundingRect(with: CGSize(width: UIScreen.zz_width - 30, height: 1000), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.size(15), NSAttributedString.Key.paragraphStyle: style], context: nil).height + 100
+        let height = tipString.string.zz_ns.boundingRect(with: CGSize(width: UIScreen.zz_width - 30, height: 1000), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.size(15), NSAttributedString.Key.paragraphStyle: style], context: nil).height + 20
         
         tipLabel.snp.makeConstraints { (make) in
             make.top.equalTo(addressView.snp.bottom).offset(15)

@@ -54,12 +54,11 @@ class VideoConsultResultViewModel: BaseViewModel {
                 models.append(Model.picture(pics: model.medias))
             }
             
-//            models.append(Model.time(model: model))
-            models.append(.time(status: model.consultStatus, appointTime: model.appointTime, talkTime: model.finishedTime))
+            models.append(.time(status: model.consultStatus, appointTime: model.appointTime, talkTime: model.talkTime))
             
             self.dataSourceProperty.value = models
             
-            self.showBottomProperty.value = model.consultStatus == "SER_CST_S_ING" && model.appointTime != 0
+            self.showBottomProperty.value = model.consultStatus == "SER_CST_S_ING" && model.appointTime != 0 && model.talkTime == 0
         }
     }
     
@@ -81,7 +80,6 @@ class VideoConsultResultViewModel: BaseViewModel {
                 models.append(Model.picture(pics: model.medias))
             }
             
-//            models.append(Model.time(model: model))
             models.append(.time(status: model.serConsultVideo.clientConsultStatus, appointTime: model.serConsultVideo.appointTime, talkTime: model.serConsultVideo.talkTime))
             
             self.dataSourceProperty.value = models
@@ -121,10 +119,19 @@ class VideoConsultResultViewModel: BaseViewModel {
     }
     
     func remindDoctor() {
-        ConsultApi.remindDoctor(id: vid).rac_response(String.self).map { BoolString($0) }.startWithValues { (result) in
-            HUD.showError(result)
-            if result.isSuccess {
-                HUD.show(toast: "医生已收到您的提醒，请耐心等待", duration: 2)
+        if vid > 0 {
+            ConsultApi.remindDoctor(id: vid).rac_response(String.self).map { BoolString($0) }.startWithValues { (result) in
+                HUD.showError(result)
+                if result.isSuccess {
+                    HUD.show(toast: "医生已收到您的提醒，请耐心等待", duration: 2)
+                }
+            }
+        } else if telId > 0 {
+            TelApi.remindDoctorFaceTime(id: telId).rac_response(String.self).map { BoolString($0) }.startWithValues { (result) in
+                HUD.showError(result)
+                if result.isSuccess {
+                    HUD.show(toast: "医生已收到您的提醒，请耐心等待", duration: 2)
+                }
             }
         }
     }

@@ -179,6 +179,18 @@ extension VideoConsultBuyViewModel {
         return "您还有未完成的\(type)咨询服务，请确认是否再次购买"
     }
     
+    var toastMsg: String {
+        switch serType {
+        case "UTOPIA10":
+            return "您还有未完成的电话咨询服务，请完成后再次发起"
+        case "UTOPIA15":
+            return "您还有未完成的视频咨询服务，请完成后再次发起"
+        default: return ""
+        }
+    }
+    
+    
+    
     var cantBuy: Bool {
         return (Int(myPrivateDoctorOrderProperty.value.unfinishConsult) ?? 0) > 0
     }

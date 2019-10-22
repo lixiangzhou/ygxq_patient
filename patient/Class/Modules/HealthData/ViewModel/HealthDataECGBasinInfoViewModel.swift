@@ -31,24 +31,25 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
             let defaultDict = [NSAttributedString.Key.foregroundColor: UIColor.c6]
             let colorDict = [NSAttributedString.Key.foregroundColor: UIColor.cffa84c]
             
-            let attr = NSMutableAttributedString(string: "您套餐剩余心电评估服务次数：", attributes: defaultDict)
-            let model13 = models.first { (model) -> Bool in
+            let attr = NSMutableAttributedString()
+            if let model13 = models.first(where: { (model) -> Bool in
                 return model.serCode == "UTOPIA13"
+            }) {
+                attr.append(NSMutableAttributedString(string: "您套餐剩余心电评估服务次数：", attributes: defaultDict))
+                attr.append(NSAttributedString(string: "\(model13.surplusNum ?? 0)次", attributes: colorDict))
+                let time = model13.dueDate?.toTime(format: "yyyy-MM-dd") ?? ""
+                attr.append(NSAttributedString(string: "，有效期至\(time)", attributes: defaultDict))
             }
             
-            attr.append(NSAttributedString(string: "\(model13?.surplusNum ?? 0)次", attributes: colorDict))
-            let time = model13?.dueDate?.toTime(format: "yyyy-MM-dd") ?? ""
-            attr.append(NSAttributedString(string: "，有效期至\(time)", attributes: defaultDict))
-            
-            let model14 = models.first { (model) -> Bool in
+            if let model14 = models.first(where: { (model) -> Bool in
                 model.serCode == "UTOPIA14"
+            }) {
+                if let num = model14.surplusNum {
+                    attr.append(NSAttributedString(string: "\n您购买的单次心电评估服务次数剩余：", attributes: defaultDict))
+                    attr.append(NSAttributedString(string: "\(num)次", attributes: colorDict))
+                }
             }
-            
-            if let num = model14?.surplusNum {
-                attr.append(NSAttributedString(string: "\n您购买的单次心电评估服务次数剩余：", attributes: defaultDict))
-                attr.append(NSAttributedString(string: "\(num)次", attributes: colorDict))
-            }
-            
+                        
             self?.topInfoAttrProperty.value = attr
         }
     }

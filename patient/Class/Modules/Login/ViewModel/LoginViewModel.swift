@@ -61,28 +61,30 @@ class LoginViewModel: BaseViewModel {
     }
     
     func loginCode(mobile: String, code: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
-        return UserApi.loginCode(mobile: mobile, code: code).rac_response(PatientInfoModel.self).on { (resp) in
-            if let patientModel = resp.content {
-                patientInfoProperty.value = patientModel
-                if !patientModel.sessionId.isEmpty {
-                    LoginManager.shared.sessionId = patientModel.sessionId + ",2"
-                } else {
-                    LoginManager.shared.sessionId = ""
-                }
-            }
+        return UserApi.loginCode(mobile: mobile, code: code).rac_response(PatientInfoModel.self).on { [weak self] (resp) in
+            self?.loginProcess(resp)
         }
     }
     
     func loginPwd(mobile: String, password: String) -> SignalProducer<ResponseModel<PatientInfoModel>, NoError> {
-        return UserApi.loginPwd(mobile: mobile, password: password).rac_response(PatientInfoModel.self).on { (resp) in
-            if let patientModel = resp.content {
-                patientInfoProperty.value = patientModel
-                if !patientModel.sessionId.isEmpty {
-                    LoginManager.shared.sessionId = patientModel.sessionId + ",2"
-                } else {
-                    LoginManager.shared.sessionId = ""
-                }
+        return UserApi.loginPwd(mobile: mobile, password: password).rac_response(PatientInfoModel.self).on { [weak self] (resp) in
+            self?.loginProcess(resp)
+        }
+    }
+    
+    func loginProcess(_ resp: ResponseModel<PatientInfoModel>) {
+        if let patientModel = resp.content {
+            patientInfoProperty.value = patientModel
+            if !patientModel.sessionId.isEmpty {
+                LoginManager.shared.sessionId = patientModel.sessionId + ",2"
+            } else {
+                LoginManager.shared.sessionId = ""
             }
+            
+            JPUSHService.setAlias(patientModel.mobile + "_" + patientModel.id.description, completion: { (iResCode, iAlias, seq) in
+                print("JPUSHService.setAlias", iResCode, iAlias ?? "", seq)
+            }, seq: 0)
+
         }
     }
     

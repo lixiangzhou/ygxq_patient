@@ -39,7 +39,7 @@ extension DoctorDetailInfoCell {
     private func setUI() {
         contentView.backgroundColor = .cf0efef
         
-        let topBgView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 180), image: UIImage.zz_gradientImage(fromColor: UIColor(stringHexValue: "#295DC3")!, toColor: UIColor(stringHexValue: "#74B0F6")!, size: CGSize(width: UIScreen.zz_width, height: 180), isHorizontal: false))
+        let topBgView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 116 + UIScreen.zz_statusBar_additionHeight), image: UIImage.zz_gradientImage(fromColor: UIColor(stringHexValue: "#295DC3")!, toColor: UIColor(stringHexValue: "#74B0F6")!, size: CGSize(width: UIScreen.zz_width, height: 180), isHorizontal: false))
         contentView.addSubview(topBgView)
         
 //        let bgView = contentView.zz_add(subview: UIView())
@@ -62,12 +62,12 @@ extension DoctorDetailInfoCell {
         
         topBgView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(180)
+            make.height.equalTo(116)
         }
         
         iconView.snp.makeConstraints { (make) in
             make.left.equalTo(15)
-            make.top.equalTo(64)
+            make.top.equalTo(0)
             make.width.height.equalTo(70)
         }
         

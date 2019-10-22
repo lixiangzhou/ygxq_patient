@@ -14,7 +14,7 @@ class CaseListViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[Group]>([Group]())
     
     func getData(){
-        HLRApi.caseRecordList(pid: patientId, type: 0).rac_responseModel([CaseRecordModel].self).startWithValues { [weak self] (records) in
+        HLRApi.caseRecordList(pid: patientId).rac_responseModel([CaseRecordModel].self).startWithValues { [weak self] (records) in
             if let records = records, !records.isEmpty {
                 
                 var dict = [String: [CaseRecordModel]]()
