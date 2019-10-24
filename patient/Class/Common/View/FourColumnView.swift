@@ -189,32 +189,42 @@ extension FourColumnView {
         let width = config.width
         let paddingX = config.horizontalPadding
         
+        let labelH = 45 - config.rowTopPadding - config.rowBottomPadding
+        
         label1.snp.makeConstraints { (make) in
-            make.top.equalTo(config.rowTopPadding)
+            make.top.lessThanOrEqualTo(config.rowTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(paddingX)
             make.width.equalTo(width * config.c1 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.rowBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
         
         label2.snp.makeConstraints { (make) in
-            make.top.equalTo(config.rowTopPadding)
+            make.top.lessThanOrEqualTo(config.rowTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(width * config.c1 + paddingX)
             make.width.equalTo(width * config.c2 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.rowBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
         
         label3.snp.makeConstraints { (make) in
-            make.top.equalTo(config.rowTopPadding)
+            make.top.lessThanOrEqualTo(config.rowTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(width * (config.c1 + config.c2) + paddingX)
             make.width.equalTo(width * config.c3 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.rowBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
         
         label4.snp.makeConstraints { (make) in
-            make.top.equalTo(config.rowTopPadding)
+            make.top.lessThanOrEqualTo(config.rowTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(width * (config.c1 + config.c2 + config.c3) + paddingX)
             make.width.equalTo(width * config.c4 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.rowBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
         
         return RowInstance(view: rowView,

@@ -230,9 +230,13 @@ extension PersonInfoEditController {
     
     override func setBinding() {
         finishBtn.isEnabled = false
-        let nameEnabledSignal = nameView.rightField.reactive.continuousTextValues.producer.map { $0.count >= 2 }
+
+        let name = patientInfoProperty.value?.realName ?? ""
+        let idCardNo = patientInfoProperty.value?.idCardNo ?? ""
         
-        let idEnabledSignal = SignalProducer<Bool, NoError>(value: true).concat(idView.rightField.reactive.continuousTextValues.map { $0.isEmpty || $0.isMatchIdNo || ($0.contains("*") && ($0.count == 15 || $0.count == 18))})
+        let nameEnabledSignal = SignalProducer<Bool, NoError>(value: !name.isEmpty).concat(nameView.rightField.reactive.continuousTextValues.producer.map { $0.count >= 2 })
+        
+        let idEnabledSignal = SignalProducer<Bool, NoError>(value: !idCardNo.isEmpty).concat(idView.rightField.reactive.continuousTextValues.map { $0.isEmpty || $0.isMatchIdNo || ($0.contains("*") && ($0.count == 15 || $0.count == 18))})
         
         let finishEnabledSignal = nameEnabledSignal.and(idEnabledSignal)
         
@@ -261,8 +265,8 @@ extension PersonInfoEditController {
                 self?.addressView.rightLabel.text = info.address.isEmpty ? self?.arrowOpt : info.address
                 self?.diseaseView.rightLabel.text = info.diseaseName.isEmpty ? self?.arrowOpt : info.diseaseName
                 
-                self?.nameView.rightField.sendActions(for: .allEditingEvents)
-                self?.idView.rightField.sendActions(for: .allEditingEvents)
+//                self?.nameView.rightField.sendActions(for: .allEditingEvents)
+//                self?.idView.rightField.sendActions(for: .allEditingEvents)
             }
         }
     }

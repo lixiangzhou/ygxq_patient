@@ -50,9 +50,7 @@ extension DoctorDetailController {
         
         bottomView.payClosure = { [weak self] in
             ActionCollecter.sendData(lev: "31")
-            UIApplication.shared.beginIgnoringInteractionEvents()
             self?.viewModel.getOrder({ (orderId) in
-                UIApplication.shared.endIgnoringInteractionEvents()
                 if let orderId = orderId {
                     let vc = PayController()
                     vc.viewModel.orderId = orderId
@@ -84,7 +82,7 @@ extension DoctorDetailController {
         }
         
         viewModel.priceProperty.signal.observeValues { [weak self] (price) in
-            self?.bottomView.priceLabel.text = price
+            self?.bottomView.priceLabel.attributedText = price
         }
     }
 }

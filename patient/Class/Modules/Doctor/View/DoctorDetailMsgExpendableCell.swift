@@ -77,6 +77,9 @@ extension DoctorDetailMsgExpendableCell {
         
         var height: CGFloat = 0
         
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        let attrDict = [NSAttributedString.Key.font: UIFont.size(16), NSAttributedString.Key.paragraphStyle: style]
         if expend { // 展开
             let upAttr = NSMutableAttributedString(string: upString)
             let hi = YYTextHighlight()
@@ -90,14 +93,11 @@ extension DoctorDetailMsgExpendableCell {
                 self?.expendAction?(false)
                 self?.updateConstraint(expend: false)
             }
-            
             attr.append(upAttr)
             
             txtLabel.attributedText = attr
-            
-            txtLabel.sizeToFit()
-            height = txtLabel.zz_height
-            txtLabel.frame = CGRect(x: 15, y: 50, width: UIScreen.zz_width - 60, height: height)
+            height = txtLabel.attributedText!.string.zz_ns.boundingRect(with: CGSize(width: UIScreen.zz_width - 54, height: 100000), options: .usesLineFragmentOrigin, attributes: attrDict, context: nil).height
+            txtLabel.frame = CGRect(x: 12, y: 42, width: UIScreen.zz_width - 54, height: height)
         } else { // 收起
             let range = attr.string.zz_ns.range(of: upString, options: .backwards)
             if range.location != NSNotFound {
@@ -105,10 +105,11 @@ extension DoctorDetailMsgExpendableCell {
             }
             txtLabel.attributedText = attr
             
-            txtLabel.sizeToFit()
-            height = min((UIFont.size(16).pointSize + 5) * 5, txtLabel.zz_height)
+            let fiveHeight = "*\n\n\n\n".zz_ns.boundingRect(with: CGSize(width: UIScreen.zz_width - 54, height: 100000), options: .usesLineFragmentOrigin, attributes: attrDict, context: nil).height
+            let fullHeight = txtLabel.attributedText!.string.zz_ns.boundingRect(with: CGSize(width: UIScreen.zz_width - 54, height: 100000), options: .usesLineFragmentOrigin, attributes: attrDict, context: nil).height
+            height = min(fiveHeight, fullHeight)
             
-            txtLabel.frame = CGRect(x: 15, y: 50, width: UIScreen.zz_width - 60, height: height + 4)
+            txtLabel.frame = CGRect(x: 12, y: 45, width: UIScreen.zz_width - 54, height: height)
         }
 
         bgView.snp.updateConstraints { (make) in

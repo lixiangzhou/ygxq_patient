@@ -48,7 +48,7 @@ extension VideoConsultBuyDiseaseView {
         txtView.inputLimit = 300
         txtView.textView.keyboardDismissMode = .onDrag
         txtView.textView.showsVerticalScrollIndicator = false
-        txtView.placeholderAttributedText = NSMutableAttributedString(string: "请详细描述您的主要症状，持续时间，或者上传近期检查单等资料，供医生参考并给出更详细的回复。", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c9, NSAttributedString.Key.font: UIFont.size(15)])
+        txtView.placeholderAttributedText = NSMutableAttributedString(string: "请详细描述您的主要症状，持续时间，或者上传近期检查单等资料，供医生参考并给出更详细的回复。", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c9, NSAttributedString.Key.font: UIFont.size(16)])
         addSubview(txtView)
         
         txtView.delegates.didChangeHeight = { [weak self] height in

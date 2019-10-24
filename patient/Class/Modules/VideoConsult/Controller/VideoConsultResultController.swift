@@ -165,7 +165,7 @@ extension VideoConsultResultController: UITableViewDataSource, UITableViewDelega
         case .lookPics:
             let vc = PictureListController()
             vc.title = "查看完善资料"
-            vc.viewModel.type = .telOrVideoOrDrugDetail(linkId: viewModel.id, serType: viewModel.serType, imgType: 0)
+            vc.viewModel.type = .telOrVideoOrDrugDetail(linkId: viewModel.id, serType: viewModel.serType, imgType: 1)
             push(vc)
         default: break
         }

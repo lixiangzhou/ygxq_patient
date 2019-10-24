@@ -125,6 +125,7 @@ extension AlertView {
 extension AlertView {
     func show() {
         UIApplication.shared.keyWindow?.addSubview(self)
+        
         alpha = 0
         UIApplication.shared.beginIgnoringInteractionEvents()
         UIView.animate(withDuration: 0.25, animations: {

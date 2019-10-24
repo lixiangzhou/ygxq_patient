@@ -24,6 +24,8 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
     
     var selectPatientInfo: HealthDataECGPatientModel?
     
+    let hasTimeProperty = MutableProperty<Bool>(true)
+    
     override init() {
         super.init()
         
@@ -32,25 +34,35 @@ class HealthDataECGBasinInfoViewModel: BaseViewModel {
             let colorDict = [NSAttributedString.Key.foregroundColor: UIColor.cffa84c]
             
             let attr = NSMutableAttributedString()
+            var pia13Count = 0
             if let model13 = models.first(where: { (model) -> Bool in
                 return model.serCode == "UTOPIA13"
             }) {
+                pia13Count = model13.surplusNum ?? 0
                 attr.append(NSMutableAttributedString(string: "您套餐剩余心电评估服务次数：", attributes: defaultDict))
                 attr.append(NSAttributedString(string: "\(model13.surplusNum ?? 0)次", attributes: colorDict))
                 let time = model13.dueDate?.toTime(format: "yyyy-MM-dd") ?? ""
                 attr.append(NSAttributedString(string: "，有效期至\(time)", attributes: defaultDict))
             }
             
+            var pia14Count = 0
             if let model14 = models.first(where: { (model) -> Bool in
                 model.serCode == "UTOPIA14"
             }) {
-                if let num = model14.surplusNum {
+                pia14Count = model14.surplusNum ?? 0
+                if pia14Count > 0 { // 有次数并且大于0时显示
                     attr.append(NSAttributedString(string: "\n您购买的单次心电评估服务次数剩余：", attributes: defaultDict))
-                    attr.append(NSAttributedString(string: "\(num)次", attributes: colorDict))
+                    attr.append(NSAttributedString(string: "\(pia14Count)次", attributes: colorDict))
                 }
             }
-                        
-            self?.topInfoAttrProperty.value = attr
+            
+            if pia13Count == 0 && pia14Count == 0 {
+                self?.topInfoAttrProperty.value = NSAttributedString(string: "请购买心电报告解读服务次数包", attributes: defaultDict)
+                self?.hasTimeProperty.value = false
+            } else {
+                self?.topInfoAttrProperty.value = attr
+                self?.hasTimeProperty.value = true
+            }
         }
     }
     

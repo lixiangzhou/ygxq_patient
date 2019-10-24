@@ -29,6 +29,32 @@ extension UIView {
         }
         return line
     }
+    
+    @discardableResult
+    func addShadow(color: UIColor, offset: CGSize, opacity: Float = 0.6, radius: CGFloat = 0) -> UIView? {
+        if let sup = superview {
+            if let shadow = sup.viewWithTag(hashValue) { // 查看是否添加过
+                shadow.layer.shadowColor = color.cgColor
+                shadow.layer.shadowOffset = offset
+                shadow.layer.shadowOpacity = opacity
+                shadow.layer.shadowRadius = radius
+                return shadow
+            } else { // 添加
+                let shadow = UIView()
+                shadow.tag = hashValue
+                shadow.layer.shadowColor = color.cgColor
+                shadow.layer.shadowOffset = offset
+                shadow.layer.shadowOpacity = opacity
+                shadow.layer.shadowRadius = radius
+                sup.insertSubview(shadow, belowSubview: self)
+                shadow.snp.makeConstraints { (make) in
+                    make.edges.equalTo(self)
+                }
+                return shadow
+            }
+        }
+        return nil
+    }
 }
 
 extension UIView {

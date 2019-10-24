@@ -11,7 +11,7 @@ import ReactiveSwift
 
 class VideoConsultBuyViewModel: BaseViewModel {
     /// 用于选择图片回显时使用
-    var selectedModelsProperty = MutableProperty<NSMutableArray>(NSMutableArray())
+//    var selectedModelsProperty = MutableProperty<NSMutableArray>(NSMutableArray())
     var selectedImagesProperty = MutableProperty<[UIImage]>([UIImage]())
     let orderIdProperty = MutableProperty<Int>(0)
     let myPrivateDoctorOrderProperty = MutableProperty<OrderModel>(OrderModel())
@@ -107,28 +107,30 @@ class VideoConsultBuyViewModel: BaseViewModel {
         var value = selectedImagesProperty.value
         value.remove(at: index)
         selectedImagesProperty.value = value
-        selectedModelsProperty.value.removeObject(at: index)
+//        selectedModelsProperty.value.removeObject(at: index)
     }
 }
 
 extension VideoConsultBuyViewModel {
-    var tipString: String {
+    var tipString: NSAttributedString {
+        let style = NSMutableParagraphStyle()
+//        style.lineSpacing = 5
+        style.paragraphSpacing = 8
+        var tipString = ""
         switch serType {
         case "UTOPIA10":
-            var tipString = "温馨提示：电话咨询服务按次收费，每次总时长不可超过15分钟，请您把控好就诊时间。所有问题均由医生本人回复，医生临床工作繁忙，均在休息时上网，一般在24小时内回复，请耐心等待并留意010开头的来电。"
+            tipString = "温馨提示：电话咨询服务按次收费，每次总时长不可超过15分钟，请您把控好就诊时间。所有问题均由医生本人回复，医生临床工作繁忙，均在休息时上网，一般在24小时内回复，请耐心等待并留意010开头的来电。"
             if did == 1026 {
                 tipString += "\n毛主任的电话问诊时间为每周二16:00-17:00和每周四11:00-12:00，请您购买后耐心等耐。"
             }
-            
-            return tipString
         case "UTOPIA15":
-            var tipString = "温馨提示：视频咨询服务按次收费，每次总时长不可超过30分钟，请您把控好就诊时间。所有问题均由医生本人回复，医生临床工作繁忙，均在休息时上网，一般在24小时内回复，请耐心等待。"
+            tipString = "温馨提示：视频咨询服务按次收费，每次总时长不可超过30分钟，请您把控好就诊时间。所有问题均由医生本人回复，医生临床工作繁忙，均在休息时上网，一般在24小时内回复，请耐心等待。"
             if did == 1026 {
                 tipString += "\n毛主任的视频问诊时间为每周二16:00-17:00和每周四11:00-12:00，请您购买后耐心等待。"
             }
-            return tipString
-        default: return ""
+        default: break
         }
+        return NSAttributedString(string: tipString, attributes: [NSAttributedString.Key.font: UIFont.size(15), NSAttributedString.Key.foregroundColor: UIColor.c6, NSAttributedString.Key.paragraphStyle: style])
     }
     
     

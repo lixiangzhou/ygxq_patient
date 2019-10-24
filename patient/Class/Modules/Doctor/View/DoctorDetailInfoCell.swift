@@ -106,7 +106,7 @@ extension DoctorDetailInfoCell {
             super.init(frame: frame)
             
             innerView = ImageTitleView()
-            innerView.config = ImageTitleView.Config(imageSize: CGSize(width: 62, height: 62), verticalHeight1: 15, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .size(17), titleColor: .c3)
+            innerView.config = ImageTitleView.Config(imageSize: CGSize(width: 62, height: 62), verticalHeight1: 15, verticalHeight2: 5, titleLeft: 0, titleRight: 0, titleFont: .boldSize(17), titleColor: .c3)
             contentView.addSubview(innerView)
             
             innerView.snp.makeConstraints { (make) in

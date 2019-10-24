@@ -85,7 +85,9 @@ class HutPackageDetailViewModel: BaseViewModel {
             "mobile": address.mobile,
             "realName": address.consignee
         ]
+        UIApplication.shared.beginIgnoringInteractionEvents()
         ServiceApi.addSerSunshineHut(params: params).rac_response(Int.self).startWithValues { (resp) in
+            UIApplication.shared.endIgnoringInteractionEvents()
             HUD.showError(BoolString(resp))
             completion(resp.content)
         }

@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 
 class UploadResourceViewModel: BaseViewModel {
-    var selectedModelsProperty = MutableProperty<NSMutableArray>(NSMutableArray())
+//    var selectedModelsProperty = MutableProperty<NSMutableArray>(NSMutableArray())
     var selectedImagesProperty = MutableProperty<[UIImage]>([UIImage]())
     var uploadStatusProperty = MutableProperty<Bool>(false)
     
@@ -35,7 +35,7 @@ class UploadResourceViewModel: BaseViewModel {
         var value = selectedImagesProperty.value
         value.remove(at: index)
         selectedImagesProperty.value = value
-        selectedModelsProperty.value.removeObject(at: index)
+//        selectedModelsProperty.value.removeObject(at: index)
     }
 }
 

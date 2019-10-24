@@ -30,6 +30,13 @@ class RCManager: NSObject {
         addCallVCHook()
         
         setUserInfo()
+        
+        callCenter.callEventHandler = { call in
+            if call.callState == CTCallStateConnected {
+                let vc = (UIApplication.shared.keyWindow?.rootViewController as? RCCallBaseViewController)
+                vc?.hangupButtonClicked()
+            }
+        }
     }
     
     // MARK: - Property
@@ -229,6 +236,7 @@ extension RCManager {
         guard let session = callSession else { return }
         let runSecond = Date().timeIntervalSince1970 - TimeInterval(session.connectedTime / 1000)
         let left = leftSeconds - Int(runSecond)
+        print(runSecond, leftSeconds, Date().timeIntervalSince1970, session.connectedTime, left)
         
         if left <= 30 {
             leftSecondLabel.text = "还剩\(left)秒"

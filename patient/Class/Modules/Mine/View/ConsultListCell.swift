@@ -28,7 +28,7 @@ class ConsultListCell: UITableViewCell {
     let nameLabel = UILabel(font: .size(16), textColor: .c6)
     let timeLabel = UILabel(font: .size(16), textColor: .c6)
     let descLabel = UILabel(font: .size(16), textColor: .c3, numOfLines: 3)
-    let lookBtn = UIButton(title: "查看", font: .size(16), titleColor: .cffa84c)
+    let lookBtn = UIButton(title: "查看", font: .boldSize(16), titleColor: .cffa84c)
     
     var lookClosure: (() -> Void)?
     // MARK: - Private Property
@@ -48,7 +48,7 @@ extension ConsultListCell {
         midView.addBottomLine(left: 15, right: 15)
         
         let bottomView = contentView.zz_add(subview: UIView())
-        lookBtn.zz_setBorder(color: .cffa84c, width: 0.5)
+        lookBtn.zz_setBorder(color: .cffa84c, width: 1)
         lookBtn.zz_setCorner(radius: 15, masksToBounds: true)
         lookBtn.addTarget(self, action: #selector(lookAction), for: .touchUpInside)
         bottomView.addSubview(lookBtn)
@@ -76,10 +76,10 @@ extension ConsultListCell {
         }
         
         descLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(10)
+            make.top.equalTo(15)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-            make.bottom.equalTo(-10)
+            make.bottom.equalTo(-15)
         }
         
         bottomView.snp.makeConstraints { (make) in

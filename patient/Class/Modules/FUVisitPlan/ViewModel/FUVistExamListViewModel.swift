@@ -112,7 +112,7 @@ class FUVistExamListViewModel: BaseViewModel {
     
     var webTitleString: String {
         switch type! {
-        case .flp, .video, .sunnyDrug:
+        case .flp, .video, .sunnyDrug, .tel:
             return "填写随访问卷"
         default:
             return "查看问卷"
@@ -134,6 +134,8 @@ extension FUVistExamListViewModel {
         var id: Int {
             switch self {
             case let .video(id: id, linkId: _):
+                return id
+            case let .tel(id: id, linkId: _):
                 return id
             case let .flp(id: id, linkId: _):
                 return id

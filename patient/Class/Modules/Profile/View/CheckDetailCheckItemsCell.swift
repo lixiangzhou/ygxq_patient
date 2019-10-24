@@ -34,7 +34,7 @@ class CheckDetailCheckItemsCell: UITableViewCell {
 // MARK: - UI
 extension CheckDetailCheckItemsCell {
     private func setUI() {
-        itemsView.config = FourColumnViewConfig(c1: 0.3, c2: 0.25, c3: 0.25, c4: 0.2, c1Title: "检查项目", c2Title: "结果", c3Title: "参考值", c4Title: "单位")
+        itemsView.config = FourColumnViewConfig(c1: 0.3, c2: 0.2, c3: 0.3, c4: 0.2, c1Title: "检查项目", c2Title: "结果", c3Title: "参考值", c4Title: "单位")
         itemsView.zz_setBorder(color: .cdcdcdc, width: 0.5)
         itemsView.zz_setCorner(radius: 5, masksToBounds: true)
         

@@ -97,6 +97,6 @@ extension DoctorDetailActionsCell {
             fatalError("init(coder:) has not been implemented")
         }
         
-        let txtLabel = UILabel(font: .size(15), textColor: .c9, textAlignment: .center)
+        let txtLabel = UILabel(font: .boldSize(15), textColor: .c9, textAlignment: .center)
     }
 }

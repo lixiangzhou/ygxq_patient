@@ -367,6 +367,12 @@ extension AddressEditController: UITextFieldDelegate {
                 print(string)
                 return string.isMatchNameInputValidate
             }
+        } else if textField == mobileField {
+            if string.isEmpty {
+                return true
+            } else {
+                return string.isMatchMobileInputValidate
+            }
         } else {
             return true
         }

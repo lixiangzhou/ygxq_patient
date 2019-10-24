@@ -136,7 +136,7 @@ extension UploadResourceController {
         picsView.addClosure = { [weak self] in
             guard let self = self else { return }
             if self.viewModel.selectedImagesProperty.value.count < count {
-                TZImagePickerController.commonPresent(from: self, maxCount: count - self.viewModel.selectedImagesProperty.value.count, selectedModels: self.viewModel.selectedModelsProperty.value, delegate: self)
+                TZImagePickerController.commonPresent(from: self, maxCount: count - self.viewModel.selectedImagesProperty.value.count, selectedModels: nil, delegate: self)
             } else {
                 HUD.show(toast: "最多选择30张图片")
             }
@@ -156,7 +156,7 @@ extension UploadResourceController {
 // MARK: - Network
 extension UploadResourceController: TZImagePickerControllerDelegate {
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool, infos: [[AnyHashable : Any]]!) {
-        viewModel.selectedModelsProperty.value = picker.selectedModels
+//        viewModel.selectedModelsProperty.value = picker.selectedModels
         addImages(photos)
     }
 }

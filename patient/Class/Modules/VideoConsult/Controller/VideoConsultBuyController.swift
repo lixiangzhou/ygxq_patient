@@ -58,7 +58,8 @@ extension VideoConsultBuyController {
         
         setActions()
         
-        let bottomTip = contentView.zz_add(subview: UILabel(text: viewModel.tipString, font: .size(15), textColor: .c6))
+        let bottomTip = contentView.zz_add(subview: UILabel(font: .size(15), textColor: .c6)) as! UILabel
+        bottomTip.attributedText = viewModel.tipString
         
         let telLabel = LinkedLabel(text: "客服电话：400-6251-120", font: .size(15), textColor: .c6)
         contentView.addSubview(telLabel)
@@ -290,30 +291,42 @@ extension VideoConsultBuyController {
     }
     
     private func telEnabledBinding() {
-        patientInfoProperty.producer.skipNil().startWithValues { [weak self] (pModel) in
+        patientInfoProperty.producer.skipNil().combineLatest(with: viewModel.lastPatientInfoModelProperty.signal).startWithValues { [weak self] (pModel, model) in
             guard let self = self else { return }
             
-            self.viewModel.lastPatientInfoModelProperty.signal.observeValues { [weak self] (model) in
-                guard let self = self else { return }
-                
-                let nameEnabledProducer = SignalProducer<Bool, NoError>(value: !pModel.realName.isEmpty).concat(self.patientInfoView.nameView.rightField.reactive.continuousTextValues.map { $0.count >= 2 }.producer)
-                
-                let idEnabledProducer = SignalProducer<Bool, NoError>(value: !pModel.idCardNo.isEmpty)
-                        .concat(self.patientInfoView.idView.rightField.reactive.continuousTextValues.map { $0.isMatchIdNo }.producer)
-                
-                let telEnabledProducer = SignalProducer<Bool, NoError>(value: !model.idCardNo.isEmpty).concat(self.patientInfoView.mobileView.rightField.reactive.continuousTextValues.map { $0.isMatchMobile }.producer)
-                
-                let diseaseEnabledProducer = SignalProducer<Bool, NoError>(value: false)
-                    .concat(self.diseaseView.txtView.textView.reactive.continuousTextValues.map { !$0.isEmpty }.producer)
-                
-                let buyEnabled = nameEnabledProducer.and(telEnabledProducer).and(idEnabledProducer).and(diseaseEnabledProducer)
-                
-                self.appointBtn.reactive.isUserInteractionEnabled <~ buyEnabled
-                self.appointBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
-                
-                self.bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
-                self.bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }
+            let nameEnabledProducer = SignalProducer<Bool, NoError>(value: !pModel.realName.isEmpty).concat(self.patientInfoView.nameView.rightField.reactive.continuousTextValues.map { $0.count >= 2 }.producer)
+            
+            let idEnabledProducer = SignalProducer<Bool, NoError>(value: !pModel.idCardNo.isEmpty)
+                    .concat(self.patientInfoView.idView.rightField.reactive.continuousTextValues.map { $0.isMatchIdNo }.producer)
+            
+            let telEnabledProducer = SignalProducer<Bool, NoError>(value: !model.mobileStr.isEmpty).concat(self.patientInfoView.mobileView.rightField.reactive.continuousTextValues.map { $0.isMatchMobile }.producer)
+            
+            let diseaseEnabledProducer = SignalProducer<Bool, NoError>(value: false)
+                .concat(self.diseaseView.txtView.textView.reactive.continuousTextValues.map { !$0.isEmpty }.producer)
+            
+            let buyEnabled = nameEnabledProducer.and(telEnabledProducer).and(idEnabledProducer).and(diseaseEnabledProducer)
+            
+            nameEnabledProducer.startWithValues { (value) in
+                print("nameEnabledProducer", value)
             }
+            
+            idEnabledProducer.startWithValues { (value) in
+                print("idEnabledProducer", value)
+            }
+            
+            telEnabledProducer.startWithValues { (value) in
+                print("telEnabledProducer", value)
+            }
+            
+            diseaseEnabledProducer.startWithValues { (value) in
+                print("diseaseEnabledProducer", value)
+            }
+            
+            self.appointBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+            self.appointBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
+            
+            self.bottomView.payBtn.reactive.isUserInteractionEnabled <~ buyEnabled
+            self.bottomView.payBtn.reactive.backgroundColor <~ buyEnabled.map { $0 ? UIColor.cffa84c : UIColor.cdcdcdc }
         }
     }
 }
@@ -326,7 +339,7 @@ extension VideoConsultBuyController {
             guard let self = self else { return }
             if self.viewModel.selectedImagesProperty.value.count < count {
                 
-                TZImagePickerController.commonPresent(from: self, maxCount: count - self.viewModel.selectedImagesProperty.value.count, selectedModels: self.viewModel.selectedModelsProperty.value, delegate: self)
+                TZImagePickerController.commonPresent(from: self, maxCount: count - self.viewModel.selectedImagesProperty.value.count, selectedModels: nil, delegate: self)
             } else {
                 HUD.show(toast: "最多选择30张图片")
             }
@@ -448,7 +461,7 @@ extension VideoConsultBuyController {
 
 extension VideoConsultBuyController: TZImagePickerControllerDelegate {
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool, infos: [[AnyHashable : Any]]!) {
-        viewModel.selectedModelsProperty.value = picker.selectedModels
+//        viewModel.selectedModelsProperty.value = picker.selectedModels
         addImages(photos)
     }
 }

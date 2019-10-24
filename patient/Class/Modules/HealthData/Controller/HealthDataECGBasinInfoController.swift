@@ -38,6 +38,8 @@ class HealthDataECGBasinInfoController: BaseController {
     let conditionView = HealthDataECGBasicInfoConditionView()
     let otherView = HealthDataECGBasinInfoOtherView()
     
+    let confirmBtn = UIButton(title: "确定", font: .size(16), titleColor: .cf, backgroundColor: .c407cec)
+    
     let viewModel = HealthDataECGBasinInfoViewModel()
     // MARK: - Private Property
     
@@ -64,8 +66,7 @@ extension HealthDataECGBasinInfoController {
         contentView.addSubview(conditionView)
         contentView.addSubview(otherView)
         
-        let confirmBtn = UIButton(title: "确定", font: .size(16), titleColor: .cf, backgroundColor: .c407cec, target: self, action: #selector(confirmAction))
-        
+        confirmBtn.addTarget(self, action: #selector(confirmAction), for: .touchUpInside)
         view.addSubview(confirmBtn)
         
         patientView.infoClosure = { [weak self] in
@@ -122,6 +123,9 @@ extension HealthDataECGBasinInfoController {
     
     override func setBinding() {
         topView.infoLabel.reactive.attributedText <~ viewModel.topInfoAttrProperty.producer
+        
+        confirmBtn.reactive.isEnabled <~ viewModel.hasTimeProperty.signal
+        confirmBtn.reactive.backgroundColor <~ viewModel.hasTimeProperty.signal.map { $0 ? UIColor.c407cec : UIColor.cdcdcdc }
         
         viewModel.selectPatientInfoProperty.signal.observeValues { [weak self] (model) in
             if let model = model {

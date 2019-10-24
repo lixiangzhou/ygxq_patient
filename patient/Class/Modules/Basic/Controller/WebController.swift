@@ -42,6 +42,9 @@ class WebController: BaseController {
     var request: URLRequest?
     /// 如果设置了就显示，如果没有设置，就显示网页的 document.title
     var titleString: String?
+    
+    var canBack = true
+    var cantBackTipString = ""
     ///
     lazy var bridge: WKWebViewJavascriptBridge = {
         return WKWebViewJavascriptBridge(webView: webView)
@@ -186,7 +189,26 @@ extension WebController {
     private func registerHandlers() {
         register("nav_back") { [weak self] (data, callBack) in
             self?.navigationController?.popViewController(animated: true)
-            ActionCollecter.sendData(lev: "16")
+        }
+        
+        register("btn_click") { [weak self] (data, callBack) in
+            if let type = data?["state"] as? String {
+                switch type {
+                case "stDialing", "stDialTalking":
+                    self?.canBack = false
+                    self?.cantBackTipString = "通话中不可退出当前页面"
+                default:
+                    self?.canBack = true
+                }
+            }
+        }
+    }
+    
+    override func backAction() {
+        if !canBack && !cantBackTipString.isEmpty {
+            HUD.show(toast: cantBackTipString)
+        } else {
+            super.backAction()
         }
     }
 }

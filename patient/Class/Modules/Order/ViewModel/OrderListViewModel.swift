@@ -73,11 +73,11 @@ class OrderListViewModel: BaseViewModel {
     func deleteOrder(order: OrderModel) {
         OrderApi.deleteOrder(orderId: order.id).rac_response(String.self).map { BoolString($0) }.startWithValues { [unowned self] (result) in
             HUD.show(result)
+            var orders = self.dataSourceProperty.value
             if result.isSuccess {
-                var orders = self.dataSourceProperty.value
                 orders.removeAll(where: { $0.id == order.id })
-                self.dataSourceProperty.value = orders
             }
+            self.dataSourceProperty.value = orders
         }
     }
     

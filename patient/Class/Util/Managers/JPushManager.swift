@@ -19,6 +19,12 @@ class JPushManager: NSObject {
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         
         JPUSHService.setup(withOption: options, appKey: "ded10f24a61f67eb82856767", channel:"Publish Channel" , apsForProduction: true)
+        
+        patientInfoProperty.signal.take(first: 1).skipNil().observeValues { (patientModel) in
+            JPUSHService.setAlias(patientModel.mobile + "_" + patientModel.id.description, completion: { (iResCode, iAlias, seq) in
+                print("JPUSHService.setAlias ===>>", iResCode, iAlias ?? "", seq)
+            }, seq: 0)
+        }
     }
 }
 

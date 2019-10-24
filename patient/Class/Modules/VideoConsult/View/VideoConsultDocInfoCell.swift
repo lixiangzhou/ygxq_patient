@@ -26,7 +26,7 @@ class VideoConsultDocInfoCell: UITableViewCell {
     
     // MARK: - Public Property
     let iconView = UIImageView(image: UIImage(named: "doctor_avator"))
-    let nameLabel = UILabel(font: .size(17), textColor: .c3, numOfLines: 1)
+    let nameLabel = UILabel(font: .boldSize(18), textColor: .c3, numOfLines: 1)
     let professionLabel = UILabel(font: .size(17), textColor: .c6)
     let hospitalLabel = UILabel(font: .size(17), textColor: .c6)
     // MARK: - Private Property
@@ -37,6 +37,7 @@ class VideoConsultDocInfoCell: UITableViewCell {
 extension VideoConsultDocInfoCell {
     private func setUI() {
         iconView.zz_setCorner(radius: 30, masksToBounds: true)
+        iconView.zz_setBorder(color: .cdcdcdc, width: 0.5)
         
         contentView.addSubview(iconView)
         contentView.addSubview(nameLabel)

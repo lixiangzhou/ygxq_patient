@@ -44,12 +44,19 @@ extension String {
     
     /// 是否符合姓名输入要求
     var isMatchNameInputValidate: Bool {
-        let regex = "[\\u4e00-\\u9fa5a-zA-Z·➋➌➍➎➏➐➑➒]*"
+        let regex = "[\\u4e00-\\u9fa5a-zA-Z·➋➌➍➎➏➐➑➒ ]*"
         let pre = NSPredicate(format: "SELF MATCHES %@", regex)
         return pre.evaluate(with: self.zz_ns)
     }
     
-    /// 是否匹配身份证号
+    /// 是否符合姓名输入要求
+    var isMatchMobileInputValidate: Bool {
+        let regex = "[0-9]*"
+        let pre = NSPredicate(format: "SELF MATCHES %@", regex)
+        return pre.evaluate(with: self.zz_ns)
+    }
+    
+    /// 是否匹配身份证号输入要求
     var isMatchIdNoInputing: Bool {
         let regex = "[\\dxX]*"
         let pre = NSPredicate(format: "SELF MATCHES %@", regex)

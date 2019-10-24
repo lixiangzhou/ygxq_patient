@@ -50,6 +50,7 @@ class BindedDoctorsCell: UITableViewCell {
 extension BindedDoctorsCell {
     private func setUI() {
         iconView.zz_setCorner(radius: 30, masksToBounds: true)
+        iconView.zz_setBorder(color: .cdcdcdc, width: 0.5)
         
         contentView.addSubview(iconView)
         contentView.addSubview(nameLabel)

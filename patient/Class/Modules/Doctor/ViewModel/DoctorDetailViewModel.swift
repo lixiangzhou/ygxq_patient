@@ -16,7 +16,7 @@ class DoctorDetailViewModel: BaseViewModel {
     let showBottomProperty = MutableProperty<Bool>(false)
     var sersDataSource = [DoctorSerModel]()
     var longSersDataSource = [DoctorSerModel]()
-    let priceProperty = MutableProperty<String>("")
+    let priceProperty = MutableProperty<NSAttributedString>(NSAttributedString())
     
     func getDocInfo() {
         DoctorApi.doctorInfo(duid: did).rac_responseModel(DoctorInfoModel.self).skipNil().startWithValues { [weak self] (model) in
@@ -44,8 +44,10 @@ class DoctorDetailViewModel: BaseViewModel {
     
     func getOrder(_ completion: @escaping (Int?) -> Void) {
         if let model = getSelectedLongSer() {
-            ServiceApi.buyPersonalService(duid: did, puid: patientId, serLongId: model.serType, price: model.serPrice, productName: model.serName).rac_responseModel([String: Any].self).skipNil().startWithValues { (result) in
-                if let orderId = result["orderId"] as? Int {
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            ServiceApi.buyPersonalService(duid: did, puid: patientId, serLongId: model.serType, price: model.serPrice, productName: model.serName).rac_responseModel([String: Any].self).startWithValues { (result) in
+                UIApplication.shared.endIgnoringInteractionEvents()
+                if let orderId = result?["orderId"] as? Int {
                     completion(orderId)
                 } else {
                     completion(nil)
@@ -70,7 +72,7 @@ class DoctorDetailViewModel: BaseViewModel {
         var temp = [Model]()
         if var ser = sers.first {
             ser.selected = true
-            priceProperty.value = "￥" + getLongSerTitle(ser)
+            priceProperty.value = getLongSerTitle(ser)
             var sers = sers
             sers.replaceSubrange(0...0, with: [ser])
             temp.append(.sersAction(title: "长期服务", sers: sers, msg: ser.serSummary))
@@ -213,7 +215,7 @@ class DoctorDetailViewModel: BaseViewModel {
         }
     }
     
-    func getLongSerTitle(_ model: DoctorSerModel) -> String {
+    func getLongSerTitle(_ model: DoctorSerModel) -> NSAttributedString {
         var unit = "月"
         switch model.indate {
         case 1:
@@ -225,7 +227,9 @@ class DoctorDetailViewModel: BaseViewModel {
         default:
             unit = "\(model.indate)月"
         }
-        return "\(model.serPrice)元/\(unit)"
+        var attr = NSMutableAttributedString(attributedString: model.serPrice.bottomPayPriceString)
+        attr.append(NSAttributedString(string: "元/\(unit)", attributes: [NSAttributedString.Key.font: UIFont.boldSize(17)]))
+        return attr
     }
     
     func selectLongSer(index: Int) {
@@ -237,7 +241,7 @@ class DoctorDetailViewModel: BaseViewModel {
             var model = model
             model.selected = selected
             if selected {
-                priceProperty.value = "￥" + getLongSerTitle(model)
+                priceProperty.value = getLongSerTitle(model)
                 msgs = model.serSummary
             }
             values.append(model)
