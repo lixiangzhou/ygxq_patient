@@ -64,6 +64,7 @@ class TaskTipListViewModel: BaseViewModel {
         default:
             break
         }
+        vc.viewModel.listCount = dataSourceProperty.value.count
         controller.push(vc)
     }
 }

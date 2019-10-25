@@ -43,8 +43,6 @@ class WebController: BaseController {
     /// 如果设置了就显示，如果没有设置，就显示网页的 document.title
     var titleString: String?
     
-    var canBack = true
-    var cantBackTipString = ""
     ///
     lazy var bridge: WKWebViewJavascriptBridge = {
         return WKWebViewJavascriptBridge(webView: webView)
@@ -191,24 +189,19 @@ extension WebController {
             self?.navigationController?.popViewController(animated: true)
         }
         
-        register("btn_click") { [weak self] (data, callBack) in
-            if let type = data?["state"] as? String {
+        register("btn_click") { (data, callBack) in
+            if context == .develop {
+                HUD.show(toast: data?.description ?? "无数据")
+            }
+            
+            if let type = data?["type"] as? Int {
                 switch type {
-                case "stDialing", "stDialTalking":
-                    self?.canBack = false
-                    self?.cantBackTipString = "通话中不可退出当前页面"
+                case 1:
+                    ActionCollecter.sendData(lev: "16")
                 default:
-                    self?.canBack = true
+                    break
                 }
             }
-        }
-    }
-    
-    override func backAction() {
-        if !canBack && !cantBackTipString.isEmpty {
-            HUD.show(toast: cantBackTipString)
-        } else {
-            super.backAction()
         }
     }
 }
@@ -223,11 +216,11 @@ extension WebController {
         bridge.call(handlerName: handlerName)
     }
     
-    static func pushFrom(_ vc: UIViewController,title: String? = nil, url: URL?) {
+    static func pushFrom(_ fromVC: UIViewController,title: String? = nil, url: URL?) {
         let vc = WebController()
         vc.titleString = title
         vc.url = url
-        vc.push(vc)
+        fromVC.push(vc)
     }
 }
 

@@ -12,6 +12,10 @@ import ReactiveSwift
 class FUVistExamListViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[ExamModel]>([])
     
+    let allFinishedProperty = MutableProperty<Bool>(false)
+    
+    var listCount = 0
+    
     var type: ExamType!
     
     override init() {
@@ -28,9 +32,10 @@ class FUVistExamListViewModel: BaseViewModel {
                 }
                 return true
             }
-            }.observeValues { [weak self] (_) in
+            }.observeValues { [weak self] (value) in
                 guard let self = self else { return }
                 CommonApi.updateTaskState(id: self.type.id).rac_response(String.self).startWithValues { (_) in }
+                self.allFinishedProperty.value = true
         }
     }
     

@@ -13,6 +13,8 @@ class HealthDataECGShowViewModel: BaseViewModel {
     let dataSourceProperty = MutableProperty<[HealthDataECGModel]>([])
     var selectDate = Date()
     
+//    var needMinutes = false
+    
     var selectDateECGModelProperty = MutableProperty<HealthDataECGModel>(HealthDataECGModel())
     
     var showTimes = [TimeInterval]()
@@ -40,7 +42,7 @@ class HealthDataECGShowViewModel: BaseViewModel {
     
     func getData() {
         if isBuyECGProperty.value {
-            ECGApi.list7Ago(pid: patientId).rac_responseModel([HealthDataECGModel].self).skipNil().startWithValues { [weak self] (models) in
+            ECGApi.list7Ago(pid: patientId, time: TimeInterval(Int(selectDate.timeIntervalSince1970 * 1000))).rac_responseModel([HealthDataECGModel].self).skipNil().startWithValues { [weak self] (models) in
                 if !models.isEmpty {
                     self?.dataSourceProperty.value = models
                 } else {

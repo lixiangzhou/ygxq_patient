@@ -29,6 +29,8 @@ class RCManager: NSObject {
         addVideoHook()
         addCallVCHook()
         
+        setLog()
+        
         setUserInfo()
         
         callCenter.callEventHandler = { call in
@@ -330,6 +332,41 @@ extension RCManager {
     
     private func saveAll() {
         try? rcModels.tojson().toJSONString()?.write(toFile: rcModelsPath, atomically: true, encoding: .utf8)
+    }
+}
+
+extension RCManager {
+    private func setLog() {
+        if context == .develop {
+            return
+        }
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "MMddHHmmss"
+        let fileName = "rc" + df.string(from: date) + ".log"
+        let logFilePath = path + "/" + fileName
+        
+        freopen(logFilePath.cString(using: .ascii), "a+", stdout)
+        freopen(logFilePath.cString(using: .ascii), "a+", stderr)
+    }
+    
+    private func getLog() {
+        let doc = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        
+        if let paths = try? FileManager.default.contentsOfDirectory(atPath: doc) {
+            var result = ""
+            
+            for path in paths {
+                if path.hasPrefix("rc") && path.hasSuffix(".log") {
+                    if let content = try? String(contentsOfFile: doc + "/" + path) {
+                        result.append(content)
+                        print(content)
+                    }
+                }
+            }
+        }
     }
 }
 

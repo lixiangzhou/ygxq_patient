@@ -30,6 +30,7 @@ class BaseController: UIViewController {
         }
         
         if hideNavigation {
+            print(navigationController?.children)
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
 

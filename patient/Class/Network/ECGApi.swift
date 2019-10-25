@@ -11,7 +11,7 @@ import Moya
 
 enum ECGApi: TargetType {
     case isBuyECG(pid: Int, keyword: String)
-    case list7Ago(pid: Int)
+    case list7Ago(pid: Int, time: TimeInterval)
     case getLastOneByDate(pid: Int, time: TimeInterval?)
     case querySurpluNum(pid: Int)
     case queryEcg12List(pid: Int)
@@ -43,8 +43,9 @@ extension ECGApi {
         case let .isBuyECG(pid: pid, keyword: keyword):
             params["puid"] = pid
             params["keyWord"] = keyword
-        case let .list7Ago(pid: pid):
+        case let .list7Ago(pid: pid, time: time):
             params["puid"] = pid
+            params["createTime"] = time
         case let .getLastOneByDate(pid: pid, time: time):
             params["puid"] = pid
             if let time = time {

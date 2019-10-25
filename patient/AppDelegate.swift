@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        JPUSHService.setBadge(0)
         ActionCollecter.shared.sendData(lev1: "5", lev2: "0")
     }
 }

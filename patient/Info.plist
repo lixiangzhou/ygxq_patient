@@ -2,23 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ECG_setting</key>
-	<dict>
-		<key>app_id</key>
-		<string>39288255774797082968</string>
-		<key>app_secret</key>
-		<string>axd4db6114bfac8882b488a1f02514d8539</string>
-		<key>sdk_mode</key>
-		<string>0</string>
-	</dict>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>bluetooth-central</string>
-	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>阳光客户端需要您的同意才能使用定位</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>阳光客户端需要您的同意才能访问蓝牙</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -34,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5.3.2</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -49,7 +32,20 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>20</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ECG_setting</key>
+	<dict>
+		<key>app_id</key>
+		<string>26896934382800122229</string>
+		<key>app_secret</key>
+		<string>axd7c2a9cb90e9960bc0cbb26ca0fe2e178</string>
+		<key>sdk_mode</key>
+		<string>1</string>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>weixin</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -57,12 +53,21 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>阳光客户端需要您的同意才能访问蓝牙</string>
 	<key>NSCameraUsageDescription</key>
 	<string>阳光客户端在音视频通话，修改个人信息和医生认证功能中需要上传图片，想使用您的相机，允许吗？</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>阳光客户端需要您的同意才能使用定位</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>阳光客户端在音视频通话中需要使用您的麦克风，允许吗？</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>阳光客户端在上传照片时想要使用您的相册，允许吗？</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -77,10 +82,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>weixin</string>
 	</array>
 </dict>
 </plist>

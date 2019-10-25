@@ -54,8 +54,8 @@ extension MineViewModel {
     }
     
     func getUnReadMsgCount() {
-        CommonApi.unreadMsgCount(uid: patientId).rac_responseModel(Int.self).skipNil().startWithValues { [weak self] (value) in
-            self?.unReadMsgCountProperty.value = value
+        CommonApi.unreadMsgCount(uid: patientId).rac_responseModel(Int.self).startWithValues { [weak self] (value) in
+            self?.unReadMsgCountProperty.value = value ?? 0
         }
     }
 }

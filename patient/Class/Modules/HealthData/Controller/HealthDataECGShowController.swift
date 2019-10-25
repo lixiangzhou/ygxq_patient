@@ -57,6 +57,7 @@ extension HealthDataECGShowController {
         panelView.startClosure = { [weak self] in
             let vc = HealthDataECGBasinInfoController()
             self?.push(vc)
+            
         }
         
         healthLineView.titleLabel.text = "心率值(bpm)"
@@ -74,8 +75,9 @@ extension HealthDataECGShowController {
         }
 
         healthLineView.selectDateClosure = { [weak self] date in
-            self?.viewModel.selectDate = date
-            self?.viewModel.getLastData()
+            guard let self = self else { return }
+            self.viewModel.selectDate = date
+            self.viewModel.getData()
         }
         
         scrollView.snp.makeConstraints { (make) in
@@ -184,16 +186,16 @@ extension HealthDataECGShowController {
                 self.panelView.minLabel.text = "--"
             }
         }
-        
-        viewModel.selectDateECGModelProperty.signal.observeValues { [weak self] (model) in
-            guard let self = self else { return }
-           
-            self.panelView.valueLabel.text = self.viewModel.getStateString(model)
-            self.panelView.timeLabel.text = model.requestTime.isEmpty ? "--" : model.requestTime
-            self.panelView.aveLabel.text = model.avgHeartRate.isEmpty ? "--" : model.avgHeartRate
-            self.panelView.maxLabel.text = model.maxHeartRate.isEmpty ? "--" : model.maxHeartRate
-            self.panelView.minLabel.text = model.minHeartRate.isEmpty ? "--" : model.minHeartRate
-        }
+//
+//        viewModel.selectDateECGModelProperty.signal.observeValues { [weak self] (model) in
+//            guard let self = self else { return }
+//
+//            self.panelView.valueLabel.text = self.viewModel.getStateString(model)
+//            self.panelView.timeLabel.text = model.requestTime.isEmpty ? "--" : model.requestTime
+//            self.panelView.aveLabel.text = model.avgHeartRate.isEmpty ? "--" : model.avgHeartRate
+//            self.panelView.maxLabel.text = model.maxHeartRate.isEmpty ? "--" : model.maxHeartRate
+//            self.panelView.minLabel.text = model.minHeartRate.isEmpty ? "--" : model.minHeartRate
+//        }
     }
 }
 

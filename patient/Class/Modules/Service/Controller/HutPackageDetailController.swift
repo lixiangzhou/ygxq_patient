@@ -20,6 +20,21 @@ class HutPackageDetailController: BaseController {
         setUI()
         setBinding()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        switch viewModel.from {
+        case .list:
+            break
+        case .ecg:
+            var vcs = navigationController?.children
+            vcs?.removeAll(where: { (vc) -> Bool in
+                return vc.zz_className == "HealthDataECGShowController"
+            })
+            navigationController?.setValue(vcs, forKey: "viewControllers")
+        }
+    }
 
     // MARK: - Public Property
     let viewModel = HutPackageDetailViewModel()

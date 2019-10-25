@@ -128,3 +128,18 @@ extension FUVistExamListController: UITableViewDataSource, UITableViewDelegate {
         push(vc)
     }
 }
+
+extension FUVistExamListController {
+    override func backAction() {
+        switch viewModel.type {
+        case .video, .tel, .sunnyDrug, .flp:
+            if viewModel.allFinishedProperty.value && viewModel.listCount == 1 {
+                popToRoot()
+            } else {
+                super.backAction()
+            }
+        default:
+            super.backAction()
+        }
+    }
+}
