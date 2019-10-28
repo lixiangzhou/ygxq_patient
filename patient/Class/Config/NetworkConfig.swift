@@ -8,7 +8,7 @@
 
 import Foundation
 
-let context = Context.release
+let context = Context.develop
 
 struct NetworkConfig {
     /// 接口服务器
