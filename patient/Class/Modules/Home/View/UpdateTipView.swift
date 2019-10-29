@@ -106,7 +106,7 @@ extension UpdateTipView {
         let view = UpdateTipView()
         UIApplication.shared.zz_lookupAppInfo { (data, _, _) in
             if let data = data, let json = try? JSON(data: data) {
-                let version = json["version"].stringValue
+                let version = json["results"][0]["version"].stringValue
                 let currentVersion = UIApplication.shared.zz_appVersion
 
                 if version > currentVersion {

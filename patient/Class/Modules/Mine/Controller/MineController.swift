@@ -26,8 +26,6 @@ class MineController: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationStyle(.transparency)
-        
         viewModel.getInfo()
         viewModel.getUnReadMsgCount()
     }

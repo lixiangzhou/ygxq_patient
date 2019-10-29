@@ -11,7 +11,7 @@ import WebKit
 import WKWebViewJavascriptBridge
 
 class WebController: BaseController {
-
+    
     // MARK: - Life Cycle
     
     override public func loadView() {
@@ -20,7 +20,7 @@ class WebController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         couldShowLogin = false
         setUI()
         registerHandlers()
@@ -34,7 +34,7 @@ class WebController: BaseController {
             title = titleString
         }
     }
-
+    
     // MARK: - Public Property
     /// 要加载的URL
     var url: URL?
@@ -109,6 +109,8 @@ extension WebController: WKNavigationDelegate {
         webView.evaluateJavaScript("document.title") { [weak self] (response, error) in
             if self?.titleString == nil {
                 self?.title = response as! String?
+            } else {
+                self?.title = self?.titleString
             }
         }
     }
