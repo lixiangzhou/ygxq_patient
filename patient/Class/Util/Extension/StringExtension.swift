@@ -76,3 +76,15 @@ extension String {
         return pre.evaluate(with: self.zz_ns)
     }
 }
+
+extension String {
+    func attribute(font: UIFont, color: UIColor) -> NSAttributedString {
+        return NSAttributedString(string: self, attributes: [NSAttributedString.Key.font : font, NSAttributedString.Key.foregroundColor: color])
+    }
+}
+
+extension NSAttributedString {
+    var mutable: NSMutableAttributedString {
+        return NSMutableAttributedString(attributedString: self)
+    }
+}

@@ -33,12 +33,15 @@ class DoctorDetailController: BaseController {
     // MARK: - Private Property
     private let tableView = UITableView()
     private let bottomView = PayBottomView()
+    private let emptyView = DoctorDetailEmpytView()
 }
 
 // MARK: - UI
 extension DoctorDetailController {
     override func setUI() {
         tableView.backgroundColor = .cf0efef
+        
+        emptyView.zz_setCorner(radius: 5, masksToBounds: true)
         
         tableView.set(dataSource: self, delegate: nil, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: DoctorDetailInfoCell.self)
@@ -83,6 +86,35 @@ extension DoctorDetailController {
         
         viewModel.priceProperty.signal.observeValues { [weak self] (price) in
             self?.bottomView.priceLabel.attributedText = price
+        }
+        
+        viewModel.dataSourceProperty.signal.observeValues {  [weak self] (models) in
+            guard let self = self else { return }
+            if models.count == 1 {
+                switch models.first! {
+                case let .docInfo(docInfo: _, sers: sers):
+                    self.tableView.addSubview(self.emptyView)
+                    self.tableView.isScrollEnabled = false
+                    var height = DoctorDetailInfoCell.topBgHeight - 30
+                    if !sers.isEmpty {
+                        let (_, serHeight) = self.viewModel.getSerLayout(sers)
+                        height = height + serHeight + 15 + 12
+                    }
+                    self.emptyView.snp.remakeConstraints { (make) in
+                        make.top.equalTo(height)
+                        make.left.equalTo(self.view).offset(15)
+                        make.right.equalTo(self.view).offset(-15)
+                        make.bottomOffsetFrom(self, -15)
+                    }
+                    
+                default:
+                    self.tableView.isScrollEnabled = true
+                    self.emptyView.isHidden = true
+                }
+            } else {
+                self.tableView.isScrollEnabled = true
+                self.emptyView.isHidden = true
+            }
         }
     }
 }

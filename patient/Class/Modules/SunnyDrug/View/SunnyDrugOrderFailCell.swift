@@ -25,7 +25,7 @@ class SunnyDrugOrderFailCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let txtLabel = UILabel(font: .size(15), textColor: .c3)
+    let txtLabel = UILabel(font: .size(16), textColor: .c3)
     // MARK: - Private Property
     
 }
@@ -37,7 +37,7 @@ extension SunnyDrugOrderFailCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "失败原因"
         contentView.addSubview(titleView)
         
@@ -45,13 +45,13 @@ extension SunnyDrugOrderFailCell {
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         txtLabel.snp.makeConstraints { (make) in

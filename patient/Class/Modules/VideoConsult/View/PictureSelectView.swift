@@ -206,7 +206,8 @@ extension PictureSelectView {
         }
         
         static func defaultConfig() -> Config {
-            return PictureSelectView.Config(width: UIScreen.zz_width - 30, column: 4, xSpacing: 5, ySpacing: 5, picAction: .onlyPicShow)
+            return newConfig()
+//            return PictureSelectView.Config(width: UIScreen.zz_width - 30, column: 4, xSpacing: 5, ySpacing: 5, picAction: .onlyPicShow)
         }
         
         static func newConfig() -> Config {

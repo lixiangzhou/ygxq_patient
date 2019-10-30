@@ -38,12 +38,12 @@ extension SunnyDrugOrderExpressCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "快递信息"
         contentView.addSubview(titleView)
         
-        nameView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3, bottomLineLeftPadding: 15)
-        noView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3, hasBottomLine: false)
+        nameView.config = TextLeftRightViewConfig(leftFont: .size(16), leftTextColor: .c3, rightFont: .size(16), rightTextColor: .c3, bottomLineLeftPadding: 15)
+        noView.config = TextLeftRightViewConfig(leftFont: .size(16), leftTextColor: .c3, rightFont: .size(16), rightTextColor: .c3, hasBottomLine: false)
         
         nameView.leftLabel.text = "快递公司"
         noView.leftLabel.text = "快递单号"
@@ -53,23 +53,25 @@ extension SunnyDrugOrderExpressCell {
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         nameView.snp.makeConstraints { (make) in
             make.top.equalTo(titleView.snp.bottom)
-            make.height.left.right.equalTo(titleView)
+            make.left.right.equalTo(titleView)
+            make.height.equalTo(45)
         }
         
         noView.snp.makeConstraints { (make) in
             make.top.equalTo(nameView.snp.bottom)
-            make.height.left.right.equalTo(titleView)
+            make.left.right.equalTo(titleView)
+            make.height.equalTo(45)
             make.bottom.equalToSuperview()
         }
     }

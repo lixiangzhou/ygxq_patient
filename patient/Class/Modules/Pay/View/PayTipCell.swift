@@ -34,13 +34,19 @@ extension PayTipCell {
     private func setUI() {
         backgroundColor = .cf0efef
         
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        
+        let attrString = NSMutableAttributedString(string: "请在18分钟内完成付款，否则将自动取消该订单，签字即同意《\(appService)》。", attributes: [NSAttributedString.Key.paragraphStyle: style])
+        
         let titleLabel = UILabel(text: "温馨提示", font: .size(15), textColor: .c6)
-        let tipLabel = LinkedLabel(text: "请在18分钟内完成付款，否则将自动取消该订单，签字即同意《\(appService)》。", font: .size(15), textColor: .c6)
+        let tipLabel = LinkedLabel(font: .size(15), textColor: .c6)
+        tipLabel.attributedText = attrString
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(tipLabel)
         
-        tipLabel.addLinks([(string: "《\(appService)》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec], action: { [weak self] _ in
+        tipLabel.addLinks([(string: "《\(appService)》", attributes: [NSAttributedString.Key.foregroundColor: UIColor.c407cec, NSAttributedString.Key.paragraphStyle: style], action: { [weak self] _ in
             self?.serviceClosure?()
         })])
 
@@ -51,7 +57,7 @@ extension PayTipCell {
         
         tipLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.right.bottom.equalTo(-15)
         }
     }

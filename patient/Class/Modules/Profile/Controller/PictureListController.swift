@@ -33,10 +33,10 @@ extension PictureListController {
     override func setUI() {
         
         let paddingEdge: CGFloat = 15
-        let column: CGFloat = 4
-        let spacing: CGFloat = 10
+        let column: CGFloat = 3
+        let spacing: CGFloat = 8
         
-        let itemWH = (UIScreen.zz_width - paddingEdge * 2 - (column - 1) * spacing) / column
+        let itemWH = Int((UIScreen.zz_width - paddingEdge * 2 - (column - 1) * spacing) / column)
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: itemWH, height: itemWH)
         layout.minimumLineSpacing = spacing

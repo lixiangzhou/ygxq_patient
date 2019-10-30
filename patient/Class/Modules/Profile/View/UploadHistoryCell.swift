@@ -25,7 +25,7 @@ class UploadHistoryCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let timeLabel = UILabel(font: .size(15), textColor: .c6)
+    let timeLabel = UILabel(font: .size(16), textColor: .c6)
     var itemViews = [UIImageView]()
     
     // MARK: - Private Property
@@ -38,17 +38,20 @@ extension UploadHistoryCell {
         backgroundColor = .cf
         
         let topView = contentView.zz_add(subview: UIView())
+        topView.backgroundColor = .cf0efef
         topView.addSubview(timeLabel)
         topView.addBottomLine()
         
         let picsView = contentView.zz_add(subview: UIView())
+        let moreBtn = topView.zz_add(subview: ZZImagePositionButton(title: "查看更多", font: .size(16), titleColor: .c6, imageName: "upload_history_arrow", hilightedImageName: "upload_history_arrow", imgPosition: .right, middlePadding: 6))
+        moreBtn.isUserInteractionEnabled = false
         
-        let count = 4
-        let padding: CGFloat = 10
+        let count = 3
+        let padding: CGFloat = 8
         let edgePadding: CGFloat = 15
         let wh: CGFloat = (UIScreen.zz_width - edgePadding * 2 - CGFloat(count - 1) * padding) / CGFloat(count)
         var x = edgePadding
-        let y = padding
+        let y: CGFloat = 12
         for idx in 0..<count {
             x = edgePadding + (padding + wh) * CGFloat(idx)
             let itemView = UIImageView(frame: CGRect(x: x, y: y, width: wh, height: wh))
@@ -70,16 +73,17 @@ extension UploadHistoryCell {
             make.left.equalTo(15)
         }
         
-        picsView.snp.makeConstraints { (make) in
-            make.top.equalTo(topView.snp.bottom)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(padding * 2 + wh)
+        moreBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(-15)
+            make.width.equalTo(78)
+            make.height.equalTo(20)
+            make.centerY.equalToSuperview()
         }
         
-        bottomView.snp.makeConstraints { (make) in
-            make.top.equalTo(picsView.snp.bottom)
-            make.height.equalTo(10)
-            make.bottom.left.right.equalToSuperview()
+        picsView.snp.makeConstraints { (make) in
+            make.top.equalTo(topView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(24 + wh)
         }
     }
 }

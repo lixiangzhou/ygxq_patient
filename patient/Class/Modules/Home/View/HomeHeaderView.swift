@@ -31,9 +31,9 @@ class HomeHeaderView: BaseView {
     
     // MARK: - Private Property
     private let pagerHeight = (UIScreen.zz_width - 30) * 3.0 / 7.0
-    private let actionsHeight: CGFloat = 85
-    private let caseHeight: CGFloat = 110
-    private let taskHeight: CGFloat = 150
+    private let actionsHeight: CGFloat = 82
+    private let caseHeight: CGFloat = 107
+    private let taskHeight: CGFloat = 147
 }
 
 // MARK: - UI
@@ -51,8 +51,9 @@ extension HomeHeaderView {
         addSubview(pagerView)
         
         pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        pageControl.setImage(UIImage(named: "home_banner_selected"), for: .selected)
-        pageControl.setImage(UIImage(named: "home_banner_normal"), for: .normal)
+        pageControl.setImage(UIImage(named: "home_banner_circle_blue"), for: .selected)
+        pageControl.setImage(UIImage(named: "home_banner_circle_gray"), for: .normal)
+        pageControl.interitemSpacing = 7
         pagerView.addSubview(pageControl)
         
         addSubview(actionsView)
@@ -81,19 +82,19 @@ extension HomeHeaderView {
         }
         
         actionsView.snp.makeConstraints { (make) in
-            make.top.equalTo(pagerView.snp.bottom).offset(15)
+            make.top.equalTo(pagerView.snp.bottom).offset(12)
             make.left.right.equalTo(pagerView)
             make.height.equalTo(actionsHeight)
         }
         
         caseView.snp.makeConstraints { (make) in
-            make.top.equalTo(actionsView.snp.bottom).offset(15)
+            make.top.equalTo(actionsView.snp.bottom).offset(12)
             make.left.right.equalTo(pagerView)
             make.height.equalTo(caseHeight)
         }
         
         taskView.snp.makeConstraints { (make) in
-            make.top.equalTo(caseView.snp.bottom).offset(15)
+            make.top.equalTo(caseView.snp.bottom).offset(12)
             make.left.right.equalTo(pagerView)
         }
     }

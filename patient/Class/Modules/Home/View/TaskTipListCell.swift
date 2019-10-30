@@ -24,43 +24,56 @@ class TaskTipListCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let timeLabel = UILabel(font: .size(15), textColor: .c6)
-    let txtLabel = UILabel(font: .size(15), textColor: .c3)
-    let btn = UIButton(font: .size(15), titleColor: .c00cece)
+    let timeLabel = UILabel(font: .size(16), textColor: .c3)
+    let txtLabel = UILabel(font: .size(16), textColor: .c3)
+    let btn = UIButton(font: .size(16), titleColor: .cffa84c)
     var btnClosure: (() -> Void)?
     
     // MARK: - Private Property
-    
 }
 
 // MARK: - UI
 extension TaskTipListCell {
     private func setUI() {
-        btn.zz_setBorder(color: .c00cece, width: 0.5)
-        btn.zz_setCorner(radius: 5, masksToBounds: true)
         btn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
         
-        contentView.addSubview(timeLabel)
-        contentView.addSubview(txtLabel)
-        contentView.addSubview(btn)
-        contentView.addBottomLine()
+        let topView = contentView.zz_add(subview: UIView())
+        topView.addSubview(timeLabel)
+        topView.addSubview(btn)
+        let arrowView = topView.zz_add(subview: UIImageView(image: UIImage(named: "task_top_arrow")))
+        arrowView.isUserInteractionEnabled = true
+        arrowView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(btnAction)))
+        topView.addBottomLine()
         
-        timeLabel.snp.makeConstraints { (make) in
-            make.top.left.equalTo(15)
+        contentView.addSubview(txtLabel)
+        let bottomLine = contentView.addBottomLine(color: .cf0efef, height: 10)
+        
+        topView.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(45)
         }
         
-        txtLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(timeLabel.snp.bottom).offset(15)
-            make.left.equalTo(timeLabel)
+        timeLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(15)
+            make.centerY.equalToSuperview()
+        }
+        
+        arrowView.snp.makeConstraints { (make) in
             make.right.equalTo(-15)
+            make.centerY.equalToSuperview()
         }
         
         btn.snp.makeConstraints { (make) in
-            make.top.equalTo(txtLabel.snp.bottom).offset(10)
-            make.right.equalTo(txtLabel)
-            make.width.equalTo(60)
-            make.height.equalTo(30)
-            make.bottom.equalTo(-10)
+            make.right.equalTo(arrowView.snp.left).offset(-5)
+            make.top.bottom.equalToSuperview()
+            make.width.equalTo(50)
+        }
+        
+        txtLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(topView.snp.bottom).offset(15)
+            make.left.equalTo(timeLabel)
+            make.right.equalTo(-15)
+            make.bottom.equalTo(bottomLine.snp.top).offset(-15)
         }
     }
 }

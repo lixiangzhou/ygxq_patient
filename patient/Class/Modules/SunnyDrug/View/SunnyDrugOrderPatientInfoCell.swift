@@ -25,10 +25,10 @@ class SunnyDrugOrderPatientInfoCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let nameView = TextLeftGrowTextRightView()
+    let nameView = LeftRightUpDownLabelView()
     let mobileView = TextLeftGrowTextRightView()
-    let addressView = TextLeftGrowTextRightView()
-    let remarkView = TextLeftGrowTextRightView()
+    let addressView = LeftRightUpDownLabelView()
+    let remarkView = LeftRightUpDownLabelView()
     // MARK: - Private Property
     
 }
@@ -40,19 +40,19 @@ extension SunnyDrugOrderPatientInfoCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "个人基本信息"
         contentView.addSubview(titleView)
         
-        nameView.config = normalConfig()
+        nameView.config = .init(bottomLineLeftPadding: 15)
         mobileView.config = normalConfig()
-        addressView.config = normalConfig()
-        remarkView.config = lastConfig()
+        addressView.config = .init(bottomLineLeftPadding: 15)
+        remarkView.config = .init(hasBottomLine: false)
         
-        nameView.leftLabel.text = "姓名"
+        nameView.titleLabel.text = "姓名"
         mobileView.leftLabel.text = "手机号"
-        addressView.leftLabel.text = "收货地址"
-        remarkView.leftLabel.text = "备注"
+        addressView.titleLabel.text = "收货地址"
+        remarkView.titleLabel.text = "备注"
         
         contentView.addSubview(nameView)
         contentView.addSubview(mobileView)
@@ -61,13 +61,13 @@ extension SunnyDrugOrderPatientInfoCell {
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         nameView.snp.makeConstraints { (make) in
@@ -93,10 +93,6 @@ extension SunnyDrugOrderPatientInfoCell {
     }
     
     private func normalConfig() -> TextLeftGrowTextRightViewConfig {
-        return TextLeftGrowTextRightViewConfig(leftTopPadding: 13.5, leftBottomPadding: 13.5, leftWidth: 90, leftFont: .size(15), leftTextColor: .c6, rightTopPadding: 13.5, rightBottomPadding: 13.5, rightFont: .size(15), rightTextColor: .c3)
-    }
-    
-    private func lastConfig() -> TextLeftGrowTextRightViewConfig {
-        return TextLeftGrowTextRightViewConfig(leftTopPadding: 13.5, leftBottomPadding: 13.5, leftWidth: 90, leftFont: .size(15), leftTextColor: .c6, rightTopPadding: 13.5, rightBottomPadding: 13.5, rightFont: .size(15), rightTextColor: .c3, hasBottomLine: false)
+        return TextLeftGrowTextRightViewConfig(leftTopPadding: 14, leftBottomPadding: 14, leftWidth: 100, leftFont: .size(16), leftTextColor: .c3, rightTopPadding: 14, rightBottomPadding: 14, rightFont: .size(16), rightTextColor: .c3, bottomLineLeftPadding: 15)
     }
 }

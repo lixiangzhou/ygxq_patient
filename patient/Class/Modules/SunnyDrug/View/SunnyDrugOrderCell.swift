@@ -25,10 +25,10 @@ class SunnyDrugOrderCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let nameLabel = UILabel(font: .size(15), textColor: .c6)
-    let timeLabel = UILabel(font: .size(13), textColor: .c6)
-    let descLabel = UILabel(font: .size(14), textColor: .c3)
-    let lookBtn = UIButton(title: "查看", font: .size(13), titleColor: .cffa84c)
+    let nameLabel = UILabel(font: .size(16), textColor: .c6)
+    let timeLabel = UILabel(font: .size(16), textColor: .c6)
+    let descLabel = UILabel(font: .size(16), textColor: .c3)
+    let lookBtn = UIButton(title: "查看", font: .boldSize(16), titleColor: .cffa84c)
     
     var lookClosure: (() -> Void)?
     // MARK: - Private Property
@@ -48,7 +48,7 @@ extension SunnyDrugOrderCell {
         midView.addBottomLine(left: 15, right: 15)
         
         let bottomView = contentView.zz_add(subview: UIView())
-        lookBtn.zz_setBorder(color: .cffa84c, width: 0.5)
+        lookBtn.zz_setBorder(color: .cffa84c, width: 1)
         lookBtn.zz_setCorner(radius: 15, masksToBounds: true)
         lookBtn.addTarget(self, action: #selector(lookAction), for: .touchUpInside)
         bottomView.addSubview(lookBtn)
@@ -76,21 +76,21 @@ extension SunnyDrugOrderCell {
         }
         
         descLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(10)
+            make.top.equalTo(15)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-            make.bottom.equalTo(-10)
+            make.bottom.equalTo(-15)
         }
         
         bottomView.snp.makeConstraints { (make) in
             make.top.equalTo(midView.snp.bottom)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(sepView.snp.top)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
         
         lookBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 75, height: 30))
+            make.size.equalTo(CGSize(width: 90, height: 30))
             make.centerY.equalToSuperview()
             make.right.equalTo(-15)
         }

@@ -27,10 +27,7 @@ class SunnyDrugOrderAssistWxInfoCell: UITableViewCell {
     
     // MARK: - Public Property
     let codeView = UIImageView()
-    let saveCodeBtn = UIButton(title: "保存到相册", font: .size(16), titleColor: .c407cec)
-    
-    let wxLabel = UILabel(font: .size(15), textColor: .c3)
-    let copyWxBtn = UIButton(title: "复制微信号", font: .size(16), titleColor: .c407cec)
+    let wxLabel = UILabel(font: .size(16), textColor: .c3)
     
     // MARK: - Private Property
     
@@ -43,36 +40,38 @@ extension SunnyDrugOrderAssistWxInfoCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3, hasBottomLine: false)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3, hasBottomLine: false)
         titleView.leftLabel.text = "医助微信二维码"
         contentView.addSubview(titleView)
         
+        let saveCodeBtn = UIButton(title: "保存到相册", font: .boldSize(16), titleColor: .c407cec, target: self, action: #selector(saveAction))
+        
         contentView.addSubview(codeView)
         contentView.addSubview(saveCodeBtn)
-        saveCodeBtn.zz_setBorder(color: .c407cec, width: 0.5)
+        saveCodeBtn.zz_setBorder(color: .c407cec, width: 1)
         saveCodeBtn.zz_setCorner(radius: 15, masksToBounds: true)
-        saveCodeBtn.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         
         let titleView2 = TextLeftRightView()
-        titleView2.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3, hasBottomLine: false)
+        titleView2.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3, hasBottomLine: false)
         titleView2.leftLabel.text = "医助微信号"
         contentView.addSubview(titleView2)
         
+        let copyWxBtn = UIButton(title: "复制微信号", font: .boldSize(16), titleColor: .c407cec, target: self, action: #selector(copyAction))
+        
         contentView.addSubview(wxLabel)
         contentView.addSubview(copyWxBtn)
-        copyWxBtn.zz_setBorder(color: .c407cec, width: 0.5)
+        copyWxBtn.zz_setBorder(color: .c407cec, width: 1)
         copyWxBtn.zz_setCorner(radius: 15, masksToBounds: true)
-        copyWxBtn.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         codeView.snp.makeConstraints { (make) in
@@ -82,7 +81,7 @@ extension SunnyDrugOrderAssistWxInfoCell {
         }
         
         saveCodeBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(codeView.snp.bottom).offset(15)
+            make.top.equalTo(codeView.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
             make.width.equalTo(105)
             make.height.equalTo(30)
@@ -99,7 +98,7 @@ extension SunnyDrugOrderAssistWxInfoCell {
         }
         
         copyWxBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(wxLabel.snp.bottom).offset(15)
+            make.top.equalTo(wxLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
             make.width.equalTo(105)
             make.height.equalTo(30)

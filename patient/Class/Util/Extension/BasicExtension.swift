@@ -32,6 +32,20 @@ extension Double {
         
         return attrString
     }
+    
+    func priceString(prefixFont: UIFont, bigPriceFont: UIFont, smallPriceFont: UIFont) -> NSAttributedString {
+        let attrString = NSMutableAttributedString(string: "￥", attributes: [NSAttributedString.Key.font: prefixFont])
+        
+        let priceString = String(format: "%.2f", self)
+        if let idx = priceString.firstIndex(of: ".") {
+            attrString.append(NSAttributedString(string: "\(priceString[..<idx])", attributes: [NSAttributedString.Key.font: bigPriceFont]))
+            attrString.append(NSAttributedString(string: "\(priceString[idx...])", attributes: [NSAttributedString.Key.font: smallPriceFont]))
+        } else {
+            attrString.append(NSAttributedString(string: priceString, attributes: [NSAttributedString.Key.font: bigPriceFont]))
+        }
+        
+        return attrString
+    }
 }
 
 func getAge(_ birth: TimeInterval?) -> Int? {

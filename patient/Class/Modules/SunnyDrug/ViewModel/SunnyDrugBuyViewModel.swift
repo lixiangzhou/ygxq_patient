@@ -52,7 +52,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
                     self?.orderIdProperty.value = resp.content ?? 0
                 }
             }
-        } else {
+        } else { // 视频后购药
             ServiceApi.createWorkOrder(params: params).rac_response(Int.self).startWithValues { [weak self] (resp) in
                 HUD.hideLoding()
                 UIApplication.shared.endIgnoringInteractionEvents()
@@ -65,7 +65,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     }
     
     var isToPayWay: Bool {
-        return serVideoId != nil || myPrivateDoctorOrderProperty.value.ser_code.isEmpty
+        return serVideoId == nil || myPrivateDoctorOrderProperty.value.ser_code.isEmpty
     }
     
     func getPrivateDoctor() {

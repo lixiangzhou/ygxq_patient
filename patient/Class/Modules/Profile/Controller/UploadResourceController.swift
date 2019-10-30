@@ -44,16 +44,21 @@ extension UploadResourceController {
             break
         }
         
-        scrollView.backgroundColor = .cf
+        scrollView.backgroundColor = .cf0efef
+        contentView.backgroundColor = .cf0efef
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
         let topView = contentView.zz_add(subview: UIView())
-        let tipLabel = topView.zz_add(subview: UILabel(text: tipString, font: .size(16), textColor: .c6)) as! UILabel
-        topView.addBottomLine()
+        topView.backgroundColor = .cf0efef
+        let tipLabel = topView.zz_add(subview: UILabel(text: tipString, font: .size(15), textColor: .c6)) as! UILabel
+        
+        let bgView = contentView.zz_add(subview: UIView())
+        bgView.backgroundColor = .cf
         
         let config = PictureSelectView.Config.defaultConfig()
         picsView.config = config
+        picsView.backgroundColor = .cf
         contentView.addSubview(picsView)
         
         setActions()
@@ -77,8 +82,10 @@ extension UploadResourceController {
         
         let tipHeight = tipString.zz_size(withLimitWidth: UIScreen.zz_width - 30, fontSize: tipLabel.font.pointSize).height
         tipLabel.snp.makeConstraints { (make) in
-            make.top.left.equalTo(15)
-            make.right.bottom.equalTo(-15)
+            make.left.equalTo(15)
+            make.top.equalTo(12)
+            make.right.equalTo(-15)
+            make.bottom.equalTo(-12)
             make.height.equalTo(tipHeight)
         }
         
@@ -87,6 +94,12 @@ extension UploadResourceController {
             make.left.equalTo(15)
             make.height.equalTo(config.itemSize)
             make.width.equalTo(config.width)
+        }
+        
+        bgView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(picsView).offset(-15)
+            make.bottom.equalTo(picsView).offset(15)
         }
         
         submitBtn.snp.makeConstraints { (make) in

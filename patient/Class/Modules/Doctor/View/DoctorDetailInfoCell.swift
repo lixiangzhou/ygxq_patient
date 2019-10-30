@@ -31,7 +31,7 @@ class DoctorDetailInfoCell: UITableViewCell {
     var serView: UICollectionView!
     
     // MARK: - Private Property
-    
+    static let topBgHeight = 116 + UIScreen.zz_statusBar_additionHeight
 }
 
 // MARK: - UI
@@ -39,13 +39,9 @@ extension DoctorDetailInfoCell {
     private func setUI() {
         contentView.backgroundColor = .cf0efef
         
-        let topBgView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 116 + UIScreen.zz_statusBar_additionHeight), image: UIImage.zz_gradientImage(fromColor: UIColor(stringHexValue: "#295DC3")!, toColor: UIColor(stringHexValue: "#74B0F6")!, size: CGSize(width: UIScreen.zz_width, height: 180), isHorizontal: false))
+        let topBgView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: DoctorDetailInfoCell.topBgHeight), image: UIImage.zz_gradientImage(fromColor: UIColor(stringHexValue: "#295DC3")!, toColor: UIColor(stringHexValue: "#74B0F6")!, size: CGSize(width: UIScreen.zz_width, height: 180), isHorizontal: false))
         contentView.addSubview(topBgView)
-        
-//        let bgView = contentView.zz_add(subview: UIView())
-//        bgView.zz_setCorner(radius: 5, masksToBounds: true)
-//        bgView.backgroundColor = .cf
-        
+                
         iconView.zz_setCorner(radius: 35, masksToBounds: true)
         iconView.zz_setBorder(color: .cf, width: 1.5)
         
@@ -62,7 +58,7 @@ extension DoctorDetailInfoCell {
         
         topBgView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(116)
+            make.height.equalTo(DoctorDetailInfoCell.topBgHeight)
         }
         
         iconView.snp.makeConstraints { (make) in

@@ -227,7 +227,7 @@ class DoctorDetailViewModel: BaseViewModel {
         default:
             unit = "\(model.indate)月"
         }
-        var attr = NSMutableAttributedString(attributedString: model.serPrice.bottomPayPriceString)
+        let attr = NSMutableAttributedString(attributedString: model.serPrice.bottomPayPriceString)
         attr.append(NSAttributedString(string: "元/\(unit)", attributes: [NSAttributedString.Key.font: UIFont.boldSize(17)]))
         return attr
     }

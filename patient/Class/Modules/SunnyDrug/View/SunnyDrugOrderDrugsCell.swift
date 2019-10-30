@@ -25,7 +25,7 @@ class SunnyDrugOrderDrugsCell: UITableViewCell {
     }
     
     // MARK: - Public Property
-    let txtLabel = UILabel(font: .size(15), textColor: .c3)
+    let txtLabel = UILabel(font: .size(16), textColor: .c3)
     let priceView = TextLeftRightView()
     // MARK: - Private Property
     
@@ -38,27 +38,27 @@ extension SunnyDrugOrderDrugsCell {
         topSepView.backgroundColor = .cf0efef
         
         let titleView = TextLeftRightView()
-        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(16), leftTextColor: .c3)
+        titleView.config = TextLeftRightViewConfig(leftFont: .boldSize(17), leftTextColor: .c3)
         titleView.leftLabel.text = "购买药品"
         contentView.addSubview(titleView)
         
         let midView = contentView.zz_add(subview: UIView())
-        midView.addBottomLine()
+        midView.addBottomLine(left: 15)
         midView.addSubview(txtLabel)
 
-        priceView.config = TextLeftRightViewConfig(leftFont: .size(15), leftTextColor: .c6, rightFont: .size(15), rightTextColor: .c3, hasBottomLine: false)
-        priceView.rightLabel.text = "总价 ￥0"
+        priceView.config = TextLeftRightViewConfig(rightFont: .size(16), rightTextColor: .c3, hasBottomLine: false)
+        priceView.rightLabel.text = "总价"
         contentView.addSubview(priceView)
         
         topSepView.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(12)
         }
         
         titleView.snp.makeConstraints { (make) in
             make.top.equalTo(topSepView.snp.bottom)
             make.right.left.equalToSuperview()
-            make.height.equalTo(45)
+            make.height.equalTo(50)
         }
         
         midView.snp.makeConstraints { (make) in

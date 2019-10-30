@@ -38,7 +38,9 @@ class SunnyDrugOrderDetailViewModel: BaseViewModel {
             }
             
             if !model.serDrugUesds.isEmpty {
-                models.append(Model.buyedDrugs(drugs: model.serDrugUesds, price: model.totalPrices))
+                let priceAttr = "总价 ".attribute(font: .size(16), color: .c3).mutable
+                priceAttr.append(model.totalPrices.priceString(prefixFont: .size(14), bigPriceFont: .size(19), smallPriceFont: .size(14)))
+                models.append(Model.buyedDrugs(drugs: model.serDrugUesds, price: priceAttr))
             }
             
             if !model.waybillNumber.isEmpty {
@@ -98,7 +100,7 @@ extension SunnyDrugOrderDetailViewModel {
     enum Model {
         case docinfo(model: DoctorInfoModel)
         case patient(model: SunnyDrugOrderModel)
-        case buyedDrugs(drugs: [SunnyDrugModel], price: Double)
+        case buyedDrugs(drugs: [SunnyDrugModel], price: NSAttributedString)
         case failReason(reason: String)
         case express(company: String, expNo: String)
         case assist(model: DoctorAssistModel)

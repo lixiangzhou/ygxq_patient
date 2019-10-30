@@ -26,9 +26,9 @@ class SunnyDrugOrderDocInfoCell: UITableViewCell {
     
     // MARK: - Public Property
     let iconView = UIImageView(image: UIImage(named: "doctor_avator"))
-    let nameLabel = UILabel(font: .size(17), textColor: .c3, numOfLines: 1)
-    let professionLabel = UILabel(font: .size(15), textColor: .c9)
-    let hospitalLabel = UILabel(font: .size(15), textColor: .c6)
+    let nameLabel = UILabel(font: .boldSize(18), textColor: .c3, numOfLines: 1)
+    let professionLabel = UILabel(font: .size(17), textColor: .c6)
+    let hospitalLabel = UILabel(font: .size(17), textColor: .c6)
     // MARK: - Private Property
     
 }
@@ -36,7 +36,7 @@ class SunnyDrugOrderDocInfoCell: UITableViewCell {
 // MARK: - UI
 extension SunnyDrugOrderDocInfoCell {
     private func setUI() {
-        iconView.zz_setCorner(radius: 25, masksToBounds: true)
+        iconView.zz_setCorner(radius: 30, masksToBounds: true)
         
         contentView.addSubview(iconView)
         contentView.addSubview(nameLabel)
@@ -45,19 +45,19 @@ extension SunnyDrugOrderDocInfoCell {
         
         iconView.snp.makeConstraints { (make) in
             make.left.equalTo(15)
-            make.top.equalTo(10)
-            make.bottom.equalTo(-10)
-            make.width.height.equalTo(50)
+            make.top.equalTo(7.5)
+            make.bottom.equalTo(-7.5)
+            make.width.height.equalTo(60)
         }
         
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(15)
-            make.left.equalTo(iconView.snp.right).offset(14)
+            make.left.equalTo(iconView.snp.right).offset(12)
         }
         
         professionLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(nameLabel)
-            make.left.equalTo(nameLabel.snp.right).offset(15)
+            make.left.equalTo(nameLabel.snp.right).offset(12)
             make.right.lessThanOrEqualTo(-15)
             make.width.equalTo(0)
         }

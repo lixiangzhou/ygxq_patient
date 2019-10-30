@@ -75,10 +75,10 @@ extension SunnyDrugOrderDetailController: UITableViewDataSource, UITableViewDele
         case let .patient(model: model):
             let cell = tableView.dequeue(cell: SunnyDrugOrderPatientInfoCell.self, for: indexPath)
             
-            cell.nameView.rightLabel.text = model.realName
+            cell.nameView.text = model.realName
             cell.mobileView.rightLabel.text = model.mobile.mobileSecrectString
-            cell.addressView.rightLabel.text = model.address
-            cell.remarkView.rightLabel.text = model.remark.isEmpty ? "暂无" : model.remark
+            cell.addressView.text = model.address
+            cell.remarkView.text = model.remark.isEmpty ? "暂无" : model.remark
             
             return cell
         case let .failReason(reason: reason):
@@ -89,7 +89,7 @@ extension SunnyDrugOrderDetailController: UITableViewDataSource, UITableViewDele
         case let .buyedDrugs(drugs: models, price: price):
             let cell = tableView.dequeue(cell: SunnyDrugOrderDrugsCell.self, for: indexPath)
             cell.txtLabel.text = viewModel.getDrugsString(models)
-            cell.priceView.rightLabel.text = "总价 ￥\(price)"
+            cell.priceView.rightLabel.attributedText = price
             return cell
             
         case let .express(company: company, expNo: expNo):
