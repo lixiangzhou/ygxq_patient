@@ -15,7 +15,7 @@ class MineViewModel: BaseViewModel {
     enum RowType: String {
 //        case myDoc = "我的档案"
         case consult = "我的咨询"
-        case sunnyDrug = "我的续药"
+        case sunnyDrug = "我的购药"
         case longService = "长期服务"
         case order = "我的订单"
         case setting = "设置"

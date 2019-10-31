@@ -55,6 +55,7 @@ class FourColumnView: BaseView {
                 instance.label2.text = item.c2String
                 instance.label3.text = item.c3String
                 instance.label4.text = item.c4String
+                instance.view.backgroundColor = idx % 2 == 0 ? .cf : UIColor(stringHexValue: "#F7F7F7")
                 
                 let isLast = (idx == items.count - 1)
                 if let lastView = lastView {
@@ -145,33 +146,42 @@ extension FourColumnView {
         
         let width = config.width
         let paddingX = config.horizontalPadding
+        let labelH = config.headerMinHeight - config.headerTopPadding - config.headerBottomPadding
         
         label1.snp.makeConstraints { (make) in
-            make.top.equalTo(config.headerTopPadding)
+            make.top.lessThanOrEqualTo(config.headerTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(paddingX)
             make.width.equalTo(width * config.c1 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.headerBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
         
         label2.snp.makeConstraints { (make) in
-            make.top.equalTo(config.headerTopPadding)
+            make.top.lessThanOrEqualTo(config.headerTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(width * config.c1 + paddingX)
             make.width.equalTo(width * config.c2 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.headerBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
         
         label3.snp.makeConstraints { (make) in
-            make.top.equalTo(config.headerTopPadding)
+            make.top.lessThanOrEqualTo(config.headerTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(width * (config.c1 + config.c2) + paddingX)
             make.width.equalTo(width * config.c3 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.headerBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
         
         label4.snp.makeConstraints { (make) in
-            make.top.equalTo(config.headerTopPadding)
+            make.top.lessThanOrEqualTo(config.headerTopPadding)
+            make.centerY.equalToSuperview()
             make.left.equalTo(width * (config.c1 + config.c2 + config.c3) + paddingX)
             make.width.equalTo(width * config.c4 - paddingX * 2)
             make.bottom.lessThanOrEqualTo(-config.headerBottomPadding)
+            make.height.greaterThanOrEqualTo(labelH)
         }
     }
     
@@ -189,7 +199,7 @@ extension FourColumnView {
         let width = config.width
         let paddingX = config.horizontalPadding
         
-        let labelH = 45 - config.rowTopPadding - config.rowBottomPadding
+        let labelH = config.rowMinHeight - config.rowTopPadding - config.rowBottomPadding
         
         label1.snp.makeConstraints { (make) in
             make.top.lessThanOrEqualTo(config.rowTopPadding)
@@ -277,12 +287,14 @@ struct FourColumnViewConfig {
     var headerTextColor: UIColor
     var headerTopPadding: CGFloat
     var headerBottomPadding: CGFloat
+    var headerMinHeight: CGFloat
     
     var rowBgColor: UIColor
     var rowFont: UIFont
     var rowTextColor: UIColor
     var rowTopPadding: CGFloat
     var rowBottomPadding: CGFloat
+    var rowMinHeight: CGFloat
     
     var lineColor: UIColor
     var lineWidth: CGFloat
@@ -299,16 +311,18 @@ struct FourColumnViewConfig {
          c2Title: String,
          c3Title: String,
          c4Title: String,
-         headerBgColor: UIColor = UIColor.cf0efef.withAlphaComponent(0.5),
-         headerFont: UIFont = .size(16),
+         headerBgColor: UIColor = UIColor.ce9f1fe,
+         headerFont: UIFont = .size(15),
          headerTextColor: UIColor = .c6,
          headerTopPadding: CGFloat = 15,
          headerBottomPadding: CGFloat = 15,
+         headerMinHeight: CGFloat = 45,
          rowBgColor: UIColor = .cf,
          rowFont: UIFont = .size(14),
          rowTextColor: UIColor = .c3,
          rowTopPadding: CGFloat = 10,
          rowBottomPadding: CGFloat = 10,
+         rowMinHeight: CGFloat = 45,
          lineColor: UIColor = .cdcdcdc,
          lineWidth: CGFloat = 0.5,
          horizontalPadding: CGFloat = 5) {
@@ -329,12 +343,14 @@ struct FourColumnViewConfig {
         self.headerTextColor = headerTextColor
         self.headerTopPadding = headerTopPadding
         self.headerBottomPadding = headerBottomPadding
+        self.headerMinHeight = headerMinHeight
         
         self.rowBgColor = rowBgColor
         self.rowFont = rowFont
         self.rowTextColor = rowTextColor
         self.rowTopPadding = rowTopPadding
         self.rowBottomPadding = rowBottomPadding
+        self.rowMinHeight = rowMinHeight
         
         self.lineColor = lineColor
         self.lineWidth = lineWidth

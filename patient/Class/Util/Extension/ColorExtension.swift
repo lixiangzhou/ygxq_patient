@@ -132,7 +132,9 @@ extension UIColor {
         return UIColor(stringHexValue: "#7c97b0")!
     }
     
-    
+    static var ce9f1fe: UIColor {
+        return UIColor(stringHexValue: "#e9f1fe")!
+    }
     
     /// 头像边框色
     static var c7bbbfd: UIColor {

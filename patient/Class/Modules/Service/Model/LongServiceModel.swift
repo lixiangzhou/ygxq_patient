@@ -36,6 +36,8 @@ extension LongServiceModel: ThreeColumnViewModelProtocol {
             return "阳光续药"
         case "UTOPIA15":
             return "视频咨询"
+        case "UTOPIA17":
+            return "阳光调药"
         default:
             return ""
         }

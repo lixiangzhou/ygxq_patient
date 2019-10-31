@@ -57,8 +57,8 @@ extension SunnyDrugOrderListController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(cell: SunnyDrugOrderCell.self, for: indexPath)
         let model = viewModel.dataSourceProperty.value[indexPath.row]
-        
-        cell.nameLabel.text = "阳光续药"
+        let name = model.serConsultVideoId > 0 ? "阳光调药" : "阳光续药"
+        cell.nameLabel.text = name
         cell.timeLabel.text = model.createTime.toTime()
         cell.descLabel.text = model.drugName.isEmpty ? "发起了阳光续药服务" : "购买药品：\(model.drugName)"
         cell.lookClosure = { [weak self] in

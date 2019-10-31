@@ -33,19 +33,19 @@ extension LongServicesController {
     
     override func loadCtls() {
         let vc1 = LongServiceController()
-        vc1.title = "1个月"
+        vc1.title = "月"
         vc1.viewModel.indate = 1
         vc1.viewModel.did = did
         vc1.viewModel.index = 0
         
         let vc2 = LongServiceController()
-        vc2.title = "3个月"
+        vc2.title = "季"
         vc2.viewModel.indate = 3
         vc2.viewModel.did = did
         vc2.viewModel.index = 1
         
         let vc3 = LongServiceController()
-        vc3.title = "12个月"
+        vc3.title = "年"
         vc3.viewModel.indate = 12
         vc3.viewModel.did = did
         vc3.viewModel.index = 2

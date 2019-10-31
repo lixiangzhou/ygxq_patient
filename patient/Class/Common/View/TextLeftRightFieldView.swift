@@ -25,10 +25,6 @@ class TextLeftRightFieldView: UIView {
     // MARK: - Public Property
     var config: TextLeftRightFieldViewConfig? {
         didSet {
-            if config == oldValue {
-                return
-            }
-            
             guard let config = config else {
                 return
             }
@@ -159,22 +155,5 @@ struct TextLeftRightFieldViewConfig {
         self.bottomLineColor = bottomLineColor
         self.bottomLineRightPadding = bottomLineRightPadding
         self.bottomLineHeight = bottomLineHeight
-    }
-}
-
-extension TextLeftRightFieldViewConfig: Equatable {
-    static func == (lhs: TextLeftRightFieldViewConfig, rhs: TextLeftRightFieldViewConfig) -> Bool {
-        return lhs.leftPadding == rhs.leftPadding &&
-            lhs.rightPadding == rhs.rightPadding &&
-            lhs.leftFont.pointSize == rhs.leftFont.pointSize &&
-            lhs.leftTextColor.rgbaValue == rhs.leftTextColor.rgbaValue &&
-            lhs.rightFont.pointSize == rhs.rightFont.pointSize &&
-            lhs.rightTextColor.rgbaValue == rhs.rightTextColor.rgbaValue &&
-            lhs.rightWidth == rhs.rightWidth &&
-            lhs.hasBottomLine == rhs.hasBottomLine &&
-            lhs.bottomLineColor?.rgbaValue == rhs.bottomLineColor?.rgbaValue &&
-            lhs.bottomLineLeftPadding == rhs.bottomLineLeftPadding &&
-            lhs.bottomLineRightPadding == rhs.bottomLineRightPadding &&
-            lhs.bottomLineHeight == rhs.bottomLineHeight
     }
 }

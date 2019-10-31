@@ -15,7 +15,7 @@ class SunnyDrugOrderController: LLSegmentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "我的续药"
+        title = "我的购药"
         setUI()
     }
 

@@ -17,8 +17,8 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     let priceProperty = MutableProperty<Double>(0)
     
     var backAction: PayViewModel.ResultAction?
-    /// 如果有值，说明是视频后的购药，必须微信支付
-    var serVideoId: Int?
+    /// 如果有值，说明是视频后的购药
+    var serVideoId = 0
     
     var did = 0
     var serType = ""
@@ -65,7 +65,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     }
     
     var isToPayWay: Bool {
-        return serVideoId == nil || myPrivateDoctorOrderProperty.value.ser_code.isEmpty
+        return myPrivateDoctorOrderProperty.value.ser_code.isEmpty
     }
     
     func getPrivateDoctor() {

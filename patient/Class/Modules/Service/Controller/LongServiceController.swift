@@ -60,42 +60,9 @@ extension LongServiceController {
                 self.tableView.emptyDataSetView { (view) in
                     let emptyView = UIView()
                     let imgView = emptyView.zz_add(subview: UIImageView(image: UIImage(named: "service_empty")))
-                    let descLabel = emptyView.zz_add(subview: UILabel(text: "您还没有购买过该医生\(self.viewModel.indate)个月的服务套餐", font: .size(14), textColor: .c6, textAlignment: .center))
+                    let descLabel = emptyView.zz_add(subview: UILabel(text: "您还没有购买过该医生的长期服务/\(self.title ?? "")", font: .size(14), textColor: .c6, textAlignment: .center))
                     let buyBtn = emptyView.zz_add(subview: UIButton(title: "立即购买", font: .size(18), titleColor: .cff9a21, backgroundColor: .cf, target: self, action: #selector(self.buyAction)))
                     buyBtn.isHidden = !result.1
-                    buyBtn.zz_setBorder(color: .cff9a21, width: 1)
-                    buyBtn.zz_setCorner(radius: 6, masksToBounds: true)
-                    buyBtn.tag = self.viewModel.index
-                    imgView.snp.makeConstraints({ (make) in
-                        make.top.centerX.equalToSuperview()
-                    })
-                    descLabel.snp.makeConstraints({ (make) in
-                        make.top.equalTo(imgView.snp.bottom).offset(15)
-                        make.left.right.centerX.equalToSuperview()
-                    })
-                    buyBtn.snp.makeConstraints({ (make) in
-                        make.top.equalTo(descLabel.snp.bottom).offset(15)
-                        make.centerX.bottom.equalToSuperview()
-                        make.size.equalTo(CGSize(width: 110, height: 35))
-                    })
-                    
-                    view.customView(emptyView).verticalOffset(-80)
-                }
-            } else {
-                self.tableView.setEmptyData(title: nil)
-            }
-            self.tableView.reloadEmptyDataSet()
-        }
-        
-        viewModel.dataSourceProperty.signal.observeValues { [weak self] (values) in
-            guard let self = self else { return }
-            
-            if values.isEmpty {
-                self.tableView.emptyDataSetView { (view) in
-                    let emptyView = UIView()
-                    let imgView = emptyView.zz_add(subview: UIImageView(image: UIImage(named: "service_empty")))
-                    let descLabel = emptyView.zz_add(subview: UILabel(text: "您还没有购买过该医生\(self.viewModel.indate)个月的服务套餐", font: .size(14), textColor: .c6, textAlignment: .center))
-                    let buyBtn = emptyView.zz_add(subview: UIButton(title: "立即购买", font: .size(18), titleColor: .cff9a21, backgroundColor: .cf, target: self, action: #selector(self.buyAction)))
                     buyBtn.zz_setBorder(color: .cff9a21, width: 1)
                     buyBtn.zz_setCorner(radius: 6, masksToBounds: true)
                     buyBtn.tag = self.viewModel.index
