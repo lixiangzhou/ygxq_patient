@@ -29,6 +29,7 @@ class OrderController: LLSegmentViewController {
         super.viewDidAppear(animated)
         
         if let idx = selectIndex {
+            selectIndex = nil
             selected(at: idx, animation: true)
         }
     }

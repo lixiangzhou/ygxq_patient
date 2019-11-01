@@ -197,8 +197,8 @@ extension SunnyDrugBuyController {
             params["fromWhere"] = 1
         } else {
             // 视频后购药
-            if let videoid = viewModel.serVideoId {
-                params["serConsultVideoId"] = videoid
+            if viewModel.serVideoId > 0 {
+                params["serConsultVideoId"] = viewModel.serVideoId
             }
             params["remark"] = addressView.remarkInputView.textView.text!
         }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-let context = Context.develop
+let context = Context.test
 
 struct NetworkConfig {
     /// 接口服务器
@@ -19,7 +19,7 @@ struct NetworkConfig {
         case .test:
             return URL(string: "http://172.21.24.251:8889/shdr-service-basic")!
         case .develop:
-//            return URL(string: "http://172.21.20.68:8889/shdr-service-basic")!
+            return URL(string: "http://172.21.20.68:8889/shdr-service-basic")!
             return URL(string: "http://172.21.24.252:8889/shdr-service-basic")!
         }
     }
