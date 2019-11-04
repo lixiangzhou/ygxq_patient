@@ -117,7 +117,9 @@ extension BindedDoctorsController: UITableViewDataSource, UITableViewDelegate {
         
         var sers = [String]()
         for ser in model.doctorSers {
-            sers.append(ser.serName)
+            if ser.serType != "UTOPIA17" {            
+                sers.append(ser.serName)
+            }
         }
 //        cell.servicesLabel.attributedText = viewModel.getServices(model: model) //sers.isEmpty ? "暂未开通任何服务" : sers.joined(separator: " ")
         cell.services = sers

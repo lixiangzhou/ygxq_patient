@@ -22,7 +22,6 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     
     var did = 0
     var serType = ""
-    var taskId = 0
     
     func buySunnyDrug(params: [String: Any]) {
         HUD.showLoding()
@@ -53,15 +52,13 @@ class SunnyDrugBuyViewModel: BaseViewModel {
                     self?.orderIdProperty.value = resp.content ?? 0
                 }
             }
-        } else { // 视频后购药
+        } else {
             ServiceApi.createWorkOrder(params: params).rac_response(Int.self).startWithValues { [weak self] (resp) in
                 HUD.hideLoding()
                 UIApplication.shared.endIgnoringInteractionEvents()
                 HUD.show(BoolString(resp))
                 if resp.isSuccess {
-                    CommonApi.updateTaskState(id: self?.taskId ?? 0).rac_response(String.self).startWithValues { (_) in                    
-                        self?.buyFromLongServiceSuccessProperty.value = true
-                    }
+                    self?.buyFromLongServiceSuccessProperty.value = true
                 }
             }
         }

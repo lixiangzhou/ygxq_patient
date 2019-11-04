@@ -30,7 +30,9 @@ class DoctorDetailViewModel: BaseViewModel {
             var sers2 = [DoctorSerModel]()
             for m in list {
                 if m.serType.hasPrefix("UTOPIA") {
-                    sers1.append(m)
+                    if m.serType != "UTOPIA17" {                    
+                        sers1.append(m)
+                    }
                 } else {
                     sers2.append(m)
                 }
