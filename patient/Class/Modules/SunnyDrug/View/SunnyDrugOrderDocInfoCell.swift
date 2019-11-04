@@ -36,6 +36,8 @@ class SunnyDrugOrderDocInfoCell: UITableViewCell {
 // MARK: - UI
 extension SunnyDrugOrderDocInfoCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         iconView.zz_setCorner(radius: 30, masksToBounds: true)
         
         contentView.addSubview(iconView)

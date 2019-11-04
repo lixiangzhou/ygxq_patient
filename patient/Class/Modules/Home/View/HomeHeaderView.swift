@@ -13,7 +13,7 @@ class HomeHeaderView: BaseView {
     // MARK: - Life Cycle
     
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 90 + pagerHeight + actionsHeight + caseHeight + taskHeight + 45 + UIScreen.zz_statusBar_additionHeight))
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.zz_width, height: 90 + pagerHeight + actionsHeight + caseHeight + taskHeight + 36 + UIScreen.zz_statusBar_additionHeight))
         
         setUI()
     }
@@ -31,9 +31,9 @@ class HomeHeaderView: BaseView {
     
     // MARK: - Private Property
     private let pagerHeight = (UIScreen.zz_width - 30) * 3.0 / 7.0
-    private let actionsHeight: CGFloat = 82
-    private let caseHeight: CGFloat = 107
-    private let taskHeight: CGFloat = 147
+    private let actionsHeight: CGFloat = 85
+    private let caseHeight: CGFloat = 110
+    private let taskHeight: CGFloat = 150
 }
 
 // MARK: - UI

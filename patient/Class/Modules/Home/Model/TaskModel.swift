@@ -60,7 +60,7 @@ extension TaskModel {
     var serType: String {
         switch subType {
         case "CMN_MSG_T_05_05":
-            return "UTOPIA16"
+            return "UTOPIA17"
         default:
             return ""
         }

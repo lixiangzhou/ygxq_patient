@@ -44,6 +44,8 @@ class SystemMsgCell: UITableViewCell {
 // MARK: - UI
 extension SystemMsgCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         contentView.addSubview(msgLabel)
         contentView.addSubview(unReadLabel)
         contentView.addBottomLine()

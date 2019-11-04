@@ -36,6 +36,8 @@ class LongServiceDoctorListCell: UITableViewCell {
 // MARK: - UI
 extension LongServiceDoctorListCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         iconView.zz_setCorner(radius: 30, masksToBounds: true)
         
         contentView.addSubview(iconView)

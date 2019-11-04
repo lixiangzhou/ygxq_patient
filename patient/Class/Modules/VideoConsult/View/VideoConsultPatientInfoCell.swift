@@ -35,6 +35,8 @@ class VideoConsultPatientInfoCell: UITableViewCell {
 // MARK: - UI
 extension VideoConsultPatientInfoCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         let topSepView = contentView.zz_add(subview: UIView())
         topSepView.backgroundColor = .cf0efef
         

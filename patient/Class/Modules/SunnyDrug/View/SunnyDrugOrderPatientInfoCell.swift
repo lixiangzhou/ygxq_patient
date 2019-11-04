@@ -36,6 +36,8 @@ class SunnyDrugOrderPatientInfoCell: UITableViewCell {
 // MARK: - UI
 extension SunnyDrugOrderPatientInfoCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         let topSepView = contentView.zz_add(subview: UIView())
         topSepView.backgroundColor = .cf0efef
         

@@ -49,6 +49,8 @@ class BindedDoctorsCell: UITableViewCell {
 // MARK: - UI
 extension BindedDoctorsCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         iconView.zz_setCorner(radius: 30, masksToBounds: true)
         iconView.zz_setBorder(color: .cdcdcdc, width: 0.5)
         

@@ -39,7 +39,7 @@ extension TaskTipListController {
     override func setUI() {
         tableView.set(dataSource: self, delegate: self, separatorStyle: .none, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: TaskTipListCell.self)
-        tableView.backgroundColor = .cf
+        tableView.backgroundColor = .cf0efef
         view.addSubview(tableView)
         
         tableView.headerRefreshClosure = { [weak self] in
@@ -69,6 +69,7 @@ extension TaskTipListController {
                 vc.viewModel.did = result.0.gotoJsonDuid
                 vc.viewModel.serType = result.0.serType
                 vc.viewModel.serVideoId = result.0.linkId
+                vc.viewModel.taskId = result.0.id
                 vc.viewModel.backAction = PayViewModel.ResultAction(backClassName: self?.zz_className ?? "TaskTipListController", type: .singleSunnyDrug)
                 self?.push(vc)
             }

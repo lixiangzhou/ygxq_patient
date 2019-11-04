@@ -35,6 +35,8 @@ class TaskTipListCell: UITableViewCell {
 // MARK: - UI
 extension TaskTipListCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         btn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
         
         let topView = contentView.zz_add(subview: UIView())

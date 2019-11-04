@@ -205,7 +205,7 @@ class DoctorDetailViewModel: BaseViewModel {
     
     func getSerImg(_ model: DoctorSerModel) -> UIImage? {
         switch model.serType {
-        case "UTOPIA16":
+        case "UTOPIA17":
             return UIImage(named: "service_sunnydrug")
         case "UTOPIA15":
             return UIImage(named: "service_video")

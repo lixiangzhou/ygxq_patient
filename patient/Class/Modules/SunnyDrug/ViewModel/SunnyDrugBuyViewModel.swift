@@ -22,6 +22,7 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     
     var did = 0
     var serType = ""
+    var taskId = 0
     
     func buySunnyDrug(params: [String: Any]) {
         HUD.showLoding()
@@ -58,7 +59,9 @@ class SunnyDrugBuyViewModel: BaseViewModel {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 HUD.show(BoolString(resp))
                 if resp.isSuccess {
-                    self?.buyFromLongServiceSuccessProperty.value = true
+                    CommonApi.updateTaskState(id: self?.taskId ?? 0).rac_response(String.self).startWithValues { (_) in                    
+                        self?.buyFromLongServiceSuccessProperty.value = true
+                    }
                 }
             }
         }
@@ -71,12 +74,13 @@ class SunnyDrugBuyViewModel: BaseViewModel {
     func getPrivateDoctor() {
         ServiceApi.isMyPrivateDoctor(did: did, pid: patientId, type: serType).rac_responseModel(OrderModel.self).skipNil().skip { $0.orderId == 0 }.startWithValues { [weak self] (value) in
             self?.myPrivateDoctorOrderProperty.value = value
+            self?.getDrugPrice()
         }
     }
     
     func getDrugPrice() {
         if isToPayWay {        
-            ServiceApi.getDrugPrice(did: did, serType: "UTOPIA16").rac_responseModel(LongServiceModel.self).startWithValues { [weak self] (model) in
+            ServiceApi.getDrugPrice(did: did, serType: serType).rac_responseModel(LongServiceModel.self).startWithValues { [weak self] (model) in
                 self?.priceProperty.value = model?.serPrice ?? 0
             }
         }

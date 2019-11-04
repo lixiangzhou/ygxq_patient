@@ -38,6 +38,8 @@ class SunnyDrugOrderCell: UITableViewCell {
 // MARK: - UI
 extension SunnyDrugOrderCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         let topView = contentView.zz_add(subview: UIView())
         topView.addSubview(nameLabel)
         topView.addSubview(timeLabel)

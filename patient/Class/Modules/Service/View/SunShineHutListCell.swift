@@ -35,6 +35,8 @@ class SunShineHutListCell: UITableViewCell {
 // MARK: - UI
 extension SunShineHutListCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         iconView.backgroundColor = .cf0efef
         iconView.zz_setBorder(color: .cdcdcdc, width: 0.5)
         iconView.zz_setCorner(radius: 5, masksToBounds: true)

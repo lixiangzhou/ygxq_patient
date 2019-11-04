@@ -187,14 +187,19 @@ extension SunnyDrugBuyController {
         
         if !viewModel.isToPayWay {
             let orderModel = viewModel.myPrivateDoctorOrderProperty.value
-            params["keyObject"] = "阳光续药"
+            params["keyObject"] = "阳光调药"
             params["orderId"] = orderModel.orderId
             params["productItmId"] = orderModel.productItemId
             params["productName"] = orderModel.product_name
             params["serCode"] = orderModel.ser_code
-            params["workType"] = "TSK_WORK_T_20"
+            params["workType"] = "TSK_WORK_T_25"
             params["consultContent"] = addressView.remarkInputView.textView.text!
             params["fromWhere"] = 1
+            
+            // 视频后购药
+            if viewModel.serVideoId > 0 {
+                params["serConsultVideoId"] = viewModel.serVideoId
+            }
         } else {
             // 视频后购药
             if viewModel.serVideoId > 0 {

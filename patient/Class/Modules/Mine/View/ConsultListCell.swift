@@ -38,6 +38,8 @@ class ConsultListCell: UITableViewCell {
 // MARK: - UI
 extension ConsultListCell {
     private func setUI() {
+        contentView.backgroundColor = .cf
+        
         let topView = contentView.zz_add(subview: UIView())
         topView.addSubview(nameLabel)
         topView.addSubview(timeLabel)
