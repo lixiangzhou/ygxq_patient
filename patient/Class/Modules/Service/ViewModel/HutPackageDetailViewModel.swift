@@ -16,8 +16,6 @@ class HutPackageDetailViewModel: BaseViewModel {
     
     let addressModelProperty = MutableProperty<AddressModel?>(nil)
     
-    var from = From.list
-    
     override init() {
         super.init()
         
@@ -107,10 +105,5 @@ extension HutPackageDetailViewModel {
     struct TargetAudienceModel {
         let pic: String
         let title: String
-    }
-    
-    enum From {
-        case list
-        case ecg
     }
 }

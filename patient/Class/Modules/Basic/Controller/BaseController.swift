@@ -32,7 +32,17 @@ class BaseController: UIViewController {
         if hideNavigation {
             navigationController?.setNavigationBarHidden(true, animated: animated)
         }
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let backClassName = backClassName, var vcs = navigationController?.children, let idx = vcs.firstIndex(where: { $0.zz_className == backClassName }) {
+            if idx + 1 <= vcs.count - 2 {
+                vcs.removeSubrange((idx + 1)...(vcs.count - 2))
+                navigationController?.setValue(vcs, forKey: "viewControllers")
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,6 +59,8 @@ class BaseController: UIViewController {
     
     var couldShowLogin = true
     var hideNavigation = false
+    
+    var backClassName: String?
 }
 
 // MARK: - UI

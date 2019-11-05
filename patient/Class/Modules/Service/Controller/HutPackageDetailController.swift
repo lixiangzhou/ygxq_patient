@@ -21,21 +21,6 @@ class HutPackageDetailController: BaseController {
         setBinding()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        switch viewModel.from {
-        case .list:
-            break
-        case .ecg:
-            var vcs = navigationController?.children
-            vcs?.removeAll(where: { (vc) -> Bool in
-                return vc.zz_className == "HealthDataECGShowController"
-            })
-            navigationController?.setValue(vcs, forKey: "viewControllers")
-        }
-    }
-
     // MARK: - Public Property
     let viewModel = HutPackageDetailViewModel()
     // MARK: - Private Property
@@ -107,18 +92,6 @@ extension HutPackageDetailController {
                 return m1!.id == m2!.id
             }
         }).map(value: ())
-    }
-}
-
-// MARK: - Action
-extension HutPackageDetailController {
-    override func backAction() {
-        switch viewModel.from {
-        case .list:
-            super.backAction()
-        default:
-            popToRoot()
-        }
     }
 }
 

@@ -155,7 +155,7 @@ extension HealthDataECGShowController {
                     self?.viewModel.checkToBuy({ (model) in
                         let vc = HutPackageDetailController()
                         vc.viewModel.hutModelProperty.value = model
-                        vc.viewModel.from = .ecg
+                        vc.backClassName = "HealthDataController"
                         self?.push(vc)
                         alert.hide()
                     })
