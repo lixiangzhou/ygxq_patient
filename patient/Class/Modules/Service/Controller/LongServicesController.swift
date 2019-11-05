@@ -18,39 +18,68 @@ class LongServicesController: LLSegmentViewController {
         title = "服务详情"
         setUI()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let idx = selectIndex {
+            switch idx {
+            case 0:
+                vc1.viewModel.getData()
+            case 1:
+                vc2.viewModel.getData()
+            case 2:
+                vc3.viewModel.getData()
+            default:
+                break
+            }
+        }
+    }
+    
     // MARK: - Public Property
     var did = 0
+    var selectIndex: Int?
     // MARK: - Private Property
-    
+    let vc1 = LongServiceController()
+    let vc2 = LongServiceController()
+    let vc3 = LongServiceController()
 }
 
 // MARK: - UI
 extension LongServicesController {
     override func setUI() {
         loadSegmentedConfig()
+        segmentCtlView.delegate = self
     }
     
     override func loadCtls() {
-        let vc1 = LongServiceController()
         vc1.title = "月"
         vc1.viewModel.indate = 1
         vc1.viewModel.did = did
         vc1.viewModel.index = 0
         
-        let vc2 = LongServiceController()
         vc2.title = "季"
         vc2.viewModel.indate = 3
         vc2.viewModel.did = did
         vc2.viewModel.index = 1
         
-        let vc3 = LongServiceController()
         vc3.title = "年"
         vc3.viewModel.indate = 12
         vc3.viewModel.did = did
         vc3.viewModel.index = 2
         
         reloadViewControllers(ctls:[vc1, vc2, vc3])
+    }
+}
+
+
+extension LongServicesController: LLSegmentedControlDelegate {
+    func segMegmentCtlView(segMegmentCtlView: LLSegmentedControl, clickItemAt sourceItemView: LLSegmentBaseItemView, to destinationItemView: LLSegmentBaseItemView) {
+        selectIndex = destinationItemView.index
+    }
+    
+    func segMegmentCtlView(segMegmentCtlView: LLSegmentedControl,dragToSelected itemView: LLSegmentBaseItemView) {
+        selectIndex = itemView.index
     }
 }
 

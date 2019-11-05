@@ -16,7 +16,7 @@ class SunnyDrugOrderDetailController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "阳光续药"
+//        title = "阳光续药"
         setUI()
         setBinding()
         viewModel.getData()

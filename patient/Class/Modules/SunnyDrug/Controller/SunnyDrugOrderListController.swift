@@ -72,6 +72,7 @@ extension SunnyDrugOrderListController: UITableViewDataSource, UITableViewDelega
                 ActionCollecter.sendData(lev: "38")
             }
             let vc = SunnyDrugOrderDetailController()
+            vc.title = name
             vc.viewModel.id = model.id
             self.push(vc)
         }

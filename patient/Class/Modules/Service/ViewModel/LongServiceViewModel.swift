@@ -22,6 +22,11 @@ class LongServiceViewModel: BaseViewModel {
     
     let hasOpenSerProperty = MutableProperty<Bool>(false)
     
+    func getData() {
+        getServiceInfo()
+        getSers()
+    }
+    
     /// 获取套餐
     func getServices() {
         ServiceApi.queryServices(did: did).rac_responseModel([LongServiceModel].self).skipNil().startWithValues { [weak self] (result) in

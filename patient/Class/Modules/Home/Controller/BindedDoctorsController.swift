@@ -117,7 +117,7 @@ extension BindedDoctorsController: UITableViewDataSource, UITableViewDelegate {
         
         var sers = [String]()
         for ser in model.doctorSers {
-            if ser.serType != "UTOPIA17" {            
+            if ser.serType != "UTOPIA17" {
                 sers.append(ser.serName)
             }
         }

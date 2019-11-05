@@ -18,8 +18,7 @@ class LongServiceController: BaseController {
 
         setUI()
         setBinding()
-        viewModel.getServiceInfo()
-        viewModel.getSers()
+        viewModel.getData()
     }
 
     // MARK: - Public Property
@@ -94,7 +93,7 @@ extension LongServiceController {
         viewModel.getOrder { [weak self] (orderId) in
             let vc = PayController()
             vc.viewModel.orderId = orderId
-            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: self?.zz_className ?? "LongServiceController", type: .longSer)
+            vc.viewModel.resultAction = PayViewModel.ResultAction(backClassName: "LongServicesController", type: .longSer)
             self?.push(vc)
         }
     }
