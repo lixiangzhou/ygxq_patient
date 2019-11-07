@@ -32,7 +32,7 @@ class UploadHistoryController: BaseController {
 // MARK: - UI
 extension UploadHistoryController {
     override func setUI() {
-        tableView.backgroundColor = .cf
+        tableView.backgroundColor = .cf0efef
         tableView.set(dataSource: self, delegate: self, rowHeight: UITableView.automaticDimension)
         tableView.register(cell: UploadHistoryCell.self)
         view.addSubview(tableView)

@@ -69,7 +69,7 @@ extension HomeHeaderCaseView {
         let innerView = view.zz_add(subview: UIView())
         let iconView = innerView.zz_add(subview: UIImageView(image: UIImage(named: img)))
         iconView.contentMode = .scaleAspectFit
-        let titleLabel = innerView.zz_add(subview: UILabel(text: title, font: .size(18), textColor: .c6))
+        let titleLabel = innerView.zz_add(subview: UILabel(text: title, font: .size(18), textColor: .c3))
         
         view.zz_setCorner(radius: 5, masksToBounds: true)
         view.zz_setBorder(color: color, width: 1)
