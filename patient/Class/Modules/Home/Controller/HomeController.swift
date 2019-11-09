@@ -23,7 +23,7 @@ class HomeController: BaseController {
         viewModel.getBanners()
         viewModel.getTasks()
         viewModel.getUnReadMsgCount()
-        RCManager.shared.connect(nil)
+        RCManager.shared.connect()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,10 +149,10 @@ extension HomeController {
     }
 
     @objc private func noticeAction() {
-//        push(SystemMsgController())
-        let vc = PlayerController()
-
-        push(vc)
+        push(SystemMsgController())
+//        let vc = PlayerController()
+//
+//        push(vc)
         
         
     }

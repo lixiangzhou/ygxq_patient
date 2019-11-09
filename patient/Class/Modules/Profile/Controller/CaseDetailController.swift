@@ -93,6 +93,7 @@ extension CaseDetailController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeue(cell: CaseDetailOpCell.self, for: indexPath)
             cell.titleLabel.text = record.title
             cell.opView.items = record.items
+            
             return cell
         }
     }
