@@ -47,10 +47,12 @@ class RCManager: NSObject {
         case .release:
             return "8w7jv4qb83aey"
         case .test:
-            return "uwd1c0sxuqql1"
+            return "mgb7ka1nmdfxg"
+//            return "uwd1c0sxuqql1"
         case .develop:
 //            return "x18ywvqfxcclc"
-            return "k51hidwqk4anb" // 3.0 引擎  对应的secret(服务端使用)：9AVKP0469gk23N
+            return "mgb7ka1nmdfxg"
+//            return "k51hidwqk4anb" // 3.0 引擎  对应的secret(服务端使用)：9AVKP0469gk23N
         }
     }
     
@@ -76,8 +78,12 @@ class RCManager: NSObject {
 
 // MARK: - 连接
 extension RCManager {
-    /// 1. 通过 getRCModel 获取token；2.连接融云；3.失败时刷新token并重连
-    func connect(_ completion: ((Bool) -> Void)? = nil) {
+    /// 1. 通过 getRCModel 获取token；2.连接融云
+    func connect() {
+        if RCIM.shared()?.getConnectionStatus() == RCConnectionStatus.ConnectionStatus_Connected {
+            return
+        }
+        
         if isLogin {
             print("==>RC连接 获取Token")
             getRCModel { (model) in
@@ -85,65 +91,11 @@ extension RCManager {
                     self.save(model)
                     print("==>RC连接 获取Token成功")
                     print("==>RC连接 ...")
-                    RCIM.shared()?.connect(withToken: model.rcToken, success: { (rcId) in
-                        if rcId != nil {
-                            print("==>RC连接 成功")
-                            completion?(true)
-                        } else {
-                            print("==>RC连接 失败")
-                            self.reConnect(completion)
-                        }
-                    }, error: { (errorCode) in
-                        print("==>RC连接 失败：RCConnectErrorCode \(errorCode.rawValue)")
-                        if errorCode == .CONN_TOKEN_INCORRECT {
-                            self.reConnect(completion)
-                        }
-                    }) {
-                        print("==>RC连接 失败: tokenIncorrect")
-                        self.reConnect(completion)
-                    }
+                    
+                    RCIM.shared()?.connect(withToken: model.rcToken, success: nil, error: nil, tokenIncorrect: nil)
                 } else {
-                    print("==>RC连接 获取Token失败")
-                    self.reConnect(completion)
                 }
             }
-        } else {
-            print("==>RC连接 未登录")
-            completion?(false)
-        }
-    }
-    
-    /// 刷新token 并重连
-    private func reConnect(_ completion: ((Bool) -> Void)? = nil) {
-        print("==>重新获取Token")
-        if isLogin {
-            UserApi.createRCToken(userId: userId).responseModel(RCModel.self) { (rcModel) in
-                if let model = rcModel {
-                    self.save(model)
-                    print("==>重新连接RC ...")
-                    RCIM.shared()?.connect(withToken: model.rcToken, success: { (rcId) in
-                        if rcId != nil {
-                            print("==>重新连接RC 成功")
-                            completion?(true)
-                        } else {
-                            print("==>重新连接RC 失败")
-                            completion?(false)
-                        }
-                    }, error: { (errorCode) in
-                        print("==>重新连接RC 失败：RCConnectErrorCode \(errorCode.rawValue)")
-                        completion?(false)
-                    }, tokenIncorrect: {
-                        print("==>重新连接RC 失败: tokenIncorrect")
-                        completion?(false)
-                    })
-                } else {
-                    print("==>重新获取Token 失败")
-                    completion?(false)
-                }
-            }
-        } else {
-            print("==>重新获取Token 未登录")
-            completion?(false)
         }
     }
 }
@@ -153,17 +105,14 @@ extension RCManager {
     /// 获取TokenModel：1.本地获取token；2.服务器获取token；3.服务器刷新token
     private func getRCModel(completion: @escaping (RCModel?) -> Void) {
         if isLogin {
-            if let model = getCachedRCModel() { // 获取本地缓存的TokenModel
+            if let model = getCachedRCModel(), !model.rcToken.isEmpty { // 获取本地缓存的TokenModel
                 completion(model)
             } else {    // 服务器请求TokenModel
                 UserApi.getRCToken(userId: userId).responseModel(RCModel.self) { (rcModel) in
-                    if rcModel == nil {
-                        // Token 错误，在线上环境下主要是因为 Token 已经过期，您需要向 App Server 重新请求一个新的 Token
-                        UserApi.createRCToken(userId: self.userId).responseModel(RCModel.self) { (rcModel) in
-                            completion(rcModel)
-                        }
-                    } else {
+                    if let rcModel = rcModel, !rcModel.rcToken.isEmpty {
                         completion(rcModel)
+                    } else {
+                        completion(nil)
                     }
                 }
             }

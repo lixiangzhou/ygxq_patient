@@ -82,6 +82,16 @@ extension MineController {
             }
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if #available(iOS 11.0, *), !UIDevice.current.zz_isIPhoneX_Series {
+            tableView.snp.updateConstraints { (make) in
+                make.top.equalTo(-UIScreen.zz_nav_statusHeight + 20 - self.view.safeAreaInsets.top)
+            }
+        }
+    }
 }
 
 // MARK: - Action

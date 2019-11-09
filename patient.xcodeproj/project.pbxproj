@@ -44,6 +44,11 @@
 		100C2CFA2318BA7800A820BF /* PictureSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100C2CF92318BA7800A820BF /* PictureSelectViewModel.swift */; };
 		100FCC2D233620FD000E8E14 /* InvoiceExpressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FCC2C233620FD000E8E14 /* InvoiceExpressView.swift */; };
 		100FCC2F2338D0D1000E8E14 /* DoctorDetailMsgExpendableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FCC2E2338D0D0000E8E14 /* DoctorDetailMsgExpendableCell.swift */; };
+		1012D55423740BBF00084978 /* ZZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1012D54F23740BBF00084978 /* ZZPlayer.swift */; };
+		1012D55523740BC000084978 /* ZZPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1012D55023740BBF00084978 /* ZZPlayerView.swift */; };
+		1012D55623740BC000084978 /* ZZPlayerViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1012D55123740BBF00084978 /* ZZPlayerViewConfig.swift */; };
+		1012D55723740BC000084978 /* ZZPlayerItemResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1012D55223740BBF00084978 /* ZZPlayerItemResource.swift */; };
+		1012D55823740BC000084978 /* ZZPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1012D55323740BBF00084978 /* ZZPlayer.bundle */; };
 		1014CF9F229391DF00294558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1014CF9E229391DF00294558 /* AppDelegate.swift */; };
 		1014CFA6229391E200294558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1014CFA5229391E200294558 /* Assets.xcassets */; };
 		1014D0462293A6D700294558 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1014D0122293A6D700294558 /* HomeController.swift */; };
@@ -268,6 +273,7 @@
 		10676BF823069BD9004A6419 /* LongServiceDoctorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF723069BD9004A6419 /* LongServiceDoctorListViewModel.swift */; };
 		10676BFA23069BF3004A6419 /* LongServiceDoctorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BF923069BF3004A6419 /* LongServiceDoctorListController.swift */; };
 		10676BFC23069C0B004A6419 /* LongServiceDoctorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */; };
+		1069C8AD2373DDE500E3B4D3 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069C8AC2373DDE500E3B4D3 /* PlayerController.swift */; };
 		106D269722FAC851007D9A27 /* ForgetPwdMobileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */; };
 		106D269922FACD6C007D9A27 /* ForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D269822FACD6C007D9A27 /* ForgetPwdController.swift */; };
 		106D3753231E5A090079D899 /* PayResult2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D3752231E5A090079D899 /* PayResult2Controller.swift */; };
@@ -471,6 +477,11 @@
 		100C2CF92318BA7800A820BF /* PictureSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureSelectViewModel.swift; sourceTree = "<group>"; };
 		100FCC2C233620FD000E8E14 /* InvoiceExpressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceExpressView.swift; sourceTree = "<group>"; };
 		100FCC2E2338D0D0000E8E14 /* DoctorDetailMsgExpendableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailMsgExpendableCell.swift; sourceTree = "<group>"; };
+		1012D54F23740BBF00084978 /* ZZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZPlayer.swift; sourceTree = "<group>"; };
+		1012D55023740BBF00084978 /* ZZPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZPlayerView.swift; sourceTree = "<group>"; };
+		1012D55123740BBF00084978 /* ZZPlayerViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZPlayerViewConfig.swift; sourceTree = "<group>"; };
+		1012D55223740BBF00084978 /* ZZPlayerItemResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZPlayerItemResource.swift; sourceTree = "<group>"; };
+		1012D55323740BBF00084978 /* ZZPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZZPlayer.bundle; sourceTree = "<group>"; };
 		1014CF9B229391DF00294558 /* patient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = patient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1014CF9E229391DF00294558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1014CFA5229391E200294558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -707,6 +718,7 @@
 		10676BF723069BD9004A6419 /* LongServiceDoctorListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListViewModel.swift; sourceTree = "<group>"; };
 		10676BF923069BF3004A6419 /* LongServiceDoctorListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListController.swift; sourceTree = "<group>"; };
 		10676BFB23069C0B004A6419 /* LongServiceDoctorListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongServiceDoctorListCell.swift; sourceTree = "<group>"; };
+		1069C8AC2373DDE500E3B4D3 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		106D269622FAC851007D9A27 /* ForgetPwdMobileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdMobileController.swift; sourceTree = "<group>"; };
 		106D269822FACD6C007D9A27 /* ForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPwdController.swift; sourceTree = "<group>"; };
 		106D3752231E5A090079D899 /* PayResult2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayResult2Controller.swift; sourceTree = "<group>"; };
@@ -949,6 +961,19 @@
 			path = Aspects;
 			sourceTree = "<group>";
 		};
+		1012D54E23740BBF00084978 /* ZZPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1012D54F23740BBF00084978 /* ZZPlayer.swift */,
+				1012D55023740BBF00084978 /* ZZPlayerView.swift */,
+				1012D55123740BBF00084978 /* ZZPlayerViewConfig.swift */,
+				1012D55223740BBF00084978 /* ZZPlayerItemResource.swift */,
+				1012D55323740BBF00084978 /* ZZPlayer.bundle */,
+			);
+			name = ZZPlayer;
+			path = ../../../../../lxz/github/ZZPlayer/ZZPlayer/ZZPlayer/ZZPlayer;
+			sourceTree = "<group>";
+		};
 		1014CF92229391DF00294558 = {
 			isa = PBXGroup;
 			children = (
@@ -1181,6 +1206,7 @@
 				1014D0392293A6D700294558 /* BaseController.swift */,
 				1014D03A2293A6D700294558 /* BaseNavigationController.swift */,
 				100AEE6722CCB14500094AE2 /* WebController.swift */,
+				1069C8AC2373DDE500E3B4D3 /* PlayerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1263,6 +1289,7 @@
 		1014D0452293A6D700294558 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				1012D54E23740BBF00084978 /* ZZPlayer */,
 				10225DBA234ED9F60026749B /* YFCalendar */,
 				10225DB4234DD2850026749B /* SCTool */,
 				10E22BCA234C664F0084E6FB /* AFNetworking */,
@@ -2463,6 +2490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10E22BE9234C664F0084E6FB /* AIEcgSDK.bundle in Resources */,
+				1012D55823740BC000084978 /* ZZPlayer.bundle in Resources */,
 				1014CFA6229391E200294558 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2558,6 +2586,7 @@
 				101C2E6F2322480F00AB4C53 /* SunShineHutListCell.swift in Sources */,
 				108DCE42231CE10A0038F377 /* SunnyDrugBuyIdView.swift in Sources */,
 				101C2EAB2325EE3200AB4C53 /* AddressShowView.swift in Sources */,
+				1012D55423740BBF00084978 /* ZZPlayer.swift in Sources */,
 				1044A27D2351A0E600363887 /* HealthDataECGShowController.swift in Sources */,
 				101C2E952323484F00AB4C53 /* InvoiceSelectViewModel.swift in Sources */,
 				10E22BF1234C664F0084E6FB /* View+MASAdditions.m in Sources */,
@@ -2697,6 +2726,7 @@
 				100AEE3A22CA115C00094AE2 /* AddressListCell.swift in Sources */,
 				1014D0682293A75400294558 /* MainTabBarController.swift in Sources */,
 				106DE8C423168427001DF4DE /* PayMethodCell.swift in Sources */,
+				1012D55623740BC000084978 /* ZZPlayerViewConfig.swift in Sources */,
 				100AEE7222CD9D5700094AE2 /* DrugUsedCell.swift in Sources */,
 				104E3AAC22B8F31C00A84DB2 /* OrderListCell.swift in Sources */,
 				105653C0232113A2001C31A0 /* TaskTipListViewModel.swift in Sources */,
@@ -2729,6 +2759,7 @@
 				1044A29523545A5F00363887 /* HealthDataMemberListController.swift in Sources */,
 				10503A06230794D7000E90F0 /* LongServiceDocInfoCell.swift in Sources */,
 				10E22BED234C664F0084E6FB /* MASCompositeConstraint.m in Sources */,
+				1069C8AD2373DDE500E3B4D3 /* PlayerController.swift in Sources */,
 				100B6C3C22A1335600C5262C /* AppSetupConfig.swift in Sources */,
 				1044A2B12355C99300363887 /* HealthDataECGPicShowController.swift in Sources */,
 				108C080A22BCD36000B2EBE9 /* HistoryProfileDataController.swift in Sources */,
@@ -2904,6 +2935,7 @@
 				101C2E63232230E900AB4C53 /* UIImageViewExtension.swift in Sources */,
 				100AEE3C22CA117200094AE2 /* AddressListController.swift in Sources */,
 				105039F72306A298000E90F0 /* LongServiceController.swift in Sources */,
+				1012D55523740BC000084978 /* ZZPlayerView.swift in Sources */,
 				101C2EB7232885AA00AB4C53 /* TaskWorkApi.swift in Sources */,
 				101C2E8D232347DB00AB4C53 /* InvoiceRecordListController.swift in Sources */,
 				1044A2812351A15700363887 /* HealthDataECGPanelView.swift in Sources */,
@@ -2938,6 +2970,7 @@
 				108C07FE22BB583D00B2EBE9 /* TextLeftRightView.swift in Sources */,
 				10A27557230BC11500B568B3 /* SystemMsgViewModel.swift in Sources */,
 				100FCC2F2338D0D1000E8E14 /* DoctorDetailMsgExpendableCell.swift in Sources */,
+				1012D55723740BC000084978 /* ZZPlayerItemResource.swift in Sources */,
 				10E1DF38230500AC007AD76A /* VideoConsultDiseaseCell.swift in Sources */,
 				100AEE5022CC589D00094AE2 /* CaseDetailController.swift in Sources */,
 				104E3AA322B8E5E700A84DB2 /* LLSegmentBaseItemView.swift in Sources */,

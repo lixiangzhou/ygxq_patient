@@ -53,6 +53,16 @@ class BaseController: UIViewController {
         }
     }
     
+//    override func viewSafeAreaInsetsDidChange() {
+//        if #available(iOS 11.0, *) {
+//            super.viewSafeAreaInsetsDidChange()
+//            print(#function, additionalSafeAreaInsets, view.safeAreaInsets)
+//
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//    }
+    
     deinit {
         print("DEINIT => \(self.classForCoder)")
     }
