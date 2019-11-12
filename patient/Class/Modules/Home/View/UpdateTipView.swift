@@ -142,13 +142,3 @@ extension UpdateTipView {
         }
     }
 }
-
-// MARK: - Other
-extension UpdateTipView {
-    
-}
-
-// MARK: - Public
-extension UpdateTipView {
-    
-}

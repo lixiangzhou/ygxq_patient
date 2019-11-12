@@ -82,7 +82,7 @@ extension CommonApi {
             params["linkId"] = linkId
             params["toUid"] = pid
         case .appInfo:
-            params["appType"] = "YX"
+            params["appType"] = "YJ"
             params["osType"] = "IOS"
         case let .queryPatientConsultantList(pid: pid):
             params["puid"] = pid
