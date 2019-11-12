@@ -24,11 +24,8 @@ class LeftRightConfigView: BaseView {
     
 
     // MARK: - Public Property
-    var config: LeftRightConfigViewConfig? {
+    var config: LeftRightConfigViewConfig! {
         didSet {            
-            guard let config = config else {
-                return
-            }
             /// Effect
             switch config.effectStyle {
             case .none:
@@ -267,32 +264,6 @@ struct LeftRightConfigViewConfig {
         self.bottomLineColor = bottomLineColor
         self.bottomLineRightPadding = bottomLineRightPadding
         self.bottomLineHeight = bottomLineHeight
-    }
-}
-
-extension LeftRightConfigViewConfig: Equatable {
-    
-    static func == (lhs: LeftRightConfigViewConfig, rhs: LeftRightConfigViewConfig) -> Bool {
-        return lhs.effectStyle == rhs.effectStyle &&
-            lhs.cellBackgroundColor.rgbaValue == rhs.cellBackgroundColor.rgbaValue &&
-            lhs.contentViewBackgroundColor.rgbaValue == rhs.contentViewBackgroundColor.rgbaValue &&
-            lhs.leftView == rhs.leftView &&
-            lhs.leftViewSize == rhs.leftViewSize &&
-            lhs.leftPaddingLeft == rhs.leftPaddingLeft &&
-            lhs.leftPaddingRight == rhs.leftPaddingRight &&
-            lhs.leftFont.pointSize == rhs.leftFont.pointSize &&
-            lhs.leftTextColor.rgbaValue == rhs.leftTextColor.rgbaValue &&
-            lhs.rightView == rhs.rightView &&
-            lhs.rightViewSize == rhs.rightViewSize &&
-            lhs.rightPadding == rhs.rightPadding &&
-            lhs.rightFont.pointSize == rhs.rightFont.pointSize &&
-            lhs.rightTextColor.rgbaValue == rhs.rightTextColor.rgbaValue &&
-            rhs.rightPaddingLeft == rhs.rightPaddingLeft &&
-            lhs.hasBottomLine == rhs.hasBottomLine &&
-            lhs.bottomLineColor?.rgbaValue == rhs.bottomLineColor?.rgbaValue &&
-            lhs.bottomLineLeftPadding == rhs.bottomLineLeftPadding &&
-            lhs.bottomLineRightPadding == rhs.bottomLineRightPadding &&
-            lhs.bottomLineHeight == rhs.bottomLineHeight
     }
 }
 

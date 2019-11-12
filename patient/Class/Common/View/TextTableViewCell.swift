@@ -25,11 +25,10 @@ class TextTableViewCell: UITableViewCell {
     }
     
     // MARK: - Public Props
-    var config: LeftRightConfigViewConfig? {
+    var config: LeftRightConfigViewConfig! {
         didSet {
             view.config = config
             
-            guard let config = config else { return }
             switch config.effectStyle {
             case .none:
                 backgroundColor = config.cellBackgroundColor

@@ -64,12 +64,15 @@ extension ExamListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(cell: ExamListCell.self, for: indexPath)
 
-        let model = viewModel.dataSourceProperty.value[indexPath.section].list[indexPath.row]
+        let list = viewModel.dataSourceProperty.value[indexPath.section].list
+        let model = list[indexPath.row]
 
         cell.nameLabel.text = model.examName
 
         cell.typeLabel.text = viewModel.getTypeString(model)
         cell.typeLabel.isHidden = true//viewModel.getTypeString(model).isEmpty
+        
+        cell.bottomLine.isHidden = list.count - 1 == indexPath.row
 
         return cell
     }

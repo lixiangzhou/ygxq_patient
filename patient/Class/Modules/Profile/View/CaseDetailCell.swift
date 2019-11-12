@@ -49,6 +49,8 @@ class CaseDetailCell: UITableViewCell {
     // MARK: - Private Properties
     private let titleLabel = UILabel(font: .size(16), textColor: .c3)
     private let txtLabel = UILabel(font: .boldSize(16), textColor: .c3)
+    
+    var bottomLine: UIView!
 }
 
 // MARK: - UI
@@ -57,7 +59,7 @@ extension CaseDetailCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(txtLabel)
         
-        contentView.addBottomLine()
+        bottomLine = contentView.addBottomLine()
         
         titleLabel.snp.makeConstraints { (maker) in
             maker.top.equalTo(15)

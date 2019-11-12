@@ -26,6 +26,8 @@ class CaseDetailOpCell: UITableViewCell {
     let titleLabel = UILabel(font: .size(16), textColor: .c6)
     let opView = FourColumnView()
     
+    var bottomLine: UIView!
+    
     // MARK: - Private Properties
 }
 
@@ -34,7 +36,7 @@ extension CaseDetailOpCell {
     private func setupUI() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(opView)
-        contentView.addBottomLine()
+        bottomLine = contentView.addBottomLine()
         
         opView.config = FourColumnViewConfig(c1: 0.25, c2: 0.25, c3: 0.25, c4: 0.25, c1Title: "部位", c2Title: "病变性质", c3Title: "狭窄程度", c4Title: "侧支")
         

@@ -84,6 +84,7 @@ extension SunShineHutListController: UITableViewDataSource, UITableViewDelegate 
         cell.nameLabel.text = model.serName
         cell.featureLabel.text = model.serFeatures
         cell.priceLabel.attributedText = viewModel.getPrice(model)
+        cell.bottomLine.isHidden = viewModel.dataSourceProperty.value.count - 1 == indexPath.row
         
         return cell
     }

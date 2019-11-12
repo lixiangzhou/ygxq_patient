@@ -27,6 +27,7 @@ class CheckListCell: UITableViewCell {
     // MARK: - Public Property
     let nameLabel = UILabel(font: .size(16), textColor: .c3)
     let typeLabel = UILabel(font: .boldSize(14), textColor: .cff9a21, textAlignment: .center)
+    var bottomLine: UIView!
     // MARK: - Private Property
     
 }
@@ -42,7 +43,7 @@ extension CheckListCell {
         
         let arrowView = contentView.zz_add(subview: UIImageView.defaultRightArrow())
         
-        contentView.addBottomLine(left: 15, right: 15)
+        bottomLine = contentView.addBottomLine(left: 15, right: 15)
         
         nameLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(15)

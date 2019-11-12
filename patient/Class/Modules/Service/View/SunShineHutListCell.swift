@@ -28,6 +28,8 @@ class SunShineHutListCell: UITableViewCell {
     let nameLabel = UILabel(font: .size(17), textColor: .c3, numOfLines: 2)
     let featureLabel = UILabel(font: .size(15), textColor: .c6, numOfLines: 1)
     let priceLabel = UILabel(textColor: .cff3a33)
+    
+    var bottomLine: UIView!
     // MARK: - Private Property
     
 }
@@ -49,7 +51,7 @@ extension SunShineHutListCell {
         contentView.addSubview(featureLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(arrowView)
-        contentView.addBottomLine()
+        bottomLine = contentView.addBottomLine()
         
         iconView.snp.makeConstraints { (make) in
             make.top.equalTo(10)

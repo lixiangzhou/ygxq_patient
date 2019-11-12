@@ -31,6 +31,8 @@ class BindedDoctorsCell: UITableViewCell {
     let hospitalLabel = UILabel(font: .size(16), textColor: .c6, numOfLines: 1)
     let servicesView = ServiceView()
     
+    var bottomLine: UIView!
+    
     var services: [String]! {
         didSet {
             servicesView.services = services
@@ -59,7 +61,7 @@ extension BindedDoctorsCell {
         contentView.addSubview(professionLabel)
         contentView.addSubview(hospitalLabel)
         contentView.addSubview(servicesView)
-        contentView.addBottomLine()
+        bottomLine = contentView.addBottomLine()
         
         let arrowView = contentView.zz_add(subview: UIImageView.defaultRightArrow())
         

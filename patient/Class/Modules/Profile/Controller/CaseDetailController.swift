@@ -79,6 +79,8 @@ extension CaseDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let record = viewModel.dataSourceProperty.value[indexPath.row]
+        
+        let isLast = indexPath.row == viewModel.dataSourceProperty.value.count - 1
 
         if record.title != "冠状动脉造影狭窄" {
             let cell = tableView.dequeue(cell: CaseDetailCell.self, for: indexPath)
@@ -88,11 +90,15 @@ extension CaseDetailController: UITableViewDataSource, UITableViewDelegate {
 //            cell.rightLabel.text = record.subTitle
             cell.record = record
             
+            cell.bottomLine.isHidden = isLast
+            
             return cell
         } else {
             let cell = tableView.dequeue(cell: CaseDetailOpCell.self, for: indexPath)
             cell.titleLabel.text = record.title
             cell.opView.items = record.items
+            
+            cell.bottomLine.isHidden = isLast
             
             return cell
         }
