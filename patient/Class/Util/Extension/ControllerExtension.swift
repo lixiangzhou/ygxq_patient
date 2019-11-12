@@ -78,7 +78,7 @@ extension UIImagePickerController {
         picker.delegate = delegate
         picker.sourceType = sourceType
         picker.allowsEditing = allowsEditing
-        controller.present(picker, animated: true, completion: nil)
+        controller.present(picker)
     }
     
     private static func attemptAccessVideo(success:@escaping () -> Void) {

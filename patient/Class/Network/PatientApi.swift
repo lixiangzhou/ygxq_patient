@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum PatientApi: TargetType {
-    case bindingDoctor(code: String, puid: Int)
+    case bindingDoctor(duid: String, puid: Int)
     case bindedDoctors(puid: Int)
 }
 
@@ -27,8 +27,8 @@ extension PatientApi {
     var task: Task {
         var params = [String: Any]()
         switch self {
-        case let .bindingDoctor(code: code, puid: puid):
-            params["inviteCode"] = code
+        case let .bindingDoctor(duid: duid, puid: puid):
+            params["duid"] = duid
             params["puid"] = puid
         case let .bindedDoctors(puid: puid):
             params["puid"] = puid

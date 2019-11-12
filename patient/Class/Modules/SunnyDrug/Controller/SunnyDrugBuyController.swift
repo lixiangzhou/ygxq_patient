@@ -169,7 +169,7 @@ extension SunnyDrugBuyController {
                 originalPhotoButton?.isHidden = true
                 originalPhotoLabel?.isHidden = true
             }
-            self?.present(vc, animated: true, completion: nil)
+            self?.present(vc)
         }
     }
     

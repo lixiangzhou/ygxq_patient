@@ -103,9 +103,9 @@ extension QRCodeScanController {
 extension QRCodeScanController {
     private func bindDoctor(code txt: String) {
         let prefix = "cn.com.lightheart://code="
-        let code = txt.zz_substring(range: NSRange(location: prefix.count, length: txt.count - prefix.count))
+        let duid = txt.zz_substring(range: NSRange(location: prefix.count, length: txt.count - prefix.count))
         HUD.showLoding()
-        PatientApi.bindingDoctor(code: code, puid: patientId).rac_response(String.self).map { BoolString($0) }.startWithValues { [weak self] (result) in
+        PatientApi.bindingDoctor(duid: duid, puid: patientId).rac_response(String.self).map { BoolString($0) }.startWithValues { [weak self] (result) in
             HUD.hideLoding()
             if result.isSuccess {
                 HUD.show(toast: "您的申请已提交，请耐心等待医生同意")
@@ -150,9 +150,9 @@ extension QRCodeScanController: UIImagePickerControllerDelegate & UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.editedImage] as? UIImage, let ciimg = CIImage(image: image) {
-            let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: CIContext(options: nil), options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
-            if let features = detector?.features(in: ciimg) {//.first, let feature = first as? CIQRCodeFeature else { return }
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let ciimg = CIImage(image: image) {
+            let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+            if let features = detector?.features(in: ciimg) {
                 let prefix = "cn.com.lightheart://code="
                 var hasFind = false
                 for feature in features {

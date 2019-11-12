@@ -27,4 +27,9 @@ public extension UIViewController {
             navigationController?.popToViewController(targetVC!, animated: animated)
         }
     }
+    
+    func present(_ viewController: UIViewController, animated: Bool = true) {
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: animated, completion: nil)
+    }
 }

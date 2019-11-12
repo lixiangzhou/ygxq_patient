@@ -24,6 +24,6 @@ extension TZImagePickerController {
             originalPhotoLabel?.isHidden = true
         }
 //        vc.selectedModels = selectedModels
-        controller?.present(vc, animated: true, completion: nil)
+        controller?.present(vc)
     }
 }

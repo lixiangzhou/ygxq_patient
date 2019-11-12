@@ -29,7 +29,9 @@ class LoginManager {
                 RCIM.shared().logout()
                 guard let rootVC = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController,
                     let nav = rootVC.selectedViewController as? BaseNavigationController else { return }
-                rootVC.present(BaseNavigationController(rootViewController: LoginController()), animated: true) {
+                let vc = BaseNavigationController(rootViewController: LoginController())
+                vc.modalPresentationStyle = .fullScreen
+                rootVC.present(vc, animated: true) {
                     nav.popToRootViewController(animated: true)
                     rootVC.selectedIndex = 0
                 }
